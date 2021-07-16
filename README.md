@@ -14,7 +14,7 @@ A simple [Next.js](https://nextjs.org/) boilerplate with [TailwindCSS](https://t
 - SEO preconfigured with [next-seo](https://github.com/garmeeh/next-seo)
 - [Module Aliasing](https://nextjs.org/docs/advanced-features/module-path-aliases) preconfigured with `jsconfig.json`
 - [Feature branch](https://github.com/samuelgoddard/next-tailwind-motion/tree/locomotive-scroll) with [Locomotive Scroll](https://locomotivemtl.github.io/locomotive-scroll/) preconfigured for smooth, lerp based page scrolling
-- Out the box 100 scores on both mobile &amp; desktop on [Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fsg-next-tailwind-motion.vercel.app%2F&tab=mobile)
+- Out the box 100 scores on both mobile &amp; desktop on [Page Speed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fsg-next-tailwind-motion-locomotive.vercel.app%2F&tab=mobile)
 
 _*To remove Preact and switch back to React simply remove the code in `next.config.js`_
 
@@ -58,12 +58,13 @@ _*To remove Preact and switch back to React simply remove the code in `next.conf
     |-- seo.config.js *// default SEO configuration helper, imported in `pages/_app.js`*
     |-- transitions.js *// re-usable framer motion transition helper with a basic 'fade' transition to get started*
 |-- pages
-    |-- _app.js *// Includes default SEO component & Framer motion AnimatePresence init*
+    |-- _app.js *// Includes default SEO component, Framer motion AnimatePresence & Locomotive Scroll init*
     |-- _document.js *// Default Next document component*
     |-- about.js
     |-- index.js
 |-- public *// Next public assets*
 |-- styles
+    |-- _locomotive.css *// custom locomotive scroll styles*
     |-- _fonts.css *// custom webfont styles*
     |-- _typography.css *// custom typographical styles*
     |-- main.css *// Tailwind init and custom css imports*
