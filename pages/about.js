@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Layout from '@/components/layout'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -8,9 +8,23 @@ import { fade } from '@/helpers/transitions'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
+import PushScrollGlobal from '@/helpers/globalscroll'
+import { useAppContext } from '../context/state.js';
 
 export default function About() {
   const containerRef = useRef(null)
+  const appContext = useAppContext();
+
+  useEffect(() => {
+    if (appContext.scrollState) {
+      // appContext.scrollState.on('call', (obj) => { console.log('found', obj) })
+    }
+    window.addEventListener("LocoCall", (e) => { console.log(e.detail) });
+    return () => {
+      window.removeEventListener("LocoCall", (e) => { console.log(e.detail) });
+    }
+  }, [appContext])
+  
   return (
     <Layout>
       <NextSeo title="About" />
@@ -20,6 +34,7 @@ export default function About() {
         containerRef={containerRef}
         watch={[]}
       >
+        <PushScrollGlobal />
         <div data-scroll-container ref={containerRef} id="scroll-container">
           <div data-scroll-section>
             <Header />
@@ -58,13 +73,6 @@ export default function About() {
                         <h2>Some example content</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
 
-                        <p>Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                        <h2>Some example content</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
-
-                        <p>Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        
                         <h2>Some example content</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
 
@@ -72,15 +80,24 @@ export default function About() {
 
                         <h2>Some example content</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+
+                        <p data-scroll data-scroll-repeat data-scroll-call="trigger" className="trigger">Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <p>Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <h2>Some example content</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+
+                        <p data-scroll data-scroll-repeat data-scroll-call="trigger" className="trigger">Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                         <p>Velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                       </div>
-                      
+
                       <FancyLink destination="/" a11yText="Navigate to the home page" label="Home Page" />
                     </article>
                   </Container>
                 </m.main>
-                
+
                 <m.div variants={fade}>
                   <Footer />
                 </m.div>

@@ -24,6 +24,9 @@ module.exports = {
           DEFAULT: '#d18d67',
           dark: '#ce8860',
         },
+      },
+      transitionProperty: {
+        'background': 'background'
       }
     },
   },
