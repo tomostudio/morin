@@ -18,62 +18,70 @@ export default function About() {
   const appContext = useAppContext();
 
   // set animation variable to be pass to the scroll trigger component.
-  const animationInit = [() => {
+  // Input Animation without breakpoints
+  const animationObj = [() => {
     const id = 'si01'
-    const tl = gsap.timeline({
+    const elem = '.scrollsection .line';
+    const settings = {
       scrollTrigger: {
         id: id,
         trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 0%',
-        end: '+=100%',
-        onUpdate: (e) => { console.log(e.progress) }
-      },
-    })
+        end: 'bottom 0%',
+        // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
+      }
+    }
 
     // Input Animation
+    const animation = [
+      {
+        "to": [elem, {
+          scaleX: 0,
+          transformOrigin: "left center",
+          ease: "none"
+        }]
+      }]
 
-    tl.from('.scrollsection .line', {
-      scaleX: 0,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0).to('.scrollsection .line', {
-      scaleX: 1,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0)
-
-    // return animation
-    return { id, tl }
+    return { id, elem, settings, animation }
   }, () => {
-    const id = 'si02'
-    const tl = gsap.timeline({
+    const id = 'si01'
+    const elem = '.scrollsection2 .line2';
+    const settings = {
       scrollTrigger: {
         id: id,
         trigger: '.scrollsection2', // which page section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 0%',
-        end: '+=100%'
-      },
-    })
+        start: 'top 50%',
+        end: '+=25%',
+        // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
+      }
+    }
 
-    // Input Scroll Animation
+    // Input Animation
+    const animation = [{
+      "set": [elem, {
+        scaleX: 0,
+        transformOrigin: "left center"
+      }]
+    },
+    {
+      "to": [elem, {
+        scaleX: 1,
+        ease: "none"
+      }]
+    }, {
+      "set": [elem, {
+        background: 'black',
+      }]
+    },
+    { "call": () => { console.log('call') } }]
 
-    tl.from('.scrollsection2 .line2', {
-      scaleX: 0,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0).to('.scrollsection2 .line2', {
-      scaleX: 1,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0)
+    return { id, elem, settings, animation }
+  },]
 
-    // return animation
-    return { id, tl }
-  }]
   useEffect(() => {
     if (appContext.scrollState) {
       // appContext.scrollState.on('call', (obj) => { console.log('found', obj) })
@@ -96,7 +104,7 @@ export default function About() {
         <PushScrollGlobal />
         <div data-scroll-container ref={containerRef} id="scroll-container">
           <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationInit}>
+            <ScrollTriggerWrapper animation={animationObj}>
               <Header />
               <LazyMotion features={domAnimation}>
                 <m.div
@@ -106,10 +114,10 @@ export default function About() {
                 >
                   <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                     <Container>
-                      <section className="scrollsection h-screen w-full bg-blue-300 flex justify-center items-center p-10">
+                      <section className="scrollsection h-screen-1/2 w-full bg-blue-300 flex justify-center items-center p-10">
                         <div className="w-full h-full bg-white line"></div>
                       </section>
-                      <section className="scrollsection2 h-screen w-full bg-red-300 flex justify-center items-center mb-10 p-10">
+                      <section className="scrollsection2 h-screen-1/2 w-full bg-red-300 flex justify-center items-center mb-10 p-10">
                         <div className="w-full h-full bg-white line2"></div>
                       </section>
                       <article>

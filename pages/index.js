@@ -10,44 +10,86 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import ScrollTriggerWrapper from '@/components/scrolltrigger.js'
-import gsap from 'gsap'
+
 
 export default function Home() {
   const containerRef = useRef(null)
 
-  const animationInit  = [() => {
-    const id = 'si01'
-    const elem = '.scrollsection .line';
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        id: id,
-        trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 0%',
-        end: '+=75%'
-      },
-    })
+  const animationObj = {
+    '(min-width: 751px)': [
+      () => {
+        const id = 'si01';
+        const elem = '.scrollsection .line';
 
-    // Input Animation
-    tl.from(elem, {
-      scaleX: 0,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0).to(elem, {
-      scaleX: 1,
-      transformOrigin: "left center",
-      ease: "none"
-    }, 0)
+        const settings = {
+          scrollTrigger: {
+            id: id,
+            trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+            scroller: '#scroll-container', // id of scroll container
+            scrub: true,
+            start: 'top 0%',
+            end: '+=100%',
+            // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
+          }
+        }
+        const animation = [
+          {
+            "from": [elem, {
+              background: "red",
+              clearProps: "height"
+            }]
+          }, {
+            "to": [elem, {
+              scaleX: 0,
+              transformOrigin: "left center",
+              background: "black",
+              ease: "none",
+              height: '50%',
+              duration: 1
+            },0]
+          }]
+        return { id, elem, settings, animation }
+      }],
+    '(max-width: 750px)': [() => {
+      const id = 'si02';
+      const elem = '.scrollsection .line';
 
-    // return animation
-    return { id, tl, elem }
-  }];
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: '+=100%',
+          // onUpdate: (e) => { console.log('2', Math.round(e.progress * 100)) }
+        }
+      }
+      const animation = [
+        {
+          "from": [elem, {
+            background: "red",
+            clearProps: "height"
+          }]
+        },
+        {
+          "to": [elem, {
+            scaleX: 0,
+            transformOrigin: "left center",
+            background: "blue",
+            ease: "none",
+            height: '0%',
+            duration: 2
+          }, 0]
+        }]
+      return { id, elem, settings, animation }
+    }],
+  }
 
   useEffect(() => {
-    // window.addEventListener("LocoCall", (e) => { console.log(e.detail) });
+    window.addEventListener("LocoCall", (e) => { console.log(e.detail) });
     return () => {
-      // window.removeEventListener("LocoCall", (e) => { console.log(e.detail) });
+      window.removeEventListener("LocoCall", (e) => { console.log(e.detail) });
     }
   }, [])
 
@@ -61,21 +103,20 @@ export default function Home() {
         watch={[]}
       >
         <PushScrollGlobal />
-        <div data-scroll-container ref={containerRef} id="scroll-container">
+        <div data-scroll-container ref={containerRef} id="scroll-container" className="test test2 test3">
           <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationInit}>
+            <ScrollTriggerWrapper animation={animationObj}>
               <Header />
-
               <LazyMotion features={domAnimation}>
                 <m.div
                   initial="initial"
                   animate="enter"
                   exit="exit"
                 >
-                  <section className="scrollsection h-screen w-full bg-blue-300 flex justify-center items-center p-10">
+                  <m.section variants={fade} className="scrollsection h-screen w-full bg-blue-300 flex justify-center items-center p-10">
                     <div className="w-full h-full bg-white line"></div>
                     <div className="absolute left-1/2 top 1/2 -translate-x-1/2 -translate-y-1/2 text-xl"> Scroll and Watch the Bar Moves</div>
-                  </section>
+                  </m.section>
                   <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
                     <Container>
                       <article>

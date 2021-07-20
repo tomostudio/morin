@@ -16,6 +16,9 @@ module.exports = {
       "3xl": "1920px"
     },
     extend: {
+      height: {
+        'screen-1/2': '50vh',
+      },
       colors: {
         'black': '#000',
         'white': '#FFF',
