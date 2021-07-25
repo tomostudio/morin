@@ -11,7 +11,6 @@ import { NextSeo } from 'next-seo'
 import PushScrollGlobal from '@/helpers/globalscroll'
 import { useAppContext } from '../context/state.js';
 import ScrollTriggerWrapper from '@/components/scrolltrigger.js'
-import gsap from 'gsap'
 
 export default function About() {
   const containerRef = useRef(null)
@@ -106,7 +105,7 @@ export default function About() {
           <div data-scroll-section>
             <ScrollTriggerWrapper animation={animationObj}>
               <Header />
-              <LazyMotion features={domAnimation}>
+              {/* <LazyMotion features={domAnimation}> */}
                 <m.div
                   initial="initial"
                   animate="enter"
@@ -175,7 +174,7 @@ export default function About() {
                     <Footer />
                   </m.div>
                 </m.div>
-              </LazyMotion>
+              {/* </LazyMotion> */}
             </ScrollTriggerWrapper>
           </div>
         </div>

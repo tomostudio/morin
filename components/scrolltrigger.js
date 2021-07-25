@@ -1,11 +1,11 @@
-import { useEffect, forwardRef, useState } from 'react'
+import { useEffect, forwardRef, useState } from 'react';
 
-import { useLocomotiveScroll } from 'react-locomotive-scroll'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import isFunction from '@/helpers/isFunction'
+import { useLocomotiveScroll } from 'react-locomotive-scroll';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import isFunction from '@/helpers/isFunction';
 
-import React from 'react'
+import React from 'react';
 
 const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const { scroll } = useLocomotiveScroll();
@@ -13,39 +13,46 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const [scrollInitState, setScrollInit] = useState(false);
 
   // Initiate Scrolltrigger
-  gsap.registerPlugin(ScrollTrigger)
-
+  gsap.registerPlugin(ScrollTrigger);
 
   // init scroll
   useEffect(() => {
     if (scroll && !scrollInitState) {
       setScrollInit(true);
-      console.log(scroll.el.id);
 
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-      scroll.on("scroll", ScrollTrigger.update);
+      scroll.on('scroll', ScrollTrigger.update);
 
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {
-        scrollerQuery = `.${scroll.el.className.replace(/ /g, ".")}`;
+        scrollerQuery = `.${scroll.el.className.replace(/ /g, '.')}`;
       }
 
       // INIT SCROLLTRIGGER
       ScrollTrigger.scrollerProxy(scrollerQuery, {
         scrollTop(value) {
-          return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
+          return arguments.length
+            ? scroll.scrollTo(value, 0, 0)
+            : scroll.scroll.instance.scroll.y;
         }, // we don't have to define a scrollLeft because we're only scrolling vertically.
         getBoundingClientRect() {
-          return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+          return {
+            top: 0,
+            left: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
         },
         // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-        pinType: document.querySelector(scrollerQuery).style.transform ? "transform" : "fixed"
+        pinType: document.querySelector(scrollerQuery).style.transform
+          ? 'transform'
+          : 'fixed',
       });
     }
     return () => {
-    }
+      setScrollInit(false);
+    };
   }, [scroll]);
-
 
   // init timeilne / animation
   useEffect(() => {
@@ -59,25 +66,24 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       if (currentTL) {
         Object.entries(currentTL).forEach(([key, tl]) => {
           // go through each timeline.
-          tl.forEach(eachTL => {
+          tl.forEach((eachTL) => {
             // kill timeline
             eachTL.pause(0).kill(true);
           });
           // delete cleared object
-          delete currentTL[key]
+          delete currentTL[key];
         });
       }
 
       //Get All Scroll Trigger and Clear
       let allTrigger = ScrollTrigger.getAll();
-      allTrigger.forEach(trigger => {
+      allTrigger.forEach((trigger) => {
         trigger.kill(true);
       });
 
-
       //Clear Array
       tlSaveStyle = [];
-    }
+    };
 
     const applyAnimation = ({ anim, tl = [], ss }) => {
       // Anim = animation
@@ -87,56 +93,54 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
         // check if there are multiple animation
         if (anim instanceof Array) {
           // run multiple animation command
-          anim.forEach(each_anim => {
+          anim.forEach((each_anim) => {
             // push each animation into array.
             // pushing animation = running the animation.
             const { settings, elem, animation } = each_anim();
 
-            tl.push(gsap.timeline(settings))
+            tl.push(gsap.timeline(settings));
 
             if (ss) ss.push(elem);
-            animation.forEach(a => {
+
+            animation.forEach((a) => {
               const k = Object.keys(a)[0];
               if (k === 'to') {
-                tl[tl.length - 1].to(...a[k])
+                tl[tl.length - 1].to(...a[k]);
               } else if (k === 'from') {
-                tl[tl.length - 1].from(...a[k])
+                tl[tl.length - 1].from(...a[k]);
               } else if (k === 'set') {
-                tl[tl.length - 1].set(...a[k])
+                tl[tl.length - 1].set(...a[k]);
               } else if (k === 'call') {
-                tl[tl.length - 1].call(a[k])
+                tl[tl.length - 1].call(a[k]);
               }
-            })
+            });
           });
         }
 
         return tl;
-      }
-
-      else if (isFunction(anim)) {
+      } else if (isFunction(anim)) {
         // pull object
         const { settings, elem, animation } = anim();
 
         // push to array
-        tl.push(gsap.timeline(settings))
+        tl.push(gsap.timeline(settings));
 
         if (ss) ss.push(elem);
 
-        animation.forEach(a => {
+        animation.forEach((a) => {
           const k = Object.keys(a)[0];
           if (k === 'to') {
-            tl[tl.length - 1].to(...a[k])
+            tl[tl.length - 1].to(...a[k]);
           } else if (k === 'from') {
-            tl[tl.length - 1].from(...a[k])
+            tl[tl.length - 1].from(...a[k]);
           }
-        })
+        });
       }
-    }
+    };
 
     if (scrollInitState && animation) {
-
       if (animation instanceof Object && !(animation instanceof Array)) {
-        const _property = Object.getOwnPropertyNames(animation)
+        const _property = Object.getOwnPropertyNames(animation);
 
         //Create Array for Match Media
         const stMatchMedia = {};
@@ -146,45 +150,44 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
           // push animation to object
           stMatchMedia[`${p}`] = function () {
             //run apply animation function
-            // tl = applyAnimation({ anim: animation[p], ss: tlSaveStyle });
-            currentTL[`${p}`] = applyAnimation({ anim: animation[p], ss: tlSaveStyle });
+
+            currentTL[`${p}`] = applyAnimation({
+              anim: animation[p],
+              ss: tlSaveStyle,
+            });
 
             return () => {
-              tlSaveStyle.forEach(ss => {
+              tlSaveStyle.forEach((ss) => {
                 gsap.set(ss, { clearProps: true });
-              })
-
+              });
 
               ScrollTrigger.refresh(true);
               //Kill All Timeline during breakpoint
-              currentTL[`${p}`].forEach(eachTL => {
-                // tl.forEach(eachTL => {
-                eachTL.pause(0).kill();
-                eachTL.clear();
-              });
-              // tl = [];
+              if (currentTL[`${p}`])
+                currentTL[`${p}`].forEach((eachTL) => {
+                  eachTL.pause(0).kill();
+                  eachTL.clear();
+                });
 
-              delete currentTL[`${p}`]
-
-            }
-          }
-        })
+              delete currentTL[`${p}`];
+            };
+          };
+        });
 
         // RUN Scrolltrigger MatchMedia
         ScrollTrigger.matchMedia(stMatchMedia);
 
         // Set ScrollTrigger Save Styles
         let saveStyles = ``;
-        tlSaveStyle.forEach(tl => {
+        tlSaveStyle.forEach((tl) => {
           saveStyles += `${tl} ,`;
-        })
-        if (saveStyles.slice(-2) === " ,") {
+        });
+        if (saveStyles.slice(-2) === ' ,') {
           saveStyles = saveStyles.slice(0, -2);
         }
 
         ScrollTrigger.saveStyles(saveStyles);
-      }
-      else {
+      } else {
         // Fill Animation normally, no breakpoints
         resetAnimation();
         currentTL[`global`] = applyAnimation({ anim: animation });
@@ -192,14 +195,10 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
     }
     return () => {
       resetAnimation();
-    }
+    };
   }, [scrollInitState, animation]);
 
-  return (
-    <>
-      {children}
-    </>
-  )
+  return <>{children}</>;
 });
 
 export default ScrollTriggerWrapper;
