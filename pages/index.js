@@ -109,7 +109,7 @@ export default function Home() {
                   exit="exit"
                 >
                   <m.section variants={fade} className="scrollsection h-screen w-full flex justify-center items-center p-10 ">
-                    <div className="w-full h-full line bg-yellow-200 bg-opacity-0 md:bg-opacity-100"></div>
+                    <div className="w-full h-screen-1/2 line bg-yellow-200 bg-opacity-0 md:bg-opacity-100"></div>
                     <div className="absolute left-1/2 top 1/2 -translate-x-1/2 -translate-y-1/2 text-xl"> Scroll and Watch the Bar Moves</div>
                   </m.section>
                   <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
