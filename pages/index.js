@@ -34,19 +34,17 @@ export default function Home() {
         }
         const animation = [
           {
-            "from": [elem, {
-              background: "red",
-              clearProps: "height"
+            "set": [elem, {
+              background: "rgba(253, 230, 138, 1)"
             }]
           }, {
             "to": [elem, {
               scaleX: 0,
               transformOrigin: "left center",
-              background: "black",
+              background: "rgba(253, 230, 138, 0)",
               ease: "none",
-              height: '50%',
               duration: 1
-            },0]
+            }, 0]
           }]
         return { id, elem, settings, animation }
       }],
@@ -67,18 +65,16 @@ export default function Home() {
       }
       const animation = [
         {
-          "from": [elem, {
-            background: "red",
-            clearProps: "height"
+          "set": [elem, {
+            background: "rgba(253, 230, 138, 0)"
           }]
         },
         {
           "to": [elem, {
             scaleX: 0,
             transformOrigin: "left center",
-            background: "blue",
+            background: "rgba(253, 230, 138, 1)",
             ease: "none",
-            height: '0%',
             duration: 2
           }, 0]
         }]
@@ -87,9 +83,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    window.addEventListener("LocoCall", (e) => { console.log(e.detail) });
+    window.addEventListener("LocoCall", (e) => { console.log(' triggered', e.detail) });
     return () => {
-      window.removeEventListener("LocoCall", (e) => { console.log(e.detail) });
     }
   }, [])
 
@@ -113,8 +108,8 @@ export default function Home() {
                   animate="enter"
                   exit="exit"
                 >
-                  <m.section variants={fade} className="scrollsection h-screen w-full bg-blue-300 flex justify-center items-center p-10">
-                    <div className="w-full h-full bg-white line"></div>
+                  <m.section variants={fade} className="scrollsection h-screen w-full flex justify-center items-center p-10 ">
+                    <div className="w-full h-full line bg-yellow-200 bg-opacity-0 md:bg-opacity-100"></div>
                     <div className="absolute left-1/2 top 1/2 -translate-x-1/2 -translate-y-1/2 text-xl"> Scroll and Watch the Bar Moves</div>
                   </m.section>
                   <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">

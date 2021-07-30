@@ -54,7 +54,7 @@ export default function About() {
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 50%',
-        end: '+=25%',
+        end: '+=50%',
         // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
       }
     }
@@ -73,7 +73,7 @@ export default function About() {
       }]
     }, {
       "set": [elem, {
-        background: 'black',
+        background: 'rgba(250,240,10,1)',
       }]
     },
     { "call": () => { console.log('call') } }]
@@ -82,9 +82,6 @@ export default function About() {
   },]
 
   useEffect(() => {
-    if (appContext.scrollState) {
-      // appContext.scrollState.on('call', (obj) => { console.log('found', obj) })
-    }
     window.addEventListener("LocoCall", (e) => { console.log(e.detail) });
     return () => {
       window.removeEventListener("LocoCall", (e) => { console.log(e.detail) });
@@ -105,19 +102,25 @@ export default function About() {
           <div data-scroll-section>
             <ScrollTriggerWrapper animation={animationObj}>
               <Header />
-              {/* <LazyMotion features={domAnimation}> */}
+              <LazyMotion features={domAnimation}>
                 <m.div
                   initial="initial"
                   animate="enter"
                   exit="exit"
                 >
-                  <m.main variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20">
+                  <m.main
+                    initial="initial"
+                    animate="enter"
+                    exit="exit" variants={fade} className="mb-12 md:mb-16 xl:mb-24 pt-24 md:pt-20" onAnimationStart={() => { console.log(' enter') }}
+                    onAnimationComplete={definition => {
+                      console.log('Completed animating', definition)
+                    }}>
                     <Container>
-                      <section className="scrollsection h-screen-1/2 w-full bg-blue-300 flex justify-center items-center p-10">
+                      <section className="scrollsection h-screen-1/2 w-full bg-blue-100 flex justify-center items-center p-10">
                         <div className="w-full h-full bg-white line"></div>
                       </section>
-                      <section className="scrollsection2 h-screen-1/2 w-full bg-red-300 flex justify-center items-center mb-10 p-10">
-                        <div className="w-full h-full bg-white line2"></div>
+                      <section className="scrollsection2 h-screen-1/2 w-full bg-red-100 flex justify-center items-center mb-10 p-10">
+                        <div className="w-full h-full bg-white line2 scale-x-0"></div>
                       </section>
                       <article>
                         <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">Next x Tailwind x Motion x Locomotive</h1>
@@ -174,7 +177,7 @@ export default function About() {
                     <Footer />
                   </m.div>
                 </m.div>
-              {/* </LazyMotion> */}
+              </LazyMotion>
             </ScrollTriggerWrapper>
           </div>
         </div>
