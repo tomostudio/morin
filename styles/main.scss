@@ -1,0 +1,44 @@
+/* Webfonts */
+@import '_fonts.scss';
+
+/* Tailwind base/components */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Custom Style Imports */
+@import '_typography.scss';
+@import '_locomotive.scss';
+
+/* Tailwind Utilities */
+@import 'tailwindcss/utilities';
+
+/* Simple defaults */
+body {
+  @apply font-default antialiased text-black bg-white;
+  @include default-type;
+}
+
+/* Trigger Animation  */
+.trigger {
+  @apply transition-colors delay-200 duration-200;
+  @apply bg-transparent;
+
+  &.is-inview {
+    @apply transition-colors delay-200 duration-1000;
+    @apply bg-red-300;
+  }
+}
+
+@mixin setflex-center {
+  @apply flex justify-center items-center flex-row;
+}
+.setflex-center {
+  @include setflex-center();
+}
+
+main {
+  width: 100%;
+  & > * {
+    width: 100%;
+  }
+}
