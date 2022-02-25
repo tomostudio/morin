@@ -1,4 +1,4 @@
 export default {
-  smooth: true,
+  smooth: false,
   lerp: 0.1,
 };

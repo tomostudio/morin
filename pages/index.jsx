@@ -107,7 +107,7 @@ export default function Home() {
 
   useEffect(() => {
     window.addEventListener('LocoCall', (e) => {
-      console.log(' triggered', e.detail);
+      console.log('triggered', e.detail);
     });
     return () => {};
   }, []);
@@ -130,6 +130,7 @@ export default function Home() {
           className='test test2 test3'
         >
           <div data-scroll-section>
+            {/* SCROLL TRIGGER WRAPPER */}
             <ScrollTriggerWrapper animation={animationObj}>
               {/* CONTENT STARTS */}
               <Header />

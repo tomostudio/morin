@@ -21,10 +21,11 @@ const HeaderLinks = ({
     {children}
   </FancyLink>
 );
+
 export default function Header() {
   return (
     <header
-      className=' default-type fixed top-0 left-0 right-0 w-full z-10 pointer-events-none pt-8'
+      className='default-type fixed top-0 left-0 right-0 w-full z-10 pointer-events-none pt-8 header-custom'
       data-scroll
       data-scroll-sticky
       data-scroll-target='#scroll-container'

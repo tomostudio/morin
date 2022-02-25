@@ -3,7 +3,6 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false,
   theme: {
     fontFamily: {
       default: ['Poppins', 'sans-serif'],
@@ -59,9 +58,6 @@ module.exports = {
         normal: '2px 2px 4px 0px rgba(0,0,0,0.25)',
         product: '2px 2px 4px 0px rgba(0,0,0,0.1)',
         faqCard: '4px 5px 4px 0px rgba(0,0,0,0.25)',
-      },
-      height: {
-        header: '100px',
       },
       width: {
         content: '46rem',
