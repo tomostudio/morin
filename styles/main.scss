@@ -1,24 +1,16 @@
 /* Webfonts */
-@import "_fonts.scss";
+@import '_fonts.scss';
 
 /* Tailwind base/components */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
 /* Custom Style Imports */
-@import "_typography.scss";
-@import "_locomotive.scss";
-@import "_desktopNav.scss";
+@import '_typography.scss';
+@import '_locomotive.scss';
 
 /* Tailwind Utilities */
-@import "tailwindcss/utilities";
-
-/* SwiperJs Styling */
-@import "swiper/scss";
-@import "swiper/scss/pagination";
-@import "swiper/scss/effect-fade";
-@import "_slider.scss";
-// @import "swiper/scss/navigation";
+@import 'tailwindcss/utilities';
 
 /* Simple defaults */
 body {

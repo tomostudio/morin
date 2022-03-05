@@ -1,39 +1,38 @@
-import { useRef, useEffect } from "react";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { NextSeo } from "next-seo";
+import { useRef, useEffect } from 'react';
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { NextSeo } from 'next-seo';
 
-import Layout from "@/components/module/layout";
-import Header from "@/components/module/header";
-import Footer from "@/components/module/footer";
-import Container from "@/components/module/container";
+import Layout from '@/components/module/layout';
+import Header from '@/components/module/header';
+import Footer from '@/components/module/footer';
+import Container from '@/components/module/container';
 
-import ScrollTriggerWrapper from "@/components/utils/scrolltrigger.jsx";
-import FancyLink from "@/components/utils/fancyLink";
+import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx';
+import FancyLink from '@/components/utils/fancyLink';
 
-import { fade } from "@/helpers/transitions";
-import locooptions from "@/helpers/locooptions";
-import colors from "@/helpers/colors";
-import PushScrollGlobal from "@/helpers/globalscroll";
-import HeroSlider from "@/components/utils/heroSlider";
+import { fade } from '@/helpers/transitions';
+import locooptions from '@/helpers/locooptions';
+import colors from '@/helpers/colors';
+import PushScrollGlobal from '@/helpers/globalscroll';
 
 export default function Home() {
   const containerRef = useRef(null);
 
   // SET OBJECT ANIMATION
   const animationObj = {
-    "(min-width: 751px)": [
+    '(min-width: 751px)': [
       () => {
-        const id = "si01";
-        const elem = ".scrollsection .line";
+        const id = 'si01';
+        const elem = '.scrollsection .line';
         const settings = {
           scrollTrigger: {
             id: id,
-            trigger: ".scrollsection", // which page section will be tracked as the scroll trigger
-            scroller: "#scroll-container", // id of scroll container
+            trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+            scroller: '#scroll-container', // id of scroll container
             scrub: true,
-            start: "top 0%",
-            end: "+=100%",
+            start: 'top 0%',
+            end: '+=100%',
             // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
           },
         };
@@ -42,7 +41,7 @@ export default function Home() {
             set: [
               elem,
               {
-                background: "rgba(253, 230, 138, 1)",
+                background: 'rgba(253, 230, 138, 1)',
               },
             ],
           },
@@ -51,9 +50,9 @@ export default function Home() {
               elem,
               {
                 scaleX: 0,
-                transformOrigin: "left center",
-                background: "rgba(253, 230, 138, 0)",
-                ease: "none",
+                transformOrigin: 'left center',
+                background: 'rgba(253, 230, 138, 0)',
+                ease: 'none',
                 duration: 1,
               },
               0,
@@ -63,18 +62,18 @@ export default function Home() {
         return { id, elem, settings, animation };
       },
     ],
-    "(max-width: 750px)": [
+    '(max-width: 750px)': [
       () => {
-        const id = "si02";
-        const elem = ".scrollsection .line";
+        const id = 'si02';
+        const elem = '.scrollsection .line';
         const settings = {
           scrollTrigger: {
             id: id,
-            trigger: ".scrollsection", // which page section will be tracked as the scroll trigger
-            scroller: "#scroll-container", // id of scroll container
+            trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+            scroller: '#scroll-container', // id of scroll container
             scrub: true,
-            start: "top 0%",
-            end: "+=100%",
+            start: 'top 0%',
+            end: '+=100%',
             // onUpdate: (e) => { console.log('2', Math.round(e.progress * 100)) }
           },
         };
@@ -83,7 +82,7 @@ export default function Home() {
             set: [
               elem,
               {
-                background: "rgba(253, 230, 138, 0)",
+                background: 'rgba(253, 230, 138, 0)',
               },
             ],
           },
@@ -92,9 +91,9 @@ export default function Home() {
               elem,
               {
                 scaleX: 0,
-                transformOrigin: "left center",
-                background: "rgba(253, 230, 138, 1)",
-                ease: "none",
+                transformOrigin: 'left center',
+                background: 'rgba(253, 230, 138, 1)',
+                ease: 'none',
                 duration: 2,
               },
               0,
@@ -107,15 +106,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    window.addEventListener("LocoCall", (e) => {
-      // console.log('triggered', e.detail);
+    window.addEventListener('LocoCall', (e) => {
+      console.log('triggered', e.detail);
     });
     return () => {};
   }, []);
 
   return (
     <>
-      <NextSeo title="Home" />
+      <NextSeo title='Home' />
 
       {/* LOCOMOTIVE SCROLL DEFAULT */}
       <LocomotiveScrollProvider
@@ -127,8 +126,8 @@ export default function Home() {
         <div
           data-scroll-container
           ref={containerRef}
-          id="scroll-container"
-          className="test test2 test3"
+          id='scroll-container'
+          className='test test2 test3'
         >
           <div data-scroll-section>
             {/* SCROLL TRIGGER WRAPPER */}
@@ -137,23 +136,25 @@ export default function Home() {
               <Header />
               <LazyMotion features={domAnimation}>
                 <m.div
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
+                  initial='initial'
+                  animate='enter'
+                  exit='exit'
                   variants={fade}
                 >
                   <Layout>
-                    <section className="scrollsection">
-                      <HeroSlider className="w-full min-h-screen" />
-                      {/* <Container
+                    <section className='scrollsection'>
+                      <Container
                         border={false}
                         background={colors.offWhite}
                         bgTail={true}
                         safeWidth={true}
-                        className="h-[50vh] w-full flex justify-center items-center p-10"
+                        className='h-[50vh] w-full flex justify-center items-center p-10'
                       >
-                        
-                      </Container> */}
+                        <div className='w-full h-full line bg-yellow-200 bg-opacity-0 md:bg-opacity-100'></div>
+                        <div className='absolute left-1/2 top 1/2 -translate-x-1/2 -translate-y-1/2 text-xl'>
+                          Scroll and Watch the Bar Moves
+                        </div>
+                      </Container>
                     </section>
                     <article>
                       <Container
@@ -162,17 +163,17 @@ export default function Home() {
                         bgTail={true}
                         safeWidth={true}
                       >
-                        <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">
+                        <h1 className='font-bold text-2xl md:text-3xl xl:text-4xl mb-4'>
                           Next x Tailwind x Motion x Locomotive
                         </h1>
-                        <div className="content max-w-3xl mb-4">
+                        <div className='content max-w-3xl mb-4'>
                           <h2>Some example content</h2>
 
                           <p
                             data-scroll
                             data-scroll-repeat
-                            data-scroll-call="trigger"
-                            className="trigger"
+                            data-scroll-call='trigger'
+                            className='trigger'
                           >
                             Velit esse cillum dolore eu fugiat nulla pariatur.
                             Excepteur sint occaecat cupidatat non proident, sunt
@@ -189,9 +190,9 @@ export default function Home() {
                         </div>
 
                         <FancyLink
-                          destination="/about"
-                          a11yText="Navigate to the about page"
-                          label="About Page"
+                          destination='/about'
+                          a11yText='Navigate to the about page'
+                          label='About Page'
                         />
                       </Container>
                     </article>
@@ -202,7 +203,7 @@ export default function Home() {
                         bgTail={true}
                         safeWidth={true}
                       >
-                        <div className="w-full bg-slate-400 h-40 min-h-[50vh] setflex-center">
+                        <div className='w-full bg-slate-400 h-40 min-h-[50vh] setflex-center'>
                           PLACEHOLDER
                         </div>
                       </Container>
@@ -212,10 +213,10 @@ export default function Home() {
                         border={true}
                         background={colors.morinRed}
                         bgTail={true}
-                        className=""
+                        className=''
                         safeWidth={false}
                       >
-                        <div className="w-full bg-slate-400 h-40 min-h-[50vh] setflex-center">
+                        <div className='w-full bg-slate-400 h-40 min-h-[50vh] setflex-center'>
                           PLACEHOLDER
                         </div>
                       </Container>
