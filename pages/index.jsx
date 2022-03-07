@@ -16,6 +16,41 @@ import locooptions from "@/helpers/locooptions";
 import colors from "@/helpers/colors";
 import PushScrollGlobal from "@/helpers/globalscroll";
 import HeroSlider from "@/components/utils/heroSlider";
+import MorinButton from "@/components/utils/morinButton";
+import Image from "next/image";
+import CategoryCard from "@/components/module/categoryCard";
+import { Arrow } from "@/components/utils/svg";
+
+const categoryData = [
+  {
+    imgSrc: "/morin-card/morin-1.svg",
+    imgPlaceholder: "/morin-card/morin-1.png",
+    imgAlt: "Spreads",
+    title: "Spreads",
+    link: "/products/spreads",
+  },
+  {
+    imgSrc: "/morin-card/morin-2.svg",
+    imgPlaceholder: "/morin-card/morin-2.png",
+    imgAlt: "Jams",
+    title: "Jams",
+    link: "/products/jams",
+  },
+  {
+    imgSrc: "/morin-card/morin-3.svg",
+    imgPlaceholder: "/morin-card/morin-3.png",
+    imgAlt: "Toppings",
+    title: "Toppings",
+    link: "/products/toppings",
+  },
+  {
+    imgSrc: "/morin-card/morin-4.svg",
+    imgPlaceholder: "/morin-card/morin-4.png",
+    imgAlt: "Fillings",
+    title: "Fillings",
+    link: "/products/fillings",
+  },
+];
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -145,56 +180,83 @@ export default function Home() {
                   <Layout>
                     <section className="scrollsection">
                       <HeroSlider className="w-full min-h-screen" />
-                      {/* <Container
-                        border={false}
-                        background={colors.offWhite}
-                        bgTail={true}
-                        safeWidth={true}
-                        className="h-[50vh] w-full flex justify-center items-center p-10"
-                      >
-                        
-                      </Container> */}
                     </section>
-                    <article>
+                    <section>
                       <Container
                         border={false}
                         background={colors.offWhite}
                         bgTail={true}
                         safeWidth={true}
                       >
-                        <h1 className="font-bold text-2xl md:text-3xl xl:text-4xl mb-4">
-                          Next x Tailwind x Motion x Locomotive
-                        </h1>
-                        <div className="content max-w-3xl mb-4">
-                          <h2>Some example content</h2>
-
-                          <p
-                            data-scroll
-                            data-scroll-repeat
-                            data-scroll-call="trigger"
-                            className="trigger"
-                          >
-                            Velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt
-                            in culpa qui officia deserunt mollit anim id est
-                            laborum.
-                          </p>
-
-                          <p>
-                            Velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt
-                            in culpa qui officia deserunt mollit anim id est
-                            laborum.
-                          </p>
+                        <div className="flex flex-wrap w-full">
+                          <div className="w-full lg:w-[35%]">
+                            <div className="mt-[100px] mb-[80px] lg:mt-[30px]">
+                              <h2 className="text-[28px] text-morin-blue font-nutmeg font-normal text-center leading-tight mb-[15px] lg:text-left lg:text-ctitleSmall lg:mb-[30px]">
+                                Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
+                                Amet Lorem.
+                              </h2>
+                              <MorinButton
+                                destination="/products"
+                                color={colors.morinBlue}
+                                className="lg:mx-0"
+                              >
+                                See All Products
+                              </MorinButton>
+                            </div>
+                            <div className="flex flex-wrap max-w-[90px] justify-between mb-5 mx-auto lg:max-w-[185px] lg:mx-0">
+                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                                <Image
+                                  src={`/halal.svg`}
+                                  alt={"Halal"}
+                                  layout="fill"
+                                  objectFit="contain"
+                                />
+                              </div>
+                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                                <Image
+                                  src={`/pom.svg`}
+                                  alt={"Badan POM"}
+                                  layout="fill"
+                                  objectFit="contain"
+                                />
+                              </div>
+                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                                <Image
+                                  src={`/topbrand.svg`}
+                                  alt={"Top Brand"}
+                                  layout="fill"
+                                  objectFit="contain"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="w-full lg:w-[65%]">
+                            {categoryData?.map((i) => (
+                              <div
+                                className="relative w-[calc(100%+64px)] min-h-screen -mx-8 lg:w-[calc(100%+32px)] lg:mx-0"
+                                key={i.title}
+                              >
+                                <CategoryCard
+                                  imgSrc={i.imgSrc}
+                                  imgPlaceholder={i.imgPlaceholder}
+                                  imgAlt={i.imgAlt}
+                                />
+                                <div className="text-center absolute left-1/2 bottom-[40px] -translate-x-1/2 z-1 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10">
+                                  <span className="font-nutmeg font-semibold text-white text-ctitleBig xl:text-h1">
+                                    {i.title}
+                                  </span>
+                                  <FancyLink destination={i.link} className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-[60px] lg:h-[45px] lg:border-2 lg:border-solid lg:border-white lg:rounded-[45px] lg:relative lg:top-auto lg:left-auto">
+                                    <div className="hidden lg:block lg:w-[32px]">
+                                      <Arrow />
+                                    </div>
+                                  </FancyLink>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-
-                        <FancyLink
-                          destination="/about"
-                          a11yText="Navigate to the about page"
-                          label="About Page"
-                        />
                       </Container>
-                    </article>
+                    </section>
                     <section>
                       <Container
                         border={true}

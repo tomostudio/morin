@@ -7,10 +7,10 @@ const Footer = ({ className }) => {
   return (
     <footer className="lg:px-8">
       <Container
-        className={`relative w-full h-auto flex bg-morin-blue text-white rounded-t-3xl px-5 pt-6 pb-9 md:flex-row lg:px-10 lg:pt-[60px] lg:pb-20 ${className}`}
+        className={`relative w-full h-auto flex bg-morin-blue text-white rounded-t-3xl px-5 pt-6 pb-9 md:flex-row md:justify-between md:px-8 lg:px-10 lg:pt-[60px] lg:pb-20 ${className}`}
       >
         {/* LEFT */}
-        <div className="flex flex-col w-full mb-[30px] md:w-[60%] md:max-w-[350px] md:mb-0 lg:max-w-[485px]">
+        <div className="flex flex-col w-full mb-[30px] md:w-[60%] md:max-w-[400px] md:mb-0 lg:max-w-[485px]">
           <h2 className="text-ctitleSmall font-bold font-nutmeg lg:text-mtitle">
             Let's Stay In Touch!
           </h2>
@@ -36,8 +36,8 @@ const Footer = ({ className }) => {
         </div>
 
         {/* RIGHT */}
-        <div className="flex w-full md:w-auto md:ml-auto md:mt-auto">
-          <div className="flex flex-wrap flex-col w-1/2 space-y-3 md:w-auto lg:min-w-[100px] lg:space-y-4">
+        <div className="flex w-full md:w-auto md:justify-end md:ml-auto md:mt-auto">
+          <div className="flex flex-wrap flex-col w-1/2 space-y-3 md:w-auto md:ml-auto lg:min-w-[100px] lg:space-y-4">
             <FancyLink destination="/" className={footerLink}>
               Home
             </FancyLink>
@@ -57,7 +57,7 @@ const Footer = ({ className }) => {
               Get Morin
             </FancyLink>
           </div>
-          <div className="flex flex-wrap flex-col justify-between w-1/2 md:w-auto md:ml-[80px] lg:mx-[100px]">
+          <div className="flex flex-wrap flex-col justify-between w-1/2 md:w-auto md:ml-[50px] xl:mx-[100px]">
             <div className="flex flex-wrap flex-col space-y-3 lg:space-y-4">
               <FancyLink destination="/faq" className={footerLink}>
                 Faq

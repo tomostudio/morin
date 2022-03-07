@@ -25,14 +25,14 @@ module.exports = {
       auto: 'auto',
     },
     fontSize: {
-      default: '15px',
       defaultSmall: '12px',
+      default: '15px',
       h1: '72px',
       h2: '52px',
       mtitle: '36px',
       ctitle: '32px',
       ctitleSmall: '24px',
-      ctitleBig: '40px',
+      ctitleBig: '42px',
     },
     // custom screens
     screens: {

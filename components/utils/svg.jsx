@@ -493,4 +493,20 @@ const SunRay = ({ ...options }) => {
   );
 };
 
-export { MorinLogo, SunRay };
+const Arrow = ({ color = "#fff", ...options }) => (
+  <svg
+    viewBox="0 0 27 14"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M26 7H1M20.4444 1.5L26 7L20.4444 1.5ZM26 7L20.4444 12.5L26 7Z"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export { MorinLogo, SunRay, Arrow };

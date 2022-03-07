@@ -22,7 +22,7 @@
 
 /* Simple defaults */
 body {
-  @apply font-default antialiased text-black bg-white;
+  @apply font-default text-defaultSmall md:text-default antialiased text-black bg-white;
   @include default-type;
 }
 

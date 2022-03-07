@@ -215,7 +215,7 @@ export default function Header() {
             onClick={() => toggleHamburgermenu()}
           />
           <div
-            className={`mobileMenu fixed top-0 left-0 w-full h-screen bg-morin-blue flex flex-col justify-between transition ease-in-out duration-${FIFODuration} opacity-0 invisible -z-1 pt-[200px] pb-[80px]`}
+            className={`mobileMenu fixed top-0 left-0 w-full h-screen bg-morin-blue flex flex-col justify-between transition ease-in-out duration-${FIFODuration} opacity-0 invisible -z-1 pt-[200px] pb-[80px] lg:hidden`}
           >
             <div className="absolute -top-3/4 left-1/2 -translate-x-1/2">
               <SunRay className="block w-[1000px] animate-spin-slow" />
@@ -258,7 +258,7 @@ export default function Header() {
                 Get Morin!
               </FancyLink>
             </nav>
-            <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto">
+            <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto mt-10">
               <FancyLink
                 destination="/"
                 blank={true}
