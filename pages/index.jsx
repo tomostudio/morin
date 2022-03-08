@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 
 import Layout from "@/components/module/layout";
 import Header from "@/components/module/header";
@@ -17,38 +18,68 @@ import colors from "@/helpers/colors";
 import PushScrollGlobal from "@/helpers/globalscroll";
 import HeroSlider from "@/components/utils/heroSlider";
 import MorinButton from "@/components/utils/morinButton";
-import Image from "next/image";
+import RecipeSlider from "@/components/utils/recipeSlider";
 import CategoryCard from "@/components/module/categoryCard";
-import { Arrow } from "@/components/utils/svg";
+import {
+  Arrow,
+  HeartSmall,
+  HeartLarge,
+  // RecipeTitleMobile,
+  // RecipeTitleDesktop,
+} from "@/components/utils/svg";
 
 const categoryData = [
   {
-    imgSrc: "/morin-card/morin-1.svg",
-    imgPlaceholder: "/morin-card/morin-1.png",
+    imgSrc: "/category/morin-1.svg",
+    imgPlaceholder: "/category/morin-1.png",
     imgAlt: "Spreads",
     title: "Spreads",
     link: "/products/spreads",
   },
   {
-    imgSrc: "/morin-card/morin-2.svg",
-    imgPlaceholder: "/morin-card/morin-2.png",
+    imgSrc: "/category/morin-2.svg",
+    imgPlaceholder: "/category/morin-2.png",
     imgAlt: "Jams",
     title: "Jams",
     link: "/products/jams",
   },
   {
-    imgSrc: "/morin-card/morin-3.svg",
-    imgPlaceholder: "/morin-card/morin-3.png",
+    imgSrc: "/category/morin-3.svg",
+    imgPlaceholder: "/category/morin-3.png",
     imgAlt: "Toppings",
     title: "Toppings",
     link: "/products/toppings",
   },
   {
-    imgSrc: "/morin-card/morin-4.svg",
-    imgPlaceholder: "/morin-card/morin-4.png",
+    imgSrc: "/category/morin-4.svg",
+    imgPlaceholder: "/category/morin-4.png",
     imgAlt: "Fillings",
     title: "Fillings",
     link: "/products/fillings",
+  },
+];
+
+const recipeData = [
+  {
+    imgSrc: "/recipe/recipe-1.svg",
+    imgPlaceholder: "/recipe/recipe-1.png",
+    imgAlt: "Mixed Berry Jam Tartlets",
+    title: "Mixed Berry Jam Tartlets",
+    link: "/recipe/recipe-id",
+  },
+  {
+    imgSrc: "/recipe/recipe-2.svg",
+    imgPlaceholder: "/recipe/recipe-2.png",
+    imgAlt: "Strawberry Trifle",
+    title: "Strawberry Trifle",
+    link: "/recipe/recipe-id",
+  },
+  {
+    imgSrc: "/recipe/recipe-3.svg",
+    imgPlaceholder: "/recipe/recipe-3.png",
+    imgAlt: "Chocolate Fudge Cupcakes",
+    title: "Chocolate Fudge Cupcakes",
+    link: "/recipe/recipe-id",
   },
 ];
 
@@ -188,10 +219,10 @@ export default function Home() {
                         bgTail={true}
                         safeWidth={true}
                       >
-                        <div className="flex flex-wrap w-full">
-                          <div className="w-full lg:w-[35%]">
-                            <div className="mt-[100px] mb-[80px] lg:mt-[30px]">
-                              <h2 className="text-[28px] text-morin-blue font-nutmeg font-normal text-center leading-tight mb-[15px] lg:text-left lg:text-ctitleSmall lg:mb-[30px]">
+                        <div className="flex flex-wrap w-full lg:items-start">
+                          <div className="w-full lg:w-[35%] lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px]">
+                            <div className="mt-[100px] mb-[80px] lg:mt-[30px] lg:max-w-[365px] lg:pr-[32px]">
+                              <h2 className="text-[28px] text-morin-blue font-nutmeg font-normal text-center leading-tight mb-[15px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] lg:mb-[30px]">
                                 Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
                                 Amet Lorem.
                               </h2>
@@ -203,7 +234,7 @@ export default function Home() {
                                 See All Products
                               </MorinButton>
                             </div>
-                            <div className="flex flex-wrap max-w-[90px] justify-between mb-5 mx-auto lg:max-w-[185px] lg:mx-0">
+                            <div className="flex flex-wrap max-w-[90px] justify-between mb-5 mx-auto lg:max-w-[185px] lg:mb-10 lg:mx-0">
                               <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/halal.svg`}
@@ -245,7 +276,10 @@ export default function Home() {
                                   <span className="font-nutmeg font-semibold text-white text-ctitleBig xl:text-h1">
                                     {i.title}
                                   </span>
-                                  <FancyLink destination={i.link} className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-[60px] lg:h-[45px] lg:border-2 lg:border-solid lg:border-white lg:rounded-[45px] lg:relative lg:top-auto lg:left-auto">
+                                  <FancyLink
+                                    destination={i.link}
+                                    className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-[60px] lg:h-[45px] lg:border-2 lg:border-solid lg:border-white lg:rounded-[45px] lg:relative lg:top-auto lg:left-auto"
+                                  >
                                     <div className="hidden lg:block lg:w-[32px]">
                                       <Arrow />
                                     </div>
@@ -260,12 +294,44 @@ export default function Home() {
                     <section>
                       <Container
                         border={true}
-                        background={colors.morinBlue}
+                        background={colors.morinPeach}
                         bgTail={true}
                         safeWidth={true}
                       >
-                        <div className="w-full bg-slate-400 h-40 min-h-[50vh] setflex-center">
-                          PLACEHOLDER
+                        <div className="flex flex-wrap w-full">
+                          <div className="w-full text-center mb-[30px] md:w-[60%] md:text-left lg:mb-[40px] xl:w-[70%] xl:mb-[60px]">
+                            <h2 className="relative max-w-[175px] font-nutmeg font-bold text-ctitle text-morin-red leading-[34px] mb-[15px] mx-auto md:max-w-fit md:mb-[10px] md:mx-0 lg:text-h2 lg:leading-tight xl:text-h1">
+                              Recipes <br className="md:hidden" /> from Love
+                              <div className="w-[30px] absolute -top-[2px] left-[calc(100%-15px)] md:hidden">
+                                <HeartSmall className="md:hidden" />
+                              </div>
+                              <div className="hidden w-[50px] absolute -top-[2px] left-[calc(100%+5px)] md:block lg:w-[70px] lg:top-[5px] lg:left-[calc(100%+10px)] xl:w-[100px] xl:left-full">
+                                <HeartLarge className="hidden md:block" />
+                              </div>
+                            </h2>
+                            <p className="max-w-[300px] text-morin-red text-[9px] mx-auto sm:text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
+                              Lorem Ipsum Dolor sit Amet Lorem Ipsum Dolor sit
+                              Amet Lorem Ipsum Dolor sit Amet Lorem Ipsum Amet
+                              Lorem Ipsum.
+                            </p>
+                            {/* <div className="block min-w-[175px] mx-auto lg:hidden">
+                              <RecipeTitleMobile />
+                            </div>
+                            <div className="hidden lg:block">
+                              <RecipeTitleDesktop />
+                            </div> */}
+                          </div>
+                          <div className="w-full order-3 md:order-none md:w-fit md:pl-[50px] md:ml-auto">
+                            <MorinButton
+                              destination="/recipes"
+                              color={colors.morinRed}
+                            >
+                              See All Recipes
+                            </MorinButton>
+                          </div>
+                          <div className="w-[calc(100%+64px)] -mx-[32px] mb-[30px] md:w-[calc(100%+32px)] md:-mx-[16px] md:mb-0">
+                            <RecipeSlider data={recipeData} />
+                          </div>
                         </div>
                       </Container>
                     </section>
