@@ -27,32 +27,34 @@ import {
   // RecipeTitleMobile,
   // RecipeTitleDesktop,
 } from "@/components/utils/svg";
+import { Scribble } from "@/components/utils/svg";
+import HighlightSlider from "@/components/utils/highlightSlider";
 
 const categoryData = [
   {
-    imgSrc: "/category/morin-1.svg",
-    imgPlaceholder: "/category/morin-1.png",
+    imgSrc: "/category/category-1.jpg",
+    imgPlaceholder: "/category/category-1.png",
     imgAlt: "Spreads",
     title: "Spreads",
     link: "/products/spreads",
   },
   {
-    imgSrc: "/category/morin-2.svg",
-    imgPlaceholder: "/category/morin-2.png",
+    imgSrc: "/category/category-2.jpg",
+    imgPlaceholder: "/category/category-2.png",
     imgAlt: "Jams",
     title: "Jams",
     link: "/products/jams",
   },
   {
-    imgSrc: "/category/morin-3.svg",
-    imgPlaceholder: "/category/morin-3.png",
+    imgSrc: "/category/category-3.jpg",
+    imgPlaceholder: "/category/category-3.png",
     imgAlt: "Toppings",
     title: "Toppings",
     link: "/products/toppings",
   },
   {
-    imgSrc: "/category/morin-4.svg",
-    imgPlaceholder: "/category/morin-4.png",
+    imgSrc: "/category/category-4.jpg",
+    imgPlaceholder: "/category/category-4.png",
     imgAlt: "Fillings",
     title: "Fillings",
     link: "/products/fillings",
@@ -61,25 +63,76 @@ const categoryData = [
 
 const recipeData = [
   {
-    imgSrc: "/recipe/recipe-1.svg",
+    imgSrc: "/recipe/recipe-1.jpg",
     imgPlaceholder: "/recipe/recipe-1.png",
     imgAlt: "Mixed Berry Jam Tartlets",
     title: "Mixed Berry Jam Tartlets",
     link: "/recipe/recipe-id",
   },
   {
-    imgSrc: "/recipe/recipe-2.svg",
+    imgSrc: "/recipe/recipe-2.jpg",
     imgPlaceholder: "/recipe/recipe-2.png",
     imgAlt: "Strawberry Trifle",
     title: "Strawberry Trifle",
     link: "/recipe/recipe-id",
   },
   {
-    imgSrc: "/recipe/recipe-3.svg",
+    imgSrc: "/recipe/recipe-3.jpg",
     imgPlaceholder: "/recipe/recipe-3.png",
     imgAlt: "Chocolate Fudge Cupcakes",
     title: "Chocolate Fudge Cupcakes",
     link: "/recipe/recipe-id",
+  },
+];
+
+const highlightData = [
+  {
+    imgSrc: "/highlight/highlight-1.jpg",
+    imgPlaceholder: "/highlight/highlight-1.png",
+    imgAlt: "Morin in UPH",
+    title: "Morin in UPH",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
+  },
+  {
+    imgSrc: "/highlight/highlight-2.jpg",
+    imgPlaceholder: "/highlight/highlight-2.png",
+    imgAlt: "Cooking Workshop",
+    title: "Cooking Workshop",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
+  },
+  {
+    imgSrc: "/highlight/highlight-1.jpg",
+    imgPlaceholder: "/highlight/highlight-1.png",
+    imgAlt: "Brown Fox Jumps",
+    title: "Brown Fox Jumps",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
+  },
+  {
+    imgSrc: "/highlight/highlight-1.jpg",
+    imgPlaceholder: "/highlight/highlight-1.png",
+    imgAlt: "Morin in UPH",
+    title: "Morin in UPH",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
+  },
+  {
+    imgSrc: "/highlight/highlight-2.jpg",
+    imgPlaceholder: "/highlight/highlight-2.png",
+    imgAlt: "Cooking Workshop",
+    title: "Cooking Workshop",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
+  },
+  {
+    imgSrc: "/highlight/highlight-1.jpg",
+    imgPlaceholder: "/highlight/highlight-1.png",
+    imgAlt: "Brown Fox Jumps",
+    title: "Brown Fox Jumps",
+    date: "24 Juli 2021",
+    link: "/highlight/highlight-id",
   },
 ];
 
@@ -271,20 +324,9 @@ export default function Home() {
                                   imgSrc={i.imgSrc}
                                   imgPlaceholder={i.imgPlaceholder}
                                   imgAlt={i.imgAlt}
+                                  title={i.title}
+                                  link={i.link}
                                 />
-                                <div className="text-center absolute left-1/2 bottom-[40px] -translate-x-1/2 z-1 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10">
-                                  <span className="font-nutmeg font-semibold text-white text-ctitleBig xl:text-h1">
-                                    {i.title}
-                                  </span>
-                                  <FancyLink
-                                    destination={i.link}
-                                    className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-[60px] lg:h-[45px] lg:border-2 lg:border-solid lg:border-white lg:rounded-[45px] lg:relative lg:top-auto lg:left-auto"
-                                  >
-                                    <div className="hidden lg:block lg:w-[32px]">
-                                      <Arrow />
-                                    </div>
-                                  </FancyLink>
-                                </div>
                               </div>
                             ))}
                           </div>
@@ -338,15 +380,42 @@ export default function Home() {
                     <section>
                       <Container
                         border={true}
-                        background={colors.morinRed}
+                        background={colors.morinLightBlue}
+                        bgTail={true}
+                        className=""
+                        safeWidth={true}
+                      >
+                        <div className="flex flex-wrap w-full">
+                          <div className="w-full text-center mb-[30px] md:w-[60%] md:text-left lg:mb-[40px] xl:w-[70%] xl:mb-[60px]">
+                            <h2 className="relative text-morin-blue text-ctitle font-nutmeg font-bold leading-none max-w-[160px] mx-auto pb-[20px] mb-[24px] md:w-fit md:max-w-none md:pb-0 md:mx-0 md:mb-[10px] lg:text-h2 ">
+                              Events Highlight
+                              <div className="w-full h-[15px] absolute left-1/2 bottom-0 -translate-x-1/2 md:w-[155px] md:left-auto md:right-0 md:translate-x-0 md:-bottom-[15px] lg:w-[250px] lg:h-[20px] lg:-bottom-[20px]">
+                                <Scribble />
+                              </div>
+                            </h2>
+                          </div>
+                          <div className="w-full order-3 md:order-none md:w-fit md:pl-[50px] md:ml-auto">
+                            <MorinButton
+                              destination="/events"
+                              color={colors.morinBlue}
+                            >
+                              See All Events
+                            </MorinButton>
+                          </div>
+                          <div className="w-full h-fit mb-[30px] md:w-[calc(100%+32px)] md:-mx-[16px] md:mb-0">
+                            <HighlightSlider data={highlightData} />
+                          </div>
+                        </div>
+                      </Container>
+                    </section>
+                    <section>
+                      <Container
+                        border={true}
+                        background={colors.white}
                         bgTail={true}
                         className=""
                         safeWidth={false}
-                      >
-                        <div className="w-full bg-slate-400 h-40 min-h-[50vh] setflex-center">
-                          PLACEHOLDER
-                        </div>
-                      </Container>
+                      ></Container>
                     </section>
                     <Footer />
                   </Layout>

@@ -27,8 +27,6 @@ const RecipeCard = ({ imgSrc, imgPlaceholder, imgAlt, title, link }) => {
           width={387}
           height={487}
           layout="responsive"
-          // layout="fill"
-          // objectFit="cover"
         />
       </div>
     </div>

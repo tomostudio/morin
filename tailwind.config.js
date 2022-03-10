@@ -65,7 +65,9 @@ module.exports = {
       },
       colors: {
         'morin-blue': '#175BA7',
+        'morin-lightBlue': '#D1F1FF',
         'morin-red': '#E82128',
+        'morin-peach': '#FFECD8',
       },
       transitionProperty: {
         background: 'background',
