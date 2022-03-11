@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper";
 import Container from "../module/container";
-import MorinButton from "./morinButton";
+import MorinButton from "../utils/morinButton";
 import colors from "@/helpers/colors";
 
 const HeroSlider = ({ className }) => {

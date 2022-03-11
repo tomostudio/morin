@@ -19,8 +19,6 @@ const HighlightCard = ({
           src={imgSrc}
           placeholder={imgPlaceholder}
           alt={imgAlt}
-          width={215}
-          height={215}
           layout="fill"
           objectFit="cover"
         />

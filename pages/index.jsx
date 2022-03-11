@@ -3,32 +3,28 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-
 import Layout from "@/components/module/layout";
 import Header from "@/components/module/header";
 import Footer from "@/components/module/footer";
 import Container from "@/components/module/container";
-
 import ScrollTriggerWrapper from "@/components/utils/scrolltrigger.jsx";
 import FancyLink from "@/components/utils/fancyLink";
-
 import { fade } from "@/helpers/transitions";
 import locooptions from "@/helpers/locooptions";
 import colors from "@/helpers/colors";
 import PushScrollGlobal from "@/helpers/globalscroll";
-import HeroSlider from "@/components/utils/heroSlider";
+import HeroSlider from "@/components/sliders/heroSlider";
+import HighlightSlider from "@/components/sliders/highlightSlider";
+import InstagramSlider from "@/components/sliders/instagramSlider";
+import RecipeSlider from "@/components/sliders/recipeSlider";
 import MorinButton from "@/components/utils/morinButton";
-import RecipeSlider from "@/components/utils/recipeSlider";
 import CategoryCard from "@/components/module/categoryCard";
 import {
   Arrow,
   HeartSmall,
   HeartLarge,
-  // RecipeTitleMobile,
-  // RecipeTitleDesktop,
+  Scribble,
 } from "@/components/utils/svg";
-import { Scribble } from "@/components/utils/svg";
-import HighlightSlider from "@/components/utils/highlightSlider";
 
 const categoryData = [
   {
@@ -133,6 +129,45 @@ const highlightData = [
     title: "Brown Fox Jumps",
     date: "24 Juli 2021",
     link: "/highlight/highlight-id",
+  },
+];
+
+const instagramData = [
+  {
+    imgSrc: "/instagram/instagram-1.jpg",
+    imgPlaceholder: "/instagram/instagram-1.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
+  },
+  {
+    imgSrc: "/instagram/instagram-2.jpg",
+    imgPlaceholder: "/instagram/instagram-2.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
+  },
+  {
+    imgSrc: "/instagram/instagram-3.jpg",
+    imgPlaceholder: "/instagram/instagram-3.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
+  },
+  {
+    imgSrc: "/instagram/instagram-1.jpg",
+    imgPlaceholder: "/instagram/instagram-1.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
+  },
+  {
+    imgSrc: "/instagram/instagram-2.jpg",
+    imgPlaceholder: "/instagram/instagram-2.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
+  },
+  {
+    imgSrc: "/instagram/instagram-3.jpg",
+    imgPlaceholder: "/instagram/instagram-3.png",
+    imgAlt: "Caption of image here...",
+    link: "/link-to-instagram-post",
   },
 ];
 
@@ -411,11 +446,31 @@ export default function Home() {
                     <section>
                       <Container
                         border={true}
-                        background={colors.white}
                         bgTail={true}
-                        className=""
-                        safeWidth={false}
-                      ></Container>
+                        safeWidth={true}
+                        background={colors.white}
+                        classNameOuter="xl:pb-[60px]"
+                      >
+                        <div className="w-full">
+                          <div className="flex flex-wrap w-full mb-[30px]">
+                            <h2 className="w-full max-w-[260px] text-[22px] font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-[15px] lg:text-ctitle xl:text-mtitle">
+                              Get Daily Inspirations from our Social Media
+                            </h2>
+                            <div className="w-full md:w-[135px] md:flex md:items-end">
+                              <FancyLink
+                                destination="https://www.instagram.com/morin_jam/"
+                                blank
+                                className="flex flex-wrap items-center w-fit min-h-[25px] bg-morin-blue text-white text-defaultSmall font-semibold rounded-full px-[15px] mx-auto md:mb-[5px] md:mr-0 xl:min-h-[30px] xl:text-default"
+                              >
+                                @morin_jam
+                              </FancyLink>
+                            </div>
+                          </div>
+                          <div className="w-[calc(100%+64px)] -mx-[32px]">
+                            <InstagramSlider data={instagramData} />
+                          </div>
+                        </div>
+                      </Container>
                     </section>
                     <Footer />
                   </Layout>

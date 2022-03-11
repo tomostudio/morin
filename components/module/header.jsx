@@ -167,7 +167,9 @@ export default function Header() {
                 style={{ transform: `translate(${thisEl}px, -50%)` }}
                 className="radio-switch__marker"
               />
-            ) : ""}
+            ) : (
+              ""
+            )}
           </nav>
 
           {/* <nav
@@ -215,81 +217,88 @@ export default function Header() {
             onClick={() => toggleHamburgermenu()}
           />
           <div
-            className={`mobileMenu fixed top-0 left-0 w-full h-screen bg-morin-blue flex flex-col justify-between transition ease-in-out duration-${FIFODuration} opacity-0 invisible -z-1 pt-[200px] pb-[80px] lg:hidden`}
+            className={`mobileMenu fixed top-0 left-0 w-full h-screen bg-morin-blue transition ease-in-out duration-${FIFODuration} opacity-0 invisible -z-1 lg:hidden`}
           >
-            <div className="absolute -top-3/4 left-1/2 -translate-x-1/2">
+            <div className="absolute -top-3/4 left-1/2 -translate-x-1/2 -z-1">
               <SunRay className="block w-[1000px] animate-spin-slow" />
             </div>
-            <nav className="w-full text-center flex flex-col space-y-[35px] z-1">
-              <FancyLink
-                destination="/about"
-                a11yText="Navigate to the About Page"
-                className={mobileLink}
-              >
-                About
-              </FancyLink>
-              <FancyLink
-                destination="/products"
-                a11yText="Navigate to the Products Page"
-                className={mobileLink}
-              >
-                Products
-              </FancyLink>
-              <FancyLink
-                destination="/recipes"
-                a11yText="Navigate to the Recipes Page"
-                className={mobileLink}
-              >
-                Recipes
-              </FancyLink>
-              <FancyLink
-                destination="/events"
-                a11yText="Navigate to the Events Page"
-                className={mobileLink}
-              >
-                Events
-              </FancyLink>
-              <FancyLink
-                blank={true}
-                destination={"/"}
-                a11yText="Navigate to the about page"
-                className={mobileLink}
-              >
-                Get Morin!
-              </FancyLink>
-            </nav>
-            <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto mt-10">
-              <FancyLink
-                destination="/"
-                blank={true}
-                className="flex leading-none"
-              >
-                <Image
-                  src={`/ig.svg`}
-                  alt={"Instagram"}
-                  width={36}
-                  height={36}
-                />
-              </FancyLink>
-              <FancyLink
-                destination="/"
-                blank={true}
-                className="flex leading-none"
-              >
-                <Image src={`/tw.svg`} alt={"Twitter"} width={36} height={36} />
-              </FancyLink>
-              <FancyLink
-                destination="/"
-                blank={true}
-                className="flex leading-none"
-              >
-                <Image
-                  src={`/fb.svg`}
-                  alt={"Facebook"}
-                  width={36}
-                  height={36}
-                />
-              </FancyLink>
+            <div className="relative flex items-center justify-center w-full h-full pb-[80px] z-1">
+              <nav className="w-full text-center flex flex-col space-y-[35px]">
+                <FancyLink
+                  destination="/about"
+                  a11yText="Navigate to the About Page"
+                  className={mobileLink}
+                >
+                  About
+                </FancyLink>
+                <FancyLink
+                  destination="/products"
+                  a11yText="Navigate to the Products Page"
+                  className={mobileLink}
+                >
+                  Products
+                </FancyLink>
+                <FancyLink
+                  destination="/recipes"
+                  a11yText="Navigate to the Recipes Page"
+                  className={mobileLink}
+                >
+                  Recipes
+                </FancyLink>
+                <FancyLink
+                  destination="/events"
+                  a11yText="Navigate to the Events Page"
+                  className={mobileLink}
+                >
+                  Events
+                </FancyLink>
+                <FancyLink
+                  blank={true}
+                  destination={"/"}
+                  a11yText="Navigate to the about page"
+                  className={mobileLink}
+                >
+                  Get Morin!
+                </FancyLink>
+              </nav>
+              <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto absolute bottom-[80px] left-1/2 -translate-x-1/2">
+                <FancyLink
+                  destination="/"
+                  blank={true}
+                  className="flex leading-none"
+                >
+                  <Image
+                    src={`/ig.svg`}
+                    alt={"Instagram"}
+                    width={36}
+                    height={36}
+                  />
+                </FancyLink>
+                <FancyLink
+                  destination="/"
+                  blank={true}
+                  className="flex leading-none"
+                >
+                  <Image
+                    src={`/tw.svg`}
+                    alt={"Twitter"}
+                    width={36}
+                    height={36}
+                  />
+                </FancyLink>
+                <FancyLink
+                  destination="/"
+                  blank={true}
+                  className="flex leading-none"
+                >
+                  <Image
+                    src={`/fb.svg`}
+                    alt={"Facebook"}
+                    width={36}
+                    height={36}
+                  />
+                </FancyLink>
+              </div>
             </div>
           </div>
         </div>

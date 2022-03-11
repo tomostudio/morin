@@ -6,9 +6,11 @@ import RecipeCard from "../module/recipeCard";
 const RecipeSlider = ({ data }) => {
   return (
     <Swiper
-      slidesPerView={1.5}
-      spaceBetween={15}
-      breakpoints={{ 768: { slidesPerView: 3 }, 1024: { slidesPerView: 3, spaceBetween: 20 } }}
+      breakpoints={{
+        0: { slidesPerView: 1.5, spaceBetween: 15 },
+        768: { slidesPerView: 3, spaceBetween: 15 },
+        1024: { slidesPerView: 3, spaceBetween: 20 },
+      }}
       freeMode={true}
       modules={[FreeMode]}
       style={{ padding: "0 16px" }}

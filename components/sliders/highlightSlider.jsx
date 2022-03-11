@@ -30,8 +30,8 @@ const HighlightSlider = ({ data }) => {
           modules={[FreeMode]}
           style={{ padding: "0 16px" }}
         >
-          {data?.map((item) => (
-            <SwiperSlide key={item.title}>
+          {data?.map((item, index) => (
+            <SwiperSlide key={`${item.title}(${index})`}>
               <HighlightCard
                 imgSrc={item.imgSrc}
                 imgPlaceholder={item.imgPlaceholder}
