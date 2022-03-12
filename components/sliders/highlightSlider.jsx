@@ -25,6 +25,7 @@ const HighlightSlider = ({ data }) => {
           breakpoints={{
             768: { slidesPerView: 2.4, spaceBetween: 10 },
             1024: { slidesPerView: 2.7, spaceBetween: 20 },
+            1600: { slidesPerView: 3.4, spaceBetween: 20 },
           }}
           freeMode={true}
           modules={[FreeMode]}

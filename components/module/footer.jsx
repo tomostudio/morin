@@ -19,15 +19,15 @@ const Footer = ({ className }) => {
             promotions, job openings, and more.
           </span>
           <form className="flex w-full mt-5 border-2 rounded-2xl overflow-hidden lg:mt-6">
-            <div className="relative flex w-full h-9 lg:h-10">
+            <div className="relative flex flex-wrap w-full h-9 lg:h-10">
               <input
-                className="w-[calc(100%-70px)] px-5 default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:text-default"
+                className="w-[calc(100%-70px)] h-full px-5 default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:text-default"
                 type="email"
                 placeholder="Your Email"
               />
               <FancyLink
                 destination=""
-                className="w-[70px] border-l-2 px-2 text-center default-type text-defaultSmall leading-tight hover:bg-morin-red transition-background duration-300 lg:w-24 lg:text-default"
+                className="w-[70px] h-full border-l-2 px-2 text-center default-type text-defaultSmall leading-none hover:bg-white hover:text-morin-blue transition-background duration-300 lg:w-24 lg:text-default"
               >
                 Submit
               </FancyLink>

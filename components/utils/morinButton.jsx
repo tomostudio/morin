@@ -18,7 +18,7 @@ const MorinButton = ({
   const renderArrow = () => {
     if (arrow)
       return (
-        <div className="w-[20px] ml-[10px] md:w-[25px]">
+        <div className="w-5 ml-2 md:w-6">
           <Arrow color={color} />
         </div>
       );
@@ -35,7 +35,7 @@ const MorinButton = ({
       style={{ color: color, borderColor: color }}
       {...others}
     >
-      {children}
+      <span className="pt-px md:pt-0.5">{children}</span>
       {renderArrow()}
     </button>
   ) : !targetBlank ? (
@@ -47,7 +47,7 @@ const MorinButton = ({
         onClick={onClick}
         {...others}
       >
-        {children}
+        <span className="pt-px md:pt-0.5">{children}</span>
         {renderArrow()}
       </a>
     </Link>
@@ -60,7 +60,7 @@ const MorinButton = ({
       target="_blank"
       {...others}
     >
-      {children}
+      <span className="pt-px md:pt-0.5">{children}</span>
       {renderArrow()}
     </a>
   );

@@ -19,11 +19,7 @@ import InstagramSlider from "@/components/sliders/instagramSlider";
 import RecipeSlider from "@/components/sliders/recipeSlider";
 import MorinButton from "@/components/utils/morinButton";
 import CategoryCard from "@/components/module/categoryCard";
-import {
-  HeartSmall,
-  HeartLarge,
-  Scribble,
-} from "@/components/utils/svg";
+import { HeartSmall, HeartLarge, Scribble } from "@/components/utils/svg";
 
 const categoryData = [
   {
@@ -416,8 +412,8 @@ export default function Home() {
                         border={true}
                         background={colors.morinLightBlue}
                         bgTail={true}
-                        className=""
                         safeWidth={true}
+                        classNameOuter="pb-0"
                       >
                         <div className="flex flex-wrap w-full">
                           <div className="w-full text-center mb-7 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-14">
@@ -436,11 +432,14 @@ export default function Home() {
                               See All Events
                             </MorinButton>
                           </div>
-                          <div className="w-full h-fit mb-7 md:w-[calc(100%+32px)] md:-mx-4 md:mb-0">
-                            <HighlightSlider data={highlightData} />
-                          </div>
                         </div>
                       </Container>
+                      <div className="relative bg-morin-lightBlue px-8 pb-10 md:px-0 xl:pb-14">
+                        <HighlightSlider data={highlightData} />
+                        <div
+                          className={`w-full h-10 bg-morin-lightBlue absolute bottom-0 translate-y-full -z-1`}
+                        />
+                      </div>
                     </section>
                     <section>
                       <Container
@@ -448,28 +447,26 @@ export default function Home() {
                         bgTail={true}
                         safeWidth={true}
                         background={colors.white}
-                        classNameOuter="xl:pb-14"
+                        classNameOuter="pb-0"
                       >
-                        <div className="w-full">
-                          <div className="flex flex-wrap w-full mb-8">
-                            <h2 className="w-full max-w-[260px] text-mtitleSmall font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-4 lg:text-ctitle xl:text-mtitleBig">
-                              Get Daily Inspirations from our Social Media
-                            </h2>
-                            <div className="w-full md:w-32 md:flex md:items-end">
-                              <FancyLink
-                                destination="https://www.instagram.com/morin_jam/"
-                                blank
-                                className="flex flex-wrap items-center w-fit min-h-6 bg-morin-blue text-white text-defaultSmall font-semibold rounded-full px-4 mx-auto md:mb-1.5 md:mr-0 xl:min-h-[30px] xl:text-default"
-                              >
-                                @morin_jam
-                              </FancyLink>
-                            </div>
-                          </div>
-                          <div className="w-[calc(100%+64px)] -mx-8">
-                            <InstagramSlider data={instagramData} />
+                        <div className="flex flex-wrap w-full mb-8">
+                          <h2 className="w-full max-w-[260px] text-mtitleSmall font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-4 lg:text-ctitle xl:text-mtitleBig">
+                            Get Daily Inspirations from our Social Media
+                          </h2>
+                          <div className="w-full md:w-32 md:flex md:items-end">
+                            <FancyLink
+                              destination="https://www.instagram.com/morin_jam/"
+                              blank
+                              className="flex flex-wrap items-center w-fit h-6 bg-morin-blue text-white text-defaultSmall font-semibold rounded-full px-4 mx-auto md:mb-1.5 md:mr-0 xl:h-7 xl:text-default"
+                            >
+                              <span className="pt-0.5 xl:pt-1">@morin_jam</span>
+                            </FancyLink>
                           </div>
                         </div>
                       </Container>
+                      <div className="pb-10 xl:pb-14">
+                        <InstagramSlider data={instagramData} />
+                      </div>
                     </section>
                     <Footer />
                   </Layout>

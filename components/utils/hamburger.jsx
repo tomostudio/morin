@@ -1,7 +1,7 @@
 import FancyLink from "./fancyLink";
 
 const Hamburger = ({ className, onClick, opened, duration = 200 }) => {
-  const line = `${opened ? "w-[30px]" : "w-6"} h-0.5 rounded-full bg-white shadow transition ease transform duration-${duration}`;
+  const line = `${opened ? "w-8" : "w-6"} h-0.5 rounded-full bg-white shadow transition ease transform duration-${duration}`;
 
   return (
     <FancyLink className={`space-y-2 group ${className}`} onClick={onClick}>

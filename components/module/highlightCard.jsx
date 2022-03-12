@@ -26,8 +26,8 @@ const HighlightCard = ({
       <div className="flex flex-wrap flex-col w-7/12 text-morin-blue bg-white p-3 xl:py-4 xl:px-5">
         <span className="mb-1.5 xl:mb-2">{date}</span>
         <span className="text-mtitleSmall font-bold leading-tight mt-0 mb-5 xl:text-ctitle">{title}</span>
-        <FancyLink destination={link} className="flex items-center text-[14px] font-semibold mt-auto">
-          See Events
+        <FancyLink destination={link} className="flex w-fit items-center text-[14px] font-semibold mt-auto">
+          <span className="pt-px md:pt-0.5 lg:pt-px">See Events</span>
           <div className="w-4 ml-2 xl:w-6">
             <Arrow color={colors.morinBlue} />
           </div>
