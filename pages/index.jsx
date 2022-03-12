@@ -323,7 +323,7 @@ export default function Home() {
                               </MorinButton>
                             </div>
                             <div className="flex flex-wrap max-w-[90px] justify-between mb-5 mx-auto lg:max-w-[185px] lg:mb-10 lg:mx-0">
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/halal.svg`}
                                   alt={"Halal"}
@@ -331,7 +331,7 @@ export default function Home() {
                                   objectFit="contain"
                                 />
                               </div>
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/pom.svg`}
                                   alt={"Badan POM"}
@@ -339,7 +339,7 @@ export default function Home() {
                                   objectFit="contain"
                                 />
                               </div>
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/topbrand.svg`}
                                   alt={"Top Brand"}
@@ -453,7 +453,7 @@ export default function Home() {
                       >
                         <div className="w-full">
                           <div className="flex flex-wrap w-full mb-[30px]">
-                            <h2 className="w-full max-w-[260px] text-[22px] font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-[15px] lg:text-ctitle xl:text-mtitle">
+                            <h2 className="w-full max-w-[260px] text-6 font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-[15px] lg:text-ctitle xl:text-mtitle">
                               Get Daily Inspirations from our Social Media
                             </h2>
                             <div className="w-full md:w-[135px] md:flex md:items-end">
