@@ -322,7 +322,7 @@ export default function Home() {
                               </MorinButton>
                             </div>
                             <div className="flex flex-wrap max-w-[90px] justify-between mb-5 mx-auto lg:max-w-[185px] lg:mb-10 lg:mx-0">
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/halal.svg`}
                                   alt={"Halal"}
@@ -330,7 +330,7 @@ export default function Home() {
                                   objectFit="contain"
                                 />
                               </div>
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/pom.svg`}
                                   alt={"Badan POM"}
@@ -338,7 +338,7 @@ export default function Home() {
                                   objectFit="contain"
                                 />
                               </div>
-                              <div className="relative w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]">
+                              <div className="relative w-6 h-6 lg:w-[44px] lg:h-[44px]">
                                 <Image
                                   src={`/topbrand.svg`}
                                   alt={"Top Brand"}
