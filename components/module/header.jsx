@@ -5,28 +5,6 @@ import Container from "@/components/module/container";
 import Hamburger from "../utils/hamburger";
 import { MorinLogo, SunRay } from "../utils/svg";
 
-// const HeaderLinks = ({
-//   destination = "",
-//   className = "",
-//   children,
-//   a11yText = "",
-//   blank = false,
-//   defaultHover = true,
-//   onClick,
-// }) => (
-//   <FancyLink
-//     destination={destination}
-//     a11yText={a11yText}
-//     blank={blank}
-//     onClick={onClick}
-//     className={`pt-2 pb-1.5 px-3 rounded-full h-full leading-none font-medium flex ${className} ${
-//       defaultHover && `hover:opacity-60 transition-opacity ease-linear`
-//     }`}
-//   >
-//     {children}
-//   </FancyLink>
-// );
-
 const navData = [
   {
     id: "nav-1",
@@ -116,7 +94,7 @@ export default function Header() {
     measureEl(defaultNav?.id);
   }, []);
 
-  const mobileLink = `font-nutmeg font-bold text-white text-mtitle leading-none`;
+  const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
   const FIFODuration = 300;
 
   return (
@@ -172,44 +150,6 @@ export default function Header() {
             )}
           </nav>
 
-          {/* <nav
-            className={`hidden lg:flex ml-auto p-1.5 px-2 space-x-1 shadow-softer bg-white rounded-full flex-row max-md:justify-end w-full text-sm md:text-sm md:w-auto transition-colors duration-300 ease-linear`}
-          >
-            <HeaderLinks
-              destination="/about"
-              a11yText="Navigate to the About Page"
-            >
-              About
-            </HeaderLinks>
-            <HeaderLinks
-              destination="/products"
-              a11yText="Navigate to the Products Page"
-            >
-              Products
-            </HeaderLinks>
-            <HeaderLinks
-              destination="/recipes"
-              a11yText="Navigate to the Recipes Page"
-            >
-              Recipes
-            </HeaderLinks>
-            <HeaderLinks
-              destination="/events"
-              a11yText="Navigate to the Events Page"
-            >
-              Events
-            </HeaderLinks>
-            <HeaderLinks
-              destination={"/"}
-              blank={true}
-              a11yText="Navigate to the about page"
-              defaultHover={false}
-              className="text-white bg-morin-blue hover:shadow-softer hover:-translate-x-px hover:-translate-y-px transition-all ease-in-out"
-            >
-              Get Morin!
-            </HeaderLinks>
-          </nav> */}
-
           {/* MOBILE */}
           <Hamburger
             className="block lg:hidden"
@@ -222,7 +162,7 @@ export default function Header() {
             <div className="absolute -top-3/4 left-1/2 -translate-x-1/2 -z-1">
               <SunRay className="block w-[1000px] animate-spin-slow" />
             </div>
-            <div className="relative flex items-center justify-center w-full h-full pb-[80px] z-1">
+            <div className="relative flex items-center justify-center w-full h-full pb-20 z-1">
               <nav className="w-full text-center flex flex-col space-y-[35px]">
                 <FancyLink
                   destination="/about"
@@ -261,7 +201,7 @@ export default function Header() {
                   Get Morin!
                 </FancyLink>
               </nav>
-              <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto absolute bottom-[80px] left-1/2 -translate-x-1/2">
+              <div className="flex items-center w-fit bg-white rounded-full space-x-1.5 p-1.5 mx-auto absolute bottom-20 left-1/2 -translate-x-1/2">
                 <FancyLink
                   destination="/"
                   blank={true}

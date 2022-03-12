@@ -13,8 +13,8 @@ const HighlightCard = ({
   link,
 }) => {
   return (
-    <div className="flex flex-wrap w-full h-full min-h-[160px] rounded-[15px] overflow-hidden xl:min-h-[215px]">
-      <div className="relative w-[45%]">
+    <div className="flex flex-wrap w-full h-full min-h-[160px] rounded-2xl overflow-hidden xl:min-h-[215px]">
+      <div className="relative w-5/12">
         <Image
           src={imgSrc}
           placeholder={imgPlaceholder}
@@ -23,12 +23,12 @@ const HighlightCard = ({
           objectFit="cover"
         />
       </div>
-      <div className="flex flex-wrap flex-col w-[55%] text-morin-blue bg-white p-[13px] xl:py-[15px] xl:px-[20px]">
-        <span className="mb-[5px] xl:mb-[10px]">{date}</span>
-        <span className="text-[22px] font-bold leading-tight mt-0 mb-[20px] xl:text-ctitle">{title}</span>
+      <div className="flex flex-wrap flex-col w-7/12 text-morin-blue bg-white p-3 xl:py-4 xl:px-5">
+        <span className="mb-1.5 xl:mb-2">{date}</span>
+        <span className="text-mtitleSmall font-bold leading-tight mt-0 mb-5 xl:text-ctitle">{title}</span>
         <FancyLink destination={link} className="flex items-center text-[14px] font-semibold mt-auto">
           See Events
-          <div className="w-[18px] ml-[10px] xl:w-[25px]">
+          <div className="w-4 ml-2 xl:w-6">
             <Arrow color={colors.morinBlue} />
           </div>
         </FancyLink>

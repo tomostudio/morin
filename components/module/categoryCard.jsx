@@ -21,15 +21,15 @@ const CategoryCard = ({
       />
 
       {!noTitle && (
-        <div className="text-center absolute left-1/2 bottom-[40px] -translate-x-1/2 z-1 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10">
+        <div className="text-center absolute left-1/2 bottom-10 -translate-x-1/2 z-1 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10">
           <span className="font-nutmeg font-semibold text-white text-ctitleBig xl:text-h1">
             {title}
           </span>
           <FancyLink
             destination={link}
-            className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-[60px] lg:h-[45px] lg:border-2 lg:border-solid lg:border-white lg:rounded-[45px] lg:relative lg:top-auto lg:left-auto"
+            className="w-full h-full absolute top-0 left-0 lg:flex lg:justify-center lg:items-center lg:w-14 lg:h-11 lg:border-2 lg:border-solid lg:border-white lg:rounded-full lg:relative lg:top-auto lg:left-auto"
           >
-            <div className="hidden lg:block lg:w-[32px]">
+            <div className="hidden lg:block lg:w-8">
               <Arrow />
             </div>
           </FancyLink>

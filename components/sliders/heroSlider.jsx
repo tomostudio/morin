@@ -45,7 +45,7 @@ const HeroSlider = ({ className }) => {
                   />
                 </div>
 
-                <MorinButton color={colors.white} className="mt-[20px] md:mt-0">
+                <MorinButton color={colors.white} className="mt-5 md:mt-0">
                   Find Out More
                 </MorinButton>
               </div>
@@ -64,10 +64,10 @@ const HeroSlider = ({ className }) => {
           <div className="relative w-screen h-screen">
             <Container className="h-screen z-1">
               <div className="w-full h-full flex flex-col justify-center">
-                <span className="max-w-[920px] mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
+                <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
                   The quick, brown fox jumps over a lazy dog
                 </span>
-                <MorinButton destination="/products" color={colors.white} className="mt-[20px]">
+                <MorinButton destination="/products" color={colors.white} className="mt-5">
                   Find Out More
                 </MorinButton>
               </div>
@@ -86,7 +86,7 @@ const HeroSlider = ({ className }) => {
           <div className="relative w-screen h-screen">
             <Container className="h-screen z-1">
               <div className="w-full h-full flex flex-col justify-center">
-                <span className="max-w-[920px] mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
+                <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
                   A wizard’s job is to vex chumps quickly in fog. Watch
                   "Jeopardy!"
                 </span>
@@ -106,10 +106,10 @@ const HeroSlider = ({ className }) => {
           <div className="relative w-screen h-screen">
             <Container className="h-screen z-1">
               <div className="w-full h-full flex flex-col justify-center">
-                <span className="max-w-[920px] mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
+                <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
                   Five quacking zephyrs jolt my wax bed
                 </span>
-                <MorinButton color={colors.white} className="mt-[20px]">
+                <MorinButton color={colors.white} className="mt-5">
                   Find Out More
                 </MorinButton>
               </div>

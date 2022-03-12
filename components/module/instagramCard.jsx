@@ -4,7 +4,7 @@ import FancyLink from "../utils/fancyLink";
 
 const InstagramCard = ({ imgSrc, imgPlaceholder, imgAlt, link }) => {
   return (
-    <div className="relative min-w-[225px] min-h-[225px] rounded-[10px] overflow-hidden">
+    <div className="relative min-w-[225px] min-h-[225px] rounded-xl overflow-hidden">
       <Image
         src={imgSrc}
         placeholder={imgPlaceholder}

@@ -10,7 +10,7 @@ export default function Container({
   return (
     <div
       className={`w-full flex justify-center relative ${classNameOuter} ${
-        border ? "rounded-t-[40px] py-[40px]" : ""
+        border ? "rounded-t-[40px] py-10" : ""
       }`}
       style={{ background: background }}
     >
@@ -23,7 +23,7 @@ export default function Container({
       </div>
       {bgTail && (
         <div
-          className={`w-full h-[40px] absolute bottom-0 translate-y-[100%] -z-1`}
+          className={`w-full h-10 absolute bottom-0 translate-y-full -z-1`}
           style={{ background: background }}
         />
       )}

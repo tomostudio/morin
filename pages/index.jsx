@@ -20,7 +20,6 @@ import RecipeSlider from "@/components/sliders/recipeSlider";
 import MorinButton from "@/components/utils/morinButton";
 import CategoryCard from "@/components/module/categoryCard";
 import {
-  Arrow,
   HeartSmall,
   HeartLarge,
   Scribble,
@@ -308,8 +307,8 @@ export default function Home() {
                         safeWidth={true}
                       >
                         <div className="flex flex-wrap w-full lg:items-start">
-                          <div className="w-full lg:w-[35%] lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px]">
-                            <div className="mt-[100px] mb-[80px] lg:mt-[30px] lg:max-w-[365px] lg:pr-[32px]">
+                          <div className="w-full lg:w-4/12 lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px]">
+                            <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8">
                               <h2 className="text-[28px] text-morin-blue font-nutmeg font-normal text-center leading-tight mb-[15px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] lg:mb-[30px]">
                                 Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
                                 Amet Lorem.
@@ -349,7 +348,7 @@ export default function Home() {
                               </div>
                             </div>
                           </div>
-                          <div className="w-full lg:w-[65%]">
+                          <div className="w-full lg:w-8/12">
                             {categoryData?.map((i) => (
                               <div
                                 className="relative w-[calc(100%+64px)] min-h-screen -mx-8 lg:w-[calc(100%+32px)] lg:mx-0"
@@ -376,13 +375,13 @@ export default function Home() {
                         safeWidth={true}
                       >
                         <div className="flex flex-wrap w-full">
-                          <div className="w-full text-center mb-[30px] md:w-[60%] md:text-left lg:mb-[40px] xl:w-[70%] xl:mb-[60px]">
-                            <h2 className="relative max-w-[175px] font-nutmeg font-bold text-ctitle text-morin-red leading-[34px] mb-[15px] mx-auto md:max-w-fit md:mb-[10px] md:mx-0 lg:text-h2 lg:leading-tight xl:text-h1">
+                          <div className="w-full text-center mb-8 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-16">
+                            <h2 className="relative max-w-[175px] font-nutmeg font-bold text-ctitle text-morin-red leading-tight mb-4 mx-auto md:max-w-fit md:mb-2 md:mx-0 lg:text-h2 lg:leading-tight xl:text-h1">
                               Recipes <br className="md:hidden" /> from Love
-                              <div className="w-[30px] absolute -top-[2px] left-[calc(100%-15px)] md:hidden">
+                              <div className="w-8 absolute -top-0.5 left-[calc(100%-15px)] md:hidden">
                                 <HeartSmall className="md:hidden" />
                               </div>
-                              <div className="hidden w-[50px] absolute -top-[2px] left-[calc(100%+5px)] md:block lg:w-[70px] lg:top-[5px] lg:left-[calc(100%+10px)] xl:w-[100px] xl:left-full">
+                              <div className="hidden w-14 absolute -top-1 left-[calc(100%+5px)] md:block lg:w-18 lg:top-2 lg:left-[calc(100%+10px)] xl:w-24">
                                 <HeartLarge className="hidden md:block" />
                               </div>
                             </h2>
@@ -398,7 +397,7 @@ export default function Home() {
                               <RecipeTitleDesktop />
                             </div> */}
                           </div>
-                          <div className="w-full order-3 md:order-none md:w-fit md:pl-[50px] md:ml-auto">
+                          <div className="w-full order-3 md:order-none md:w-fit md:pl-12 md:ml-auto">
                             <MorinButton
                               destination="/recipes"
                               color={colors.morinRed}
@@ -406,7 +405,7 @@ export default function Home() {
                               See All Recipes
                             </MorinButton>
                           </div>
-                          <div className="w-[calc(100%+64px)] -mx-[32px] mb-[30px] md:w-[calc(100%+32px)] md:-mx-[16px] md:mb-0">
+                          <div className="w-[calc(100%+64px)] -mx-8 mb-8 md:w-[calc(100%+32px)] md:-mx-4 md:mb-0">
                             <RecipeSlider data={recipeData} />
                           </div>
                         </div>
@@ -421,15 +420,15 @@ export default function Home() {
                         safeWidth={true}
                       >
                         <div className="flex flex-wrap w-full">
-                          <div className="w-full text-center mb-[30px] md:w-[60%] md:text-left lg:mb-[40px] xl:w-[70%] xl:mb-[60px]">
-                            <h2 className="relative text-morin-blue text-ctitle font-nutmeg font-bold leading-none max-w-[160px] mx-auto pb-[20px] mb-[24px] md:w-fit md:max-w-none md:pb-0 md:mx-0 md:mb-[10px] lg:text-h2 ">
+                          <div className="w-full text-center mb-7 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-14">
+                            <h2 className="relative text-morin-blue text-ctitle font-nutmeg font-bold leading-none max-w-[160px] mx-auto pb-5 mb-6 md:w-fit md:max-w-none md:pb-0 md:mx-0 md:mb-2 lg:text-h2">
                               Events Highlight
-                              <div className="w-full h-[15px] absolute left-1/2 bottom-0 -translate-x-1/2 md:w-[155px] md:left-auto md:right-0 md:translate-x-0 md:-bottom-[15px] lg:w-[250px] lg:h-[20px] lg:-bottom-[20px]">
+                              <div className="w-full h-3.5 absolute left-1/2 bottom-0 -translate-x-1/2 md:w-40 md:left-auto md:right-0 md:translate-x-0 md:-bottom-4 lg:w-60 lg:h-5 lg:-bottom-5">
                                 <Scribble />
                               </div>
                             </h2>
                           </div>
-                          <div className="w-full order-3 md:order-none md:w-fit md:pl-[50px] md:ml-auto">
+                          <div className="w-full order-3 md:order-none md:w-fit md:pl-12 md:ml-auto">
                             <MorinButton
                               destination="/events"
                               color={colors.morinBlue}
@@ -437,7 +436,7 @@ export default function Home() {
                               See All Events
                             </MorinButton>
                           </div>
-                          <div className="w-full h-fit mb-[30px] md:w-[calc(100%+32px)] md:-mx-[16px] md:mb-0">
+                          <div className="w-full h-fit mb-7 md:w-[calc(100%+32px)] md:-mx-4 md:mb-0">
                             <HighlightSlider data={highlightData} />
                           </div>
                         </div>
@@ -449,24 +448,24 @@ export default function Home() {
                         bgTail={true}
                         safeWidth={true}
                         background={colors.white}
-                        classNameOuter="xl:pb-[60px]"
+                        classNameOuter="xl:pb-14"
                       >
                         <div className="w-full">
-                          <div className="flex flex-wrap w-full mb-[30px]">
-                            <h2 className="w-full max-w-[260px] text-[22px] font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-[15px] lg:text-ctitle xl:text-mtitle">
+                          <div className="flex flex-wrap w-full mb-8">
+                            <h2 className="w-full max-w-[260px] text-mtitleSmall font-nutmeg font-normal leading-tight text-morin-blue text-center mt-0 mb-2 mx-auto md:max-w-none md:w-[calc(100%-135px)] md:text-left md:mb-0 md:mx-0 md:pr-4 lg:text-ctitle xl:text-mtitleBig">
                               Get Daily Inspirations from our Social Media
                             </h2>
-                            <div className="w-full md:w-[135px] md:flex md:items-end">
+                            <div className="w-full md:w-32 md:flex md:items-end">
                               <FancyLink
                                 destination="https://www.instagram.com/morin_jam/"
                                 blank
-                                className="flex flex-wrap items-center w-fit min-h-[25px] bg-morin-blue text-white text-defaultSmall font-semibold rounded-full px-[15px] mx-auto md:mb-[5px] md:mr-0 xl:min-h-[30px] xl:text-default"
+                                className="flex flex-wrap items-center w-fit min-h-6 bg-morin-blue text-white text-defaultSmall font-semibold rounded-full px-4 mx-auto md:mb-1.5 md:mr-0 xl:min-h-[30px] xl:text-default"
                               >
                                 @morin_jam
                               </FancyLink>
                             </div>
                           </div>
-                          <div className="w-[calc(100%+64px)] -mx-[32px]">
+                          <div className="w-[calc(100%+64px)] -mx-8">
                             <InstagramSlider data={instagramData} />
                           </div>
                         </div>
