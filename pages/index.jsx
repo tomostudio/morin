@@ -18,7 +18,7 @@ import HighlightSlider from "@/components/sliders/highlightSlider";
 import InstagramSlider from "@/components/sliders/instagramSlider";
 import RecipeSlider from "@/components/sliders/recipeSlider";
 import MorinButton from "@/components/utils/morinButton";
-import CategoryCard from "@/components/module/categoryCard";
+import HeroCategory from "@/components/module/heroCategory";
 import { HeartSmall, HeartLarge, Scribble } from "@/components/utils/svg";
 
 const categoryData = [
@@ -347,10 +347,11 @@ export default function Home() {
                           <div className="w-full lg:w-8/12">
                             {categoryData?.map((i) => (
                               <div
-                                className="relative w-[calc(100%+64px)] min-h-screen -mx-8 lg:w-[calc(100%+32px)] lg:mx-0"
+                                // className="relative w-[calc(100%+64px)] min-h-screen -mx-8 overflow-hidden lg:w-[calc(100%+32px)]"
+                                className="relative min-h-screen -mx-8 overflow-hidden lg:ml-0 lg:-mr-8 2xl:mx-0"
                                 key={i.title}
                               >
-                                <CategoryCard
+                                <HeroCategory
                                   imgSrc={i.imgSrc}
                                   imgPlaceholder={i.imgPlaceholder}
                                   imgAlt={i.imgAlt}
@@ -410,21 +411,21 @@ export default function Home() {
                     <section>
                       <Container
                         border={true}
-                        background={colors.morinLightBlue}
+                        background={colors.morinSkyBlue}
                         bgTail={true}
                         safeWidth={true}
                         classNameOuter="pb-0"
                       >
                         <div className="flex flex-wrap w-full">
-                          <div className="w-full text-center mb-7 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-14">
-                            <h2 className="relative text-morin-blue text-ctitle font-nutmeg font-bold leading-none max-w-[160px] mx-auto pb-5 mb-6 md:w-fit md:max-w-none md:pb-0 md:mx-0 md:mb-2 lg:text-h2">
+                          <div className="w-full text-center mb-6 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-14">
+                            <h2 className="relative text-morin-blue text-ctitle font-nutmeg font-bold leading-none max-w-[160px] pb-5 mx-auto mb-0 md:w-fit md:max-w-none md:pb-0 md:mx-0 md:mb-2 lg:text-h2">
                               Events Highlight
                               <div className="w-full h-3.5 absolute left-1/2 bottom-0 -translate-x-1/2 md:w-40 md:left-auto md:right-0 md:translate-x-0 md:-bottom-4 lg:w-60 lg:h-5 lg:-bottom-5">
                                 <Scribble />
                               </div>
                             </h2>
                           </div>
-                          <div className="w-full order-3 md:order-none md:w-fit md:pl-12 md:ml-auto">
+                          <div className="hidden w-fit pl-12 ml-auto md:block">
                             <MorinButton
                               destination="/events"
                               color={colors.morinBlue}
@@ -434,10 +435,18 @@ export default function Home() {
                           </div>
                         </div>
                       </Container>
-                      <div className="relative bg-morin-lightBlue px-8 pb-10 md:px-0 xl:pb-14">
+                      <div className="relative bg-morin-skyBlue px-8 pb-10 overflow-hidden md:px-0 xl:pb-14">
                         <HighlightSlider data={highlightData} />
+                        <div className="w-fit mt-7 mx-auto md:hidden">
+                          <MorinButton
+                            destination="/events"
+                            color={colors.morinBlue}
+                          >
+                            See All Events
+                          </MorinButton>
+                        </div>
                         <div
-                          className={`w-full h-10 bg-morin-lightBlue absolute bottom-0 translate-y-full -z-1`}
+                          className={`w-full h-10 bg-morin-skyBlue absolute bottom-0 translate-y-full -z-1`}
                         />
                       </div>
                     </section>

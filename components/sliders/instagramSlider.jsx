@@ -20,7 +20,7 @@ const InstagramSlider = ({ data }) => {
       modules={[FreeMode]}
     >
       {data?.map((item, index) => (
-        <SwiperSlide key={`${item.title}${index + 1}`}>
+        <SwiperSlide key={`${item.title}${index}`}>
           <InstagramCard
             imgSrc={item.imgSrc}
             imgPlaceholder={item.imgPlaceholder}

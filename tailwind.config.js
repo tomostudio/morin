@@ -13,6 +13,8 @@ module.exports = {
       '-10': '-10',
       0: 0,
       1: 1,
+      2: 2,
+      3: 3,
       10: 10,
       20: 20,
       30: 30,
@@ -67,7 +69,8 @@ module.exports = {
       },
       colors: {
         'morin-blue': '#175BA7',
-        'morin-lightBlue': '#D1F1FF',
+        'morin-lightBlue': '#66C1EA',
+        'morin-skyBlue': '#D1F1FF',
         'morin-red': '#E82128',
         'morin-peach': '#FFECD8',
       },
