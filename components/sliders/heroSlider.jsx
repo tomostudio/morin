@@ -53,7 +53,8 @@ const HeroSlider = ({ className }) => {
 
             <Image
               src={`/assets/hero-slider/hero-1.jpg`}
-              placeholder={"assets/hero-slider/hero-placeholder.png"}
+              blurDataURL={"assets/hero-slider/hero-placeholder.png"}
+              placeholder="blur"
               alt={"Hero Slider"}
               layout="fill"
               objectFit="cover"
@@ -75,7 +76,8 @@ const HeroSlider = ({ className }) => {
 
             <Image
               src={`/assets/hero-slider/hero-2.jpg`}
-              placeholder={"assets/hero-slider/hero-placeholder.png"}
+              blurDataURL={"assets/hero-slider/hero-placeholder.png"}
+              placeholder="blur"
               alt={"Hero Slider"}
               layout="fill"
               objectFit="cover"
@@ -95,7 +97,8 @@ const HeroSlider = ({ className }) => {
 
             <Image
               src={`/assets/hero-slider/hero-3.jpg`}
-              placeholder={"assets/hero-slider/hero-placeholder.png"}
+              blurDataURL={"assets/hero-slider/hero-placeholder.png"}
+              placeholder="blur"
               alt={"Hero Slider"}
               layout="fill"
               objectFit="cover"
@@ -117,7 +120,8 @@ const HeroSlider = ({ className }) => {
 
             <Image
               src={`/assets/hero-slider/hero-4.jpg`}
-              placeholder={"assets/hero-slider/hero-placeholder.png"}
+              blurDataURL={"assets/hero-slider/hero-placeholder.png"}
+              placeholder="blur"
               alt={"Hero Slider"}
               layout="fill"
               objectFit="cover"

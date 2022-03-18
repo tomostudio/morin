@@ -14,15 +14,20 @@ const RecipeCard = ({ imgSrc, imgPlaceholder, imgAlt, title, link }) => {
           {title}
         </span>
         <div className="flex items-center justify-center w-9 h-6 rounded-3xl border-2 border-white border-solid px-2 lg:w-11 lg:h-8 lg:px-2 xl:w-16 xl:h-11 xl:px-3">
-          <span className="block w-full lg:hidden"><Arrow /></span>
-          <span className="hidden w-full lg:block"><ArrowLarge /></span>
+          <span className="block w-full lg:hidden">
+            <Arrow />
+          </span>
+          <span className="hidden w-full lg:block">
+            <ArrowLarge />
+          </span>
         </div>
       </FancyLink>
 
       <div className="relative w-full h-full">
         <Image
           src={imgSrc}
-          placeholder={imgPlaceholder}
+          blurDataURL={imgPlaceholder}
+          placeholder="blur"
           alt={imgAlt}
           width={387}
           height={487}

@@ -1,9 +1,7 @@
 import CategoryCard from "@/components/module/categoryCard";
-import Container from "@/components/module/container";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
-import colors from "@/helpers/colors";
 import Image from "next/image";
 import React from "react";
 
@@ -12,25 +10,25 @@ const categoryData = [
     title: "Spreads",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
-    link: "/category/category-id",
+    link: "/products/product-type",
   },
   {
     title: "Jams",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
-    link: "/category/category-id",
+    link: "/products/product-type",
   },
   {
     title: "Toppings",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
-    link: "/category/category-id",
+    link: "/products/product-type",
   },
   {
     title: "Fillings",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
-    link: "/category/category-id",
+    link: "/products/product-type",
   },
 ];
 

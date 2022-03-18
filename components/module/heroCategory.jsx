@@ -15,7 +15,7 @@ const HeroCategory = ({
     const bg = `relative w-full h-full bg-morin-lightBlue`;
     return (
       <div className={`${bg}`}>
-        <div className="flex items-center jusfity-center w-full h-full scale-150 ml-8 absolute-center 2xl:ml-0">
+        <div className="flex items-center jusfity-center w-full h-full scale-150 absolute-center">
           <SunRay className="block animate-spin-slow" />
         </div>
         <div className="w-full h-full absolute-center">{children}</div>
@@ -36,7 +36,8 @@ const HeroCategory = ({
         <div className="transition-all lg:group-hover:opacity-0">
           <Image
             src={imgSrc}
-            placeholder={imgPlaceholder}
+            blurDataURL={imgPlaceholder}
+            placeholder="blur"
             alt={imgAlt}
             objectFit="cover"
             layout="fill"
@@ -45,7 +46,7 @@ const HeroCategory = ({
         <div className="w-full h-full absolute opacity-0 transition-all lg:group-hover:opacity-100">
           <FancyLink
             destination={link}
-            className="w-full h-full absolute top-0 left-0 z-2"
+            className="w-full h-full absolute-center z-2"
           />
           {HoverComponent()}
         </div>

@@ -301,9 +301,10 @@ export default function Home() {
                         background={colors.offWhite}
                         bgTail={true}
                         safeWidth={true}
+                        className="px-0 2xl:px-8"
                       >
                         <div className="flex flex-wrap w-full lg:items-start">
-                          <div className="w-full lg:w-4/12 lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px]">
+                          <div className="w-full px-8 lg:w-4/12 lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px] 2xl:px-0">
                             <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8">
                               <h2 className="text-[28px] text-morin-blue font-nutmeg font-normal text-center leading-tight mb-[15px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] lg:mb-[30px]">
                                 Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
@@ -347,8 +348,7 @@ export default function Home() {
                           <div className="w-full lg:w-8/12">
                             {categoryData?.map((i) => (
                               <div
-                                // className="relative w-[calc(100%+64px)] min-h-screen -mx-8 overflow-hidden lg:w-[calc(100%+32px)]"
-                                className="relative min-h-screen -mx-8 overflow-hidden lg:ml-0 lg:-mr-8 2xl:mx-0"
+                                className="relative min-h-screen overflow-hidden"
                                 key={i.title}
                               >
                                 <HeroCategory

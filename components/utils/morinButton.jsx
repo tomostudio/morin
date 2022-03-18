@@ -1,5 +1,4 @@
 import React from "react";
-import colors from "@/helpers/colors";
 import Link from "next/link";
 import { Arrow } from "./svg";
 
@@ -18,7 +17,7 @@ const MorinButton = ({
   const renderArrow = () => {
     if (arrow)
       return (
-        <div className="w-5 ml-2 md:w-6">
+        <div className={`w-5 ml-2 md:w-6 ${!children ? "last:ml-0" : ""}`}>
           <Arrow color={color} />
         </div>
       );

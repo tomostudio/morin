@@ -21,11 +21,28 @@
 @import "_slider.scss";
 // @import "swiper/scss/navigation";
 
+/* React Modal Styling */
+@import "_modal.scss";
+
 /* Simple defaults */
 body {
   @apply font-default text-defaultSmall md:text-default antialiased text-black bg-white;
   @include default-type;
+
+  &.ReactModal__Body--open {
+    overflow: hidden;
+  }
 }
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+// ::-webkit-scrollbar-thumb {
+//   background: #FF0000;
+// }
 
 /* Trigger Animation  */
 .trigger {
