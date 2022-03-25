@@ -3,7 +3,6 @@ import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
 import Image from "next/image";
-import React from "react";
 
 const categoryData = [
   {

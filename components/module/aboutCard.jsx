@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import FancyLink from "../utils/fancyLink";
 
 const AboutCard = ({

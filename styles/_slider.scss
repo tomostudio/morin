@@ -36,3 +36,42 @@
     }
   }
 }
+
+.contact-card-slider {
+  .swiper-pagination {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #fff;
+    background: transparent;
+    opacity: 1;
+    margin: 0 10px;
+    @apply transition-all;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet-active {
+    background: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .swiper-pagination {
+      display: flex;
+    }
+  }
+}
+
+.recipe-gallery-slider {
+  .swiper {
+    @apply px-8
+  }
+
+  .swiper-slide {
+    width: auto !important;
+  }
+}

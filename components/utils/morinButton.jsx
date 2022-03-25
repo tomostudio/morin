@@ -22,6 +22,7 @@ const MorinButton = ({
         </div>
       );
   };
+
   const defaultClass = `flex flex-wrap items-center w-fit min-h-[25px] font-semibold leading-none rounded-full border-2 border-solid px-5 md:min-h-[30px] ${
     center ? "mx-auto" : ""
   } `;
@@ -53,7 +54,7 @@ const MorinButton = ({
   ) : (
     <a
       href={destination}
-      aria-label={a11yText}
+      aria-label={ariaLabel}
       className={`${defaultClass} ${className ? className : ""}`}
       style={{ color: color, borderColor: color }}
       target="_blank"

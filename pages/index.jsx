@@ -301,7 +301,7 @@ export default function Home() {
                         background={colors.offWhite}
                         bgTail={true}
                         safeWidth={true}
-                        className="px-0 2xl:px-8"
+                        className="pl-0 pr-0 2xl:px-8"
                       >
                         <div className="flex flex-wrap w-full lg:items-start">
                           <div className="w-full px-8 lg:w-4/12 lg:min-h-[calc(100vh-86px)] lg:flex lg:flex-col lg:justify-between lg:sticky lg:top-[86px] 2xl:px-0">

@@ -10,9 +10,39 @@ const ProductCard = ({
   imgPlaceholder,
   imgAlt,
   link,
+  small,
 }) => {
-  return (
-    <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
+  return small ? (
+    <div className="w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden">
+      <div className="relative w-full" style={{ background: bgColor }}>
+        <div className="relative flex justify-center p-8 pb-0 -mt-5 translate-y-5 z-1 md:p-11 md:pb-0 md:-mt-7 md:translate-y-7  xl:pt-24 xl:px-20 xl:-mt-5 xl:translate-y-5">
+          <Image
+            src={imgSrc}
+            blurDataURL={imgPlaceholder}
+            placeholder="blur"
+            alt={imgAlt}
+            width={225}
+            height={410}
+          />
+        </div>
+
+        <div className="w-full h-full scale-150 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden">
+          <SunRay className="block animate-spin-slow" />
+        </div>
+      </div>
+
+      <div className="relative text-morin-blue text-center px-3 pt-8 pb-4 z-1 md:pt-12 lg:px-4 lg:pb-5 xl:px-5 xl:pb-8">
+        <FancyLink
+          destination={link}
+          // className="font-nutmeg text-default leading-none md:text-[18px] "
+          className="font-nutmeg text-default leading-none md:text-[18px] xl:text-ctitleSmall"
+        >
+          {title}
+        </FancyLink>
+      </div>
+    </div>
+  ) : (
+    <div className="w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden">
       <div className="relative w-full" style={{ background: bgColor }}>
         <div className="relative flex justify-center p-8 pb-0 -mt-5 translate-y-5 z-1 md:p-11 md:pb-0 md:-mt-7 md:translate-y-7 lg:pt-24 lg:px-20 lg:-mt-5 lg:translate-y-5">
           <Image

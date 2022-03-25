@@ -38,7 +38,7 @@ const navData = [
   },
 ];
 
-export default function Header() {
+export default function Header({ hamburgerColor }) {
   const defaultNav = navData[navData.length - 1];
   const [opened, setOpened] = useState(false);
   const [desktopNav, setDesktopNav] = useState(defaultNav?.value);
@@ -155,6 +155,7 @@ export default function Header() {
             className="block lg:hidden"
             opened={opened}
             onClick={() => toggleHamburgermenu()}
+            color={hamburgerColor}
           />
           <div
             className={`mobileMenu fixed top-0 left-0 w-full h-screen bg-morin-blue transition ease-in-out duration-${FIFODuration} opacity-0 invisible -z-1 lg:hidden`}
