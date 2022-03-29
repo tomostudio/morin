@@ -30,19 +30,19 @@
     "next-seo": "^5.1.0",
     "postcss-import": "^14.0.0",
     "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^7.4.1",
+    "postcss-preset-env": "^7.4.3",
     "preact": "^10.6.6",
     "react": "^17.0.2",
     "react-collapsible": "^2.8.4",
     "react-dom": "^17.0.2",
     "react-locomotive-scroll": "^0.2.0",
     "react-modal": "^3.14.4",
-    "sass": "^1.49.8",
+    "sass": "^1.49.9",
     "swiper": "^8.0.7"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.6",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"
   }
 }
