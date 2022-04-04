@@ -24,22 +24,22 @@
   },
   "dependencies": {
     "framer-motion": "^6.2.8",
-    "gsap": "^3.9.1",
+    "gsap": "^3.10.2",
     "locomotive-scroll": "^4.1.4",
-    "next": "^12.1.0",
-    "next-seo": "^5.1.0",
-    "postcss-import": "^14.0.0",
+    "next": "^12.1.4",
+    "next-seo": "^5.3.0",
+    "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
-    "postcss-preset-env": "^7.4.1",
-    "preact": "^10.6.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "postcss-preset-env": "^7.4.3",
+    "preact": "^10.7.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-locomotive-scroll": "^0.2.0",
-    "sass": "^1.49.8"
+    "sass": "^1.49.11"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.6",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23"
   }
 }
