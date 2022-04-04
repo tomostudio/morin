@@ -1,11 +1,11 @@
 // style
-$radio-switch-width: 214px;
-$radio-switch-height: 44px;
-$radio-switch-padding: 7px;
-$radio-switch-radius: 46px;
+$header-switch-width: 214px;
+$header-switch-height: 44px;
+$header-switch-padding: 7px;
+$header-switch-radius: 46px;
 
 // animation
-$radio-switch-animation-duration: 0.3s;
+$header-switch-animation-duration: 0.3s;
 
 // color
 $color-white: #ffffff;
@@ -14,60 +14,60 @@ $color-primary: #175ba7;
 // shadow
 $shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
-.radio-switch {
+.header-switch {
   position: relative;
-  padding: $radio-switch-padding;
-  border-radius: $radio-switch-radius;
+  padding: $header-switch-padding;
+  border-radius: $header-switch-radius;
   background-color: $color-white;
   box-shadow: $shadow;
 }
 
-.radio-switch__item {
+.header-switch__item {
   position: relative;
   display: inline-block; // flexbox fallback
-  height: calc($radio-switch-height - 2 * $radio-switch-padding);
-  width: calc($radio-switch-width * 0.5 - $radio-switch-padding);
+  height: calc($header-switch-height - 2 * $header-switch-padding);
+  width: calc($header-switch-width * 0.5 - $header-switch-padding);
 }
 
-.radio-switch__label {
+.header-switch__label {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   line-height: normal;
-  border-radius: $radio-switch-radius;
-  transition: all $radio-switch-animation-duration;
+  border-radius: $header-switch-radius;
+  transition: all $header-switch-animation-duration;
   user-select: none;
   z-index: 2;
   cursor: pointer;
 
-  .radio-switch__input:checked ~ & {
+  .header-switch__input:checked ~ & {
     color: $color-white;
   }
 
-  .radio-switch__input:focus ~ & {
+  .header-switch__input:focus ~ & {
     // focus effect in browsers not supporting :focus-within
     background-color: $color-primary;
   }
 
   :not(*):focus-within,
-  .radio-switch__input:focus ~ & {
+  .header-switch__input:focus ~ & {
     // reset focus style for browsers supporting :focus-within
     background-color: transparent;
   }
 }
 
-.radio-switch__marker {
+.header-switch__marker {
   position: absolute;
   z-index: 1;
   top: 50%;
   left: 1px;
-  border-radius: $radio-switch-radius;
+  border-radius: $header-switch-radius;
   background-color: $color-primary;
-  height: calc($radio-switch-height - 2 * $radio-switch-padding);
-  width: calc($radio-switch-width * 0.5 - $radio-switch-padding);
+  height: calc($header-switch-height - 2 * $header-switch-padding);
+  width: calc($header-switch-width * 0.5 - $header-switch-padding);
   box-shadow: $shadow;
-  transition: transform $radio-switch-animation-duration;
+  transition: transform $header-switch-animation-duration;
   transform: translateY(-50%);
 }
