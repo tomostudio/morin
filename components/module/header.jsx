@@ -80,7 +80,7 @@ export default function Header({ hamburgerColor }) {
 
   const measureEl = (id) => {
     const parent = document
-      .querySelector(".radio-switch")
+      .querySelector(".header-switch")
       .getBoundingClientRect();
     const current = document
       .querySelector(`input#${id}`)
@@ -120,21 +120,21 @@ export default function Header({ hamburgerColor }) {
 
           {/* DESKTOP */}
           <nav
-            className="radio-switch hidden lg:flex"
+            className="header-switch hidden lg:flex"
             onSubmit={(e) => e.preventDefault()}
           >
             {navData?.map((item) => (
-              <div key={item.id} className="radio-switch__item">
+              <div key={item.id} className="header-switch__item">
                 <input
                   type="radio"
                   name="desktop-nav"
-                  className="radio-switch__input sr-only"
+                  className="header-switch__input sr-only"
                   id={item.id}
                   value={item.value}
                   checked={item.value === desktopNav}
                   onChange={(e) => handleActiveNav(e.target.value, item.id)}
                 />
-                <label className="radio-switch__label" htmlFor={item.id}>
+                <label className="header-switch__label" htmlFor={item.id}>
                   {item.title}
                 </label>
               </div>
@@ -143,7 +143,7 @@ export default function Header({ hamburgerColor }) {
               <div
                 aria-hidden="true"
                 style={{ transform: `translate(${thisEl}px, -50%)` }}
-                className="radio-switch__marker"
+                className="header-switch__marker"
               />
             ) : (
               ""
