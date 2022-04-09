@@ -1,8 +1,9 @@
-import Container from './container';
-import FancyLink from '../utils/fancyLink';
-import Image from 'next/image';
+import Container from "./container";
+import FancyLink from "../utils/fancyLink";
+import Image from "next/image";
 
 const Footer = ({ className }) => {
+  const footerLink = `block w-fit text-white text-defaultSmall leading-none lg:text-default`;
   return (
     <footer className='px-8'>
       <Container
