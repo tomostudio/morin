@@ -1,61 +1,9 @@
-// style
-$header-switch-width: 214px;
-$header-switch-height: 44px;
-$header-switch-padding: 4px;
-$header-switch-radius: 46px;
-
-// animation
-$header-switch-animation-duration: 0.3s;
-
-// color
-$color-white: #ffffff;
-$color-primary: #175ba7;
-
-// shadow
-$shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-
-.header-switch {
-  position: relative;
-  border-radius: $header-switch-radius;
-  background-color: $color-white;
-  box-shadow: $shadow;
-}
-
-.header-switch__item {
-  position: relative;
-  display: inline-block; // flexbox fallback
-  width: calc($header-switch-width * 0.5 - $header-switch-padding);
-}
-
-.header-switch__label {
-  transition: all $header-switch-animation-duration;
-  z-index: 2;
-
-  .header-switch__input:checked ~ & {
-    color: $color-white;
+nav.header-nav {
+  & > *:not(div#marker) {
+    @apply relative z-2 h-8 rounded-full px-5 flex items-center justify-center leading-none pt-[2px];
+    @apply transition-colors duration-300 ease-in-out;
+    &.focus {
+      @apply text-white;
+    }
   }
-
-  .header-switch__input:focus ~ & {
-    // focus effect in browsers not supporting :focus-within
-    background-color: $color-primary;
-  }
-
-  :not(*):focus-within,
-  .header-switch__input:focus ~ & {
-    // reset focus style for browsers supporting :focus-within
-    background-color: transparent;
-  }
-}
-
-.header-switch__marker {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 1px;
-  border-radius: $header-switch-radius;
-  background-color: $color-primary;
-  width: calc($header-switch-width * 0.5 - $header-switch-padding);
-  box-shadow: $shadow;
-  transition: transform $header-switch-animation-duration;
-  transform: translateY(-50%);
 }

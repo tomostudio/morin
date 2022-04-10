@@ -47,6 +47,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      transitionTimingFunction: {
+        'in-out-expo': 'cubic-bezier(0.65, 0, 0.35, 1)',
+      },
       animation: {
         "spin-slow": "spin 15s linear infinite",
       },

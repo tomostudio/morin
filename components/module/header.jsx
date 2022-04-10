@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/module/container';
 import Hamburger from '../utils/hamburger';
 import { MorinLogo, SunRay, SunRay15 } from '../utils/svg';
+import { translate } from 'tailwindcss/defaultTheme';
 
 const navData = [
   {
@@ -30,19 +31,11 @@ const navData = [
     value: 'events',
     ariaText: 'Navigate to the Events page',
   },
-  {
-    id: 'nav-5',
-    title: 'Get Morin!',
-    value: 'get-morin',
-    ariaText: 'Navigate to the Get Morin page',
-  },
 ];
 
 export default function Header({ hamburgerColor }) {
   const defaultNav = navData[navData.length - 1];
   const [opened, setOpened] = useState(false);
-  const [desktopNav, setDesktopNav] = useState(defaultNav?.value);
-  const [thisEl, setThisEl] = useState(null);
 
   const toggleHamburgermenu = () => {
     setOpened((prev) => {
@@ -71,27 +64,64 @@ export default function Header({ hamburgerColor }) {
     });
   };
 
-  const handleActiveNav = (val, id) => {
-    // do navigational function here
+  const [markerW, setMarkerW] = useState(120);
+  const [markerPos, setMarkerPos] = useState(0);
+  let widthData = [];
 
-    measureEl(id);
-    setDesktopNav(val);
+  const defaultNavRef = useRef();
+  const navRef = useRef();
+  const navMouseOver = (e) => {
+    setMarkerW(e.target.clientWidth);
+
+    // reset and set color
+    navRef.current.querySelectorAll('a').forEach((item) => {
+      item.classList.remove('focus');
+    });
+
+    e.target.classList.add('focus');
+
+    // adjust width
+    let moveX = 0;
+    // get width of all nav
+    navRef.current
+      .querySelectorAll('a:not(.default-nav)')
+      .forEach((item, id) => {
+        widthData[id] = item.clientWidth;
+      });
+
+    widthData.forEach((w, id) => {
+      if (e.target.dataset.id == -1 || id < e.target.dataset.id) {
+        moveX = moveX + w;
+      }
+    });
+    setMarkerPos(moveX);
+  };
+  const navLeave = () => {
+    resetNav();
   };
 
-  const measureEl = (id) => {
-    const parent = document
-      .querySelector('.header-switch')
-      .getBoundingClientRect();
-    const current = document
-      .querySelector(`input#${id}`)
-      .getBoundingClientRect();
-    const left = current.left - parent.left;
+  const resetNav = () => {
+    console.log('reset');
 
-    setThisEl(left);
+    setMarkerW(defaultNavRef.current.clientWidth);
+    //update all nav width data
+    navRef.current
+      .querySelectorAll('a:not(.default-nav)')
+      .forEach((item, id) => {
+        item.classList.remove('focus');
+        widthData[id] = item.clientWidth;
+      });
+    defaultNavRef.current.classList.add('focus');
+
+    let moveX = 0;
+    widthData.forEach((w, id) => {
+      moveX = moveX + w;
+    });
+    setMarkerPos(moveX);
   };
 
   useEffect(() => {
-    measureEl(defaultNav?.id);
+    resetNav();
   }, []);
 
   const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
@@ -112,37 +142,42 @@ export default function Header({ hamburgerColor }) {
             </div>
           </FancyLink>
           <nav
-            className='header-switch pointer-events-auto hidden p-1.5 lg:flex'
+            className='header-nav pointer-events-auto relative hidden rounded-full bg-white p-1.5 shadow-softer lg:flex'
             onSubmit={(e) => e.preventDefault()}
+            onMouseLeave={navLeave}
+            ref={navRef}
           >
-            {navData?.map((item) => (
-              <div key={item.id} className='header-switch__item h-8'>
-                <input
-                  type='radio'
-                  name='desktop-nav'
-                  className='header-switch__input sr-only'
-                  id={item.id}
-                  value={item.value}
-                  checked={item.value === desktopNav}
-                  onChange={(e) => handleActiveNav(e.target.value, item.id)}
-                />
-                <label
-                  className='header-switch__label h-full  pt-[2px] leading-none relative flex items-center justify-center rounded-full cursor-pointer select-none'
-                  htmlFor={item.id}
-                >
-                  {item.title}
-                </label>
-              </div>
+            {navData?.map((item, id) => (
+              <FancyLink
+                destination='#'
+                a11yText={item.ariaText}
+                key={item.id}
+                className=''
+                onMouseEnter={navMouseOver}
+                data-id={id}
+              >
+                {item.title}
+              </FancyLink>
             ))}
-            {thisEl ? (
-              <div
-                aria-hidden='true'
-                style={{ transform: `translate(${thisEl}px, -50%)` }}
-                className='header-switch__marker h-8 '
-              />
-            ) : (
-              ''
-            )}
+            <FancyLink
+              className='default-nav focus'
+              onMouseEnter={navMouseOver}
+              a11yText={'Navigate to the Get Morin page'}
+              destination='/'
+              data-id={-1}
+              ref={defaultNavRef}
+            >
+              Get Morin!
+            </FancyLink>
+            <div
+              id='marker'
+              aria-hidden='true'
+              style={{
+                width: markerW,
+                transform: `translateX(${markerPos}px)`,
+              }}
+              className='absolute left-[6px] z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo'
+            />
           </nav>
 
           {/* MOBILE */}
