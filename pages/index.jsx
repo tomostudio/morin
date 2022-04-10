@@ -24,6 +24,7 @@ import { HeartSmall, HeartLarge, Scribble } from "@/components/utils/svg";
 const categoryData = [
   {
     imgSrc: "/category/category-1.jpg",
+    imgProduct: "/category/hover-1.png",
     imgPlaceholder: "/category/category-1.png",
     imgAlt: "Spreads",
     title: "Spreads",
@@ -31,6 +32,7 @@ const categoryData = [
   },
   {
     imgSrc: "/category/category-2.jpg",
+    imgProduct: "/category/hover-2.png",
     imgPlaceholder: "/category/category-2.png",
     imgAlt: "Jams",
     title: "Jams",
@@ -38,6 +40,7 @@ const categoryData = [
   },
   {
     imgSrc: "/category/category-3.jpg",
+    imgProduct: "/category/hover-3.png",
     imgPlaceholder: "/category/category-3.png",
     imgAlt: "Toppings",
     title: "Toppings",
@@ -45,6 +48,7 @@ const categoryData = [
   },
   {
     imgSrc: "/category/category-4.jpg",
+    imgProduct: "/category/hover-4.png",
     imgPlaceholder: "/category/category-4.png",
     imgAlt: "Fillings",
     title: "Fillings",
@@ -353,6 +357,8 @@ export default function Home() {
                               >
                                 <HeroCategory
                                   imgSrc={i.imgSrc}
+                                  imgProduct={i.imgProduct}
+                                  imgPlaceholderProduct={i.imgProduct}
                                   imgPlaceholder={i.imgPlaceholder}
                                   imgAlt={i.imgAlt}
                                   title={i.title}
@@ -372,7 +378,7 @@ export default function Home() {
                         safeWidth={true}
                       >
                         <div className="flex flex-wrap w-full">
-                          <div className="w-full text-center mb-8 md:w-7/12 md:text-left lg:mb-10 xl:w-8/12 xl:mb-16">
+                          <div className="w-full text-center mb-8 md:w-7/12 md:text-left lg:mb-5 xl:w-8/12 xl:mb-11">
                             <h2 className="relative max-w-[175px] font-nutmeg font-bold text-ctitle text-morin-red leading-tight mb-4 mx-auto md:max-w-fit md:mb-2 md:mx-0 lg:text-h2 lg:leading-tight xl:text-h1">
                               Recipes <br className="md:hidden" /> from Love
                               <div className="w-8 absolute -top-0.5 left-[calc(100%-15px)] md:hidden">

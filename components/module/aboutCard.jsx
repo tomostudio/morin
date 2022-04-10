@@ -20,7 +20,7 @@ const AboutCard = ({
           alt={imgAlt}
           layout="fill"
           objectFit="cover"
-          objectPosition="top"
+          // objectPosition="top"
         />
       </div>
 
