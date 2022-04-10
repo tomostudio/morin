@@ -1,7 +1,7 @@
 // style
 $header-switch-width: 214px;
 $header-switch-height: 44px;
-$header-switch-padding: 7px;
+$header-switch-padding: 4px;
 $header-switch-radius: 46px;
 
 // animation
@@ -16,7 +16,6 @@ $shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 
 .header-switch {
   position: relative;
-  padding: $header-switch-padding;
   border-radius: $header-switch-radius;
   background-color: $color-white;
   box-shadow: $shadow;
@@ -25,22 +24,12 @@ $shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 .header-switch__item {
   position: relative;
   display: inline-block; // flexbox fallback
-  height: calc($header-switch-height - 2 * $header-switch-padding);
   width: calc($header-switch-width * 0.5 - $header-switch-padding);
 }
 
 .header-switch__label {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  line-height: normal;
-  border-radius: $header-switch-radius;
   transition: all $header-switch-animation-duration;
-  user-select: none;
   z-index: 2;
-  cursor: pointer;
 
   .header-switch__input:checked ~ & {
     color: $color-white;
@@ -65,7 +54,6 @@ $shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   left: 1px;
   border-radius: $header-switch-radius;
   background-color: $color-primary;
-  height: calc($header-switch-height - 2 * $header-switch-padding);
   width: calc($header-switch-width * 0.5 - $header-switch-padding);
   box-shadow: $shadow;
   transition: transform $header-switch-animation-duration;
