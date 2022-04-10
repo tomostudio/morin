@@ -1,10 +1,11 @@
-import Image from "next/image";
-import FancyLink from "../utils/fancyLink";
-import { SunRay } from "../utils/svg";
-import { Arrow } from "../utils/svg";
+import Image from 'next/image'
+import FancyLink from '../utils/fancyLink'
+import { SunRay } from '../utils/svg'
+import { Arrow } from '../utils/svg'
 
 const HeroCategory = ({
   imgSrc,
+  imgProduct,
   imgPlaceholder,
   imgAlt,
   title,
@@ -12,23 +13,34 @@ const HeroCategory = ({
   hoverType,
 }) => {
   const Template = ({ children }) => {
-    const bg = `relative w-full h-full bg-morin-lightBlue`;
+    const bg = `relative w-full h-full bg-morin-lightBlue`
     return (
       <div className={`${bg}`}>
         <div className="flex items-center jusfity-center w-full h-full scale-150 absolute-center">
           <SunRay className="block animate-spin-slow" />
         </div>
-        <div className="w-full h-full absolute-center">{children}</div>
+        <div className="w-3/4 h-3/4 absolute-center">{children}</div>
       </div>
-    );
-  };
+    )
+  }
 
   const HoverComponent = () => {
     switch (hoverType) {
       default:
-        return <Template />;
+        return (
+          <Template>
+            <Image
+              src={imgProduct}
+              blurDataURL={imgProduct}
+              placeholder="blur"
+              alt={imgAlt}
+              objectFit="contain"
+              layout="fill"
+            />
+          </Template>
+        )
     }
-  };
+  }
 
   return (
     <div className="group relative w-full h-full min-h-screen overflow-hidden">
@@ -66,7 +78,7 @@ const HeroCategory = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroCategory;
+export default HeroCategory

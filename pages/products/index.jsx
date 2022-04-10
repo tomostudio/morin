@@ -6,24 +6,32 @@ import Image from "next/image";
 
 const categoryData = [
   {
+    imgSrc: "/category/hover-1.png",
+    imgAlt: "Spreads",
     title: "Spreads",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
     link: "/products/product-type",
   },
   {
+    imgSrc: "/category/hover-2.png",
+    imgAlt: "Jams",
     title: "Jams",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
     link: "/products/product-type",
   },
   {
+    imgSrc: "/category/hover-3.png",
+    imgAlt: "Toppings",
     title: "Toppings",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
     link: "/products/product-type",
   },
   {
+    imgSrc: "/category/hover-4.png",
+    imgAlt: "Fillings",
     title: "Fillings",
     description:
       "Lorem nunc amet, placerat aliquam mauris sodales purus. Urna fermentum amet enim neque fermentum amet enim neque fermentum amet enim neque.",
@@ -64,6 +72,8 @@ const Category = () => {
             {categoryData?.map((item) => (
               <CategoryCard
                 key={item.title}
+                imgSrc={item.imgSrc}
+                imgAlt={item.imgAlt}
                 title={item.title}
                 description={item.description}
                 link={item.link}
