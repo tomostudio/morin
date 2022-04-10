@@ -63,6 +63,7 @@ module.exports = {
           "2px 2px 4px 0px rgba(0,0,0,0.1), 1px 1px 2px 0px rgba(0,0,0,0.1)",
         normal: "2px 2px 4px 0px rgba(0,0,0,0.25)",
         product: "2px 2px 4px 0px rgba(0,0,0,0.1)",
+        header: "2px 2px 4px 0px rgba(0,0,0,0.1)",
         faqCard: "4px 5px 4px 0px rgba(0,0,0,0.25)",
       },
       width: {
