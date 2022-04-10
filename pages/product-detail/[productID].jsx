@@ -68,6 +68,7 @@ const moreProductData = [
     title: "Blueberry Jam",
     bgColor: "#ECE3FF",
     imgSrc: "/product/blueberry.png",
+    imgBg: "/product/blueberry-bg.png",
     imgPlaceholder: "/product/blueberry.png",
     imgAlt: "Blueberry Jam",
     link: "/product/product-id",
@@ -76,6 +77,7 @@ const moreProductData = [
     title: "Strawberry Jam",
     bgColor: "#FFE6E5",
     imgSrc: "/product/strawberry.png",
+    imgBg: "/product/strawberry-bg.png",
     imgPlaceholder: "/product/strawberry.png",
     imgAlt: "Strawberry Jam",
     link: "/product/product-id",
@@ -84,6 +86,7 @@ const moreProductData = [
     title: "Pineapple Jam",
     bgColor: "#FFF7B0",
     imgSrc: "/product/pineapple.png",
+    imgBg: "/product/pineapple-bg.png",
     imgPlaceholder: "/product/pineapple.png",
     imgAlt: "Pineapple Jam",
     link: "/product/product-id",
@@ -92,6 +95,7 @@ const moreProductData = [
     title: "Raspberry Jam",
     bgColor: "#FFDFD9",
     imgSrc: "/product/raspberry.png",
+    imgBg: "/product/raspberry-bg.png",
     imgPlaceholder: "/product/raspberry.png",
     imgAlt: "Raspberry Jam",
     link: "/product/product-id",
@@ -286,6 +290,7 @@ const ProductDetail = () => {
                       title={item.title}
                       bgColor={item.bgColor}
                       imgSrc={item.imgSrc}
+                      imgBg={item.imgBg}
                       imgPlaceholder={item.imgPlaceholder}
                       imgAlt={item.imgAlt}
                       link={item.link}
