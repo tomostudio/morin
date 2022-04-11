@@ -5,7 +5,7 @@ import { defaultHover } from '../utils/tailwind-preset';
 
 const Footer = ({ className }) => {
   return (
-    <footer className='px-8'>
+    <footer className='px-4 lg:px-8'>
       <Container
         className={`relative w-full h-auto flex bg-morin-blue text-white rounded-t-3xl p-8 pt-10 md:flex-row md:justify-between md:px-10 md:pt-10 md:pb-10 lg:pt-16 lg:pb-20 ${className}`}
       >
