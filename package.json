@@ -1,11 +1,11 @@
 {
-  "name": "next-interactive-boilerplate",
+  "name": "morin",
   "description": "A simple Next.js starter kit with TailwindCSS (JIT) and Framer Motion preconfigured",
   "author": "Hendhy Hutomo <hello@hendhyhutomo.com><hendhy@tomostudio.id>, Sam Goddard <hello@samgoddard.co.uk> (https://samgoddard.co.uk)",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tomostudio/next-interactive-starter.git"
+    "url": "https://github.com/tomostudio/morin.git"
   },
   "license": "ISC",
   "keywords": [
@@ -16,7 +16,7 @@
     "motion",
     "preact"
   ],
-  "homepage": "https://next-interactive-starter.vercel.app/",
+  "homepage": "https://morin.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
