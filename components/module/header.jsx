@@ -3,8 +3,14 @@ import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/module/container';
 import Hamburger from '../utils/hamburger';
-import { MorinLogo, SunRay, SunRay15 } from '../utils/svg';
-import { translate } from 'tailwindcss/defaultTheme';
+import {
+  MorinLogo,
+  SunRay,
+  SunRay15,
+  Twitter,
+  Instagram,
+  Facebook,
+} from '../utils/svg';
 
 const navData = [
   {
@@ -22,7 +28,7 @@ const navData = [
   {
     id: 'nav-3',
     title: 'Recipes',
-    dest: 'recipe',
+    dest: 'recipes',
     ariaText: 'Navigate to the Recipes page',
   },
   {
@@ -64,7 +70,7 @@ export default function Header({ hamburgerColor }) {
   };
 
   const [markerW, setMarkerW] = useState(120);
-  const [markerPos, setMarkerPos] = useState(381);
+  const [markerPos, setMarkerPos] = useState(396);
   let widthData = [];
 
   const defaultNavRef = useRef();
@@ -100,27 +106,37 @@ export default function Header({ hamburgerColor }) {
   };
 
   const resetNav = () => {
-    setMarkerW(defaultNavRef.current.clientWidth);
-    //update all nav width data
-    navRef.current
-      .querySelectorAll('a:not(.default-nav)')
-      .forEach((item, id) => {
-        item.classList.remove('focus');
-        widthData[id] = item.clientWidth;
-      });
-    defaultNavRef.current.classList.add('focus');
+    const width = window.innerWidth;
+    if (width > 1024) {
+      document.querySelector('body').classList.remove('overflow-hidden');
+      setMarkerW(defaultNavRef.current.clientWidth);
+      //update all nav width data
+      document
+        .querySelectorAll('nav.header-nav a:not(.default-nav)')
+        .forEach((item, id) => {
+          item.classList.remove('focus');
+          widthData[id] = item.clientWidth;
+        });
+      defaultNavRef.current.classList.add('focus');
 
-    let moveX = 0;
-    widthData.forEach((w) => {
-      moveX = moveX + w;
-    });
-    setMarkerPos(moveX);
+      let moveX = 0;
+      widthData.forEach((w) => {
+        moveX = moveX + w;
+      });
+      setMarkerPos(moveX);
+    }
   };
 
   useEffect(() => {
+    resetNav();
+
     setTimeout(() => {
       resetNav();
+      document.addEventListener('resize', resetNav, false);
     }, 50); // load delay
+    return () => {
+      document.removeEventListener('resize', resetNav, false);
+    };
   }, []);
 
   const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
@@ -141,7 +157,7 @@ export default function Header({ hamburgerColor }) {
             </div>
           </FancyLink>
           <nav
-            className='header-nav pointer-events-auto relative hidden rounded-full bg-white p-1.5 shadow-softer lg:flex'
+            className='header-nav pointer-events-auto relative hidden rounded-full bg-white py-1.5 px-2 shadow-softer lg:flex'
             onSubmit={(e) => e.preventDefault()}
             onMouseLeave={navLeave}
             ref={navRef}
@@ -190,38 +206,20 @@ export default function Header({ hamburgerColor }) {
             className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} invisible -z-1 opacity-0 lg:hidden`}
           >
             <div className='absolute -top-3/4 left-1/2 -z-1 -translate-x-1/2'>
-              <SunRay className='block w-[1000px] animate-spin-slow' />
+              <SunRay className='block w-[1000px] animate-spin-slower' />
             </div>
             <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
               <nav className='flex w-full flex-col space-y-[35px] text-center'>
-                <FancyLink
-                  destination='/about'
-                  a11yText='Navigate to the About Page'
-                  className={mobileLink}
-                >
-                  About
-                </FancyLink>
-                <FancyLink
-                  destination='/products'
-                  a11yText='Navigate to the Products Page'
-                  className={mobileLink}
-                >
-                  Products
-                </FancyLink>
-                <FancyLink
-                  destination='/recipes'
-                  a11yText='Navigate to the Recipes Page'
-                  className={mobileLink}
-                >
-                  Recipes
-                </FancyLink>
-                <FancyLink
-                  destination='/events'
-                  a11yText='Navigate to the Events Page'
-                  className={mobileLink}
-                >
-                  Events
-                </FancyLink>
+                {navData?.map((item, id) => (
+                  <FancyLink
+                    key={id}
+                    destination={item.value}
+                    a11yText={item.ariaText}
+                    className={mobileLink}
+                  >
+                    {item.title}
+                  </FancyLink>
+                ))}
                 <FancyLink
                   blank={true}
                   destination={'/'}
@@ -238,7 +236,7 @@ export default function Header({ hamburgerColor }) {
                   className='flex leading-none'
                 >
                   <Image
-                    src={`/ig.svg`}
+                    src={`/IG.svg`}
                     alt={'Instagram'}
                     width={36}
                     height={36}
@@ -249,24 +247,14 @@ export default function Header({ hamburgerColor }) {
                   blank={true}
                   className='flex leading-none'
                 >
-                  <Image
-                    src={`/tw.svg`}
-                    alt={'Twitter'}
-                    width={36}
-                    height={36}
-                  />
+                  <Twitter className='w-9 h-9' />
                 </FancyLink>
                 <FancyLink
                   destination='/'
                   blank={true}
                   className='flex leading-none'
                 >
-                  <Image
-                    src={`/fb.svg`}
-                    alt={'Facebook'}
-                    width={36}
-                    height={36}
-                  />
+                  <Facebook className='w-9 h-9' />
                 </FancyLink>
               </div>
             </div>

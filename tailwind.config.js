@@ -27,8 +27,8 @@ module.exports = {
       auto: "auto",
     },
     fontSize: {
-      defaultSmall: "12px",
-      default: "15px",
+      defaultSmall: "14px",
+      default: "16px",
       h1: "72px",
       h2: "52px",
       mtitle: "28px",
@@ -52,6 +52,7 @@ module.exports = {
       },
       animation: {
         "spin-slow": "spin 15s linear infinite",
+        "spin-slower": "spin 25s linear infinite",
       },
       maxWidth: {
         "18rem": "18rem",
