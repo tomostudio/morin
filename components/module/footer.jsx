@@ -5,7 +5,7 @@ import { defaultHover } from '../utils/tailwind-preset';
 
 const Footer = ({ className }) => {
   return (
-    <footer className='px-8'>
+    <footer className='px-8 text-defaultSmall lg:text-default'>
       <Container
         className={`relative w-full h-auto flex bg-morin-blue text-white rounded-t-3xl p-8 pt-10 md:flex-row md:justify-between md:px-10 md:pt-10 md:pb-10 lg:pt-16 lg:pb-20 ${className}`}
       >
@@ -37,49 +37,83 @@ const Footer = ({ className }) => {
         {/* RIGHT */}
         <div className='flex w-full md:w-2/5 md:justify-start md:ml-auto md:mt-auto h-full'>
           <div className='flex flex-wrap flex-col w-1/2 space-y-3 md:w-auto md:ml-auto lg:min-w-[100px] lg:space-y-4'>
-            <FancyLink destination='/' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/'
+              className={`footer-link ${defaultHover}`}
+            >
               Home
             </FancyLink>
-            <FancyLink destination='/about' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/about'
+              className={`footer-link ${defaultHover}`}
+            >
               About Us
             </FancyLink>
-            <FancyLink destination='/product' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/product'
+              className={`footer-link ${defaultHover}`}
+            >
               Product
             </FancyLink>
-            <FancyLink destination='/recipes' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/recipes'
+              className={`footer-link ${defaultHover}`}
+            >
               Recipes
             </FancyLink>
-            <FancyLink destination='/events' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/events'
+              className={`footer-link ${defaultHover}`}
+            >
               Events
             </FancyLink>
-            <FancyLink destination='/get-morin' className={`footer-link ${defaultHover}`}>
+            <FancyLink
+              destination='/get-morin'
+              className={`footer-link ${defaultHover}`}
+            >
               Get Morin
             </FancyLink>
           </div>
           <div className='flex flex-wrap flex-col justify-between w-1/2 md:w-auto md:ml-14 xl:mx-24'>
             <div className='flex flex-wrap flex-col space-y-3 lg:space-y-4'>
-              <FancyLink destination='/faq' className={`footer-link ${defaultHover}`}>
-                Faq
+              <FancyLink
+                destination='/faq'
+                className={`footer-link ${defaultHover}`}
+              >
+                FAQ
               </FancyLink>
-              <FancyLink destination='/contact' className={`footer-link ${defaultHover}`}>
+              <FancyLink
+                destination='/contact'
+                className={`footer-link ${defaultHover}`}
+              >
                 Contact Us
               </FancyLink>
             </div>
             <div className='w-full flex flex-col justify-end mt-auto'>
               <div className='flex justify-start w-full space-x-1.5 lg:space-x-3 mb-4 lg:mb-4'>
-                <FancyLink destination='/' blank={true} className={`relative  ${defaultHover}`}>
+                <FancyLink
+                  destination='/'
+                  blank={true}
+                  className={`relative  ${defaultHover}`}
+                >
                   <InstagramSolid className='w-9 h-9' />
                 </FancyLink>
-                <FancyLink destination='/' blank={true} className={`relative  ${defaultHover}`}>
+                <FancyLink
+                  destination='/'
+                  blank={true}
+                  className={`relative  ${defaultHover}`}
+                >
                   <TwitterSolid className='w-9 h-9' />
                 </FancyLink>
-                <FancyLink destination='/' blank={true} className={`relative  ${defaultHover}`}>
+                <FancyLink
+                  destination='/'
+                  blank={true}
+                  className={`relative  ${defaultHover}`}
+                >
                   <FacebookSolid className='w-9 h-9' />
                 </FancyLink>
               </div>
-              <span className='text-defaultSmall lg:text-default'>
-                © Morin Food 2021
-              </span>
+              <span className=''>© Morin Food 2021</span>
             </div>
           </div>
         </div>
