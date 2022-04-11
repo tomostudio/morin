@@ -137,7 +137,7 @@ export default function Header({ hamburgerColor }) {
               Events
             </FancyLink>
             <FancyLink
-              destination="/"
+              destination="/get-morin"
               className="w-[103px] flex justify-center items-center h-8 rounded-full font-semibold text-white bg-morin-blue leading-none pt-[2px]"
             >
               Get Morin!

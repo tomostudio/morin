@@ -52,7 +52,7 @@ const Footer = ({ className }) => {
             <FancyLink destination='/events' className='text-white'>
               Events
             </FancyLink>
-            <FancyLink destination='/' className='text-white'>
+            <FancyLink destination='/get-morin' className='text-white'>
               Get Morin
             </FancyLink>
           </div>
