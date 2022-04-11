@@ -40,39 +40,39 @@ const EventDetail = () => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" />
 
-      <Container className='mt-8 lg:mt-0'>
-        <div className="text-morin-blue leading-tight">
-          <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
-            <span className="block font-semibold mb-2.5">
-              Thursday, 21-06-2021
-            </span>
-            <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
-              Factory Tour with SDN
-            </h1>
-            {eventCategory?.length > 0 && (
-              <div className="flex flex-wrap items-center justify-center">
-                {eventCategory?.map((item) => (
-                  <EventTag label={item} />
-                ))}
-              </div>
-            )}
+      <div className="text-morin-blue leading-tight">
+        <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
+          <span className="block font-semibold mb-2.5">
+            Thursday, 21-06-2021
+          </span>
+          <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
+            Factory Tour with SDN
+          </h1>
+          {eventCategory?.length > 0 && (
+            <div className="flex flex-wrap items-center justify-center">
+              {eventCategory?.map((item) => (
+                <EventTag label={item} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14">
+          <div className="relative w-full h-full lg:h-[700px] aspect-w-16 aspect-h-9 mx-auto mb-8 px-8 lg:rounded-2xl overflow-hidden md:mb-10 lg:mb-12">
+            <Image
+              src="/event/detail-1.jpg"
+              blurDataURL="/event/detail-1.png"
+              placeholder="blur"
+              // width={1200}
+              // height={700}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
           </div>
 
-          <div className="max-w-screen-2xl mx-auto mb-8 lg:mb-14">
-            <div className="relative w-full h-[700px] mx-auto mb-8 px-8 rounded-2xl overflow-hidden md:mb-10 lg:mb-12">
-              <Image
-                src="/event/detail-1.jpg"
-                blurDataURL="/event/detail-1.png"
-                placeholder="blur"
-                // width={1200}
-                // height={700}
-                layout="fill"
-                objectFit='cover'
-                objectPosition="center"
-              />
-            </div>
-
-            <div className='max-w-screen-md mx-auto'>
+          <Container className="mt-8 lg:mt-0">
+            <div className="max-w-screen-md mx-auto">
               <h2 className="text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Bibendum turpis aliquam, viverra netus amet in vel auctor amet
@@ -120,42 +120,38 @@ const EventDetail = () => {
                 </p>
               </div>
             </div>
+          </Container>
+        </div>
+      </div>
+
+      <div className="w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10">
+        <div className="mx-auto w-full flex flex-col px-4 lg:px-8 max-w-screen-2xl ">
+          <div className="mb-7 md:mb-8 lg:mb-10">
+            <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
+              Other Events
+            </h2>
+
+            <div className="flex flex-wrap mx-auto md:max-w-4xl">
+              {highlightData?.map((item, index) => (
+                <div
+                  className="w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5"
+                  key={`${item.title}[${index}]`}
+                >
+                  <HighlightCard
+                    imgSrc={item.imgSrc}
+                    imgPlaceholder={item.imgPlaceholder}
+                    imgAlt={item.imgAlt}
+                    date={item.date}
+                    title={item.title}
+                    link={item.link}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </Container>
-
-      <Container
-        border={true}
-        bgTail={true}
-        background={colors.morinSkyBlue}
-        classNameOuter="pb-0"
-      >
-        <div className="mb-7 md:mb-8 lg:mb-10">
-          <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-            Other Events
-          </h2>
-
-          <div className="flex flex-wrap mx-auto md:max-w-4xl">
-            {highlightData?.map((item, index) => (
-              <div
-                className="w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5"
-                key={`${item.title}[${index}]`}
-              >
-                <HighlightCard
-                  imgSrc={item.imgSrc}
-                  imgPlaceholder={item.imgPlaceholder}
-                  imgAlt={item.imgAlt}
-                  date={item.date}
-                  title={item.title}
-                  link={item.link}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-
         <Footer />
-      </Container>
+      </div>
     </Layout>
   )
 }

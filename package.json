@@ -23,6 +23,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "framer-motion": "^6.2.8",
     "gsap": "^3.10.2",
     "locomotive-scroll": "^4.1.4",
