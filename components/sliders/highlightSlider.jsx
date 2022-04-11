@@ -20,7 +20,7 @@ const HighlightSlider = ({ data }) => {
           </div>
         ))}
       </div>
-      <div className="hidden w-full md:block lg:mb-4 xl:mb-9">
+      <div className="hidden w-full md:block lg:mb-4 xl:mb-9 ">
         <Swiper
           breakpoints={{
             768: { slidesPerView: 2.4, spaceBetween: 10 },

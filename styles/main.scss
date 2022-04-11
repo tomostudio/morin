@@ -6,24 +6,25 @@
 @import 'tailwindcss/components';
 
 /* Custom Style Imports */
-@import "_typography.scss";
-@import "_locomotive.scss";
-@import "_desktopHeader.scss";
-@import "_morinTab.scss";
+@import '_typography.scss';
+@import '_locomotive.scss';
+@import '_desktopHeader.scss';
+@import '_morinTab.scss';
+@import '_util.scss';
 
 /* Tailwind Utilities */
-@import "tailwindcss/utilities";
+@import 'tailwindcss/utilities';
 
 /* SwiperJs Styling */
-@import "swiper/scss";
-@import "swiper/scss/pagination";
-@import "swiper/scss/navigation";
-@import "swiper/scss/free-mode";
-@import "swiper/scss/effect-fade";
-@import "_slider.scss";
+@import 'swiper/scss';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/free-mode';
+@import 'swiper/scss/effect-fade';
+@import '_slider.scss';
 
 /* React Modal Styling */
-@import "_modal.scss";
+@import '_modal.scss';
 
 /* Simple defaults */
 body {
@@ -40,22 +41,6 @@ body {
   background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-/* Optional: show position indicator in red */
-// ::-webkit-scrollbar-thumb {
-//   background: #FF0000;
-// }
-
-/* Trigger Animation  */
-.trigger {
-  @apply transition-colors delay-200 duration-200;
-  @apply bg-transparent;
-
-  &.is-inview {
-    @apply transition-colors delay-200 duration-1000;
-    @apply bg-red-300;
-  }
-}
-
 @mixin setflex-center {
   @apply flex justify-center items-center flex-row;
 }
@@ -68,39 +53,4 @@ body {
 }
 .absolute-center {
   @include absolute-center();
-}
-
-main {
-  width: 100%;
-  & > * {
-    width: 100%;
-  }
-}
-
-.bg-gradient-blue {
-  background: linear-gradient(96.16deg, #175BA7 3.15%, #66C1EA 79.37%);
-}
-
-
-.product-detail-curve {
-  $curve-height: 40px;
-  $curve-height-desktop: 70px;
-  $curve-radius: 50%/40px 40px 0 0;
-  $curve-radius-desktop: 50%/70px 70px 0 0;
-  $curve-color: #fff;
-
-  width: 120%;
-  height: $curve-height;
-  background: $curve-color;
-  border-radius: $curve-radius;
-  position: absolute;
-  top: -$curve-height;
-  left: 50%;
-  transform: translateX(-50%);
-
-  @media (min-width: 1400px) {
-    height: $curve-height-desktop;
-    border-radius: $curve-radius-desktop;
-    top: -$curve-height-desktop;
-  }
 }

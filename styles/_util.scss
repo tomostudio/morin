@@ -1,0 +1,43 @@
+.home-sticky {
+  @media (min-width: 1536px) {
+    width: calc(((100vw - 1536px) / 2) + 2rem + 400px) !important;
+    padding-left: calc(((100vw - 1536px) / 2) + 2rem) !important;
+  }
+}
+main {
+  width: 100%;
+  & > * {
+    width: 100%;
+  }
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(96.16deg, #175ba7 3.15%, #66c1ea 79.37%);
+}
+
+.product-detail-curve {
+  $curve-height: 40px;
+  $curve-height-desktop: 70px;
+  $curve-radius: 50%/40px 40px 0 0;
+  $curve-radius-desktop: 50%/70px 70px 0 0;
+  $curve-color: #fff;
+
+  width: 120%;
+  height: $curve-height;
+  background: $curve-color;
+  border-radius: $curve-radius;
+  position: absolute;
+  top: -$curve-height;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media (min-width: 1400px) {
+    height: $curve-height-desktop;
+    border-radius: $curve-radius-desktop;
+    top: -$curve-height-desktop;
+  }
+}
+
+.footer-link {
+  @apply block w-fit text-white text-defaultSmall leading-none lg:text-default;
+}

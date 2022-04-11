@@ -295,5 +295,3 @@ const GetMorin = () => {
     </Layout>
   )
 }
-
-export default GetMorin
