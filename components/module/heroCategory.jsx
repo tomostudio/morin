@@ -13,9 +13,8 @@ const HeroCategory = ({
   hoverType,
 }) => {
   const Template = ({ children }) => {
-    const bg = `relative w-full h-full bg-morin-lightBlue`;
     return (
-      <div className={`${bg}`}>
+      <div className={`relative w-full h-full bg-morin-lightBlue`}>
         <div className='flex items-center jusfity-center w-full h-full scale-150 absolute-center'>
           <SunRay className='block animate-spin-slow' />
         </div>
@@ -25,21 +24,18 @@ const HeroCategory = ({
   };
 
   const HoverComponent = () => {
-    switch (hoverType) {
-      default:
-        return (
-          <Template>
-            <Image
-              src={imgProduct}
-              blurDataURL={imgProduct}
-              placeholder='blur'
-              alt={imgAlt}
-              objectFit='contain'
-              layout='fill'
-            />
-          </Template>
-        );
-    }
+    return (
+      <Template>
+        <Image
+          src={imgProduct}
+          blurDataURL={imgProduct}
+          placeholder='blur'
+          alt={imgAlt}
+          objectFit='contain'
+          layout='fill'
+        />
+      </Template>
+    );
   };
 
   return (
@@ -58,7 +54,7 @@ const HeroCategory = ({
         />
       </div>
       <div className='w-full h-full absolute transition-all z-1'>
-        {HoverComponent()}
+        <HoverComponent />
       </div>
 
       <div className='text-center absolute left-1/2 bottom-10 -translate-x-1/2 z-3 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10'>

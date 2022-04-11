@@ -131,133 +131,95 @@ const highlightData = [
   },
 ];
 
-const instagramData = [
-  {
-    imgSrc: '/instagram/instagram-1.jpg',
-    imgPlaceholder: '/instagram/instagram-1.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-  {
-    imgSrc: '/instagram/instagram-2.jpg',
-    imgPlaceholder: '/instagram/instagram-2.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-  {
-    imgSrc: '/instagram/instagram-3.jpg',
-    imgPlaceholder: '/instagram/instagram-3.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-  {
-    imgSrc: '/instagram/instagram-1.jpg',
-    imgPlaceholder: '/instagram/instagram-1.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-  {
-    imgSrc: '/instagram/instagram-2.jpg',
-    imgPlaceholder: '/instagram/instagram-2.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-  {
-    imgSrc: '/instagram/instagram-3.jpg',
-    imgPlaceholder: '/instagram/instagram-3.png',
-    imgAlt: 'Caption of image here...',
-    link: '/link-to-instagram-post',
-  },
-];
 
 export default function Home() {
   const containerRef = useRef(null);
 
   // SET OBJECT ANIMATION
-  const animationObj = {
-    '(min-width: 751px)': [
-      () => {
-        const id = 'si01';
-        const elem = '.scrollsection .line';
-        const settings = {
-          scrollTrigger: {
-            id: id,
-            trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
-            scroller: '#scroll-container', // id of scroll container
-            scrub: true,
-            start: 'top 0%',
-            end: '+=100%',
-            // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
-          },
-        };
-        const animation = [
-          {
-            set: [
-              elem,
-              {
-                background: 'rgba(253, 230, 138, 1)',
-              },
-            ],
-          },
-          {
-            to: [
-              elem,
-              {
-                scaleX: 0,
-                transformOrigin: 'left center',
-                background: 'rgba(253, 230, 138, 0)',
-                ease: 'none',
-                duration: 1,
-              },
-              0,
-            ],
-          },
-        ];
-        return { id, elem, settings, animation };
-      },
-    ],
-    '(max-width: 750px)': [
-      () => {
-        const id = 'si02';
-        const elem = '.scrollsection .line';
-        const settings = {
-          scrollTrigger: {
-            id: id,
-            trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
-            scroller: '#scroll-container', // id of scroll container
-            scrub: true,
-            start: 'top 0%',
-            end: '+=100%',
-            // onUpdate: (e) => { console.log('2', Math.round(e.progress * 100)) }
-          },
-        };
-        const animation = [
-          {
-            set: [
-              elem,
-              {
-                background: 'rgba(253, 230, 138, 0)',
-              },
-            ],
-          },
-          {
-            to: [
-              elem,
-              {
-                scaleX: 0,
-                transformOrigin: 'left center',
-                background: 'rgba(253, 230, 138, 1)',
-                ease: 'none',
-                duration: 2,
-              },
-              0,
-            ],
-          },
-        ];
-        return { id, elem, settings, animation };
-      },
-    ],
-  };
+  // const animationObj = {
+  //   '(min-width: 751px)': [
+  //     () => {
+  //       const id = 'si01';
+  //       const elem = '.scrollsection .line';
+  //       const settings = {
+  //         scrollTrigger: {
+  //           id: id,
+  //           trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+  //           scroller: '#scroll-container', // id of scroll container
+  //           scrub: true,
+  //           start: 'top 0%',
+  //           end: '+=100%',
+  //           // onUpdate: (e) => { console.log('1', Math.round(e.progress * 100)) }
+  //         },
+  //       };
+  //       const animation = [
+  //         {
+  //           set: [
+  //             elem,
+  //             {
+  //               background: 'rgba(253, 230, 138, 1)',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           to: [
+  //             elem,
+  //             {
+  //               scaleX: 0,
+  //               transformOrigin: 'left center',
+  //               background: 'rgba(253, 230, 138, 0)',
+  //               ease: 'none',
+  //               duration: 1,
+  //             },
+  //             0,
+  //           ],
+  //         },
+  //       ];
+  //       return { id, elem, settings, animation };
+  //     },
+  //   ],
+  //   '(max-width: 750px)': [
+  //     () => {
+  //       const id = 'si02';
+  //       const elem = '.scrollsection .line';
+  //       const settings = {
+  //         scrollTrigger: {
+  //           id: id,
+  //           trigger: '.scrollsection', // which page section will be tracked as the scroll trigger
+  //           scroller: '#scroll-container', // id of scroll container
+  //           scrub: true,
+  //           start: 'top 0%',
+  //           end: '+=100%',
+  //           // onUpdate: (e) => { console.log('2', Math.round(e.progress * 100)) }
+  //         },
+  //       };
+  //       const animation = [
+  //         {
+  //           set: [
+  //             elem,
+  //             {
+  //               background: 'rgba(253, 230, 138, 0)',
+  //             },
+  //           ],
+  //         },
+  //         {
+  //           to: [
+  //             elem,
+  //             {
+  //               scaleX: 0,
+  //               transformOrigin: 'left center',
+  //               background: 'rgba(253, 230, 138, 1)',
+  //               ease: 'none',
+  //               duration: 2,
+  //             },
+  //             0,
+  //           ],
+  //         },
+  //       ];
+  //       return { id, elem, settings, animation };
+  //     },
+  //   ],
+  // };
 
   useEffect(() => {
     window.addEventListener('LocoCall', (e) => {
@@ -285,7 +247,7 @@ export default function Home() {
         >
           <div data-scroll-section>
             {/* SCROLL TRIGGER WRAPPER */}
-            <ScrollTriggerWrapper animation={animationObj}>
+            {/* <ScrollTriggerWrapper animation={animationObj}> */}
               {/* CONTENT STARTS */}
               <Header />
               <LazyMotion features={domAnimation}>
@@ -483,7 +445,7 @@ export default function Home() {
                         </div>
                       </Container>
                       <div className='pb-10 xl:pb-14'>
-                        <InstagramSlider data={instagramData} />
+                        <InstagramSlider />
                       </div>
                     </section>
                     <Footer />
@@ -491,7 +453,7 @@ export default function Home() {
                 </m.div>
               </LazyMotion>
               {/* CONTENT ENDS */}
-            </ScrollTriggerWrapper>
+            {/* </ScrollTriggerWrapper> */}
           </div>
         </div>
       </LocomotiveScrollProvider>
