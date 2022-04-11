@@ -31,7 +31,7 @@
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
     "postcss-preset-env": "^7.4.3",
-    "preact": "^10.7.0",
+    "preact": "^10.7.1",
     "react": "^18.0.0",
     "react-collapsible": "^2.8.4",
     "react-dom": "^18.0.0",
