@@ -3,7 +3,7 @@ import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
 import Container from "@/components/module/container";
-import MorinButton from "@/components/utils/morinButton";
+import StrokeButton from "@/components/utils/strokeButton";
 import AboutCard from "@/components/module/aboutCard";
 import PageModal from "@/components/module/pageModal";
 import colors from "@/helpers/colors";
@@ -68,9 +68,9 @@ const About = () => {
                 Selama lebih dari 40 tahun, Morin hadir menemani momen-momen
                 sarapan keluarga Indonesia.
               </p>
-              <MorinButton color={colors.morinBlue} arrow={false}>
+              <StrokeButton color={colors.morinBlue} arrow={false}>
                 Read More
-              </MorinButton>
+              </StrokeButton>
             </div>
           </div>
 

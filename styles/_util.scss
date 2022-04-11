@@ -41,3 +41,34 @@ main {
 .footer-link {
   @apply block w-fit text-white text-defaultSmall leading-none lg:text-default;
 }
+
+.stroke-button {
+  & * {
+    @apply transition-colors duration-300;
+  }
+  &:hover {
+    & * {
+      color: white;
+      stroke: white;
+    }
+  }
+}
+
+.solid-button {
+  & * {
+    @apply transition-colors duration-300;
+  }
+  &:not(:hover) {
+    & * {
+      color: white;
+      stroke: white;
+    }
+  }
+}
+.hide-scrollbar {
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+}

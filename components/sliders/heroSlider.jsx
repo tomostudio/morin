@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper";
 import Container from "../module/container";
-import MorinButton from "../utils/morinButton";
+import StrokeButton from "../utils/strokeButton";
 import colors from "@/helpers/colors";
 
 const HeroSlider = ({ className }) => {
@@ -25,7 +25,7 @@ const HeroSlider = ({ className }) => {
         <SwiperSlide>
           <div className="relative w-screen h-screen">
             <Container className="h-screen z-1">
-              <div className="w-full h-full flex flex-col justify-center">
+              <div className="w-full h-full flex flex-col justify-center items-center">
                 <div className="mx-auto md:hidden">
                   <Image
                     src={`/assets/hero-slider/m-hero-content.svg`}
@@ -45,9 +45,9 @@ const HeroSlider = ({ className }) => {
                   />
                 </div>
 
-                <MorinButton color={colors.white} className="mt-5 md:mt-0">
+                <StrokeButton color={colors.white} className="mt-5 md:mt-0">
                   Find Out More
-                </MorinButton>
+                </StrokeButton>
               </div>
             </Container>
 
@@ -68,9 +68,9 @@ const HeroSlider = ({ className }) => {
                 <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
                   The quick, brown fox jumps over a lazy dog
                 </span>
-                <MorinButton destination="/products" color={colors.white} className="mt-5">
+                <StrokeButton destination="/products" color={colors.white} className="mt-5">
                   Find Out More
-                </MorinButton>
+                </StrokeButton>
               </div>
             </Container>
 
@@ -112,9 +112,9 @@ const HeroSlider = ({ className }) => {
                 <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
                   Five quacking zephyrs jolt my wax bed
                 </span>
-                <MorinButton color={colors.white} className="mt-5">
+                <StrokeButton color={colors.white} className="mt-5">
                   Find Out More
-                </MorinButton>
+                </StrokeButton>
               </div>
             </Container>
 

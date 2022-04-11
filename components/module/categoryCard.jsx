@@ -1,6 +1,6 @@
 import colors from '@/helpers/colors'
 import React from 'react'
-import MorinButton from '../utils/morinButton'
+import StrokeButton from '../utils/strokeButton'
 import { SunRay } from '../utils/svg'
 import Image from 'next/image'
 
@@ -30,13 +30,13 @@ const CategoryCard = ({ title, description, link, imgSrc, imgAlt }) => {
         <span className="max-w-[240px] lg:max-w-sm mb-3 lg:mb-7 xl:mb-8">
           {description}
         </span>
-        <MorinButton
+        <StrokeButton
           color={colors.morinBlue}
           destination={link}
           className="lg:ml-0"
         >
           See All {title}
-        </MorinButton>
+        </StrokeButton>
       </div>
     </div>
   )

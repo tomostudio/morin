@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Footer from '@/components/module/footer'
 import Header from '@/components/module/header'
 import Layout from '@/components/module/layout'
-import MorinButton from '@/components/utils/morinButton'
+import StrokeButton from '@/components/utils/strokeButton'
 import EventCard from '@/components/module/eventCard'
 import colors from '@/helpers/colors'
 
@@ -93,13 +93,13 @@ const Events = () => {
               ))}
             </div>
             <div className="w-full mt-5 md:mt-10">
-              <MorinButton
+              <StrokeButton
                 arrow={false}
                 color={colors.morinBlue}
                 onClick={() => console.log('load more')}
               >
                 Show More
-              </MorinButton>
+              </StrokeButton>
             </div>
           </div>
         </div>

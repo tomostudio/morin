@@ -1,5 +1,5 @@
 import Image from "next/image";
-import MorinButton from "../utils/morinButton";
+import StrokeButton from "../utils/strokeButton";
 import FancyLink from "../utils/fancyLink";
 
 const EventCard = ({ imgSrc, imgAlt, type, date, title, link }) => {
@@ -21,7 +21,7 @@ const EventCard = ({ imgSrc, imgAlt, type, date, title, link }) => {
           <div className="flex items-center w-fit h-8 bg-white text-morin-blue font-semibold rounded-full px-3">
             <span className="pt-1">{type}</span>
           </div>
-          <MorinButton className="pl-2 pr-2 mx-0" />
+          <StrokeButton className="pl-2 pr-2 mx-0" />
         </div>
       </div>
 

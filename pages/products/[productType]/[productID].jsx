@@ -9,7 +9,7 @@ import RecipeSlider from '@/components/sliders/recipeSlider';
 import { SunRay } from '@/components/utils/svg';
 import Image from 'next/image';
 import ProductCard from '@/components/module/productCard';
-import MorinButton from '@/components/utils/morinButton';
+import StrokeButton from '@/components/utils/strokeButton';
 import colors from '@/helpers/colors';
 
 const tabData = [
@@ -278,9 +278,9 @@ const ProductDetail = () => {
                 />
               </div>
               <div className='hidden w-fit mt-7 mx-auto md:block xl:mt-8'>
-                <MorinButton destination='/recipes' color={colors.morinRed}>
+                <StrokeButton destination='/recipes' color={colors.morinRed}>
                   See All Recipes
-                </MorinButton>
+                </StrokeButton>
               </div>
             </div>
           </div>
@@ -313,13 +313,13 @@ const ProductDetail = () => {
                 ))}
               </div>
 
-              <MorinButton
+              <StrokeButton
                 color={colors.morinRed}
                 destination='/products'
                 className='md:hidden'
               >
                 See All Products
-              </MorinButton>
+              </StrokeButton>
             </div>
           </div>
         )}

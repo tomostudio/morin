@@ -23,10 +23,11 @@ const HighlightSlider = ({ data }) => {
       <div className='hidden w-full md:block lg:mb-4 xl:mb-9 '>
         <Swiper
           breakpoints={{
-            768: { slidesPerView: 2.4, spaceBetween: 10 },
-            1024: { slidesPerView: 2.7, spaceBetween: 20 },
-            1600: { slidesPerView: 3.4, spaceBetween: 20 },
+            768: { slidesPerView: 2.4 },
+            1024: { slidesPerView: 2.7 },
+            1600: { slidesPerView: 3.4 },
           }}
+          spaceBetween={0}
           freeMode={true}
           modules={[FreeMode]}
           style={{ padding: '0 16px' }}

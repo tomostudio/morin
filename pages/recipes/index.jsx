@@ -5,7 +5,7 @@ import Layout from "@/components/module/layout";
 import Header from "@/components/module/header";
 import Footer from "@/components/module/footer";
 import RecipeCard from "@/components/module/recipeCard";
-import MorinButton from "@/components/utils/morinButton";
+import StrokeButton from "@/components/utils/strokeButton";
 import RecipeFilter from "@/components/utils/recipeFilter";
 import { Filter } from "@/components/utils/svg";
 
@@ -187,7 +187,7 @@ const Recipe = () => {
             <span className="font-semibold text-morin-red pt-1">
               Sorted by Default
             </span>
-            <MorinButton
+            <StrokeButton
               arrow={false}
               color={colors.morinRed}
               onClick={() => setFilterOpen(!filterOpen)}
@@ -199,7 +199,7 @@ const Recipe = () => {
                   className="transition-all"
                 />
               </div>
-            </MorinButton>
+            </StrokeButton>
           </div>
 
           <div suppressHydrationWarning>
@@ -234,13 +234,13 @@ const Recipe = () => {
               ))}
 
               <div className="w-full mt-5 xl:mt-7">
-                <MorinButton
+                <StrokeButton
                   arrow={false}
                   color={colors.morinRed}
                   onClick={() => console.log("load more")}
                 >
                   Show More
-                </MorinButton>
+                </StrokeButton>
               </div>
             </div>
           </div>

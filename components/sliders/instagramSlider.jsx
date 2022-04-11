@@ -42,16 +42,17 @@ const InstagramSlider = ({ data }) => {
       link: '/link-to-instagram-post',
     },
   ];
+
   return (
     <div>
       <Swiper
+        // slidesPerView={4}
+        spaceBetween={0}
         breakpoints={{
-          0: { slidesPerView: 1.5, spaceBetween: 15 },
-          550: { slidesPerView: 2, spaceBetween: 15 },
-          768: { slidesPerView: 2.5, spaceBetween: 15 },
-          1024: { slidesPerView: 4, spaceBetween: 30 },
-          1400: { slidesPerView: 4.7, spaceBetween: 30 },
-          1600: { slidesPerView: 5.4, spaceBetween: 30 },
+          0: { slidesPerView: 2 },
+          768: { slidesPerView: 2 },
+          1400: { slidesPerView: 4 },
+          1600: { slidesPerView: 6 },
         }}
         loop={true}
         freeMode={true}

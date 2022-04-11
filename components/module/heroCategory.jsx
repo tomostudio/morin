@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import FancyLink from '../utils/fancyLink';
-import { SunRay } from '../utils/svg';
+import { SunRay, SunRay15 } from '../utils/svg';
 import { Arrow } from '../utils/svg';
 
 const HeroCategory = ({
@@ -16,7 +16,13 @@ const HeroCategory = ({
     return (
       <div className={`relative w-full h-full bg-morin-lightBlue`}>
         <div className='flex items-center jusfity-center w-full h-full scale-150 absolute-center'>
-          <SunRay className='block animate-spin-slow' />
+          {/* <SunRay className='block animate-spin-slow w-full h-full' /> */}
+          <Image
+            src={`/RAY.svg`}
+            objectFit='contain'
+            className='block animate-spin-slow w-full h-full'
+            layout='fill'
+          />
         </div>
         <div className='w-3/4 h-3/4 absolute-center'>{children}</div>
       </div>

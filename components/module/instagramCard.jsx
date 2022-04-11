@@ -4,21 +4,21 @@ import FancyLink from '../utils/fancyLink';
 
 const InstagramCard = ({ imgSrc, imgPlaceholder, imgAlt, link }) => {
   return (
-    <FancyLink
-      blank
-      destination={link}
-      className='relative min-w-[225px] min-h-[225px] rounded-xl overflow-hidden'
-    >
-      <Image
-        src={imgSrc}
-        blurDataURL={imgPlaceholder}
-        placeholder='blur'
-        alt={imgAlt}
-        width={285}
-        height={285}
-        layout='responsive'
-      />
-    </FancyLink>
+    <div className='p-2 lg:p-3'>
+      <div className='rounded-xl overflow-hidden hover:shadow-softer hover:-translate-y-2 transition-all duration-300'>
+        <FancyLink blank destination={link} className='relative w-full h-full'>
+          <Image
+            src={imgSrc}
+            blurDataURL={imgPlaceholder}
+            placeholder='blur'
+            alt={imgAlt}
+            width={285}
+            height={285}
+            layout='responsive'
+          />
+        </FancyLink>
+      </div>
+    </div>
   );
 };
 

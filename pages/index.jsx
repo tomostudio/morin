@@ -17,7 +17,8 @@ import HeroSlider from '@/components/sliders/heroSlider';
 import HighlightSlider from '@/components/sliders/highlightSlider';
 import InstagramSlider from '@/components/sliders/instagramSlider';
 import RecipeSlider from '@/components/sliders/recipeSlider';
-import MorinButton from '@/components/utils/morinButton';
+import StrokeButton from '@/components/utils/strokeButton';
+import SolidButton from '@/components/utils/SolidButton';
 import HeroCategory from '@/components/module/heroCategory';
 import { HeartSmall, HeartLarge, Scribble } from '@/components/utils/svg';
 
@@ -228,6 +229,10 @@ export default function Home() {
     return () => {};
   }, []);
 
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
   return (
     <>
       <NextSeo title='Home' />
@@ -243,7 +248,7 @@ export default function Home() {
           data-scroll-container
           ref={containerRef}
           id='scroll-container'
-          className='test test2 test3'
+          className=''
         >
           <div data-scroll-section>
             {/* SCROLL TRIGGER WRAPPER */}
@@ -274,18 +279,18 @@ export default function Home() {
                         <div className='flex w-full flex-col lg:flex-row flex-nowrap lg:items-start'>
                           {/* Sticky */}
                           <div className='home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0'>
-                            <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto'>
+                            <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just'>
                               <h2 className=' mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] '>
                                 Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
                                 Amet Lorem.
                               </h2>
-                              <MorinButton
+                              <StrokeButton
                                 destination='/products'
                                 color={colors.morinBlue}
                                 className='lg:mx-0'
                               >
                                 See All Products
-                              </MorinButton>
+                              </StrokeButton>
                             </div>
                             <div className='mx-auto mb-5 flex flex-wrap justify-center lg:mx-0 lg:mb-10 space-x-4 lg:space-x-6 lg:justify-start'>
                               <div className='relative h-8 w-8 lg:h-12 lg:w-12'>
@@ -337,7 +342,7 @@ export default function Home() {
                     </section>
                     <section>
                       <Container
-                        border={true}
+                        border={true} 
                         background={colors.morinPeach}
                         bgTail={true}
                         safeWidth={true}
@@ -353,7 +358,7 @@ export default function Home() {
                                 <HeartLarge className='hidden md:block' />
                               </div>
                             </h2>
-                            <p className='mx-auto max-w-[300px] text-[9px] text-morin-red sm:text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]'>
+                            <p className='mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]'>
                               Lorem Ipsum Dolor sit Amet Lorem Ipsum Dolor sit
                               Amet Lorem Ipsum Dolor sit Amet Lorem Ipsum Amet
                               Lorem Ipsum.
@@ -366,12 +371,12 @@ export default function Home() {
                             </div> */}
                           </div>
                           <div className='order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12'>
-                            <MorinButton
+                            <StrokeButton
                               destination='/recipes'
                               color={colors.morinRed}
                             >
                               See All Recipes
-                            </MorinButton>
+                            </StrokeButton>
                           </div>
                           <div className='-mx-8 mb-8 w-[calc(100%+64px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]'>
                             <RecipeSlider data={recipeData} />
@@ -384,8 +389,14 @@ export default function Home() {
                         border={true}
                         background={colors.morinSkyBlue}
                         bgTail={true}
-                        safeWidth={true}
+                        safeWidth={false}
                         classNameOuter='pb-0'
+                      >
+                      <Container
+                        border={false}
+                        background={'transparent'}
+                        bgTail={false}
+                        safeWidth={true}
                       >
                         <div className='flex w-full flex-wrap'>
                           <div className='mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12'>
@@ -397,51 +408,52 @@ export default function Home() {
                             </h2>
                           </div>
                           <div className='ml-auto hidden w-fit pl-12 md:block'>
-                            <MorinButton
+                            <StrokeButton
                               destination='/events'
                               color={colors.morinBlue}
                             >
                               See All Events
-                            </MorinButton>
+                            </StrokeButton>
                           </div>
                         </div>
-                      </Container>
+                        </Container>
                       <div className='relative overflow-hidden bg-morin-skyBlue px-8 pb-10 md:px-0 xl:pb-14'>
                         <HighlightSlider data={highlightData} />
                         <div className='mx-auto mt-7 w-fit md:hidden'>
-                          <MorinButton
+                          <StrokeButton
                             destination='/events'
                             color={colors.morinBlue}
                           >
                             See All Events
-                          </MorinButton>
+                          </StrokeButton>
                         </div>
                         <div
                           className={`absolute bottom-0 -z-1 h-10 w-full translate-y-full bg-morin-skyBlue`}
                         />
                       </div>
+                      </Container>
                     </section>
                     <section>
                       <Container
                         border={true}
-                        bgTail={true}
+                        bgTail={false}
                         safeWidth={true}
                         background={colors.white}
                         classNameOuter='pb-0'
                       >
-                        <div className='mb-8 flex w-full flex-wrap'>
+                        <div className='mb-8 flex w-full flex-nowrap flex-col lg:flex-row'>
                           <h2 className='mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig'>
                             Get Daily Inspirations from our Social Media
                           </h2>
-                          <div className='w-full md:flex md:w-32 md:items-end'>
-                            <FancyLink
-                              destination='https://www.instagram.com/morin_jam/'
-                              blank
-                              className='mx-auto flex h-6 w-fit flex-wrap items-center rounded-full bg-morin-blue px-4 text-defaultSmall font-semibold text-white md:mb-1.5 md:mr-0 xl:h-7 xl:text-default'
-                            >
-                              <span className='pt-0.5 xl:pt-1'>@morin_jam</span>
-                            </FancyLink>
+                          <div>
+                          <SolidButton
+                            destination='https://www.instagram.com/morin_jam/'
+                            arrow={false}
+                            targetBlank={true}
+                          color={colors.morinBlue}
+                          >@morin_jam</SolidButton>
                           </div>
+
                         </div>
                       </Container>
                       <div className='pb-10 xl:pb-14'>

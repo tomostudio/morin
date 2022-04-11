@@ -8,7 +8,7 @@ import Layout from "@/components/module/layout";
 import ProductCard from "@/components/module/productCard";
 import GalleryModal from "@/components/module/galleryModal";
 import RecipeSlider from "@/components/sliders/recipeSlider";
-import MorinButton from "@/components/utils/morinButton";
+import StrokeButton from "@/components/utils/strokeButton";
 import { ArrowLarge, Check } from "@/components/utils/svg";
 import colors from "@/helpers/colors";
 
@@ -525,22 +525,22 @@ const RecipeDetail = () => {
               </h2>
 
               <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
-                <MorinButton
+                <StrokeButton
                   arrow={false}
                   color={colors.morinRed}
                   className="mx-0 mr-3"
                   onClick={() => console.log("Print")}
                 >
                   Print
-                </MorinButton>
-                <MorinButton
+                </StrokeButton>
+                <StrokeButton
                   arrow={false}
                   color={colors.morinRed}
                   className="mx-0"
                   onClick={() => console.log("Share")}
                 >
                   Share
-                </MorinButton>
+                </StrokeButton>
               </div>
             </div>
 
@@ -586,13 +586,13 @@ const RecipeDetail = () => {
                   </span>
 
                   <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
-                    <MorinButton
+                    <StrokeButton
                       destination="/recipes"
                       color={colors.morinRed}
                       className="ml-auto"
                     >
                       See All Recipes
-                    </MorinButton>
+                    </StrokeButton>
                   </div>
                 </div>
 

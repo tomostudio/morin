@@ -2,7 +2,7 @@ import Image from "next/image";
 import colors from "@/helpers/colors";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import MorinButton from "../utils/morinButton";
+import StrokeButton from "../utils/strokeButton";
 
 const ImageGallery = ({ name, images }) => {
   return (
@@ -61,14 +61,14 @@ const ContactCard = ({
           {phone && <span>Phone : {phone}</span>}
           {email && <span className="mb-4 xl:mb-8">Email : {email}</span>}
 
-          <MorinButton
+          <StrokeButton
             className="mt-2 lg:ml-0 xl:mt-4"
             color={colors.morinBlue}
             destination={maps}
             targetBlank
           >
             View in Maps
-          </MorinButton>
+          </StrokeButton>
         </div>
       </div>
     </div>

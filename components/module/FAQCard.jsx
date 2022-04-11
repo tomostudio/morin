@@ -1,7 +1,6 @@
 import colors from "@/helpers/colors";
 import React from "react";
 import FancyLink from "../utils/fancyLink";
-import MorinButton from "../utils/morinButton";
 import { Arrow } from "../utils/svg";
 
 const FAQCard = ({ title, onClick }) => {
