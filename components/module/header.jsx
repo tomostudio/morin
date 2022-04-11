@@ -124,14 +124,13 @@ export default function Header({ hamburgerColor }) {
         moveX = moveX + w;
       });
       setMarkerPos(moveX);
+      console.log(moveX);
     }
   };
 
   useEffect(() => {
-    resetNav();
 
     setTimeout(() => {
-      resetNav();
       document.addEventListener('resize', resetNav, false);
     }, 50); // load delay
     return () => {
