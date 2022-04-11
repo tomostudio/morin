@@ -16,7 +16,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-1.png",
     imgAlt: "Mixed Berry Jam Tartlets",
     title: "Mixed Berry Jam Tartlets",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "35",
     difficulty: "Hard",
   },
@@ -25,7 +25,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-2.png",
     imgAlt: "Strawberry Trifle",
     title: "Strawberry Trifle",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "30",
     difficulty: "Med",
   },
@@ -34,7 +34,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-3.png",
     imgAlt: "Chocolate Fudge Cupcakes",
     title: "Chocolate Fudge Cupcakes",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "45",
     difficulty: "Easy",
   },
@@ -43,7 +43,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-1.png",
     imgAlt: "Mixed Berry Jam Tartlets",
     title: "Mixed Berry Jam Tartlets",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "35",
     difficulty: "Hard",
   },
@@ -52,7 +52,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-2.png",
     imgAlt: "Strawberry Trifle",
     title: "Strawberry Trifle",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "30",
     difficulty: "Med",
   },
@@ -61,7 +61,7 @@ const recipeData = [
     imgPlaceholder: "/recipe/recipe-3.png",
     imgAlt: "Chocolate Fudge Cupcakes",
     title: "Chocolate Fudge Cupcakes",
-    link: "/recipe/recipe-id",
+    link: "/recipes/recipe-id",
     duration: "45",
     difficulty: "Easy",
   },
@@ -235,7 +235,7 @@ const Recipe = () => {
                 </div>
               ))}
 
-              <div className="w-full mt-5 xl:mt-7">
+              <div className="w-full flex justify-center mt-5 xl:mt-7">
                 <StrokeButton
                   arrow={false}
                   color={colors.morinRed}

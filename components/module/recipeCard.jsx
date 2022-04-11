@@ -34,10 +34,10 @@ const RecipeCard = ({
           {duration && difficulty && (
             <div className="flex flex-wrap justify-center">
               <div className={recipeTag}>
-                <span className="pt-0.5 lg:pt-1">{duration} mins</span>
+                <span className="pt-0.5 lg:pt-1 text-[15px] lg:text-default">{duration} mins</span>
               </div>
               <div className={recipeTag}>
-                <span className="pt-0.5 lg:pt-1">{difficulty}</span>
+                <span className="pt-0.5 lg:pt-1 font-default">{difficulty}</span>
               </div>
             </div>
           )}
