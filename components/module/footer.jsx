@@ -68,7 +68,7 @@ const Footer = ({ className }) => {
 
             <div className="w-full flex flex-col justify-end">
               <div className="flex justify-start w-full space-x-1.5 lg:space-x-3 mb-2 lg:mb-4">
-                <FancyLink destination="/" blank={true} className="flex">
+                <FancyLink destination="/" blank={true} className="relative">
                   <Image
                     src={`/ig-white.svg`}
                     alt={'Instagram'}

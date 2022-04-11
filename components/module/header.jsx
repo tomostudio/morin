@@ -10,62 +10,61 @@ const navData = [
   {
     id: 'nav-1',
     title: 'About',
-    value: 'about',
+    dest: 'about',
     ariaText: 'Navigate to the About page',
   },
   {
     id: 'nav-2',
     title: 'Products',
-    value: 'products',
+    dest: 'products',
     ariaText: 'Navigate to the Products page',
   },
   {
     id: 'nav-3',
     title: 'Recipes',
-    value: 'recipes',
+    dest: 'recipe',
     ariaText: 'Navigate to the Recipes page',
   },
   {
     id: 'nav-4',
     title: 'Events',
-    value: 'events',
+    dest: 'events',
     ariaText: 'Navigate to the Events page',
   },
 ];
 
 export default function Header({ hamburgerColor }) {
-  const defaultNav = navData[navData.length - 1];
   const [opened, setOpened] = useState(false);
 
   const toggleHamburgermenu = () => {
     setOpened((prev) => {
-      const menu = document.querySelector('.mobileMenu')
-      const body = document.querySelector('body')
+      const menu = document.querySelector('.mobileMenu');
+      const body = document.querySelector('body');
 
       if (prev) {
         // change into closed state
-        body.classList.remove('overflow-hidden')
-        menu.classList.remove('opacity-100')
-        menu.classList.remove('visible')
-        menu.classList.add('opacity-0')
-        setTimeout(() => menu.classList.add('invisible'), FIFODuration)
+        body.classList.remove('overflow-hidden');
+        menu.classList.remove('opacity-100');
+        menu.classList.remove('visible');
+        menu.classList.add('opacity-0');
+        setTimeout(() => menu.classList.add('invisible'), FIFODuration);
       }
 
       if (!prev) {
         // change into opened state
-        body.classList.add('overflow-hidden')
-        menu.classList.remove('opacity-0')
-        menu.classList.remove('invisible')
-        menu.classList.add('opacity-100')
-        menu.classList.add('visible')
+        body.classList.add('overflow-hidden');
+        menu.classList.remove('opacity-0');
+        menu.classList.remove('invisible');
+        menu.classList.add('opacity-100');
+        menu.classList.add('visible');
       }
 
-      return !prev
-    })
-  }
+      return !prev;
+    });
+  };
 
   const [markerW, setMarkerW] = useState(120);
-  const [markerPos, setMarkerPos] = useState(0);
+  const [markerPos, setMarkerPos] = useState(381);
   let widthData = [];
 
   const defaultNavRef = useRef();
@@ -101,8 +100,6 @@ export default function Header({ hamburgerColor }) {
   };
 
   const resetNav = () => {
-    console.log('reset');
-
     setMarkerW(defaultNavRef.current.clientWidth);
     //update all nav width data
     navRef.current
@@ -114,31 +111,33 @@ export default function Header({ hamburgerColor }) {
     defaultNavRef.current.classList.add('focus');
 
     let moveX = 0;
-    widthData.forEach((w, id) => {
+    widthData.forEach((w) => {
       moveX = moveX + w;
     });
     setMarkerPos(moveX);
   };
 
   useEffect(() => {
-    resetNav();
+    setTimeout(() => {
+      resetNav();
+    }, 50); // load delay
   }, []);
 
-  const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`
-  const FIFODuration = 300
+  const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
+  const FIFODuration = 300;
 
   return (
-    <header className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full pt-8">
+    <header className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full pt-8'>
       <Container>
-        <div className="flex flex-row flex-wrap items-center justify-between">
+        <div className='flex flex-row flex-wrap items-center justify-between'>
           <FancyLink
-            destination="/"
-            a11yText="Navigate to the home page"
-            className="group pointer-events-auto relative h-14 max-md:ml-3 max-md:p-0"
+            destination='/'
+            a11yText='Navigate to the home page'
+            className='group pointer-events-auto relative h-14 max-md:ml-3 max-md:p-0'
           >
-            <MorinLogo className="relative z-2 h-full w-full" />
-            <div className="pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-              <SunRay15 className="h-96 w-96 animate-spin-slow" />
+            <MorinLogo className='relative z-2 h-full w-full' />
+            <div className='pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>
+              <SunRay15 className='h-96 w-96 animate-spin-slow' />
             </div>
           </FancyLink>
           <nav
@@ -149,7 +148,7 @@ export default function Header({ hamburgerColor }) {
           >
             {navData?.map((item, id) => (
               <FancyLink
-                destination='#'
+                destination={`/${item.dest}`}
                 a11yText={item.ariaText}
                 key={item.id}
                 className=''
@@ -163,7 +162,7 @@ export default function Header({ hamburgerColor }) {
               className='default-nav focus'
               onMouseEnter={navMouseOver}
               a11yText={'Navigate to the Get Morin page'}
-              destination='/'
+              destination={`/get-morin`}
               data-id={-1}
               ref={defaultNavRef}
             >
@@ -182,7 +181,7 @@ export default function Header({ hamburgerColor }) {
 
           {/* MOBILE */}
           <Hamburger
-            className="block lg:hidden"
+            className='block lg:hidden'
             opened={opened}
             onClick={() => toggleHamburgermenu()}
             color={hamburgerColor}
@@ -190,35 +189,35 @@ export default function Header({ hamburgerColor }) {
           <div
             className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} invisible -z-1 opacity-0 lg:hidden`}
           >
-            <div className="absolute -top-3/4 left-1/2 -z-1 -translate-x-1/2">
-              <SunRay className="block w-[1000px] animate-spin-slow" />
+            <div className='absolute -top-3/4 left-1/2 -z-1 -translate-x-1/2'>
+              <SunRay className='block w-[1000px] animate-spin-slow' />
             </div>
-            <div className="relative z-1 flex h-full w-full items-center justify-center pb-20">
-              <nav className="flex w-full flex-col space-y-[35px] text-center">
+            <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
+              <nav className='flex w-full flex-col space-y-[35px] text-center'>
                 <FancyLink
-                  destination="/about"
-                  a11yText="Navigate to the About Page"
+                  destination='/about'
+                  a11yText='Navigate to the About Page'
                   className={mobileLink}
                 >
                   About
                 </FancyLink>
                 <FancyLink
-                  destination="/products"
-                  a11yText="Navigate to the Products Page"
+                  destination='/products'
+                  a11yText='Navigate to the Products Page'
                   className={mobileLink}
                 >
                   Products
                 </FancyLink>
                 <FancyLink
-                  destination="/recipes"
-                  a11yText="Navigate to the Recipes Page"
+                  destination='/recipes'
+                  a11yText='Navigate to the Recipes Page'
                   className={mobileLink}
                 >
                   Recipes
                 </FancyLink>
                 <FancyLink
-                  destination="/events"
-                  a11yText="Navigate to the Events Page"
+                  destination='/events'
+                  a11yText='Navigate to the Events Page'
                   className={mobileLink}
                 >
                   Events
@@ -226,17 +225,17 @@ export default function Header({ hamburgerColor }) {
                 <FancyLink
                   blank={true}
                   destination={'/'}
-                  a11yText="Navigate to the about page"
+                  a11yText='Navigate to the about page'
                   className={mobileLink}
                 >
                   Get Morin!
                 </FancyLink>
               </nav>
-              <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
+              <div className='absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5'>
                 <FancyLink
-                  destination="/"
+                  destination='/'
                   blank={true}
-                  className="flex leading-none"
+                  className='flex leading-none'
                 >
                   <Image
                     src={`/ig.svg`}
@@ -246,9 +245,9 @@ export default function Header({ hamburgerColor }) {
                   />
                 </FancyLink>
                 <FancyLink
-                  destination="/"
+                  destination='/'
                   blank={true}
-                  className="flex leading-none"
+                  className='flex leading-none'
                 >
                   <Image
                     src={`/tw.svg`}
@@ -258,9 +257,9 @@ export default function Header({ hamburgerColor }) {
                   />
                 </FancyLink>
                 <FancyLink
-                  destination="/"
+                  destination='/'
                   blank={true}
-                  className="flex leading-none"
+                  className='flex leading-none'
                 >
                   <Image
                     src={`/fb.svg`}
@@ -275,5 +274,5 @@ export default function Header({ hamburgerColor }) {
         </div>
       </Container>
     </header>
-  )
+  );
 }
