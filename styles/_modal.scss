@@ -1,0 +1,222 @@
+// $overlayBackground: rgba(0, 0, 0, 0.75);
+$overlayBackground: rgba(255, 255, 255, 0.6);
+$white: #fff;
+$black: #000;
+$primary: #175ba7;
+$skyBlue: #d1f1ff;
+$transition-all: all 0.3s;
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: $transition-all;
+
+  @media (min-width: 768px) {
+    .PageModal__Content {
+      bottom: -100%;
+      transition: $transition-all;
+    }
+  }
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+
+  @media (min-width: 768px) {
+    .PageModal__Content {
+      bottom: 0;
+    }
+  }
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+
+  @media (min-width: 768px) {
+    .PageModal__Content {
+      bottom: -100%;
+    }
+  }
+}
+
+// PAGE MODAL
+.PageModal__Content {
+  @apply max-w-screen-2xl;
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: $white;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  outline: none;
+
+  @media (min-width: 768px) {
+    width: calc(100% - 32px);
+    height: 650px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    top: 15%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    width: calc(100% - 64px);
+  }
+}
+
+.PageModal__Content--Outer {
+  padding: 80px 30px 50px;
+
+  @media (min-width: 768px) {
+    background: $white;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 40px;
+  }
+}
+
+.PageModal__Content--Inner {
+  @media (min-width: 768px) {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 795px;
+    margin: 0 auto;
+  }
+}
+
+// BASIC MODAL
+.BasicModal__Content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  outline: none;
+
+  @media (min-width: 768px) {
+    max-width: calc(100% - 160px);
+    max-height: calc(100% - 160px);
+    height: auto;
+    border-radius: 20px;
+    overflow: hidden;
+
+    &.even {
+      color: $primary;
+      background: $skyBlue;
+
+      .BasicModal__Close {
+        color: inherit;
+        border-color: $primary;
+      }
+    }
+
+    &.odd {
+      color: $white;
+      background: $primary;
+
+      .BasicModal__Close {
+        color: inherit;
+        border-color: $white;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    max-width: calc(100% - 240px);
+    max-height: 750px;
+  }
+}
+
+.BasicModal__Content--Outer {
+  padding: 80px 30px 50px;
+
+  @media (min-width: 1024px) {
+    padding: 65px 90px;
+  }
+}
+
+// GALLERY MODAL
+.GalleryModal__Content {
+  .swiper-slide {
+    cursor: default;
+  }
+}
+
+.GalleryModal__Content--Inner {
+  // 160px is to accomodate swiper's navigational buttons
+  max-width: calc(1024px + 160px);
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MIXED
+.PageModal__Overlay,
+.BasicModal__Overlay,
+.GalleryModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  background: $overlayBackground;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.Modal__Close,
+.PageModal__Close,
+.BasicModal__Close,
+.GalleryModal__Close {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  color: $black;
+  z-index: 1;
+
+  > svg {
+    stroke-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+    color: $primary;
+    border: 2px solid $primary;
+    border-radius: 50%;
+    padding: 7px;
+
+    > svg {
+      stroke-width: 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    top: 40px;
+    right: 40px;
+  }
+}
+
+.GalleryModal__Close {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
