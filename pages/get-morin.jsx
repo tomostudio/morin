@@ -186,7 +186,7 @@ const GetMorin = () => {
           </div>
           <div className="flex space-x-48 mt-20 mb-20 w-full">
             <h2 className="text-h2 font-nutmeg text-morin-blue w-72">
-              Shop Online
+              Shop Offline
             </h2>
             <div className="w-full flex flex-col space-y-12 justify-start">
               <div className="flex flex-col justify-start">
