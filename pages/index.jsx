@@ -21,119 +21,120 @@ import StrokeButton from '@/components/utils/strokeButton';
 import SolidButton from '@/components/utils/SolidButton';
 import HeroCategory from '@/components/module/heroCategory';
 import { HeartSmall, HeartLarge, Scribble } from '@/components/utils/svg';
-
-const categoryData = [
-  {
-    imgSrc: '/category/category-1.jpg',
-    imgProduct: '/category/hover-1.png',
-    imgPlaceholder: '/category/category-1.png',
-    imgAlt: 'Spreads',
-    title: 'Spreads',
-    link: '/products/spreads',
-  },
-  {
-    imgSrc: '/category/category-2.jpg',
-    imgProduct: '/category/hover-2.png',
-    imgPlaceholder: '/category/category-2.png',
-    imgAlt: 'Jams',
-    title: 'Jams',
-    link: '/products/jams',
-  },
-  {
-    imgSrc: '/category/category-3.jpg',
-    imgProduct: '/category/hover-3.png',
-    imgPlaceholder: '/category/category-3.png',
-    imgAlt: 'Toppings',
-    title: 'Toppings',
-    link: '/products/toppings',
-  },
-  {
-    imgSrc: '/category/category-4.jpg',
-    imgProduct: '/category/hover-4.png',
-    imgPlaceholder: '/category/category-4.png',
-    imgAlt: 'Fillings',
-    title: 'Fillings',
-    link: '/products/fillings',
-  },
-];
-
-const recipeData = [
-  {
-    imgSrc: '/recipe/recipe-1.jpg',
-    imgPlaceholder: '/recipe/recipe-1.png',
-    imgAlt: 'Mixed Berry Jam Tartlets',
-    title: 'Mixed Berry Jam Tartlets',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-2.jpg',
-    imgPlaceholder: '/recipe/recipe-2.png',
-    imgAlt: 'Strawberry Trifle',
-    title: 'Strawberry Trifle',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-3.jpg',
-    imgPlaceholder: '/recipe/recipe-3.png',
-    imgAlt: 'Chocolate Fudge Cupcakes',
-    title: 'Chocolate Fudge Cupcakes',
-    link: '/recipe/recipe-id',
-  },
-];
-
-const highlightData = [
-  {
-    imgSrc: '/highlight/highlight-1.jpg',
-    imgPlaceholder: '/highlight/highlight-1.png',
-    imgAlt: 'Morin in UPH',
-    title: 'Morin in UPH',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-  {
-    imgSrc: '/highlight/highlight-2.jpg',
-    imgPlaceholder: '/highlight/highlight-2.png',
-    imgAlt: 'Cooking Workshop',
-    title: 'Cooking Workshop',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-  {
-    imgSrc: '/highlight/highlight-1.jpg',
-    imgPlaceholder: '/highlight/highlight-1.png',
-    imgAlt: 'Brown Fox Jumps',
-    title: 'Brown Fox Jumps',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-  {
-    imgSrc: '/highlight/highlight-1.jpg',
-    imgPlaceholder: '/highlight/highlight-1.png',
-    imgAlt: 'Morin in UPH',
-    title: 'Morin in UPH',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-  {
-    imgSrc: '/highlight/highlight-2.jpg',
-    imgPlaceholder: '/highlight/highlight-2.png',
-    imgAlt: 'Cooking Workshop',
-    title: 'Cooking Workshop',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-  {
-    imgSrc: '/highlight/highlight-1.jpg',
-    imgPlaceholder: '/highlight/highlight-1.png',
-    imgAlt: 'Brown Fox Jumps',
-    title: 'Brown Fox Jumps',
-    date: '24 Juli 2021',
-    link: '/highlight/highlight-id',
-  },
-];
+import { useEffectInit } from '@/components/utils/preset';
 
 
 export default function Home() {
+  const categoryData = [
+    {
+      imgSrc: '/category/category-1.jpg',
+      imgProduct: '/category/hover-1.png',
+      imgPlaceholder: '/category/category-1.png',
+      imgAlt: 'Spreads',
+      title: 'Spreads',
+      link: '/products/spreads',
+    },
+    {
+      imgSrc: '/category/category-2.jpg',
+      imgProduct: '/category/hover-2.png',
+      imgPlaceholder: '/category/category-2.png',
+      imgAlt: 'Jams',
+      title: 'Jams',
+      link: '/products/jams',
+    },
+    {
+      imgSrc: '/category/category-3.jpg',
+      imgProduct: '/category/hover-3.png',
+      imgPlaceholder: '/category/category-3.png',
+      imgAlt: 'Toppings',
+      title: 'Toppings',
+      link: '/products/toppings',
+    },
+    {
+      imgSrc: '/category/category-4.jpg',
+      imgProduct: '/category/hover-4.png',
+      imgPlaceholder: '/category/category-4.png',
+      imgAlt: 'Fillings',
+      title: 'Fillings',
+      link: '/products/fillings',
+    },
+  ];
+  
+  const recipeData = [
+    {
+      imgSrc: '/recipe/recipe-1.jpg',
+      imgPlaceholder: '/recipe/recipe-1.png',
+      imgAlt: 'Mixed Berry Jam Tartlets',
+      title: 'Mixed Berry Jam Tartlets',
+      link: '/recipe/recipe-id',
+    },
+    {
+      imgSrc: '/recipe/recipe-2.jpg',
+      imgPlaceholder: '/recipe/recipe-2.png',
+      imgAlt: 'Strawberry Trifle',
+      title: 'Strawberry Trifle',
+      link: '/recipe/recipe-id',
+    },
+    {
+      imgSrc: '/recipe/recipe-3.jpg',
+      imgPlaceholder: '/recipe/recipe-3.png',
+      imgAlt: 'Chocolate Fudge Cupcakes',
+      title: 'Chocolate Fudge Cupcakes',
+      link: '/recipe/recipe-id',
+    },
+  ];
+  
+  const highlightData = [
+    {
+      imgSrc: '/highlight/highlight-1.jpg',
+      imgPlaceholder: '/highlight/highlight-1.png',
+      imgAlt: 'Morin in UPH',
+      title: 'Morin in UPH',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+    {
+      imgSrc: '/highlight/highlight-2.jpg',
+      imgPlaceholder: '/highlight/highlight-2.png',
+      imgAlt: 'Cooking Workshop',
+      title: 'Cooking Workshop',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+    {
+      imgSrc: '/highlight/highlight-1.jpg',
+      imgPlaceholder: '/highlight/highlight-1.png',
+      imgAlt: 'Brown Fox Jumps',
+      title: 'Brown Fox Jumps',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+    {
+      imgSrc: '/highlight/highlight-1.jpg',
+      imgPlaceholder: '/highlight/highlight-1.png',
+      imgAlt: 'Morin in UPH',
+      title: 'Morin in UPH',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+    {
+      imgSrc: '/highlight/highlight-2.jpg',
+      imgPlaceholder: '/highlight/highlight-2.png',
+      imgAlt: 'Cooking Workshop',
+      title: 'Cooking Workshop',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+    {
+      imgSrc: '/highlight/highlight-1.jpg',
+      imgPlaceholder: '/highlight/highlight-1.png',
+      imgAlt: 'Brown Fox Jumps',
+      title: 'Brown Fox Jumps',
+      date: '24 Juli 2021',
+      link: '/highlight/highlight-id',
+    },
+  ];
+  
   const containerRef = useRef(null);
 
   // SET OBJECT ANIMATION
@@ -223,15 +224,13 @@ export default function Home() {
   // };
 
   useEffect(() => {
-    window.addEventListener('LocoCall', (e) => {
-      console.log('triggered', e.detail);
-    });
+    // window.addEventListener('LocoCall', (e) => {
+    //   console.log('triggered', e.detail);
+    // });
+    useEffectInit();
     return () => {};
   }, []);
 
-  if (typeof window === 'undefined') {
-    return false;
-  }
 
   return (
     <>
@@ -254,7 +253,7 @@ export default function Home() {
             {/* SCROLL TRIGGER WRAPPER */}
             {/* <ScrollTriggerWrapper animation={animationObj}> */}
               {/* CONTENT STARTS */}
-              <Header />
+              <Header mobileDark={false} />
               <LazyMotion features={domAnimation}>
                 <m.div
                   initial='initial'
@@ -363,12 +362,6 @@ export default function Home() {
                               Amet Lorem Ipsum Dolor sit Amet Lorem Ipsum Amet
                               Lorem Ipsum.
                             </p>
-                            {/* <div className="block min-w-[175px] mx-auto lg:hidden">
-                              <RecipeTitleMobile />
-                            </div>
-                            <div className="hidden lg:block">
-                              <RecipeTitleDesktop />
-                            </div> */}
                           </div>
                           <div className='order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12'>
                             <StrokeButton

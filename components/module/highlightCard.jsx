@@ -16,7 +16,7 @@ const HighlightCard = ({
     <div className='px-0 pt-2 lg:p-3'>
       <FancyLink
         destination={link}
-        className='flex flex-wrap w-full h-full min-h-[160px] rounded-2xl overflow-hidden xl:min-h-[215px]  hover:shadow-softer hover:-translate-y-2 transition-all duration-300'
+        className='flex flex-wrap w-full h-full min-h-[160px] rounded-2xl overflow-hidden xl:min-h-[215px]  hover:shadow-softer hover:rotate-2 transition-all duration-300'
       >
         <div className='relative w-5/12'>
           <Image

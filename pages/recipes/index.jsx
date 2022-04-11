@@ -7,6 +7,7 @@ import Footer from "@/components/module/footer";
 import RecipeCard from "@/components/module/recipeCard";
 import StrokeButton from "@/components/utils/strokeButton";
 import RecipeFilter from "@/components/utils/recipeFilter";
+import { useEffectInit } from "@/components/utils/preset";
 import { Filter } from "@/components/utils/svg";
 
 const recipeData = [
@@ -151,6 +152,7 @@ const Recipe = () => {
   };
 
   useEffect(() => {
+    useEffectInit();
     setFilterOpen(false);
   }, []);
 
@@ -158,7 +160,7 @@ const Recipe = () => {
 
   return (
     <Layout>
-      <Header />
+    <Header mobileDark={false} />
 
       <div className="w-full bg-morin-peach">
         <div className=" relative w-full h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">

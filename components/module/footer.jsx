@@ -18,16 +18,16 @@ const Footer = ({ className }) => {
             Sign up for our weekly newsletter, new products, exclusive
             promotions, job openings, and more.
           </span>
-          <form className='flex w-full mt-5 border-2 rounded-2xl overflow-hidden lg:mt-6'>
-            <div className='relative flex flex-wrap w-full h-9 lg:h-10'>
+          <form className='flex w-full mt-5  overflow-hidden lg:mt-6'>
+            <div className='relative flex flex-nowrap w-full h-10 lg:h-11'>
               <input
-                className='w-[calc(100%-70px)] h-full px-5 default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:text-default'
+                className='w-full h-full px-5 pt-1 border-2 rounded-l-2xl border-white first-letter:default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:pt-[2px] lg:text-default'
                 type='email'
                 placeholder='Your Email'
               />
               <FancyLink
                 destination=''
-                className='w-[70px] h-full border-l-2 px-2 text-center default-type text-defaultSmall leading-none hover:bg-white hover:text-morin-blue transition-background duration-300 lg:w-24 lg:text-default'
+                className='h-full flex-grow-0 border-2 rounded-r-2xl border-l-0 border-white  pl-4 pr-6 pt-1 text-center default-type text-defaultSmall leading-none hover:bg-white hover:text-morin-blue transition-all duration-300 lg:w-24 lg:pt-[2px] lg:text-default'
               >
                 Submit
               </FancyLink>

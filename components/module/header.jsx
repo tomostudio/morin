@@ -11,6 +11,7 @@ import {
   Instagram,
   Facebook,
 } from '../utils/svg';
+import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset';
 
 const navData = [
   {
@@ -39,7 +40,7 @@ const navData = [
   },
 ];
 
-export default function Header({ hamburgerColor }) {
+export default function Header({ mobileDark = true }) {
   const [opened, setOpened] = useState(false);
 
   const toggleHamburgermenu = () => {
@@ -128,13 +129,28 @@ export default function Header({ hamburgerColor }) {
     }
   };
 
+  const [darkMobile, setDarkMobile] = useState(mobileDark);
+  
+  const scrollListener = () => {
+    if(window.scrollY > 250){
+      setDarkMobile(true);
+    }
+    else{
+      setDarkMobile(mobileDark);
+    }
+    console.log(darkMobile, window.scrollY)
+  }
+
+
   useEffect(() => {
 
     setTimeout(() => {
       document.addEventListener('resize', resetNav, false);
+      document.addEventListener('scroll', scrollListener, false);
     }, 50); // load delay
     return () => {
       document.removeEventListener('resize', resetNav, false);
+      document.removeEventListener('scroll', scrollListener, false);
     };
   }, []);
 
@@ -199,22 +215,22 @@ export default function Header({ hamburgerColor }) {
             className='block lg:hidden'
             opened={opened}
             onClick={() => toggleHamburgermenu()}
-            color={hamburgerColor}
+            dark={darkMobile}
           />
           <div
             className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} invisible -z-1 opacity-0 lg:hidden`}
           >
-            <div className='absolute -top-3/4 left-1/2 -z-1 -translate-x-1/2'>
-              <SunRay className='block w-[1000px] animate-spin-slower' />
+            <div className='absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] '>
+              <SunRay className='block w-full animate-spin-slower h-full' />
             </div>
             <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
               <nav className='flex w-full flex-col space-y-[35px] text-center'>
                 {navData?.map((item, id) => (
                   <FancyLink
                     key={id}
-                    destination={item.value}
+                    destination={`/${item.dest}`}
                     a11yText={item.ariaText}
-                    className={mobileLink}
+                    className={`${mobileLink} ${Math.random() >= 0.5 ? rotate3 : rotate_3} `}
                   >
                     {item.title}
                   </FancyLink>
@@ -223,7 +239,7 @@ export default function Header({ hamburgerColor }) {
                   blank={true}
                   destination={'/'}
                   a11yText='Navigate to the about page'
-                  className={mobileLink}
+                  className={`${mobileLink} ${Math.random() >= 0.5 ? rotate3 : rotate_3}`}
                 >
                   Get Morin!
                 </FancyLink>
@@ -232,7 +248,7 @@ export default function Header({ hamburgerColor }) {
                 <FancyLink
                   destination='/'
                   blank={true}
-                  className='flex leading-none'
+                  className={`flex leading-none ${defaultHover}`}
                 >
                   <Image
                     src={`/IG.svg`}
@@ -244,14 +260,14 @@ export default function Header({ hamburgerColor }) {
                 <FancyLink
                   destination='/'
                   blank={true}
-                  className='flex leading-none'
+                  className={`flex leading-none ${defaultHover}`}
                 >
                   <Twitter className='w-9 h-9' />
                 </FancyLink>
                 <FancyLink
                   destination='/'
                   blank={true}
-                  className='flex leading-none'
+                  className={`flex leading-none ${defaultHover}`}
                 >
                   <Facebook className='w-9 h-9' />
                 </FancyLink>
