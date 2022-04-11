@@ -1,55 +1,55 @@
-import Image from "next/image";
-import Footer from "@/components/module/footer";
-import Header from "@/components/module/header";
-import Layout from "@/components/module/layout";
-import MorinButton from "@/components/utils/morinButton";
-import EventCard from "@/components/module/eventCard";
-import colors from "@/helpers/colors";
+import Image from 'next/image'
+import Footer from '@/components/module/footer'
+import Header from '@/components/module/header'
+import Layout from '@/components/module/layout'
+import MorinButton from '@/components/utils/morinButton'
+import EventCard from '@/components/module/eventCard'
+import colors from '@/helpers/colors'
 
 const eventsData = [
   {
-    type: "Group Event",
-    date: "24 Juli 2021",
-    title: "Morin in UPH",
-    image: "/event/event-1.jpg",
-    link: "/events/event-id",
+    type: 'Group Event',
+    date: '24 Juli 2021',
+    title: 'Morin in UPH',
+    image: '/event/event-1.jpg',
+    link: '/events/event-id',
   },
   {
-    type: "Workshop",
-    date: "24 Juli 2021",
-    title: "Cooking Workshop",
-    image: "/event/event-2.jpg",
-    link: "/events/event-id",
+    type: 'Workshop',
+    date: '24 Juli 2021',
+    title: 'Cooking Workshop',
+    image: '/event/event-2.jpg',
+    link: '/events/event-id',
   },
   {
-    type: "Group Event",
-    date: "24 Juli 2021",
-    title: "Factory Tour with SDN",
-    image: "/event/event-3.jpg",
-    link: "/events/event-id",
+    type: 'Group Event',
+    date: '24 Juli 2021',
+    title: 'Factory Tour with SDN',
+    image: '/event/event-3.jpg',
+    link: '/events/event-id',
   },
   {
-    type: "Group Event",
-    date: "24 Juli 2021",
-    title: "Morin in UPH",
-    image: "/event/event-1.jpg",
-    link: "/events/event-id",
+    type: 'Group Event',
+    date: '24 Juli 2021',
+    title: 'Morin in UPH',
+    image: '/event/event-1.jpg',
+    link: '/events/event-id',
   },
   {
-    type: "Workshop",
-    date: "24 Juli 2021",
-    title: "Cooking Workshop",
-    image: "/event/event-2.jpg",
-    link: "/events/event-id",
+    type: 'Workshop',
+    date: '24 Juli 2021',
+    title: 'Cooking Workshop',
+    image: '/event/event-2.jpg',
+    link: '/events/event-id',
   },
   {
-    type: "Group Event",
-    date: "24 Juli 2021",
-    title: "Factory Tour with SDN",
-    image: "/event/event-3.jpg",
-    link: "/events/event-id",
+    type: 'Group Event',
+    date: '24 Juli 2021',
+    title: 'Factory Tour with SDN',
+    image: '/event/event-3.jpg',
+    link: '/events/event-id',
   },
-];
+]
 
 const Events = () => {
   return (
@@ -76,14 +76,11 @@ const Events = () => {
           </div>
         </div>
 
-        <div className="p-4 lg:p-8">
+        <div className="px-4 my-5 md:my-10 md:px-8">
           <div className="max-w-screen-2xl mx-auto">
-            <div className="flex flex-wrap -mx-1 lg:-mx-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
               {eventsData?.map((item, index) => (
-                <div
-                  className="w-full px-1 mb-2 md:w-1/2 lg:px-2 lg:mb-4 xl:px-2.5 xl:mb-5"
-                  key={`${item.title}[${index}]`}
-                >
+                <div className="w-full" key={`${item.title}[${index}]`}>
                   <EventCard
                     imgSrc={item.image}
                     imgAlt={item.title}
@@ -94,16 +91,15 @@ const Events = () => {
                   />
                 </div>
               ))}
-
-              <div className="w-full mt-5 xl:my-10">
-                <MorinButton
-                  arrow={false}
-                  color={colors.morinBlue}
-                  onClick={() => console.log("load more")}
-                >
-                  Show More
-                </MorinButton>
-              </div>
+            </div>
+            <div className="w-full mt-5 md:mt-10">
+              <MorinButton
+                arrow={false}
+                color={colors.morinBlue}
+                onClick={() => console.log('load more')}
+              >
+                Show More
+              </MorinButton>
             </div>
           </div>
         </div>
@@ -111,7 +107,7 @@ const Events = () => {
         <Footer />
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Events;
+export default Events

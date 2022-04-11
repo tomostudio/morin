@@ -12,7 +12,7 @@ const GetMorin = () => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" />
 
-      <Container>
+      <Container className="mt-8 lg:mt-0">
         <div className="flex flex-col leading-tight">
           <div className="flex flex-col lg:flex-row lg:space-x-48 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
@@ -155,16 +155,16 @@ const GetMorin = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row lg:space-x-48 lg:mt-20 lg:mb-20 w-full">
+          <div className="flex flex-col lg:flex-row lg:space-x-48 mt-10 mb-10 lg:mt-20 lg:mb-20 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
               Shop Offline
             </h2>
-            <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
+            <div className="w-full flex flex-col items-center lg:items-start mt-6 lg:mt-0 md:mt-8 md:space-y-8 space-y-6 lg:space-y-12 justify-start">
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
                   Major Distributors
                 </span>
-                <div className="mt-4 lg:mt-10 md:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                <div className="mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                   <FancyLink
                     destination="#"
                     className="h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]"
@@ -285,6 +285,53 @@ const GetMorin = () => {
                       />
                     </div>
                   </FancyLink>
+                </div>
+              </div>
+              <div className="flex flex-col justify-start">
+                <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
+                  Retailers
+                </span>
+                <div className="mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 gap-6">
+                  <div className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue">
+                    <span className="font-bold">TOKO 1</span>
+                    <p className="leading-5 text-center lg:text-left">
+                      Jl. Lorem Ipsum No.123
+                      <br />
+                      Jakarta Barat, 11618
+                      <br />
+                      +62814339854732
+                    </p>
+                  </div>
+                  <div className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue">
+                    <span className="font-bold">TOKO 1</span>
+                    <p className="leading-5 text-center lg:text-left">
+                      Jl. Lorem Ipsum No.123
+                      <br />
+                      Jakarta Barat, 11618
+                      <br />
+                      +62814339854732
+                    </p>
+                  </div>
+                  <div className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue">
+                    <span className="font-bold">TOKO 1</span>
+                    <p className="leading-5 text-center lg:text-left">
+                      Jl. Lorem Ipsum No.123
+                      <br />
+                      Jakarta Barat, 11618
+                      <br />
+                      +62814339854732
+                    </p>
+                  </div>
+                  <div className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue">
+                    <span className="font-bold">TOKO 1</span>
+                    <p className="leading-5 text-center lg:text-left">
+                      Jl. Lorem Ipsum No.123
+                      <br />
+                      Jakarta Barat, 11618
+                      <br />
+                      +62814339854732
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
