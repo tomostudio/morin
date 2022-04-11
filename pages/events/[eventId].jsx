@@ -40,7 +40,7 @@ const EventDetail = () => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" />
 
-      <Container>
+      <Container className='mt-8 lg:mt-0'>
         <div className="text-morin-blue leading-tight">
           <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
             <span className="block font-semibold mb-2.5">
