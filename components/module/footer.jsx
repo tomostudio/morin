@@ -52,7 +52,7 @@ const Footer = ({ className }) => {
             <FancyLink destination='/events' className={`footer-link ${defaultHover}`}>
               Events
             </FancyLink>
-            <FancyLink destination='/' className={`footer-link ${defaultHover}`}>
+            <FancyLink destination='/get-morin' className={`footer-link ${defaultHover}`}>
               Get Morin
             </FancyLink>
           </div>
