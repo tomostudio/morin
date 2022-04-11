@@ -309,11 +309,11 @@ export default function Home() {
                         safeWidth={false}
                         className='!px-0'
                       >
-                        <div className='flex w-full flex-row  flex-nowrap lg:items-start'>
+                        <div className='flex w-full flex-col lg:flex-row flex-nowrap lg:items-start'>
                           {/* Sticky */}
                           <div className='home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0'>
-                            <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8'>
-                              <h2 className='mb-[15px] text-center font-nutmeg text-[28px] font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px]'>
+                            <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto'>
+                              <h2 className=' mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] '>
                                 Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum
                                 Amet Lorem.
                               </h2>
@@ -325,8 +325,8 @@ export default function Home() {
                                 See All Products
                               </MorinButton>
                             </div>
-                            <div className='mx-auto mb-5 flex max-w-[90px] flex-wrap justify-between lg:mx-0 lg:mb-10 lg:max-w-[185px]'>
-                              <div className='relative h-6 w-6 lg:h-[44px] lg:w-[44px]'>
+                            <div className='mx-auto mb-5 flex flex-wrap justify-center lg:mx-0 lg:mb-10 space-x-4 lg:space-x-6 lg:justify-start'>
+                              <div className='relative h-8 w-8 lg:h-12 lg:w-12'>
                                 <Image
                                   src={`/halal.svg`}
                                   alt={'Halal'}
@@ -334,7 +334,7 @@ export default function Home() {
                                   objectFit='contain'
                                 />
                               </div>
-                              <div className='relative h-6 w-6 lg:h-[44px] lg:w-[44px]'>
+                              <div className='relative h-8 w-8 lg:h-12 lg:w-12'>
                                 <Image
                                   src={`/pom.svg`}
                                   alt={'Badan POM'}
@@ -342,7 +342,7 @@ export default function Home() {
                                   objectFit='contain'
                                 />
                               </div>
-                              <div className='relative h-6 w-6 lg:h-[44px] lg:w-[44px]'>
+                              <div className='relative  -8 w-8 lg:h-12 lg:w-12'>
                                 <Image
                                   src={`/topbrand.svg`}
                                   alt={'Top Brand'}
