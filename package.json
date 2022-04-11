@@ -33,8 +33,10 @@
     "postcss-preset-env": "^7.4.3",
     "preact": "^10.7.0",
     "react": "^18.0.0",
+    "react-collapsible": "^2.8.4",
     "react-dom": "^18.0.0",
     "react-locomotive-scroll": "^0.2.0",
+    "react-modal": "^3.14.4",
     "sass": "^1.49.11",
     "swiper": "^8.1.0"
   },
