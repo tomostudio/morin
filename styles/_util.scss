@@ -49,7 +49,12 @@ main {
   &:hover {
     & * {
       color: white;
+    }
+    & svg:not(.fill-hover) * {
       stroke: white;
+    }
+    & svg.fill-hover * {
+      fill: white;
     }
   }
 }
@@ -70,5 +75,12 @@ main {
   &::-webkit-scrollbar {
     display: none;
     width: 0 !important;
+  }
+}
+
+.getmorin-list {
+  @apply grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6;
+  & > a {
+    @apply p-4 h-32 md:h-40 lg:h-32;
   }
 }

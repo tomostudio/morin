@@ -198,7 +198,7 @@ const Recipe = () => {
               <div className="w-4 md:w-6 lg:w-8">
                 <Filter
                   color={filterOpen ? colors.white : colors.morinRed}
-                  className="transition-all"
+                  className="transition-all fill-hover"
                 />
               </div>
             </StrokeButton>

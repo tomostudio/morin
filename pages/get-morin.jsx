@@ -4,8 +4,6 @@ import Layout from '@/components/module/layout';
 import Header from '@/components/module/header';
 import Footer from '@/components/module/footer';
 import Image from 'next/image';
-import colors from '@/helpers/colors';
-import HighlightCard from '@/components/module/highlightCard';
 import FancyLink from '@/components/utils/fancyLink';
 import { useEffectInit } from '@/components/utils/preset';
 
@@ -35,12 +33,12 @@ const GetMorin = () => {
                 <span className='md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue'>
                   Online Marketplace
                 </span>
-                <div className='mt-4 lg:mt-10 md:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6'>
+                <div className='mt-4 lg:mt-10 md:mt-6 getmorin-list'>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/tokopedia.png'
                         blurDataURL='/marketplace/tokopedia.png'
@@ -53,9 +51,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer '
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/shopee.png'
                         blurDataURL='/marketplace/shopee.png'
@@ -68,9 +66,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/lazada.png'
                         blurDataURL='/marketplace/lazada.png'
@@ -83,9 +81,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/blibli.png'
                         blurDataURL='/marketplace/blibli.png'
@@ -98,9 +96,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/tokopedia.png'
                         blurDataURL='/marketplace/tokopedia.png'
@@ -113,9 +111,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/shopee.png'
                         blurDataURL='/marketplace/shopee.png'
@@ -128,9 +126,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/lazada.png'
                         blurDataURL='/marketplace/lazada.png'
@@ -143,9 +141,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/blibli.png'
                         blurDataURL='/marketplace/blibli.png'
@@ -169,12 +167,12 @@ const GetMorin = () => {
                 <span className='md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue'>
                   Major Distributors
                 </span>
-                <div className='mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6'>
+                <div className='mt-4 lg:mt-10 md:mt-6 getmorin-list'>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/indomaret.png'
                         blurDataURL='/marketplace/indomaret.png'
@@ -187,9 +185,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/alfamart.png'
                         blurDataURL='/marketplace/alfamart.png'
@@ -202,9 +200,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/transmart.png'
                         blurDataURL='/marketplace/transmart.png'
@@ -217,9 +215,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/carrefour.png'
                         blurDataURL='/marketplace/carrefour.png'
@@ -232,9 +230,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/indomaret.png'
                         blurDataURL='/marketplace/indomaret.png'
@@ -247,9 +245,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/alfamart.png'
                         blurDataURL='/marketplace/alfamart.png'
@@ -262,9 +260,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/transmart.png'
                         blurDataURL='/marketplace/transmart.png'
@@ -277,9 +275,9 @@ const GetMorin = () => {
                   </FancyLink>
                   <FancyLink
                     destination='#'
-                    className='h-20 md:h-32 flex justify-center items-center rounded-2xl shadow-[2px_2px_4px_rgba(0,0,0,0.15)]'
+                    className=' flex justify-center items-center rounded-2xl shadow-softer'
                   >
-                    <div className='relative w-3/5 h-full'>
+                    <div className='relative w-full h-full'>
                       <Image
                         src='/marketplace/carrefour.png'
                         blurDataURL='/marketplace/carrefour.png'

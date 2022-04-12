@@ -125,7 +125,6 @@ export default function Header({ mobileDark = true }) {
         moveX = moveX + w;
       });
       setMarkerPos(moveX);
-      console.log(moveX);
     }
   };
 

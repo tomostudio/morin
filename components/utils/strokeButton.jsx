@@ -14,7 +14,7 @@ const StrokeButton = ({
   onClick = () => {},
   ...others
 }) => {
-  const defaultClass = `stroke-button flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 hover:shadow-softer hover:bg-current duration-300 transition-all${
+  const defaultClass = `stroke-button flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 hover:shadow-softer hover:bg-current duration-300 transition-all ${
     center ? 'mx-auto' : ''
   } `;
 
