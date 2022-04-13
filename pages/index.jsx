@@ -18,7 +18,7 @@ import HighlightSlider from '@/components/sliders/highlightSlider';
 import InstagramSlider from '@/components/sliders/instagramSlider';
 import RecipeSlider from '@/components/sliders/recipeSlider';
 import StrokeButton from '@/components/utils/strokeButton';
-import SolidButton from '@/components/utils/SolidButton';
+import SolidButton from '@/components/utils/solidButton';
 import HeroCategory from '@/components/module/heroCategory';
 import { HeartSmall, HeartLarge, Scribble } from '@/components/utils/svg';
 import { useEffectInit } from '@/components/utils/preset';
