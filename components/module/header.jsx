@@ -163,7 +163,7 @@ export default function Header({ mobileDark = true }) {
           <FancyLink
             destination='/'
             a11yText='Navigate to the home page'
-            className='group pointer-events-auto relative h-14 max-md:ml-3 max-md:p-0'
+            className='group pointer-events-auto relative h-9 lg:h-14 max-md:p-0'
           >
             <MorinLogo className='relative z-2 h-full w-full' />
             <div className='pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>

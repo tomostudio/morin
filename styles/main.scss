@@ -36,7 +36,6 @@ body {
   }
 }
 
-
 @mixin setflex-center {
   @apply flex justify-center items-center flex-row;
 }
@@ -49,4 +48,8 @@ body {
 }
 .absolute-center {
   @include absolute-center();
+}
+
+.aboutLineMobile {
+  transform: scale(-1, 1) rotate(20deg);
 }

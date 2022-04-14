@@ -16,7 +16,7 @@ export default function Container({
     >
       <div
         className={`mx-auto w-full flex flex-col  ${
-          safeWidth ? 'max-w-screen-2xl px-8' : ''
+          safeWidth ? 'max-w-screen-2xl px-4 lg:px-8' : ''
         } ${className}`}
       >
         {children}

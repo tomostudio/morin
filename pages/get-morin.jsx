@@ -290,7 +290,7 @@ const GetMorin = () => {
                   </FancyLink>
                 </div>
               </div>
-              <div className='flex flex-col justify-start'>
+              <div className='flex flex-col w-full justify-start'>
                 <span className='md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue'>
                   Retailers
                 </span>

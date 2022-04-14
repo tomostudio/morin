@@ -13,7 +13,7 @@ const productData = [
     imgBg: "/product/blueberry-bg.png",
     imgPlaceholder: "/product/blueberry.png",
     imgAlt: "Blueberry Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Strawberry Jam",
@@ -22,7 +22,7 @@ const productData = [
     imgBg: "/product/strawberry-bg.png",
     imgPlaceholder: "/product/strawberry.png",
     imgAlt: "Strawberry Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Pineapple Jam",
@@ -31,7 +31,7 @@ const productData = [
     imgBg: "/product/pineapple-bg.png",
     imgPlaceholder: "/product/pineapple.png",
     imgAlt: "Pineapple Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Raspberry Jam",
@@ -40,7 +40,7 @@ const productData = [
     imgBg: "/product/raspberry-bg.png",
     imgPlaceholder: "/product/raspberry.png",
     imgAlt: "Raspberry Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Apricot Jam",
@@ -49,7 +49,7 @@ const productData = [
     imgBg: "/product/apricot-bg.png",
     imgPlaceholder: "/product/apricot.png",
     imgAlt: "Apricot Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Mixed Fruit Jam",
@@ -58,7 +58,7 @@ const productData = [
     imgBg: "/product/mixed-fruit-bg.png",
     imgPlaceholder: "/product/mixed-fruit.png",
     imgAlt: "Mixed Fruit Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
   {
     title: "Orange Marmalade Jam",
@@ -67,7 +67,7 @@ const productData = [
     imgBg: "/product/orange-bg.png",
     imgPlaceholder: "/product/orange.png",
     imgAlt: "Orange Marmalade Jam",
-    link: "/product/product-id",
+    link: "/products/product-type/product-id",
   },
 ];
 
