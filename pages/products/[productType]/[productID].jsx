@@ -4,12 +4,12 @@ import Footer from '@/components/module/footer';
 import Header from '@/components/module/header';
 import Layout from '@/components/module/layout';
 import FancyLink from '@/components/utils/fancyLink';
-import MorinTabs from '@/components/utils/morinTabs';
+import MorinTabs from '@/components/micro-module/morinTabs';
 import RecipeSlider from '@/components/sliders/recipeSlider';
 import { SunRay } from '@/components/utils/svg';
 import Image from 'next/image';
-import ProductCard from '@/components/module/productCard';
-import StrokeButton from '@/components/utils/strokeButton';
+import ProductCard from '@/components/shared-module/productCard';
+import StrokeButton from '@/components/micro-module/strokeButton';
 import colors from '@/helpers/colors';
 
 const tabData = [

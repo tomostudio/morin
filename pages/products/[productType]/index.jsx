@@ -2,7 +2,7 @@ import Container from "@/components/module/container";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
-import ProductCard from "@/components/module/productCard";
+import ProductCard from "@/components/shared-module/productCard";
 import Image from "next/image";
 
 const productData = [

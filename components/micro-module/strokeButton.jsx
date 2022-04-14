@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Arrow } from './svg';
+import { Arrow } from '../utils/svg';
 
 const StrokeButton = ({
   children,

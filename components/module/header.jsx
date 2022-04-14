@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/module/container';
-import Hamburger from '../utils/hamburger';
+import Hamburger from '../micro-module/hamburger';
 import {
   MorinLogo,
   SunRay,
-  SunRay15,
+  SunRaySmaller,
   Twitter,
   Instagram,
   Facebook,
@@ -167,7 +167,7 @@ export default function Header({ mobileDark = true }) {
           >
             <MorinLogo className='relative z-2 h-full w-full' />
             <div className='pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>
-              <SunRay15 className='h-96 w-96 animate-spin-slow' />
+              <SunRaySmaller className='h-96 w-96 animate-spin-slow' />
             </div>
           </FancyLink>
           <nav

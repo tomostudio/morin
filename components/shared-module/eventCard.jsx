@@ -1,5 +1,5 @@
 import Image from "next/image";
-import StrokeButton from "../utils/strokeButton";
+import StrokeButton from "../micro-module/strokeButton";
 import FancyLink from "../utils/fancyLink";
 
 const EventCard = ({ imgSrc, imgAlt, type, date, title, link }) => {

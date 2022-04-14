@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper";
 import Container from "../module/container";
-import StrokeButton from "../utils/strokeButton";
+import StrokeButton from "../micro-module/strokeButton";
 import colors from "@/helpers/colors";
 
 const HeroSlider = ({ className }) => {

@@ -5,10 +5,10 @@ import { FreeMode, Navigation } from "swiper";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
-import ProductCard from "@/components/module/productCard";
-import GalleryModal from "@/components/module/galleryModal";
+import ProductCard from "@/components/shared-module/productCard";
+import GalleryModal from "@/components/shared-module/galleryModal";
 import RecipeSlider from "@/components/sliders/recipeSlider";
-import StrokeButton from "@/components/utils/strokeButton";
+import StrokeButton from "@/components/micro-module/strokeButton";
 import { ArrowLarge, Check } from "@/components/utils/svg";
 import colors from "@/helpers/colors";
 

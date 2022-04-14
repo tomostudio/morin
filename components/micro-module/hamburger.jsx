@@ -1,4 +1,4 @@
-import FancyLink from './fancyLink';
+import FancyLink from '../utils/fancyLink';
 
 const Hamburger = ({ className, onClick, opened, duration = 150, dark }) => {
   const isOpen = `${opened ? 'w-8' : 'w-6'} ${

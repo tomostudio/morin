@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";
-import RecipeCard from "../module/recipeCard";
+import RecipeCard from "../shared-module/recipeCard";
 
 const RecipeSlider = ({ data }) => {
   return (

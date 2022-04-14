@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper';
-import HighlightCard from '../module/highlightCard';
+import HighlightCard from '../shared-module/highlightCard';
 
 const HighlightSlider = ({ data }) => {
   return (

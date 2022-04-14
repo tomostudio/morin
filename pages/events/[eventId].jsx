@@ -4,7 +4,7 @@ import Header from '@/components/module/header'
 import Footer from '@/components/module/footer'
 import Image from 'next/image'
 import colors from '@/helpers/colors'
-import HighlightCard from '@/components/module/highlightCard'
+import HighlightCard from '@/components/shared-module/highlightCard'
 
 const EventTag = ({ label }) => {
   return (

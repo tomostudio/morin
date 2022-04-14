@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Footer from '@/components/module/footer';
 import Header from '@/components/module/header';
 import Layout from '@/components/module/layout';
-import StrokeButton from '@/components/utils/strokeButton';
-import EventCard from '@/components/module/eventCard';
+import StrokeButton from '@/components/micro-module/strokeButton';
+import EventCard from '@/components/shared-module/eventCard';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import FancyLink from '../utils/fancyLink';
-import { SunRay, SunRay15 } from '../utils/svg';
+// import { SunRay, SunRaySmaller } from '../utils/svg';
 import { Arrow } from '../utils/svg';
 
 const HeroCategory = ({

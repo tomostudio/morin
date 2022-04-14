@@ -1,6 +1,6 @@
 import colors from '@/helpers/colors';
 import React from 'react';
-import StrokeButton from '../utils/strokeButton';
+import StrokeButton from '../micro-module/strokeButton';
 import { SunRay } from '../utils/svg';
 import Image from 'next/image';
 

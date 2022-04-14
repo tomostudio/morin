@@ -2,7 +2,7 @@ import Image from "next/image";
 import colors from "@/helpers/colors";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
-import StrokeButton from "../utils/strokeButton";
+import StrokeButton from "../micro-module/strokeButton";
 
 const ImageGallery = ({ name, images }) => {
   return (

@@ -4,9 +4,9 @@ import colors from "@/helpers/colors";
 import Layout from "@/components/module/layout";
 import Header from "@/components/module/header";
 import Footer from "@/components/module/footer";
-import RecipeCard from "@/components/module/recipeCard";
-import StrokeButton from "@/components/utils/strokeButton";
-import RecipeFilter from "@/components/utils/recipeFilter";
+import RecipeCard from "@/components/shared-module/recipeCard";
+import StrokeButton from "@/components/micro-module/strokeButton";
+import RecipeFilter from "@/components/micro-module/recipeFilter";
 import { useEffectInit } from "@/components/utils/preset";
 import { Filter } from "@/components/utils/svg";
 
