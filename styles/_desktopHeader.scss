@@ -1,6 +1,6 @@
 nav.header-nav {
   & > *:not(div#marker) {
-    @apply relative z-2 h-8 rounded-full px-5 flex items-center justify-center leading-none pt-[2px];
+    @apply relative z-2 h-8 rounded-full px-5 flex items-center justify-center leading-none pt-[4px];
     @apply transition-colors duration-200 delay-75 ease-in-out;
     &.focus {
       @apply text-white;

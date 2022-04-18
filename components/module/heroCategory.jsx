@@ -11,7 +11,11 @@ const HeroCategory = ({
   title,
   link,
   hoverType,
+  end,
 }) => {
+
+  console.log(end);
+
   const Template = ({ children }) => {
     return (
       <div className={`relative w-full h-full bg-morin-lightBlue`}>
@@ -47,9 +51,10 @@ const HeroCategory = ({
   return (
     <FancyLink
       destination={link}
-      className='group relative w-full h-full min-h-screen overflow-hidden  flex items-center justify-center'
+      className={`group relative w-full h-full min-h-screen overflow-hidden  flex items-center justify-center`}
     >
-      <div className='transition-all w-full h-full group-hover:opacity-0 absolute z-2'>
+      {/* EXTEND IMAGE HEIGHT ON END */}
+      <div className={`transition-all w-full h-full group-hover:opacity-0 absolute z-2`}>
         <Image
           src={imgSrc}
           blurDataURL={imgPlaceholder}
