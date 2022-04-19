@@ -3,7 +3,9 @@ import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import Layout from "@/components/module/layout";
 import ProductCard from "@/components/shared-module/productCard";
+import { useEffectInit } from "@/components/utils/preset";
 import Image from "next/image";
+import { useEffect } from 'react';
 
 const productData = [
   {
@@ -72,6 +74,11 @@ const productData = [
 ];
 
 const ProductList = () => {
+
+  useEffect(() => {
+    useEffectInit()
+  }, [])
+
   return (
     <div className="w-full bg-morin-skyBlue">
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">

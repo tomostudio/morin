@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper";
@@ -11,6 +11,7 @@ import RecipeSlider from "@/components/sliders/recipeSlider";
 import StrokeButton from "@/components/micro-module/strokeButton";
 import { ArrowLarge, Check } from "@/components/utils/svg";
 import colors from "@/helpers/colors";
+import { useEffectInit } from "@/components/utils/preset";
 
 const recipeCategory = ["Medium", "Dessert", "< 30 mins"];
 
@@ -402,6 +403,11 @@ const RecipeDetail = () => {
     setGalleryPopup(true);
     setGallerySlide(index);
   };
+
+  
+  useEffect(() => {
+    useEffectInit()
+  }, [])
 
   return (
     <Layout className="bg-morin-peach">
