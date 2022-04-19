@@ -5,6 +5,8 @@ import Footer from '@/components/module/footer'
 import Image from 'next/image'
 import colors from '@/helpers/colors'
 import HighlightCard from '@/components/shared-module/highlightCard'
+import { useEffectInit } from '@/components/utils/preset'
+import { useEffect } from 'react'
 
 const EventTag = ({ label }) => {
   return (
@@ -36,6 +38,11 @@ const highlightData = [
 ]
 
 const EventDetail = () => {
+
+  useEffect(() => {
+    useEffectInit()
+  }, [])
+
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" />

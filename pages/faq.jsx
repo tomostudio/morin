@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/module/layout";
 import Container from "@/components/module/container";
 import Header from "@/components/module/header";
@@ -6,6 +6,7 @@ import Footer from "@/components/module/footer";
 import { FAQMobile, FAQDesktop } from "@/components/utils/svg";
 import FAQCard from "@/components/module/FAQCard";
 import BasicModal from "@/components/module/basicModal";
+import { useEffectInit } from "@/components/utils/preset";
 
 const FAQData = [
   {
@@ -66,6 +67,10 @@ const FAQ = () => {
   const closeModal = () => {
     setModalData(false);
   };
+
+  useEffect(() => {
+    useEffectInit()
+  }, [])
 
   return (
     <div className="w-full bg-white">

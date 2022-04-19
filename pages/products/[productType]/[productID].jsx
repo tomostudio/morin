@@ -11,6 +11,8 @@ import Image from 'next/image';
 import ProductCard from '@/components/shared-module/productCard';
 import StrokeButton from '@/components/micro-module/strokeButton';
 import colors from '@/helpers/colors';
+import { useEffectInit } from '@/components/utils/preset';
+import { useEffect } from 'react';
 
 const tabData = [
   {
@@ -103,6 +105,11 @@ const moreProductData = [
 ];
 
 const ProductDetail = () => {
+  
+  useEffect(() => {
+    useEffectInit()
+  }, [])
+
   return (
     <Layout className='overflow-hidden'>
       <Header hamburgerColor='bg-black' />
