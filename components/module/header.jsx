@@ -44,6 +44,7 @@ const navData = [
 export default function Header({ mobileDark = true }) {
   const [opened, setOpened] = useState(false)
 
+  // Mobile Menu Toggle
   const toggleHamburgermenu = () => {
     setOpened((prev) => {
       const menu = document.querySelector('.mobileMenu')
@@ -71,24 +72,30 @@ export default function Header({ mobileDark = true }) {
     })
   }
 
-  const [markerW, setMarkerW] = useState(120)
-  const [markerPos, setMarkerPos] = useState(396)
-  let widthData = []
+  // Market Variable
+  const [markerW, setMarkerW] = useState(120); // width of marker
+  const [markerPos, setMarkerPos] = useState(396); // position of marker
+  let widthData = []; // always collect width data.
 
-  const defaultNavRef = useRef()
-  const navRef = useRef()
+  const defaultNavRef = useRef();
+  const navRef = useRef();
+
+  // function when navigation on hover in
   const navMouseOver = (e) => {
-    setMarkerW(e.target.clientWidth)
+    // set marker width according to button yand di hover
+    setMarkerW(e.target.clientWidth);
 
-    // reset and set color
+    // reset and set color of navigation
     navRef.current.querySelectorAll('a').forEach((item) => {
       item.classList.remove('focus')
     })
 
-    e.target.classList.add('focus')
+    // set target nav color to white (with class)
+    e.target.classList.add('focus');
 
-    // adjust width
-    let moveX = 0
+    // set position variable
+    let moveX = 0;
+
     // get width of all nav
     navRef.current
       .querySelectorAll('a:not(.default-nav)')
@@ -96,13 +103,17 @@ export default function Header({ mobileDark = true }) {
         widthData[id] = item.clientWidth
       })
 
+    // iterate nav to get position.
     widthData.forEach((w, id) => {
       if (e.target.dataset.id == -1 || id < e.target.dataset.id) {
         moveX = moveX + w
       }
-    })
-    setMarkerPos(moveX)
-  }
+    });
+    // set marker position.
+    setMarkerPos(moveX);
+  };
+
+  // function when navigation on hover out
   const navLeave = () => {
     resetNav()
   }
