@@ -5,12 +5,30 @@ import { DefaultSeo } from 'next-seo';
 import SEO from '@/helpers/seo.config';
 import Head from 'next/head';
 import { AppWrapper } from '../context/state.jsx';
+import Script from 'next/script';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   return (
     <>
+      {/* {pageProps.seoAPI && pageProps.seoAPI[0].googleID && ( */}
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=G-YX7JPQT8HB`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){window.dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YX7JPQT8HB');
+  `}
+          </Script>
+        </>
+      {/* )} */}
       <DefaultSeo {...SEO} />
       <Head>
         {/* FAVICON  */}
