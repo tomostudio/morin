@@ -13,7 +13,7 @@ const RecipeSlider = ({ data }) => {
       }}
       freeMode={true}
       modules={[FreeMode]}
-      style={{ padding: "0 16px" }}
+      style={{ padding: "20px 16px" }}
     >
       {data?.map((item) => (
         <SwiperSlide key={item.title}>

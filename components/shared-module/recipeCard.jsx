@@ -19,7 +19,7 @@ const RecipeCard = ({
   const recipeTag = "flex items-center h-[25px] rounded-full border-white border-solid border-2 px-2 mr-2 last:mr-0 lg:h-[30px] lg:px-4";
 
   return (
-    <div className="relative my-5 transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden">
+    <div className="relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden">
       <FancyLink
         destination={link}
         a11yText={`Navigate to ${title ? title : "recipe"}`}
@@ -34,7 +34,7 @@ const RecipeCard = ({
           {duration && difficulty && (
             <div className="flex flex-wrap justify-center">
               <div className={recipeTag}>
-                <span className="pt-0.5 lg:pt-1 text-[15px] lg:text-default">{duration} mins</span>
+                <span className="pt-0.5 lg:pt-1 text-[15px] lg:text-default">{duration}</span>
               </div>
               <div className={recipeTag}>
                 <span className="pt-0.5 lg:pt-1 font-default">{difficulty}</span>
@@ -52,15 +52,15 @@ const RecipeCard = ({
         </div>
       </FancyLink>
 
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-[487px]">
         <Image
           src={imgSrc}
           blurDataURL={imgPlaceholder}
           placeholder="blur"
           alt={imgAlt}
-          width={387}
-          height={487}
-          layout="responsive"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
         />
       </div>
     </div>
