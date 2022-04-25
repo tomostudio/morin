@@ -23,6 +23,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/client": "^3.3.0",
+    "@sanity/image-url": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "framer-motion": "^6.3.0",
     "gsap": "^3.10.3",

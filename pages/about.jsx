@@ -23,14 +23,14 @@ const aboutData = [
   {
     type: 'OUR PROCESS',
     title: 'Bagaimana Morin Dibuat?',
-    imgSrc: '/about/card-1.svg',
+    imgSrc: '/about/card-1.png',
     imgPlaceholder: '/about/card-1.png',
     imgAlt: 'Bagaimana Morin Dibuat?',
   },
   {
     type: 'VISI & MISI',
     title: 'Lorem Ipsum Dolor sit Amet',
-    imgSrc: '/about/card-2.svg',
+    imgSrc: '/about/card-2.png',
     imgPlaceholder: '/about/card-2.png',
     imgAlt: 'Lorem Ipsum Dolor sit Amet',
   },
