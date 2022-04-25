@@ -138,6 +138,12 @@ export default function Home() {
 
   useEffect(() => {
     useEffectInit();
+
+    // Remove Watermark for Instagram
+    setTimeout(() => {
+      if (document.querySelector('.eapps-link'))
+        document.querySelector('.eapps-link').remove();
+    }, 1000);
     return () => {};
   }, []);
 
@@ -153,13 +159,13 @@ export default function Home() {
               <HeroSlider className='min-h-screen w-full' />
             </section>
             {/* Sticky Section */}
-            <section>
+            <section className='z-0'>
               <Container
                 border={false}
                 background={colors.offWhite}
-                bgTail={true}
+                bgTail={false}
                 safeWidth={false}
-                className='!px-0'
+                className='!px-0 z-1'
               >
                 <div className='flex w-full flex-col lg:flex-row flex-nowrap lg:items-start'>
                   {/* Sticky */}
@@ -204,25 +210,23 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className='shrink w-full '>
+                  <div className='shrink w-full'>
                     {categoryData?.map((i, id) => {
-                      return(
-                      <div
-                        className='relative min-h-screen overflow-hidden'
-                        key={i.title}
-                      >
-                        <HeroCategory
-                          imgSrc={i.imgSrc}
-                          imgProduct={i.imgProduct}
-                          imgPlaceholderProduct={i.imgProduct}
-                          imgPlaceholder={i.imgPlaceholder}
-                          imgAlt={i.imgAlt}
-                          title={i.title}
-                          link={i.link}
-                          end={(id >= categoryData.length - 1) && true }
-                        />
-                      </div>
-                    )})}
+                      return (
+                        <div className='relative h-screen' key={i.title}>
+                          <HeroCategory
+                            imgSrc={i.imgSrc}
+                            imgProduct={i.imgProduct}
+                            imgPlaceholderProduct={i.imgProduct}
+                            imgPlaceholder={i.imgPlaceholder}
+                            imgAlt={i.imgAlt}
+                            title={i.title}
+                            link={i.link}
+                            end={id >= categoryData.length - 1 && true}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </Container>
@@ -338,7 +342,12 @@ export default function Home() {
                 </div>
               </Container>
               <div className='pb-10 xl:pb-14'>
-                <InstagramSlider />
+                {/* <InstagramSlider /> */}
+                <script
+                  src='https://apps.elfsight.com/p/platform.js'
+                  defer
+                ></script>
+                <div className='elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae'></div>
               </div>
             </section>
             <Footer />

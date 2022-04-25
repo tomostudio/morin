@@ -148,7 +148,6 @@ export default function Header({ mobileDark = true }) {
     } else {
       setDarkMobile(mobileDark)
     }
-    console.log(darkMobile, window.scrollY)
   }
 
   useEffect(() => {

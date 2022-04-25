@@ -13,9 +13,6 @@ const HeroCategory = ({
   hoverType,
   end,
 }) => {
-
-  console.log(end);
-
   const Template = ({ children }) => {
     return (
       <div className={`relative w-full h-full bg-morin-lightBlue`}>
@@ -51,10 +48,14 @@ const HeroCategory = ({
   return (
     <FancyLink
       destination={link}
-      className={`group relative w-full h-full min-h-screen overflow-hidden  flex items-center justify-center`}
+      className={`group relative w-full min-h-screen overflow-hidden  flex items-center justify-center ${
+        end ? `h-[calc(100vh+40px)]` : 'h-full'
+      }`}
     >
       {/* EXTEND IMAGE HEIGHT ON END */}
-      <div className={`transition-all w-full h-full group-hover:opacity-0 absolute z-2`}>
+      <div
+        className={`transition-all w-full h-full group-hover:opacity-0 absolute z-2`}
+      >
         <Image
           src={imgSrc}
           blurDataURL={imgPlaceholder}
@@ -68,7 +69,9 @@ const HeroCategory = ({
         <HoverComponent />
       </div>
 
-      <div className='text-center absolute left-1/2 bottom-10 -translate-x-1/2 z-3 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10'>
+      <div
+        className={`text-center absolute left-1/2 -translate-x-1/2 z-3 lg:flex lg:items-center lg:justify-between lg:w-full lg:px-10 ${end ? 'bottom-16' : 'bottom-6'}`}
+      >
         <span className='font-nutmeg font-semibold text-white text-ctitleBig xl:text-h1'>
           {title}
         </span>
