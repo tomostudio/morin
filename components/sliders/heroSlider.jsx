@@ -69,7 +69,7 @@ const HeroSlider = ({ data, className }) => {
               </div>
             </SwiperSlide>
           ) : (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <div className="relative w-screen h-screen">
                 <Container className="h-screen z-1">
                   <div className="w-full h-full flex flex-col justify-center">
