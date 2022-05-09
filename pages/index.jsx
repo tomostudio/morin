@@ -152,7 +152,7 @@ export default function Home({ homeAPI, seoAPI, footerAPI }) {
   return (
     <>
       <NextSeo/>
-      <Header mobileDark={false} />
+      {/* <Header mobileDark={false} /> */}
       <LazyMotion features={domAnimation}>
         <m.div initial="initial" animate="enter" exit="exit" variants={fade}>
           <Layout>

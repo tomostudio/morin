@@ -69,7 +69,7 @@ const About = () => {
         </div>
 
         <div className="relative w-full min-h-screen flex flex-col justify-between z-2">
-          <Header />
+          {/* <Header /> */}
 
           <div className="relative pt-28 pb-32 px-8 xl:pb-36">
             <div className="relative max-w-xs text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
