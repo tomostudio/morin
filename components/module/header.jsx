@@ -141,13 +141,15 @@ export default function Header() {
 
   useEffect(() => {
     const scrollListener = () => {
-      console.log(ctx.mobileDark, ctx);
       if (window.scrollY > 250) {
         setDarkMobile(true);
       } else {
         setDarkMobile(ctx.mobileDark);
       }
     };
+
+    console.log(ctx.mobileDark, ctx);
+
     setTimeout(() => {
       document.addEventListener('resize', resetNav, false);
       document.addEventListener('scroll', scrollListener, false);

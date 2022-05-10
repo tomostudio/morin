@@ -268,7 +268,7 @@ export default function Home({ homeAPI, seoAPI, footerAPI }) {
                       See All Recipes
                     </StrokeButton>
                   </div>
-                  <div className='-mx-8 mb-8 w-[calc(100%+64px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]'>
+                  <div className='-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]'>
                     <RecipeSlider data={recipeData} />
                   </div>
                 </div>
