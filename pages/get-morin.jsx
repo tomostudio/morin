@@ -13,7 +13,7 @@ const GetMorin = () => {
   }, []);
   return (
     <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
-      <Header hamburgerColor='bg-black' />
+      {/* <Header hamburgerColor='bg-black' /> */}
 
       <Container className='mt-8 lg:mt-0'>
         <div className='flex flex-col leading-tight'>

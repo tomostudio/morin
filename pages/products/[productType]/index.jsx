@@ -82,7 +82,7 @@ const ProductList = () => {
   return (
     <div className="w-full bg-morin-skyBlue">
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
-        <Header />
+        {/* <Header /> */}
 
         <Container className="pl-0 pr-0" classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11">
           <div className="max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">

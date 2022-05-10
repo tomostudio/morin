@@ -535,7 +535,7 @@ const Highlight = ({ ...options }) => (
         width="151.21"
         height="53.4287"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
         <feBlend
           mode="normal"

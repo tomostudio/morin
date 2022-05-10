@@ -112,7 +112,7 @@ const ProductDetail = () => {
 
   return (
     <Layout className='overflow-hidden'>
-      <Header hamburgerColor='bg-black' />
+      {/* <Header hamburgerColor='bg-black' /> */}
 
       <div className='w-full'>
         <div className='relative w-full h-[450px] bg-[#FFE4E3] lg:h-[500px] xl:h-[700px]'>

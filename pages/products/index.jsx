@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import CategoryCard from '@/components/module/categoryCard';
 import Footer from '@/components/module/footer';
-import Header from '@/components/module/header';
 import Layout from '@/components/module/layout';
 import Image from 'next/image';
 import { useEffectInit } from '@/components/utils/preset';

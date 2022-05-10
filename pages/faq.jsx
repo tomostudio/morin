@@ -75,7 +75,6 @@ const FAQ = () => {
   return (
     <div className="w-full bg-white">
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
-        <Header />
 
         <Container
           className="pl-0 pr-0"

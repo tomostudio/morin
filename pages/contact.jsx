@@ -43,7 +43,6 @@ useEffect(() => {
 const Contact = () => {
   return (
     <Layout className='pt-[86px] lg:pt-32'>
-      <Header hamburgerColor='bg-black' />
 
       <Container
         className='pl-0 pr-0'

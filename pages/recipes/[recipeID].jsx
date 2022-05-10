@@ -411,7 +411,7 @@ const RecipeDetail = () => {
 
   return (
     <Layout className="bg-morin-peach">
-      <Header />
+      {/* <Header /> */}
 
       <div className="relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">
