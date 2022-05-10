@@ -12,6 +12,7 @@ import StrokeButton from "@/components/micro-module/strokeButton";
 import { ArrowLarge, Check } from "@/components/utils/svg";
 import colors from "@/helpers/colors";
 import { useEffectInit } from "@/components/utils/preset";
+import { useAppContext } from "context/state";
 
 const recipeCategory = ["Medium", "Dessert", "< 30 mins"];
 
@@ -405,9 +406,10 @@ const RecipeDetail = () => {
   };
 
   
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit()
-  }, [])
+    useEffectInit({ context: ctx, mobileDark: true });
+  }, []);
 
   return (
     <Layout className="bg-morin-peach">

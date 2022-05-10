@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import Layout from '@/components/module/layout';
-import Header from '@/components/module/header';
 import Footer from '@/components/module/footer';
 import Container from '@/components/module/container';
 import React from 'react';
 import ContactCard from '@/components/module/contactCard';
 import { useEffectInit } from '@/components/utils/preset';
+import { useAppContext } from 'context/state';
 
 const contactData = [
   {
@@ -36,14 +36,14 @@ const contactData = [
   },
 ];
 
-useEffect(() => {
-  useEffectInit();
-}, []);
 
 const Contact = () => {
+  const ctx = useAppContext();
+  useEffect(() => {
+    useEffectInit({ context: ctx, mobileDark: true });
+  }, []);
   return (
     <Layout className='pt-[86px] lg:pt-32'>
-
       <Container
         className='pl-0 pr-0'
         classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-16'

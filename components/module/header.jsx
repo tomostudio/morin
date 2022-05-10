@@ -48,26 +48,23 @@ export default function Header() {
 
   // Mobile Menu Toggle
   const toggleHamburgermenu = () => {
-    const menu = document.querySelector('.mobileMenu');
     const body = document.querySelector('body');
     if (ctx.mobileMenuOpen) {
       // change into closed state
       body.classList.remove('overflow-hidden');
-      menu.classList.remove('opacity-100');
-      menu.classList.remove('visible');
-      menu.classList.add('opacity-0');
-      setTimeout(() => menu.classList.add('invisible'), FIFODuration);
-      ctx.setMobileMenuOpen(false);
+      ctx.mobileMenuOpen = false;
     } else {
       // change into opened state
       body.classList.add('overflow-hidden');
-      menu.classList.remove('opacity-0');
-      menu.classList.remove('invisible');
-      menu.classList.add('opacity-100');
-      menu.classList.add('visible');
-      ctx.setMobileMenuOpen(false);
+
+      ctx.mobileMenuOpen = true;
     }
+    setOpened(ctx.mobileMenuOpen);
   };
+
+  useEffect(() => {
+    setOpened(ctx.mobileMenuOpen);
+  }, [ctx.mobileMenuOpen]);
 
   // Market Variable
   const [markerW, setMarkerW] = useState(120); // width of marker
@@ -137,18 +134,17 @@ export default function Header() {
     }
   };
 
-  const [darkMobile, setDarkMobile] = useState(ctx.mobileDark);
+  const [blackButton, setBlackButton] = useState(ctx.blackButton);
 
   useEffect(() => {
     const scrollListener = () => {
+      console.log(ctx.mobileDark, ctx);
       if (window.scrollY > 250) {
-        setDarkMobile(true);
+        setBlackButton(true);
       } else {
-        setDarkMobile(ctx.mobileDark);
+        setBlackButton(ctx.mobileDark);
       }
     };
-
-    console.log(ctx.mobileDark, ctx);
 
     setTimeout(() => {
       document.addEventListener('resize', resetNav, false);
@@ -160,7 +156,10 @@ export default function Header() {
     };
   }, []);
 
-  const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
+  useEffect(() => {
+    setBlackButton(ctx.mobileDark);
+  }, [ctx.mobileDark]);
+
   const FIFODuration = 300;
 
   return (
@@ -222,22 +221,26 @@ export default function Header() {
               className='block lg:hidden'
               opened={opened}
               onClick={() => toggleHamburgermenu()}
-              dark={darkMobile}
+              dark={blackButton}
             />
             <div
-              className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} invisible -z-1 opacity-0 lg:hidden`}
+              className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} -z-1 lg:hidden ${
+                opened
+                  ? 'opacity-100  pointer-events-auto'
+                  : 'opacity-0 pointer-events-none'
+              }`}
             >
               <div className='absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] '>
                 <SunRay className='block w-full animate-spin-slower h-full' />
               </div>
               <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
-                <nav className='flex w-full flex-col space-y-[35px] text-center'>
+                <nav className='flex w-full flex-col space-y-6 text-center items-center'>
                   {navData?.map((item, id) => (
                     <FancyLink
                       key={id}
                       destination={`/${item.dest}`}
                       a11yText={item.ariaText}
-                      className={`${mobileLink} ${
+                      className={`font-nutmeg font-bold text-white text-mtitleBig leading-none ${
                         Math.random() >= 0.5 ? rotate3 : rotate_3
                       } `}
                     >
@@ -245,10 +248,9 @@ export default function Header() {
                     </FancyLink>
                   ))}
                   <FancyLink
-                    blank={true}
-                    destination={'/'}
+                    destination={'/get-morin'}
                     a11yText='Navigate to the about page'
-                    className={`${mobileLink} ${
+                    className={`font-nutmeg font-bold text-white text-mtitleBig leading-none  p-2  ${
                       Math.random() >= 0.5 ? rotate3 : rotate_3
                     }`}
                   >

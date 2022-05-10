@@ -1,18 +1,12 @@
 import { useRef, useEffect } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Layout from '@/components/module/layout';
-import Header from '@/components/module/header';
 import Footer from '@/components/module/footer';
 import Container from '@/components/module/container';
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx';
-import FancyLink from '@/components/utils/fancyLink';
 import { fade } from '@/helpers/transitions';
-import locooptions from '@/helpers/locooptions';
 import colors from '@/helpers/colors';
-import PushScrollGlobal from '@/helpers/globalscroll';
 import HeroSlider from '@/components/sliders/heroSlider';
 import HighlightSlider from '@/components/sliders/highlightSlider';
 import InstagramSlider from '@/components/sliders/instagramSlider';
@@ -137,18 +131,15 @@ export default function Home({ homeAPI, seoAPI, footerAPI }) {
     },
   ];
 
-  const context = useAppContext();
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit();
+    useEffectInit({context: ctx, mobileDark: false});
 
     // Remove Watermark for Instagram
     setTimeout(() => {
       if (document.querySelector('.eapps-link'))
         document.querySelector('.eapps-link').remove();
     }, 1000);
-
-    context.setMobileDark(true);
-    console.log(context);
 
     return () => {};
   }, []);

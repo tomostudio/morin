@@ -7,6 +7,7 @@ import { FAQMobile, FAQDesktop } from "@/components/utils/svg";
 import FAQCard from "@/components/module/FAQCard";
 import BasicModal from "@/components/module/basicModal";
 import { useEffectInit } from "@/components/utils/preset";
+import { useAppContext } from "context/state";
 
 const FAQData = [
   {
@@ -68,9 +69,10 @@ const FAQ = () => {
     setModalData(false);
   };
 
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit()
-  }, [])
+    useEffectInit({ context: ctx, mobileDark: true });
+  }, []);
 
   return (
     <div className="w-full bg-white">
@@ -81,12 +83,15 @@ const FAQ = () => {
           classNameOuter="px-4 mb-8 lg:px-8 lg:mb-12 xl:mb-14"
         >
           <div className="mb-16">
-            <div className="max-w-[350px] mx-auto md:hidden">
+            <div className=" w-full md:w-3/4 text-morin-blue mx-auto text-center font-nutmeg text-h2 lg:text-h1 leading-none  font-bold">
+              Frequently Asked Questions
+            </div>
+            {/* <div className="max-w-[350px] mx-auto md:hidden">
               <FAQMobile />
             </div>
             <div className="hidden max-w-[970px] mx-auto md:block">
               <FAQDesktop />
-            </div>
+            </div> */}
           </div>
 
           <div className="flex flex-wrap -mx-1 lg:-mx-2.5">

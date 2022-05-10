@@ -4,8 +4,9 @@ const AppContext = createContext();
 
 export function AppWrapper({ children }) {
   const [scrollState, setScrollState] = useState(null);
-  const [mobileDark, setMobileDark] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileDark = true;
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+ const mobileMenuOpen = false;
 
   return (
     <AppContext.Provider
@@ -13,9 +14,7 @@ export function AppWrapper({ children }) {
         scrollState,
         setScrollState,
         mobileDark,
-        setMobileDark,
         mobileMenuOpen,
-        setMobileMenuOpen,
       }}
     >
       {children}

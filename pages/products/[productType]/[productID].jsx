@@ -13,6 +13,7 @@ import StrokeButton from '@/components/micro-module/strokeButton';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
 import { useEffect } from 'react';
+import { useAppContext } from 'context/state';
 
 const tabData = [
   {
@@ -106,9 +107,10 @@ const moreProductData = [
 
 const ProductDetail = () => {
   
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit()
-  }, [])
+    useEffectInit({ context: ctx, mobileDark: true });
+  }, []);
 
   return (
     <Layout className='overflow-hidden'>

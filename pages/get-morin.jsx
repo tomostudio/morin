@@ -6,10 +6,12 @@ import Footer from '@/components/module/footer';
 import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
 import { useEffectInit } from '@/components/utils/preset';
+import { useAppContext } from 'context/state';
 
 const GetMorin = () => {
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit();
+    useEffectInit({ context: ctx, mobileDark: true });
   }, []);
   return (
     <Layout className='overflow-hidden pt-[86px] lg:pt-32'>

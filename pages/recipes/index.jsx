@@ -97,10 +97,9 @@ const Recipe = ({ recipeAPI, seoAPI, footerAPI }) => {
     });
   };
 
-  const context = useAppContext();
-
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit();
+    useEffectInit({ context: ctx, mobileDark: false });
     setFilterOpen(false);
 
   }, []);

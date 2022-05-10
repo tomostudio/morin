@@ -8,6 +8,7 @@ import AboutCard from '@/components/module/aboutCard';
 import { useEffectInit } from '@/components/utils/preset';
 import PageModal from '@/components/module/pageModal';
 import colors from '@/helpers/colors';
+import { useAppContext } from 'context/state';
 import {
   DoubleSparkle,
   Highlight,
@@ -59,14 +60,15 @@ const About = () => {
     setModalTwo(false);
   };
 
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit();
+    useEffectInit({ context: ctx, mobileDark: true });
   }, []);
 
   return (
     <div className='w-full bg-morin-skyBlue '>
       <Layout className='relative pt-16 overflow-hidden'>
-        <div className='w-[1750px] h-[1750px] absolute inset-0 -translate-x-1/2 -translate-y-1/2 left-1/2 z-1 '>
+        <div className='w-[150vw] aspect-square absolute inset-0 -translate-x-1/2 -translate-y-1/2 -top-20 left-1/2 z-1 '>
           {/* <SunRaySmaller className='w-full h-full animate-spin-slow' /> */}
           <Image
             src='/RAY.svg'

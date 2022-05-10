@@ -4,6 +4,7 @@ import Footer from '@/components/module/footer';
 import Layout from '@/components/module/layout';
 import Image from 'next/image';
 import { useEffectInit } from '@/components/utils/preset';
+import { useAppContext } from 'context/state';
 
 const categoryData = [
   {
@@ -41,13 +42,14 @@ const categoryData = [
 ];
 
 const Category = () => {
+  const ctx = useAppContext();
+
   useEffect(() => {
-    useEffectInit();
-    return () => {};
+    useEffectInit({ context: ctx, mobileDark: false });
   }, []);
   return (
     <Layout>
-    {/* <Header mobileDark={false} /> */}
+      {/* <Header mobileDark={false} /> */}
 
       <div className='w-full bg-morin-skyBlue'>
         <div className=' relative w-full h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]'>
