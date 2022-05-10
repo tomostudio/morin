@@ -14,6 +14,7 @@ import {
   HighlightMobile,
   Line,
   SunRay,
+  SunRaySmaller,
   Wrinkle,
   ThreeTopLine,
 } from '@/components/utils/svg'
@@ -65,7 +66,7 @@ const About = () => {
     <div className="w-full bg-morin-skyBlue">
       <Layout className="relative pt-16 overflow-hidden">
         <div className="w-full h-full absolute inset-0 -translate-x-[calc(875px-(100vw/2))] -translate-y-[875px] z-1">
-          <SunRay className="block w-[1750px] animate-spin-slow" />
+          <SunRaySmaller className=" w-[1750px] h-[1750px] animate-spin-slow" />
         </div>
 
         <div className="relative w-full min-h-screen flex flex-col justify-between z-2">
