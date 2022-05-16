@@ -1,12 +1,14 @@
-import Container from '@/components/module/container';
-import Footer from '@/components/module/footer';
-import Header from '@/components/module/header';
-import Layout from '@/components/module/layout';
-import ProductCard from '@/components/shared-module/productCard';
-import { useEffectInit } from '@/components/utils/preset';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { useAppContext } from 'context/state';
+import Container from '@/components/module/container'
+import Footer from '@/components/module/footer'
+import Header from '@/components/module/header'
+import Layout from '@/components/module/layout'
+import ProductCard from '@/components/shared-module/productCard'
+import { useEffectInit } from '@/components/utils/preset'
+import Image from 'next/image'
+import { useEffect } from 'react'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const productData = [
   {
@@ -72,41 +74,42 @@ const productData = [
     imgAlt: 'Orange Marmalade Jam',
     link: '/products/product-type/product-id',
   },
-];
+]
 
-const ProductList = () => {
-  const ctx = useAppContext();
+const ProductList = ({ productTypeAPI }) => {
+  const [productType] = productTypeAPI
+  const ctx = useAppContext()
   useEffect(() => {
-    useEffectInit({ context: ctx, mobileDark: true });
-  }, []);
+    useEffectInit({ context: ctx, mobileDark: true })
+  }, [])
 
   return (
-    <div className='w-full bg-morin-skyBlue'>
-      <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
+    <div className="w-full bg-morin-skyBlue">
+      <Layout className="overflow-hidden pt-[86px] lg:pt-32">
         {/* <Header /> */}
 
         <Container
-          className='pl-0 pr-0'
-          classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11'
+          className="pl-0 pr-0"
+          classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11"
         >
-          <div className='max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md'>
-            <h1 className='relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1'>
-              Toppings
-              <div className='w-full h-full absolute-center hidden lg:block'>
-                <div className='w-fit absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none'>
+          <div className="max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
+            <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
+              {productType.title}
+              <div className="w-full h-full absolute-center hidden lg:block">
+                <div className="w-fit absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
                   <Image
-                    src='/product/title-decor-1.svg'
-                    placeholder='/product/title-decor-1.png'
-                    alt='Locally Produced, Global Quality'
+                    src={urlFor(productType.decor.decor1.image).url()}
+                    placeholder={urlFor(productType.decor.decor1.image).url()}
+                    alt={productType.decor.decor1.image.alt}
                     width={385}
                     height={385}
                   />
                 </div>
-                <div className='w-fit absolute top-0 left-0 translate-x-[85%] select-none'>
+                <div className="w-fit absolute top-0 left-0 translate-x-[85%] select-none">
                   <Image
-                    src='/product/title-decor-2.svg'
-                    placeholder='/product/title-decor-2.png'
-                    alt="Nature's Real Goodness"
+                    src={urlFor(productType.decor.decor2.image).url()}
+                    placeholder={urlFor(productType.decor.decor2.image).url()}
+                    alt={productType.decor.decor2.image.alt}
                     width={420}
                     height={120}
                   />
@@ -114,26 +117,25 @@ const ProductList = () => {
               </div>
             </h1>
 
-            <p className='font-semibold max-w-[400px] mx-auto'>
-              Lorem nunc amet, placerat aliquam mauris sodales purus. Urna
-              fermentum amet enim neque.
+            <p className="font-semibold max-w-[400px] mx-auto">
+              {productType.description}
             </p>
           </div>
 
-          <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
-            {productData?.map((item, index) => (
+          <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
+            {productType.product?.map((item, index) => (
               <div
-                className='w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5'
+                className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
                 key={`${item.title}${index}`}
               >
                 <ProductCard
                   title={item.title}
-                  bgColor={item.bgColor}
-                  imgSrc={item.imgSrc}
-                  imgBg={item.imgBg}
-                  imgPlaceholder={item.imgPlaceholder}
-                  imgAlt={item.imgAlt}
-                  link={item.link}
+                  bgColor={item.backgroundColor.hex}
+                  imgSrc={urlFor(item.thumbnail).url()}
+                  imgBg={'/product/strawberry-bg.png'}
+                  imgPlaceholder={urlFor(item.thumbnail).url()}
+                  imgAlt={item.thumbnail.alt}
+                  link={`${productType.slug.current}/${item.slug.current}`}
                 />
               </div>
             ))}
@@ -143,7 +145,50 @@ const ProductList = () => {
         <Footer />
       </Layout>
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export async function getStaticPaths() {
+  const res = await client.fetch(`
+        *[_type == "productType"]
+      `)
+
+  const paths = res.map((data) => ({
+    params: {
+      productType: data.slug.current,
+    },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+  const productTypeAPI = await client.fetch(
+    `
+      *[_type == "productType" && slug.current == "${params.productType}"] {
+        ...,
+        decor {
+          decor1->,
+          decor2->
+        },
+        "product": *[_type=='productList' && references(^._id)]
+      } 
+    `,
+  )
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `)
+
+  return {
+    props: {
+      productTypeAPI,
+      seoAPI,
+      footerAPI,
+    },
+  }
+}
+
+export default ProductList

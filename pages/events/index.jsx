@@ -8,6 +8,8 @@ import EventCard from '@/components/shared-module/eventCard';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
 import { useAppContext } from 'context/state';
+import client from '@/helpers/sanity/client';
+import urlFor from '@/helpers/sanity/urlFor';
 
 const eventsData = [
   {
@@ -54,7 +56,7 @@ const eventsData = [
   },
 ];
 
-const Events = () => {
+const Events = ({eventAPI}) => {
   const ctx = useAppContext();
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: false });
@@ -87,15 +89,15 @@ const Events = () => {
         <div className='px-4 my-5 md:my-10 md:px-8'>
           <div className='max-w-screen-2xl mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
-              {eventsData?.map((item, index) => (
+              {eventAPI?.map((item, index) => (
                 <div className='w-full' key={`${item.title}[${index}]`}>
                   <EventCard
-                    imgSrc={item.image}
+                    imgSrc={urlFor(item.thumbnail).url()}
                     imgAlt={item.title}
-                    type={item.type}
+                    type={item.eventCategory[0].title}
                     date={item.date}
                     title={item.title}
-                    link={item.link}
+                    link={`/events/${item.slug.current}`}
                   />
                 </div>
               ))}
@@ -117,5 +119,27 @@ const Events = () => {
     </Layout>
   );
 };
+
+export async function getStaticProps() {
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"] {
+    ...,
+    eventCategory[]->,
+  }
+  `)
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `)
+  return {
+    props: {
+      eventAPI,
+      seoAPI,
+      footerAPI,
+    },
+  }
+}
 
 export default Events;

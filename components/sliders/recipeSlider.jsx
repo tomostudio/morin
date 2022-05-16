@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper";
 import RecipeCard from "../shared-module/recipeCard";
+import urlFor from "@/helpers/sanity/urlFor";
 
 const RecipeSlider = ({ data }) => {
   return (
@@ -15,14 +16,14 @@ const RecipeSlider = ({ data }) => {
       modules={[FreeMode]}
       style={{ padding: "20px 16px" }}
     >
-      {data?.map((item) => (
+      {data?.slice(0,3).map((item) => (
         <SwiperSlide key={item.title}>
           <RecipeCard
-            imgSrc={item.imgSrc}
-            imgPlaceholder={item.imgPlaceholder}
-            imgAlt={item.imgAlt}
+            imgSrc={urlFor(item.thumbnail).url()}
+            imgPlaceholder={urlFor(item.thumbnail).url()}
+            imgAlt={item.thumbnail.alt}
             title={item.title}
-            link={item.link}
+            link={`/recipes/${item.slug.current}`}
           />
         </SwiperSlide>
       ))}
