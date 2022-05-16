@@ -7,6 +7,8 @@ import { useEffectInit } from '@/components/utils/preset'
 import { useAppContext } from 'context/state'
 import urlFor from '@/helpers/sanity/urlFor'
 import client from '@/helpers/sanity/client'
+import { useRouter } from 'next/router'
+import SEO from '@/components/utils/seo'
 
 const categoryData = [
   {
@@ -43,8 +45,11 @@ const categoryData = [
   },
 ]
 
-const Category = ({ productTypeAPI }) => {
+const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
+  const [product] = productAPI
+  const [seo] = seoAPI
   const ctx = useAppContext()
+  const router = useRouter()
 
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: false })
@@ -52,14 +57,21 @@ const Category = ({ productTypeAPI }) => {
   return (
     <Layout>
       {/* <Header mobileDark={false} /> */}
+      <SEO
+        title={'Products'}
+        pagelink={router.pathname}
+        inputSEO={product.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
 
       <div className="w-full bg-morin-skyBlue">
         <div className=" relative w-full h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <div className="relative w-full h-full">
             <Image
-              src="/category/banner.jpg"
-              placeholder="/category/banner.png"
-              alt="Category"
+              src={urlFor(product.background).url()}
+              placeholder={urlFor(product.background).url()}
+              alt={product.background.alt}
               layout="fill"
               objectFit="cover"
             />
@@ -70,8 +82,7 @@ const Category = ({ productTypeAPI }) => {
               Our Products
             </h1>
             <p className="hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block">
-              Lorem nunc amet, placerat aliquam mauris sodales purus. Urna
-              fermentum amet enim neque.
+              {product.description}
             </p>
           </div>
         </div>
@@ -108,6 +119,9 @@ const Category = ({ productTypeAPI }) => {
 }
 
 export async function getStaticProps() {
+  const productAPI = await client.fetch(`
+  *[_type == "product"]
+  `)
   const productTypeAPI = await client.fetch(`
   *[_type == "productType"]
   `)
@@ -119,6 +133,7 @@ export async function getStaticProps() {
   `)
   return {
     props: {
+      productAPI,
       productTypeAPI,
       seoAPI,
       footerAPI,

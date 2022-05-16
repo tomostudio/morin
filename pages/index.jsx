@@ -19,16 +19,24 @@ import { useEffectInit } from '@/components/utils/preset'
 import client from '@/helpers/sanity/client'
 import { useAppContext } from 'context/state'
 import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 export default function Home({
   homeAPI,
   recipeAPI,
+  recipeListAPI,
   eventAPI,
+  productAPI,
   productTypeAPI,
   seoAPI,
   footerAPI,
 }) {
   const [home] = homeAPI
+  const [seo] = seoAPI
+  const [product] = productAPI
+  const [recipe] = recipeAPI
+  const router = useRouter()
   const categoryData = [
     {
       imgSrc: '/category/category-1.jpg',
@@ -154,7 +162,13 @@ export default function Home({
 
   return (
     <>
-      <NextSeo />
+      <SEO
+        title={'Home'}
+        pagelink={router.pathname}
+        inputSEO={home.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
       {/* <Header mobileDark={false} /> */}
       <LazyMotion features={domAnimation}>
         <m.div initial="initial" animate="enter" exit="exit" variants={fade}>
@@ -177,8 +191,7 @@ export default function Home({
                   <div className="home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0">
                     <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just">
                       <h2 className=" mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] ">
-                        Jodohnya Roti! Lorem Ipsum sit Amet Lorem Ipsum Amet
-                        Lorem.
+                        {product.description}
                       </h2>
                       <StrokeButton
                         destination="/products"
@@ -222,24 +235,24 @@ export default function Home({
                           <HeroCategory
                             imgSrc={urlFor(i.background).url()}
                             imgProduct={
-                              i.animation === "1"
+                              i.animation === '1'
                                 ? '/category/hover-1.png'
-                                : i.animation === "2"
+                                : i.animation === '2'
                                 ? '/category/hover-2.png'
-                                : i.animation === "3"
+                                : i.animation === '3'
                                 ? '/category/hover-3.png'
-                                : i.animation === "4"
+                                : i.animation === '4'
                                 ? '/category/hover-4.png'
                                 : ''
                             }
                             imgPlaceholderProduct={
-                              i.animation === "1"
+                              i.animation === '1'
                                 ? '/category/hover-1.png'
-                                : i.animation === "2"
+                                : i.animation === '2'
                                 ? '/category/hover-2.png'
-                                : i.animation === "3"
+                                : i.animation === '3'
                                 ? '/category/hover-3.png'
-                                : i.animation === "4"
+                                : i.animation === '4'
                                 ? '/category/hover-4.png'
                                 : ''
                             }
@@ -275,8 +288,7 @@ export default function Home({
                       </div>
                     </h2>
                     <p className="mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
-                      Lorem Ipsum Dolor sit Amet Lorem Ipsum Dolor sit Amet
-                      Lorem Ipsum Dolor sit Amet Lorem Ipsum Amet Lorem Ipsum.
+                      {recipe.description}
                     </p>
                   </div>
                   <div className="order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12">
@@ -288,7 +300,7 @@ export default function Home({
                     </StrokeButton>
                   </div>
                   <div className="-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]">
-                    <RecipeSlider data={recipeAPI} />
+                    <RecipeSlider data={recipeListAPI} />
                   </div>
                 </div>
               </Container>
@@ -388,10 +400,16 @@ export async function getStaticProps() {
   *[_type == "home"]
   `)
   const recipeAPI = await client.fetch(`
+  *[_type == "recipe"]
+  `)
+  const recipeListAPI = await client.fetch(`
   *[_type == "recipeList"]
   `)
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
+  `)
+  const productAPI = await client.fetch(`
+  *[_type == "product"]
   `)
   const productTypeAPI = await client.fetch(`
   *[_type == "productType"]
@@ -406,7 +424,9 @@ export async function getStaticProps() {
     props: {
       homeAPI,
       recipeAPI,
+      recipeListAPI,
       eventAPI,
+      productAPI,
       productTypeAPI,
       seoAPI,
       footerAPI,

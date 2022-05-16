@@ -22,6 +22,9 @@ import {
 import Image from 'next/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import client from '@/helpers/sanity/client'
+import { useRouter } from 'next/router'
+import SEO from '@/components/utils/seo'
+import { PortableText } from '@portabletext/react'
 
 const aboutData = [
   {
@@ -40,10 +43,12 @@ const aboutData = [
   },
 ]
 
-const About = ({ aboutAPI }) => {
+const About = ({ aboutAPI, seoAPI }) => {
   const [modalOne, setModalOne] = useState(false)
   const [modalTwo, setModalTwo] = useState(false)
   const [about] = aboutAPI
+  const [seo] = seoAPI
+  const router = useRouter()
 
   const openModal = (type) => {
     switch (type) {
@@ -70,6 +75,13 @@ const About = ({ aboutAPI }) => {
 
   return (
     <div className="w-full bg-morin-skyBlue ">
+      <SEO
+        title={'About'}
+        pagelink={router.pathname}
+        inputSEO={about.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
       <Layout className="relative pt-16 overflow-hidden">
         <div className="w-[150vw] aspect-square absolute inset-0 -translate-x-1/2 -translate-y-1/2 -top-20 left-1/2 z-1 ">
           {/* <SunRaySmaller className='w-full h-full animate-spin-slow' /> */}
@@ -120,7 +132,7 @@ const About = ({ aboutAPI }) => {
             <div className="absolute top-[4%] lg:top-[13%] right-[-40px] md:right-[-80px] lg:right-[-120px] rotate-[11deg]">
               <div className="relative w-[129px] h-[129px] md:w-[258px] md:h-[258px] lg:w-[382px] lg:h-[382px]">
                 <Image
-                  src="/product/strawberry.png"
+                  src={urlFor(about.backgrounds.imageLeft).url()}
                   layout="fill"
                   objectFit="contain"
                 />
@@ -129,7 +141,7 @@ const About = ({ aboutAPI }) => {
             <div className="absolute bottom-[7%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px] rotate-[-11deg]">
               <div className="relative w-[129px] h-[132px] md:w-[258px] md:h-[264px] lg:w-[382px] lg:h-[390px]">
                 <Image
-                  src="/product/strawberry.png"
+                  src={urlFor(about.backgrounds.imageRight).url()}
                   layout="fill"
                   objectFit="contain"
                 />
@@ -175,33 +187,33 @@ const About = ({ aboutAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          About Morin
+          {about.visi_misi.titleDescription}
         </span>
 
-        <p className="font-medium mb-5">
-          Mengawali produksi pada tahun 1978 di Jelambar Utama, Jakarta Barat,
-          Morin memperkenalkan “Selai Kaya” sebagai produk pertamanya dengan
-          tagline “Jodohnya Roti” yang telah melekat pada keluarga Indonesia.
-        </p>
-        <p className="font-medium mb-7">
-          Hingga saat ini, Morin terus berkembang untuk menyajikan produk-produk
-          terbaik dengan berbagai varian dan ukuran yang telah tersebar di
-          seluruh nusantara. Morin telah memperluas jangkauan distribusi ke
-          seluruh Indonesia untuk Fruit Jam, Bread Spread, Topping dan Syrup
-          serta berbagai isian untuk roti dan juga kue nastar.
-        </p>
-
-        <div className="mb-2">
-          <Image
-            src="/about/about-1.jpg"
-            blurDataURL="/about/about-1.png"
-            placeholder="blur"
-            alt="Image Description Here"
-            width={795}
-            height={460}
-          />
-        </div>
-        <span className="font-semibold">Lorem Ipsum Dolor sit Amet</span>
+        <PortableText
+          value={about.visi_misi.description}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <p className="font-medium mb-5">{children}</p>
+              ),
+            },
+            types: {
+              image: (props) => (
+                <div className="mb-5">
+                  <Image
+                    src={urlFor(props.value).url()}
+                    blurDataURL={urlFor(props.value).url()}
+                    placeholder="blur"
+                    alt={props.value.alt}
+                    width={795}
+                    height={460}
+                  />
+                </div>
+              ),
+            },
+          }}
+        />
       </PageModal>
 
       <PageModal
@@ -210,53 +222,33 @@ const About = ({ aboutAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          Our Process
+          {about.our_process.titleDescription}
         </span>
 
-        <div className="mb-5 md:mb-7 lg:mb-10">
-          <Image
-            src="/about/about-2.jpg"
-            blurDataURL="/about/about-2.png"
-            placeholder="blur"
-            alt="Image Description Here"
-            width={795}
-            height={540}
-          />
-        </div>
-
-        <span className="block font-semibold mb-2">Bread Spread</span>
-        <p className="font-medium mb-5 md:mb-7 lg:mb-10">
-          Bread spread diproduksi menggunakan bubuk coklat dari berbagai daerah
-          asal, kacang tanah pilihan dan hazelnut dari Turki, serta lemak nabati
-          yang berkualitas tinggi, sehingga menghasilkan produk spread yang
-          terkenal kelezatannya di keluarga Indonesia.
-        </p>
-
-        <div className="mb-5 md:mb-7 lg:mb-10">
-          <Image
-            src="/about/about-3.jpg"
-            blurDataURL="/about/about-3.png"
-            placeholder="blur"
-            alt="Image Description Here"
-            width={315}
-            height={235}
-          />
-        </div>
-
-        <p className="font-medium mb-5">
-          Mengawali produksi pada tahun 1978 di Jelambar Utama, Jakarta Barat,
-          Morin memperkenalkan “Selai Kaya” sebagai produk pertamanya dengan
-          tagline “Jodohnya Roti” yang telah melekat pada keluarga Indonesia.
-        </p>
-        <p className="font-medium mb-7">
-          Hingga saat ini, Morin terus berkembang untuk menyajikan produk-produk
-          terbaik dengan berbagai varian dan ukuran yang telah tersebar di
-          seluruh nusantara. Morin telah memperluas jangkauan distribusi ke
-          seluruh Indonesia untuk Fruit Jam, Bread Spread, Topping dan Syrup
-          serta berbagai isian untuk roti dan juga kue nastar.
-        </p>
-
-        <span className="font-semibold">Lorem Ipsum Dolor sit Amet</span>
+        <PortableText
+          value={about.our_process.description}
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <p className="font-medium mb-5">{children}</p>
+              ),
+            },
+            types: {
+              image: (props) => (
+                <div className="mb-5">
+                  <Image
+                    src={urlFor(props.value).url()}
+                    blurDataURL={urlFor(props.value).url()}
+                    placeholder="blur"
+                    alt={props.value.alt}
+                    width={795}
+                    height={460}
+                  />
+                </div>
+              ),
+            },
+          }}
+        />
       </PageModal>
     </div>
   )

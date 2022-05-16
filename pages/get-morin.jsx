@@ -10,9 +10,13 @@ import { useAppContext } from 'context/state'
 import urlFor from '@/helpers/sanity/urlFor'
 import client from '@/helpers/sanity/client'
 import { PortableText } from '@portabletext/react'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
-const GetMorin = ({ getMorinAPI }) => {
+const GetMorin = ({ getMorinAPI, seoAPI }) => {
+  const [seo] = seoAPI
   const [getMorin] = getMorinAPI
+  const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: true })
@@ -20,6 +24,13 @@ const GetMorin = ({ getMorinAPI }) => {
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       {/* <Header hamburgerColor='bg-black' /> */}
+      <SEO
+        title={'Get Morin!'}
+        pagelink={router.pathname}
+        inputSEO={getMorin.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
 
       <Container className="mt-8 lg:mt-0">
         <div className="flex flex-col leading-tight">

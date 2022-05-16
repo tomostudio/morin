@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
           </Script>
         </>
       )}
-      <DefaultSeo {...SEO} />
+      {/* <DefaultSeo {...SEO} /> */}
       <Head>
         {/* FAVICON  */}
         <link
