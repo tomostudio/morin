@@ -9,6 +9,8 @@ import { useEffect } from 'react'
 import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 const productData = [
   {
@@ -76,8 +78,10 @@ const productData = [
   },
 ]
 
-const ProductList = ({ productTypeAPI }) => {
+const ProductList = ({ productTypeAPI, seoAPI }) => {
+  const [seo] = seoAPI
   const [productType] = productTypeAPI
+  const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: true })
@@ -87,6 +91,13 @@ const ProductList = ({ productTypeAPI }) => {
     <div className="w-full bg-morin-skyBlue">
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
         {/* <Header /> */}
+        <SEO
+          title={productType.title}
+          pagelink={router.pathname}
+          inputSEO={productType.seo}
+          defaultSEO={typeof seo !== 'undefined' && seo.seo}
+          webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        />
 
         <Container
           className="pl-0 pr-0"

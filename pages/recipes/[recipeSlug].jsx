@@ -16,6 +16,8 @@ import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 const recipeCategory = ['Medium', 'Dessert', '< 30 mins']
 
@@ -363,12 +365,14 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
 }
 
 // CONTROLLER
-const RecipeDetail = ({ recipeAPI, recipeListAPI }) => {
+const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
   const [ingredientsChecked, setIngredientsChecked] = useState([])
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
   const [gallerySlide, setGallerySlide] = useState(0)
+  const [seo] = seoAPI
   const [recipe] = recipeAPI
+  const router = useRouter()
 
   const handleCheckIngredients = (val) => {
     setIngredientsChecked((prev) => {
@@ -417,6 +421,13 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI }) => {
   return (
     <Layout style={{ backgroundColor: recipe.backgroundColor.hex }}>
       {/* <Header /> */}
+      <SEO
+        title={recipe.title}
+        pagelink={router.pathname}
+        inputSEO={recipe.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
 
       <div className="relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden">
         <div className="max-w-screen-2xl mx-auto">

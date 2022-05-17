@@ -16,6 +16,8 @@ import { useEffect } from 'react'
 import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 const tabData = [
   {
@@ -107,8 +109,10 @@ const moreProductData = [
   },
 ]
 
-const ProductDetail = ({ productAPI, productListAPI }) => {
+const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
+  const [seo] = seoAPI
   const [product] = productAPI
+  const router = useRouter()
 
   const ctx = useAppContext()
   useEffect(() => {
@@ -118,6 +122,13 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
   return (
     <Layout className="overflow-hidden">
       {/* <Header hamburgerColor='bg-black' /> */}
+      <SEO
+        title={product.title}
+        pagelink={router.pathname}
+        inputSEO={product.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
 
       <div className="w-full">
         <div
@@ -135,10 +146,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-[75px] absolute top-20 -left-5 xl:w-auto xl:top-8 xl:left-80`}
               >
                 <Image
-                  src="/product/strawberry-1.svg"
-                  blurDataURL="/product/strawberry-1.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={150}
                   height={150}
                 />
@@ -147,10 +158,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-[75px] absolute top-28 right-2 xl:w-auto xl:top-20 xl:right-[415px]`}
               >
                 <Image
-                  src="/product/strawberry-2.svg"
-                  blurDataURL="/product/strawberry-2.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={150}
                   height={150}
                 />
@@ -159,10 +170,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-[90px] absolute bottom-14 left-2 xl:w-auto xl:bottom-auto xl:top-16 xl:left-auto xl:right-14`}
               >
                 <Image
-                  src="/product/strawberry-3.svg"
-                  blurDataURL="/product/strawberry-3.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={190}
                   height={190}
                 />
@@ -171,10 +182,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-auto hidden absolute top-1/2 -left-4 -translate-y-1/2 xl:block 2xl:left-0`}
               >
                 <Image
-                  src="/product/strawberry-4.svg"
-                  blurDataURL="/product/strawberry-4.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={210}
                   height={210}
                 />
@@ -183,10 +194,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-10 absolute top-1/2 left-20 xl:w-auto xl:left-auto xl:right-[400px]`}
               >
                 <Image
-                  src="/product/strawberry-5.svg"
-                  blurDataURL="/product/strawberry-5.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={80}
                   height={80}
                 />
@@ -195,10 +206,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-[150px] absolute bottom-20 -right-12 xl:w-auto`}
               >
                 <Image
-                  src="/product/strawberry-6.svg"
-                  blurDataURL="/product/strawberry-6.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={335}
                   height={335}
                 />
@@ -207,10 +218,10 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
                 className={`w-auto hidden absolute -bottom-2 left-60 xl:block`}
               >
                 <Image
-                  src="/product/strawberry-7.svg"
-                  blurDataURL="/product/strawberry-7.svg"
+                  src={urlFor(product.background).url()}
+                  blurDataURL={urlFor(product.background).url()}
                   placeholder="blur"
-                  alt="Strawberry"
+                  alt={product.background.alt}
                   width={240}
                   height={240}
                 />
@@ -282,19 +293,19 @@ const ProductDetail = ({ productAPI, productListAPI }) => {
         </div>
 
         {product.recipes?.length > 0 && (
-          <div className='max-w-screen-2xl mx-auto'>
-            <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6'>
-              <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8'>
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6">
+              <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
                 Things you can make
               </h2>
-              <div className='w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0'>
+              <div className="w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0">
                 <RecipeSlider
                   data={product.recipes}
                   onClick={(url) => handleImageGallery(url)}
                 />
               </div>
-              <div className='hidden w-fit mt-7 mx-auto md:block xl:mt-8'>
-                <StrokeButton destination='/recipes' color={colors.morinRed}>
+              <div className="hidden w-fit mt-7 mx-auto md:block xl:mt-8">
+                <StrokeButton destination="/recipes" color={colors.morinRed}>
                   See All Recipes
                 </StrokeButton>
               </div>

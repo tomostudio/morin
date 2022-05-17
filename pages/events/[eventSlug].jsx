@@ -11,6 +11,8 @@ import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import { PortableText } from '@portabletext/react'
 import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 const EventTag = ({ label }) => {
   return (
@@ -41,8 +43,10 @@ const highlightData = [
   },
 ]
 
-const EventDetail = ({ eventAPI }) => {
+const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
+  const [seo] = seoAPI
   const [event] = eventAPI
+  const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: true })
@@ -51,11 +55,18 @@ const EventDetail = ({ eventAPI }) => {
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" />
+      <SEO
+        title={event.title}
+        pagelink={router.pathname}
+        inputSEO={event.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
 
       <div className="text-morin-blue leading-tight">
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
           <span className="block font-semibold mb-2.5">
-            Thursday, 21-06-2021
+            {event.date}
           </span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
             {event.title}
@@ -126,9 +137,7 @@ const EventDetail = ({ eventAPI }) => {
                     <div className="relative w-full h-full lg:h-[700px] aspect-w-16 aspect-h-9 mx-auto mb-8 px-8 lg:rounded-2xl overflow-hidden md:mb-10 lg:mb-12">
                       <Image
                         src={urlFor(props.value.image).url()}
-                        blurDataURL={
-                          urlFor(props.value.image).url()
-                        }
+                        blurDataURL={urlFor(props.value.image).url()}
                         alt={props.value.image.alt}
                         placeholder="blur"
                         layout="fill"
@@ -141,9 +150,7 @@ const EventDetail = ({ eventAPI }) => {
                       <div className="mb-8 md:mb-10 lg:px-24 lg:mb-12 xl:px-28">
                         <Image
                           src={urlFor(props.value.image).url()}
-                          blurDataURL={
-                            urlFor(props.value.image).url()
-                          }
+                          blurDataURL={urlFor(props.value.image).url()}
                           alt={props.value.image.alt}
                           placeholder="blur"
                           width={590}
@@ -167,18 +174,18 @@ const EventDetail = ({ eventAPI }) => {
             </h2>
 
             <div className="flex flex-wrap mx-auto md:max-w-4xl">
-              {highlightData?.map((item, index) => (
+              {eventListAPI?.slice(0,2).map((item, index) => (
                 <div
                   className="w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5"
                   key={`${item.title}[${index}]`}
                 >
                   <HighlightCard
-                    imgSrc={item.imgSrc}
-                    imgPlaceholder={item.imgPlaceholder}
-                    imgAlt={item.imgAlt}
+                    imgSrc={urlFor(item.thumbnail).url()}
+                    imgPlaceholder={urlFor(item.thumbnail).url()}
+                    imgAlt={item.thumbnail.alt}
                     date={item.date}
                     title={item.title}
-                    link={item.link}
+                    link={`/events/${item.slug.current}`}
                   />
                 </div>
               ))}
@@ -214,6 +221,9 @@ export async function getStaticProps({ params }) {
       } 
     `,
   )
+  const eventListAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -224,6 +234,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       eventAPI,
+      eventListAPI,
       seoAPI,
       footerAPI,
     },
