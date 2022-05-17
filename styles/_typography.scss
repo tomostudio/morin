@@ -37,3 +37,9 @@ h3,
 .h3 {
   @apply p-0 mb-3 font-bold;
 }
+
+.mobileMenu.pointer-events-none {
+  & * {
+    pointer-events: none !important;
+  }
+}

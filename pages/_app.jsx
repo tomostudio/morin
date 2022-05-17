@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
           </Script>
         </>
       )}
-      <DefaultSeo {...SEO} />
+      {/* <DefaultSeo {...SEO} /> */}
       <Head>
         {/* FAVICON  */}
         <link
@@ -62,7 +62,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <AnimatePresence exitBeforeEnter>
         <AppWrapper>
-          <Header />
+          <Header waLink={pageProps.seoAPI[0].whatsapp} />
           <Component {...pageProps} key={router.asPath} />
         </AppWrapper>
       </AnimatePresence>

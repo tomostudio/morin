@@ -1,8 +1,10 @@
-import Image from "next/image";
-import colors from "@/helpers/colors";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper";
-import StrokeButton from "../micro-module/strokeButton";
+import Image from 'next/image'
+import colors from '@/helpers/colors'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper'
+import StrokeButton from '../micro-module/strokeButton'
+import { PortableText } from '@portabletext/react'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const ImageGallery = ({ name, images }) => {
   return (
@@ -20,8 +22,8 @@ const ImageGallery = ({ name, images }) => {
       {images?.map((item, index) => (
         <SwiperSlide>
           <Image
-            src={item}
-            blurDataURL={item}
+            src={urlFor(item).url()}
+            blurDataURL={urlFor(item).url()}
             placeholder="blur"
             alt={`${name} (${index})`}
             layout="responsive"
@@ -31,18 +33,10 @@ const ImageGallery = ({ name, images }) => {
         </SwiperSlide>
       ))}
     </Swiper>
-  );
-};
+  )
+}
 
-const ContactCard = ({
-  imageData,
-  label,
-  companyName,
-  address,
-  phone,
-  email,
-  maps,
-}) => {
+const ContactCard = ({ imageData, label, companyName, description, maps }) => {
   return (
     <div className="flex flex-col rounded-2xl overflow-hidden lg:flex-row">
       <div className="contact-card-slider lg:w-3/5">
@@ -56,23 +50,31 @@ const ContactCard = ({
         <div className="flex flex-col xl:max-w-xs">
           <span className="font-semibold mb-4 xl:mb-8">{companyName}</span>
 
-          <span className="mb-4 xl:mb-8">{address}</span>
+          <PortableText
+            value={description}
+            components={{
+              block: {
+                normal: ({ children }) => <p>{children}</p>,
+              },
+            }}
+          />
+
+          {/* <span className="mb-4 xl:mb-8">{address}</span>
 
           {phone && <span>Phone : {phone}</span>}
-          {email && <span className="mb-4 xl:mb-8">Email : {email}</span>}
-
-          <StrokeButton
-            className="mt-2 lg:ml-0 xl:mt-4"
-            color={colors.morinBlue}
-            destination={maps}
-            targetBlank
-          >
-            View in Maps
-          </StrokeButton>
+          {email && <span className="mb-4 xl:mb-8">Email : {email}</span>} */}
         </div>
+        <StrokeButton
+          className="mt-2 lg:ml-0 xl:mt-4"
+          color={colors.morinBlue}
+          destination={maps}
+          targetBlank
+        >
+          View in Maps
+        </StrokeButton>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactCard;
+export default ContactCard

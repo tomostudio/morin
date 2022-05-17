@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import FancyLink from '@/components/utils/fancyLink';
-import Container from '@/components/module/container';
-import Hamburger from '../micro-module/hamburger';
-import { useAppContext } from 'context/state';
+import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import FancyLink from '@/components/utils/fancyLink'
+import Container from '@/components/module/container'
+import Hamburger from '../micro-module/hamburger'
+import { useAppContext } from 'context/state'
 import {
   MorinLogo,
   SunRay,
@@ -12,8 +12,8 @@ import {
   Instagram,
   Facebook,
   WaButton,
-} from '../utils/svg';
-import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset';
+} from '../utils/svg'
+import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 
 const navData = [
   {
@@ -40,146 +40,145 @@ const navData = [
     dest: 'events',
     ariaText: 'Navigate to the Events page',
   },
-];
+]
 
-export default function Header() {
-  const [opened, setOpened] = useState(false);
-  const ctx = useAppContext();
+export default function Header({ waLink }) {
+  const [opened, setOpened] = useState(false)
+  const ctx = useAppContext()
 
   // Mobile Menu Toggle
   const toggleHamburgermenu = () => {
-    const menu = document.querySelector('.mobileMenu');
-    const body = document.querySelector('body');
+    const body = document.querySelector('body')
     if (ctx.mobileMenuOpen) {
       // change into closed state
-      body.classList.remove('overflow-hidden');
-      menu.classList.remove('opacity-100');
-      menu.classList.remove('visible');
-      menu.classList.add('opacity-0');
-      setTimeout(() => menu.classList.add('invisible'), FIFODuration);
-      ctx.setMobileMenuOpen(false);
+      body.classList.remove('overflow-hidden')
+      ctx.mobileMenuOpen = false
     } else {
       // change into opened state
-      body.classList.add('overflow-hidden');
-      menu.classList.remove('opacity-0');
-      menu.classList.remove('invisible');
-      menu.classList.add('opacity-100');
-      menu.classList.add('visible');
-      ctx.setMobileMenuOpen(false);
+      body.classList.add('overflow-hidden')
+
+      ctx.mobileMenuOpen = true
     }
-  };
+    setOpened(ctx.mobileMenuOpen)
+  }
+
+  useEffect(() => {
+    setOpened(ctx.mobileMenuOpen)
+  }, [ctx.mobileMenuOpen])
 
   // Market Variable
-  const [markerW, setMarkerW] = useState(120); // width of marker
-  const [markerPos, setMarkerPos] = useState(396); // position of marker
-  let widthData = []; // always collect width data.
+  const [markerW, setMarkerW] = useState(120) // width of marker
+  const [markerPos, setMarkerPos] = useState(396) // position of marker
+  let widthData = [] // always collect width data.
 
-  const defaultNavRef = useRef();
-  const navRef = useRef();
+  const defaultNavRef = useRef()
+  const navRef = useRef()
 
   // function when navigation on hover in
   const navMouseOver = (e) => {
     // set marker width according to button yand di hover
-    setMarkerW(e.target.clientWidth);
+    setMarkerW(e.target.clientWidth)
 
     // reset and set color of navigation
     navRef.current.querySelectorAll('a').forEach((item) => {
-      item.classList.remove('focus');
-    });
+      item.classList.remove('focus')
+    })
 
     // set target nav color to white (with class)
-    e.target.classList.add('focus');
+    e.target.classList.add('focus')
 
     // set position variable
-    let moveX = 0;
+    let moveX = 0
 
     // get width of all nav
     navRef.current
       .querySelectorAll('a:not(.default-nav)')
       .forEach((item, id) => {
-        widthData[id] = item.clientWidth;
-      });
+        widthData[id] = item.clientWidth
+      })
 
     // iterate nav to get position.
     widthData.forEach((w, id) => {
       if (e.target.dataset.id == -1 || id < e.target.dataset.id) {
-        moveX = moveX + w;
+        moveX = moveX + w
       }
-    });
+    })
     // set marker position.
-    setMarkerPos(moveX);
-  };
+    setMarkerPos(moveX)
+  }
 
   // function when navigation on hover out
   const navLeave = () => {
-    resetNav();
-  };
+    resetNav()
+  }
 
   const resetNav = () => {
-    const width = window.innerWidth;
+    const width = window.innerWidth
     if (width > 1024) {
-      document.querySelector('body').classList.remove('overflow-hidden');
-      setMarkerW(defaultNavRef.current.clientWidth);
+      document.querySelector('body').classList.remove('overflow-hidden')
+      setMarkerW(defaultNavRef.current.clientWidth)
       //update all nav width data
       document
         .querySelectorAll('nav.header-nav a:not(.default-nav)')
         .forEach((item, id) => {
-          item.classList.remove('focus');
-          widthData[id] = item.clientWidth;
-        });
-      defaultNavRef.current.classList.add('focus');
+          item.classList.remove('focus')
+          widthData[id] = item.clientWidth
+        })
+      defaultNavRef.current.classList.add('focus')
 
-      let moveX = 0;
+      let moveX = 0
       widthData.forEach((w) => {
-        moveX = moveX + w;
-      });
-      setMarkerPos(moveX);
+        moveX = moveX + w
+      })
+      setMarkerPos(moveX)
     }
-  };
+  }
 
-  const [darkMobile, setDarkMobile] = useState(ctx.mobileDark);
+  const [blackButton, setBlackButton] = useState(ctx.blackButton)
 
   useEffect(() => {
     const scrollListener = () => {
+      console.log(ctx.mobileDark, ctx)
       if (window.scrollY > 250) {
-        setDarkMobile(true);
+        setBlackButton(true)
       } else {
-        setDarkMobile(ctx.mobileDark);
+        setBlackButton(ctx.mobileDark)
       }
-    };
-
-    console.log(ctx.mobileDark, ctx);
+    }
 
     setTimeout(() => {
-      document.addEventListener('resize', resetNav, false);
-      document.addEventListener('scroll', scrollListener, false);
-    }, 50); // load delay
+      document.addEventListener('resize', resetNav, false)
+      document.addEventListener('scroll', scrollListener, false)
+    }, 50) // load delay
     return () => {
-      document.removeEventListener('resize', resetNav, false);
-      document.removeEventListener('scroll', scrollListener, false);
-    };
-  }, []);
+      document.removeEventListener('resize', resetNav, false)
+      document.removeEventListener('scroll', scrollListener, false)
+    }
+  }, [])
 
-  const mobileLink = `font-nutmeg font-bold text-white text-mtitleBig leading-none`;
-  const FIFODuration = 300;
+  useEffect(() => {
+    setBlackButton(ctx.mobileDark)
+  }, [ctx.mobileDark])
+
+  const FIFODuration = 300
 
   return (
     <>
-      <header className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full pt-8'>
+      <header className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full pt-8">
         <Container>
-          <div className='flex flex-row flex-wrap items-center justify-between'>
+          <div className="flex flex-row flex-wrap items-center justify-between">
             <FancyLink
-              destination='/'
-              a11yText='Navigate to the home page'
-              className='group pointer-events-auto relative h-9 lg:h-14 max-md:p-0'
+              destination="/"
+              a11yText="Navigate to the home page"
+              className="group pointer-events-auto relative h-9 lg:h-14 max-md:p-0"
             >
-              <MorinLogo className='relative z-2 h-full w-full' />
-              <div className='pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>
-                <SunRaySmaller className='h-96 w-96 animate-spin-slow' />
+              <MorinLogo className="relative z-2 h-full w-full" />
+              <div className="pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                <SunRaySmaller className="h-96 w-96 animate-spin-slow" />
               </div>
             </FancyLink>
             <nav
-              className='header-nav pointer-events-auto relative hidden rounded-full bg-white py-1.5 px-2 shadow-softer lg:flex'
+              className="header-nav pointer-events-auto relative hidden rounded-full bg-white py-1.5 px-2 shadow-softer lg:flex"
               onSubmit={(e) => e.preventDefault()}
               onMouseLeave={navLeave}
               ref={navRef}
@@ -189,7 +188,7 @@ export default function Header() {
                   destination={`/${item.dest}`}
                   a11yText={item.ariaText}
                   key={item.id}
-                  className=''
+                  className=""
                   onMouseEnter={navMouseOver}
                   data-id={id}
                 >
@@ -197,7 +196,7 @@ export default function Header() {
                 </FancyLink>
               ))}
               <FancyLink
-                className='default-nav focus'
+                className="default-nav focus"
                 onMouseEnter={navMouseOver}
                 a11yText={'Navigate to the Get Morin page'}
                 destination={`/get-morin`}
@@ -207,37 +206,41 @@ export default function Header() {
                 Get Morin!
               </FancyLink>
               <div
-                id='marker'
-                aria-hidden='true'
+                id="marker"
+                aria-hidden="true"
                 style={{
                   width: markerW,
                   transform: `translateX(${markerPos}px)`,
                 }}
-                className='absolute left-[6px] z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo'
+                className="absolute left-[6px] z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo"
               />
             </nav>
 
             {/* MOBILE */}
             <Hamburger
-              className='block lg:hidden'
+              className="block lg:hidden"
               opened={opened}
               onClick={() => toggleHamburgermenu()}
-              dark={darkMobile}
+              dark={blackButton}
             />
             <div
-              className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} invisible -z-1 opacity-0 lg:hidden`}
+              className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} -z-1 lg:hidden ${
+                opened
+                  ? 'opacity-100  pointer-events-auto'
+                  : 'opacity-0 pointer-events-none'
+              }`}
             >
-              <div className='absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] '>
-                <SunRay className='block w-full animate-spin-slower h-full' />
+              <div className="absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] ">
+                <SunRay className="block w-full animate-spin-slower h-full" />
               </div>
-              <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
-                <nav className='flex w-full flex-col space-y-[35px] text-center'>
+              <div className="relative z-1 flex h-full w-full items-center justify-center pb-20">
+                <nav className="flex w-full flex-col space-y-6 text-center items-center">
                   {navData?.map((item, id) => (
                     <FancyLink
                       key={id}
                       destination={`/${item.dest}`}
                       a11yText={item.ariaText}
-                      className={`${mobileLink} ${
+                      className={`font-nutmeg font-bold text-white text-mtitleBig leading-none ${
                         Math.random() >= 0.5 ? rotate3 : rotate_3
                       } `}
                     >
@@ -245,19 +248,18 @@ export default function Header() {
                     </FancyLink>
                   ))}
                   <FancyLink
-                    blank={true}
-                    destination={'/'}
-                    a11yText='Navigate to the about page'
-                    className={`${mobileLink} ${
+                    destination={'/get-morin'}
+                    a11yText="Navigate to the about page"
+                    className={`font-nutmeg font-bold text-white text-mtitleBig leading-none  p-2  ${
                       Math.random() >= 0.5 ? rotate3 : rotate_3
                     }`}
                   >
                     Get Morin!
                   </FancyLink>
                 </nav>
-                <div className='absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5'>
+                <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
                   <FancyLink
-                    destination='/'
+                    destination="/"
                     blank={true}
                     className={`flex leading-none ${defaultHover}`}
                   >
@@ -269,18 +271,18 @@ export default function Header() {
                     />
                   </FancyLink>
                   <FancyLink
-                    destination='/'
+                    destination="/"
                     blank={true}
                     className={`flex leading-none ${defaultHover}`}
                   >
-                    <Twitter className='w-9 h-9' />
+                    <Twitter className="w-9 h-9" />
                   </FancyLink>
                   <FancyLink
-                    destination='/'
+                    destination="/"
                     blank={true}
                     className={`flex leading-none ${defaultHover}`}
                   >
-                    <Facebook className='w-9 h-9' />
+                    <Facebook className="w-9 h-9" />
                   </FancyLink>
                 </div>
               </div>
@@ -295,5 +297,5 @@ export default function Header() {
         </FancyLink>
       </Container>
     </>
-  );
+  )
 }
