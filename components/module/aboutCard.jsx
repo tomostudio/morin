@@ -1,5 +1,5 @@
-import Image from "next/image";
-import FancyLink from "../utils/fancyLink";
+import Image from 'next/image'
+import FancyLink from '../utils/fancyLink'
 
 const AboutCard = ({
   type,
@@ -8,6 +8,7 @@ const AboutCard = ({
   imgPlaceholder,
   imgAlt,
   link = false,
+  lang,
   onClick = () => {},
 }) => {
   return (
@@ -45,12 +46,14 @@ const AboutCard = ({
             {title}
           </span>
           <span className="flex items-center min-h-[25px] font-semibold leading-none border-white border-2 border-solid rounded-full px-4 mx-auto md:min-h-[30px]">
-            <span className="md:pt-0.5">Learn More</span>
+            <span className="md:pt-0.5">
+              {lang === 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More'}
+            </span>
           </span>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutCard;
+export default AboutCard

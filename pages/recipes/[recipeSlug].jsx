@@ -650,7 +650,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
         </div>
       </div>
 
-      <Footer />
+      <Footer lang={router.locale} />
     </Layout>
   )
 }

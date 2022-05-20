@@ -4,22 +4,37 @@ import { FreeMode } from 'swiper'
 import HighlightCard from '../shared-module/highlightCard'
 import urlFor from '@/helpers/sanity/urlFor'
 
-const HighlightSlider = ({ data }) => {
+const HighlightSlider = ({ data, lang }) => {
   return (
     <>
       <div className="w-full md:hidden">
-        {data?.slice(0, 3).map((item) => (
-          <div className="mb-[10px] last:mb-0" key={item.title}>
-            <HighlightCard
-              imgSrc={urlFor(item.thumbnail).url()}
-              imgPlaceholder={urlFor(item.thumbnail).url()}
-              imgAlt={item.thumbnail.alt}
-              date={item.date}
-              title={item.title}
-              link={`/events/${item.slug.current}`}
-            />
-          </div>
-        ))}
+        {data?.slice(0, 3).map((item) =>
+          lang === 'id' ? (
+            <div className="mb-[10px] last:mb-0" key={item.title_id}>
+              <HighlightCard
+                imgSrc={urlFor(item.thumbnail).url()}
+                imgPlaceholder={urlFor(item.thumbnail).url()}
+                imgAlt={item.thumbnail.alt}
+                date={item.date}
+                title={item.title_id}
+                link={`/events/${item.slug.current}`}
+                lang={lang}
+              />
+            </div>
+          ) : (
+            <div className="mb-[10px] last:mb-0" key={item.title_en}>
+              <HighlightCard
+                imgSrc={urlFor(item.thumbnail).url()}
+                imgPlaceholder={urlFor(item.thumbnail).url()}
+                imgAlt={item.thumbnail.alt}
+                date={item.date}
+                title={item.title_en}
+                link={`/events/${item.slug.current}`}
+                lang={lang}
+              />
+            </div>
+          ),
+        )}
       </div>
       <div className="hidden w-full md:block lg:mb-4 xl:mb-9  ">
         <Swiper
@@ -33,18 +48,33 @@ const HighlightSlider = ({ data }) => {
           modules={[FreeMode]}
           style={{ padding: '0 16px' }}
         >
-          {data?.slice(0, 3).map((item, index) => (
-            <SwiperSlide key={`${item.title}(${index})`}>
-              <HighlightCard
-                imgSrc={urlFor(item.thumbnail).url()}
-                imgPlaceholder={urlFor(item.thumbnail).url()}
-                imgAlt={item.thumbnail.alt}
-                date={item.date}
-                title={item.title}
-                link={`/events/${item.slug.current}`}
-              />
-            </SwiperSlide>
-          ))}
+          {data?.slice(0, 3).map((item, index) =>
+            lang === 'id' ? (
+              <SwiperSlide key={`${item.title_id}(${index})`}>
+                <HighlightCard
+                  imgSrc={urlFor(item.thumbnail).url()}
+                  imgPlaceholder={urlFor(item.thumbnail).url()}
+                  imgAlt={item.thumbnail.alt}
+                  date={item.date}
+                  title={item.title_id}
+                  link={`/events/${item.slug.current}`}
+                  lang={lang}
+                />
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide key={`${item.title_en}(${index})`}>
+                <HighlightCard
+                  imgSrc={urlFor(item.thumbnail).url()}
+                  imgPlaceholder={urlFor(item.thumbnail).url()}
+                  imgAlt={item.thumbnail.alt}
+                  date={item.date}
+                  title={item.title_en}
+                  link={`/events/${item.slug.current}`}
+                  lang={lang}
+                />
+              </SwiperSlide>
+            ),
+          )}
         </Swiper>
       </div>
     </>

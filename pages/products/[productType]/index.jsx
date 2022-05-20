@@ -153,7 +153,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
           </div>
         </Container>
 
-        <Footer />
+        <Footer lang={router.locale} />
       </Layout>
     </div>
   )

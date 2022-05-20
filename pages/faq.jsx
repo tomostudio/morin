@@ -83,10 +83,14 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
   return (
     <div className="w-full bg-white">
       <SEO
-        title={'Faq'}
+        title={router.locale === 'id' ? 'Tanya Jawab' : 'Faq'}
         pagelink={router.pathname}
-        inputSEO={faq.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? faq.seo_id : faq_seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
@@ -96,7 +100,9 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
         >
           <div className="mb-16">
             <div className=" w-full md:w-3/4 text-morin-blue mx-auto text-center font-nutmeg text-h2 lg:text-h1 leading-none  font-bold">
-              Frequently Asked Questions
+              {router.locale === 'id'
+                ? 'Pertanyaan yang Sering Diajukan'
+                : 'Frequently Asked Questions'}
             </div>
             {/* <div className="max-w-[350px] mx-auto md:hidden">
               <FAQMobile />
@@ -107,21 +113,33 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
           </div>
 
           <div className="flex flex-wrap -mx-1 lg:-mx-2.5">
-            {faqListAPI?.map((item, index) => (
-              <div
-                className="w-1/2 px-1 mb-2 md:w-1/3 lg:px-2.5 lg:mb-5"
-                key={index}
-              >
-                <FAQCard
-                  title={item.title}
-                  onClick={() => setModalData(item)}
-                />
-              </div>
-            ))}
+            {faqListAPI?.map((item, index) =>
+              router.locale === 'id' ? (
+                <div
+                  className="w-1/2 px-1 mb-2 md:w-1/3 lg:px-2.5 lg:mb-5"
+                  key={index}
+                >
+                  <FAQCard
+                    title={item.title_id}
+                    onClick={() => setModalData(item)}
+                  />
+                </div>
+              ) : (
+                <div
+                  className="w-1/2 px-1 mb-2 md:w-1/3 lg:px-2.5 lg:mb-5"
+                  key={index}
+                >
+                  <FAQCard
+                    title={item.title_en}
+                    onClick={() => setModalData(item)}
+                  />
+                </div>
+              ),
+            )}
           </div>
         </Container>
 
-        <Footer />
+        <Footer lang={router.locale} />
       </Layout>
 
       <BasicModal
@@ -131,10 +149,12 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
       >
         <div className="flex flex-col justify-center w-full h-full bg-white absolute-center px-8 md:bg-transparent md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
           <span className="block font-semibold text-mtitleSmall leading-tight mb-6 lg:font-bold lg:mb-8">
-            {modalData?.title}
+            {router.locale === 'id' ? modalData?.title_id : modalData?.title_en}
           </span>
           <p className="text-default lg:text-mtitleSmall">
-            {modalData?.description}
+            {router.locale === 'id'
+              ? modalData?.description_id
+              : modalData?.description_en}
           </p>
         </div>
       </BasicModal>

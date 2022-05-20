@@ -113,10 +113,14 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
     <Layout>
       {/* <Header mobileDark={false} /> */}
       <SEO
-        title={'Recipes'}
+        title={router.locale === 'id' ? 'Resep' : 'Recipes'}
         pagelink={router.pathname}
-        inputSEO={recipe.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? recipe.seo_id : recipe.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -135,9 +139,15 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
-              Recipes
-              <br />
-              From Love
+              {router.locale === 'id' ? (
+                <>
+                  Resep <br /> dari Hati
+                </>
+              ) : (
+                <>
+                  Recipes <br /> from Love
+                </>
+              )}
             </h1>
           </div>
         </div>
@@ -145,7 +155,9 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
         <div className="p-4 lg:p-8">
           <div className="flex w-full items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
-              Sorted by Default
+              {router.locale === 'id'
+                ? 'Diurutkan Secara Bawaan'
+                : 'Sorted by Default'}
             </span>
             <StrokeButton
               arrow={false}
@@ -177,12 +189,12 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
           <div className="max-w-screen-2xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
               {recipeListAPI?.map((item, index) => (
-                <div className="w-full" key={`${item.title}[${index}]`}>
+                <div className="w-full" key={`${item.title_en}[${index}]`}>
                   <RecipeCard
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgPlaceholder={urlFor(item.thumbnail).url()}
                     imgAlt={item.thumbnail.alt}
-                    title={item.title}
+                    title={router.locale === "id" ? item.title_id : item.title_en}
                     link={`/recipes/${item.slug.current}`}
                     duration={item.cookingTime}
                     difficulty={item.difficulty}
@@ -197,13 +209,15 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
                 color={colors.morinRed}
                 onClick={() => console.log('load more')}
               >
-                Show More
+                {router.locale === 'id'
+                  ? 'Menampilkan lebih banyak'
+                  : 'Show More'}
               </StrokeButton>
             </div>
           </div>
         </div>
 
-        <Footer />
+        <Footer lang={router.locale} />
       </div>
     </Layout>
   )

@@ -4,7 +4,7 @@ import StrokeButton from '../micro-module/strokeButton';
 import { SunRay } from '../utils/svg';
 import Image from 'next/image';
 
-const CategoryCard = ({ title, description, link, imgSrc, imgAlt }) => {
+const CategoryCard = ({ title, description, link, imgSrc, imgAlt, lang }) => {
   return (
     <div className='group relative flex flex-wrap w-full rounded-2xl overflow-hidden mb-4 last:mb-0 lg:mb-5 lg:odd:flex-row-reverse lg:min-h-[400px] xl:min-h-[500px] 2xl:min-h-[600px] '>
       <div className='relative w-full min-h-[350px] bg-morin-lightBlue lg:w-1/2'>
@@ -36,7 +36,7 @@ const CategoryCard = ({ title, description, link, imgSrc, imgAlt }) => {
           destination={link}
           className='lg:ml-0'
         >
-          See All {title}
+          {lang === 'id' ? `Lihat Semua ${title}` : `See All ${title}`}
         </StrokeButton>
       </div>
     </div>
