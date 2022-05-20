@@ -23,7 +23,7 @@ const HeroSlider = ({ data, className }) => {
         speed={1000}
         className={`${className}`}
       >
-        {data.component.map((item, index) =>
+        {data.component_en.map((item, index) =>
           item.option ? (
             <SwiperSlide key={index}>
               <div className="relative w-screen h-screen">
