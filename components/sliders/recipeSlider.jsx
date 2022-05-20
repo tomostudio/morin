@@ -1,10 +1,10 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper";
-import RecipeCard from "../shared-module/recipeCard";
-import urlFor from "@/helpers/sanity/urlFor";
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode } from 'swiper'
+import RecipeCard from '../shared-module/recipeCard'
+import urlFor from '@/helpers/sanity/urlFor'
 
-const RecipeSlider = ({ data }) => {
+const RecipeSlider = ({ data, lang }) => {
   return (
     <Swiper
       breakpoints={{
@@ -14,21 +14,33 @@ const RecipeSlider = ({ data }) => {
       }}
       freeMode={true}
       modules={[FreeMode]}
-      style={{ padding: "20px 16px" }}
+      style={{ padding: '20px 16px' }}
     >
-      {data?.slice(0,3).map((item) => (
-        <SwiperSlide key={item.title}>
-          <RecipeCard
-            imgSrc={urlFor(item.thumbnail).url()}
-            imgPlaceholder={urlFor(item.thumbnail).url()}
-            imgAlt={item.thumbnail.alt}
-            title={item.title}
-            link={`/recipes/${item.slug.current}`}
-          />
-        </SwiperSlide>
-      ))}
+      {data?.slice(0, 3).map((item) =>
+        lang === 'id' ? (
+          <SwiperSlide key={item.title_id}>
+            <RecipeCard
+              imgSrc={urlFor(item.thumbnail).url()}
+              imgPlaceholder={urlFor(item.thumbnail).url()}
+              imgAlt={item.thumbnail.alt}
+              title={item.title_id}
+              link={`/recipes/${item.slug.current}`}
+            />
+          </SwiperSlide>
+        ) : (
+          <SwiperSlide key={item.title_en}>
+            <RecipeCard
+              imgSrc={urlFor(item.thumbnail).url()}
+              imgPlaceholder={urlFor(item.thumbnail).url()}
+              imgAlt={item.thumbnail.alt}
+              title={item.title_en}
+              link={`/recipes/${item.slug.current}`}
+            />
+          </SwiperSlide>
+        ),
+      )}
     </Swiper>
-  );
-};
+  )
+}
 
-export default RecipeSlider;
+export default RecipeSlider

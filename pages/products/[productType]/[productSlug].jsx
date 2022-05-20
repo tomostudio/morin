@@ -352,7 +352,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         )}
       </div>
 
-      <Footer />
+      <Footer lang={router.locale} />
     </Layout>
   )
 }

@@ -76,10 +76,14 @@ const About = ({ aboutAPI, seoAPI }) => {
   return (
     <div className="w-full bg-morin-skyBlue ">
       <SEO
-        title={'About'}
+        title={router.locale === 'id' ? 'Tentang Kami' : 'About'}
         pagelink={router.pathname}
-        inputSEO={about.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? about.seo_id : about.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Layout className="relative pt-16 overflow-hidden">
@@ -100,7 +104,7 @@ const About = ({ aboutAPI, seoAPI }) => {
             <div className="relative max-w-xs text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
               <div className="relative">
                 <h1 className="font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
-                  WHO WE ARE
+                  {router.locale === 'id' ? 'SIAPA KAMI' : 'WHO WE ARE'}
                 </h1>
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                   <Highlight className="hidden lg:block" />
@@ -109,8 +113,9 @@ const About = ({ aboutAPI, seoAPI }) => {
               </div>
               <div className="relative">
                 <p className="font-nutmeg text-mtitle leading-tight mb-8 lg:text-h2 lg:mb-16 xl:text-h2 xl:mb-28">
-                  Selama lebih dari 40 tahun, Morin hadir menemani momen-momen
-                  sarapan keluarga Indonesia.
+                  {router.locale === 'id'
+                    ? 'Selama lebih dari 40 tahun, Morin hadir menemani momen-momen sarapan keluarga Indonesia.'
+                    : 'For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.'}
                 </p>
                 <div className="absolute left-0 lg:left-auto aboutLineMobile top-[13%] lg:top-[-30%] lg:right-[20%] lg:scale-100">
                   <ThreeTopLine className="h-[34px] w-[32px] lg:h-[119px] lg:w-[123px]" />
@@ -126,7 +131,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                 </div>
               </div>
               <StrokeButton color={colors.morinBlue} arrow={false}>
-                Read More
+                {router.locale === 'id' ? 'Baca selengkapnya' : 'Read More'}
               </StrokeButton>
             </div>
             <div className="absolute top-[4%] lg:top-[13%] right-[-40px] md:right-[-80px] lg:right-[-120px] rotate-[11deg]">
@@ -157,27 +162,37 @@ const About = ({ aboutAPI, seoAPI }) => {
               <div className="w-full mb-3 last:mb-0 md:w-1/2 md:mb-0 md:px-2 xl:px-4">
                 <AboutCard
                   type="OUR PROCESS"
-                  title={about.our_process.title}
+                  title={
+                    router.locale === 'id'
+                      ? about.our_process.title_id
+                      : about.our_process.title_en
+                  }
                   imgSrc={urlFor(about.our_process.thumbnail).url()}
                   imgPlaceholder={urlFor(about.our_process.thumbnail).url()}
                   imgAlt={about.our_process.thumbnail.alt}
                   onClick={() => openModal('OUR PROCESS')}
+                  lang={router.locale}
                 />
               </div>
               <div className="w-full mb-3 last:mb-0 md:w-1/2 md:mb-0 md:px-2 xl:px-4">
                 <AboutCard
                   type="VISI & MISI"
-                  title={about.visi_misi.title}
+                  title={
+                    router.locale === 'id'
+                      ? about.visi_misi.title_id
+                      : about.visi_misi.title_en
+                  }
                   imgSrc={urlFor(about.visi_misi.thumbnail).url()}
                   imgPlaceholder={urlFor(about.visi_misi.thumbnail).url()}
                   imgAlt={about.visi_misi.thumbnail.alt}
                   onClick={() => openModal('VISI & MISI')}
+                  lang={router.locale}
                 />
               </div>
             </div>
           </Container>
 
-          <Footer />
+          <Footer lang={router.locale} />
         </div>
       </Layout>
 
@@ -187,11 +202,17 @@ const About = ({ aboutAPI, seoAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          {about.visi_misi.titleDescription}
+          {router.locale === 'id'
+            ? about.visi_misi.titleDescription_id
+            : about.visi_misi.titleDescription_en}
         </span>
 
         <PortableText
-          value={about.visi_misi.description}
+          value={
+            router.locale === 'id'
+              ? about.visi_misi.description_id
+              : about.visi_misi.description_en
+          }
           components={{
             block: {
               normal: ({ children }) => (
@@ -222,11 +243,17 @@ const About = ({ aboutAPI, seoAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          {about.our_process.titleDescription}
+          {router.locale === 'id'
+            ? about.our_process.titleDescription_id
+            : about.our_process.titleDescription_en}
         </span>
 
         <PortableText
-          value={about.our_process.description}
+          value={
+            router.locale === 'id'
+              ? about.our_process.description_id
+              : about.our_process.description_en
+          }
           components={{
             block: {
               normal: ({ children }) => (

@@ -25,10 +25,14 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
-        title={'Get Morin!'}
+        title={router.locale === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
         pagelink={router.pathname}
-        inputSEO={getMorin.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? getMorin.seo_id : getMorin.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -36,7 +40,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
         <div className="flex flex-col leading-tight">
           <div className="flex flex-col lg:flex-row lg:space-x-48 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
-              Shop Online
+              {router.locale === 'id' ? 'Berbelanja Online' : 'Shop Online'}
             </h2>
             <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
               <FancyLink
@@ -48,7 +52,9 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
               </FancyLink>
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  Online Marketplace
+                  {router.locale === 'id'
+                    ? 'Toko Online'
+                    : 'Online Marketplace'}
                 </span>
                 <div className="mt-4 lg:mt-10 md:mt-6 getmorin-list">
                   {getMorin.shopOnline.map((item, index) => (
@@ -75,12 +81,14 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
           </div>
           <div className="flex flex-col lg:flex-row lg:space-x-48 mt-10 mb-10 lg:mt-20 lg:mb-20 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
-              Shop Offline
+              {router.locale === 'id' ? 'Toko Offline' : 'Shop Offline'}
             </h2>
             <div className="w-full flex flex-col items-center lg:items-start mt-6 lg:mt-0 md:mt-8 md:space-y-8 space-y-6 lg:space-y-12 justify-start">
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  Major Distributors
+                  {router.locale === 'id'
+                    ? 'Distributor Utama'
+                    : 'Major Distributors'}
                 </span>
                 <div className="mt-4 lg:mt-10 md:mt-6 getmorin-list">
                   {getMorin.shopOffline.majorDistributors.map((item, index) => (
@@ -105,7 +113,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
               </div>
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  Retailers
+                  {router.locale === 'id' ? 'Pengecer' : 'Retailers'}
                 </span>
                 <div className="mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 gap-6">
                   {getMorin.shopOffline.retailers.map((item, index) => (
@@ -113,7 +121,9 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                       key={index}
                       className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue"
                     >
-                      <span className="font-bold">{item.title}</span>
+                      <span className="font-bold">
+                        {router.locale === 'id' ? item.title_id : item.title_en}
+                      </span>
                       <PortableText
                         value={item.description}
                         components={{
@@ -134,7 +144,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
           </div>
         </div>
       </Container>
-      <Footer />
+      <Footer lang={router.locale} />
     </Layout>
   )
 }

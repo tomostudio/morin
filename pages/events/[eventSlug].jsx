@@ -54,7 +54,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
-      <Header hamburgerColor="bg-black" />
+      <Header hamburgerColor="bg-black" lang={router.locale} />
       <SEO
         title={event.title}
         pagelink={router.pathname}
@@ -65,9 +65,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
       <div className="text-morin-blue leading-tight">
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
-          <span className="block font-semibold mb-2.5">
-            {event.date}
-          </span>
+          <span className="block font-semibold mb-2.5">{event.date}</span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
             {event.title}
           </h1>
@@ -174,7 +172,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             </h2>
 
             <div className="flex flex-wrap mx-auto md:max-w-4xl">
-              {eventListAPI?.slice(0,2).map((item, index) => (
+              {eventListAPI?.slice(0, 2).map((item, index) => (
                 <div
                   className="w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5"
                   key={`${item.title}[${index}]`}
@@ -192,7 +190,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer lang={router.locale} />
       </div>
     </Layout>
   )

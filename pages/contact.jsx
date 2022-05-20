@@ -50,10 +50,14 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
   return (
     <Layout className="pt-[86px] lg:pt-32">
       <SEO
-        title={'Contact'}
+        title={router.locale === 'id' ? 'Kontak' : 'Contact'}
         pagelink={router.pathname}
-        inputSEO={contact.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? contact.seo_id : contact.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Container
@@ -61,23 +65,28 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
         classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-16"
       >
         <h1 className="text-morin-blue text-ctitle font-nutmeg font-bold mx-auto mb-8 md:text-ctitleBig lg:text-h2 xl:text-h1 xl:mb-16">
-          Contact
+          {router.locale === 'id' ? 'Kontak' : 'Contact'}
         </h1>
 
         {contactListAPI?.map((item, index) => (
           <div className="mb-4 last:mb-0" key={index}>
             <ContactCard
               imageData={item.images}
-              label={item.title}
+              label={router.locale === 'id' ? item.title_id : item.title_en}
               companyName={item.name}
-              description={item.description}
+              description={
+                router.locale === 'id'
+                  ? item.description_id
+                  : item.description_en
+              }
               maps={item.maps}
+              lang={router.locale}
             />
           </div>
         ))}
       </Container>
 
-      <Footer />
+      <Footer lang={router.locale} />
     </Layout>
   )
 }

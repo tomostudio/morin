@@ -62,7 +62,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <AnimatePresence exitBeforeEnter>
         <AppWrapper>
-          <Header waLink={pageProps.seoAPI[0].whatsapp} />
+          <Header waLink={pageProps.seoAPI[0].whatsapp} lang={router.locale} />
           <Component {...pageProps} key={router.asPath} />
         </AppWrapper>
       </AnimatePresence>

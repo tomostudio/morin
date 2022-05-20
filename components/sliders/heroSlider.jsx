@@ -6,7 +6,7 @@ import StrokeButton from '../micro-module/strokeButton'
 import colors from '@/helpers/colors'
 import urlFor from '@/helpers/sanity/urlFor'
 
-const HeroSlider = ({ data, className }) => {
+const HeroSlider = ({ data, className, lang }) => {
   return (
     <div className="hero-slider">
       <Swiper
@@ -23,81 +23,157 @@ const HeroSlider = ({ data, className }) => {
         speed={1000}
         className={`${className}`}
       >
-        {data.component_en.map((item, index) =>
-          item.option ? (
-            <SwiperSlide key={index}>
-              <div className="relative w-screen h-screen">
-                <Container className="h-screen z-1">
-                  <div className="w-full h-full flex flex-col justify-center items-center">
-                    <div className="mx-auto md:hidden">
-                      <Image
-                        src={urlFor(item.textImage.imageMobile).url()}
-                        // placeholder={``}
-                        alt="Morin"
-                        width={350}
-                        height={230}
-                      />
-                    </div>
-                    <div className="mx-auto hidden md:block">
-                      <Image
-                        src={urlFor(item.textImage.imageDesktop).url()}
-                        // placeholder={``}
-                        alt="Morin"
-                        width={950}
-                        height={375}
-                      />
-                    </div>
+        {lang === 'id'
+          ? data.component_id.map((item, index) =>
+              item.option ? (
+                <SwiperSlide key={index}>
+                  <div className="relative w-screen h-screen">
+                    <Container className="h-screen z-1">
+                      <div className="w-full h-full flex flex-col justify-center items-center">
+                        <div className="mx-auto md:hidden">
+                          <Image
+                            src={urlFor(item.textImage.imageMobile).url()}
+                            // placeholder={``}
+                            alt={item.textImage.imageDesktop.alt}
+                            width={350}
+                            height={230}
+                          />
+                        </div>
+                        <div className="mx-auto hidden md:block">
+                          <Image
+                            src={urlFor(item.textImage.imageDesktop).url()}
+                            // placeholder={``}
+                            alt={item.textImage.imageDesktop.alt}
+                            width={950}
+                            height={375}
+                          />
+                        </div>
 
-                    <StrokeButton
-                      destination="/products"
-                      color={colors.white}
-                      className="mt-5 md:mt-0"
-                    >
-                      Find Out More
-                    </StrokeButton>
+                        <StrokeButton
+                          destination="/products"
+                          color={colors.white}
+                          className="mt-5 md:mt-0"
+                        >
+                          Temukan lebih banyak lagi
+                        </StrokeButton>
+                      </div>
+                    </Container>
+
+                    <Image
+                      src={urlFor(item.background).url()}
+                      blurDataURL={urlFor(item.background).url()}
+                      placeholder="blur"
+                      alt={item.background.alt}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
-                </Container>
+                </SwiperSlide>
+              ) : (
+                <SwiperSlide key={index}>
+                  <div className="relative w-screen h-screen">
+                    <Container className="h-screen z-1">
+                      <div className="w-full h-full flex flex-col justify-center">
+                        <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
+                          {item.title}
+                        </span>
+                        <StrokeButton
+                          destination="/products"
+                          color={colors.white}
+                          className="mt-5"
+                        >
+                          Temukan lebih banyak lagi
+                        </StrokeButton>
+                      </div>
+                    </Container>
 
-                <Image
-                  src={urlFor(item.background).url()}
-                  blurDataURL={urlFor(item.background).url()}
-                  placeholder="blur"
-                  alt={item.background.alt}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </SwiperSlide>
-          ) : (
-            <SwiperSlide key={index}>
-              <div className="relative w-screen h-screen">
-                <Container className="h-screen z-1">
-                  <div className="w-full h-full flex flex-col justify-center">
-                    <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
-                      {item.title}
-                    </span>
-                    <StrokeButton
-                      destination="/products"
-                      color={colors.white}
-                      className="mt-5"
-                    >
-                      Find Out More
-                    </StrokeButton>
+                    <Image
+                      src={urlFor(item.background).url()}
+                      blurDataURL={urlFor(item.background).url()}
+                      placeholder="blur"
+                      alt={item.background.alt}
+                      layout="fill"
+                      objectFit="cover"
+                    />
                   </div>
-                </Container>
+                </SwiperSlide>
+              ),
+            )
+          : data.component_en.map((item, index) =>
+              item.option ? (
+                <SwiperSlide key={index}>
+                  <div className="relative w-screen h-screen">
+                    <Container className="h-screen z-1">
+                      <div className="w-full h-full flex flex-col justify-center items-center">
+                        <div className="mx-auto md:hidden">
+                          <Image
+                            src={urlFor(item.textImage.imageMobile).url()}
+                            // placeholder={``}
+                            alt={item.textImage.imageDesktop.alt}
+                            width={350}
+                            height={230}
+                          />
+                        </div>
+                        <div className="mx-auto hidden md:block">
+                          <Image
+                            src={urlFor(item.textImage.imageDesktop).url()}
+                            // placeholder={``}
+                            alt={item.textImage.imageDesktop.alt}
+                            width={950}
+                            height={375}
+                          />
+                        </div>
 
-                <Image
-                  src={urlFor(item.background).url()}
-                  blurDataURL={urlFor(item.background).url()}
-                  placeholder="blur"
-                  alt={item.background.alt}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </SwiperSlide>
-          ),
-        )}
+                        <StrokeButton
+                          destination="/products"
+                          color={colors.white}
+                          className="mt-5 md:mt-0"
+                        >
+                          Find Out More
+                        </StrokeButton>
+                      </div>
+                    </Container>
+
+                    <Image
+                      src={urlFor(item.background).url()}
+                      blurDataURL={urlFor(item.background).url()}
+                      placeholder="blur"
+                      alt={item.background.alt}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ) : (
+                <SwiperSlide key={index}>
+                  <div className="relative w-screen h-screen">
+                    <Container className="h-screen z-1">
+                      <div className="w-full h-full flex flex-col justify-center">
+                        <span className="max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight">
+                          {item.title}
+                        </span>
+                        <StrokeButton
+                          destination="/products"
+                          color={colors.white}
+                          className="mt-5"
+                        >
+                          Find Out More
+                        </StrokeButton>
+                      </div>
+                    </Container>
+
+                    <Image
+                      src={urlFor(item.background).url()}
+                      blurDataURL={urlFor(item.background).url()}
+                      placeholder="blur"
+                      alt={item.background.alt}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ),
+            )}
       </Swiper>
     </div>
   )

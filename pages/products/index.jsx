@@ -58,10 +58,14 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
     <Layout>
       {/* <Header mobileDark={false} /> */}
       <SEO
-        title={'Products'}
+        title={router.locale === 'id' ? 'Produk' : 'Products'}
         pagelink={router.pathname}
-        inputSEO={product.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? product.seo_id : product.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -79,10 +83,12 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
 
           <div className="w-full absolute-center text-center px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1">
-              Our Products
+              {router.locale === 'id' ? 'Produk Kami' : 'Our Products'}
             </h1>
             <p className="hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block">
-              {product.description}
+              {router.locale === 'id'
+                ? product.description_id
+                : product.description_en}
             </p>
           </div>
         </div>
@@ -91,7 +97,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
           <div className="max-w-screen-2xl mx-auto mb-7 lg:mb-10">
             {productTypeAPI?.map((item) => (
               <CategoryCard
-                key={item.title}
+                key={item.title_en}
                 imgSrc={
                   item.animation === '1'
                     ? '/category/hover-1.png'
@@ -103,16 +109,17 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
                     ? '/category/hover-4.png'
                     : ''
                 }
-                imgAlt={item.title}
-                title={item.title}
-                description={item.description}
+                imgAlt={router.locale === "id" ? item.title_id : item.title_en}
+                title={router.locale === "id" ? item.title_id : item.title}
+                description={router.locale === "id" ? item.description_id : item.description_en}
                 link={`/products/${item.slug.current}`}
+                lang={router.locale}
               />
             ))}
           </div>
         </div>
 
-        <Footer />
+        <Footer lang={router.locale} />
       </div>
     </Layout>
   )

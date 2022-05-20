@@ -36,7 +36,7 @@ const ImageGallery = ({ name, images }) => {
   )
 }
 
-const ContactCard = ({ imageData, label, companyName, description, maps }) => {
+const ContactCard = ({ imageData, label, companyName, description, maps, lang }) => {
   return (
     <div className="flex flex-col rounded-2xl overflow-hidden lg:flex-row">
       <div className="contact-card-slider lg:w-3/5">
@@ -70,7 +70,7 @@ const ContactCard = ({ imageData, label, companyName, description, maps }) => {
           destination={maps}
           targetBlank
         >
-          View in Maps
+          {lang === 'id' ? 'Lihat di Peta' : 'View in Maps'}
         </StrokeButton>
       </div>
     </div>

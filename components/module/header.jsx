@@ -15,36 +15,36 @@ import {
 } from '../utils/svg'
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 
-const navData = [
-  {
-    id: 'nav-1',
-    title: 'About',
-    dest: 'about',
-    ariaText: 'Navigate to the About page',
-  },
-  {
-    id: 'nav-2',
-    title: 'Products',
-    dest: 'products',
-    ariaText: 'Navigate to the Products page',
-  },
-  {
-    id: 'nav-3',
-    title: 'Recipes',
-    dest: 'recipes',
-    ariaText: 'Navigate to the Recipes page',
-  },
-  {
-    id: 'nav-4',
-    title: 'Events',
-    dest: 'events',
-    ariaText: 'Navigate to the Events page',
-  },
-]
-
-export default function Header({ waLink }) {
+export default function Header({ waLink, lang }) {
   const [opened, setOpened] = useState(false)
   const ctx = useAppContext()
+
+  const navData = [
+    {
+      id: 'nav-1',
+      title: lang === 'id' ? 'Tentang Kami' : 'About',
+      dest: 'about',
+      ariaText: 'Navigate to the About page',
+    },
+    {
+      id: 'nav-2',
+      title: lang === 'id' ? 'Produk' : 'Products',
+      dest: 'products',
+      ariaText: 'Navigate to the Products page',
+    },
+    {
+      id: 'nav-3',
+      title: lang === 'id' ? 'Resep' : 'Recipes',
+      dest: 'recipes',
+      ariaText: 'Navigate to the Recipes page',
+    },
+    {
+      id: 'nav-4',
+      title: lang === 'id' ? 'Acara' : 'Events',
+      dest: 'events',
+      ariaText: 'Navigate to the Events page',
+    },
+  ]
 
   // Mobile Menu Toggle
   const toggleHamburgermenu = () => {
@@ -67,8 +67,8 @@ export default function Header({ waLink }) {
   }, [ctx.mobileMenuOpen])
 
   // Market Variable
-  const [markerW, setMarkerW] = useState(120) // width of marker
-  const [markerPos, setMarkerPos] = useState(396) // position of marker
+  const [markerW, setMarkerW] = useState(lang === 'id' ? 174 : 120) // width of marker
+  const [markerPos, setMarkerPos] = useState(lang === 'id' ? 427 : 396) // position of marker
   let widthData = [] // always collect width data.
 
   const defaultNavRef = useRef()
@@ -203,7 +203,7 @@ export default function Header({ waLink }) {
                 data-id={-1}
                 ref={defaultNavRef}
               >
-                Get Morin!
+                {lang === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
               </FancyLink>
               <div
                 id="marker"
@@ -254,7 +254,7 @@ export default function Header({ waLink }) {
                       Math.random() >= 0.5 ? rotate3 : rotate_3
                     }`}
                   >
-                    Get Morin!
+                    {lang === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
                   </FancyLink>
                 </nav>
                 <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
