@@ -290,12 +290,12 @@ export default function Header({ waLink, lang }) {
           </div>
         </Container>
       </header>
-      <FancyLink
-        destination={waLink}
-        className="fixed z-10 bottom-0 right-0 w-[66px] h-fit m-6"
-      >
-        <WaButton />
-      </FancyLink>
+
+      <Container className='fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none'>
+        <FancyLink className='w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity'>
+          <WaButton />
+        </FancyLink>
+      </Container>
     </>
   )
 }
