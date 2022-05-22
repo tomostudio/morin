@@ -92,10 +92,18 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
         {/* <Header /> */}
         <SEO
-          title={productType.title}
+          title={
+            router.locale === 'id' ? productType.title_id : productType.title_en
+          }
           pagelink={router.pathname}
-          inputSEO={productType.seo}
-          defaultSEO={typeof seo !== 'undefined' && seo.seo}
+          inputSEO={
+            router.locale === 'id' ? productType.seo_id : productType.seo_en
+          }
+          defaultSEO={
+            typeof seo !== 'undefined' && router.locale === 'id'
+              ? seo.seo_id
+              : seo.seo_en
+          }
           webTitle={typeof seo !== 'undefined' && seo.webTitle}
         />
 
@@ -105,31 +113,63 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
         >
           <div className="max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
             <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
-              {productType.title}
+              {router.locale === 'id'
+                ? productType.title_id
+                : productType.title_en}
               <div className="w-full h-full absolute-center hidden lg:block">
                 <div className="w-fit absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
-                  <Image
-                    src={urlFor(productType.decor.decor1.image).url()}
-                    placeholder={urlFor(productType.decor.decor1.image).url()}
-                    alt={productType.decor.decor1.image.alt}
-                    width={385}
-                    height={385}
-                  />
+                  {router.locale === 'id' ? (
+                    <Image
+                      src={urlFor(productType.decor_id.decor1.image).url()}
+                      placeholder={urlFor(
+                        productType.decor_id.decor1.image,
+                      ).url()}
+                      alt={productType.decor_id.decor1.image.alt}
+                      width={385}
+                      height={385}
+                    />
+                  ) : (
+                    <Image
+                      src={urlFor(productType.decor_en.decor1.image).url()}
+                      placeholder={urlFor(
+                        productType.decor_en.decor1.image,
+                      ).url()}
+                      alt={productType.decor_en.decor1.image.alt}
+                      width={385}
+                      height={385}
+                    />
+                  )}
                 </div>
                 <div className="w-fit absolute top-0 left-0 translate-x-[85%] select-none">
-                  <Image
-                    src={urlFor(productType.decor.decor2.image).url()}
-                    placeholder={urlFor(productType.decor.decor2.image).url()}
-                    alt={productType.decor.decor2.image.alt}
-                    width={420}
-                    height={120}
-                  />
+                  {router.locale === 'id' ? (
+                    <Image
+                      src={urlFor(productType.decor_id.decor2.image).url()}
+                      placeholder={urlFor(
+                        productType.decor_id.decor2.image,
+                      ).url()}
+                      alt={productType.decor_id.decor2.image.alt}
+                      width={420}
+                      height={120}
+                    />
+                  ) : (
+                    <Image
+                      src={urlFor(productType.decor_en.decor2.image).url()}
+                      placeholder={urlFor(
+                        productType.decor_en.decor2.image,
+                      ).url()}
+                      alt={productType.decor_en.decor2.image.alt}
+                      width={420}
+                      height={120}
+                    />
+                  )}
                 </div>
               </div>
             </h1>
 
             <p className="font-semibold max-w-[400px] mx-auto">
-              {productType.description}
+              {router.locale === 'id'
+                ? productType.description_id
+                : productType.description_en}
             </p>
           </div>
 
@@ -137,10 +177,10 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
             {productType.product?.map((item, index) => (
               <div
                 className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
-                key={`${item.title}${index}`}
+                key={`${item.title_en}${index}`}
               >
                 <ProductCard
-                  title={item.title}
+                  title={router.locale === "id" ? item.title_id : item.title_en}
                   bgColor={item.backgroundColor.hex}
                   imgSrc={urlFor(item.thumbnail).url()}
                   imgBg={'/product/strawberry-bg.png'}
@@ -159,16 +199,23 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const res = await client.fetch(`
         *[_type == "productType"]
       `)
 
-  const paths = res.map((data) => ({
-    params: {
-      productType: data.slug.current,
-    },
-  }))
+  const paths = []
+
+  res.map((data) => {
+    return locales.map((locale) => {
+      return paths.push({
+        params: {
+          productType: data.slug.current,
+        },
+        locale,
+      })
+    })
+  })
 
   return { paths, fallback: false }
 }
@@ -178,7 +225,11 @@ export async function getStaticProps({ params }) {
     `
       *[_type == "productType" && slug.current == "${params.productType}"] {
         ...,
-        decor {
+        decor_en {
+          decor1->,
+          decor2->
+        },
+        decor_id {
           decor1->,
           decor2->
         },

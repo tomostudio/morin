@@ -123,10 +123,14 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
     <Layout className="overflow-hidden">
       {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
-        title={product.title}
+        title={router.locale === 'id' ? product.title_id : product.title_en}
         pagelink={router.pathname}
-        inputSEO={product.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? product.seo_id : product.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -232,10 +236,13 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <Container className="z-1 pt-[86px] lg:pt-36 xl:pt-56">
             <div className="text-center text-morin-red">
               <span className="font-semibold tracking-widest mb-1.5 md:mb-2.5 xl:mb-4 uppercase">
-                MORIN {product.type.title}
+                MORIN{' '}
+                {router.locale === 'id'
+                  ? product.type.title_id
+                  : product.type.title_en}
               </span>
               <h1 className="font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 xl:text-h1">
-                {product.title}
+                {router.locale === 'id' ? product.title_id : product.title_en}
               </h1>
             </div>
             <div className="flex flex-wrap justify-center w-full px-12 translate-y-12 xl:translate-y-24">
@@ -251,22 +258,42 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </div>
               <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block">
                 <div className="absolute bottom-0 left-52 2xl:left-64">
-                  <Image
-                    src={urlFor(product.decor.decor1.image).url()}
-                    placeholder={urlFor(product.decor.decor1.image).url()}
-                    alt={product.decor.decor1.image.alt}
-                    width={320}
-                    height={140}
-                  />
+                  {router.locale === 'id' ? (
+                    <Image
+                      src={urlFor(product.decor_id.decor1.image).url()}
+                      placeholder={urlFor(product.decor_id.decor1.image).url()}
+                      alt={product.decor_id.decor1.image.alt}
+                      width={320}
+                      height={140}
+                    />
+                  ) : (
+                    <Image
+                      src={urlFor(product.decor_en.decor1.image).url()}
+                      placeholder={urlFor(product.decor_en.decor1.image).url()}
+                      alt={product.decor_en.decor1.image.alt}
+                      width={320}
+                      height={140}
+                    />
+                  )}
                 </div>
                 <div className="absolute bottom-0 right-52 2xl:right-64">
-                  <Image
-                    src={urlFor(product.decor.decor2.image).url()}
-                    placeholder={urlFor(product.decor.decor2.image).url()}
-                    alt={product.decor.decor2.image.alt}
-                    width={325}
-                    height={170}
-                  />
+                  {router.locale === 'id' ? (
+                    <Image
+                      src={urlFor(product.decor_id.decor2.image).url()}
+                      placeholder={urlFor(product.decor_id.decor2.image).url()}
+                      alt={product.decor_id.decor2.image.alt}
+                      width={325}
+                      height={170}
+                    />
+                  ) : (
+                    <Image
+                      src={urlFor(product.decor_en.decor2.image).url()}
+                      placeholder={urlFor(product.decor_en.decor2.image).url()}
+                      alt={product.decor_en.decor2.image.alt}
+                      width={325}
+                      height={170}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -281,14 +308,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             className="mx-auto mb-6 md:mb-8"
           />
           <h2 className="max-w-screen-lg font-nutmeg text-mtitle text-center text-morin-red leading-tight mb-8 px-4 mx-auto md:text-mtitleBig xl:text-h2 md:px-8 lg:mb-10 xl:mb-14">
-            {product.description}
+            {router.locale === 'id'
+              ? product.description_id
+              : product.description_en}
           </h2>
           <FancyLink
             blank
             destination="#"
             className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
           >
-            <span className="block pt-1">Get This Product</span>
+            <span className="block pt-1">
+              {router.locale === 'id'
+                ? 'Dapatkan Produk Ini'
+                : 'Get This Product'}
+            </span>
           </FancyLink>
         </div>
 
@@ -296,7 +329,9 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <div className="max-w-screen-2xl mx-auto">
             <div className="relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6">
               <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
-                Things you can make
+                {router.locale === 'id'
+                  ? 'Hal-hal yang dapat Anda buat'
+                  : 'Things you can make'}
               </h2>
               <div className="w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0">
                 <RecipeSlider
@@ -306,7 +341,9 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </div>
               <div className="hidden w-fit mt-7 mx-auto md:block xl:mt-8">
                 <StrokeButton destination="/recipes" color={colors.morinRed}>
-                  See All Recipes
+                  {router.locale === 'id'
+                    ? 'Lihat Semua Resep'
+                    : 'See All Recipes'}
                 </StrokeButton>
               </div>
             </div>
@@ -317,17 +354,19 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <div className="max-w-screen-2xl mx-auto">
             <div className="py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0">
               <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
-                Similar Products
+                {router.locale === 'id' ? 'Produk Sejenis' : 'Similar Products'}
               </h2>
 
               <div className="flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5">
                 {productListAPI?.map((item, index) => (
                   <div
                     className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
-                    key={`${item.title}${index}`}
+                    key={`${item.title_en}${index}`}
                   >
                     <ProductCard
-                      title={item.title}
+                      title={
+                        router.locale === 'id' ? item.title_id : item.title_en
+                      }
                       bgColor={item.backgroundColor.hex}
                       imgSrc={urlFor(item.thumbnail).url()}
                       imgBg={'/product/strawberry-bg.png'}
@@ -345,7 +384,9 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 destination="/products"
                 className="md:hidden"
               >
-                See All Products
+                {router.locale === 'id'
+                  ? 'Lihat Semua Produk'
+                  : 'See All Products'}
               </StrokeButton>
             </div>
           </div>
@@ -357,7 +398,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const res = await client.fetch(`
         *[_type == "productList"] {
           ...,
@@ -365,12 +406,19 @@ export async function getStaticPaths() {
         }
       `)
 
-  const paths = res.map((data) => ({
-    params: {
-      productSlug: data.slug.current,
-      productType: data.type.slug.current,
-    },
-  }))
+  const paths = []
+
+  res.map((data) => {
+    return locales.map((locale) => {
+      return paths.push({
+        params: {
+          productSlug: data.slug.current,
+          productType: data.type.slug.current,
+        },
+        locale,
+      })
+    })
+  })
 
   return { paths, fallback: false }
 }
@@ -381,7 +429,11 @@ export async function getStaticProps({ params }) {
       *[_type == "productList" && slug.current == "${params.productSlug}"] {
         ...,
         type->,
-        decor {
+        decor_en {
+          decor1->,
+          decor2->
+        },
+        decor_id {
           decor1->,
           decor2->
         },

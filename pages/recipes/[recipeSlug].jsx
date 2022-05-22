@@ -422,10 +422,14 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
     <Layout style={{ backgroundColor: recipe.backgroundColor.hex }}>
       {/* <Header /> */}
       <SEO
-        title={recipe.title}
+        title={router.locale === 'id' ? recipe.title_id : recipe.title_en}
         pagelink={router.pathname}
-        inputSEO={recipe.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? recipe.seo_id : recipe.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -466,7 +470,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
 
             <div className="w-full text-white text-center absolute top-24 left-1/2 -translate-x-1/2 z-1 lg:flex lg:top-0 lg:px-8 lg:py-10">
               <h1 className="font-nutmeg font-bold text-ctitle leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left">
-                {recipe.title}
+                {router.locale === 'id' ? recipe.title_id : recipe.title_en}
               </h1>
               <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[200px] lg:pt-5 lg:ml-auto">
                 <RecipeTag label={recipe.difficulty} />
@@ -480,7 +484,11 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
           <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
             <div className="lg:max-w-3xl lg:mx-auto">
               <PortableText
-                value={recipe.description}
+                value={
+                  router.locale === 'id'
+                    ? recipe.description_id
+                    : recipe.description_en
+                }
                 components={{
                   block: {
                     normal: ({ children }) => <p>{children}</p>,
@@ -495,19 +503,30 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
             <div className="lg:w-1/2 lg:px-2">
               <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
                 <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
-                  Ingredients
+                  {router.locale === 'id' ? 'Bahan - bahan' : 'Ingredients'}
                 </h2>
                 <div className="">
-                  {recipe.ingredients?.map((item) => (
-                    <RecipeCheckbox
-                      key={item}
-                      name={item}
-                      label={item}
-                      value={item}
-                      checked={ingredientsChecked.includes(item)}
-                      onChange={() => handleCheckIngredients(item)}
-                    />
-                  ))}
+                  {router.locale === 'id'
+                    ? recipe.ingredients_id?.map((item) => (
+                        <RecipeCheckbox
+                          key={item}
+                          name={item}
+                          label={item}
+                          value={item}
+                          checked={ingredientsChecked.includes(item)}
+                          onChange={() => handleCheckIngredients(item)}
+                        />
+                      ))
+                    : recipe.ingredients_en?.map((item) => (
+                        <RecipeCheckbox
+                          key={item}
+                          name={item}
+                          label={item}
+                          value={item}
+                          checked={ingredientsChecked.includes(item)}
+                          onChange={() => handleCheckIngredients(item)}
+                        />
+                      ))}
                 </div>
               </div>
             </div>
@@ -516,7 +535,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
             <div className="lg:w-1/2 lg:px-2">
               <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
                 <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
-                  Made With
+                  {router.locale === 'id' ? 'Dibuat dengan' : 'Made With'}
                 </h2>
                 <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
                   {recipe.made?.map((item, index) => (
@@ -545,7 +564,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
           <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10">
             <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
               <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                Instructions
+                {router.locale === 'id' ? 'Instruksi' : 'Instructions'}
               </h2>
 
               <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
@@ -555,7 +574,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                   className="mx-0 mr-3"
                   onClick={() => console.log('Print')}
                 >
-                  Print
+                  {router.locale === 'id' ? 'Cetak' : 'Print'}
                 </StrokeButton>
                 <StrokeButton
                   arrow={false}
@@ -563,23 +582,43 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                   className="mx-0"
                   onClick={() => console.log('Share')}
                 >
-                  Share
+                  {router.locale === 'id' ? 'Bagikan' : 'Share'}
                 </StrokeButton>
               </div>
             </div>
 
             <div className="lg:max-w-3xl lg:mx-auto">
-              {recipe.steps?.map((item, index) => (
-                <InstructionCard
-                  key={index}
-                  step={index + 1}
-                  value={`step-${index + 1}`}
-                  instruction={item.description}
-                  images={item.images}
-                  checked={instructionsChecked.includes(`step-${index + 1}`)}
-                  onChange={() => handleCheckInstructions(`step-${index + 1}`)}
-                />
-              ))}
+              {router.locale === 'id'
+                ? recipe.steps_id?.map((item, index) => (
+                    <InstructionCard
+                      key={index}
+                      step={index + 1}
+                      value={`step-${index + 1}`}
+                      instruction={item.description}
+                      images={item.images}
+                      checked={instructionsChecked.includes(
+                        `step-${index + 1}`,
+                      )}
+                      onChange={() =>
+                        handleCheckInstructions(`step-${index + 1}`)
+                      }
+                    />
+                  ))
+                : recipe.steps_en?.map((item, index) => (
+                    <InstructionCard
+                      key={index}
+                      step={index + 1}
+                      value={`step-${index + 1}`}
+                      instruction={item.description}
+                      images={item.images}
+                      checked={instructionsChecked.includes(
+                        `step-${index + 1}`,
+                      )}
+                      onChange={() =>
+                        handleCheckInstructions(`step-${index + 1}`)
+                      }
+                    />
+                  ))}
             </div>
           </div>
 
@@ -603,10 +642,10 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="flex flex-wrap w-full">
                 <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
                   <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
-                    More Recipes
+                    {router.locale === "id" ? "Resep Lainnya" : "More Recipes"}
                   </span>
                   <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
-                    You may also like...
+                    {router.locale === "id" ? "Anda mungkin juga menyukai..." : "You may also like..."}
                   </span>
 
                   <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
@@ -615,7 +654,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                       color={colors.morinRed}
                       className="ml-auto"
                     >
-                      See All Recipes
+                      {router.locale === "id" ? "Lihat Semua Resep" : "See All Recipes"}
                     </StrokeButton>
                   </div>
                 </div>
@@ -655,16 +694,21 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const res = await client.fetch(`
         *[_type == "recipeList"]
       `)
 
-  const paths = res.map((data) => ({
-    params: {
-      recipeSlug: data.slug.current,
-    },
-  }))
+  const paths = []
+
+  res.map((data) => {
+    return locales.map((locale) => {
+      return paths.push({
+        params: { recipeSlug: `${data.slug.current}` },
+        locale,
+      })
+    })
+  })
 
   return { paths, fallback: false }
 }

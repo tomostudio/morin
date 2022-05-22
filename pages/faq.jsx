@@ -85,7 +85,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
       <SEO
         title={router.locale === 'id' ? 'Tanya Jawab' : 'Faq'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? faq.seo_id : faq_seo_en}
+        inputSEO={router.locale === 'id' ? faq.seo_id : faq.seo_en}
         defaultSEO={
           typeof seo !== 'undefined' && router.locale === 'id'
             ? seo.seo_id

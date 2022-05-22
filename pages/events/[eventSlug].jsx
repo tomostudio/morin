@@ -56,10 +56,14 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <Header hamburgerColor="bg-black" lang={router.locale} />
       <SEO
-        title={event.title}
+        title={router.locale == 'id' ? event.title_id : event.title_en}
         pagelink={router.pathname}
-        inputSEO={event.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={router.locale === 'id' ? event.seo_id : event.seo_en}
+        defaultSEO={
+          typeof seo !== 'undefined' && router.locale === 'id'
+            ? seo.seo_id
+            : seo.seo_en
+        }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
@@ -67,12 +71,14 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
           <span className="block font-semibold mb-2.5">{event.date}</span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
-            {event.title}
+            {router.locale === 'id' ? event.title_id : event.title_en}
           </h1>
           {event.eventCategory?.length > 0 && (
             <div className="flex flex-wrap items-center justify-center">
               {event.eventCategory?.map((item) => (
-                <EventTag label={item.title} />
+                <EventTag
+                  label={router.locale === 'id' ? item.title_id : item.title_en}
+                />
               ))}
             </div>
           )}
@@ -80,7 +86,11 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
         <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14">
           <PortableText
-            value={event.description}
+            value={
+              router.locale === 'id'
+                ? event.description_id
+                : event.description_en
+            }
             components={{
               block: {
                 normal: ({ children }) =>
@@ -168,21 +178,23 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className="mx-auto w-full flex flex-col px-4 lg:px-8 max-w-screen-2xl ">
           <div className="mb-7 md:mb-8 lg:mb-10">
             <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-              Other Events
+              {router.locale === 'id' ? 'Acara Lainnya' : 'Other Events'}
             </h2>
 
             <div className="flex flex-wrap mx-auto md:max-w-4xl">
               {eventListAPI?.slice(0, 2).map((item, index) => (
                 <div
                   className="w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5"
-                  key={`${item.title}[${index}]`}
+                  key={`${item.title_en}[${index}]`}
                 >
                   <HighlightCard
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgPlaceholder={urlFor(item.thumbnail).url()}
                     imgAlt={item.thumbnail.alt}
                     date={item.date}
-                    title={item.title}
+                    title={
+                      router.locale === 'id' ? item.title_id : item.title_en
+                    }
                     link={`/events/${item.slug.current}`}
                   />
                 </div>
@@ -196,16 +208,23 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const res = await client.fetch(`
         *[_type == "eventList"]
       `)
 
-  const paths = res.map((data) => ({
-    params: {
-      eventSlug: data.slug.current,
-    },
-  }))
+  const paths = []
+
+  res.map((data) => {
+    return locales.map((locale) => {
+      return paths.push({
+        params: {
+          eventSlug: data.slug.current,
+        },
+        locale,
+      })
+    })
+  })
 
   return { paths, fallback: false }
 }

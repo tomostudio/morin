@@ -202,7 +202,6 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
                 </div>
               ))}
             </div>
-
             <div className="w-full flex justify-center mt-5 xl:mt-7">
               <StrokeButton
                 arrow={false}
