@@ -303,7 +303,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         <div className="relative pt-20 pb-10 md:pt-28 md:pb-14 xl:pt-56 xl:pb-16">
           <div className="product-detail-curve" />
           <MorinTabs
-            tabData={tabData}
+            tabData={product.listWeight}
             onChange={(e) => console.log('tab', e)}
             className="mx-auto mb-6 md:mb-8"
           />
