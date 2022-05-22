@@ -473,9 +473,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                 {router.locale === 'id' ? recipe.title_id : recipe.title_en}
               </h1>
               <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[200px] lg:pt-5 lg:ml-auto">
-                <RecipeTag label={recipe.difficulty} />
-                <RecipeTag label={recipe.category} />
-                <RecipeTag label={recipe.cookingTime} />
+                <RecipeTag label={router.locale === "id" ? recipe.difficulty.title_id : recipe.difficulty.title_en} />
+                <RecipeTag label={router.locale === "id" ? recipe.recipeCategory.title_id : recipe.recipeCategory.title_en} />
+                <RecipeTag label={router.locale === "id" ? recipe.cookingTime.title_id : recipe.cookingTime.title_en} />
               </div>
             </div>
           </div>
@@ -718,6 +718,9 @@ export async function getStaticProps({ params }) {
     `
       *[_type == "recipeList" && slug.current == "${params.recipeSlug}"] {
         ...,
+        difficulty->,
+        cookingTime->,
+        recipeCategory->,
         made[]-> {
           ...,
           type->

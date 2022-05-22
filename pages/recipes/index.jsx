@@ -77,7 +77,15 @@ const recipeFilter = [
   },
 ]
 
-const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
+const Recipe = ({
+  recipeAPI,
+  recipeListAPI,
+  difficultyListAPI,
+  cookingTimeListAPI,
+  recipeCategoryAPI,
+  seoAPI,
+  footerAPI,
+}) => {
   const [filterOpen, setFilterOpen] = useState(true)
   const [filterValue, setFilterValue] = useState([])
   const [seo] = seoAPI
@@ -178,7 +186,10 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
             {typeof window === 'undefined' ? null : (
               <RecipeFilter
                 isOpen={filterOpen}
-                data={recipeFilter}
+                difficulty={difficultyListAPI}
+                cookingTime={cookingTimeListAPI}
+                recipeCategory={recipeCategoryAPI}
+                lang={router.locale}
                 value={filterValue}
                 filterFunc={handleFilter}
                 triggerTagName={'btnFilter'}
@@ -194,10 +205,20 @@ const Recipe = ({ recipeAPI, recipeListAPI, seoAPI, footerAPI }) => {
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgPlaceholder={urlFor(item.thumbnail).url()}
                     imgAlt={item.thumbnail.alt}
-                    title={router.locale === "id" ? item.title_id : item.title_en}
+                    title={
+                      router.locale === 'id' ? item.title_id : item.title_en
+                    }
                     link={`/recipes/${item.slug.current}`}
-                    duration={item.cookingTime}
-                    difficulty={item.difficulty}
+                    duration={
+                      router.locale === 'id'
+                        ? item.cookingTime.title_id
+                        : item.cookingTime.title_en
+                    }
+                    difficulty={
+                      router.locale === 'id'
+                        ? item.difficulty.title_id
+                        : item.difficulty.title_en
+                    }
                   />
                 </div>
               ))}
@@ -227,7 +248,21 @@ export async function getStaticProps() {
   *[_type == "recipe"]
   `)
   const recipeListAPI = await client.fetch(`
-  *[_type == "recipeList"]
+  *[_type == "recipeList"] {
+    ...,
+    difficulty->,
+    cookingTime->,
+    recipeCategory->,
+  }
+  `)
+  const difficultyListAPI = await client.fetch(`
+  *[_type == "difficultyList"] 
+  `)
+  const cookingTimeListAPI = await client.fetch(`
+  *[_type == "cookingTimeList"] 
+  `)
+  const recipeCategoryAPI = await client.fetch(`
+  *[_type == "recipeCategory"] 
   `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
@@ -239,6 +274,9 @@ export async function getStaticProps() {
     props: {
       recipeAPI,
       recipeListAPI,
+      difficultyListAPI,
+      cookingTimeListAPI,
+      recipeCategoryAPI,
       seoAPI,
       footerAPI,
     },
