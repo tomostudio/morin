@@ -1,26 +1,26 @@
-import { useRef, useEffect } from 'react'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
-import { NextSeo } from 'next-seo'
-import Image from 'next/image'
-import Layout from '@/components/module/layout'
-import Footer from '@/components/module/footer'
-import Container from '@/components/module/container'
-import { fade } from '@/helpers/transitions'
-import colors from '@/helpers/colors'
-import HeroSlider from '@/components/sliders/heroSlider'
-import HighlightSlider from '@/components/sliders/highlightSlider'
-import InstagramSlider from '@/components/sliders/instagramSlider'
-import RecipeSlider from '@/components/sliders/recipeSlider'
-import StrokeButton from '@/components/micro-module/strokeButton'
-import SolidButton from '@/components/micro-module/solidButton'
-import HeroCategory from '@/components/module/heroCategory'
-import { HeartSmall, HeartLarge, Scribble } from '@/components/utils/svg'
-import { useEffectInit } from '@/components/utils/preset'
-import client from '@/helpers/sanity/client'
-import { useAppContext } from 'context/state'
-import urlFor from '@/helpers/sanity/urlFor'
-import SEO from '@/components/utils/seo'
-import { useRouter } from 'next/router'
+import { useRef, useEffect } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { NextSeo } from 'next-seo';
+import Image from 'next/image';
+import Layout from '@/components/module/layout';
+import Footer from '@/components/module/footer';
+import Container from '@/components/module/container';
+import { fade } from '@/helpers/transitions';
+import colors from '@/helpers/colors';
+import HeroSlider from '@/components/sliders/heroSlider';
+import HighlightSlider from '@/components/sliders/highlightSlider';
+import InstagramSlider from '@/components/sliders/instagramSlider';
+import RecipeSlider from '@/components/sliders/recipeSlider';
+import StrokeButton from '@/components/micro-module/strokeButton';
+import SolidButton from '@/components/micro-module/solidButton';
+import HeroCategory from '@/components/module/heroCategory';
+import { HeartSmall, HeartLarge, Scribble } from '@/components/utils/svg';
+import { useEffectInit } from '@/components/utils/preset';
+import client from '@/helpers/sanity/client';
+import { useAppContext } from 'context/state';
+import urlFor from '@/helpers/sanity/urlFor';
+import SEO from '@/components/utils/seo';
+import { useRouter } from 'next/router';
 
 export default function Home({
   homeAPI,
@@ -30,135 +30,135 @@ export default function Home({
   productAPI,
   productTypeAPI,
   seoAPI,
-  footerAPI,
 }) {
-  const [home] = homeAPI
-  const [seo] = seoAPI
-  const [product] = productAPI
-  const [recipe] = recipeAPI
-  const router = useRouter()
-  const categoryData = [
-    {
-      imgSrc: '/category/category-1.jpg',
-      imgProduct: '/category/hover-1.png',
-      imgPlaceholder: '/category/category-1.png',
-      imgAlt: 'Spreads',
-      title: 'Spreads',
-      link: '/products/spreads',
-    },
-    {
-      imgSrc: '/category/category-2.jpg',
-      imgProduct: '/category/hover-2.png',
-      imgPlaceholder: '/category/category-2.png',
-      imgAlt: 'Jams',
-      title: 'Jams',
-      link: '/products/jams',
-    },
-    {
-      imgSrc: '/category/category-3.jpg',
-      imgProduct: '/category/hover-3.png',
-      imgPlaceholder: '/category/category-3.png',
-      imgAlt: 'Toppings',
-      title: 'Toppings',
-      link: '/products/toppings',
-    },
-    {
-      imgSrc: '/category/category-4.jpg',
-      imgProduct: '/category/hover-4.png',
-      imgPlaceholder: '/category/category-4.png',
-      imgAlt: 'Fillings',
-      title: 'Fillings',
-      link: '/products/fillings',
-    },
-  ]
+  const [home] = homeAPI;
+  const [seo] = seoAPI;
+  const [product] = productAPI;
+  const [recipe] = recipeAPI;
+  const router = useRouter();
 
-  const recipeData = [
-    {
-      imgSrc: '/recipe/recipe-1.jpg',
-      imgPlaceholder: '/recipe/recipe-1.png',
-      imgAlt: 'Mixed Berry Jam Tartlets',
-      title: 'Mixed Berry Jam Tartlets',
-      link: '/recipe/recipe-id',
-    },
-    {
-      imgSrc: '/recipe/recipe-2.jpg',
-      imgPlaceholder: '/recipe/recipe-2.png',
-      imgAlt: 'Strawberry Trifle',
-      title: 'Strawberry Trifle',
-      link: '/recipe/recipe-id',
-    },
-    {
-      imgSrc: '/recipe/recipe-3.jpg',
-      imgPlaceholder: '/recipe/recipe-3.png',
-      imgAlt: 'Chocolate Fudge Cupcakes',
-      title: 'Chocolate Fudge Cupcakes',
-      link: '/recipe/recipe-id',
-    },
-  ]
+  // const categoryData = [
+  //   {
+  //     imgSrc: '/category/category-1.jpg',
+  //     imgProduct: '/category/hover-1.png',
+  //     imgPlaceholder: '/category/category-1.png',
+  //     imgAlt: 'Spreads',
+  //     title: 'Spreads',
+  //     link: '/products/spreads',
+  //   },
+  //   {
+  //     imgSrc: '/category/category-2.jpg',
+  //     imgProduct: '/category/hover-2.png',
+  //     imgPlaceholder: '/category/category-2.png',
+  //     imgAlt: 'Jams',
+  //     title: 'Jams',
+  //     link: '/products/jams',
+  //   },
+  //   {
+  //     imgSrc: '/category/category-3.jpg',
+  //     imgProduct: '/category/hover-3.png',
+  //     imgPlaceholder: '/category/category-3.png',
+  //     imgAlt: 'Toppings',
+  //     title: 'Toppings',
+  //     link: '/products/toppings',
+  //   },
+  //   {
+  //     imgSrc: '/category/category-4.jpg',
+  //     imgProduct: '/category/hover-4.png',
+  //     imgPlaceholder: '/category/category-4.png',
+  //     imgAlt: 'Fillings',
+  //     title: 'Fillings',
+  //     link: '/products/fillings',
+  //   },
+  // ]
 
-  const highlightData = [
-    {
-      imgSrc: '/highlight/highlight-1.jpg',
-      imgPlaceholder: '/highlight/highlight-1.png',
-      imgAlt: 'Morin in UPH',
-      title: 'Morin in UPH',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-    {
-      imgSrc: '/highlight/highlight-2.jpg',
-      imgPlaceholder: '/highlight/highlight-2.png',
-      imgAlt: 'Cooking Workshop',
-      title: 'Cooking Workshop',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-    {
-      imgSrc: '/highlight/highlight-1.jpg',
-      imgPlaceholder: '/highlight/highlight-1.png',
-      imgAlt: 'Brown Fox Jumps',
-      title: 'Brown Fox Jumps',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-    {
-      imgSrc: '/highlight/highlight-1.jpg',
-      imgPlaceholder: '/highlight/highlight-1.png',
-      imgAlt: 'Morin in UPH',
-      title: 'Morin in UPH',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-    {
-      imgSrc: '/highlight/highlight-2.jpg',
-      imgPlaceholder: '/highlight/highlight-2.png',
-      imgAlt: 'Cooking Workshop',
-      title: 'Cooking Workshop',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-    {
-      imgSrc: '/highlight/highlight-1.jpg',
-      imgPlaceholder: '/highlight/highlight-1.png',
-      imgAlt: 'Brown Fox Jumps',
-      title: 'Brown Fox Jumps',
-      date: '24 Juli 2021',
-      link: '/highlight/highlight-id',
-    },
-  ]
+  // const recipeData = [
+  //   {
+  //     imgSrc: '/recipe/recipe-1.jpg',
+  //     imgPlaceholder: '/recipe/recipe-1.png',
+  //     imgAlt: 'Mixed Berry Jam Tartlets',
+  //     title: 'Mixed Berry Jam Tartlets',
+  //     link: '/recipe/recipe-id',
+  //   },
+  //   {
+  //     imgSrc: '/recipe/recipe-2.jpg',
+  //     imgPlaceholder: '/recipe/recipe-2.png',
+  //     imgAlt: 'Strawberry Trifle',
+  //     title: 'Strawberry Trifle',
+  //     link: '/recipe/recipe-id',
+  //   },
+  //   {
+  //     imgSrc: '/recipe/recipe-3.jpg',
+  //     imgPlaceholder: '/recipe/recipe-3.png',
+  //     imgAlt: 'Chocolate Fudge Cupcakes',
+  //     title: 'Chocolate Fudge Cupcakes',
+  //     link: '/recipe/recipe-id',
+  //   },
+  // ]
 
-  const ctx = useAppContext()
+  // const highlightData = [
+  //   {
+  //     imgSrc: '/highlight/highlight-1.jpg',
+  //     imgPlaceholder: '/highlight/highlight-1.png',
+  //     imgAlt: 'Morin in UPH',
+  //     title: 'Morin in UPH',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  //   {
+  //     imgSrc: '/highlight/highlight-2.jpg',
+  //     imgPlaceholder: '/highlight/highlight-2.png',
+  //     imgAlt: 'Cooking Workshop',
+  //     title: 'Cooking Workshop',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  //   {
+  //     imgSrc: '/highlight/highlight-1.jpg',
+  //     imgPlaceholder: '/highlight/highlight-1.png',
+  //     imgAlt: 'Brown Fox Jumps',
+  //     title: 'Brown Fox Jumps',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  //   {
+  //     imgSrc: '/highlight/highlight-1.jpg',
+  //     imgPlaceholder: '/highlight/highlight-1.png',
+  //     imgAlt: 'Morin in UPH',
+  //     title: 'Morin in UPH',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  //   {
+  //     imgSrc: '/highlight/highlight-2.jpg',
+  //     imgPlaceholder: '/highlight/highlight-2.png',
+  //     imgAlt: 'Cooking Workshop',
+  //     title: 'Cooking Workshop',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  //   {
+  //     imgSrc: '/highlight/highlight-1.jpg',
+  //     imgPlaceholder: '/highlight/highlight-1.png',
+  //     imgAlt: 'Brown Fox Jumps',
+  //     title: 'Brown Fox Jumps',
+  //     date: '24 Juli 2021',
+  //     link: '/highlight/highlight-id',
+  //   },
+  // ]
+
+  const ctx = useAppContext();
   useEffect(() => {
-    useEffectInit({ context: ctx, mobileDark: false })
+    useEffectInit({ context: ctx, mobileDark: false });
 
     // Remove Watermark for Instagram
     setTimeout(() => {
       if (document.querySelector('.eapps-link'))
-        document.querySelector('.eapps-link').remove()
-    }, 1000)
+        document.querySelector('.eapps-link').remove();
+    }, 1000);
 
-    return () => {}
-  }, [])
+    return () => {};
+  }, []);
 
   return (
     <>
@@ -175,22 +175,22 @@ export default function Home({
       />
       {/* <Header mobileDark={false} /> */}
       <LazyMotion features={domAnimation}>
-        <m.div initial="initial" animate="enter" exit="exit" variants={fade}>
+        <m.div initial='initial' animate='enter' exit='exit' variants={fade}>
           <Layout>
             {/* Slider Section */}
-            <section className="scrollsection">
-              <HeroSlider data={home} className="min-h-screen w-full" />
+            <section className='scrollsection'>
+              <HeroSlider data={home} className='min-h-screen w-full' />
             </section>
             {/* Sticky Section */}
-            <section className="z-0">
+            <section className='z-0'>
               <Container
                 border={false}
                 background={colors.offWhite}
                 bgTail={false}
                 safeWidth={false}
-                className="!px-0 z-1"
+                className='!px-0 z-1'
               >
-                <div className="flex w-full flex-col lg:flex-row flex-nowrap lg:items-start">
+                <div className='flex w-full flex-col lg:flex-row flex-nowrap lg:items-start'>
                   {/* Sticky */}
                   <div className="home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0">
                     <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just">
@@ -200,38 +200,38 @@ export default function Home({
                           : product.description_en}
                       </h2>
                       <StrokeButton
-                        destination="/products"
+                        destination='/products'
                         color={colors.morinBlue}
-                        className="lg:mx-0"
+                        className='lg:mx-0'
                       >
                         {router.locale === 'id'
                           ? 'Lihat Semua Produk'
                           : 'See All Products'}
                       </StrokeButton>
                     </div>
-                    <div className="mx-auto mb-5 flex flex-wrap justify-center lg:mx-0 lg:mb-10 space-x-4 lg:space-x-6 lg:justify-start">
-                      <div className="relative h-8 w-8 lg:h-12 lg:w-12">
+                    <div className='mx-auto mb-5 flex flex-wrap justify-center lg:mx-0 lg:mb-10 space-x-4 lg:space-x-6 lg:justify-start'>
+                      <div className='relative h-8 w-8 lg:h-12 lg:w-12'>
                         <Image
                           src={`/halal.svg`}
                           alt={'Halal'}
-                          layout="fill"
-                          objectFit="contain"
+                          layout='fill'
+                          objectFit='contain'
                         />
                       </div>
-                      <div className="relative h-8 w-8 lg:h-12 lg:w-12">
+                      <div className='relative h-8 w-8 lg:h-12 lg:w-12'>
                         <Image
                           src={`/pom.svg`}
                           alt={'Badan POM'}
-                          layout="fill"
-                          objectFit="contain"
+                          layout='fill'
+                          objectFit='contain'
                         />
                       </div>
-                      <div className="relative  -8 w-8 lg:h-12 lg:w-12">
+                      <div className='relative  -8 w-8 lg:h-12 lg:w-12'>
                         <Image
                           src={`/topbrand.svg`}
                           alt={'Top Brand'}
-                          layout="fill"
-                          objectFit="contain"
+                          layout='fill'
+                          objectFit='contain'
                         />
                       </div>
                     </div>
@@ -332,8 +332,8 @@ export default function Home({
                       <div className="absolute -top-0.5 left-[calc(100%-15px)] w-8 md:hidden">
                         <HeartSmall className="md:hidden" />
                       </div>
-                      <div className="lg:w-18 absolute -top-1 left-[calc(100%+5px)] hidden w-14 md:block lg:top-2 lg:left-[calc(100%+10px)] xl:w-24">
-                        <HeartLarge className="hidden md:block" />
+                      <div className='lg:w-18 absolute -top-1 left-[calc(100%+5px)] hidden w-14 md:block lg:top-2 lg:left-[calc(100%+10px)] xl:w-24'>
+                        <HeartLarge className='hidden md:block' />
                       </div>
                     </h2>
                     <p className="mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
@@ -342,9 +342,9 @@ export default function Home({
                         : recipe.description_en}
                     </p>
                   </div>
-                  <div className="order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12">
+                  <div className='order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12'>
                     <StrokeButton
-                      destination="/recipes"
+                      destination='/recipes'
                       color={colors.morinRed}
                     >
                       {router.locale === 'id'
@@ -364,7 +364,7 @@ export default function Home({
                 background={colors.morinSkyBlue}
                 bgTail={true}
                 safeWidth={false}
-                classNameOuter="pb-0"
+                classNameOuter='pb-0'
               >
                 <Container
                   border={false}
@@ -383,9 +383,9 @@ export default function Home({
                         </div>
                       </h2>
                     </div>
-                    <div className="ml-auto hidden w-fit pl-12 md:block">
+                    <div className='ml-auto hidden w-fit pl-12 md:block'>
                       <StrokeButton
-                        destination="/events"
+                        destination='/events'
                         color={colors.morinBlue}
                       >
                         {router.locale === 'id'
@@ -399,7 +399,7 @@ export default function Home({
                   <HighlightSlider data={eventAPI} lang={router.locale} />
                   <div className="mx-auto mt-7 w-fit md:hidden">
                     <StrokeButton
-                      destination="/events"
+                      destination='/events'
                       color={colors.morinBlue}
                     >
                       {router.locale === 'id'
@@ -419,7 +419,7 @@ export default function Home({
                 bgTail={false}
                 safeWidth={true}
                 background={colors.white}
-                classNameOuter="pb-0"
+                classNameOuter='pb-0'
               >
                 <div className="mb-8 flex w-full flex-nowrap flex-col lg:flex-row">
                   <h2 className="mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig">
@@ -429,7 +429,7 @@ export default function Home({
                   </h2>
                   <div>
                     <SolidButton
-                      destination="https://www.instagram.com/morin_jam/"
+                      destination='https://www.instagram.com/morin_jam/'
                       arrow={false}
                       targetBlank={true}
                       color={colors.morinBlue}
@@ -439,13 +439,13 @@ export default function Home({
                   </div>
                 </div>
               </Container>
-              <div className="pb-10 xl:pb-14">
+              <div className='pb-10 xl:pb-14'>
                 {/* <InstagramSlider /> */}
                 <script
-                  src="https://apps.elfsight.com/p/platform.js"
+                  src='https://apps.elfsight.com/p/platform.js'
                   defer
                 ></script>
-                <div className="elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae"></div>
+                <div className='elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae'></div>
               </div>
             </section>
             <Footer lang={router.locale} />
@@ -453,34 +453,34 @@ export default function Home({
         </m.div>
       </LazyMotion>
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const homeAPI = await client.fetch(`
   *[_type == "home"]
-  `)
+  `);
   const recipeAPI = await client.fetch(`
   *[_type == "recipe"]
-  `)
+  `);
   const recipeListAPI = await client.fetch(`
   *[_type == "recipeList"]
-  `)
+  `);
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
-  `)
+  `);
   const productAPI = await client.fetch(`
   *[_type == "product"]
-  `)
+  `);
   const productTypeAPI = await client.fetch(`
   *[_type == "productType"]
-  `)
+  `);
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   return {
     props: {
       homeAPI,
@@ -492,5 +492,5 @@ export async function getStaticProps() {
       seoAPI,
       footerAPI,
     },
-  }
+  };
 }
