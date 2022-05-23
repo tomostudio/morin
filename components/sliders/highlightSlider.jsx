@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode } from 'swiper'
 import HighlightCard from '../shared-module/highlightCard'
 import urlFor from '@/helpers/sanity/urlFor'
+import dateParse from '../utils/dateParse'
 
 const HighlightSlider = ({ data, lang }) => {
   return (
@@ -15,7 +16,7 @@ const HighlightSlider = ({ data, lang }) => {
                 imgSrc={urlFor(item.thumbnail).url()}
                 imgPlaceholder={urlFor(item.thumbnail).url()}
                 imgAlt={item.thumbnail.alt}
-                date={item.date}
+                date={dateParse(item.date, lang)}
                 title={item.title_id}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
@@ -27,7 +28,7 @@ const HighlightSlider = ({ data, lang }) => {
                 imgSrc={urlFor(item.thumbnail).url()}
                 imgPlaceholder={urlFor(item.thumbnail).url()}
                 imgAlt={item.thumbnail.alt}
-                date={item.date}
+                date={dateParse(item.date, lang)}
                 title={item.title_en}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
@@ -55,7 +56,7 @@ const HighlightSlider = ({ data, lang }) => {
                   imgSrc={urlFor(item.thumbnail).url()}
                   imgPlaceholder={urlFor(item.thumbnail).url()}
                   imgAlt={item.thumbnail.alt}
-                  date={item.date}
+                  date={dateParse(item.date, lang)}
                   title={item.title_id}
                   link={`/events/${item.slug.current}`}
                   lang={lang}
@@ -67,7 +68,7 @@ const HighlightSlider = ({ data, lang }) => {
                   imgSrc={urlFor(item.thumbnail).url()}
                   imgPlaceholder={urlFor(item.thumbnail).url()}
                   imgAlt={item.thumbnail.alt}
-                  date={item.date}
+                  date={dateParse(item.date, lang)}
                   title={item.title_en}
                   link={`/events/${item.slug.current}`}
                   lang={lang}

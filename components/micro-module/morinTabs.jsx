@@ -40,7 +40,6 @@ const MorinTabs = ({ tabData, onChange = () => {}, className }) => {
   useEffect(() => {
     measureEl(defaultTab?.id)
     document.querySelector('resize', resize)
-    console.log(defaultTab)
   }, [])
 
   return (

@@ -13,6 +13,7 @@ import { PortableText } from '@portabletext/react'
 import urlFor from '@/helpers/sanity/urlFor'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
+import dateParse from '@/components/utils/dateParse'
 
 const EventTag = ({ label }) => {
   return (
@@ -69,7 +70,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
       <div className="text-morin-blue leading-tight">
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
-          <span className="block font-semibold mb-2.5">{event.date}</span>
+          <span className="block font-semibold mb-2.5">{dateParse(event.date, router.locale, true)}</span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
             {router.locale === 'id' ? event.title_id : event.title_en}
           </h1>
@@ -191,7 +192,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgPlaceholder={urlFor(item.thumbnail).url()}
                     imgAlt={item.thumbnail.alt}
-                    date={item.date}
+                    date={dateParse(item.date, router.locale)}
                     title={
                       router.locale === 'id' ? item.title_id : item.title_en
                     }

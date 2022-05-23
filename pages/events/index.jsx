@@ -12,6 +12,7 @@ import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import { useRouter } from 'next/router'
 import SEO from '@/components/utils/seo'
+import dateParse from '@/components/utils/dateParse'
 
 const eventsData = [
   {
@@ -117,7 +118,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
                         ? item.eventCategory[0].title_id
                         : item.eventCategory[0].title_en
                     }
-                    date={item.date}
+                    date={dateParse(item.date, router.locale)}
                     title={
                       router.locale === 'id' ? item.title_id : item.title_en
                     }
