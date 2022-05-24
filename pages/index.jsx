@@ -37,116 +37,6 @@ export default function Home({
   const [recipe] = recipeAPI;
   const router = useRouter();
 
-  // const categoryData = [
-  //   {
-  //     imgSrc: '/category/category-1.jpg',
-  //     imgProduct: '/category/hover-1.png',
-  //     imgPlaceholder: '/category/category-1.png',
-  //     imgAlt: 'Spreads',
-  //     title: 'Spreads',
-  //     link: '/products/spreads',
-  //   },
-  //   {
-  //     imgSrc: '/category/category-2.jpg',
-  //     imgProduct: '/category/hover-2.png',
-  //     imgPlaceholder: '/category/category-2.png',
-  //     imgAlt: 'Jams',
-  //     title: 'Jams',
-  //     link: '/products/jams',
-  //   },
-  //   {
-  //     imgSrc: '/category/category-3.jpg',
-  //     imgProduct: '/category/hover-3.png',
-  //     imgPlaceholder: '/category/category-3.png',
-  //     imgAlt: 'Toppings',
-  //     title: 'Toppings',
-  //     link: '/products/toppings',
-  //   },
-  //   {
-  //     imgSrc: '/category/category-4.jpg',
-  //     imgProduct: '/category/hover-4.png',
-  //     imgPlaceholder: '/category/category-4.png',
-  //     imgAlt: 'Fillings',
-  //     title: 'Fillings',
-  //     link: '/products/fillings',
-  //   },
-  // ]
-
-  // const recipeData = [
-  //   {
-  //     imgSrc: '/recipe/recipe-1.jpg',
-  //     imgPlaceholder: '/recipe/recipe-1.png',
-  //     imgAlt: 'Mixed Berry Jam Tartlets',
-  //     title: 'Mixed Berry Jam Tartlets',
-  //     link: '/recipe/recipe-id',
-  //   },
-  //   {
-  //     imgSrc: '/recipe/recipe-2.jpg',
-  //     imgPlaceholder: '/recipe/recipe-2.png',
-  //     imgAlt: 'Strawberry Trifle',
-  //     title: 'Strawberry Trifle',
-  //     link: '/recipe/recipe-id',
-  //   },
-  //   {
-  //     imgSrc: '/recipe/recipe-3.jpg',
-  //     imgPlaceholder: '/recipe/recipe-3.png',
-  //     imgAlt: 'Chocolate Fudge Cupcakes',
-  //     title: 'Chocolate Fudge Cupcakes',
-  //     link: '/recipe/recipe-id',
-  //   },
-  // ]
-
-  // const highlightData = [
-  //   {
-  //     imgSrc: '/highlight/highlight-1.jpg',
-  //     imgPlaceholder: '/highlight/highlight-1.png',
-  //     imgAlt: 'Morin in UPH',
-  //     title: 'Morin in UPH',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  //   {
-  //     imgSrc: '/highlight/highlight-2.jpg',
-  //     imgPlaceholder: '/highlight/highlight-2.png',
-  //     imgAlt: 'Cooking Workshop',
-  //     title: 'Cooking Workshop',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  //   {
-  //     imgSrc: '/highlight/highlight-1.jpg',
-  //     imgPlaceholder: '/highlight/highlight-1.png',
-  //     imgAlt: 'Brown Fox Jumps',
-  //     title: 'Brown Fox Jumps',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  //   {
-  //     imgSrc: '/highlight/highlight-1.jpg',
-  //     imgPlaceholder: '/highlight/highlight-1.png',
-  //     imgAlt: 'Morin in UPH',
-  //     title: 'Morin in UPH',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  //   {
-  //     imgSrc: '/highlight/highlight-2.jpg',
-  //     imgPlaceholder: '/highlight/highlight-2.png',
-  //     imgAlt: 'Cooking Workshop',
-  //     title: 'Cooking Workshop',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  //   {
-  //     imgSrc: '/highlight/highlight-1.jpg',
-  //     imgPlaceholder: '/highlight/highlight-1.png',
-  //     imgAlt: 'Brown Fox Jumps',
-  //     title: 'Brown Fox Jumps',
-  //     date: '24 Juli 2021',
-  //     link: '/highlight/highlight-id',
-  //   },
-  // ]
-
   const ctx = useAppContext();
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: false });
@@ -163,7 +53,6 @@ export default function Home({
   return (
     <>
       <SEO
-        title={router.locale === 'id' ? 'Beranda' : 'Home'}
         pagelink={router.pathname}
         inputSEO={router.locale === 'id' ? home.seo_id : home.seo_en}
         defaultSEO={
@@ -192,9 +81,9 @@ export default function Home({
               >
                 <div className='flex w-full flex-col lg:flex-row flex-nowrap lg:items-start'>
                   {/* Sticky */}
-                  <div className="home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0">
-                    <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just">
-                      <h2 className=" mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] ">
+                  <div className='home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0'>
+                    <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just'>
+                      <h2 className=' mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] '>
                         {router.locale === 'id'
                           ? product.description_id
                           : product.description_en}
@@ -236,76 +125,44 @@ export default function Home({
                       </div>
                     </div>
                   </div>
-                  <div className="shrink w-full">
-                    {productTypeAPI?.map((i, id) =>
-                      router.locale === 'id' ? (
-                        <div className="relative h-screen" key={i.title_id}>
-                          <HeroCategory
-                            imgSrc={urlFor(i.background).url()}
-                            imgProduct={
-                              i.animation === '1'
-                                ? '/category/hover-1.png'
-                                : i.animation === '2'
-                                ? '/category/hover-2.png'
-                                : i.animation === '3'
-                                ? '/category/hover-3.png'
-                                : i.animation === '4'
-                                ? '/category/hover-4.png'
-                                : ''
-                            }
-                            imgPlaceholderProduct={
-                              i.animation === '1'
-                                ? '/category/hover-1.png'
-                                : i.animation === '2'
-                                ? '/category/hover-2.png'
-                                : i.animation === '3'
-                                ? '/category/hover-3.png'
-                                : i.animation === '4'
-                                ? '/category/hover-4.png'
-                                : ''
-                            }
-                            imgPlaceholder={urlFor(i.background).url()}
-                            imgAlt={i.background}
-                            title={i.title_id}
-                            link={`/products/${i.slug.current}`}
-                            end={id >= productTypeAPI.length - 1 && true}
-                          />
-                        </div>
-                      ) : (
-                        <div className="relative h-screen" key={i.title_en}>
-                          <HeroCategory
-                            imgSrc={urlFor(i.background).url()}
-                            imgProduct={
-                              i.animation === '1'
-                                ? '/category/hover-1.png'
-                                : i.animation === '2'
-                                ? '/category/hover-2.png'
-                                : i.animation === '3'
-                                ? '/category/hover-3.png'
-                                : i.animation === '4'
-                                ? '/category/hover-4.png'
-                                : ''
-                            }
-                            imgPlaceholderProduct={
-                              i.animation === '1'
-                                ? '/category/hover-1.png'
-                                : i.animation === '2'
-                                ? '/category/hover-2.png'
-                                : i.animation === '3'
-                                ? '/category/hover-3.png'
-                                : i.animation === '4'
-                                ? '/category/hover-4.png'
-                                : ''
-                            }
-                            imgPlaceholder={urlFor(i.background).url()}
-                            imgAlt={i.background}
-                            title={i.title_id}
-                            link={`/products/${i.slug.current}`}
-                            end={id >= productTypeAPI.length - 1 && true}
-                          />
-                        </div>
-                      ),
-                    )}
+                  <div className='shrink w-full'>
+                    {productTypeAPI?.map((i, id) => (
+                      <div className='relative h-screen' key={i.title_id}>
+                        <HeroCategory
+                          imgSrc={urlFor(i.background).url()}
+                          categoryData={i}
+                          imgProduct={
+                            i.animation === '1'
+                              ? '/category/hover-1.png'
+                              : i.animation === '2'
+                              ? '/category/hover-2.png'
+                              : i.animation === '3'
+                              ? '/category/hover-3.png'
+                              : i.animation === '4'
+                              ? '/category/hover-4.png'
+                              : ''
+                          }
+                          imgPlaceholderProduct={
+                            i.animation === '1'
+                              ? '/category/hover-1.png'
+                              : i.animation === '2'
+                              ? '/category/hover-2.png'
+                              : i.animation === '3'
+                              ? '/category/hover-3.png'
+                              : i.animation === '4'
+                              ? '/category/hover-4.png'
+                              : ''
+                          }
+                          imgPlaceholder={urlFor(i.background).url()}
+                          imgAlt={i.background}
+                          title={
+                            router.locale === 'id' ? i.title_id : i.title_en
+                          }
+                          link={`/products/${i.slug.current}`}
+                          end={id >= productTypeAPI.length - 1 && true}
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </Container>
@@ -317,26 +174,26 @@ export default function Home({
                 bgTail={true}
                 safeWidth={true}
               >
-                <div className="flex w-full flex-wrap">
-                  <div className="mb-8 w-full text-center md:w-7/12 md:text-left lg:mb-5 xl:mb-11 xl:w-8/12">
-                    <h2 className="relative mx-auto mb-4 max-w-[175px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1">
+                <div className='flex w-full flex-wrap'>
+                  <div className='mb-8 w-full text-center md:w-7/12 md:text-left lg:mb-5 xl:mb-11 xl:w-8/12'>
+                    <h2 className='relative mx-auto mb-4 max-w-[175px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1'>
                       {router.locale === 'id' ? (
                         <>
-                          Resep <br className="md:hidden" /> dari Hati
+                          Resep <br className='md:hidden' /> dari Hati
                         </>
                       ) : (
                         <>
-                          Recipes <br className="md:hidden" /> from Love
+                          Recipes <br className='md:hidden' /> from Love
                         </>
                       )}
-                      <div className="absolute -top-0.5 left-[calc(100%-15px)] w-8 md:hidden">
-                        <HeartSmall className="md:hidden" />
+                      <div className='absolute -top-0.5 left-[calc(100%-15px)] w-8 md:hidden'>
+                        <HeartSmall className='md:hidden' />
                       </div>
                       <div className='lg:w-18 absolute -top-1 left-[calc(100%+5px)] hidden w-14 md:block lg:top-2 lg:left-[calc(100%+10px)] xl:w-24'>
                         <HeartLarge className='hidden md:block' />
                       </div>
                     </h2>
-                    <p className="mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
+                    <p className='mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]'>
                       {router.locale === 'id'
                         ? recipe.description_id
                         : recipe.description_en}
@@ -352,7 +209,7 @@ export default function Home({
                         : 'See All Recipes'}
                     </StrokeButton>
                   </div>
-                  <div className="-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]">
+                  <div className='-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]'>
                     <RecipeSlider data={recipeListAPI} lang={router.locale} />
                   </div>
                 </div>
@@ -372,13 +229,13 @@ export default function Home({
                   bgTail={false}
                   safeWidth={true}
                 >
-                  <div className="flex w-full flex-wrap">
-                    <div className="mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12">
-                      <h2 className="relative mx-auto mb-0 max-w-[160px] pb-5 font-nutmeg text-ctitle font-bold leading-none text-morin-blue md:mx-0 md:mb-2 md:w-fit md:max-w-none md:pb-0 lg:text-h2">
+                  <div className='flex w-full flex-wrap'>
+                    <div className='mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12'>
+                      <h2 className='relative mx-auto mb-0 max-w-[160px] pb-5 font-nutmeg text-ctitle font-bold leading-none text-morin-blue md:mx-0 md:mb-2 md:w-fit md:max-w-none md:pb-0 lg:text-h2'>
                         {router.locale === 'id'
                           ? 'Sorotan Acara'
                           : 'Events Highlight'}
-                        <div className="absolute left-1/2 bottom-0 h-3.5 w-full -translate-x-1/2 md:left-auto md:right-0 md:-bottom-4 md:w-40 md:translate-x-0 lg:-bottom-5 lg:h-5 lg:w-60">
+                        <div className='absolute left-1/2 bottom-0 h-3.5 w-full -translate-x-1/2 md:left-auto md:right-0 md:-bottom-4 md:w-40 md:translate-x-0 lg:-bottom-5 lg:h-5 lg:w-60'>
                           <Scribble />
                         </div>
                       </h2>
@@ -395,9 +252,9 @@ export default function Home({
                     </div>
                   </div>
                 </Container>
-                <div className="relative overflow-hidden bg-morin-skyBlue px-8 pb-10 md:px-0 xl:pb-14">
+                <div className='relative overflow-hidden bg-morin-skyBlue px-8 pb-10 md:px-0 xl:pb-14'>
                   <HighlightSlider data={eventAPI} lang={router.locale} />
-                  <div className="mx-auto mt-7 w-fit md:hidden">
+                  <div className='mx-auto mt-7 w-fit md:hidden'>
                     <StrokeButton
                       destination='/events'
                       color={colors.morinBlue}
@@ -421,8 +278,8 @@ export default function Home({
                 background={colors.white}
                 classNameOuter='pb-0'
               >
-                <div className="mb-8 flex w-full flex-nowrap flex-col lg:flex-row">
-                  <h2 className="mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig">
+                <div className='mb-8 flex w-full flex-nowrap flex-col lg:flex-row'>
+                  <h2 className='mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig'>
                     {router.locale === 'id'
                       ? 'Dapatkan Inspirasi Harian dari Media Sosial kami'
                       : 'Get Daily Inspirations from our Social Media'}

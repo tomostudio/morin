@@ -138,7 +138,6 @@ export default function Header({ waLink, lang }) {
 
   useEffect(() => {
     const scrollListener = () => {
-      console.log(ctx.mobileDark, ctx)
       if (window.scrollY > 250) {
         setBlackButton(true)
       } else {

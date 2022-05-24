@@ -7,7 +7,7 @@ const SEO = ({
   inputSEO = '',
   defaultSEO = '',
   webTitle = '',
-  title = 'Morin',
+  title = '',
   pagelink = 'https://morin.vercel.app',
 }) => {
   const description =
@@ -56,7 +56,7 @@ const SEO = ({
       ? defaultSEO.seo_keywords
       : '';
 
-  const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Morin®`;
+  const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `${webTitle}`;
   const canonicalLink = `https://morin.vercel.app${
     pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
   }`;
