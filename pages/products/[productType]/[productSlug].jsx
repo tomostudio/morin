@@ -245,7 +245,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 {router.locale === 'id' ? product.title_id : product.title_en}
               </h1>
             </div>
-            <div className="flex flex-wrap justify-center w-full px-12 translate-y-12 xl:translate-y-24">
+            <div className="flex flex-wrap justify-center w-full h-80 px-12 translate-y-12 xl:translate-y-24">
               <div className="relative w-full h-full max-w-[250px] mx-auto xl:max-w-[370px]">
                 <Image
                   src={urlFor(product.thumbnail).url()}
@@ -254,6 +254,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   alt={product.thumbnail.alt}
                   width={370}
                   height={455}
+                  objectFit='contain'
+                  layout='fill'
                 />
               </div>
               <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block">
