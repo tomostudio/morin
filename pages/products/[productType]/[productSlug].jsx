@@ -360,25 +360,49 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </h2>
 
               <div className="flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5">
-                {productListAPI?.map((item, index) => (
-                  <div
-                    className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
-                    key={`${item.title_en}${index}`}
-                  >
-                    <ProductCard
-                      title={
-                        router.locale === 'id' ? item.title_id : item.title_en
-                      }
-                      bgColor={item.backgroundColor.hex}
-                      imgSrc={urlFor(item.thumbnail).url()}
-                      imgBg={'/product/strawberry-bg.png'}
-                      imgPlaceholder={urlFor(item.thumbnail).url()}
-                      imgAlt={item.thumbnail.alt}
-                      link={`${product.type.slug.current}/${item.slug.current}`}
-                      small
-                    />
-                  </div>
-                ))}
+                {product.similar.option
+                  ? productListAPI?.slice(0, 3).map((item, index) => (
+                      <div
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
+                        key={`${item.title_en}${index}`}
+                      >
+                        <ProductCard
+                          title={
+                            router.locale === 'id'
+                              ? item.title_id
+                              : item.title_en
+                          }
+                          bgColor={item.backgroundColor.hex}
+                          imgSrc={urlFor(item.thumbnail).url()}
+                          imgBg={'/product/strawberry-bg.png'}
+                          imgPlaceholder={urlFor(item.thumbnail).url()}
+                          imgAlt={item.thumbnail.alt}
+                          link={`${product.type.slug.current}/${item.slug.current}`}
+                          small
+                        />
+                      </div>
+                    ))
+                  : product.similar.manual?.map((item, index) => (
+                      <div
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
+                        key={`${item.title_en}${index}`}
+                      >
+                        <ProductCard
+                          title={
+                            router.locale === 'id'
+                              ? item.title_id
+                              : item.title_en
+                          }
+                          bgColor={item.backgroundColor.hex}
+                          imgSrc={urlFor(item.thumbnail).url()}
+                          imgBg={'/product/strawberry-bg.png'}
+                          imgPlaceholder={urlFor(item.thumbnail).url()}
+                          imgAlt={item.thumbnail.alt}
+                          link={`${product.type.slug.current}/${item.slug.current}`}
+                          small
+                        />
+                      </div>
+                    ))}
               </div>
 
               <StrokeButton
@@ -440,6 +464,10 @@ export async function getStaticProps({ params }) {
           decor2->
         },
         recipes[]->,
+        similar {
+          ...,
+          manual[]->
+        }
       }
     `,
   )
