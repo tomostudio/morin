@@ -109,8 +109,9 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
                     ? '/category/hover-4.png'
                     : ''
                 }
+                categoryData={item}
                 imgAlt={router.locale === "id" ? item.title_id : item.title_en}
-                title={router.locale === "id" ? item.title_id : item.title}
+                title={router.locale === "id" ? item.title_id : item.title_en}
                 description={router.locale === "id" ? item.description_id : item.description_en}
                 link={`/products/${item.slug.current}`}
                 lang={router.locale}

@@ -150,10 +150,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-[75px] absolute top-20 -left-5 xl:w-auto xl:top-8 xl:left-80`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit1).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit1.alt}
                   width={150}
                   height={150}
                 />
@@ -162,10 +162,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-[75px] absolute top-28 right-2 xl:w-auto xl:top-20 xl:right-[415px]`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit2).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit2.alt}
                   width={150}
                   height={150}
                 />
@@ -174,10 +174,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-[90px] absolute bottom-14 left-2 xl:w-auto xl:bottom-auto xl:top-16 xl:left-auto xl:right-14`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit3).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit3.alt}
                   width={190}
                   height={190}
                 />
@@ -186,10 +186,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-auto hidden absolute top-1/2 -left-4 -translate-y-1/2 xl:block 2xl:left-0`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit1).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit1.alt}
                   width={210}
                   height={210}
                 />
@@ -198,10 +198,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-10 absolute top-1/2 left-20 xl:w-auto xl:left-auto xl:right-[400px]`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit2).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit2.alt}
                   width={80}
                   height={80}
                 />
@@ -210,10 +210,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-[150px] absolute bottom-20 -right-12 xl:w-auto`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit3).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit3.alt}
                   width={335}
                   height={335}
                 />
@@ -222,10 +222,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 className={`w-auto hidden absolute -bottom-2 left-60 xl:block`}
               >
                 <Image
-                  src={urlFor(product.background).url()}
-                  blurDataURL={urlFor(product.background).url()}
+                  src={urlFor(product.thumbnailFruit.fruit1).url()}
+                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
                   placeholder="blur"
-                  alt={product.background.alt}
+                  alt={product.thumbnailFruit.fruit1.alt}
                   width={240}
                   height={240}
                 />
@@ -245,7 +245,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 {router.locale === 'id' ? product.title_id : product.title_en}
               </h1>
             </div>
-            <div className="flex flex-wrap justify-center w-full px-12 translate-y-12 xl:translate-y-24">
+            <div className="flex flex-wrap justify-center w-full h-80 px-12 translate-y-12 xl:translate-y-24">
               <div className="relative w-full h-full max-w-[250px] mx-auto xl:max-w-[370px]">
                 <Image
                   src={urlFor(product.thumbnail).url()}
@@ -254,6 +254,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   alt={product.thumbnail.alt}
                   width={370}
                   height={455}
+                  objectFit="contain"
+                  layout="fill"
                 />
               </div>
               <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block">
@@ -358,25 +360,49 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </h2>
 
               <div className="flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5">
-                {productListAPI?.map((item, index) => (
-                  <div
-                    className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
-                    key={`${item.title_en}${index}`}
-                  >
-                    <ProductCard
-                      title={
-                        router.locale === 'id' ? item.title_id : item.title_en
-                      }
-                      bgColor={item.backgroundColor.hex}
-                      imgSrc={urlFor(item.thumbnail).url()}
-                      imgBg={'/product/strawberry-bg.png'}
-                      imgPlaceholder={urlFor(item.thumbnail).url()}
-                      imgAlt={item.thumbnail.alt}
-                      link={`${product.type.slug.current}/${item.slug.current}`}
-                      small
-                    />
-                  </div>
-                ))}
+                {product.similar.option
+                  ? productListAPI?.slice(0, 3).map((item, index) => (
+                      <div
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
+                        key={`${item.title_en}${index}`}
+                      >
+                        <ProductCard
+                          title={
+                            router.locale === 'id'
+                              ? item.title_id
+                              : item.title_en
+                          }
+                          bgColor={item.backgroundColor.hex}
+                          imgSrc={urlFor(item.thumbnail).url()}
+                          imgBg={'/product/strawberry-bg.png'}
+                          imgPlaceholder={urlFor(item.thumbnail).url()}
+                          imgAlt={item.thumbnail.alt}
+                          link={`${product.type.slug.current}/${item.slug.current}`}
+                          small
+                        />
+                      </div>
+                    ))
+                  : product.similar.manual?.map((item, index) => (
+                      <div
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
+                        key={`${item.title_en}${index}`}
+                      >
+                        <ProductCard
+                          title={
+                            router.locale === 'id'
+                              ? item.title_id
+                              : item.title_en
+                          }
+                          bgColor={item.backgroundColor.hex}
+                          imgSrc={urlFor(item.thumbnail).url()}
+                          imgBg={'/product/strawberry-bg.png'}
+                          imgPlaceholder={urlFor(item.thumbnail).url()}
+                          imgAlt={item.thumbnail.alt}
+                          link={`${product.type.slug.current}/${item.slug.current}`}
+                          small
+                        />
+                      </div>
+                    ))}
               </div>
 
               <StrokeButton
@@ -438,6 +464,10 @@ export async function getStaticProps({ params }) {
           decor2->
         },
         recipes[]->,
+        similar {
+          ...,
+          manual[]->
+        }
       }
     `,
   )

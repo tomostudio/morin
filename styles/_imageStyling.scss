@@ -1,0 +1,353 @@
+.categoryImage {
+  & .imageFrame {
+    @apply w-1/3 h-1/3 aspect-square absolute-center origin-center;
+    & > div {
+      @apply w-full h-full;
+      @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
+    }
+  }
+  & .image1 {
+    z-index: 3;
+    & > div {
+      @apply opacity-0 group-hover:opacity-100;
+    }
+  }
+  & .image2 {
+    z-index: 2;
+    & > div {
+      @apply opacity-0 group-hover:opacity-100;
+    }
+  }
+  & .image3 {
+    z-index: 1;
+    & > div {
+      @apply opacity-0 group-hover:opacity-100;
+    }
+  }
+  & .graphicFrame {
+    @apply w-full h-full absolute-center origin-center opacity-0;
+    @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
+    & > div {
+      @apply w-1/4 h-1/4 max-w-xl aspect-square absolute-center origin-center;
+      & > svg {
+        @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-700 scale-50;
+      }
+    }
+  }
+
+  // LAYOUT 1
+  &.layout-1 {
+    & .image1 {
+      & > div {
+        @apply group-hover:rotate-[15deg] group-hover:scale-105;
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply group-hover:rotate-[50deg] group-hover:translate-x-[-65%] group-hover:translate-y-[-60%] group-hover:scale-75;
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply group-hover:rotate-[-30deg] group-hover:translate-x-[90%] group-hover:translate-y-[50%] group-hover:scale-50;
+      }
+    }
+    & .graphicFrame {
+      //upper right
+      @apply group-hover:opacity-100;
+      & .graphic1 > svg {
+        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[175%]  group-hover:scale-100 w-[150px];
+      }
+      // lower left
+      & .graphic2 > svg {
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-125%]  group-hover:scale-100 w-[175px];
+      }
+      //top
+      & .graphic3 > svg {
+        @apply group-hover:translate-y-[-100%]  group-hover:translate-x-[100px]  group-hover:scale-100 w-10;
+      }
+    }
+  }
+  // LAYOUT 2
+  &.layout-2 {
+    & .image1 {
+      & > div {
+        @apply group-hover:rotate-[-8deg] group-hover:scale-105;
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply group-hover:rotate-[-30deg] group-hover:scale-[80%] group-hover:translate-x-[-60%] group-hover:translate-y-[15%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply group-hover:rotate-[30deg] group-hover:scale-[80%] group-hover:translate-x-[60%] group-hover:translate-y-[30%];
+      }
+    }
+    & .graphicFrame {
+      // upper right
+      @apply group-hover:opacity-100;
+      & .graphic1 > svg {
+        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[130%] group-hover:scale-100 w-[150px];
+      }
+      // lower left
+      & .graphic2 > svg {
+        @apply group-hover:translate-y-[100%]  group-hover:translate-x-[-100%] group-hover:scale-100 w-[125px];
+      }
+      //top left
+      & .graphic3 > svg {
+        @apply group-hover:translate-y-[-65%]  group-hover:translate-x-[-150%]  group-hover:rotate-[10deg] group-hover:scale-100 w-[100px];
+      }
+    }
+  }
+
+  // LAYOUT 3
+  &.layout-3 {
+    & .image1 {
+      & > div {
+        @apply group-hover:rotate-[-3deg] group-hover:scale-110;
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply group-hover:rotate-[-15deg] group-hover:scale-[80%] group-hover:translate-x-[-60%] group-hover:translate-y-[15%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply group-hover:rotate-[15deg] group-hover:scale-[80%] group-hover:translate-x-[60%] group-hover:translate-y-[0%];
+      }
+    }
+    & .graphicFrame {
+      // right
+      @apply group-hover:opacity-100;
+      & .graphic1 > svg {
+        @apply group-hover:translate-y-[10%]   group-hover:translate-x-[250%]  group-hover:scale-100 w-[125px];
+      }
+      //  left
+      & .graphic2 > svg {
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-225%]  group-hover:scale-100 w-[125px];
+      }
+      //top
+      & .graphic3 > svg {
+        @apply group-hover:translate-y-[-100%]   group-hover:translate-x-[400%]  group-hover:scale-100 w-10;
+      }
+    }
+  }
+
+  // LAYOUT 4
+  &.layout-4 {
+    & .image1 {
+      & > div {
+        @apply group-hover:rotate-[10deg]  group-hover:scale-110;
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply group-hover:rotate-[-15deg]  group-hover:translate-x-[-90%]  group-hover:translate-y-[40%]  group-hover:scale-[60%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply group-hover:rotate-[-40deg]  group-hover:translate-x-[90%]  group-hover:translate-y-[-40%]  group-hover:scale-75;
+      }
+    }
+    & .graphicFrame {
+      //upper right
+      @apply group-hover:opacity-100;
+      & .graphic1 > svg {
+        @apply group-hover:translate-y-[30%]   group-hover:translate-x-[175%]   group-hover:scale-100 w-[125px];
+      }
+      //  left
+      & .graphic2 > svg {
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-[50px];
+      }
+      // left
+      & .graphic3 > svg {
+        @apply group-hover:translate-y-[-20%]   group-hover:translate-x-[-100%]   group-hover:scale-100  w-[150px];
+      }
+    }
+  }
+}
+
+//Category Images
+.categoryImageCard {
+  & .imageFrame {
+    @apply w-2/3 h-2/3 aspect-square absolute-center origin-center;
+    & > div {
+      @apply w-full h-full;
+      @apply transition-all duration-300  group-hover:duration-500;
+    }
+  }
+  & .image1 {
+    z-index: 4;
+  }
+  & .image2 {
+    z-index: 3;
+  }
+  & .image3 {
+    z-index: 2;
+  }
+  & .graphicFrame {
+    @apply w-full h-full absolute-center origin-center;
+    @apply transition-all duration-300 group-hover:duration-500;
+    & > div {
+      @apply w-1/4 h-1/4 max-w-xl aspect-square absolute-center origin-center;
+      & > svg {
+        @apply transition-all duration-300 group-hover:duration-700 scale-50;
+      }
+    }
+  }
+
+  // LAYOUT 1
+  &.layout-1 {
+    & .image1 {
+      & > div {
+        @apply rotate-[7deg] scale-105;
+        @apply group-hover:rotate-[15deg] group-hover:scale-[125%];
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply rotate-[50deg] translate-x-[-50%] translate-y-[-40%] scale-[80%];
+        @apply group-hover:rotate-[45deg] group-hover:translate-x-[-45%] group-hover:translate-y-[-35%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply rotate-[-30deg] translate-x-[50%] translate-y-[30%] scale-[60%];
+        @apply group-hover:rotate-[-25deg] group-hover:translate-x-[45%] group-hover:translate-y-[25%];
+      }
+    }
+    & .graphicFrame {
+      //upper right
+      & .graphic1 > svg {
+        @apply translate-y-[-60%]  translate-x-[80%]  scale-100 w-[175px];
+        @apply group-hover:translate-y-[-55%]  group-hover:translate-x-[70%]  group-hover:scale-90 group-hover:rotate-[-5deg];
+      }
+      // lower left
+      & .graphic2 > svg {
+        @apply translate-y-[10%]  translate-x-[-90%]  scale-100 w-[225px];
+        @apply group-hover:translate-y-[5%]  group-hover:translate-x-[-80%]  group-hover:scale-90 group-hover:rotate-[5deg];
+      }
+    }
+  }
+  // LAYOUT 2
+  &.layout-2 {
+    & .image1 {
+      & > div {
+        @apply rotate-[-8deg] scale-105;
+        @apply group-hover:rotate-[-2deg] group-hover:scale-[125%];
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply rotate-[-25deg] scale-[75%] translate-x-[-35%] translate-y-[10%];
+        @apply group-hover:rotate-[-30deg] group-hover:scale-[80%] group-hover:translate-x-[-55%] group-hover:translate-y-[15%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply rotate-[20deg] scale-[75%] translate-x-[35%] translate-y-[10%];
+        @apply group-hover:rotate-[30deg] group-hover:scale-[80%] group-hover:translate-x-[55%] group-hover:translate-y-[30%];
+      }
+    }
+    & .graphicFrame {
+      // upper right
+      & .graphic1 > svg {
+        @apply translate-y-[-90%] -rotate-12 translate-x-[80%] scale-90 w-[150px];
+        @apply group-hover:translate-y-[-90%] group-hover:rotate-0 group-hover:translate-x-[130%] group-hover:scale-100;
+      }
+      // lower left
+      & .graphic2 > svg {
+        @apply translate-y-[150%]  translate-x-[-60%] scale-90 w-[125px];
+        @apply group-hover:translate-y-[175%]  group-hover:translate-x-[-80%] group-hover:scale-100;
+      }
+      //top left
+      & .graphic3 > svg {
+        @apply translate-y-[-125%]  translate-x-[-125%]  rotate-[10deg] scale-90 w-[75px];
+        @apply group-hover:translate-y-[-150%]  group-hover:translate-x-[-150%]  group-hover:rotate-[15deg] group-hover:scale-100;
+      }
+    }
+  }
+
+  // LAYOUT 3
+  &.layout-3 {
+    & .image1 {
+      & > div {
+        @apply rotate-[-3deg] scale-110;
+        @apply group-hover:rotate-[0deg] group-hover:scale-[125%];
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply rotate-[-15deg] scale-[75%] translate-x-[-35%] translate-y-[10%];
+        @apply group-hover:rotate-[-20deg]  group-hover:scale-[80%]  group-hover:translate-x-[-45%]  group-hover:translate-y-[15%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply rotate-[15deg] scale-[75%] translate-x-[35%] translate-y-[0%];
+        @apply group-hover:rotate-[20deg]  group-hover:scale-[80%]  group-hover:translate-x-[45%]  group-hover:translate-y-[-5%];
+      }
+    }
+    & .graphicFrame {
+      // right
+      @apply opacity-100;
+      & .graphic1 > svg {
+        @apply translate-y-[0%] translate-x-[200%] scale-100 w-[125px];
+        @apply group-hover:translate-y-[20%]  group-hover:translate-x-[225%]  group-hover:scale-90;
+      }
+      //  left
+      & .graphic2 > svg {
+        @apply translate-y-[50%] translate-x-[-175%] scale-100 w-[125px];
+        @apply group-hover:translate-y-[20%]  group-hover:translate-x-[-225%]  group-hover:scale-90;
+      }
+      //top
+      & .graphic3 > svg {
+        @apply translate-y-[-150%] translate-x-[300%]  scale-100 w-10;
+        @apply group-hover:translate-y-[-175%]  group-hover:translate-x-[350%]   group-hover:scale-90;
+      }
+    }
+  }
+
+  // LAYOUT 4
+  &.layout-4 {
+    & .image1 {
+      & > div {
+        @apply rotate-[10deg]  scale-110;
+        @apply group-hover:rotate-[3deg] group-hover:scale-[125%];
+      }
+    }
+    & .image2 {
+      & > div {
+        @apply rotate-[-20deg]  translate-x-[-45%]  translate-y-[35%]  scale-[65%];
+        @apply group-hover:rotate-[-30deg]  group-hover:translate-x-[-35%]  group-hover:translate-y-[30%]  group-hover:scale-[60%];
+      }
+    }
+    & .image3 {
+      & > div {
+        @apply rotate-[-30deg]  translate-x-[45%]  translate-y-[-30%]  scale-75;
+        @apply group-hover:rotate-[-20deg]  group-hover:translate-x-[40%]  group-hover:translate-y-[-25%]  group-hover:scale-[80%];
+      }
+    }
+    & .graphicFrame {
+      //upper right
+      & .graphic1 > svg {
+        @apply translate-y-[75%]   translate-x-[115%]  scale-90 w-[150px];
+        @apply group-hover:translate-y-[100%]  group-hover:rotate-12 group-hover:translate-x-[130%]   group-hover:scale-100;
+      }
+      //  left
+      & .graphic2 > svg {
+        @apply translate-y-[-30%] translate-x-[-200%]   scale-90 w-[50px];
+        @apply group-hover:translate-y-[-35%] group-hover:translate-x-[-220%] group-hover:scale-100;
+      }
+      // left
+      & .graphic3 > svg {
+        @apply translate-y-[-100%] translate-x-[-100%]   scale-90  w-[175px];
+        @apply group-hover:translate-y-[-110%]  group-hover:translate-x-[-110%] group-hover:scale-100;
+      }
+    }
+  }
+}

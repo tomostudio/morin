@@ -10,7 +10,7 @@ const BasicModal = ({
   onRequestClose,
   closeTimeoutMS,
   className,
-  classNameOuter,
+  classNameOuter, 
   classNameModalContent
 }) => {
   return (

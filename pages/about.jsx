@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Footer from '@/components/module/footer'
-import Header from '@/components/module/header'
 import Layout from '@/components/module/layout'
 import Container from '@/components/module/container'
 import StrokeButton from '@/components/micro-module/strokeButton'
@@ -26,26 +25,10 @@ import { useRouter } from 'next/router'
 import SEO from '@/components/utils/seo'
 import { PortableText } from '@portabletext/react'
 
-const aboutData = [
-  {
-    type: 'OUR PROCESS',
-    title: 'Bagaimana Morin Dibuat?',
-    imgSrc: '/about/card-1.png',
-    imgPlaceholder: '/about/card-1.png',
-    imgAlt: 'Bagaimana Morin Dibuat?',
-  },
-  {
-    type: 'VISI & MISI',
-    title: 'Lorem Ipsum Dolor sit Amet',
-    imgSrc: '/about/card-2.png',
-    imgPlaceholder: '/about/card-2.png',
-    imgAlt: 'Lorem Ipsum Dolor sit Amet',
-  },
-]
-
 const About = ({ aboutAPI, seoAPI }) => {
   const [modalOne, setModalOne] = useState(false)
   const [modalTwo, setModalTwo] = useState(false)
+  const [modalZero, setModalZero] = useState(false)
   const [about] = aboutAPI
   const [seo] = seoAPI
   const router = useRouter()
@@ -58,6 +41,9 @@ const About = ({ aboutAPI, seoAPI }) => {
       case 'VISI & MISI':
         setModalTwo(true)
         break
+      case 'MAIN MODAL':
+        setModalZero(true)
+        break
       default:
         return null
     }
@@ -66,6 +52,7 @@ const About = ({ aboutAPI, seoAPI }) => {
   const closeModal = () => {
     setModalOne(false)
     setModalTwo(false)
+    setModalZero(false)
   }
 
   const ctx = useAppContext()
@@ -130,7 +117,11 @@ const About = ({ aboutAPI, seoAPI }) => {
                   <Line className="h-[13px] w-[86px] lg:h-[32px] lg:w-[312px]" />
                 </div>
               </div>
-              <StrokeButton color={colors.morinBlue} arrow={false}>
+              <StrokeButton
+                color={colors.morinBlue}
+                arrow={false}
+                onClick={() => openModal('MAIN MODAL')}
+              >
                 {router.locale === 'id' ? 'Baca selengkapnya' : 'Read More'}
               </StrokeButton>
             </div>
@@ -196,6 +187,46 @@ const About = ({ aboutAPI, seoAPI }) => {
         </div>
       </Layout>
 
+      <PageModal
+        isOpen={modalZero}
+        onRequestClose={closeModal}
+        className="text-morin-blue"
+      >
+        <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
+          {router.locale === 'id'
+            ? about.first_more.title_id
+            : about.first_more.title_en}
+        </span>
+
+        <PortableText
+          value={
+            router.locale === 'id'
+              ? about.first_more.description_id
+              : about.first_more.description_en
+          }
+          components={{
+            block: {
+              normal: ({ children }) => (
+                <p className="font-medium mb-5">{children}</p>
+              ),
+            },
+            types: {
+              image: (props) => (
+                <div className="mb-5">
+                  <Image
+                    src={urlFor(props.value).url()}
+                    blurDataURL={urlFor(props.value).url()}
+                    placeholder="blur"
+                    alt={props.value.alt}
+                    width={795}
+                    height={460}
+                  />
+                </div>
+              ),
+            },
+          }}
+        />
+      </PageModal>
       <PageModal
         isOpen={modalOne}
         onRequestClose={closeModal}
