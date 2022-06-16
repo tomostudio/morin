@@ -52,7 +52,7 @@ const RecipeCard = ({
         </div>
       </FancyLink>
 
-      <div className="relative w-full h-[487px]">
+      <div className="relative w-full h-full">
         <Image
           src={imgSrc}
           blurDataURL={imgPlaceholder}
