@@ -133,7 +133,7 @@ const Recipe = ({
       />
 
       <div className="w-full bg-morin-peach">
-        <div className=" relative w-full h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
+        <div className=" relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <div className="relative w-full h-full">
             <Image
               priority
@@ -161,7 +161,7 @@ const Recipe = ({
         </div>
 
         <div className="p-4 lg:p-8">
-          <div className="flex w-full items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
+          <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
               {router.locale === 'id'
                 ? 'Diurutkan Secara Bawaan'
@@ -199,6 +199,12 @@ const Recipe = ({
 
           <div className="max-w-screen-2xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+              {
+                console.log(filterValue)
+              }
+              {
+                console.log(recipeListAPI.filter((data, id) => data.difficulty.title_en === "Easy"))
+              }
               {recipeListAPI?.map((item, index) => (
                 <div className="w-full" key={`${item.title_en}[${index}]`}>
                   <RecipeCard

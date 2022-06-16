@@ -84,7 +84,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <div className="w-full bg-morin-skyBlue">
-        <div className="relative w-full h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
+        <div className="relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <div className="relative w-full h-full">
             <Image
               priority
