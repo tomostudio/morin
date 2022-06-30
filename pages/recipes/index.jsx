@@ -87,7 +87,17 @@ const Recipe = ({
   footerAPI,
 }) => {
   const [filterOpen, setFilterOpen] = useState(true)
-  const [filterValue, setFilterValue] = useState([])
+  const [filterValue, setFilterValue] = useState([
+    {
+      difficulty: '',
+    },
+    {
+      cooking_time: '',
+    },
+    {
+      category: '',
+    },
+  ])
   const [seo] = seoAPI
   const [recipe] = recipeAPI
   const router = useRouter()
@@ -96,16 +106,61 @@ const Recipe = ({
     setFilterValue((prev) => {
       const tempArr = [...prev]
 
-      if (tempArr.includes(val)) {
-        const index = tempArr.indexOf(val)
-        tempArr.splice(index, 1)
-        return tempArr
-      }
+      // if (tempArr.includes(val)) {
+      //   const index = tempArr.indexOf(val)
+      //   tempArr.splice(index, 1)
+      //   return tempArr
+      // }
+      // console.log(
+      //   tempArr.some(
+      //     (o) =>
+      //       o.hasOwnProperty('difficulty') ||
+      //       o.hasOwnProperty('cooking_time') ||
+      //       o.hasOwnProperty('category'),
+      //   ),
+      // )
+      // console.log(tempArr)
+      // console.log(tempArr.some((o) => o.hasOwnProperty('difficulty')))
 
-      if (!tempArr.includes(val)) {
+      if (tempArr.some((o) => o.hasOwnProperty('difficulty'))) {
+        if (
+          tempArr.map((object) => object.difficulty).includes(val.difficulty)
+        ) {
+          const index = tempArr
+            .map((object) => object.difficulty)
+            .indexOf(val.difficulty)
+          tempArr.splice(index, 1)
+          return tempArr
+        } else {
+          tempArr = [val]
+          return tempArr
+        }
+      } else {
         tempArr.push(val)
         return tempArr
       }
+
+      // if (tempArr.some((o) => o.hasOwnProperty('cooking_time'))) {
+      //   if (tempArr.hasOwnProperty('cooking_time').includes(val)) {
+      //     const index = tempArr.indexOf(val)
+      //     tempArr.splice(index, 1)
+      //     return tempArr
+      //   }
+      // } else {
+      //   tempArr.push(val)
+      //   return tempArr
+      // }
+
+      // if (tempArr.some((o) => o.hasOwnProperty('category'))) {
+      //   if (tempArr.hasOwnProperty('category').includes(val)) {
+      //     const index = tempArr.indexOf(val)
+      //     tempArr.splice(index, 1)
+      //     return tempArr
+      //   }
+      // } else {
+      //   tempArr.push(val)
+      //   return tempArr
+      // }
     })
   }
 
@@ -183,6 +238,7 @@ const Recipe = ({
           </div>
 
           <div suppressHydrationWarning>
+            {/* {console.log(filterValue)} */}
             {typeof window === 'undefined' ? null : (
               <RecipeFilter
                 isOpen={filterOpen}
@@ -203,31 +259,53 @@ const Recipe = ({
                 console.log(filterValue)
               }
               {
-                console.log(recipeListAPI.filter((data, id) => data.difficulty.title_en === "Easy"))
+                console.log(filterValue.some((o) => o.hasOwnProperty('difficulty')))
               }
-              {recipeListAPI?.map((item, index) => (
-                <div className="w-full" key={`${item.title_en}[${index}]`}>
-                  <RecipeCard
-                    imgSrc={urlFor(item.thumbnail).url()}
-                    imgPlaceholder={urlFor(item.thumbnail).url()}
-                    imgAlt={item.thumbnail.alt}
-                    title={
-                      router.locale === 'id' ? item.title_id : item.title_en
-                    }
-                    link={`/recipes/${item.slug.current}`}
-                    duration={
-                      router.locale === 'id'
-                        ? item.cookingTime.title_id
-                        : item.cookingTime.title_en
-                    }
-                    difficulty={
-                      router.locale === 'id'
-                        ? item.difficulty.title_id
-                        : item.difficulty.title_en
-                    }
-                  />
-                </div>
-              ))}
+              {console.log(
+                filterValue.hasOwnProperty('difficulty')
+                  ? obj.difficulty === filterValue.difficulty
+                  : null
+              )}
+              {console.log(
+                recipeListAPI?.filter((obj) =>
+                filterValue.some((o) => o.hasOwnProperty('difficulty'))
+                    ? obj.difficulty.title_en === filterValue[0].difficulty
+                    : null
+                ),
+              )}
+              {recipeListAPI
+                ?.filter((obj) =>
+                  filterValue.hasOwnProperty('difficulty')
+                    ? obj.difficulty === filterValue.difficulty
+                    : false && filterValue.hasOwnProperty('cookingTime')
+                    ? obj.cooking_time === filterValue.cookingTime
+                    : false && filterValue.hasOwnProperty('recipeCategory')
+                    ? obj.category === filterValue.recipeCategory
+                    : false,
+                )
+                .map((item, index) => (
+                  <div className="w-full" key={`${item.title_en}[${index}]`}>
+                    <RecipeCard
+                      imgSrc={urlFor(item.thumbnail).url()}
+                      imgPlaceholder={urlFor(item.thumbnail).url()}
+                      imgAlt={item.thumbnail.alt}
+                      title={
+                        router.locale === 'id' ? item.title_id : item.title_en
+                      }
+                      link={`/recipes/${item.slug.current}`}
+                      duration={
+                        router.locale === 'id'
+                          ? item.cookingTime.title_id
+                          : item.cookingTime.title_en
+                      }
+                      difficulty={
+                        router.locale === 'id'
+                          ? item.difficulty.title_id
+                          : item.difficulty.title_en
+                      }
+                    />
+                  </div>
+                ))}
             </div>
             <div className="w-full flex justify-center mt-5 xl:mt-7">
               <StrokeButton

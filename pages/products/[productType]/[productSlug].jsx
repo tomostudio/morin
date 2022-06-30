@@ -138,7 +138,9 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         <div
           className="relative w-full h-[450px] lg:h-[500px] xl:h-[700px]"
           style={{
-            backgroundColor: product.backgroundColor.hex,
+            backgroundColor: product.backgroundColor
+              ? product.backgroundColor.hex
+              : colors.morinLightBlue,
           }}
         >
           <div className="absolute w-full h-full translate-y-[50px] overflow-hidden md:translate-y-0">
@@ -170,18 +172,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   height={150}
                 />
               </div>
-              <div
-                className={`w-[90px] absolute bottom-14 left-2 xl:w-auto xl:bottom-auto xl:top-16 xl:left-auto xl:right-14`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit3).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit3.alt}
-                  width={190}
-                  height={190}
-                />
-              </div>
+              {product.thumbnailFruit.fruit3.asset && (
+                <div
+                  className={`w-[90px] absolute bottom-14 left-2 xl:w-auto xl:bottom-auto xl:top-16 xl:left-auto xl:right-14`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit3).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit3.alt}
+                    width={190}
+                    height={190}
+                  />
+                </div>
+              )}
               <div
                 className={`w-auto hidden absolute top-1/2 -left-4 -translate-y-1/2 xl:block 2xl:left-0`}
               >
@@ -206,18 +210,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   height={80}
                 />
               </div>
-              <div
-                className={`w-[150px] absolute bottom-20 -right-12 xl:w-auto`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit3).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit3.alt}
-                  width={335}
-                  height={335}
-                />
-              </div>
+              {product.thumbnailFruit.fruit3.asset && (
+                <div
+                  className={`w-[150px] absolute bottom-20 -right-12 xl:w-auto`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit3).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit3.alt}
+                    width={335}
+                    height={335}
+                  />
+                </div>
+              )}
               <div
                 className={`w-auto hidden absolute -bottom-2 left-60 xl:block`}
               >
@@ -372,7 +378,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               ? item.title_id
                               : item.title_en
                           }
-                          bgColor={item.backgroundColor.hex}
+                          bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
                           imgSrc={urlFor(item.thumbnail).url()}
                           imgBg={'/product/strawberry-bg.png'}
                           imgPlaceholder={urlFor(item.thumbnail).url()}
@@ -393,7 +399,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               ? item.title_id
                               : item.title_en
                           }
-                          bgColor={item.backgroundColor.hex}
+                          bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
                           imgSrc={urlFor(item.thumbnail).url()}
                           imgBg={'/product/strawberry-bg.png'}
                           imgPlaceholder={urlFor(item.thumbnail).url()}

@@ -11,6 +11,7 @@ import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
+import colors from '@/helpers/colors'
 
 const productData = [
   {
@@ -181,7 +182,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
               >
                 <ProductCard
                   title={router.locale === "id" ? item.title_id : item.title_en}
-                  bgColor={item.backgroundColor.hex}
+                  bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
                   imgSrc={urlFor(item.thumbnail).url()}
                   imgBg={'/product/strawberry-bg.png'}
                   imgPlaceholder={urlFor(item.thumbnail).url()}
