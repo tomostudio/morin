@@ -30,7 +30,6 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "framer-motion": "^6.3.0",
     "gsap": "^3.10.3",
-    "locomotive-scroll": "^4.1.4",
     "next": "^12.1.5",
     "next-seo": "^5.4.0",
     "postcss-import": "^14.1.0",
