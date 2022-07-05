@@ -10,6 +10,10 @@ $transition-all: all 0.3s;
   overflow: hidden;
 }
 
+.faq {
+  overflow: auto !important;
+}
+
 .ReactModal__Overlay {
   opacity: 0;
   transition: $transition-all;

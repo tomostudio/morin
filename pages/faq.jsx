@@ -121,7 +121,10 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
                 >
                   <FAQCard
                     title={item.title_id}
-                    onClick={() => setModalData(item)}
+                    onClick={() => {
+                      document.querySelector('body').classList.add("faq");
+                      setModalData(item)
+                    }}
                   />
                 </div>
               ) : (
@@ -131,7 +134,10 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
                 >
                   <FAQCard
                     title={item.title_en}
-                    onClick={() => setModalData(item)}
+                    onClick={() => {
+                      document.querySelector('body').classList.add("faq");
+                      setModalData(item)
+                    }}
                   />
                 </div>
               ),
