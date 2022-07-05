@@ -73,6 +73,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
 
   const closeModal = () => {
     setModalData(false)
+    document.querySelector('body').removeAttribute("class");
   }
 
   const ctx = useAppContext()
