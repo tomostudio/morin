@@ -105,23 +105,6 @@ const Recipe = ({
   const handleFilter = (val) => {
     setFilterValue((prev) => {
       const tempArr = [...prev]
-
-      // if (tempArr.includes(val)) {
-      //   const index = tempArr.indexOf(val)
-      //   tempArr.splice(index, 1)
-      //   return tempArr
-      // }
-      // console.log(
-      //   tempArr.some(
-      //     (o) =>
-      //       o.hasOwnProperty('difficulty') ||
-      //       o.hasOwnProperty('cooking_time') ||
-      //       o.hasOwnProperty('category'),
-      //   ),
-      // )
-      // console.log(tempArr)
-      // console.log(tempArr.some((o) => o.hasOwnProperty('difficulty')))
-
       if (tempArr.some((o) => o.hasOwnProperty('difficulty'))) {
         if (
           tempArr.map((object) => object.difficulty).includes(val.difficulty)
@@ -255,7 +238,7 @@ const Recipe = ({
 
           <div className="max-w-screen-2xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-              {
+              {/* {
                 console.log(filterValue)
               }
               {
@@ -272,7 +255,7 @@ const Recipe = ({
                     ? obj.difficulty.title_en === filterValue[0].difficulty
                     : null
                 ),
-              )}
+              )} */}
               {recipeListAPI
                 ?.filter((obj) =>
                   filterValue.hasOwnProperty('difficulty')
