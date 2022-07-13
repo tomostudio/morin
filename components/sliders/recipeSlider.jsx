@@ -28,17 +28,15 @@ const RecipeSlider = ({ data, lang }) => {
             />
           </SwiperSlide>
         ) : (
-          <>
-            <SwiperSlide key={item.title_en}>
-              <RecipeCard
-                imgSrc={urlFor(item.thumbnail).url()}
-                imgPlaceholder={urlFor(item.thumbnail).url()}
-                imgAlt={item.thumbnail.alt}
-                title={item.title_en}
-                link={`/recipes/${item.slug.current}`}
-              />
-            </SwiperSlide>
-          </>
+          <SwiperSlide key={item.title_en}>
+            <RecipeCard
+              imgSrc={urlFor(item.thumbnail).url()}
+              imgPlaceholder={urlFor(item.thumbnail).url()}
+              imgAlt={item.thumbnail.alt}
+              title={item.title_en}
+              link={`/recipes/${item.slug.current}`}
+            />
+          </SwiperSlide>
         )
       )}
     </Swiper>
