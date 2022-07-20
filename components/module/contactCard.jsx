@@ -19,24 +19,34 @@ const ImageGallery = ({ name, images }) => {
       spaceBetween={0}
       slidesPerView={1}
     >
-      {images?.map((item, index) => (
-        <SwiperSlide>
-          <Image
-            src={urlFor(item).url()}
-            blurDataURL={urlFor(item).url()}
-            placeholder="blur"
-            alt={`${name} (${index})`}
-            layout="responsive"
-            width={750}
-            height={480}
-          />
-        </SwiperSlide>
-      ))}
+      {images?.map(
+        (item, index) =>
+          item.asset && (
+            <SwiperSlide>
+              <Image
+                src={urlFor(item).url()}
+                blurDataURL={urlFor(item).url()}
+                placeholder="blur"
+                alt={`${name} (${index})`}
+                layout="responsive"
+                width={750}
+                height={480}
+              />
+            </SwiperSlide>
+          ),
+      )}
     </Swiper>
   )
 }
 
-const ContactCard = ({ imageData, label, companyName, description, maps, lang }) => {
+const ContactCard = ({
+  imageData,
+  label,
+  companyName,
+  description,
+  maps,
+  lang,
+}) => {
   return (
     <div className="flex flex-col rounded-2xl overflow-hidden lg:flex-row">
       <div className="contact-card-slider lg:w-3/5">
