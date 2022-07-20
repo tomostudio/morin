@@ -148,30 +148,34 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               <SunRay className="w-[750px] h-[750px] animate-spin-slow md:w-[1455px] md:h-[1455px] xl:w-[2000px] xl:h-[2000px]" />
             </div>
             <div className="w-full h-full max-w-sm absolute-center xl:max-w-screen-2xl">
-              <div
-                className={`w-[75px] absolute top-20 -left-5 xl:w-auto xl:top-8 xl:left-80`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit1).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit1.alt}
-                  width={150}
-                  height={150}
-                />
-              </div>
-              <div
-                className={`w-[75px] absolute top-28 right-2 xl:w-auto xl:top-20 xl:right-[415px]`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit2).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit2.alt}
-                  width={150}
-                  height={150}
-                />
-              </div>
+              {product.thumbnailFruit.fruit1.asset && (
+                <div
+                  className={`w-[75px] absolute top-20 -left-5 xl:w-auto xl:top-8 xl:left-80`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit1).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit1.alt}
+                    width={150}
+                    height={150}
+                  />
+                </div>
+              )}
+              {product.thumbnailFruit.fruit2.asset && (
+                <div
+                  className={`w-[75px] absolute top-28 right-2 xl:w-auto xl:top-20 xl:right-[415px]`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit2).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit2.alt}
+                    width={150}
+                    height={150}
+                  />
+                </div>
+              )}
               {product.thumbnailFruit.fruit3.asset && (
                 <div
                   className={`w-[90px] absolute bottom-14 left-2 xl:w-auto xl:bottom-auto xl:top-16 xl:left-auto xl:right-14`}
@@ -186,30 +190,34 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   />
                 </div>
               )}
-              <div
-                className={`w-auto hidden absolute top-1/2 -left-4 -translate-y-1/2 xl:block 2xl:left-0`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit1).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit1.alt}
-                  width={210}
-                  height={210}
-                />
-              </div>
-              <div
-                className={`w-10 absolute top-1/2 left-20 xl:w-auto xl:left-auto xl:right-[400px]`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit2).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit2.alt}
-                  width={80}
-                  height={80}
-                />
-              </div>
+              {product.thumbnailFruit.fruit1.asset && (
+                <div
+                  className={`w-auto hidden absolute top-1/2 -left-4 -translate-y-1/2 xl:block 2xl:left-0`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit1).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit1.alt}
+                    width={210}
+                    height={210}
+                  />
+                </div>
+              )}
+              {product.thumbnailFruit.fruit2.asset && (
+                <div
+                  className={`w-10 absolute top-1/2 left-20 xl:w-auto xl:left-auto xl:right-[400px]`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit2).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit2.alt}
+                    width={80}
+                    height={80}
+                  />
+                </div>
+              )}
               {product.thumbnailFruit.fruit3.asset && (
                 <div
                   className={`w-[150px] absolute bottom-20 -right-12 xl:w-auto`}
@@ -224,18 +232,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   />
                 </div>
               )}
-              <div
-                className={`w-auto hidden absolute -bottom-2 left-60 xl:block`}
-              >
-                <Image
-                  src={urlFor(product.thumbnailFruit.fruit1).url()}
-                  blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                  placeholder="blur"
-                  alt={product.thumbnailFruit.fruit1.alt}
-                  width={240}
-                  height={240}
-                />
-              </div>
+              {product.thumbnailFruit.fruit1.asset && (
+                <div
+                  className={`w-auto hidden absolute -bottom-2 left-60 xl:block`}
+                >
+                  <Image
+                    src={urlFor(product.thumbnailFruit.fruit1).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
+                    placeholder="blur"
+                    alt={product.thumbnailFruit.fruit1.alt}
+                    width={240}
+                    height={240}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
@@ -266,42 +276,54 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </div>
               <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block">
                 <div className="absolute bottom-0 left-52 2xl:left-64">
-                  {router.locale === 'id' ? (
-                    <Image
-                      src={urlFor(product.decor_id.decor1.image).url()}
-                      placeholder={urlFor(product.decor_id.decor1.image).url()}
-                      alt={product.decor_id.decor1.image.alt}
-                      width={320}
-                      height={140}
-                    />
-                  ) : (
-                    <Image
-                      src={urlFor(product.decor_en.decor1.image).url()}
-                      placeholder={urlFor(product.decor_en.decor1.image).url()}
-                      alt={product.decor_en.decor1.image.alt}
-                      width={320}
-                      height={140}
-                    />
-                  )}
+                  {router.locale === 'id'
+                    ? product.decor_id && (
+                        <Image
+                          src={urlFor(product.decor_id.decor1.image).url()}
+                          placeholder={urlFor(
+                            product.decor_id.decor1.image,
+                          ).url()}
+                          alt={product.decor_id.decor1.image.alt}
+                          width={320}
+                          height={140}
+                        />
+                      )
+                    : product.decor_en && (
+                        <Image
+                          src={urlFor(product.decor_en.decor1.image).url()}
+                          placeholder={urlFor(
+                            product.decor_en.decor1.image,
+                          ).url()}
+                          alt={product.decor_en.decor1.image.alt}
+                          width={320}
+                          height={140}
+                        />
+                      )}
                 </div>
                 <div className="absolute bottom-0 right-52 2xl:right-64">
-                  {router.locale === 'id' ? (
-                    <Image
-                      src={urlFor(product.decor_id.decor2.image).url()}
-                      placeholder={urlFor(product.decor_id.decor2.image).url()}
-                      alt={product.decor_id.decor2.image.alt}
-                      width={325}
-                      height={170}
-                    />
-                  ) : (
-                    <Image
-                      src={urlFor(product.decor_en.decor2.image).url()}
-                      placeholder={urlFor(product.decor_en.decor2.image).url()}
-                      alt={product.decor_en.decor2.image.alt}
-                      width={325}
-                      height={170}
-                    />
-                  )}
+                  {router.locale === 'id'
+                    ? product.decor_id && (
+                        <Image
+                          src={urlFor(product.decor_id.decor2.image).url()}
+                          placeholder={urlFor(
+                            product.decor_id.decor2.image,
+                          ).url()}
+                          alt={product.decor_id.decor2.image.alt}
+                          width={325}
+                          height={170}
+                        />
+                      )
+                    : product.decor_en && (
+                        <Image
+                          src={urlFor(product.decor_en.decor2.image).url()}
+                          placeholder={urlFor(
+                            product.decor_en.decor2.image,
+                          ).url()}
+                          alt={product.decor_en.decor2.image.alt}
+                          width={325}
+                          height={170}
+                        />
+                      )}
                 </div>
               </div>
             </div>
@@ -378,7 +400,11 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               ? item.title_id
                               : item.title_en
                           }
-                          bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
+                          bgColor={
+                            item.backgroundColor
+                              ? item.backgroundColor.hex
+                              : colors.morinLightBlue
+                          }
                           imgSrc={urlFor(item.thumbnail).url()}
                           imgBg={'/product/strawberry-bg.png'}
                           imgPlaceholder={urlFor(item.thumbnail).url()}
@@ -399,7 +425,11 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               ? item.title_id
                               : item.title_en
                           }
-                          bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
+                          bgColor={
+                            item.backgroundColor
+                              ? item.backgroundColor.hex
+                              : colors.morinLightBlue
+                          }
                           imgSrc={urlFor(item.thumbnail).url()}
                           imgBg={'/product/strawberry-bg.png'}
                           imgPlaceholder={urlFor(item.thumbnail).url()}
