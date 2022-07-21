@@ -1,7 +1,8 @@
-import Image from 'next/image'
-import React from 'react'
-import FancyLink from '../utils/fancyLink'
-import { SunRaySmaller } from '../utils/svg'
+import Image from 'next/image';
+import React from 'react';
+import FancyLink from '../utils/fancyLink';
+import { SunRaySmaller } from '../utils/svg';
+import urlFor from '@/helpers/sanity/urlFor';
 
 const ProductCard = ({
   title,
@@ -10,48 +11,101 @@ const ProductCard = ({
   imgBg,
   imgPlaceholder,
   imgAlt,
+  thumbnailFruit,
   link,
   small,
 }) => {
   return (
-    <FancyLink destination={link} className="group block w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300">
-      <div className="relative w-full" style={{ background: bgColor }}>
-        <div className="relative transition-all group-hover:rotate-6 duration-300 z-2 flex justify-center p-8 pb-0 -mt-5 translate-y-5 md:p-11 md:pb-0 md:-mt-7 md:translate-y-7 lg:pt-24 lg:px-20 lg:-mt-5 lg:translate-y-5">
+    <FancyLink
+      destination={link}
+      className='group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300'
+    >
+      <div
+        className='relative w-full px-20 pt-20'
+        style={{ background: bgColor }}
+      >
+        <div className='relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5'>
           <Image
             src={imgSrc}
             blurDataURL={imgPlaceholder}
-            placeholder="blur"
+            placeholder='blur'
             alt={imgAlt}
-            width={225}
-            height={410}
+            layout={'fill'}
+            objectFit={'contain'}
           />
         </div>
-        <div className="absolute z-1 top-0 left-0 w-full h-full">
-          <Image
-            src={imgBg}
-            blurDataURL={imgBg}
-            placeholder="blur"
-            alt={imgAlt}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="top"
-          />
+        <div
+          className={`absolute z-1 top-0 left-0 w-full h-full image-frame layout-${thumbnailFruit.layout}`}
+        >
+          {thumbnailFruit.fruit1.asset && (
+            <div className='fruit1 fruits'>
+              <Image
+                src={urlFor(thumbnailFruit.fruit1)
+                  .width(400)
+                  .format('webp')
+                  .url()}
+                blurDataURL={urlFor(thumbnailFruit.fruit1)
+                  .width(100)
+                  .format('webp')
+                  .blur(50)
+                  .url()}
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+          )}
+          {thumbnailFruit.fruit2.asset && (
+            <div className='fruit2 fruits'>
+              <Image
+                src={urlFor(thumbnailFruit.fruit2)
+                  .width(400)
+                  .format('webp')
+                  .url()}
+                blurDataURL={urlFor(thumbnailFruit.fruit2)
+                  .width(100)
+                  .format('webp')
+                  .blur(50)
+                  .url()}
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+          )}
+          {thumbnailFruit.fruit3.asset && (
+            <div className='fruit3 fruits'>
+              <Image
+                src={urlFor(thumbnailFruit.fruit3)
+                  .width(400)
+                  .auto('format')
+                  .url()}
+                blurDataURL={urlFor(thumbnailFruit.fruit3)
+                  .width(100)
+                  .auto('format')
+                  .blur(50)
+                  .url()}
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+          )}
         </div>
 
-        <div className="w-full h-full scale-150 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 overflow-hidden">
-          <SunRaySmaller className="block animate-spin-slow" />
+        <div className='w-[150%] aspect-square absolute top-0 left-1/2 translate-x-[-50%] overflow-hidden'>
+          <SunRaySmaller className='block animate-spin-slow w-full h-full' />
         </div>
       </div>
 
-      <div className="relative text-morin-blue text-center px-3 pt-8 pb-6 z-1 md:pt-12 lg:px-4 lg:pb-6 xl:px-5 xl:pb-8">
+      <div className='relative text-morin-blue text-center px-3 pt-8 pb-6 z-1 md:pt-12 lg:px-4 lg:pb-6 xl:px-5 xl:pb-8'>
         <div
-          className={`font-nutmeg text-default leading-none md:text-[18px] ${small ? "lg:text-ctitleSmall" : "lg:text-mtitle"} xl:text-mtitlebig`}
+          className={`font-nutmeg text-default leading-none md:text-[18px] ${
+            small ? 'lg:text-ctitleSmall' : 'lg:text-mtitle'
+          } xl:text-mtitlebig`}
         >
           {title}
         </div>
       </div>
     </FancyLink>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

@@ -13,72 +13,6 @@ import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 import colors from '@/helpers/colors'
 
-const productData = [
-  {
-    title: 'Blueberry Jam',
-    bgColor: '#ECE3FF',
-    imgSrc: '/product/blueberry.png',
-    imgBg: '/product/blueberry-bg.png',
-    imgPlaceholder: '/product/blueberry.png',
-    imgAlt: 'Blueberry Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Strawberry Jam',
-    bgColor: '#FFE6E5',
-    imgSrc: '/product/strawberry.png',
-    imgBg: '/product/strawberry-bg.png',
-    imgPlaceholder: '/product/strawberry.png',
-    imgAlt: 'Strawberry Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Pineapple Jam',
-    bgColor: '#FFF7B0',
-    imgSrc: '/product/pineapple.png',
-    imgBg: '/product/pineapple-bg.png',
-    imgPlaceholder: '/product/pineapple.png',
-    imgAlt: 'Pineapple Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Raspberry Jam',
-    bgColor: '#FFDFD9',
-    imgSrc: '/product/raspberry.png',
-    imgBg: '/product/raspberry-bg.png',
-    imgPlaceholder: '/product/raspberry.png',
-    imgAlt: 'Raspberry Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Apricot Jam',
-    bgColor: '#FFE5BF',
-    imgSrc: '/product/apricot.png',
-    imgBg: '/product/apricot-bg.png',
-    imgPlaceholder: '/product/apricot.png',
-    imgAlt: 'Apricot Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Mixed Fruit Jam',
-    bgColor: '#FFD6C8',
-    imgSrc: '/product/mixed-fruit.png',
-    imgBg: '/product/mixed-fruit-bg.png',
-    imgPlaceholder: '/product/mixed-fruit.png',
-    imgAlt: 'Mixed Fruit Jam',
-    link: '/products/product-type/product-id',
-  },
-  {
-    title: 'Orange Marmalade Jam',
-    bgColor: '#FFDFB1',
-    imgSrc: '/product/orange.png',
-    imgBg: '/product/orange-bg.png',
-    imgPlaceholder: '/product/orange.png',
-    imgAlt: 'Orange Marmalade Jam',
-    link: '/products/product-type/product-id',
-  },
-]
-
 const ProductList = ({ productTypeAPI, seoAPI }) => {
   const [seo] = seoAPI
   const [productType] = productTypeAPI
@@ -185,6 +119,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                   bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
                   imgSrc={urlFor(item.thumbnail).url()}
                   imgBg={'/product/strawberry-bg.png'}
+                  thumbnailFruit={item.thumbnailFruit}
                   imgPlaceholder={urlFor(item.thumbnail).url()}
                   imgAlt={item.thumbnail.alt}
                   link={`${productType.slug.current}/${item.slug.current}`}
