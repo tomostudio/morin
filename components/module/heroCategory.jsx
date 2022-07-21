@@ -93,9 +93,6 @@ const HeroCategory = ({
                 <div className='graphic2'>
                   <Layout1Graphic2 className={`w-full h-full`} />
                 </div>
-                {/* <div className='graphic3'>
-                  <Layout1Graphic3 className={`w-full h-full`} />
-                </div> */}
               </div>
             ) : (
               ''

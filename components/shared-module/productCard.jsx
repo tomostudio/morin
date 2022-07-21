@@ -20,21 +20,21 @@ const ProductCard = ({
       className='group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300'
     >
       <div
-        className='relative w-full px-20 pt-20'
+        className={`relative w-full ${small ? `px-14 pt-14` : `px-20 pt-20`}`}
         style={{ background: bgColor }}
       >
         <div className='relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5'>
           <Image
             src={imgSrc}
             blurDataURL={imgPlaceholder}
-            placeholder='blur'
+            placeholder='empty'
             alt={imgAlt}
             layout={'fill'}
             objectFit={'contain'}
           />
         </div>
         <div
-          className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-5deg] transition-all duration-300 layout-${thumbnailFruit.layout }`}
+          className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-5deg] transition-all duration-300 layout-${thumbnailFruit.layout}`}
         >
           {thumbnailFruit.fruit1.asset && (
             <div className='fruit1 fruits'>
