@@ -406,8 +406,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               : colors.morinLightBlue
                           }
                           imgSrc={urlFor(item.thumbnail).url()}
-                          imgBg={'/product/strawberry-bg.png'}
                           imgPlaceholder={urlFor(item.thumbnail).url()}
+                          thumbnailFruit={item.thumbnailFruit}
                           imgAlt={item.thumbnail.alt}
                           link={`${product.type.slug.current}/${item.slug.current}`}
                           small
@@ -432,6 +432,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                           }
                           imgSrc={urlFor(item.thumbnail).url()}
                           imgBg={'/product/strawberry-bg.png'}
+                          thumbnailFruit={item.thumbnailFruit}
                           imgPlaceholder={urlFor(item.thumbnail).url()}
                           imgAlt={item.thumbnail.alt}
                           link={`${product.type.slug.current}/${item.slug.current}`}

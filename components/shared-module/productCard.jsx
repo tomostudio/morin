@@ -8,7 +8,6 @@ const ProductCard = ({
   title,
   bgColor,
   imgSrc,
-  imgBg,
   imgPlaceholder,
   imgAlt,
   thumbnailFruit,
@@ -35,7 +34,7 @@ const ProductCard = ({
           />
         </div>
         <div
-          className={`absolute z-1 top-0 left-0 w-full h-full image-frame layout-${thumbnailFruit.layout}`}
+          className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-5deg] transition-all duration-300 layout-${thumbnailFruit.layout }`}
         >
           {thumbnailFruit.fruit1.asset && (
             <div className='fruit1 fruits'>
@@ -49,6 +48,7 @@ const ProductCard = ({
                   .format('webp')
                   .blur(50)
                   .url()}
+                placeholder='blur'
                 layout='fill'
                 objectFit='contain'
               />
@@ -66,6 +66,7 @@ const ProductCard = ({
                   .format('webp')
                   .blur(50)
                   .url()}
+                placeholder='blur'
                 layout='fill'
                 objectFit='contain'
               />
@@ -83,6 +84,7 @@ const ProductCard = ({
                   .auto('format')
                   .blur(50)
                   .url()}
+                placeholder='blur'
                 layout='fill'
                 objectFit='contain'
               />
@@ -95,7 +97,7 @@ const ProductCard = ({
         </div>
       </div>
 
-      <div className='relative text-morin-blue text-center px-3 pt-8 pb-6 z-1 md:pt-12 lg:px-4 lg:pb-6 xl:px-5 xl:pb-8'>
+      <div className='relative text-morin-blue text-center px-3 pt-6 pb-8 z-[10] md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
         <div
           className={`font-nutmeg text-default leading-none md:text-[18px] ${
             small ? 'lg:text-ctitleSmall' : 'lg:text-mtitle'
