@@ -1,8 +1,10 @@
 .categoryImage {
   & .imageFrame {
-    @apply w-1/3 h-1/3 aspect-square absolute-center origin-center;
+    @apply w-1/2 lg:w-2/5 h-auto  aspect-square absolute-center origin-center;
+    @apply flex;
+
     & > div {
-      @apply w-full h-full;
+      @apply w-full h-full relative;
       @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
     }
   }
@@ -49,7 +51,7 @@
     }
     & .image3 {
       & > div {
-        @apply group-hover:rotate-[-30deg] group-hover:translate-x-[90%] group-hover:translate-y-[50%] group-hover:scale-50;
+        @apply group-hover:rotate-[-30deg] group-hover:translate-x-[75%] group-hover:translate-y-[30%] group-hover:scale-[60%];
       }
     }
     & .graphicFrame {
@@ -145,23 +147,23 @@
     }
     & .image2 {
       & > div {
-        @apply group-hover:rotate-[-15deg]  group-hover:translate-x-[-90%]  group-hover:translate-y-[40%]  group-hover:scale-[60%];
+        @apply group-hover:rotate-[-15deg]  group-hover:translate-x-[-75%]  group-hover:translate-y-[40%]  group-hover:scale-[60%];
       }
     }
     & .image3 {
       & > div {
-        @apply group-hover:rotate-[-40deg]  group-hover:translate-x-[90%]  group-hover:translate-y-[-40%]  group-hover:scale-75;
+        @apply group-hover:rotate-[-40deg]  group-hover:translate-x-[70%]  group-hover:translate-y-[-50%]  group-hover:scale-75;
       }
     }
     & .graphicFrame {
       //upper right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[30%]   group-hover:translate-x-[175%]   group-hover:scale-100 w-[125px];
+        @apply group-hover:translate-y-[30%]   group-hover:translate-x-[200%]   group-hover:scale-100 w-[125px];
       }
       //  left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-[50px];
+        @apply group-hover:translate-y-[30%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-[50px];
       }
       // left
       & .graphic3 > svg {
@@ -347,6 +349,48 @@
       & .graphic3 > svg {
         @apply translate-y-[-100%] translate-x-[-100%]   scale-90  w-[175px];
         @apply group-hover:translate-y-[-110%]  group-hover:translate-x-[-110%] group-hover:scale-100;
+      }
+    }
+  }
+}
+
+// Product Card
+.product-card {
+  & .imageFrame {
+    & .fruits{
+      @apply border-solid border-black border-2;
+      @apply absolute w-1/2 h-1/2;
+    }
+    &.layout-1 {
+      & .fruit1 {
+      }
+      & .fruit2 {
+      }
+      & .fruit3 {
+      }
+    }
+    &.layout-2 {
+      & .fruit1 {
+      }
+      & .fruit2 {
+      }
+      & .fruit3 {
+      }
+    }
+    &.layout-3 {
+      & .fruit1 {
+      }
+      & .fruit2 {
+      }
+      & .fruit3 {
+      }
+    }
+    &.layout-4 {
+      & .fruit1 {
+      }
+      & .fruit2 {
+      }
+      & .fruit3 {
       }
     }
   }

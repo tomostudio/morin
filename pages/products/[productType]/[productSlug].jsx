@@ -65,7 +65,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 >
                   <Image
                     src={urlFor(product.thumbnailFruit.fruit1).url()}
-                    blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
+                    blurDataURL={urlFor(product.thumbnailFruit.fruit1).width(200).format('webp').blur(50).url()}
                     placeholder="blur"
                     alt={product.thumbnailFruit.fruit1.alt}
                     width={150}
