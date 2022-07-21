@@ -118,9 +118,9 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                 <ProductCard
                   title={router.locale === "id" ? item.title_id : item.title_en}
                   bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
-                  imgSrc={urlFor(item.thumbnail).url()}
+                  imgSrc={urlFor(item.thumbnail).auto('format').url()}
                   thumbnailFruit={item.thumbnailFruit}
-                  imgPlaceholder={urlFor(item.thumbnail).url()}
+                  imgPlaceholder={urlFor(item.thumbnail).width(500).auto('format').blur(10).url()}
                   imgAlt={item.thumbnail.alt}
                   link={`${productType.slug.current}/${item.slug.current}`}
                 />
