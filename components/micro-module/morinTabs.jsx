@@ -8,14 +8,14 @@ const MorinTabs = ({ tabData, onChange = () => {}, className }) => {
       id: `tab-${id + 1}`,
     })
   })
-  const defaultTab = data[data.length - 1]
+  const defaultTab = data.find((dats) => dats.defaultWeight === true)
 
   const [currentTab, setCurrentTab] = useState(defaultTab?.title)
   const [thisEl, setThisEl] = useState(null)
 
   const handleTabChange = (val, id) => {
     // do callback function here
-    onChange()
+    onChange(val)
 
     measureEl(id)
     setCurrentTab(val)

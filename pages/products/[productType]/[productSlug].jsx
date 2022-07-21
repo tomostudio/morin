@@ -12,107 +12,18 @@ import ProductCard from '@/components/shared-module/productCard'
 import StrokeButton from '@/components/micro-module/strokeButton'
 import colors from '@/helpers/colors'
 import { useEffectInit } from '@/components/utils/preset'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 
-const tabData = [
-  {
-    id: 'tab-1',
-    title: '17gr',
-    value: '17gr',
-    ariaText: '17gr',
-  },
-  {
-    id: 'tab-2',
-    title: '170gr',
-    value: '170gr',
-    ariaText: '170gr',
-  },
-  {
-    id: 'tab-3',
-    title: '330gr',
-    value: '330gr',
-    ariaText: '330gr',
-  },
-  {
-    id: 'tab-4',
-    title: '590gr',
-    value: '590gr',
-    ariaText: '590gr',
-  },
-]
-
-const recipeSliderData = [
-  {
-    imgSrc: '/recipe/recipe-1.jpg',
-    imgPlaceholder: '/recipe/recipe-1.png',
-    imgAlt: 'Mixed Berry Jam Tartlets',
-    title: 'Mixed Berry Jam Tartlets',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-2.jpg',
-    imgPlaceholder: '/recipe/recipe-2.png',
-    imgAlt: 'Strawberry Trifle',
-    title: 'Strawberry Trifle',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-3.jpg',
-    imgPlaceholder: '/recipe/recipe-3.png',
-    imgAlt: 'Chocolate Fudge Cupcakes',
-    title: 'Chocolate Fudge Cupcakes',
-    link: '/recipe/recipe-id',
-  },
-]
-
-const moreProductData = [
-  {
-    title: 'Blueberry Jam',
-    bgColor: '#ECE3FF',
-    imgSrc: '/product/blueberry.png',
-    imgBg: '/product/blueberry-bg.png',
-    imgPlaceholder: '/product/blueberry.png',
-    imgAlt: 'Blueberry Jam',
-    link: '/product/product-id',
-  },
-  {
-    title: 'Strawberry Jam',
-    bgColor: '#FFE6E5',
-    imgSrc: '/product/strawberry.png',
-    imgBg: '/product/strawberry-bg.png',
-    imgPlaceholder: '/product/strawberry.png',
-    imgAlt: 'Strawberry Jam',
-    link: '/product/product-id',
-  },
-  {
-    title: 'Pineapple Jam',
-    bgColor: '#FFF7B0',
-    imgSrc: '/product/pineapple.png',
-    imgBg: '/product/pineapple-bg.png',
-    imgPlaceholder: '/product/pineapple.png',
-    imgAlt: 'Pineapple Jam',
-    link: '/product/product-id',
-  },
-  {
-    title: 'Raspberry Jam',
-    bgColor: '#FFDFD9',
-    imgSrc: '/product/raspberry.png',
-    imgBg: '/product/raspberry-bg.png',
-    imgPlaceholder: '/product/raspberry.png',
-    imgAlt: 'Raspberry Jam',
-    link: '/product/product-id',
-  },
-]
-
 const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
   const [seo] = seoAPI
   const [product] = productAPI
   const router = useRouter()
+  const [productCurrent, setProductCurrent] = useState(product.listWeight.find((data) => data.defaultWeight === true).title);
 
   const ctx = useAppContext()
   useEffect(() => {
@@ -262,18 +173,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </h1>
             </div>
             <div className="flex flex-wrap justify-center w-full h-80 px-12 translate-y-12 xl:translate-y-24">
-              <div className="relative w-full h-full max-w-[250px] mx-auto xl:max-w-[370px]">
-                <Image
-                  src={urlFor(product.thumbnail).url()}
-                  blurDataURL={urlFor(product.thumbnail).url()}
-                  placeholder="blur"
-                  alt={product.thumbnail.alt}
-                  width={370}
-                  height={455}
-                  objectFit="contain"
-                  layout="fill"
-                />
-              </div>
+              {product.listWeight.map((data, id) => (
+                <div className={`${productCurrent === data.title ? "absolute fade-in" : "opacity-0"} w-full h-full max-w-[250px] mx-auto xl:max-w-[370px]`} key={id}>
+                  <Image
+                    src={urlFor(data.image).url()}
+                    blurDataURL={urlFor(data.image).url()}
+                    placeholder="blur"
+                    alt={data.image.alt}
+                    width={370}
+                    height={455}
+                    objectFit="contain"
+                    layout="fill"
+                  />
+                </div>
+              ))}
               <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block">
                 <div className="absolute bottom-0 left-52 2xl:left-64">
                   {router.locale === 'id'
@@ -334,7 +247,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <div className="product-detail-curve" />
           <MorinTabs
             tabData={product.listWeight}
-            onChange={(e) => console.log('tab', e)}
+            onChange={(e) => setProductCurrent(e)}
             className="mx-auto mb-6 md:mb-8"
           />
           <h2 className="max-w-screen-lg font-nutmeg text-mtitle text-center text-morin-red leading-tight mb-8 px-4 mx-auto md:text-mtitleBig xl:text-h2 md:px-8 lg:mb-10 xl:mb-14">
