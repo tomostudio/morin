@@ -114,7 +114,6 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                 className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
                 key={`${item.title_en}${index}`}
               >
-                {console.log(item.thumbnailFruit)}
                 <ProductCard
                   title={router.locale === "id" ? item.title_id : item.title_en}
                   bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}

@@ -547,6 +547,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                         title={item.title}
                         bgColor={item.backgroundColor.hex}
                         imgSrc={urlFor(item.thumbnail).url()}
+                        thumbnailFruit={item.thumbnailFruit}
                         imgBg={'/product/strawberry-bg.png'}
                         imgPlaceholder={urlFor(item.thumbnail).url()}
                         imgAlt={item.thumbnail.alt}
