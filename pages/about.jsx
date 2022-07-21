@@ -91,7 +91,7 @@ const About = ({ aboutAPI, seoAPI }) => {
             <div className="relative max-w-xs text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
               <div className="relative">
                 <h1 className="font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
-                  {router.locale === 'id' ? 'SIAPA KAMI' : 'WHO WE ARE'}
+                  {router.locale === 'id' ? about.title_id : about.title_en}
                 </h1>
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                   <Highlight className="hidden lg:block" />
@@ -101,8 +101,8 @@ const About = ({ aboutAPI, seoAPI }) => {
               <div className="relative">
                 <p className="font-nutmeg text-mtitle leading-tight mb-8 lg:text-h2 lg:mb-16 xl:text-h2 xl:mb-28">
                   {router.locale === 'id'
-                    ? 'Selama lebih dari 40 tahun, Morin hadir menemani momen-momen sarapan keluarga Indonesia.'
-                    : 'For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.'}
+                    ? about.description_id
+                    : about.description_en}
                 </p>
                 <div className="absolute left-0 lg:left-auto aboutLineMobile top-[13%] lg:top-[-30%] lg:right-[20%] lg:scale-100">
                   <ThreeTopLine className="h-[34px] w-[32px] lg:h-[119px] lg:w-[123px]" />
