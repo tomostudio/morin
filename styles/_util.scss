@@ -84,3 +84,16 @@ main {
     @apply p-4 h-32 md:h-40 lg:h-32;
   }
 }
+
+.fade-in {
+  animation: fadeIn ease .7s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
