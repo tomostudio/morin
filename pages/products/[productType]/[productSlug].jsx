@@ -190,7 +190,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           </div>
           {/* Product */}
           <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 mt-20'>
-            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-square z-2 relative '>
+            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-square z-2 relative border border-solid border-black'>
               {product.listWeight.map((data, id) => (
                 <div
                   className={`${
@@ -216,7 +216,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             <div className='absolute w-full h-[25vh] min-h-[250px] bg-white z-0'>
               <div className='product-detail-curve ' />
               <div className='hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block '>
-                <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] '>
+                <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black '>
                   {router.locale === 'id'
                     ? product.decor_id && (
                         <Image
@@ -241,7 +241,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         />
                       )}
                 </div>
-                <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%]'>
+                <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%] border border-solid border-black'>
                   {router.locale === 'id'
                     ? product.decor_id && (
                         <Image

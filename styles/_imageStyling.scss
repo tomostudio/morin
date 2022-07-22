@@ -446,7 +446,7 @@
   @apply border border-solid border-black;
   & .fruits {
     @apply absolute h-[50vh] w-auto aspect-square min-h-[100px];
-    // @apply border border-solid border-black;
+    @apply border border-solid border-black;
   }
   &.layout-2,
   &.layout-4,
