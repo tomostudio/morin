@@ -14,10 +14,9 @@ const HighlightCard = ({
   lang,
 }) => {
   return (
-    <div className="px-0 pt-2 lg:p-3">
       <FancyLink
         destination={link}
-        className="flex flex-wrap w-full h-full min-h-[160px] rounded-2xl overflow-hidden xl:min-h-[215px]  hover:shadow-softer hover:rotate-2 transition-all duration-300"
+        className="aspect-[2/1] sm:aspect-[10/4] md:aspect-[10/6] lg:aspect-[2/1] flex flex-wrap w-full h-full min-h-[160px] rounded-2xl overflow-hidden xl:min-h-[215px]  hover:shadow-softer hover:rotate-2 transition-all duration-300"
       >
         <div className="relative w-5/12">
           <Image
@@ -44,7 +43,6 @@ const HighlightCard = ({
           </span>
         </div>
       </FancyLink>
-    </div>
   )
 }
 

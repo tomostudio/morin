@@ -41,11 +41,11 @@ const ProductCard = ({
               <Image
                 src={urlFor(thumbnailFruit.fruit1)
                   .width(400)
-                  .format('webp')
+                  .auto('format')
                   .url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit1)
                   .width(100)
-                  .format('webp')
+                  .auto('format')
                   .blur(50)
                   .url()}
                 placeholder='blur'
@@ -59,11 +59,11 @@ const ProductCard = ({
               <Image
                 src={urlFor(thumbnailFruit.fruit2)
                   .width(400)
-                  .format('webp')
+                  .auto('format')
                   .url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit2)
                   .width(100)
-                  .format('webp')
+                  .auto('format')
                   .blur(50)
                   .url()}
                 placeholder='blur'
