@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { LazyMotion, domAnimation, motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Layout from '@/components/module/layout';
@@ -63,8 +63,7 @@ export default function Home({
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* <Header mobileDark={false} /> */}
-      <LazyMotion features={domAnimation}>
-        <m.div initial='initial' animate='enter' exit='exit' variants={fade}>
+        <motion.div initial='initial' animate='enter' exit='exit' variants={fade}>
           <Layout>
             {/* Slider Section */}
             <section className='scrollsection'>
@@ -307,8 +306,7 @@ export default function Home({
             </section>
             <Footer lang={router.locale} />
           </Layout>
-        </m.div>
-      </LazyMotion>
+        </motion.div>
     </>
   );
 }
