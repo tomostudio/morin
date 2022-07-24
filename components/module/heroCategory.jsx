@@ -19,12 +19,10 @@ import {
 } from '../utils/categoryGraphic';
 const HeroCategory = ({
   imgSrc,
-  imgProduct,
   imgPlaceholder,
   imgAlt,
   title,
   link,
-  hoverType,
   categoryData,
   end,
 }) => {
@@ -49,8 +47,12 @@ const HeroCategory = ({
           <div className={`imageFrame image1`}>
             <div className='image'>
               <Image
-                src={urlFor(image1).url()}
-                blurDataURL={urlFor(image1).url()}
+                src={urlFor(image1).auto('format').width(1000).url()}
+                blurDataURL={urlFor(image1)
+                  .auto('format')
+                  .width(400)
+                  .blur(25)
+                  .url()}
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
@@ -62,8 +64,12 @@ const HeroCategory = ({
           <div className={`imageFrame image2`}>
             <div className='image'>
               <Image
-                src={urlFor(image2).url()}
-                blurDataURL={urlFor(image2).url()}
+                src={urlFor(image2).auto('format').width(1000).url()}
+                blurDataURL={urlFor(image2)
+                  .auto('format')
+                  .width(400)
+                  .blur(25)
+                  .url()}
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
@@ -75,8 +81,12 @@ const HeroCategory = ({
           <div className={`imageFrame image3`}>
             <div className='image'>
               <Image
-                src={urlFor(image3).url()}
-                blurDataURL={urlFor(image3).url()}
+                src={urlFor(image3).auto('format').width(1000).url()}
+                blurDataURL={urlFor(image3)
+                  .auto('format')
+                  .width(400)
+                  .blur(25)
+                  .url()}
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
@@ -86,66 +96,65 @@ const HeroCategory = ({
           </div>
           {/* DECORATION 1 */}
           {animation == 1 ? (
-              <div className={`graphicFrame`}>
-                <div className='graphic1'>
-                  <Layout1Graphic1 className={`w-full h-full`} />
-                </div>
-                <div className='graphic2'>
-                  <Layout1Graphic2 className={`w-full h-full`} />
-                </div>
+            <div className={`graphicFrame`}>
+              <div className='graphic1'>
+                <Layout1Graphic1 className={`w-full h-full`} />
               </div>
-            ) : (
-              ''
-            )
-          }
+              <div className='graphic2'>
+                <Layout1Graphic2 className={`w-full h-full`} />
+              </div>
+              <div className='graphic3'>
+                <Layout1Graphic3 className={`w-full h-full`} />
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
           {animation == 2 ? (
-              <div className={`graphicFrame`}>
-                <div className='graphic1'>
-                  <Layout2Graphic1 className={`w-full h-full`} />
-                </div>
-                <div className='graphic2'>
-                  <Layout2Graphic2 className={`w-full h-full`} />
-                </div>
-                <div className='graphic3'>
-                  <Layout2Graphic3 className={`w-full h-full`} />
-                </div>
+            <div className={`graphicFrame`}>
+              <div className='graphic1'>
+                <Layout2Graphic1 className={`w-full h-full`} />
               </div>
-            ) : (
-              ''
-            )
-          }
+              <div className='graphic2'>
+                <Layout2Graphic2 className={`w-full h-full`} />
+              </div>
+              <div className='graphic3'>
+                <Layout2Graphic3 className={`w-full h-full`} />
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
           {animation == 3 ? (
-              <div className={`graphicFrame`}>
-                <div className='graphic1'>
-                  <Layout3Graphic1 className={`w-full h-full`} />
-                </div>
-                <div className='graphic2'>
-                  <Layout3Graphic2 className={`w-full h-full`} />
-                </div>
-                <div className='graphic3'>
-                  <Layout3Graphic3 className={`w-full h-full`} />
-                </div>
+            <div className={`graphicFrame`}>
+              <div className='graphic1'>
+                <Layout3Graphic1 className={`w-full h-full`} />
               </div>
-            ) : (
-              ''
-            )
-          }
+              <div className='graphic2'>
+                <Layout3Graphic2 className={`w-full h-full`} />
+              </div>
+              <div className='graphic3'>
+                <Layout3Graphic3 className={`w-full h-full`} />
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
           {animation == 4 ? (
-              <div className={`graphicFrame`}>
-                <div className='graphic1'>
-                  <Layout4Graphic1 className={`w-full h-full`} />
-                </div>
-                <div className='graphic2'>
-                  <Layout4Graphic2 className={`w-full h-full`} />
-                </div>
-                <div className='graphic3'>
-                  <Layout4Graphic3 className={`w-full h-full`} />
-                </div>
+            <div className={`graphicFrame`}>
+              <div className='graphic1'>
+                <Layout4Graphic1 className={`w-full h-full`} />
               </div>
-            ) : (
-              ''
-            )
-          }
+              <div className='graphic2'>
+                <Layout4Graphic2 className={`w-full h-full`} />
+              </div>
+              <div className='graphic3'>
+                <Layout4Graphic3 className={`w-full h-full`} />
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </>
     );

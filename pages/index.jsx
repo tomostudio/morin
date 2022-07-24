@@ -121,31 +121,16 @@ export default function Home({
                   {productTypeAPI?.map((i, id) => (
                     <div className='relative h-screen' key={i.title_id}>
                       <HeroCategory
-                        imgSrc={urlFor(i.background).url()}
+                        imgSrc={urlFor(i.background)
+                          .width(1920)
+                          .auto('format')
+                          .url()}
                         categoryData={i}
-                        imgProduct={
-                          i.animation === '1'
-                            ? '/category/hover-1.png'
-                            : i.animation === '2'
-                            ? '/category/hover-2.png'
-                            : i.animation === '3'
-                            ? '/category/hover-3.png'
-                            : i.animation === '4'
-                            ? '/category/hover-4.png'
-                            : ''
-                        }
-                        imgPlaceholderProduct={
-                          i.animation === '1'
-                            ? '/category/hover-1.png'
-                            : i.animation === '2'
-                            ? '/category/hover-2.png'
-                            : i.animation === '3'
-                            ? '/category/hover-3.png'
-                            : i.animation === '4'
-                            ? '/category/hover-4.png'
-                            : ''
-                        }
-                        imgPlaceholder={urlFor(i.background).url()}
+                        imgPlaceholder={urlFor(i.background)
+                          .width(1000)
+                          .auto('format')
+                          .blur(50)
+                          .url()}
                         imgAlt={i.background}
                         title={router.locale === 'id' ? i.title_id : i.title_en}
                         link={`/products/${i.slug.current}`}

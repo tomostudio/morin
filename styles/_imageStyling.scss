@@ -5,6 +5,7 @@
 
     & > div {
       @apply w-full h-full relative;
+      @apply border border-solid border-black;
       @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
     }
   }
@@ -30,9 +31,9 @@
     @apply w-full h-full absolute-center origin-center opacity-0;
     @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
     & > div {
-      @apply w-1/4 h-1/4 max-w-xl aspect-square absolute-center origin-center;
+      @apply w-1/4 max-w-2xl aspect-square absolute-center origin-center;
       & > svg {
-        @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-700 scale-50;
+        @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-700 scale-50 min-w-[100px];
       }
     }
   }
@@ -58,15 +59,15 @@
       //upper right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[175%]  group-hover:scale-100 w-[150px];
+        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[125%]  group-hover:scale-100 min-w-[100px];
       }
       // lower left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-125%]  group-hover:scale-100 w-[175px];
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-125%]  group-hover:scale-100 min-w-[100px];
       }
       //top
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-100%]  group-hover:translate-x-[100px]  group-hover:scale-100 w-10;
+        @apply group-hover:translate-y-[-120%]  group-hover:translate-x-[50%]  group-hover:scale-[40%];
       }
     }
   }
@@ -91,15 +92,15 @@
       // upper right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[130%] group-hover:scale-100 w-[150px];
+        @apply group-hover:translate-y-[-60%]  group-hover:translate-x-[120%] group-hover:scale-[90%];
       }
       // lower left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[100%]  group-hover:translate-x-[-100%] group-hover:scale-100 w-[125px];
+        @apply group-hover:translate-y-[100%]  group-hover:translate-x-[-50%] group-hover:scale-[90%];
       }
       //top left
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-65%]  group-hover:translate-x-[-150%]  group-hover:rotate-[10deg] group-hover:scale-100 w-[100px];
+        @apply group-hover:translate-y-[-75%]  group-hover:translate-x-[-120%]  group-hover:rotate-[10deg] group-hover:scale-[90%];
       }
     }
   }
@@ -125,15 +126,15 @@
       // right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[10%]   group-hover:translate-x-[250%]  group-hover:scale-100 w-[125px];
+        @apply group-hover:translate-y-[75%]   group-hover:translate-x-[140%]  group-hover:scale-100 rotate-[30deg];
       }
       //  left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-225%]  group-hover:scale-100 w-[125px];
+        @apply group-hover:translate-y-[90%]  group-hover:translate-x-[-150%]  group-hover:scale-100 -rotate-[15deg];
       }
       //top
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-100%]   group-hover:translate-x-[400%]  group-hover:scale-100 w-10;
+        @apply group-hover:translate-y-[-110%]   group-hover:translate-x-[150%]  group-hover:scale-[75%] w-1/6;
       }
     }
   }
@@ -159,15 +160,15 @@
       //upper right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[30%]   group-hover:translate-x-[200%]   group-hover:scale-100 w-[125px];
+        @apply group-hover:translate-y-[30%]   group-hover:translate-x-[125%]   group-hover:scale-100;
       }
       //  left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[30%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-[50px];
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-1/6;
       }
       // left
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-20%]   group-hover:translate-x-[-100%]   group-hover:scale-100  w-[150px];
+        @apply group-hover:translate-y-[-50%]   group-hover:translate-x-[-120%]   group-hover:scale-100  ;
       }
     }
   }
@@ -195,7 +196,7 @@
     @apply w-full h-full absolute-center origin-center;
     @apply transition-all duration-300 group-hover:duration-500;
     & > div {
-      @apply w-1/4 h-1/4 max-w-xl aspect-square absolute-center origin-center;
+      @apply w-1/4  max-w-xl aspect-square absolute-center origin-center;
       & > svg {
         @apply transition-all duration-300 group-hover:duration-700 scale-50;
       }
@@ -461,12 +462,12 @@
       // 2
       @apply h-[50vh] scale-[90%];
       @apply top-[50vh] translate-y-[-20%] right-[0px] translate-x-[25%] z-3;
-      @apply  rotate-2;
+      @apply rotate-2;
     }
     & .fruit3 {
       // 3
       @apply h-[40vh] scale-[85%];
-      @apply  -rotate-12;
+      @apply -rotate-12;
       @apply top-[100vh]  translate-y-[-100%] left-[25%] translate-x-[0%] z-3;
       -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
       filter: blur(2px);
@@ -474,7 +475,7 @@
     & .fruit4 {
       // 1
       @apply h-[30vh] scale-[100%];
-      @apply  rotate-3;
+      @apply rotate-3;
       @apply top-[0vh]  translate-y-[-20%] left-[30%] translate-x-[0%] z-2;
       -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
       filter: blur(2px);
@@ -482,7 +483,7 @@
     & .fruit5 {
       // 2
       @apply h-[30vh] scale-[60%];
-      @apply  rotate-2;
+      @apply rotate-2;
       @apply top-[10vh]  translate-y-[0%] right-[25%] translate-x-[0%] z-2;
       -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
       filter: blur(2px);
@@ -490,7 +491,7 @@
     & .fruit6 {
       // 3
       @apply h-[30vh] scale-[80%];
-      @apply  -rotate-12;
+      @apply -rotate-12;
       @apply top-[5vh]  translate-y-[0%] right-[5%] translate-x-[0%] z-2;
       -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
       filter: blur(4px);
@@ -498,7 +499,7 @@
     & .fruit7 {
       // 1
       @apply h-[20vh] scale-[60%];
-      @apply  -rotate-6;
+      @apply -rotate-6;
       @apply top-[50vh]  translate-y-[0%] right-[30%] translate-x-[0%] z-1;
       -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
       filter: blur(4px);
