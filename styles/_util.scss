@@ -86,14 +86,18 @@ main {
 }
 
 .fade-in {
-  animation: fadeIn ease .7s;
+  animation: fadeIn ease 0.7s;
 }
 
 @keyframes fadeIn {
   0% {
-    opacity:0;
+    opacity: 0;
   }
   100% {
-    opacity:1;
+    opacity: 1;
   }
+}
+
+img {
+  background-repeat: no-repeat;
 }
