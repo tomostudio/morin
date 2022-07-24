@@ -50,8 +50,12 @@ const CategoryCard = ({
         <div className={`imageFrame image1`}>
           <div className='image'>
             <Image
-              src={urlFor(image1).url()}
-              blurDataURL={urlFor(image1).url()}
+              src={urlFor(image1).auto('format').width(1000).url()}
+              blurDataURL={urlFor(image1)
+                .auto('format')
+                .width(400)
+                .blur(25)
+                .url()}
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
@@ -63,8 +67,12 @@ const CategoryCard = ({
         <div className={`imageFrame image2`}>
           <div className='image'>
             <Image
-              src={urlFor(image2).url()}
-              blurDataURL={urlFor(image2).url()}
+              src={urlFor(image2).auto('format').width(1000).url()}
+              blurDataURL={urlFor(image2)
+                .auto('format')
+                .width(400)
+                .blur(25)
+                .url()}
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
@@ -76,8 +84,12 @@ const CategoryCard = ({
         <div className={`imageFrame image3`}>
           <div className='image'>
             <Image
-              src={urlFor(image3).url()}
-              blurDataURL={urlFor(image3).url()}
+              src={urlFor(image3).auto('format').width(1000).url()}
+              blurDataURL={urlFor(image3)
+                .auto('format')
+                .width(400)
+                .blur(25)
+                .url()}
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
