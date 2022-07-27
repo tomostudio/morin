@@ -209,7 +209,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
   )
 }
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "eventList"]
       `)
@@ -217,14 +217,11 @@ export async function getStaticPaths({ locales }) {
   const paths = []
 
   res.map((data) => {
-    return locales.map((locale) => {
       return paths.push({
         params: {
           eventSlug: data.slug.current,
-        },
-        locale,
+        }
       })
-    })
   })
 
   return { paths, fallback: false }
