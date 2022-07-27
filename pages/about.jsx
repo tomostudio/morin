@@ -63,11 +63,11 @@ const About = ({ aboutAPI, seoAPI }) => {
   return (
     <div className="w-full bg-morin-skyBlue ">
       <SEO
-        title={router.locale === 'id' ? 'Tentang Kami' : 'About'}
+        title={ctx.language === 'id' ? 'Tentang Kami' : 'About'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? about.seo_id : about.seo_en}
+        inputSEO={ctx.language === 'id' ? about.seo_id : about.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -91,7 +91,7 @@ const About = ({ aboutAPI, seoAPI }) => {
             <div className="relative max-w-xs text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
               <div className="relative">
                 <h1 className="font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
-                  {router.locale === 'id' ? about.title_id : about.title_en}
+                  {ctx.language === 'id' ? about.title_id : about.title_en}
                 </h1>
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
                   <Highlight className="hidden lg:block" />
@@ -100,7 +100,7 @@ const About = ({ aboutAPI, seoAPI }) => {
               </div>
               <div className="relative">
                 <p className="font-nutmeg text-mtitle leading-tight mb-8 lg:text-h2 lg:mb-16 xl:text-h2 xl:mb-28">
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? about.description_id
                     : about.description_en}
                 </p>
@@ -122,7 +122,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                 arrow={false}
                 onClick={() => openModal('MAIN MODAL')}
               >
-                {router.locale === 'id' ? 'Baca selengkapnya' : 'Read More'}
+                {ctx.language === 'id' ? 'Baca selengkapnya' : 'Read More'}
               </StrokeButton>
             </div>
             <div className="absolute top-[4%] lg:top-[13%] right-[-40px] md:right-[-80px] lg:right-[-120px] rotate-[11deg]">
@@ -154,7 +154,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                 <AboutCard
                   type="OUR PROCESS"
                   title={
-                    router.locale === 'id'
+                    ctx.language === 'id'
                       ? about.our_process.title_id
                       : about.our_process.title_en
                   }
@@ -162,14 +162,14 @@ const About = ({ aboutAPI, seoAPI }) => {
                   imgPlaceholder={urlFor(about.our_process.thumbnail).url()}
                   imgAlt={about.our_process.thumbnail.alt}
                   onClick={() => openModal('OUR PROCESS')}
-                  lang={router.locale}
+                  lang={ctx.language}
                 />
               </div>
               <div className="w-full mb-3 last:mb-0 md:w-1/2 md:mb-0 md:px-2 xl:px-4">
                 <AboutCard
                   type="VISI & MISI"
                   title={
-                    router.locale === 'id'
+                    ctx.language === 'id'
                       ? about.visi_misi.title_id
                       : about.visi_misi.title_en
                   }
@@ -177,13 +177,13 @@ const About = ({ aboutAPI, seoAPI }) => {
                   imgPlaceholder={urlFor(about.visi_misi.thumbnail).url()}
                   imgAlt={about.visi_misi.thumbnail.alt}
                   onClick={() => openModal('VISI & MISI')}
-                  lang={router.locale}
+                  lang={ctx.language}
                 />
               </div>
             </div>
           </Container>
 
-          <Footer lang={router.locale} />
+          <Footer lang={ctx.language} />
         </div>
       </Layout>
 
@@ -193,14 +193,14 @@ const About = ({ aboutAPI, seoAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          {router.locale === 'id'
+          {ctx.language === 'id'
             ? about.first_more.title_id
             : about.first_more.title_en}
         </span>
 
         <PortableText
           value={
-            router.locale === 'id'
+            ctx.language === 'id'
               ? about.first_more.description_id
               : about.first_more.description_en
           }
@@ -233,14 +233,14 @@ const About = ({ aboutAPI, seoAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          {router.locale === 'id'
+          {ctx.language === 'id'
             ? about.visi_misi.titleDescription_id
             : about.visi_misi.titleDescription_en}
         </span>
 
         <PortableText
           value={
-            router.locale === 'id'
+            ctx.language === 'id'
               ? about.visi_misi.description_id
               : about.visi_misi.description_en
           }
@@ -274,14 +274,14 @@ const About = ({ aboutAPI, seoAPI }) => {
         className="text-morin-blue"
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
-          {router.locale === 'id'
+          {ctx.language === 'id'
             ? about.our_process.titleDescription_id
             : about.our_process.titleDescription_en}
         </span>
 
         <PortableText
           value={
-            router.locale === 'id'
+            ctx.language === 'id'
               ? about.our_process.description_id
               : about.our_process.description_en
           }

@@ -23,11 +23,11 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
     <Layout>
       {/* <Header mobileDark={false} /> */}
       <SEO
-        title={router.locale === 'id' ? 'Produk' : 'Products'}
+        title={ctx.language === 'id' ? 'Produk' : 'Products'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? product.seo_id : product.seo_en}
+        inputSEO={ctx.language === 'id' ? product.seo_id : product.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -48,10 +48,10 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
 
           <div className="w-full absolute-center text-center px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1">
-              {router.locale === 'id' ? 'Produk Kami' : 'Our Products'}
+              {ctx.language === 'id' ? 'Produk Kami' : 'Our Products'}
             </h1>
             <p className="hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block">
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? product.description_id
                 : product.description_en}
             </p>
@@ -75,17 +75,17 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
                     : ''
                 }
                 categoryData={item}
-                imgAlt={router.locale === "id" ? item.title_id : item.title_en}
-                title={router.locale === "id" ? item.title_id : item.title_en}
-                description={router.locale === "id" ? item.description_id : item.description_en}
+                imgAlt={ctx.language === "id" ? item.title_id : item.title_en}
+                title={ctx.language === "id" ? item.title_id : item.title_en}
+                description={ctx.language === "id" ? item.description_id : item.description_en}
                 link={`/products/${item.slug.current}`}
-                lang={router.locale}
+                lang={ctx.language}
               />
             ))}
           </div>
         </div>
 
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </div>
     </Layout>
   )

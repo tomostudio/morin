@@ -25,11 +25,11 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
-        title={router.locale === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+        title={ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? getMorin.seo_id : getMorin.seo_en}
+        inputSEO={ctx.language === 'id' ? getMorin.seo_id : getMorin.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -40,7 +40,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
         <div className="flex flex-col leading-tight">
           <div className="flex flex-col lg:flex-row lg:space-x-48 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
-              {router.locale === 'id' ? 'Berbelanja Online' : 'Shop Online'}
+              {ctx.language === 'id' ? 'Berbelanja Online' : 'Shop Online'}
             </h2>
             <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
               <FancyLink
@@ -52,7 +52,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
               </FancyLink>
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? 'Toko Online'
                     : 'Online Marketplace'}
                 </span>
@@ -81,12 +81,12 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
           </div>
           <div className="flex flex-col lg:flex-row lg:space-x-48 mt-10 mb-10 lg:mt-20 lg:mb-20 w-full">
             <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue lg:w-72 w-full">
-              {router.locale === 'id' ? 'Toko Offline' : 'Shop Offline'}
+              {ctx.language === 'id' ? 'Toko Offline' : 'Shop Offline'}
             </h2>
             <div className="w-full flex flex-col items-center lg:items-start mt-6 lg:mt-0 md:mt-8 md:space-y-8 space-y-6 lg:space-y-12 justify-start">
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? 'Distributor Utama'
                     : 'Major Distributors'}
                 </span>
@@ -113,7 +113,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
               </div>
               <div className="flex flex-col w-full justify-start">
                 <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                  {router.locale === 'id' ? 'Pengecer' : 'Retailers'}
+                  {ctx.language === 'id' ? 'Pengecer' : 'Retailers'}
                 </span>
                 <div className="mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 gap-6">
                   {getMorin.shopOffline.retailers.map((item, index) => (
@@ -122,7 +122,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                       className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue"
                     >
                       <span className="font-bold">
-                        {router.locale === 'id' ? item.title_id : item.title_en}
+                        {ctx.language === 'id' ? item.title_id : item.title_en}
                       </span>
                       <PortableText
                         value={item.description}
@@ -144,7 +144,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
           </div>
         </div>
       </Container>
-      <Footer lang={router.locale} />
+      <Footer lang={ctx.language} />
     </Layout>
   )
 }

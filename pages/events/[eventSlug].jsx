@@ -55,13 +55,13 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
-      <Header hamburgerColor="bg-black" lang={router.locale} />
+      <Header hamburgerColor="bg-black" lang={ctx.language} />
       <SEO
-        title={router.locale == 'id' ? event.title_id : event.title_en}
+        title={ctx.language == 'id' ? event.title_id : event.title_en}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? event.seo_id : event.seo_en}
+        inputSEO={ctx.language === 'id' ? event.seo_id : event.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -70,15 +70,15 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
       <div className="text-morin-blue leading-tight">
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
-          <span className="block font-semibold mb-2.5">{dateParse(event.date, router.locale, true)}</span>
+          <span className="block font-semibold mb-2.5">{dateParse(event.date, ctx.language, true)}</span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
-            {router.locale === 'id' ? event.title_id : event.title_en}
+            {ctx.language === 'id' ? event.title_id : event.title_en}
           </h1>
           {event.eventCategory?.length > 0 && (
             <div className="flex flex-wrap items-center justify-center">
               {event.eventCategory?.map((item) => (
                 <EventTag
-                  label={router.locale === 'id' ? item.title_id : item.title_en}
+                  label={ctx.language === 'id' ? item.title_id : item.title_en}
                 />
               ))}
             </div>
@@ -88,7 +88,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14">
           <PortableText
             value={
-              router.locale === 'id'
+              ctx.language === 'id'
                 ? event.description_id
                 : event.description_en
             }
@@ -179,7 +179,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className="mx-auto w-full flex flex-col px-4 lg:px-8 max-w-screen-2xl ">
           <div className="mb-7 md:mb-8 lg:mb-10">
             <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-              {router.locale === 'id' ? 'Acara Lainnya' : 'Other Events'}
+              {ctx.language === 'id' ? 'Acara Lainnya' : 'Other Events'}
             </h2>
 
             <div className="flex flex-wrap mx-auto md:max-w-4xl">
@@ -192,9 +192,9 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgPlaceholder={urlFor(item.thumbnail).url()}
                     imgAlt={item.thumbnail.alt}
-                    date={dateParse(item.date, router.locale)}
+                    date={dateParse(item.date, ctx.language)}
                     title={
-                      router.locale === 'id' ? item.title_id : item.title_en
+                      ctx.language === 'id' ? item.title_id : item.title_en
                     }
                     link={`/events/${item.slug.current}`}
                   />
@@ -203,7 +203,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             </div>
           </div>
         </div>
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </div>
     </Layout>
   )

@@ -159,11 +159,11 @@ const Recipe = ({
     <Layout>
       {/* <Header mobileDark={false} /> */}
       <SEO
-        title={router.locale === 'id' ? 'Resep' : 'Recipes'}
+        title={ctx.language === 'id' ? 'Resep' : 'Recipes'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? recipe.seo_id : recipe.seo_en}
+        inputSEO={ctx.language === 'id' ? recipe.seo_id : recipe.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -185,7 +185,7 @@ const Recipe = ({
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
-              {router.locale === 'id' ? (
+              {ctx.language === 'id' ? (
                 <>
                   Resep <br /> dari Hati
                 </>
@@ -201,7 +201,7 @@ const Recipe = ({
         <div className="p-4 lg:p-8">
           <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? 'Diurutkan Secara Bawaan'
                 : 'Sorted by Default'}
             </span>
@@ -228,7 +228,7 @@ const Recipe = ({
                 difficulty={difficultyListAPI}
                 cookingTime={cookingTimeListAPI}
                 recipeCategory={recipeCategoryAPI}
-                lang={router.locale}
+                lang={ctx.language}
                 value={filterValue}
                 filterFunc={handleFilter}
                 triggerTagName={'btnFilter'}
@@ -273,16 +273,16 @@ const Recipe = ({
                       imgPlaceholder={urlFor(item.thumbnail).url()}
                       imgAlt={item.thumbnail.alt}
                       title={
-                        router.locale === 'id' ? item.title_id : item.title_en
+                        ctx.language === 'id' ? item.title_id : item.title_en
                       }
                       link={`/recipes/${item.slug.current}`}
                       duration={
-                        router.locale === 'id'
+                        ctx.language === 'id'
                           ? item.cookingTime.title_id
                           : item.cookingTime.title_en
                       }
                       difficulty={
-                        router.locale === 'id'
+                        ctx.language === 'id'
                           ? item.difficulty.title_id
                           : item.difficulty.title_en
                       }
@@ -296,7 +296,7 @@ const Recipe = ({
                 color={colors.morinRed}
                 onClick={() => console.log('load more')}
               >
-                {router.locale === 'id'
+                {ctx.language === 'id'
                   ? 'Menampilkan lebih banyak'
                   : 'Show More'}
               </StrokeButton>
@@ -304,7 +304,7 @@ const Recipe = ({
           </div>
         </div>
 
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </div>
     </Layout>
   )

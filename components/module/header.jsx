@@ -15,32 +15,32 @@ import {
 } from '../utils/svg'
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 
-export default function Header({ waLink, lang }) {
+export default function Header({ waLink }) {
   const [opened, setOpened] = useState(false)
   const ctx = useAppContext()
 
   const navData = [
     {
       id: 'nav-1',
-      title: lang === 'id' ? 'Tentang Kami' : 'About',
+      title: ctx.language === 'id' ? 'Tentang Kami' : 'About',
       dest: 'about',
       ariaText: 'Navigate to the About page',
     },
     {
       id: 'nav-2',
-      title: lang === 'id' ? 'Produk' : 'Products',
+      title: ctx.language === 'id' ? 'Produk' : 'Products',
       dest: 'products',
       ariaText: 'Navigate to the Products page',
     },
     {
       id: 'nav-3',
-      title: lang === 'id' ? 'Resep' : 'Recipes',
+      title: ctx.language === 'id' ? 'Resep' : 'Recipes',
       dest: 'recipes',
       ariaText: 'Navigate to the Recipes page',
     },
     {
       id: 'nav-4',
-      title: lang === 'id' ? 'Acara' : 'Events',
+      title: ctx.language === 'id' ? 'Acara' : 'Events',
       dest: 'events',
       ariaText: 'Navigate to the Events page',
     },
@@ -67,8 +67,8 @@ export default function Header({ waLink, lang }) {
   }, [ctx.mobileMenuOpen])
 
   // Market Variable
-  const [markerW, setMarkerW] = useState(lang === 'id' ? 174 : 120) // width of marker
-  const [markerPos, setMarkerPos] = useState(lang === 'id' ? 427 : 396) // position of marker
+  const [markerW, setMarkerW] = useState(ctx.language === 'id' ? 174 : 120) // width of marker
+  const [markerPos, setMarkerPos] = useState(ctx.language === 'id' ? 427 : 396) // position of marker
   let widthData = [] // always collect width data.
 
   const defaultNavRef = useRef()
@@ -163,8 +163,25 @@ export default function Header({ waLink, lang }) {
 
   return (
     <>
-      <header className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full pt-8">
-        <Container>
+      <header className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full">
+        <Container className="mt-6 hidden lg:flex">
+          <div className="w-full flex justify-end items-center text-defaultSmall text-white">
+            <FancyLink
+              onClick={() => ctx.setLanguage('en')}
+              className={`mr-3 ${ctx.language !== 'en' && 'opacity-50'}`}
+            >
+              EN
+            </FancyLink>
+            <hr className="bg-white w-[2px] h-[90%] opacity-50" />
+            <FancyLink
+              onClick={() => ctx.setLanguage('id')}
+              className={`mx-3 ${ctx.language !== 'id' && 'opacity-50'}`}
+            >
+              ID
+            </FancyLink>
+          </div>
+        </Container>
+        <Container className="mt-3">
           <div className="flex flex-row flex-wrap items-center justify-between">
             <FancyLink
               destination="/"
@@ -202,7 +219,7 @@ export default function Header({ waLink, lang }) {
                 data-id={-1}
                 ref={defaultNavRef}
               >
-                {lang === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+                {ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
               </FancyLink>
               <div
                 id="marker"
@@ -253,9 +270,24 @@ export default function Header({ waLink, lang }) {
                       Math.random() >= 0.5 ? rotate3 : rotate_3
                     }`}
                   >
-                    {lang === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+                    {ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
                   </FancyLink>
                 </nav>
+                <div className="absolute bottom-40 left-1/2 mx-auto w-fit -translate-x-1/2 flex justify-end items-center text-defaultSmall text-white">
+                  <FancyLink
+                    onClick={() => ctx.setLanguage('en')}
+                    className={`mr-3 ${ctx.language !== 'en' && 'opacity-50'}`}
+                  >
+                    EN
+                  </FancyLink>
+                  <hr className="bg-white w-[2px] h-6 opacity-50" />
+                  <FancyLink
+                    onClick={() => ctx.setLanguage('id')}
+                    className={`mx-3 ${ctx.language !== 'id' && 'opacity-50'}`}
+                  >
+                    ID
+                  </FancyLink>
+                </div>
                 <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
                   <FancyLink
                     destination="/"
@@ -290,8 +322,8 @@ export default function Header({ waLink, lang }) {
         </Container>
       </header>
 
-      <Container className='fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none'>
-        <FancyLink className='w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity'>
+      <Container className="fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none">
+        <FancyLink className="w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity">
           <WaButton />
         </FancyLink>
       </Container>

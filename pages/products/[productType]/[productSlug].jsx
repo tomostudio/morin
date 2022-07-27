@@ -35,11 +35,11 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
     <Layout className='overflow-hidden'>
       {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
-        title={router.locale === 'id' ? product.title_id : product.title_en}
+        title={ctx.language === 'id' ? product.title_id : product.title_en}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? product.seo_id : product.seo_en}
+        inputSEO={ctx.language === 'id' ? product.seo_id : product.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -197,12 +197,12 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           >
             <span className='font-semibold tracking-widest mb-1.5 md:mb-2.5 xl:mb-4 uppercase text-inherit'>
               MORIN{' '}
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? product.type.title_id
                 : product.type.title_en}
             </span>
             <h1 className='font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 xl:text-h1 text-inherit'>
-              {router.locale === 'id' ? product.title_id : product.title_en}
+              {ctx.language === 'id' ? product.title_id : product.title_en}
             </h1>
           </div>
           {/* Product */}
@@ -234,7 +234,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               <div className='product-detail-curve ' />
               <div className='hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block '>
                 <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black '>
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? product.decor_id && (
                         <Image
                           src={urlFor(product.decor_id.decor1.image)
@@ -265,7 +265,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                       )}
                 </div>
                 <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%] border border-solid border-black'>
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? product.decor_id && (
                         <Image
                           src={urlFor(product.decor_id.decor2.image)
@@ -313,7 +313,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               color: product.textColor ? product.textColor.hex : '#175BA7',
             }}
           >
-            {router.locale === 'id'
+            {ctx.language === 'id'
               ? product.description_id
               : product.description_en}
           </h2>
@@ -323,7 +323,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8'
           >
             <span className='block pt-1'>
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? 'Dapatkan Produk Ini'
                 : 'Get This Product'}
             </span>
@@ -334,7 +334,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <div className='max-w-screen-2xl mx-auto'>
             <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6'>
               <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8'>
-                {router.locale === 'id'
+                {ctx.language === 'id'
                   ? 'Hal-hal yang dapat Anda buat'
                   : 'Things you can make'}
               </h2>
@@ -346,7 +346,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </div>
               <div className='hidden w-fit mt-7 mx-auto md:block xl:mt-8'>
                 <StrokeButton destination='/recipes' color={colors.morinRed}>
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? 'Lihat Semua Resep'
                     : 'See All Recipes'}
                 </StrokeButton>
@@ -359,7 +359,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           <div className='max-w-screen-2xl mx-auto'>
             <div className='py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0'>
               <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8'>
-                {router.locale === 'id' ? 'Produk Sejenis' : 'Similar Products'}
+                {ctx.language === 'id' ? 'Produk Sejenis' : 'Similar Products'}
               </h2>
 
               <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
@@ -371,7 +371,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                       >
                         <ProductCard
                           title={
-                            router.locale === 'id'
+                            ctx.language === 'id'
                               ? item.title_id
                               : item.title_en
                           }
@@ -403,7 +403,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                       >
                         <ProductCard
                           title={
-                            router.locale === 'id'
+                            ctx.language === 'id'
                               ? item.title_id
                               : item.title_en
                           }
@@ -436,7 +436,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 destination='/products'
                 className='md:hidden'
               >
-                {router.locale === 'id'
+                {ctx.language === 'id'
                   ? 'Lihat Semua Produk'
                   : 'See All Products'}
               </StrokeButton>
@@ -445,12 +445,12 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         )}
       </div>
 
-      <Footer lang={router.locale} />
+      <Footer lang={ctx.language} />
     </Layout>
   );
 };
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "productList"] {
           ...,
@@ -461,15 +461,12 @@ export async function getStaticPaths({ locales }) {
   const paths = [];
 
   res.map((data) => {
-    return locales.map((locale) => {
       return paths.push({
         params: {
           productSlug: data.slug.current,
           productType: data.type.slug.current,
-        },
-        locale,
+        }
       });
-    });
   });
 
   return { paths, fallback: false };

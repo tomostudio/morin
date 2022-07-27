@@ -47,9 +47,9 @@ export default function Home({
     <>
       <SEO
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? home.seo_id : home.seo_en}
+        inputSEO={ctx.language === 'id' ? home.seo_id : home.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -60,7 +60,7 @@ export default function Home({
         <Layout>
           {/* Slider Section */}
           <section className='scrollsection'>
-            <HeroSlider data={home} className='min-h-screen w-full' />
+            <HeroSlider data={home} className='min-h-screen w-full' lang={ctx.language} />
           </section>
           {/* Sticky Section */}
           <section className='z-0'>
@@ -76,7 +76,7 @@ export default function Home({
                 <div className='home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0'>
                   <div className='mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just'>
                     <h2 className=' mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] '>
-                      {router.locale === 'id'
+                      {ctx.language === 'id'
                         ? product.description_id
                         : product.description_en}
                     </h2>
@@ -85,7 +85,7 @@ export default function Home({
                       color={colors.morinBlue}
                       className='lg:mx-0'
                     >
-                      {router.locale === 'id'
+                      {ctx.language === 'id'
                         ? 'Lihat Semua Produk'
                         : 'See All Products'}
                     </StrokeButton>
@@ -132,7 +132,7 @@ export default function Home({
                           .blur(50)
                           .url()}
                         imgAlt={i.background}
-                        title={router.locale === 'id' ? i.title_id : i.title_en}
+                        title={ctx.language === 'id' ? i.title_id : i.title_en}
                         link={`/products/${i.slug.current}`}
                         end={id >= productTypeAPI.length - 1 && true}
                       />
@@ -152,7 +152,7 @@ export default function Home({
               <div className='flex w-full flex-wrap'>
                 <div className='mb-8 w-full text-center md:w-7/12 md:text-left lg:mb-5 xl:mb-11 xl:w-8/12'>
                   <h2 className='relative mx-auto mb-4 max-w-[175px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1'>
-                    {router.locale === 'id' ? (
+                    {ctx.language === 'id' ? (
                       <>
                         Resep <br className='md:hidden' /> dari Hati
                       </>
@@ -169,20 +169,20 @@ export default function Home({
                     </div>
                   </h2>
                   <p className='mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]'>
-                    {router.locale === 'id'
+                    {ctx.language === 'id'
                       ? recipe.description_id
                       : recipe.description_en}
                   </p>
                 </div>
                 <div className='order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12'>
                   <StrokeButton destination='/recipes' color={colors.morinRed}>
-                    {router.locale === 'id'
+                    {ctx.language === 'id'
                       ? 'Lihat Semua Resep'
                       : 'See All Recipes'}
                   </StrokeButton>
                 </div>
                 <div className='-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]'>
-                  <RecipeSlider data={recipeListAPI} lang={router.locale} />
+                  <RecipeSlider data={recipeListAPI} lang={ctx.language} />
                 </div>
               </div>
             </Container>
@@ -204,7 +204,7 @@ export default function Home({
                 <div className='flex w-full flex-wrap'>
                   <div className='mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12'>
                     <h2 className='relative mx-auto mb-0 max-w-[160px] pb-5 font-nutmeg text-ctitle font-bold leading-none text-morin-blue md:mx-0 md:mb-2 md:w-fit md:max-w-none md:pb-0 lg:text-h2'>
-                      {router.locale === 'id'
+                      {ctx.language === 'id'
                         ? 'Sorotan Acara'
                         : 'Events Highlight'}
                       <div className='absolute left-1/2 bottom-0 h-3.5 w-full -translate-x-1/2 md:left-auto md:right-0 md:-bottom-4 md:w-40 md:translate-x-0 lg:-bottom-5 lg:h-5 lg:w-60'>
@@ -217,7 +217,7 @@ export default function Home({
                       destination='/events'
                       color={colors.morinBlue}
                     >
-                      {router.locale === 'id'
+                      {ctx.language === 'id'
                         ? 'Lihat Semua Acara'
                         : 'See All Events'}
                     </StrokeButton>
@@ -225,10 +225,10 @@ export default function Home({
                 </div>
               </Container>
               <div className='relative overflow-hidden bg-morin-skyBlue px-0 pb-10 md:px-0 xl:pb-14'>
-                <HighlightSlider data={eventAPI} lang={router.locale} />
+                <HighlightSlider data={eventAPI} lang={ctx.language} />
                 <div className='mx-auto mt-7 w-fit md:hidden'>
                   <StrokeButton destination='/events' color={colors.morinBlue}>
-                    {router.locale === 'id'
+                    {ctx.language === 'id'
                       ? 'Lihat Semua Acara'
                       : 'See All Events'}
                   </StrokeButton>
@@ -249,7 +249,7 @@ export default function Home({
             >
               <div className='mb-8 flex w-full flex-nowrap flex-col lg:flex-row'>
                 <h2 className='mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig'>
-                  {router.locale === 'id'
+                  {ctx.language === 'id'
                     ? 'Dapatkan Inspirasi Harian dari Media Sosial kami'
                     : 'Get Daily Inspirations from our Social Media'}
                 </h2>
@@ -274,7 +274,7 @@ export default function Home({
               <div className='elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae'></div>
             </div>
           </section>
-          <Footer lang={router.locale} />
+          <Footer lang={ctx.language} />
         </Layout>
       </motion.div>
     </>

@@ -84,11 +84,11 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
   return (
     <div className="w-full bg-white">
       <SEO
-        title={router.locale === 'id' ? 'Tanya Jawab' : 'Faq'}
+        title={ctx.language === 'id' ? 'Tanya Jawab' : 'Faq'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? faq.seo_id : faq.seo_en}
+        inputSEO={ctx.language === 'id' ? faq.seo_id : faq.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -101,7 +101,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
         >
           <div className="mb-16">
             <div className=" w-full md:w-3/4 text-morin-blue mx-auto text-center font-nutmeg text-h2 lg:text-h1 leading-none  font-bold">
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? 'Pertanyaan yang Sering Diajukan'
                 : 'Frequently Asked Questions'}
             </div>
@@ -115,7 +115,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
 
           <div className="flex flex-wrap -mx-1 lg:-mx-2.5">
             {faqListAPI?.map((item, index) =>
-              router.locale === 'id' ? (
+              ctx.language === 'id' ? (
                 <div
                   className="w-1/2 px-1 mb-2 md:w-1/3 lg:px-2.5 lg:mb-5"
                   key={index}
@@ -146,7 +146,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </Layout>
 
       <BasicModal
@@ -156,10 +156,10 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
       >
         <div className="flex flex-col justify-center w-full h-full bg-white absolute-center px-8 md:bg-transparent md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
           <span className="block font-semibold text-mtitleSmall leading-tight mb-6 lg:font-bold lg:mb-8">
-            {router.locale === 'id' ? modalData?.title_id : modalData?.title_en}
+            {ctx.language === 'id' ? modalData?.title_id : modalData?.title_en}
           </span>
           <p className="text-default lg:text-mtitleSmall">
-            {router.locale === 'id'
+            {ctx.language === 'id'
               ? modalData?.description_id
               : modalData?.description_en}
           </p>

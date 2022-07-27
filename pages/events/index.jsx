@@ -73,11 +73,11 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
   return (
     <Layout>
       <SEO
-        title={router.locale === 'id' ? 'Acara' : 'Events'}
+        title={ctx.language === 'id' ? 'Acara' : 'Events'}
         pagelink={router.pathname}
-        inputSEO={router.locale === 'id' ? event.seo_id : event.seo_en}
+        inputSEO={ctx.language === 'id' ? event.seo_id : event.seo_en}
         defaultSEO={
-          typeof seo !== 'undefined' && router.locale === 'id'
+          typeof seo !== 'undefined' && ctx.language === 'id'
             ? seo.seo_id
             : seo.seo_en
         }
@@ -98,7 +98,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
-              {router.locale === 'id' ? 'Acara terakhir' : 'Latest Events'}
+              {ctx.language === 'id' ? 'Acara terakhir' : 'Latest Events'}
             </h1>
           </div>
         </div>
@@ -111,16 +111,16 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
                   <EventCard
                     imgSrc={urlFor(item.thumbnail).url()}
                     imgAlt={
-                      router.locale === 'id' ? item.title_id : item.title_en
+                      ctx.language === 'id' ? item.title_id : item.title_en
                     }
                     type={
-                      router.locale === 'id'
+                      ctx.language === 'id'
                         ? item.eventCategory[0].title_id
                         : item.eventCategory[0].title_en
                     }
-                    date={dateParse(item.date, router.locale)}
+                    date={dateParse(item.date, ctx.language)}
                     title={
-                      router.locale === 'id' ? item.title_id : item.title_en
+                      ctx.language === 'id' ? item.title_id : item.title_en
                     }
                     link={`/events/${item.slug.current}`}
                   />
@@ -133,7 +133,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
                 color={colors.morinBlue}
                 onClick={() => console.log('load more')}
               >
-                {router.locale === 'id'
+                {ctx.language === 'id'
                   ? 'Menampilkan lebih banyak'
                   : 'Show More'}
               </StrokeButton>
@@ -141,7 +141,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
           </div>
         </div>
 
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </div>
     </Layout>
   )

@@ -28,14 +28,14 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
         {/* <Header /> */}
         <SEO
           title={
-            router.locale === 'id' ? productType.title_id : productType.title_en
+            ctx.language === 'id' ? productType.title_id : productType.title_en
           }
           pagelink={router.pathname}
           inputSEO={
-            router.locale === 'id' ? productType.seo_id : productType.seo_en
+            ctx.language === 'id' ? productType.seo_id : productType.seo_en
           }
           defaultSEO={
-            typeof seo !== 'undefined' && router.locale === 'id'
+            typeof seo !== 'undefined' && ctx.language === 'id'
               ? seo.seo_id
               : seo.seo_en
           }
@@ -48,12 +48,12 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
         >
           <div className="max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
             <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? productType.title_id
                 : productType.title_en}
               <div className="w-full h-full absolute-center hidden lg:block">
                 <div className="w-fit absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
-                  {router.locale === 'id' ? (
+                  {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor_id.decor1.image).url()}
                       placeholder={urlFor(
@@ -76,7 +76,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                   )}
                 </div>
                 <div className="w-fit absolute top-0 left-0 translate-x-[100%] select-none">
-                  {router.locale === 'id' ? (
+                  {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor_id.decor2.image).url()}
                       placeholder={urlFor(
@@ -102,7 +102,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
             </h1>
 
             <p className="font-semibold max-w-[400px] mx-auto">
-              {router.locale === 'id'
+              {ctx.language === 'id'
                 ? productType.description_id
                 : productType.description_en}
             </p>
@@ -115,7 +115,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                 key={`${item.title_en}${index}`}
               >
                 <ProductCard
-                  title={router.locale === "id" ? item.title_id : item.title_en}
+                  title={ctx.language === "id" ? item.title_id : item.title_en}
                   bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
                   imgSrc={urlFor(item.thumbnail).auto('format').url()}
                   thumbnailFruit={item.thumbnailFruit}
@@ -128,13 +128,13 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={router.locale} />
+        <Footer lang={ctx.language} />
       </Layout>
     </div>
   )
 }
 
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "productType"]
       `)
@@ -142,14 +142,11 @@ export async function getStaticPaths({ locales }) {
   const paths = []
 
   res.map((data) => {
-    return locales.map((locale) => {
       return paths.push({
         params: {
           productType: data.slug.current,
         },
-        locale,
       })
-    })
   })
 
   return { paths, fallback: false }
