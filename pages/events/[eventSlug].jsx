@@ -70,7 +70,9 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
 
       <div className="text-morin-blue leading-tight">
         <div className="text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16">
-          <span className="block font-semibold mb-2.5">{dateParse(event.date, ctx.language, true)}</span>
+          <span className="block font-semibold mb-2.5">
+            {dateParse(event.date, ctx.language, true)}
+          </span>
           <h1 className="font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4">
             {ctx.language === 'id' ? event.title_id : event.title_en}
           </h1>
@@ -143,10 +145,16 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
               types: {
                 imageComponent: (props) =>
                   props.value.option ? (
-                    <div className="relative w-full h-full lg:h-[700px] aspect-w-16 aspect-h-9 mx-auto mb-8 px-8 lg:rounded-2xl overflow-hidden md:mb-10 lg:mb-12">
+                    <div className="relative w-full h-full aspect-w-16 aspect-h-9 mx-auto mb-8 px-8 lg:rounded-2xl overflow-hidden md:mb-10 lg:mb-12">
                       <Image
-                        src={urlFor(props.value.image).url()}
-                        blurDataURL={urlFor(props.value.image).url()}
+                        src={urlFor(props.value.image)
+                          .auto('format')
+                          .width(1800)
+                          .url()}
+                        blurDataURL={urlFor(props.value.image)
+                          .auto('format')
+                          .width(1500)
+                          .url()}
                         alt={props.value.image.alt}
                         placeholder="blur"
                         layout="fill"
@@ -156,15 +164,21 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                     </div>
                   ) : (
                     <div className="max-w-screen-md mx-auto">
-                      <div className="mb-8 md:mb-10 lg:px-24 lg:mb-12 xl:px-28">
+                      <div className="relative max-w-xl mx-auto rounded-xl overflow-hidden mb-8 md:mb-10 h-30rem max-md:h-56 lg:mb-12">
                         <Image
-                          src={urlFor(props.value.image).url()}
-                          blurDataURL={urlFor(props.value.image).url()}
+                          src={urlFor(props.value.image)
+                            .auto('format')
+                            .width(650)
+                            .url()}
+                          blurDataURL={urlFor(props.value.image)
+                            .auto('format')
+                            .width(500)
+                            .url()}
                           alt={props.value.image.alt}
                           placeholder="blur"
-                          width={590}
-                          height={400}
-                          layout="responsive"
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
                         />
                       </div>
                     </div>
@@ -217,11 +231,11 @@ export async function getStaticPaths() {
   const paths = []
 
   res.map((data) => {
-      return paths.push({
-        params: {
-          eventSlug: data.slug.current,
-        }
-      })
+    return paths.push({
+      params: {
+        eventSlug: data.slug.current,
+      },
+    })
   })
 
   return { paths, fallback: false }

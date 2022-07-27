@@ -65,8 +65,8 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                     >
                       <div className="relative w-full h-full">
                         <Image
-                          src={urlFor(item.image).url()}
-                          blurDataURL={urlFor(item.image).url()}
+                          src={urlFor(item.image).auto('format').width(175).url()}
+                          blurDataURL={urlFor(item.image).auto('format').width(150).url()}
                           placeholder="blur"
                           alt={item.image.alt}
                           layout="fill"
@@ -99,8 +99,8 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                     >
                       <div className="relative w-full h-full">
                         <Image
-                          src={urlFor(item.image).url()}
-                          blurDataURL={urlFor(item.image).url()}
+                          src={urlFor(item.image).auto('format').width(175).url()}
+                          blurDataURL={urlFor(item.image).auto('format').width(150).url()}
                           placeholder="blur"
                           alt={item.image.alt}
                           layout="fill"

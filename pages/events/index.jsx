@@ -87,9 +87,9 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className="relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <div className="relative w-full h-full">
             <Image
-              priority
-              src={urlFor(event.background).url()}
-              placeholder={urlFor(event.background).url()}
+              src={urlFor(event.background).auto('format').width(1600).url()}
+              blurDataURL={urlFor(event.background).auto('format').width(1400).url()}
+              placeholder="blur"
               alt={event.background.alt}
               layout="fill"
               objectFit="cover"

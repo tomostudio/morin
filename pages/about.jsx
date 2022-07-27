@@ -74,7 +74,7 @@ const About = ({ aboutAPI, seoAPI }) => {
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Layout className="relative pt-16 overflow-hidden">
-        <div className="w-[150vw] aspect-square absolute inset-0 -translate-x-1/2 -translate-y-1/2 -top-20 left-1/2 z-1 ">
+        <div className="w-[150vw] aspect-[1/1] absolute inset-0 -translate-x-1/2 -translate-y-1/2 -top-20 left-1/2 z-1 ">
           {/* <SunRaySmaller className='w-full h-full animate-spin-slow' /> */}
           <Image
             src="/RAY.svg"
@@ -128,7 +128,8 @@ const About = ({ aboutAPI, seoAPI }) => {
             <div className="absolute top-[4%] lg:top-[13%] right-[-40px] md:right-[-80px] lg:right-[-120px] rotate-[11deg]">
               <div className="relative w-[129px] h-[129px] md:w-[258px] md:h-[258px] lg:w-[382px] lg:h-[382px]">
                 <Image
-                  src={urlFor(about.backgrounds.imageLeft).url()}
+                  src={urlFor(about.backgrounds.imageLeft).auto('format').width(500).url()}
+                  blurDataURL={urlFor(about.backgrounds.imageLeft).auto('format').width(350).url()}
                   layout="fill"
                   objectFit="contain"
                 />
@@ -137,7 +138,9 @@ const About = ({ aboutAPI, seoAPI }) => {
             <div className="absolute bottom-[7%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px] rotate-[-11deg]">
               <div className="relative w-[129px] h-[132px] md:w-[258px] md:h-[264px] lg:w-[382px] lg:h-[390px]">
                 <Image
-                  src={urlFor(about.backgrounds.imageRight).url()}
+                  src={urlFor(about.backgrounds.imageRight).auto('format').width(500).url()}
+                  blurDataURL={urlFor(about.backgrounds.imageRight).auto('format').width(350).url()}
+                  placeholder="blur"
                   layout="fill"
                   objectFit="contain"
                 />
@@ -155,8 +158,8 @@ const About = ({ aboutAPI, seoAPI }) => {
                   type="OUR PROCESS"
                   title={
                     ctx.language === 'id'
-                      ? about.our_process.title_id
-                      : about.our_process.title_en
+                      ? about.our_process.titleCover_id
+                      : about.our_process.titleCover_en
                   }
                   imgSrc={urlFor(about.our_process.thumbnail).url()}
                   imgPlaceholder={urlFor(about.our_process.thumbnail).url()}
@@ -170,8 +173,8 @@ const About = ({ aboutAPI, seoAPI }) => {
                   type="VISI & MISI"
                   title={
                     ctx.language === 'id'
-                      ? about.visi_misi.title_id
-                      : about.visi_misi.title_en
+                      ? about.visi_misi.titleCover_id
+                      : about.visi_misi.titleCover_en
                   }
                   imgSrc={urlFor(about.visi_misi.thumbnail).url()}
                   imgPlaceholder={urlFor(about.visi_misi.thumbnail).url()}
@@ -212,14 +215,15 @@ const About = ({ aboutAPI, seoAPI }) => {
             },
             types: {
               image: (props) => (
-                <div className="mb-5">
+                <div className="relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden">
                   <Image
-                    src={urlFor(props.value).url()}
-                    blurDataURL={urlFor(props.value).url()}
+                    src={urlFor(props.value).auto('format').width(850).url()}
+                    blurDataURL={urlFor(props.value).auto('format').width(500).url()}
                     placeholder="blur"
                     alt={props.value.alt}
-                    width={795}
-                    height={460}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                   />
                 </div>
               ),
@@ -252,14 +256,15 @@ const About = ({ aboutAPI, seoAPI }) => {
             },
             types: {
               image: (props) => (
-                <div className="mb-5">
+                <div className="relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden">
                   <Image
-                    src={urlFor(props.value).url()}
-                    blurDataURL={urlFor(props.value).url()}
+                    src={urlFor(props.value).auto('format').width(850).url()}
+                    blurDataURL={urlFor(props.value).auto('format').width(500).url()}
                     placeholder="blur"
                     alt={props.value.alt}
-                    width={795}
-                    height={460}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                   />
                 </div>
               ),
@@ -293,14 +298,15 @@ const About = ({ aboutAPI, seoAPI }) => {
             },
             types: {
               image: (props) => (
-                <div className="mb-5">
+                <div className="relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden">
                   <Image
-                    src={urlFor(props.value).url()}
-                    blurDataURL={urlFor(props.value).url()}
+                    src={urlFor(props.value).auto('format').width(850).url()}
+                    blurDataURL={urlFor(props.value).auto('format').width(500).url()}
                     placeholder="blur"
                     alt={props.value.alt}
-                    width={795}
-                    height={460}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                   />
                 </div>
               ),

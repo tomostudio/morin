@@ -47,6 +47,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      height: {
+        '30rem': '30rem'
+      },
       transitionTimingFunction: {
         'in-out-expo': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },
@@ -87,5 +90,8 @@ module.exports = {
   },
   variants: {
     extend: {},
-  }
+  },
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

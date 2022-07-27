@@ -39,7 +39,7 @@ const CategoryCard = ({
       <div
         className={`relative w-full min-h-[350px] bg-morin-lightBlue lg:w-1/2 categoryImageCard layout-${animation}`}
       >
-        <div className='w-full aspect-square scale-150  absolute top-1/2 left-1/2 -translate-x-1/2 2xl:ml-0 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+        <div className='w-full aspect-[1/1] scale-150  absolute top-1/2 left-1/2 -translate-x-1/2 2xl:ml-0 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
           <Image
             src={`/RAY.svg`}
             objectFit='contain'

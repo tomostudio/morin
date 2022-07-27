@@ -38,8 +38,9 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
         <div className=" relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <div className="relative w-full h-full">
             <Image
-              src={urlFor(product.background).auto('format').width(1920).url()}
-              placeholder={urlFor(product.background).auto('format').width(500).blur(50).url()}
+              src={urlFor(product.background).auto('format').width(1600).url()}
+              blurDataURL={urlFor(product.background).auto('format').width(1400).url()}
+              placeholder="blur"
               alt={product.background.alt}
               layout="fill"
               objectFit="cover"

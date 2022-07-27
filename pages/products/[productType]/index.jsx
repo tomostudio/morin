@@ -46,55 +46,70 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
           className="pl-0 pr-0"
           classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11"
         >
-          <div className="max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
+          <div className=" max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
             <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
               {ctx.language === 'id'
                 ? productType.title_id
                 : productType.title_en}
               <div className="w-full h-full absolute-center hidden lg:block">
-                <div className="w-fit absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
+                <div className="w-full h-96 absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor_id.decor1.image).url()}
-                      placeholder={urlFor(
-                        productType.decor_id.decor1.image,
-                      ).url()}
+                      src={urlFor(productType.decor_id.decor1.image)
+                        .auto('format')
+                        .width(400)
+                        .url()}
+                      blurDataURL={urlFor(productType.decor_id.decor1.image)
+                        .auto('format')
+                        .width(300)
+                        .url()}
+                      placeholder="blur"
                       alt={productType.decor_id.decor1.image.alt}
-                      width={385}
-                      height={385}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor_en.decor1.image).url()}
-                      placeholder={urlFor(
-                        productType.decor_en.decor1.image,
-                      ).url()}
+                      src={urlFor(productType.decor_en.decor1.image)
+                        .auto('format')
+                        .width(400)
+                        .height(385)
+                        .url()}
+                      blurDataURL={urlFor(productType.decor_en.decor1.image)
+                        .auto('format')
+                        .width(300)
+                        .url()}
+                      placeholder="blur"
                       alt={productType.decor_en.decor1.image.alt}
-                      width={385}
-                      height={385}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   )}
                 </div>
-                <div className="w-fit absolute top-0 left-0 translate-x-[100%] select-none">
+                <div className="w-full h-96 absolute top-0 left-0 translate-x-full -translate-y-1/3 select-none">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor_id.decor2.image).url()}
+                      src={urlFor(productType.decor_id.decor2.image).auto('format').width(500).url()}
                       placeholder={urlFor(
                         productType.decor_id.decor2.image,
-                      ).url()}
+                      ).auto('format').width(300).url()}
                       alt={productType.decor_id.decor2.image.alt}
-                      width={420}
-                      height={120}
+                      layout="fill"
+                      objectFit='contain'
+                      objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor_en.decor2.image).url()}
+                      src={urlFor(productType.decor_en.decor2.image).auto('format').width(500).url()}
                       placeholder={urlFor(
                         productType.decor_en.decor2.image,
-                      ).url()}
+                      ).auto('format').width(300).url()}
                       alt={productType.decor_en.decor2.image.alt}
-                      width={420}
-                      height={120}
+                      layout="fill"
+                      objectFit='contain'
+                      objectPosition="center"
                     />
                   )}
                 </div>
@@ -115,11 +130,19 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                 key={`${item.title_en}${index}`}
               >
                 <ProductCard
-                  title={ctx.language === "id" ? item.title_id : item.title_en}
-                  bgColor={item.backgroundColor ? item.backgroundColor.hex : colors.morinLightBlue}
+                  title={ctx.language === 'id' ? item.title_id : item.title_en}
+                  bgColor={
+                    item.backgroundColor
+                      ? item.backgroundColor.hex
+                      : colors.morinLightBlue
+                  }
                   imgSrc={urlFor(item.thumbnail).auto('format').url()}
                   thumbnailFruit={item.thumbnailFruit}
-                  imgPlaceholder={urlFor(item.thumbnail).width(500).auto('format').blur(10).url()}
+                  imgPlaceholder={urlFor(item.thumbnail)
+                    .width(500)
+                    .auto('format')
+                    .blur(10)
+                    .url()}
                   imgAlt={item.thumbnail.alt}
                   link={`${productType.slug.current}/${item.slug.current}`}
                 />
@@ -142,11 +165,11 @@ export async function getStaticPaths() {
   const paths = []
 
   res.map((data) => {
-      return paths.push({
-        params: {
-          productType: data.slug.current,
-        },
-      })
+    return paths.push({
+      params: {
+        productType: data.slug.current,
+      },
+    })
   })
 
   return { paths, fallback: false }

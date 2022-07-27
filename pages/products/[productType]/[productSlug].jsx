@@ -58,7 +58,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           >
             {/* Background Elements */}
             <div className='absolute w-full h-full translate-y-[50px] overflow-hidden md:translate-y-0 z-1'>
-              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50vh] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-square z-1'>
+              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50vh] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-[1/1] z-1'>
                 <Image
                   src={`/RAY.svg`}
                   objectFit='contain'
@@ -207,14 +207,14 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           </div>
           {/* Product */}
           <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 mt-20'>
-            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-square z-2 relative border border-solid border-black'>
+            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-[1/1] z-2 relative border border-solid border-black'>
               {product.listWeight.map((data, id) => (
                 <div
                   className={`${
                     productCurrent === data.title
                       ? 'absolute fade-in top-0'
                       : 'opacity-0 relative'
-                  }  aspect-square z-2 w-full h-full`}
+                  }  aspect-[1/1] z-2 w-full h-full`}
                   key={id}
                 >
                   <Image
