@@ -268,7 +268,7 @@ const InstructionCard = ({
         <div className="flex flex-wrap -mx-1 sm:mx-0 lg:pl-[52px]">
           {images?.map((i, index) => (
             <div
-              className="w-1/2 px-1 sm:w-auto sm:px-0 sm:mr-4 lg:mr-5"
+              className="relative w-1/2 h-60 rounded-xl overflow-hidden px-1 sm:w-80 sm:px-0 sm:mr-4 lg:mr-5"
               key={index}
             >
               <Image
@@ -276,8 +276,9 @@ const InstructionCard = ({
                 blurDataURL={urlFor(i).url()}
                 placeholder="blur"
                 alt={i.alt}
-                width={285}
-                height={215}
+                layout="fill"
+                objectFit='cover'
+                objectPosition="center"
               />
             </div>
           ))}
@@ -305,15 +306,16 @@ const ImageGallery = ({ data, onClick }) => {
           <button
             type="button"
             onClick={() => onClick(index)}
-            className={imageWrapper}
+            className={`${imageWrapper} relative w-80 h-52`}
           >
             <Image
-              src={urlFor(item).url()}
-              blurDataURL={urlFor(item).url()}
+              src={urlFor(item).auto('format').width(400).url()}
+              blurDataURL={urlFor(item).auto('format').width(200).blur(50).url()}
               placeholder="blur"
               alt={item.alt}
-              width={285}
-              height={215}
+              layout="fill"
+              objectFit='cover'
+              objectPosition="center"
             />
           </button>
         </SwiperSlide>
@@ -343,15 +345,17 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
     >
       {data?.map((item, index) => (
         <SwiperSlide key={index}>
+        <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
           <Image
             src={item.large}
             blurDataURL={item.small}
             placeholder="blur"
             alt="Image Gallery"
-            width={1035}
-            height={600}
-            layout="responsive"
+            layout="fill"
+            objectFit='cover'
+            objectPosition="center"
           />
+        </div>
         </SwiperSlide>
       ))}
       <button ref={swiperPrev} className={`${sliderNav} ${navLeft}`}>
@@ -473,9 +477,27 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                 {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
               </h1>
               <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[200px] lg:pt-5 lg:ml-auto">
-                <RecipeTag label={ctx.language === "id" ? recipe.difficulty.title_id : recipe.difficulty.title_en} />
-                <RecipeTag label={ctx.language === "id" ? recipe.recipeCategory.title_id : recipe.recipeCategory.title_en} />
-                <RecipeTag label={ctx.language === "id" ? recipe.cookingTime.title_id : recipe.cookingTime.title_en} />
+                <RecipeTag
+                  label={
+                    ctx.language === 'id'
+                      ? recipe.difficulty.title_id
+                      : recipe.difficulty.title_en
+                  }
+                />
+                <RecipeTag
+                  label={
+                    ctx.language === 'id'
+                      ? recipe.recipeCategory.title_id
+                      : recipe.recipeCategory.title_en
+                  }
+                />
+                <RecipeTag
+                  label={
+                    ctx.language === 'id'
+                      ? recipe.cookingTime.title_id
+                      : recipe.cookingTime.title_en
+                  }
+                />
               </div>
             </div>
           </div>
@@ -541,15 +563,22 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                   {recipe.made?.map((item, index) => (
                     <div
                       className="w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5"
-                      key={`${item.title}${index}`}
+                      key={`${item.title_en}${index}`}
                     >
                       <ProductCard
-                        title={item.title}
+                        title={ctx.language === 'id' ? item.title_id : item.title_en}
                         bgColor={item.backgroundColor.hex}
-                        imgSrc={urlFor(item.thumbnail).url()}
+                        imgSrc={urlFor(item.thumbnail)
+                          .auto('format')
+                          .width(800)
+                          .url()}
                         thumbnailFruit={item.thumbnailFruit}
                         imgBg={'/product/strawberry-bg.png'}
-                        imgPlaceholder={urlFor(item.thumbnail).url()}
+                        imgPlaceholder={urlFor(item.thumbnail)
+                          .width(500)
+                          .auto('format')
+                          .blur(10)
+                          .url()}
                         imgAlt={item.thumbnail.alt}
                         link={`${item.type.slug.current}/${item.slug.current}`}
                         small
@@ -643,10 +672,12 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="flex flex-wrap w-full">
                 <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
                   <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
-                    {ctx.language === "id" ? "Resep Lainnya" : "More Recipes"}
+                    {ctx.language === 'id' ? 'Resep Lainnya' : 'More Recipes'}
                   </span>
                   <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
-                    {ctx.language === "id" ? "Anda mungkin juga menyukai..." : "You may also like..."}
+                    {ctx.language === 'id'
+                      ? 'Anda mungkin juga menyukai...'
+                      : 'You may also like...'}
                   </span>
 
                   <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
@@ -655,7 +686,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                       color={colors.morinRed}
                       className="ml-auto"
                     >
-                      {ctx.language === "id" ? "Lihat Semua Resep" : "See All Recipes"}
+                      {ctx.language === 'id'
+                        ? 'Lihat Semua Resep'
+                        : 'See All Recipes'}
                     </StrokeButton>
                   </div>
                 </div>
@@ -703,9 +736,9 @@ export async function getStaticPaths() {
   const paths = []
 
   res.map((data) => {
-      return paths.push({
-        params: { recipeSlug: `${data.slug.current}` },
-      })
+    return paths.push({
+      params: { recipeSlug: `${data.slug.current}` },
+    })
   })
 
   return { paths, fallback: false }

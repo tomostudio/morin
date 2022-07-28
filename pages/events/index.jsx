@@ -109,7 +109,8 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
               {eventListAPI?.map((item, index) => (
                 <div className="w-full" key={`${item.title_en}[${index}]`}>
                   <EventCard
-                    imgSrc={urlFor(item.thumbnail).url()}
+                    imgSrc={urlFor(item.thumbnail).auto('format').width(1000).url()}
+                    blur={urlFor(item.thumbnail).auto('format').width(600).blur(25).url()}
                     imgAlt={
                       ctx.language === 'id' ? item.title_id : item.title_en
                     }

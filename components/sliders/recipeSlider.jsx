@@ -1,8 +1,8 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode } from 'swiper';
-import RecipeCard from '../shared-module/recipeCard';
-import urlFor from '@/helpers/sanity/urlFor';
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode } from 'swiper'
+import RecipeCard from '../shared-module/recipeCard'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const RecipeSlider = ({ data, lang }) => {
   return (
@@ -20,8 +20,12 @@ const RecipeSlider = ({ data, lang }) => {
         lang === 'id' ? (
           <SwiperSlide key={item.title_id}>
             <RecipeCard
-              imgSrc={urlFor(item.thumbnail).url()}
-              imgPlaceholder={urlFor(item.thumbnail).url()}
+              imgSrc={urlFor(item.thumbnail).auto('format').width(500).url()}
+              imgPlaceholder={urlFor(item.thumbnail)
+                .auto('format')
+                .width(300)
+                .blur(50)
+                .url()}
               imgAlt={item.thumbnail.alt}
               title={item.title_id}
               link={`/recipes/${item.slug.current}`}
@@ -30,17 +34,21 @@ const RecipeSlider = ({ data, lang }) => {
         ) : (
           <SwiperSlide key={item.title_en}>
             <RecipeCard
-              imgSrc={urlFor(item.thumbnail).url()}
-              imgPlaceholder={urlFor(item.thumbnail).url()}
+              imgSrc={urlFor(item.thumbnail).auto('format').width(500).url()}
+              imgPlaceholder={urlFor(item.thumbnail)
+                .auto('format')
+                .width(300)
+                .blur(50)
+                .url()}
               imgAlt={item.thumbnail.alt}
               title={item.title_en}
               link={`/recipes/${item.slug.current}`}
             />
           </SwiperSlide>
-        )
+        ),
       )}
     </Swiper>
-  );
-};
+  )
+}
 
-export default RecipeSlider;
+export default RecipeSlider

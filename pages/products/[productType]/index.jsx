@@ -91,24 +91,34 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                 <div className="w-full h-96 absolute top-0 left-0 translate-x-full -translate-y-1/3 select-none">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor_id.decor2.image).auto('format').width(500).url()}
-                      placeholder={urlFor(
-                        productType.decor_id.decor2.image,
-                      ).auto('format').width(300).url()}
+                      src={urlFor(productType.decor_id.decor2.image)
+                        .auto('format')
+                        .width(500)
+                        .url()}
+                      blurDataURL={urlFor(productType.decor_id.decor2.image)
+                        .auto('format')
+                        .width(300)
+                        .url()}
+                      placeholder="blur"
                       alt={productType.decor_id.decor2.image.alt}
                       layout="fill"
-                      objectFit='contain'
+                      objectFit="contain"
                       objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor_en.decor2.image).auto('format').width(500).url()}
-                      placeholder={urlFor(
-                        productType.decor_en.decor2.image,
-                      ).auto('format').width(300).url()}
+                      src={urlFor(productType.decor_en.decor2.image)
+                        .auto('format')
+                        .width(500)
+                        .url()}
+                      blurDataURL={urlFor(productType.decor_en.decor2.image)
+                        .auto('format')
+                        .width(300)
+                        .url()}
+                      placeholder="blur"
                       alt={productType.decor_en.decor2.image.alt}
                       layout="fill"
-                      objectFit='contain'
+                      objectFit="contain"
                       objectPosition="center"
                     />
                   )}
@@ -136,7 +146,10 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                       ? item.backgroundColor.hex
                       : colors.morinLightBlue
                   }
-                  imgSrc={urlFor(item.thumbnail).auto('format').url()}
+                  imgSrc={urlFor(item.thumbnail)
+                    .auto('format')
+                    .width(800)
+                    .url()}
                   thumbnailFruit={item.thumbnailFruit}
                   imgPlaceholder={urlFor(item.thumbnail)
                     .width(500)

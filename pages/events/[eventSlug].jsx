@@ -87,7 +87,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
           )}
         </div>
 
-        <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14">
+        <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14 mx-auto">
           <PortableText
             value={
               ctx.language === 'id'
@@ -203,8 +203,8 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                   key={`${item.title_en}[${index}]`}
                 >
                   <HighlightCard
-                    imgSrc={urlFor(item.thumbnail).url()}
-                    imgPlaceholder={urlFor(item.thumbnail).url()}
+                    imgSrc={urlFor(item.thumbnail).auto('format').width(400).url()}
+                    imgPlaceholder={urlFor(item.thumbnail).auto('format').width(200).blur(25).url()}
                     imgAlt={item.thumbnail.alt}
                     date={dateParse(item.date, ctx.language)}
                     title={

@@ -222,18 +222,16 @@ const Recipe = ({
 
           <div suppressHydrationWarning>
             {/* {console.log(filterValue)} */}
-            {typeof window === 'undefined' ? null : (
-              <RecipeFilter
-                isOpen={filterOpen}
-                difficulty={difficultyListAPI}
-                cookingTime={cookingTimeListAPI}
-                recipeCategory={recipeCategoryAPI}
-                lang={ctx.language}
-                value={filterValue}
-                filterFunc={handleFilter}
-                triggerTagName={'btnFilter'}
-              />
-            )}
+            <RecipeFilter
+              isOpen={filterOpen}
+              difficulty={difficultyListAPI}
+              cookingTime={cookingTimeListAPI}
+              recipeCategory={recipeCategoryAPI}
+              lang={ctx.language}
+              value={filterValue}
+              filterFunc={handleFilter}
+              triggerTagName={'btnFilter'}
+            />
           </div>
 
           <div className="max-w-screen-2xl mx-auto">
@@ -257,20 +255,23 @@ const Recipe = ({
                 ),
               )} */}
               {recipeListAPI
-                ?.filter((obj) =>
-                  filterValue.hasOwnProperty('difficulty')
-                    ? obj.difficulty === filterValue.difficulty
-                    : false && filterValue.hasOwnProperty('cookingTime')
-                    ? obj.cooking_time === filterValue.cookingTime
-                    : false && filterValue.hasOwnProperty('recipeCategory')
-                    ? obj.category === filterValue.recipeCategory
-                    : false,
-                )
+                // ?.filter((obj) =>
+                //   filterValue.hasOwnProperty('difficulty')
+                //     ? obj.difficulty === filterValue.difficulty
+                //     : false && filterValue.hasOwnProperty('cookingTime')
+                //     ? obj.cooking_time === filterValue.cookingTime
+                //     : false && filterValue.hasOwnProperty('recipeCategory')
+                //     ? obj.category === filterValue.recipeCategory
+                //     : false,
+                // )
                 .map((item, index) => (
                   <div className="w-full" key={`${item.title_en}[${index}]`}>
+                    {
+                      console.log(item)
+                    }
                     <RecipeCard
-                      imgSrc={urlFor(item.thumbnail).url()}
-                      imgPlaceholder={urlFor(item.thumbnail).url()}
+                      imgSrc={urlFor(item.thumbnail).auto('format').width(500).url()}
+                      imgPlaceholder={urlFor(item.thumbnail).auto('format').width(300).blur(50).url()}
                       imgAlt={item.thumbnail.alt}
                       title={
                         ctx.language === 'id' ? item.title_id : item.title_en

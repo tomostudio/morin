@@ -1,38 +1,38 @@
-import CategoryCard from '@/components/module/categoryCard';
-import Container from '@/components/module/container';
-import Footer from '@/components/module/footer';
-import Layout from '@/components/module/layout';
-import FancyLink from '@/components/utils/fancyLink';
-import MorinTabs from '@/components/micro-module/morinTabs';
-import RecipeSlider from '@/components/sliders/recipeSlider';
-import { SunRay } from '@/components/utils/svg';
-import Image from 'next/image';
-import ProductCard from '@/components/shared-module/productCard';
-import StrokeButton from '@/components/micro-module/strokeButton';
-import colors from '@/helpers/colors';
-import { useEffectInit } from '@/components/utils/preset';
-import { useEffect, useState } from 'react';
-import { useAppContext } from 'context/state';
-import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import SEO from '@/components/utils/seo';
-import { useRouter } from 'next/router';
+import CategoryCard from '@/components/module/categoryCard'
+import Container from '@/components/module/container'
+import Footer from '@/components/module/footer'
+import Layout from '@/components/module/layout'
+import FancyLink from '@/components/utils/fancyLink'
+import MorinTabs from '@/components/micro-module/morinTabs'
+import RecipeSlider from '@/components/sliders/recipeSlider'
+import { SunRay } from '@/components/utils/svg'
+import Image from 'next/image'
+import ProductCard from '@/components/shared-module/productCard'
+import StrokeButton from '@/components/micro-module/strokeButton'
+import colors from '@/helpers/colors'
+import { useEffectInit } from '@/components/utils/preset'
+import { useEffect, useState } from 'react'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
-  const [seo] = seoAPI;
-  const [product] = productAPI;
-  const router = useRouter();
+  const [seo] = seoAPI
+  const [product] = productAPI
+  const router = useRouter()
   const [productCurrent, setProductCurrent] = useState(
-    product.listWeight.find((data) => data.defaultWeight === true).title
-  );
+    product.listWeight.find((data) => data.defaultWeight === true).title,
+  )
 
-  const ctx = useAppContext();
+  const ctx = useAppContext()
   useEffect(() => {
-    useEffectInit({ context: ctx, mobileDark: true });
-  }, []);
+    useEffectInit({ context: ctx, mobileDark: true })
+  }, [])
 
   return (
-    <Layout className='overflow-hidden'>
+    <Layout className="overflow-hidden">
       {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
         title={ctx.language === 'id' ? product.title_id : product.title_en}
@@ -45,11 +45,11 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      <div className='w-full'>
+      <div className="w-full">
         {/* Initial Cover */}
-        <div className='relative w-full h-auto z-0'>
+        <div className="relative w-full h-auto z-0">
           <div
-            className='h-full w-full absolute z-0'
+            className="h-full w-full absolute z-0"
             style={{
               backgroundColor: product.backgroundColor
                 ? product.backgroundColor.hex
@@ -57,13 +57,13 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             }}
           >
             {/* Background Elements */}
-            <div className='absolute w-full h-full translate-y-[50px] overflow-hidden md:translate-y-0 z-1'>
-              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50vh] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-[1/1] z-1'>
+            <div className="absolute w-full h-full translate-y-[50px] overflow-hidden md:translate-y-0 z-1">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50vh] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-[1/1] z-1">
                 <Image
                   src={`/RAY.svg`}
-                  objectFit='contain'
-                  layout='fill'
-                  className='animate-spin-slow '
+                  objectFit="contain"
+                  layout="fill"
+                  className="animate-spin-slow "
                 />
               </div>
               <div
@@ -82,10 +82,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .auto('format')
                         .blur(50)
                         .url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -98,10 +98,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit2.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -114,10 +114,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit3.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -130,10 +130,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -146,10 +146,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit2.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -162,10 +162,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit3.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -178,10 +178,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         .width(500)
                         .url()}
                       blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
+                      layout="fill"
+                      objectFit="contain"
                     />
                   </div>
                 )}
@@ -195,19 +195,19 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               color: product.textColor ? product.textColor.hex : '#175BA7',
             }}
           >
-            <span className='font-semibold tracking-widest mb-1.5 md:mb-2.5 xl:mb-4 uppercase text-inherit'>
+            <span className="font-semibold tracking-widest mb-1.5 md:mb-2.5 xl:mb-4 uppercase text-inherit">
               MORIN{' '}
               {ctx.language === 'id'
                 ? product.type.title_id
                 : product.type.title_en}
             </span>
-            <h1 className='font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 xl:text-h1 text-inherit'>
+            <h1 className="font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 xl:text-h1 text-inherit">
               {ctx.language === 'id' ? product.title_id : product.title_en}
             </h1>
           </div>
           {/* Product */}
-          <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 mt-20'>
-            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-[1/1] z-2 relative border border-solid border-black'>
+          <div className="flex flex-wrap justify-center items-end w-full px-12 relative z-2 mt-20">
+            <div className="w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-[1/1] z-2 relative border border-solid border-black">
               {product.listWeight.map((data, id) => (
                 <div
                   className={`${
@@ -220,20 +220,20 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   <Image
                     src={urlFor(data.image).auto('format').width(1000).url()}
                     blurDataURL={urlFor(data.image).url()}
-                    placeholder='blur'
+                    placeholder="blur"
                     alt={data.image.alt}
-                    objectFit='contain'
+                    objectFit="contain"
                     objectPosition={'bottom center'}
-                    layout='fill'
+                    layout="fill"
                   />
                 </div>
               ))}
             </div>
             {/* Information & Curve */}
-            <div className='absolute w-full h-[25vh] min-h-[250px] bg-white z-0'>
-              <div className='product-detail-curve ' />
-              <div className='hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block '>
-                <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black '>
+            <div className="absolute w-full h-[25vh] min-h-[250px] bg-white z-0">
+              <div className="product-detail-curve " />
+              <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block ">
+                <div className="absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black ">
                   {ctx.language === 'id'
                     ? product.decor_id && (
                         <Image
@@ -241,9 +241,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
-                            product.decor_id.decor1.image
+                          blurDataURL={urlFor(
+                            product.decor_id.decor1.image,
                           ).url()}
+                          placeholder="blur"
                           alt={product.decor_id.decor1.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -255,16 +256,17 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
-                            product.decor_en.decor1.image
+                          blurDataURL={urlFor(
+                            product.decor_en.decor1.image,
                           ).url()}
+                          placeholder="blur"
                           alt={product.decor_en.decor1.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
                         />
                       )}
                 </div>
-                <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%] border border-solid border-black'>
+                <div className="absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%] border border-solid border-black">
                   {ctx.language === 'id'
                     ? product.decor_id && (
                         <Image
@@ -272,9 +274,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
-                            product.decor_id.decor2.image
+                          blurDataURL={urlFor(
+                            product.decor_id.decor2.image,
                           ).url()}
+                          placeholder="blur"
                           alt={product.decor_id.decor2.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -286,9 +289,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
-                            product.decor_en.decor2.image
+                          blurDataURL={urlFor(
+                            product.decor_en.decor2.image,
                           ).url()}
+                          placeholder="blur"
                           alt={product.decor_en.decor2.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -299,16 +303,16 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             </div>
           </div>
         </div>
-        <div className='relative mt-10 mb-10'>
+        <div className="relative mt-10 mb-10">
           <MorinTabs
             tabData={product.listWeight}
             onChange={(e) => setProductCurrent(e)}
-            className='mx-auto mb-6 md:mb-8'
+            className="mx-auto mb-6 md:mb-8"
           />
         </div>
-        <div className='relative pt-5 pb-5 md:pb-14 xl:pb-16'>
+        <div className="relative pt-5 pb-5 md:pb-14 xl:pb-16">
           <h2
-            className='max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig xl:text-h2 md:px-8 lg:mb-10 xl:mb-14'
+            className="max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig xl:text-h2 md:px-8 lg:mb-10 xl:mb-14"
             style={{
               color: product.textColor ? product.textColor.hex : '#175BA7',
             }}
@@ -319,10 +323,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           </h2>
           <FancyLink
             blank
-            destination='#'
-            className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8'
+            destination="#"
+            className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
           >
-            <span className='block pt-1'>
+            <span className="block pt-1">
               {ctx.language === 'id'
                 ? 'Dapatkan Produk Ini'
                 : 'Get This Product'}
@@ -331,21 +335,21 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         </div>
 
         {product.recipes?.length > 0 && (
-          <div className='max-w-screen-2xl mx-auto'>
-            <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6'>
-              <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8'>
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6">
+              <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
                 {ctx.language === 'id'
                   ? 'Hal-hal yang dapat Anda buat'
                   : 'Things you can make'}
               </h2>
-              <div className='w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0'>
+              <div className="w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0">
                 <RecipeSlider
                   data={product.recipes}
                   onClick={(url) => handleImageGallery(url)}
                 />
               </div>
-              <div className='hidden w-fit mt-7 mx-auto md:block xl:mt-8'>
-                <StrokeButton destination='/recipes' color={colors.morinRed}>
+              <div className="hidden w-fit mt-7 mx-auto md:block xl:mt-8">
+                <StrokeButton destination="/recipes" color={colors.morinRed}>
                   {ctx.language === 'id'
                     ? 'Lihat Semua Resep'
                     : 'See All Recipes'}
@@ -356,17 +360,17 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
         )}
 
         {productListAPI?.length > 0 && (
-          <div className='max-w-screen-2xl mx-auto'>
-            <div className='py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0'>
-              <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8'>
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0">
+              <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
                 {ctx.language === 'id' ? 'Produk Sejenis' : 'Similar Products'}
               </h2>
 
-              <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
+              <div className="flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center">
                 {product.similar.option
                   ? productListAPI?.slice(0, 3).map((item, index) => (
                       <div
-                        className='w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5'
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
                         key={`${item.title_en}${index}`}
                       >
                         <ProductCard
@@ -398,7 +402,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                     ))
                   : product.similar.manual?.map((item, index) => (
                       <div
-                        className='w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5'
+                        className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
                         key={`${item.title_en}${index}`}
                       >
                         <ProductCard
@@ -433,8 +437,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
 
               <StrokeButton
                 color={colors.morinRed}
-                destination='/products'
-                className='md:hidden'
+                destination="/products"
+                className="md:hidden"
               >
                 {ctx.language === 'id'
                   ? 'Lihat Semua Produk'
@@ -447,8 +451,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
 
       <Footer lang={ctx.language} />
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
@@ -456,20 +460,20 @@ export async function getStaticPaths() {
           ...,
           type->,
         }
-      `);
+      `)
 
-  const paths = [];
+  const paths = []
 
   res.map((data) => {
-      return paths.push({
-        params: {
-          productSlug: data.slug.current,
-          productType: data.type.slug.current,
-        }
-      });
-  });
+    return paths.push({
+      params: {
+        productSlug: data.slug.current,
+        productType: data.type.slug.current,
+      },
+    })
+  })
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
@@ -492,17 +496,17 @@ export async function getStaticProps({ params }) {
           manual[]->
         }
       }
-    `
-  );
+    `,
+  )
   const productListAPI = await client.fetch(`
   *[_type == "productList"]
-  `);
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
 
   return {
     props: {
@@ -511,7 +515,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
     },
-  };
+  }
 }
 
-export default ProductDetail;
+export default ProductDetail
