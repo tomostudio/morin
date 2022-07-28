@@ -6,7 +6,9 @@ import SEO from '@/helpers/seo.config';
 import Head from 'next/head';
 import { AppWrapper } from '../context/state.jsx';
 import Script from 'next/script';
-import Header from '@/components/module/header'
+import Header from '@/components/module/header';
+
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -63,7 +65,9 @@ export default function App({ Component, pageProps }) {
       <AnimatePresence exitBeforeEnter>
         <AppWrapper>
           <Header waLink={pageProps.seoAPI[0].whatsapp} />
-          <Component {...pageProps} key={router.asPath} />
+          <ParallaxProvider>
+            <Component {...pageProps} key={router.asPath} />
+          </ParallaxProvider>
         </AppWrapper>
       </AnimatePresence>
     </>

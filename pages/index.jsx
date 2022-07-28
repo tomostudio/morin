@@ -21,6 +21,7 @@ import { useAppContext } from 'context/state';
 import urlFor from '@/helpers/sanity/urlFor';
 import SEO from '@/components/utils/seo';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 
 export default function Home({
   homeAPI,
@@ -60,7 +61,11 @@ export default function Home({
         <Layout>
           {/* Slider Section */}
           <section className='scrollsection'>
-            <HeroSlider data={home} className='min-h-screen w-full' lang={ctx.language} />
+            <HeroSlider
+              data={home}
+              className='min-h-screen w-full'
+              lang={ctx.language}
+            />
           </section>
           {/* Sticky Section */}
           <section className='z-0'>
@@ -266,12 +271,11 @@ export default function Home({
               </div>
             </Container>
             <div className='pb-10 xl:pb-14'>
-              {/* <InstagramSlider /> */}
-              <script
+              <Script
                 src='https://apps.elfsight.com/p/platform.js'
-                defer
-              ></script>
-              <div className='elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae'></div>
+                strategy='afterInteractive'
+              />
+              <div className='elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae' />
             </div>
           </section>
           <Footer lang={ctx.language} />

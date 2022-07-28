@@ -17,6 +17,7 @@ import client from '@/helpers/sanity/client';
 import urlFor from '@/helpers/sanity/urlFor';
 import SEO from '@/components/utils/seo';
 import { useRouter } from 'next/router';
+import { Parallax } from 'react-scroll-parallax';
 
 const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
   const [seo] = seoAPI;
@@ -47,7 +48,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
       />
       <div className='w-full'>
         {/* Initial Cover */}
-        <div className='relative w-full h-auto z-0'>
+        <div className='relative w-full h-screen min-h-[750px] z-0 flex flex-col justify-between'>
           <div
             className='h-full w-full absolute z-0'
             style={{
@@ -57,8 +58,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             }}
           >
             {/* Background Elements */}
-            <div className='absolute w-full h-full translate-y-[50px] overflow-hidden md:translate-y-0 z-1'>
-              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50vh] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-[1/1] z-1'>
+            <div className='absolute w-full h-3/4 translate-y-[50px] overflow-hidden md:translate-y-0 z-1'>
+              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:top-[50%] md:translate-y-[-30%] w-[100vw] max-w-[1500px] h-auto aspect-[1/1] z-1'>
                 <Image
                   src={`/RAY.svg`}
                   objectFit='contain'
@@ -67,130 +68,148 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 />
               </div>
               <div
-                className={`w-full h-full max-w-sm absolute-center xl:max-w-screen-2xl z-2 product-elements layout-${product.thumbnailFruit.layout}`}
+                className={`w-full h-full max-w-sm absolute-center xl:max-w-screen-2xl z-2 product-elements layout layout-3 ${product.thumbnailFruit.layout}`}
               >
-                {/* Fruit 1 */}
-                {product.thumbnailFruit.fruit1.asset && (
-                  <div className={`fruits fruit1`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit1)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit1)
-                        .width(200)
-                        .auto('format')
-                        .blur(50)
-                        .url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 2 */}
-                {product.thumbnailFruit.fruit2.asset && (
-                  <div className={`fruits fruit2`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit2)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit2.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 3 */}
-                {product.thumbnailFruit.fruit3.asset && (
-                  <div className={`fruits fruit3`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit3)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit3.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 4 */}
-                {product.thumbnailFruit.fruit1.asset && (
-                  <div className={`fruits fruit4`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit1)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 5 */}
-                {product.thumbnailFruit.fruit2.asset && (
-                  <div className={`fruits fruit5`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit2)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit2).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit2.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 6 */}
-                {product.thumbnailFruit.fruit3.asset && (
-                  <div className={`fruits fruit6`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit3)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit3).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit3.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
-                {/* Fruit 7 */}
-                {product.thumbnailFruit.fruit1.asset && (
-                  <div className={`fruits fruit7`}>
-                    <Image
-                      src={urlFor(product.thumbnailFruit.fruit1)
-                        .auto('format')
-                        .width(500)
-                        .url()}
-                      blurDataURL={urlFor(product.thumbnailFruit.fruit1).url()}
-                      placeholder='blur'
-                      alt={product.thumbnailFruit.fruit1.alt}
-                      layout='fill'
-                      objectFit='contain'
-                    />
-                  </div>
-                )}
+                <Parallax translateY={['-100px', '100px']} className="w-full h-full">
+                  {/* Fruit 1 */}
+                  {product.thumbnailFruit.fruit1.asset && (
+                    <div className={`fruits fruit1`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit1)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(product.thumbnailFruit.fruit1)
+                          .width(200)
+                          .auto('format')
+                          .blur(50)
+                          .url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit1.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 2 */}
+                  {product.thumbnailFruit.fruit2.asset && (
+                    <div className={`fruits fruit2`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit2)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit2
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit2.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 3 */}
+                  {product.thumbnailFruit.fruit3.asset && (
+                    <div className={`fruits fruit3`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit3)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit3
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit3.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 4 */}
+                  {product.thumbnailFruit.fruit1.asset && (
+                    <div className={`fruits fruit4`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit1)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit1
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit1.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 5 */}
+                  {product.thumbnailFruit.fruit2.asset && (
+                    <div className={`fruits fruit5`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit2)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit2
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit2.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 6 */}
+                  {product.thumbnailFruit.fruit3.asset && (
+                    <div className={`fruits fruit6`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit3)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit3
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit3.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                  {/* Fruit 7 */}
+                  {product.thumbnailFruit.fruit1.asset && (
+                    <div className={`fruits fruit7`}>
+                      <Image
+                        src={urlFor(product.thumbnailFruit.fruit1)
+                          .auto('format')
+                          .width(500)
+                          .url()}
+                        blurDataURL={urlFor(
+                          product.thumbnailFruit.fruit1
+                        ).url()}
+                        placeholder='blur'
+                        alt={product.thumbnailFruit.fruit1.alt}
+                        layout='fill'
+                        objectFit='contain'
+                      />
+                    </div>
+                  )}
+                </Parallax>
               </div>
+            </div>
+            {/* Solid Cover */}
+            <div className='absolute w-full h-1/4 bg-white bottom-0 z-1'>
+              <div className='product-detail-curve top-0 translate-y-[-100%] translate-x-[-50%]' />
             </div>
           </div>
           {/* Title Text */}
           <div
-            className={`text-center z-2 lg:pt-36 xl:pt-56 h-full justify-between relative`}
+            className={`text-center z-2 lg:pt-36 xl:pt-56 justify-between relative`}
             style={{
               color: product.textColor ? product.textColor.hex : '#175BA7',
             }}
@@ -206,15 +225,15 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             </h1>
           </div>
           {/* Product */}
-          <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 mt-20'>
-            <div className='w-80vw md:w-[35vw] min-w-[250px] h-[75vh] aspect-[1/1] z-2 relative border border-solid border-black'>
+          <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 bottom-0'>
+            <div className='w-80vw md:w-[35vw] min-w-[250px] aspect-[1/1] z-2 relative border border-solid border-black'>
               {product.listWeight.map((data, id) => (
                 <div
                   className={`${
                     productCurrent === data.title
                       ? 'absolute fade-in top-0'
                       : 'opacity-0 relative'
-                  }  aspect-[1/1] z-2 w-full h-full`}
+                  }  z-2 w-full h-full`}
                   key={id}
                 >
                   <Image
@@ -230,8 +249,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               ))}
             </div>
             {/* Information & Curve */}
-            <div className='absolute w-full h-[25vh] min-h-[250px] bg-white z-0'>
-              <div className='product-detail-curve ' />
+            <div className='absolute w-full h-[25vh] min-h-[250px]  z-0'>
               <div className='hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block '>
                 <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black '>
                   {ctx.language === 'id'
@@ -461,12 +479,12 @@ export async function getStaticPaths() {
   const paths = [];
 
   res.map((data) => {
-      return paths.push({
-        params: {
-          productSlug: data.slug.current,
-          productType: data.type.slug.current,
-        }
-      });
+    return paths.push({
+      params: {
+        productSlug: data.slug.current,
+        productType: data.type.slug.current,
+      },
+    });
   });
 
   return { paths, fallback: false };

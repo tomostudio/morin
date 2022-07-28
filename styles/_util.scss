@@ -27,14 +27,12 @@ main {
   background: $curve-color;
   border-radius: $curve-radius;
   position: absolute;
-  top: -$curve-height;
   left: 50%;
   transform: translateX(-50%);
 
   @media (min-width: 1400px) {
     height: $curve-height-desktop;
     border-radius: $curve-radius-desktop;
-    top: -$curve-height-desktop;
   }
 }
 
