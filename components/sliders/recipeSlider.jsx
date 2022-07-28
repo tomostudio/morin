@@ -1,8 +1,8 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode } from 'swiper';
-import RecipeCard from '../shared-module/recipeCard';
-import urlFor from '@/helpers/sanity/urlFor';
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode } from 'swiper'
+import RecipeCard from '../shared-module/recipeCard'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const RecipeSlider = ({ data, lang }) => {
   return (
@@ -34,7 +34,7 @@ const RecipeSlider = ({ data, lang }) => {
         </SwiperSlide>
       ))}
     </Swiper>
-  );
-};
+  )
+}
 
-export default RecipeSlider;
+export default RecipeSlider

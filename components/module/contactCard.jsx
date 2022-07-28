@@ -23,10 +23,11 @@ const ImageGallery = ({ name, images }) => {
         (item, index) =>
           item.asset && (
             <SwiperSlide>
-              <div className='w-full h-full'>
+              <div className='relative w-full h-30rem max-md:h-56'>
               <Image
-                src={urlFor(item).url()}
-                blurDataURL={urlFor(item).url()}
+                src={urlFor(item).auto('format').width(1000).url()}
+                blurDataURL={urlFor(item).auto('format').width(700)
+                .blur(25).url()}
                 placeholder="blur"
                 alt={`${name} (${index})`}
                 layout="fill"

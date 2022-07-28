@@ -70,7 +70,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               <div
                 className={`w-full h-full max-w-sm absolute-center xl:max-w-screen-2xl z-2 product-elements layout layout-3 ${product.thumbnailFruit.layout}`}
               >
-                <Parallax translateY={['-100px', '100px']} className="w-full h-full">
+                <Parallax
+                  translateY={['-100px', '100px']}
+                  className='w-full h-full'
+                >
                   {/* Fruit 1 */}
                   {product.thumbnailFruit.fruit1.asset && (
                     <div className={`fruits fruit1`}>
@@ -259,9 +262,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
+                          blurDataURL={urlFor(
                             product.decor_id.decor1.image
                           ).url()}
+                          placeholder='blur'
                           alt={product.decor_id.decor1.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -273,9 +277,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
+                          blurDataURL={urlFor(
                             product.decor_en.decor1.image
                           ).url()}
+                          placeholder='blur'
                           alt={product.decor_en.decor1.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -290,9 +295,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
+                          blurDataURL={urlFor(
                             product.decor_id.decor2.image
                           ).url()}
+                          placeholder='blur'
                           alt={product.decor_id.decor2.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}
@@ -304,9 +310,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .auto('format')
                             .width(1000)
                             .url()}
-                          placeholder={urlFor(
+                          blurDataURL={urlFor(
                             product.decor_en.decor2.image
                           ).url()}
+                          placeholder='blur'
                           alt={product.decor_en.decor2.image.alt}
                           layout={'fill'}
                           objectFit={'contain'}

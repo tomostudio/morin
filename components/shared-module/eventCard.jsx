@@ -2,19 +2,18 @@ import Image from "next/image";
 import StrokeButton from "../micro-module/strokeButton";
 import FancyLink from "../utils/fancyLink";
 
-const EventCard = ({ imgSrc, imgAlt, type, date, title, link }) => {
+const EventCard = ({ imgSrc, imgAlt, type, date, title, link, blur }) => {
   return (
     <div className="relative w-full h-full bg-white rounded-2xl overflow-hidden xl:rounded-3xl">
-      <div className="relative">
+      <div className="relative w-full h-[25rem]">
         <Image
           src={imgSrc}
-          blurDataURL={imgSrc}
+          blurDataURL={blur}
           alt={imgAlt}
           placeholder="blur"
-          width={590}
-          height={350}
+          layout="fill"
           objectFit="cover"
-          layout="responsive"
+          objectPosition="center"
         />
 
         <div className="hidden items-center justify-between w-full absolute top-0 left-0 p-5 lg:flex">

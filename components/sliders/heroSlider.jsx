@@ -30,22 +30,27 @@ const HeroSlider = ({ data, className, lang }) => {
                   <div className="relative w-screen h-screen">
                     <Container className="h-screen z-1">
                       <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="mx-auto md:hidden">
+                        <div className="relative w-full h-64 mx-auto md:hidden">
                           <Image
                             src={urlFor(item.textImage.imageMobile).url()}
                             // placeholder={``}
                             alt={item.textImage.imageDesktop.alt}
-                            width={350}
-                            height={230}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
                           />
                         </div>
-                        <div className="mx-auto hidden md:block">
+                        <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
                           <Image
                             src={urlFor(item.textImage.imageDesktop).url()}
-                            // placeholder={``}
+                            blurDataURL={urlFor(
+                              item.textImage.imageDesktop,
+                            ).url()}
+                            placeholder="blur"
                             alt={item.textImage.imageDesktop.alt}
-                            width={950}
-                            height={375}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
                           />
                         </div>
 
@@ -123,22 +128,27 @@ const HeroSlider = ({ data, className, lang }) => {
                   <div className="relative w-screen h-screen">
                     <Container className="h-screen z-1">
                       <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="mx-auto md:hidden">
+                        <div className="relative w-full h-64 mx-auto md:hidden">
                           <Image
                             src={urlFor(item.textImage.imageMobile).url()}
                             // placeholder={``}
                             alt={item.textImage.imageDesktop.alt}
-                            width={350}
-                            height={230}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
                           />
                         </div>
-                        <div className="mx-auto hidden md:block">
+                        <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
                           <Image
                             src={urlFor(item.textImage.imageDesktop).url()}
-                            // placeholder={``}
+                            blurDataURL={urlFor(
+                              item.textImage.imageDesktop,
+                            ).url()}
+                            placeholder="blur"
                             alt={item.textImage.imageDesktop.alt}
-                            width={950}
-                            height={375}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
                           />
                         </div>
 
