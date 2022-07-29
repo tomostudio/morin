@@ -12,6 +12,8 @@ import urlFor from '@/helpers/sanity/urlFor'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 import colors from '@/helpers/colors'
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/transitions';
 
 const ProductList = ({ productTypeAPI, seoAPI }) => {
   const [seo] = seoAPI
@@ -23,7 +25,13 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
   }, [])
 
   return (
-    <div className="w-full bg-morin-skyBlue">
+    <motion.div
+      className='w-full bg-morin-skyBlue'
+      initial='initial'
+      animate='enter'
+      exit='exit'
+      variants={fade}
+    >
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
         {/* <Header /> */}
         <SEO
@@ -166,7 +174,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
 
         <Footer lang={ctx.language} />
       </Layout>
-    </div>
+    </motion.div>
   )
 }
 

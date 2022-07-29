@@ -522,6 +522,9 @@
       -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
       filter: blur(4px);
     }
+    & .fruit8 {
+      display: none;
+    }
   }
   &.layout-2 {
     & .fruit1 {
@@ -575,57 +578,113 @@
       -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
       filter: blur(4px);
     }
+    & .fruit8 {
+      display: none;
+    }
   }
   &.layout-4,
   &.layout-3 {
     & .fruit1 {
       // 1
-      @apply top-[50%] translate-y-[-30%] right-0 left-auto translate-x-[25%] z-3;
-      @apply -rotate-2;
+      @apply top-[50%] translate-y-[-50%] left-0 right-auto translate-x-[-30%] z-3;
+      @apply -rotate-6;
     }
     & .fruit2 {
       // 2
       @apply h-[50%] scale-[100%];
-      @apply top-[0%] translate-y-[-20%] left-[5%] translate-x-[25%] z-3;
-      @apply rotate-6;
+      @apply bottom-[0%] translate-y-[10%] left-[50%] translate-x-[50%] z-3;
+      @apply rotate-12;
     }
     & .fruit3 {
       // 3
-      @apply h-[40%] scale-[80%];
-      @apply -rotate-45;
-      @apply top-auto bottom-0  translate-y-[15%] right-[25%] translate-x-[0%] z-3;
-      -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
-      filter: blur(2px);
+      display: none;
     }
     & .fruit4 {
       // 1
       @apply h-[30%] scale-[100%];
       @apply -rotate-12;
-      @apply top-[50%]  translate-y-[-50%] left-[0%] translate-x-[20%] z-2;
+      @apply top-[0%] translate-y-[5%] left-[45%] translate-x-[-100%] z-2;
       -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
       filter: blur(2px);
     }
     & .fruit5 {
       // 2
       @apply h-[25%] scale-[80%];
-      @apply -rotate-2;
-      @apply top-[5%]  translate-y-[20%] right-[20%] translate-x-[0%] z-2;
+      @apply rotate-45;
+      @apply top-[50%]  translate-y-[20%] left-[20%] translate-x-[0%] z-2;
       -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
       filter: blur(2px);
     }
     & .fruit6 {
       // 3
-      @apply h-[25%] scale-[80%];
-      @apply -rotate-12;
-      @apply top-auto bottom-[15%]  translate-y-[-20%] left-[25%] translate-x-[10%] z-2;
-      -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
-      filter: blur(4px);
+      display: none;
     }
     & .fruit7 {
       // 1
       @apply h-[10%] scale-[90%];
       @apply rotate-45;
-      @apply top-[20%]  translate-y-[0%] left-[35%] translate-x-[20%] z-1;
+      @apply top-[50%]  translate-y-[-25%] right-[5%] translate-x-[0%] z-1;
+      -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
+      filter: blur(4px);
+    }
+    & .fruit8 {
+      // 2
+      @apply h-[10%] scale-[95%];
+      @apply rotate-45;
+      @apply top-[15%]  translate-y-[0%] right-[25%] translate-x-[0%] z-1;
+      -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
+      filter: blur(4px);
+    }
+  }
+  &.layout-4 {
+    & .fruit1 {
+      // 1
+      @apply top-[0%] translate-y-[-10%] left-auto right-[10%] translate-x-[-0%] z-3;
+      @apply -rotate-12;
+    }
+    & .fruit2 {
+      // 2
+      @apply h-[50%] scale-[100%];
+      @apply bottom-[0%] translate-y-[10%] right-[50%] translate-x-[-150%] z-3;
+      @apply rotate-45;
+    }
+    & .fruit3 {
+      // 3
+      display: none;
+    }
+    & .fruit4 {
+      // 1
+      @apply h-[30%] scale-[100%];
+      @apply rotate-[60deg];
+      @apply top-[0%] translate-y-[5%] left-[25%] translate-x-[0%] z-2;
+      -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
+      filter: blur(2px);
+    }
+    & .fruit5 {
+      // 2
+      @apply h-[25%] scale-[80%];
+      @apply rotate-12;
+      @apply top-[50%] translate-y-[-50%] left-[0%] translate-x-[-10%] z-2;
+      -webkit-filter: blur(2px); /* Safari 6.0 - 9.0 */
+      filter: blur(2px);
+    }
+    & .fruit6 {
+      // 3
+      display: none;
+    }
+    & .fruit7 {
+      // 1
+      @apply h-[10%] scale-[100%];
+      @apply rotate-45;
+      @apply bottom-[40%] top-auto translate-y-[25%] right-[7.5%] translate-x-[0%] z-1;
+      -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
+      filter: blur(4px);
+    }
+    & .fruit8 {
+      // 2
+      @apply h-[10%] scale-[100%];
+      @apply rotate-45;
+      @apply bottom-[50%] top-auto translate-y-[75%] right-[25%] translate-x-[0%] z-1;
       -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
       filter: blur(4px);
     }

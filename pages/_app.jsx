@@ -62,14 +62,14 @@ export default function App({ Component, pageProps }) {
         />
         {/* FAVICON  */}
       </Head>
-      <AnimatePresence exitBeforeEnter>
-        <AppWrapper>
-          <Header waLink={pageProps.seoAPI[0].whatsapp} />
-          <ParallaxProvider>
+      <AppWrapper>
+        <Header waLink={pageProps.seoAPI[0].whatsapp} />
+        <ParallaxProvider>
+          <AnimatePresence exitBeforeEnter>
             <Component {...pageProps} key={router.asPath} />
-          </ParallaxProvider>
-        </AppWrapper>
-      </AnimatePresence>
+          </AnimatePresence>
+        </ParallaxProvider>
+      </AppWrapper>
     </>
   );
 }

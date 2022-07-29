@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Layout from '@/components/module/layout';
 import Footer from '@/components/module/footer';
@@ -9,7 +8,6 @@ import { fade } from '@/helpers/transitions';
 import colors from '@/helpers/colors';
 import HeroSlider from '@/components/sliders/heroSlider';
 import HighlightSlider from '@/components/sliders/highlightSlider';
-import InstagramSlider from '@/components/sliders/instagramSlider';
 import RecipeSlider from '@/components/sliders/recipeSlider';
 import StrokeButton from '@/components/micro-module/strokeButton';
 import SolidButton from '@/components/micro-module/solidButton';

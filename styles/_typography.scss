@@ -20,7 +20,7 @@
 }
 
 @mixin default-type {
-  font-family: 'Poppins', Helvetica, sans-serif;
+  font-family: "Poppins", Helvetica, sans-serif;
   font-weight: 500;
 }
 
@@ -35,11 +35,19 @@ h2,
 .h2,
 h3,
 .h3 {
-  @apply p-0 mb-3 font-bold;
+  @apply p-0 mb-2;
 }
 
 .mobileMenu.pointer-events-none {
   & * {
     pointer-events: none !important;
   }
+}
+
+h1 {
+  font-family: "Poppins", Helvetica, sans-serif;
+  @apply font-nutmeg text-mtitleBig leading-tight lg:text-h2 xl:text-h2;
+}
+h2{
+  @apply font-default text-default;
 }
