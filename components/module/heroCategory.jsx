@@ -39,6 +39,7 @@ const HeroCategory = ({
             <Image
               src={`/RAY.svg`}
               objectFit='contain'
+              objectPosition={'center center'}
               layout='fill'
               className='animate-spin-slow'
             />
@@ -56,6 +57,7 @@ const HeroCategory = ({
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
+                objectPosition={'center center'}
                 layout='fill'
               />
             </div>
@@ -73,6 +75,7 @@ const HeroCategory = ({
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
+                objectPosition={'center center'}
                 layout='fill'
               />
             </div>
@@ -90,6 +93,7 @@ const HeroCategory = ({
                 placeholder='blur'
                 alt={imgAlt}
                 objectFit='contain'
+                objectPosition={'center center'}
                 layout='fill'
               />
             </div>

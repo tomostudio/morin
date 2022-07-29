@@ -16,37 +16,23 @@ const RecipeSlider = ({ data, lang }) => {
       modules={[FreeMode]}
       style={{ padding: '20px 16px' }}
     >
-      {data?.slice(0, 3).map((item) =>
-        lang === 'id' ? (
-          <SwiperSlide key={item.title_id}>
+      {data?.slice(0, 3).map((item) => (
+        <SwiperSlide key={item.title_id}>
+          {item.thumbnail.asset && (
             <RecipeCard
-              imgSrc={urlFor(item.thumbnail).auto('format').width(500).url()}
+              imgSrc={urlFor(item.thumbnail).width(600).auto('format').url()}
               imgPlaceholder={urlFor(item.thumbnail)
-                .auto('format')
                 .width(300)
                 .blur(50)
-                .url()}
-              imgAlt={item.thumbnail.alt}
-              title={item.title_id}
-              link={`/recipes/${item.slug.current}`}
-            />
-          </SwiperSlide>
-        ) : (
-          <SwiperSlide key={item.title_en}>
-            <RecipeCard
-              imgSrc={urlFor(item.thumbnail).auto('format').width(500).url()}
-              imgPlaceholder={urlFor(item.thumbnail)
                 .auto('format')
-                .width(300)
-                .blur(50)
                 .url()}
               imgAlt={item.thumbnail.alt}
-              title={item.title_en}
+              title={lang === 'id' ? item.title_id : item.title_en}
               link={`/recipes/${item.slug.current}`}
             />
-          </SwiperSlide>
-        ),
-      )}
+          )}
+        </SwiperSlide>
+      ))}
     </Swiper>
   )
 }
