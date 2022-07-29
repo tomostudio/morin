@@ -277,7 +277,7 @@ const InstructionCard = ({
                 placeholder="blur"
                 alt={i.alt}
                 layout="fill"
-                objectFit='cover'
+                objectFit="cover"
                 objectPosition="center"
               />
             </div>
@@ -310,11 +310,15 @@ const ImageGallery = ({ data, onClick }) => {
           >
             <Image
               src={urlFor(item).auto('format').width(400).url()}
-              blurDataURL={urlFor(item).auto('format').width(200).blur(50).url()}
+              blurDataURL={urlFor(item)
+                .auto('format')
+                .width(200)
+                .blur(50)
+                .url()}
               placeholder="blur"
               alt={item.alt}
               layout="fill"
-              objectFit='cover'
+              objectFit="cover"
               objectPosition="center"
             />
           </button>
@@ -345,17 +349,17 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
     >
       {data?.map((item, index) => (
         <SwiperSlide key={index}>
-        <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
-          <Image
-            src={item.large}
-            blurDataURL={item.small}
-            placeholder="blur"
-            alt="Image Gallery"
-            layout="fill"
-            objectFit='cover'
-            objectPosition="center"
-          />
-        </div>
+          <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
+            <Image
+              src={item.large}
+              blurDataURL={item.small}
+              placeholder="blur"
+              alt="Image Gallery"
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
+          </div>
         </SwiperSlide>
       ))}
       <button ref={swiperPrev} className={`${sliderNav} ${navLeft}`}>
@@ -530,24 +534,35 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                 <div className="">
                   {ctx.language === 'id'
                     ? recipe.ingredients_id?.map((item) => (
-                        <RecipeCheckbox
-                          key={item}
-                          name={item}
-                          label={item}
-                          value={item}
-                          checked={ingredientsChecked.includes(item)}
-                          onChange={() => handleCheckIngredients(item)}
-                        />
+                        <>
+                          <span className='font-bold'>{item.title}</span>
+                          {item.description.map((data) => (
+                            <RecipeCheckbox
+                              key={data}
+                              name={data}
+                              label={data}
+                              value={data}
+                              checked={ingredientsChecked.includes(data)}
+                              onChange={() => handleCheckIngredients(data)}
+                            />
+                          ))}
+                        </>
                       ))
                     : recipe.ingredients_en?.map((item) => (
-                        <RecipeCheckbox
-                          key={item}
-                          name={item}
-                          label={item}
-                          value={item}
-                          checked={ingredientsChecked.includes(item)}
-                          onChange={() => handleCheckIngredients(item)}
-                        />
+                        <>
+                          <span className='block mb-3 font-bold'>{item.title}</span>
+                          {item.description.map((data) => (
+                            <RecipeCheckbox
+                              key={data}
+                              name={data}
+                              label={data}
+                              value={data}
+                              className="m"
+                              checked={ingredientsChecked.includes(data)}
+                              onChange={() => handleCheckIngredients(data)}
+                            />
+                          ))}
+                        </>
                       ))}
                 </div>
               </div>
@@ -566,7 +581,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                       key={`${item.title_en}${index}`}
                     >
                       <ProductCard
-                        title={ctx.language === 'id' ? item.title_id : item.title_en}
+                        title={
+                          ctx.language === 'id' ? item.title_id : item.title_en
+                        }
                         bgColor={item.backgroundColor.hex}
                         imgSrc={urlFor(item.thumbnail)
                           .auto('format')
