@@ -118,7 +118,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit2
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit2.alt}
                           layout='fill'
@@ -136,7 +136,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit3
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit3.alt}
                           layout='fill'
@@ -159,7 +159,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit1
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit1.alt}
                           layout='fill'
@@ -177,7 +177,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit2
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit2.alt}
                           layout='fill'
@@ -195,7 +195,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit3
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit3.alt}
                           layout='fill'
@@ -218,7 +218,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit1
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit1.alt}
                           layout='fill'
@@ -236,7 +236,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                             .url()}
                           blurDataURL={urlFor(
                             product.thumbnailFruit.fruit2
-                          ).url()}
+                          ).auto("format").width(250).blur(25).url()}
                           placeholder='blur'
                           alt={product.thumbnailFruit.fruit2.alt}
                           layout='fill'
@@ -283,7 +283,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   >
                     <Image
                       src={urlFor(data.image).auto('format').width(1000).url()}
-                      blurDataURL={urlFor(data.image).url()}
+                      blurDataURL={urlFor(data.image).auto('format').width(600).blur(25).url()}
                       placeholder='blur'
                       alt={data.image.alt}
                       objectFit='contain'
@@ -306,7 +306,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               .url()}
                             blurDataURL={urlFor(
                               product.decor_id.decor1.image
-                            ).url()}
+                            ).auto("format").width(600).blur(25).url()}
                             placeholder='blur'
                             alt={product.decor_id.decor1.image.alt}
                             layout={'fill'}
@@ -321,7 +321,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               .url()}
                             blurDataURL={urlFor(
                               product.decor_en.decor1.image
-                            ).url()}
+                            ).auto("format").width(600).blur(25).url()}
                             placeholder='blur'
                             alt={product.decor_en.decor1.image.alt}
                             layout={'fill'}
@@ -339,7 +339,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               .url()}
                             blurDataURL={urlFor(
                               product.decor_id.decor2.image
-                            ).url()}
+                            ).auto("format").width(600).blur(25).url()}
                             placeholder='blur'
                             alt={product.decor_id.decor2.image.alt}
                             layout={'fill'}
@@ -354,7 +354,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               .url()}
                             blurDataURL={urlFor(
                               product.decor_en.decor2.image
-                            ).url()}
+                            ).auto('format').width(600).blur(25).url()}
                             placeholder='blur'
                             alt={product.decor_en.decor2.image.alt}
                             layout={'fill'}

@@ -58,6 +58,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
               blurDataURL={urlFor(event.background)
                 .auto('format')
                 .width(1400)
+                .blur(25)
                 .url()}
               placeholder='blur'
               alt={event.background.alt}

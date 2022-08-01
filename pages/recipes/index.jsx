@@ -503,8 +503,8 @@ const Recipe = ({
           >
             <Image
               priority
-              src={urlFor(recipe.background).url()}
-              placeholder={urlFor(recipe.background).url()}
+              src={urlFor(recipe.background).auto("format").width(1928).url()}
+              placeholder={urlFor(recipe.background).auto("format").width(1600).blur(25).url()}
               alt={recipe.background.alt}
               layout="fill"
               objectFit="cover"

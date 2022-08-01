@@ -189,8 +189,8 @@ const About = ({ aboutAPI, seoAPI }) => {
                       ? about.our_process.titleCover_id
                       : about.our_process.titleCover_en
                   }
-                  imgSrc={urlFor(about.our_process.thumbnail).url()}
-                  imgPlaceholder={urlFor(about.our_process.thumbnail).url()}
+                  imgSrc={urlFor(about.our_process.thumbnail).auto("format").width(800).url()}
+                  imgPlaceholder={urlFor(about.our_process.thumbnail).auto("format").width(400).blur(25).url()}
                   imgAlt={about.our_process.thumbnail.alt}
                   onClick={() => openModal('OUR PROCESS')}
                   lang={ctx.language}
@@ -204,8 +204,8 @@ const About = ({ aboutAPI, seoAPI }) => {
                       ? about.visi_misi.titleCover_id
                       : about.visi_misi.titleCover_en
                   }
-                  imgSrc={urlFor(about.visi_misi.thumbnail).url()}
-                  imgPlaceholder={urlFor(about.visi_misi.thumbnail).url()}
+                  imgSrc={urlFor(about.visi_misi.thumbnail).auto("format").width(800).url()}
+                  imgPlaceholder={urlFor(about.visi_misi.thumbnail).auto("format").width(400).blur(25).url()}
                   imgAlt={about.visi_misi.thumbnail.alt}
                   onClick={() => openModal('VISI & MISI')}
                   lang={ctx.language}
@@ -249,6 +249,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                     blurDataURL={urlFor(props.value)
                       .auto('format')
                       .width(500)
+                      .blur(25)
                       .url()}
                     placeholder='blur'
                     alt={props.value.alt}
@@ -293,6 +294,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                     blurDataURL={urlFor(props.value)
                       .auto('format')
                       .width(500)
+                      .blur(25)
                       .url()}
                     placeholder='blur'
                     alt={props.value.alt}
@@ -338,6 +340,7 @@ const About = ({ aboutAPI, seoAPI }) => {
                     blurDataURL={urlFor(props.value)
                       .auto('format')
                       .width(500)
+                      .blur(25)
                       .url()}
                     placeholder='blur'
                     alt={props.value.alt}

@@ -143,6 +143,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                           blurDataURL={urlFor(props.value.image)
                             .auto('format')
                             .width(1500)
+                            .blur(25)
                             .url()}
                           alt={props.value.image.alt}
                           placeholder='blur'
@@ -162,6 +163,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                             blurDataURL={urlFor(props.value.image)
                               .auto('format')
                               .width(500)
+                              .blur(25)
                               .url()}
                             alt={props.value.image.alt}
                             placeholder='blur'

@@ -74,6 +74,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                             blurDataURL={urlFor(item.image)
                               .auto('format')
                               .width(150)
+                              .blur(25)
                               .url()}
                             placeholder='blur'
                             alt={item.image.alt}
@@ -115,6 +116,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
                               blurDataURL={urlFor(item.image)
                                 .auto('format')
                                 .width(150)
+                                .blur(25)
                                 .url()}
                               placeholder='blur'
                               alt={item.image.alt}

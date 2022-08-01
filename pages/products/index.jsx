@@ -53,6 +53,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
               blurDataURL={urlFor(product.background)
                 .auto('format')
                 .width(1400)
+                .blur(25)
                 .url()}
               placeholder='blur'
               alt={product.background.alt}

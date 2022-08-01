@@ -168,8 +168,8 @@ const InstructionCard = ({
               key={index}
             >
               <Image
-                src={urlFor(i).url()}
-                blurDataURL={urlFor(i).url()}
+                src={urlFor(i).auto("format").width(600).url()}
+                blurDataURL={urlFor(i).auto("format").width(300).blur(25).url()}
                 placeholder="blur"
                 alt={i.alt}
                 layout="fill"
@@ -351,10 +351,12 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="lg:hidden">
                 <Image
                   priority
-                  src={urlFor(recipe.thumbnail).width(1200).height(690).url()}
+                  src={urlFor(recipe.thumbnail).auto("format").width(1200).height(690).url()}
                   blurDataURL={urlFor(recipe.thumbnail)
+                    .auto("format")
                     .width(1200)
                     .height(690)
+                    .blur(25)
                     .url()}
                   placeholder="blur"
                   alt={recipe.thumbnail.alt}
@@ -368,8 +370,10 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                 <Image
                   src={urlFor(recipe.thumbnail).width(1200).height(690).url()}
                   blurDataURL={urlFor(recipe.thumbnail)
+                    .auto("format")
                     .width(1200)
                     .height(690)
+                    .blur(25)
                     .url()}
                   placeholder="blur"
                   alt={recipe.thumbnail.alt}

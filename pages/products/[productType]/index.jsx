@@ -70,6 +70,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                       blurDataURL={urlFor(productType.decor_id.decor1.image)
                         .auto('format')
                         .width(300)
+                        .blur(25)
                         .url()}
                       placeholder="blur"
                       alt={productType.decor_id.decor1.image.alt}
@@ -87,6 +88,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                       blurDataURL={urlFor(productType.decor_en.decor1.image)
                         .auto('format')
                         .width(300)
+                        .blur(25)
                         .url()}
                       placeholder="blur"
                       alt={productType.decor_en.decor1.image.alt}
@@ -106,6 +108,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                       blurDataURL={urlFor(productType.decor_id.decor2.image)
                         .auto('format')
                         .width(300)
+                        .blur(25)
                         .url()}
                       placeholder="blur"
                       alt={productType.decor_id.decor2.image.alt}
@@ -122,6 +125,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
                       blurDataURL={urlFor(productType.decor_en.decor2.image)
                         .auto('format')
                         .width(300)
+                        .blur(25)
                         .url()}
                       placeholder="blur"
                       alt={productType.decor_en.decor2.image.alt}
