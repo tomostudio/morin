@@ -23,7 +23,7 @@ const ImageGallery = ({ name, images }) => {
         (item, index) =>
           item.asset && (
             <SwiperSlide key={index}>
-              <div className='relative w-full h-30rem max-md:h-56'>
+              <div className='relative w-full h-auto md:h-30rem aspect-[16/9] md:aspect-none'>
                 <Image
                   src={urlFor(item).auto('format').width(1000).url()}
                   blurDataURL={urlFor(item)
@@ -57,7 +57,7 @@ const ContactCard = ({
       <div className='contact-card-slider lg:w-3/5'>
         <ImageGallery name={label} images={imageData} />
       </div>
-      <div className='flex flex-col text-center text-morin-blue bg-morin-skyBlue pt-16 pb-7 px-20 lg:w-2/5 lg:text-left lg:justify-between lg:px-10 lg:pt-8 lg:pb-12'>
+      <div className='flex flex-col text-center text-morin-blue bg-morin-skyBlue pt-8 pb-8 px-8 lg:w-2/5 lg:text-left lg:justify-between lg:px-10 lg:pt-8 lg:pb-12'>
         <span className='text-mtitle font-nutmeg font-bold mb-3 lg:mb-8 xl:text-h2'>
           {label}
         </span>
@@ -73,14 +73,9 @@ const ContactCard = ({
               },
             }}
           />
-
-          {/* <span className="mb-4 xl:mb-8">{address}</span>
-
-          {phone && <span>Phone : {phone}</span>}
-          {email && <span className="mb-4 xl:mb-8">Email : {email}</span>} */}
         </div>
         <StrokeButton
-          className='mt-2 lg:ml-0 xl:mt-4'
+          className='mt-6 lg:ml-0 xl:mt-4'
           color={colors.morinBlue}
           destination={maps}
           targetBlank

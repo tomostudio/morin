@@ -39,7 +39,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
       className='w-full bg-white'
     >
       <SEO
-        title={ctx.language === 'id' ? 'Tanya Jawab' : 'Faq'}
+        title={ctx.language === 'id' ? 'Tanya Jawab' : 'FAQ'}
         pagelink={router.pathname}
         inputSEO={ctx.language === 'id' ? faq.seo_id : faq.seo_en}
         defaultSEO={
@@ -60,12 +60,6 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
                 ? 'Pertanyaan yang Sering Diajukan'
                 : 'Frequently Asked Questions'}
             </div>
-            {/* <div className="max-w-[350px] mx-auto md:hidden">
-              <FAQMobile />
-            </div>
-            <div className="hidden max-w-[970px] mx-auto md:block">
-              <FAQDesktop />
-            </div> */}
           </div>
 
           <div className='flex flex-wrap -mx-1 lg:-mx-2.5'>
