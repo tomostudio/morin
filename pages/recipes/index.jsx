@@ -463,53 +463,6 @@ const Recipe = ({
           return tempArr
         }
       }
-
-      // if (val.cooking_time) {
-      //   if (tempArr.some((o) => o.hasOwnProperty('cooking_time'))) {
-      //     if (
-      //       tempArr
-      //         .map((object) => object.cooking_time)
-      //         .includes(val.cooking_time)
-      //     ) {
-      //       const index = tempArr
-      //         .map((object) => object.cooking_time)
-      //         .indexOf(val.cooking_time)
-      //       tempArr.splice(index, 1)
-      //       return tempArr
-      //     } else {
-      //       const index = tempArr
-      //         .map((object) => object.cooking_time)
-      //         .indexOf(tempArr.find((o) => o.cooking_time).cooking_time)
-      //       tempArr.splice(index, 1)
-      //       tempArr.push(val)
-      //       return tempArr
-      //     }
-      //   } else {
-      //     tempArr.push(val)
-      //     return tempArr
-      //   }
-      // }
-      // if (val.category) {
-      //   if (tempArr.some((o) => o.hasOwnProperty('category'))) {
-      //     if (tempArr.map((object) => object.category).includes(val.category)) {
-      //       const index = tempArr
-      //         .map((object) => object.category)
-      //         .indexOf(val.category)
-      //       tempArr.splice(index, 1)
-      //       return tempArr
-      //     } else {
-      //       const index = tempArr
-      //         .map((object) => object.category)
-      //         .indexOf(tempArr.find((o) => o.category).category)
-      //       tempArr.splice(index, 1)
-      //       tempArr.push(val)
-      //       return tempArr
-      //     }
-      //   } else {
-      //     tempArr.push(val)
-      //     return tempArr
-      //   }
-      // }
     })
   }
 
