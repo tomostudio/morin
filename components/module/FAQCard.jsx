@@ -11,7 +11,7 @@ const FAQCard = ({ title, onClick }) => {
         className="w-full h-full absolute top-0 left-0"
       />
       <div />
-      <span className="font-nutmeg text-default text-center leading-tight md:text-mtitleSmall xl:text-mtitle 2xl:text-mtitleBig">
+      <span className="font-nutmeg text-[20px] text-center leading-tight md:text-mtitleSmall xl:text-mtitle 2xl:text-mtitleBig">
         {title}
       </span>
       <span className="flex flex-wrap items-center justify-center w-9 h-6 border-morin-blue border-solid border-2 rounded-full px-2 mx-auto md:w-11 md:h-8">

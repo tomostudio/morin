@@ -82,7 +82,7 @@ const Footer = ({ className, lang }) => {
                 destination="/faq"
                 className={`footer-link ${defaultHover}`}
               >
-                {lang === 'id' ? 'Tanya Jawab' : 'Faq'}
+                {lang === 'id' ? 'Tanya Jawab' : 'FAQ'}
               </FancyLink>
               <FancyLink
                 destination="/contact"
