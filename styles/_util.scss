@@ -57,6 +57,20 @@ main {
   }
 }
 
+.hover-black {
+  &:hover {
+    & * {
+      color: black !important;
+    }
+    & svg:not(.fill-hover) * {
+      stroke: black !important;
+    }
+    & svg.fill-hover * {
+      fill: black !important;
+    }
+  }
+}
+
 .solid-button {
   & * {
     @apply transition-colors duration-300;

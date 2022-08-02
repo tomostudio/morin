@@ -19,69 +19,7 @@ import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
-
-const recipeSliderData = [
-  {
-    imgSrc: '/recipe/recipe-1.jpg',
-    imgPlaceholder: '/recipe/recipe-1.png',
-    imgAlt: 'Mixed Berry Jam Tartlets',
-    title: 'Mixed Berry Jam Tartlets',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-2.jpg',
-    imgPlaceholder: '/recipe/recipe-2.png',
-    imgAlt: 'Strawberry Trifle',
-    title: 'Strawberry Trifle',
-    link: '/recipe/recipe-id',
-  },
-  {
-    imgSrc: '/recipe/recipe-3.jpg',
-    imgPlaceholder: '/recipe/recipe-3.png',
-    imgAlt: 'Chocolate Fudge Cupcakes',
-    title: 'Chocolate Fudge Cupcakes',
-    link: '/recipe/recipe-id',
-  },
-]
-
-const imageGalleryData = [
-  {
-    small: '/recipe/gallery-1.jpg',
-    large: '/recipe/gallery-1.svg',
-  },
-  {
-    small: '/recipe/gallery-2.jpg',
-    large: '/recipe/gallery-2.svg',
-  },
-  {
-    small: '/recipe/gallery-3.jpg',
-    large: '/recipe/gallery-3.svg',
-  },
-  {
-    small: '/recipe/gallery-1.jpg',
-    large: '/recipe/gallery-1.svg',
-  },
-  {
-    small: '/recipe/gallery-2.jpg',
-    large: '/recipe/gallery-2.svg',
-  },
-  {
-    small: '/recipe/gallery-3.jpg',
-    large: '/recipe/gallery-3.svg',
-  },
-  {
-    small: '/recipe/gallery-1.jpg',
-    large: '/recipe/gallery-1.svg',
-  },
-  {
-    small: '/recipe/gallery-2.jpg',
-    large: '/recipe/gallery-2.svg',
-  },
-  {
-    small: '/recipe/gallery-3.jpg',
-    large: '/recipe/gallery-3.svg',
-  },
-]
+import getYoutube from '@/components/utils/getYoutube'
 
 // COMPONENTS
 const RecipeCheckbox = ({
@@ -168,8 +106,8 @@ const InstructionCard = ({
               key={index}
             >
               <Image
-                src={urlFor(i).auto("format").width(600).url()}
-                blurDataURL={urlFor(i).auto("format").width(300).blur(25).url()}
+                src={urlFor(i).auto('format').width(600).url()}
+                blurDataURL={urlFor(i).auto('format').width(300).blur(25).url()}
                 placeholder="blur"
                 alt={i.alt}
                 layout="fill"
@@ -204,19 +142,35 @@ const ImageGallery = ({ data, onClick }) => {
             onClick={() => onClick(index)}
             className={`${imageWrapper} relative w-80 h-52`}
           >
-            <Image
-              src={urlFor(item).auto('format').width(400).url()}
-              blurDataURL={urlFor(item)
-                .auto('format')
-                .width(200)
-                .blur(50)
-                .url()}
-              placeholder="blur"
-              alt={item.alt}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
+            {item._type === 'image' ? (
+              <Image
+                src={urlFor(item).auto('format').width(400).url()}
+                blurDataURL={urlFor(item)
+                  .auto('format')
+                  .width(200)
+                  .blur(50)
+                  .url()}
+                placeholder="blur"
+                alt={item.alt}
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            ) : (
+              <Image
+                src={urlFor(item.thumbnail).auto('format').width(400).url()}
+                blurDataURL={urlFor(item.thumbnail)
+                  .auto('format')
+                  .width(200)
+                  .blur(50)
+                  .url()}
+                placeholder="blur"
+                alt={item.thumbnail.alt}
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            )}
           </button>
         </SwiperSlide>
       ))}
@@ -240,23 +194,48 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         prevEl: swiperPrev.current,
         nextEl: swiperNext.current,
       }}
+      onBeforeInit={(swiper) => {
+           swiper.params.navigation.prevEl = swiperPrev.current;
+           swiper.params.navigation.nextEl = swiperNext.current;
+      }}
       slidesPerView={1}
       initialSlide={initialSlide}
     >
       {data?.map((item, index) => (
-        <SwiperSlide key={index}>
-          <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
-            <Image
-              src={item.large}
-              blurDataURL={item.small}
-              placeholder="blur"
-              alt="Image Gallery"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-          </div>
-        </SwiperSlide>
+        <>
+          {item._type === 'image' ? (
+            <SwiperSlide key={index}>
+              <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
+                <Image
+                  src={urlFor(item).auto('format').width(1928).url()}
+                  blurDataURL={urlFor(item)
+                    .auto('format')
+                    .width(1500)
+                    .blur(25)
+                    .url()}
+                  placeholder="blur"
+                  alt={item.alt}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </div>
+            </SwiperSlide>
+          ) : (
+            <SwiperSlide key={index}>
+              <div
+                className={`relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem aspect-[16/9] max-md:aspect-w-1 max-md:aspect-h-1`}
+              >
+                <iframe
+                  src={'https://www.youtube.com/embed/' + getYoutube(item.link)}
+                  id="videos"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </SwiperSlide>
+          )}
+        </>
       ))}
       <button ref={swiperPrev} className={`${sliderNav} ${navLeft}`}>
         <ArrowLarge color={colors.morinRed} />
@@ -351,9 +330,13 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="lg:hidden">
                 <Image
                   priority
-                  src={urlFor(recipe.thumbnail).auto("format").width(1200).height(690).url()}
+                  src={urlFor(recipe.thumbnail)
+                    .auto('format')
+                    .width(1200)
+                    .height(690)
+                    .url()}
                   blurDataURL={urlFor(recipe.thumbnail)
-                    .auto("format")
+                    .auto('format')
                     .width(1200)
                     .height(690)
                     .blur(25)
@@ -370,7 +353,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                 <Image
                   src={urlFor(recipe.thumbnail).width(1200).height(690).url()}
                   blurDataURL={urlFor(recipe.thumbnail)
-                    .auto("format")
+                    .auto('format')
                     .width(1200)
                     .height(690)
                     .blur(25)
@@ -598,7 +581,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
             )}
 
             {/* more recipes */}
-            {recipeSliderData?.length > 0 && (
+            {recipeListAPI?.length > 0 && (
               <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
                 <div className="flex flex-wrap w-full">
                   <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
@@ -626,14 +609,11 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
 
                   <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
                     {recipe.related.option ? (
-                      <RecipeSlider
-                        data={recipeListAPI}
-                        onClick={(url) => handleImageGallery(url)}
-                      />
+                      <RecipeSlider data={recipeListAPI} lang={ctx.language} />
                     ) : (
                       <RecipeSlider
                         data={recipe.related.manual}
-                        onClick={(url) => handleImageGallery(url)}
+                        lang={ctx.language}
                       />
                     )}
                   </div>
@@ -647,7 +627,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               onRequestClose={() => setGalleryPopup(false)}
             >
               <ImageGalleryHiRes
-                data={imageGalleryData}
+                data={recipe.gallery}
                 initialSlide={gallerySlide}
               />
             </GalleryModal>

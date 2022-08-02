@@ -11,6 +11,7 @@ const StrokeButton = ({
   destination,
   targetBlank,
   ariaLabel,
+  hover,
   onClick = () => {},
   ...others
 }) => {
@@ -43,7 +44,7 @@ const StrokeButton = ({
         aria-label={ariaLabel}
         className={`${defaultClass} bg-[${color.toLowerCase()}]   ${
           className ? className : ''
-        }`}
+        } ${hover === "black" && 'hover-black'}`}
         style={{ color: color, borderColor: color }}
         onClick={onClick}
         {...others}

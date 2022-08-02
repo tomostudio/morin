@@ -58,6 +58,7 @@ const HeroSlider = ({ data, className, lang }) => {
                         <StrokeButton
                           destination="/products"
                           color={colors.white}
+                          hover="black"
                           className="mt-5 md:mt-0"
                         >
                           {lang === 'en'
@@ -94,6 +95,7 @@ const HeroSlider = ({ data, className, lang }) => {
                         </span>
                         <StrokeButton
                           destination="/products"
+                          hover="black"
                           color={colors.white}
                           className="mt-5"
                         >
@@ -156,6 +158,7 @@ const HeroSlider = ({ data, className, lang }) => {
 
                         <StrokeButton
                           destination="/products"
+                          hover="black"
                           color={colors.white}
                           className="mt-5 md:mt-0"
                         >
@@ -193,6 +196,7 @@ const HeroSlider = ({ data, className, lang }) => {
                         </span>
                         <StrokeButton
                           destination="/products"
+                          hover="black"
                           color={colors.white}
                           className="mt-5"
                         >
