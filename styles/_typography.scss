@@ -1,32 +1,36 @@
 /* Content Stylings */
 .content {
+  @apply px-4 md:px-10;
   & > * {
-    @apply max-w-screen-md mb-8 last:mb-0 mx-auto leading-tight;
+    @apply max-w-screen-md mb-6 md:mb-8 last:mb-0 mx-auto leading-tight px-6;
     & > a {
       @apply underline hover:text-opacity-25 focus:text-opacity-25;
     }
   }
   & > .image {
-    @apply relative block max-w-screen-2xl max-h-[700px] my-14 rounded-2xl overflow-hidden w-full h-auto;
+    @apply relative flex max-w-screen-2xl max-h-[700px] my-8 md:my-14 rounded-2xl overflow-hidden w-full h-auto px-0;
     @apply flex justify-center items-center;
     &.fit {
-      @apply max-w-[500px] max-h-max;
+      @apply max-w-screen-md max-h-max px-12 md:px-24 py-0 leading-none;
+      & > div {
+        @apply rounded-2xl overflow-hidden flex leading-none;
+      }
     }
   }
   & > p {
     @apply font-default leading-normal text-default;
   }
   & > h1 {
-    @apply font-nutmeg font-bold text-h1 mb-4;
+    @apply font-nutmeg font-bold text-[48px] md:text-h1 mb-4;
   }
   & > h2 {
-    @apply font-nutmeg  font-medium text-[40px] mb-6;
+    @apply font-nutmeg  font-medium text-[36px] md:text-[40px] mb-6;
   }
   & > h3 {
-    @apply font-default text-[36px] font-light mb-6;
+    @apply font-default text-[32px] md:text-[36px] font-light mb-6;
   }
   & > h4 {
-    @apply font-nutmeg text-[32px] font-normal;
+    @apply font-nutmeg text-[28px] md:text-[32px] font-normal;
   }
   & > h5 {
     @apply font-default text-[22px] font-bold;

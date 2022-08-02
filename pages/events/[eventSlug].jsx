@@ -61,7 +61,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             <span className='block font-semibold mb-2.5'>
               {dateParse(event.date, ctx.language, true)}
             </span>
-            <h1 className='font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold'>
+            <h1 className='font-nutmeg text-[48px] mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold'>
               {ctx.language === 'id' ? event.title_id : event.title_en}
             </h1>
             {event.eventCategory?.length > 0 && (
@@ -103,22 +103,6 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                     if (props.value.option) {
                       return (
                         <div className='image '>
-                          {/* <Image
-                                src={urlFor(props.value.image)
-                                  .auto('format')
-                                  .width(1800)
-                                  .url()}
-                                blurDataURL={urlFor(props.value.image)
-                                  .auto('format')
-                                  .width(1500)
-                                  .blur(25)
-                                  .url()}
-                                alt={props.value.image.alt}
-                                placeholder='blur'
-                                layout='fill'
-                                objectFit='cover'
-                                objectPosition='center'
-                              /> */}
                           <Image
                             {...imageProps}
                             layout='intrinsic'
@@ -130,7 +114,9 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                     } else {
                       return (
                         <div className='image fit '>
-                          <Image {...imageProps} layout='intrinsic' />
+                          <div>
+                            <Image {...imageProps} layout='intrinsic' />
+                          </div>
                         </div>
                       );
                     }
@@ -142,16 +128,16 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         </div>
 
         <div className='w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10'>
-          <div className='mx-auto w-full flex flex-col px-4 lg:px-8 max-w-screen-2xl '>
+          <div className='mx-auto w-full flex flex-col px-8 max-w-screen-2xl '>
             <div className='mb-7 md:mb-8 lg:mb-10'>
               <h2 className='font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12'>
                 {ctx.language === 'id' ? 'Acara Lainnya' : 'Other Events'}
               </h2>
 
-              <div className='flex flex-wrap mx-auto md:max-w-4xl'>
+              <div className='flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3'>
                 {eventListAPI?.slice(0, 2).map((item, index) => (
                   <div
-                    className='w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5'
+                    className='w-full mb-4 md:w-1/2 md:mb-0'
                     key={`${item.title_en}[${index}]`}
                   >
                     <HighlightCard
