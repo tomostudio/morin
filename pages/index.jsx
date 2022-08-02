@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { LazyMotion, domAnimation, motion } from 'framer-motion';
 import Image from 'next/image';
 import Layout from '@/components/module/layout';
@@ -37,8 +37,12 @@ export default function Home({
   const router = useRouter();
 
   const ctx = useAppContext();
+
+  const [headerBlack, setHeaderBlack] = useState(false);
+
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: false });
+
     return () => {};
   }, []);
 
@@ -54,7 +58,6 @@ export default function Home({
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      {/* <Header mobileDark={false} /> */}
       <motion.div initial='initial' animate='enter' exit='exit' variants={fade}>
         <Layout>
           {/* Slider Section */}

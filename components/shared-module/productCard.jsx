@@ -46,7 +46,7 @@ const ProductCard = ({
                 blurDataURL={urlFor(thumbnailFruit.fruit1)
                   .width(100)
                   .auto('format')
-                  .blur(50)
+                  .blur(20)
                   .url()}
                 placeholder='blur'
                 layout='fill'
@@ -64,7 +64,7 @@ const ProductCard = ({
                 blurDataURL={urlFor(thumbnailFruit.fruit2)
                   .width(100)
                   .auto('format')
-                  .blur(50)
+                  .blur(20)
                   .url()}
                 placeholder='blur'
                 layout='fill'
@@ -82,7 +82,7 @@ const ProductCard = ({
                 blurDataURL={urlFor(thumbnailFruit.fruit3)
                   .width(100)
                   .auto('format')
-                  .blur(50)
+                  .blur(20)
                   .url()}
                 placeholder='blur'
                 layout='fill'

@@ -157,6 +157,7 @@ export default function Header({ waLink }) {
   }, []);
 
   useEffect(() => {
+    console.log('change state')
     setBlackButton(ctx.mobileDark);
   }, [ctx.mobileDark]);
 
@@ -185,14 +186,14 @@ export default function Header({ waLink }) {
       >
         <Container className='mt-6 hidden lg:flex'>
           {/* Language Selector */}
-          <div className='w-full flex justify-end items-center text-defaultSmall text-black'>
+          <div className={`w-full flex justify-end items-center text-defaultSmall ${blackButton ? 'text-black' : 'text-white'}`}>
             <FancyLink
               onClick={() => ctx.setLanguage('en')}
               className={`mr-3 pt-1 leading-none ${ctx.language !== 'en' && 'opacity-50'} hover:opacity-100 transition-opacity`}
             >
               EN
             </FancyLink>
-            <hr className='bg-black w-[2px] h-[90%] opacity-50' />
+          <hr className={`w-[2px] h-[90%] opacity-50  ${blackButton ? 'bg-black' : 'bg-white'}`} />
             <FancyLink
               onClick={() => ctx.setLanguage('id')}
               className={`mx-3 pt-1 leading-none ${ctx.language !== 'id' && 'opacity-50'} hover:opacity-100 transition-opacity`}

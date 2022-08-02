@@ -57,7 +57,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
       >
         <div className="w-full">
           {/* Initial Cover */}
-          <div className="relative w-full h-screen min-h-[750px] z-0 flex flex-col justify-between">
+          <div className="relative w-full max-h-[650px] h-[75vh] md:max-h-[750px] md:min-h-[650px] lg:max-h-[900px] lg:h-screen lg:min-h-[750px] z-0 flex flex-col justify-between">
             <div
               className="h-full w-full absolute z-0"
               style={{
@@ -67,7 +67,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               }}
             >
               {/* Background Elements */}
-              <div className="absolute w-full h-3/4 translate-y-[50px] overflow-hidden md:translate-y-0 z-1">
+              <div className="absolute w-full h-3/4 overflow-hidden  z-1">
                 <Parallax
                   translateY={['-300px', '300px']}
                   className="w-full h-full absolute top-0 left-0"
@@ -82,7 +82,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   </div>
                 </Parallax>
                 <div
-                  className={`w-full h-full max-w-sm absolute-center xl:max-w-screen-2xl z-2 product-elements layout layout-4 ${product.thumbnailFruit.layout}`}
+                  className={`w-full h-full  absolute-center lg:max-w-screen-2xl z-2 product-elements layout layout-4 ${product.thumbnailFruit.layout}`}
                 >
                   <Parallax
                     translateY={['-100px', '100px']}
@@ -99,7 +99,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                           blurDataURL={urlFor(product.thumbnailFruit.fruit1)
                             .width(200)
                             .auto('format')
-                            .blur(50)
+                            .blur(20)
                             .url()}
                           placeholder="blur"
                           alt={product.thumbnailFruit.fruit1.alt}
@@ -268,24 +268,24 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             </div>
             {/* Title Text */}
             <div
-              className={`text-center z-2 lg:pt-36 xl:pt-56 justify-between relative`}
+              className={`text-center z-2 pt-36 lg:pt-56 justify-between relative`}
               style={{
                 color: product.textColor ? product.textColor.hex : '#175BA7',
               }}
             >
-              <span className="font-semibold tracking-widest mb-1.5 md:mb-2.5 xl:mb-4 uppercase text-inherit">
+              <span className="font-semibold tracking-widest mb-1.5 md:mb-2.5 lg:mb-4 uppercase text-inherit">
                 MORIN{' '}
                 {ctx.language === 'id'
                   ? product.type.title_id
                   : product.type.title_en}
               </span>
-              <h1 className="font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 xl:text-h1 text-inherit">
+              <h1 className="font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 lg:text-h1 text-inherit">
                 {ctx.language === 'id' ? product.title_id : product.title_en}
               </h1>
             </div>
             {/* Product */}
             <div className="flex flex-wrap justify-center items-end w-full px-12 relative z-2 bottom-0">
-              <div className="w-80vw md:w-[35vw] min-w-[250px] aspect-[1/1] h-96 z-2 relative border border-solid border-black">
+              <div className="w-[80vw] lg:w-[40vw] min-w-[250px] max-w-[400px] lg:max-w-none aspect-[1/1] h-auto max-h-[500px] z-2 relative border border-solid border-black">
                 {product.listWeight.map((data, id) => (
                   <div
                     className={`${
@@ -313,7 +313,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               </div>
               {/* Information & Curve */}
               <div className="absolute w-full h-[25vh] min-h-[250px]  z-0">
-                <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  xl:block ">
+                <div className="hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  lg:block ">
                   <div className="absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black ">
                     {ctx.language === 'id'
                       ? product.decor_id && (
@@ -379,9 +379,9 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               className="mx-auto mb-6 md:mb-8"
             />
           </div>
-          <div className="relative pt-5 pb-5 md:pb-14 xl:pb-16">
+          <div className="relative pt-5 pb-5 md:pb-14 lg:pb-16">
             <h2
-              className="max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig xl:text-h2 md:px-8 lg:mb-10 xl:mb-14"
+              className="max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig lg:text-h2 md:px-8 lg:mb-10 lg:mb-14"
               style={{
                 color: product.textColor ? product.textColor.hex : '#175BA7',
               }}
@@ -395,7 +395,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               <FancyLink
                 blank
                 destination={product.linkStore}
-                className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
+                className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8"
               >
                 <span className="block pt-1">
                   {ctx.language === 'id'
@@ -408,8 +408,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
 
           {product.recipes?.length > 0 && (
             <div className="max-w-screen-2xl mx-auto">
-              <div className="relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 xl:rounded-[40px] xl:pt-11 xl:pb-14 xl:px-4 2xl:px-6">
-                <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
+              <div className="relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 lg:rounded-[40px] lg:pt-11 lg:pb-14 lg:px-4 2xl:px-6">
+                <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8">
                   {ctx.language === 'id'
                     ? 'Hal-hal yang dapat Anda buat'
                     : 'Things you can make'}
@@ -420,7 +420,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                     onClick={(url) => handleImageGallery(url)}
                   />
                 </div>
-                <div className="hidden w-fit mt-7 mx-auto md:block xl:mt-8">
+                <div className="hidden w-fit mt-7 mx-auto md:block lg:mt-8">
                   <StrokeButton destination="/recipes" color={colors.morinRed}>
                     {ctx.language === 'id'
                       ? 'Lihat Semua Resep'
@@ -434,8 +434,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           {product.similar.option ? (
             productListAPI.length > 0 && (
               <div className="max-w-screen-2xl mx-auto">
-                <div className="py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0">
-                  <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
+                <div className="py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0">
+                  <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8">
                     {ctx.language === 'id'
                       ? 'Produk Sejenis'
                       : 'Similar Products'}
@@ -466,7 +466,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               imgPlaceholder={urlFor(item.thumbnail)
                                 .width(500)
                                 .auto('format')
-                                .blur(50)
+                                .blur(20)
                                 .url()}
                               thumbnailFruit={item.thumbnailFruit}
                               imgAlt={item.thumbnail.alt}
@@ -500,7 +500,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                               imgPlaceholder={urlFor(item.thumbnail)
                                 .width(500)
                                 .auto('format')
-                                .blur(50)
+                                .blur(20)
                                 .url()}
                               imgAlt={item.thumbnail.alt}
                               link={`${product.type.slug.current}/${item.slug.current}`}
@@ -524,8 +524,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             )
           ) : product.similar.manual.length > 0 && (
             <div className="max-w-screen-2xl mx-auto">
-              <div className="py-8 px-4 lg:px-8 xl:pt-11 xl:pb-14 2xl:px-0">
-                <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig xl:text-h2 xl:mb-8">
+              <div className="py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0">
+                <h2 className="font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8">
                   {ctx.language === 'id'
                     ? 'Produk Sejenis'
                     : 'Similar Products'}
@@ -555,7 +555,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                         imgPlaceholder={urlFor(item.thumbnail)
                           .width(500)
                           .auto('format')
-                          .blur(50)
+                          .blur(20)
                           .url()}
                         imgAlt={item.thumbnail.alt}
                         link={`${product.type.slug.current}/${item.slug.current}`}
