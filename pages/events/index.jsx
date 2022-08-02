@@ -30,7 +30,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   let displayData = 6;
   const dataIncrease = 6;
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(eventListAPI.length <= displayData ? false : true);
   const [dataEvent, setDataEvent] = useState(
     eventListAPI.slice(0, displayData)
   );

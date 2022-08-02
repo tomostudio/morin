@@ -1,21 +1,35 @@
 /* Content Stylings */
 .content {
+  & > * {
+    @apply max-w-screen-md mb-8 last:mb-0 mx-auto leading-tight;
+    & > a {
+      @apply underline hover:text-opacity-25 focus:text-opacity-25;
+    }
+  }
+  & > .image {
+    @apply relative block max-w-screen-2xl max-h-[700px] my-14 rounded-2xl overflow-hidden w-full h-auto;
+    @apply flex justify-center items-center;
+    &.fit {
+      @apply max-w-[500px] max-h-max;
+    }
+  }
   & > p {
-    @apply mb-3 last-of-type:mb-0;
+    @apply font-default leading-normal text-default;
   }
-
-  & > p > a {
-    @apply underline hover:text-opacity-25 focus:text-opacity-25;
+  & > h1 {
+    @apply font-nutmeg font-bold text-h1 mb-4;
   }
-
-  & > h1,
-  & > .h1 {
-    @apply mb-3;
+  & > h2 {
+    @apply font-nutmeg  font-medium text-[40px] mb-6;
   }
-
-  & > h2,
-  & > .h2 {
-    @apply mb-3;
+  & > h3 {
+    @apply font-default text-[36px] font-light mb-6;
+  }
+  & > h4 {
+    @apply font-nutmeg text-[32px] font-normal;
+  }
+  & > h5 {
+    @apply font-default text-[22px] font-bold;
   }
 }
 
@@ -48,6 +62,6 @@ h1 {
   font-family: "Poppins", Helvetica, sans-serif;
   @apply font-nutmeg text-mtitleBig leading-tight lg:text-h2 xl:text-h2;
 }
-h2{
+h2 {
   @apply font-default text-default;
 }
