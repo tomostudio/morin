@@ -381,7 +381,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
           </div>
           <div className='relative pt-5 pb-5 md:pb-14 lg:pb-16'>
             <h2
-              className='max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig lg:text-h2 md:px-8 lg:mb-10 lg:mb-14'
+              className='max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig lg:text-h2 md:px-8 lg:mb-10'
               style={{
                 color: product.textColor ? product.textColor.hex : '#175BA7',
               }}
