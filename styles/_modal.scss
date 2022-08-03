@@ -4,7 +4,7 @@ $white: #fff;
 $black: #000;
 $primary: #175ba7;
 $skyBlue: #d1f1ff;
-$transition-all: all 0.3s;
+$transition-all: all 300ms;
 
 .ReactModal__Body--open {
   overflow: hidden;
@@ -68,7 +68,7 @@ $transition-all: all 0.3s;
 
 .PageModal__Content--Outer {
   position: relative;
-  padding: 80px 30px 50px;
+  padding: 40px 30px 40px;
   @apply bg-white;
 
   @media (min-width: 768px) {
@@ -105,7 +105,7 @@ $transition-all: all 0.3s;
   outline: none;
 
   @media (min-width: 768px) {
-    max-width: calc(100% - 160px);
+    max-width: calc(100% - 80px);
     max-height: calc(100% - 160px);
     height: auto;
     border-radius: 20px;
@@ -139,7 +139,7 @@ $transition-all: all 0.3s;
 }
 
 .BasicModal__Content--Outer {
-  padding: 80px 30px 50px;
+  padding: 40px 30px 40px;
 
   @media (min-width: 1024px) {
     padding: 65px 90px;
@@ -175,7 +175,7 @@ $transition-all: all 0.3s;
   padding: 0;
   background: $overlayBackground;
   z-index: 100;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .PageModal__Overlay {
@@ -218,6 +218,9 @@ $transition-all: all 0.3s;
     }
   }
 
+  @media (max-width: 768px) {
+    @apply right-4 top-4;
+  }
   @media (min-width: 1024px) {
     top: 40px;
     right: 40px;

@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import dateParse from '@/components/utils/dateParse';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
+import { useNextSanityImage } from 'next-sanity-image';
 
 const EventTag = ({ label }) => {
   return (
@@ -56,27 +57,28 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         variants={fade}
       >
         <div className='text-morin-blue leading-tight'>
-          <div className='text-center mb-7 md:mb-10 lg:mb-12 xl:mb-16'>
+          <div className='text-center mb-7 md:mb-10  '>
             <span className='block font-semibold mb-2.5'>
               {dateParse(event.date, ctx.language, true)}
             </span>
-            <h1 className='font-nutmeg text-mtitleBig mx-auto mb-3 md:text-h2 md:max-w-md md:mb-4'>
+            <h1 className='font-nutmeg text-[48px] mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold'>
               {ctx.language === 'id' ? event.title_id : event.title_en}
             </h1>
             {event.eventCategory?.length > 0 && (
               <div className='flex flex-wrap items-center justify-center'>
-                {event.eventCategory?.map((item) => (
+                {event.eventCategory?.map((item, id) => (
                   <EventTag
                     label={
                       ctx.language === 'id' ? item.title_id : item.title_en
                     }
+                    key={id}
                   />
                 ))}
               </div>
             )}
           </div>
 
-          <div className='lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14 mx-auto'>
+          <div className='lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14 mx-auto content'>
             <PortableText
               value={
                 ctx.language === 'id'
@@ -86,94 +88,40 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
               components={{
                 block: {
                   normal: ({ children }) =>
-                    children[0] === '' ? (
-                      <br />
-                    ) : (
-                      <div className='max-w-screen-md mx-auto'>
-                        <div className='font-medium leading-relaxed'>
-                          <p className='mb-4 md:mb-5'>{children}</p>
-                        </div>
-                      </div>
-                    ),
-                  h1: ({ children }) => (
-                    <div className='max-w-screen-md mx-auto'>
-                      <h2 className='text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16'>
-                        {children}
-                      </h2>
-                    </div>
-                  ),
-                  h2: ({ children }) => (
-                    <div className='max-w-screen-md mx-auto'>
-                      <h2 className='text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16'>
-                        {children}
-                      </h2>
-                    </div>
-                  ),
-                  h3: ({ children }) => (
-                    <div className='max-w-screen-md mx-auto'>
-                      <h2 className='text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16'>
-                        {children}
-                      </h2>
-                    </div>
-                  ),
-                  h4: ({ children }) => (
-                    <div className='max-w-screen-md mx-auto'>
-                      <h2 className='text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16'>
-                        {children}
-                      </h2>
-                    </div>
-                  ),
-                  h5: ({ children }) => (
-                    <div className='max-w-screen-md mx-auto'>
-                      <h2 className='text-mtitleSmall font-nutmeg font-normal leading-snug mb-7 lg:text-mtitleBig lg:mb-16'>
-                        {children}
-                      </h2>
-                    </div>
-                  ),
+                    children[0] === '' ? <br /> : <p>{children}</p>,
+                  h1: ({ children }) => <h1>{children}</h1>,
+                  h2: ({ children }) => <h2>{children}</h2>,
+                  h3: ({ children }) => <h3>{children}</h3>,
+                  h4: ({ children }) => <h4>{children}</h4>,
+                  h5: ({ children }) => <h5>{children}</h5>,
                 },
                 types: {
-                  imageComponent: (props) =>
-                    props.value.option ? (
-                      <div className='relative w-full h-full aspect-w-16 aspect-h-9 mx-auto mb-8 px-8 lg:rounded-2xl overflow-hidden md:mb-10 lg:mb-12'>
-                        <Image
-                          src={urlFor(props.value.image)
-                            .auto('format')
-                            .width(1800)
-                            .url()}
-                          blurDataURL={urlFor(props.value.image)
-                            .auto('format')
-                            .width(1500)
-                            .blur(25)
-                            .url()}
-                          alt={props.value.image.alt}
-                          placeholder='blur'
-                          layout='fill'
-                          objectFit='cover'
-                          objectPosition='center'
-                        />
-                      </div>
-                    ) : (
-                      <div className='max-w-screen-md mx-auto'>
-                        <div className='relative max-w-xl mx-auto rounded-xl overflow-hidden mb-8 md:mb-10 h-30rem max-md:h-56 lg:mb-12'>
+                  imageComponent: (props) => {
+                    const imageProps = useNextSanityImage(
+                      client,
+                      props.value.image
+                    );
+                    if (props.value.option) {
+                      return (
+                        <div className='image '>
                           <Image
-                            src={urlFor(props.value.image)
-                              .auto('format')
-                              .width(650)
-                              .url()}
-                            blurDataURL={urlFor(props.value.image)
-                              .auto('format')
-                              .width(500)
-                              .blur(25)
-                              .url()}
-                            alt={props.value.image.alt}
-                            placeholder='blur'
-                            layout='fill'
+                            {...imageProps}
+                            layout='intrinsic'
                             objectFit='cover'
-                            objectPosition='center'
+                            objectPosition={'center center'}
                           />
                         </div>
-                      </div>
-                    ),
+                      );
+                    } else {
+                      return (
+                        <div className='image fit '>
+                          <div>
+                            <Image {...imageProps} layout='intrinsic' />
+                          </div>
+                        </div>
+                      );
+                    }
+                  },
                 },
               }}
             />
@@ -181,16 +129,16 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
         </div>
 
         <div className='w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10'>
-          <div className='mx-auto w-full flex flex-col px-4 lg:px-8 max-w-screen-2xl '>
+          <div className='mx-auto w-full flex flex-col px-8 max-w-screen-2xl '>
             <div className='mb-7 md:mb-8 lg:mb-10'>
               <h2 className='font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12'>
                 {ctx.language === 'id' ? 'Acara Lainnya' : 'Other Events'}
               </h2>
 
-              <div className='flex flex-wrap mx-auto md:max-w-4xl'>
+              <div className='flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3'>
                 {eventListAPI?.slice(0, 2).map((item, index) => (
                   <div
-                    className='w-full mb-2 md:w-1/2 md:mb-0 md:px-2.5'
+                    className='w-full mb-4 md:w-1/2 md:mb-0'
                     key={`${item.title_en}[${index}]`}
                   >
                     <HighlightCard

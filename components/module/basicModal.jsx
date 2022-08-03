@@ -11,12 +11,14 @@ const BasicModal = ({
   closeTimeoutMS,
   className,
   classNameOuter, 
+  onAfterClose,
   classNameModalContent
 }) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      onAfterClose={onAfterClose}
       closeTimeoutMS={closeTimeoutMS || 300}
       className={`BasicModal__Content ${classNameModalContent}`}
       overlayClassName="BasicModal__Overlay"

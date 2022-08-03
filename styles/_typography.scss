@@ -1,21 +1,39 @@
 /* Content Stylings */
 .content {
+  @apply px-4 md:px-10;
+  & > * {
+    @apply max-w-screen-md mb-6 md:mb-8 last:mb-0 mx-auto leading-tight px-6;
+    & > a {
+      @apply underline hover:text-opacity-25 focus:text-opacity-25;
+    }
+  }
+  & > .image {
+    @apply relative flex max-w-screen-2xl max-h-[700px] my-8 md:my-14 rounded-2xl overflow-hidden w-full h-auto px-0;
+    @apply flex justify-center items-center;
+    &.fit {
+      @apply max-w-screen-md max-h-max px-12 md:px-24 py-0 leading-none;
+      & > div {
+        @apply rounded-2xl overflow-hidden flex leading-none;
+      }
+    }
+  }
   & > p {
-    @apply mb-3 last-of-type:mb-0;
+    @apply font-default leading-normal text-default;
   }
-
-  & > p > a {
-    @apply underline hover:text-opacity-25 focus:text-opacity-25;
+  & > h1 {
+    @apply font-nutmeg font-bold text-[48px] md:text-h1 mb-4;
   }
-
-  & > h1,
-  & > .h1 {
-    @apply mb-3;
+  & > h2 {
+    @apply font-nutmeg  font-medium text-[36px] md:text-[40px] mb-6;
   }
-
-  & > h2,
-  & > .h2 {
-    @apply mb-3;
+  & > h3 {
+    @apply font-default text-[32px] md:text-[36px] font-light mb-6;
+  }
+  & > h4 {
+    @apply font-nutmeg text-[28px] md:text-[32px] font-normal;
+  }
+  & > h5 {
+    @apply font-default text-[22px] font-bold;
   }
 }
 
@@ -48,6 +66,6 @@ h1 {
   font-family: "Poppins", Helvetica, sans-serif;
   @apply font-nutmeg text-mtitleBig leading-tight lg:text-h2 xl:text-h2;
 }
-h2{
+h2 {
   @apply font-default text-default;
 }

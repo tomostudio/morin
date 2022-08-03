@@ -22,7 +22,7 @@ const RecipeFilter = ({
       trigger={trigger}
     >
       <div
-        className={`bg-white rounded-2xl overflow-hidden p-4 pb-5 mb-5 transition-all md:p-7 md:mb-7 lg:flex lg:flex-wrap lg:justify-center lg:mb-10 ${fadeInFadeOut}`}
+        className={`max-w-screen-2xl mx-auto bg-white rounded-2xl overflow-hidden p-4 pb-5 mb-5 transition-all md:p-7 md:mb-7 lg:flex lg:flex-wrap lg:justify-center lg:mb-10 ${fadeInFadeOut}`}
       >
         <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
           <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-ctitleSmall lg:mr-5">

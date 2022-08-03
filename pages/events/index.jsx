@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Footer from '@/components/module/footer';
 import Header from '@/components/module/header';
@@ -27,6 +27,21 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
     return () => {};
   }, []);
+
+  let displayData = 6;
+  const dataIncrease = 6;
+  const [showButton, setShowButton] = useState(eventListAPI.length <= displayData ? false : true);
+  const [dataEvent, setDataEvent] = useState(
+    eventListAPI.slice(0, displayData)
+  );
+
+  const loadMore = () => {
+    displayData += dataIncrease;
+    console.log(displayData);
+    setDataEvent(eventListAPI.slice(0, displayData));
+
+    if (eventListAPI.length <= displayData) setShowButton(false);
+  };
 
   return (
     <Layout>
@@ -77,7 +92,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
         <div className='px-4 my-5 md:my-10 md:px-8'>
           <div className='max-w-screen-2xl mx-auto'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
-              {eventListAPI?.map((item, index) => (
+              {dataEvent?.map((item, index) => (
                 <div className='w-full' key={`${item.title_en}[${index}]`}>
                   <EventCard
                     imgSrc={urlFor(item.thumbnail)
@@ -106,17 +121,19 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
                 </div>
               ))}
             </div>
-            <div className='w-full mt-5 md:mt-10'>
-              <StrokeButton
-                arrow={false}
-                color={colors.morinBlue}
-                onClick={() => console.log('load more')}
-              >
-                {ctx.language === 'id'
-                  ? 'Menampilkan lebih banyak'
-                  : 'Show More'}
-              </StrokeButton>
-            </div>
+            {showButton && (
+              <div className='w-full mt-5 md:mt-10'>
+                <StrokeButton
+                  arrow={false}
+                  color={colors.morinBlue}
+                  onClick={loadMore}
+                >
+                  {ctx.language === 'id'
+                    ? 'Menampilkan lebih banyak'
+                    : 'Show More'}
+                </StrokeButton>
+              </div>
+            )}
           </div>
         </div>
 

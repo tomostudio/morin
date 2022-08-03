@@ -31,6 +31,7 @@
     "framer-motion": "^6.3.0",
     "gsap": "^3.10.3",
     "next": "^12.1.5",
+    "next-sanity-image": "^3.2.1",
     "next-seo": "^5.4.0",
     "postcss-import": "^14.1.0",
     "postcss-nested": "^5.0.6",
