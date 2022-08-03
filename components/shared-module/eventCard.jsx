@@ -4,7 +4,7 @@ import FancyLink from "../utils/fancyLink";
 
 const EventCard = ({ imgSrc, imgAlt, type, date, title, link, blur }) => {
   return (
-    <div className="relative w-full h-full bg-white rounded-2xl overflow-hidden xl:rounded-3xl">
+    <div className="relative w-full h-full transition-all hover:rotate-3 hover:shadow-lg duration-300 bg-white rounded-2xl overflow-hidden xl:rounded-3xl">
       <div className="relative w-full h-[25rem]">
         <Image
           src={imgSrc}
