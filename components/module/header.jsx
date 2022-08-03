@@ -132,6 +132,7 @@ export default function Header({ waLink }) {
         moveX = moveX + w;
       });
       setMarkerPos(moveX);
+      console.log('reset nav')
     }
   };
 
@@ -157,7 +158,7 @@ export default function Header({ waLink }) {
   }, []);
 
   useEffect(() => {
-    console.log('change state')
+    console.log('change state');
     setBlackButton(ctx.mobileDark);
   }, [ctx.mobileDark]);
 
@@ -186,17 +187,35 @@ export default function Header({ waLink }) {
       >
         <Container className='mt-6 hidden lg:flex'>
           {/* Language Selector */}
-          <div className={`w-full flex justify-end items-center text-defaultSmall ${blackButton ? 'text-black' : 'text-white'}`}>
+          <div
+            className={`w-full flex justify-end items-center text-defaultSmall ${
+              blackButton ? 'text-black' : 'text-white'
+            }`}
+          >
             <FancyLink
-              onClick={() => ctx.setLanguage('en')}
-              className={`mr-3 pt-1 leading-none ${ctx.language !== 'en' && 'opacity-50'} hover:opacity-100 transition-opacity`}
+              onClick={() => {
+                ctx.setLanguage('en');
+                setTimeout(() => {resetNav()}, 1);
+              }}
+              className={`mr-3 pt-1 leading-none ${
+                ctx.language !== 'en' && 'opacity-50'
+              } hover:opacity-100 transition-opacity`}
             >
               EN
             </FancyLink>
-          <hr className={`w-[2px] h-[90%] opacity-50  ${blackButton ? 'bg-black' : 'bg-white'}`} />
+            <hr
+              className={`w-[2px] h-[90%] opacity-50  ${
+                blackButton ? 'bg-black' : 'bg-white'
+              }`}
+            />
             <FancyLink
-              onClick={() => ctx.setLanguage('id')}
-              className={`mx-3 pt-1 leading-none ${ctx.language !== 'id' && 'opacity-50'} hover:opacity-100 transition-opacity`}
+              onClick={() => {
+                ctx.setLanguage('id');
+                setTimeout(() => {resetNav()}, 1);
+              }}
+              className={`mx-3 pt-1 leading-none ${
+                ctx.language !== 'id' && 'opacity-50'
+              } hover:opacity-100 transition-opacity`}
             >
               ID
             </FancyLink>

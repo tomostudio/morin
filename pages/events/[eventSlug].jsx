@@ -66,11 +66,12 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             </h1>
             {event.eventCategory?.length > 0 && (
               <div className='flex flex-wrap items-center justify-center'>
-                {event.eventCategory?.map((item) => (
+                {event.eventCategory?.map((item, id) => (
                   <EventTag
                     label={
                       ctx.language === 'id' ? item.title_id : item.title_en
                     }
+                    key={id}
                   />
                 ))}
               </div>
