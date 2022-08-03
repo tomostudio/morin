@@ -1,11 +1,9 @@
-import CategoryCard from '@/components/module/categoryCard';
-import Container from '@/components/module/container';
+
 import Footer from '@/components/module/footer';
 import Layout from '@/components/module/layout';
 import FancyLink from '@/components/utils/fancyLink';
 import MorinTabs from '@/components/micro-module/morinTabs';
 import RecipeSlider from '@/components/sliders/recipeSlider';
-import { SunRay } from '@/components/utils/svg';
 import Image from 'next/image';
 import ProductCard from '@/components/shared-module/productCard';
 import StrokeButton from '@/components/micro-module/strokeButton';
@@ -285,16 +283,17 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             </div>
             {/* Product */}
             <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 bottom-0'>
-              <div className='w-[80vw] lg:w-[40vw] min-w-[250px] max-w-[400px] lg:max-w-none aspect-[1/1] h-auto max-h-[500px] z-2 relative border border-solid border-black'>
+              <div className='w-[80vw] lg:w-[40vw] min-w-[250px] max-w-[400px] lg:max-w-none aspect-[1/1] h-auto max-h-[500px] z-2 relative'>
                 {product.listWeight.map((data, id) => (
                   <div
                     className={`${
                       productCurrent === data.title
-                        ? 'absolute fade-in top-0'
-                        : 'opacity-0 relative'
+                        ? 'relative fade-in top-0'
+                        : 'opacity-0 absolute'
                     }  z-2 w-full h-full`}
                     key={id}
                   >
+                    {console.log(productCurrent, data.title)}
                     <Image
                       src={urlFor(data.image).auto('format').width(800).url()}
                       blurDataURL={urlFor(data.image)
@@ -314,7 +313,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               {/* Information & Curve */}
               <div className='absolute w-full h-[25vh] min-h-[250px]  z-0'>
                 <div className='hidden max-w-screen-2xl w-full h-full absolute bottom-0 left-1/2 -translate-x-1/2  lg:block '>
-                  <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] border border-solid border-black '>
+                  <div className='absolute bottom-[10%] left-12 2xl:right-[50%] 2xl:left-auto 2xl:translate-x-[-50%] w-[30%] h-[80%] '>
                     {ctx.language === 'id'
                       ? product.decor_id && (
                           <Image
@@ -341,7 +340,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                           />
                         )}
                   </div>
-                  <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%] border border-solid border-black'>
+                  <div className='absolute bottom-[10%] right-12 2xl:left-[50%] 2xl:right-auto 2xl:translate-x-[50%] w-[30%] h-[80%]'>
                     {ctx.language === 'id'
                       ? product.decor_id && (
                           <Image

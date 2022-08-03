@@ -92,7 +92,7 @@ const ProductCard = ({
           )}
         </div>
 
-        <div className='w-[150%] aspect-[1/1] absolute top-0 left-1/2 translate-x-[-50%] overflow-hidden'>
+        <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[150%] aspect-[1/1] absolute top-0 left-1/2 translate-x-[-50%] overflow-hidden'>
           <SunRaySmaller className='block animate-spin-slow w-full h-full' />
         </div>
       </div>
