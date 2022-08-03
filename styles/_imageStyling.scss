@@ -5,7 +5,6 @@
 
     & > div {
       @apply w-full h-full relative;
-      @apply border border-solid border-black;
       @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
     }
   }
@@ -444,31 +443,8 @@
 }
 
 .product-elements {
-  @apply border border-solid border-black;
   & .fruits {
     @apply absolute h-[50%] w-auto aspect-[1/1] min-h-[100px];
-    @apply border-2 border-solid;
-    &.fruit1 {
-      border-color: blue;
-    }
-    &.fruit2 {
-      border-color: red;
-    }
-    &.fruit3 {
-      border-color: green;
-    }
-    &.fruit4 {
-      border-color: yellow;
-    }
-    &.fruit5 {
-      border-color: cyan;
-    }
-    &.fruit6 {
-      border-color: purple;
-    }
-    &.fruit7 {
-      border-color: black;
-    }
   }
   &.layout-1 {
     & .fruit1 {

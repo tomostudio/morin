@@ -93,10 +93,8 @@ const About = ({ aboutAPI, seoAPI }) => {
         </div>
 
         <div className='relative w-full min-h-screen flex flex-col justify-between z-2'>
-          {/* <Header /> */}
-
           <div className='relative pt-28 pb-32 px-8 xl:pb-36'>
-            <div className='relative max-w-xs text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl'>
+            <div className='relative max-w-md text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl'>
               <div className='relative'>
                 <h1 className='font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20'>
                   {ctx.language === 'id' ? about.title_id : about.title_en}
@@ -106,23 +104,49 @@ const About = ({ aboutAPI, seoAPI }) => {
                   <HighlightMobile className='lg:hidden' />
                 </div>
               </div>
-              <div className='relative'>
-                <p className='font-nutmeg text-mtitle leading-tight mb-8 lg:text-h2 lg:mb-16 xl:text-h2 xl:mb-28'>
+              <div className='relative mb-8 lg:mb-16 xl:mb-28'>
+                <p className='font-nutmeg text-mtitleBig leading-tight lg:text-h2  '>
                   {ctx.language === 'id'
-                    ? about.description_id
-                    : about.description_en}
+                    ? `Sejak tahun 1978, Morin berdedikasi untuk menjadi bagian dari momen-momen manis keluarga Indonesia`
+                    : `For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.`}
                 </p>
-                <div className='absolute left-0 lg:left-auto aboutLineMobile top-[13%] lg:top-[-30%] lg:right-[20%] lg:scale-100'>
-                  <ThreeTopLine className='h-[34px] w-[32px] lg:h-[119px] lg:w-[123px]' />
+                <div
+                  className={`absolute left-0 lg:left-auto  rotate-[-20deg] lg:rotate-[20deg] scale-x-[-100%] translate-x-[-50%] lg:translate-x-0 translate-y-[-60%] ${
+                    ctx.language === 'id'
+                      ? 'left-[10%] sm:left-0 lg:left-auto  lg:right-[5%] xl:right-[25%] top-0 lg:translate-y-[-65%]'
+                      : 'left-[10%] lg:left-auto  lg:right-[5%] xl:right-[27.5%] top-0 lg:translate-y-[-65%] '
+                  } `}
+                >
+                  <ThreeTopLine
+                    className={`h-[70px] w-auto lg:h-[119px] lg:w-[123px]`}
+                  />
                 </div>
-                <div className='absolute hidden lg:block top-[28%] left-[3%]'>
+                <div
+                  className={`absolute hidden lg:block  left-0 ${
+                    ctx.language === 'id'
+                      ? 'lg:translate-x-[-25%] xl:translate-x-[-75%] lg:top-[17%] xl:top-[25%]'
+                      : 'lg:translate-x-[0%] xl:translate-x-[-50%] lg:top-[17%] xl:top-[25%]'
+                  } `}
+                >
                   <DoubleSparkle className='h-[69px] w-[46px]' />
                 </div>
-                <div className='absolute hidden lg:block top-[40%] right-0'>
-                  <Wrinkle className='h-[28px] w-[66px]' />
+                <div
+                  className={`absolute hidden lg:block right-0 ${
+                    ctx.language === 'id'
+                      ? 'right-0 lg:scale-125 xl:scale-100 lg:translate-x-[-10%] xl:translate-x-[120%] lg:bottom-[20%] xl:bottom-[30%]'
+                      : 'right-0  lg:scale-125 xl:scale-100 lg:translate-x-[75%] xl:translate-x-[50%] lg:bottom-[20%] xl:bottom-[30%] '
+                  } `}  
+                >
+                  <Wrinkle className='h-[28px] w-auto' />
                 </div>
-                <div className='absolute top-[38%] right-[33%] lg:top-auto lg:bottom-[-10%] lg:right-[15%]'>
-                  <Line className='h-[13px] w-[86px] lg:h-[32px] lg:w-[312px]' />
+                <div
+                  className={`absolute lg:top-auto bottom-[-5%] lg:bottom-[-5%] xl:bottom-[-8%] ${
+                    ctx.language === 'id'
+                      ? 'right-[50%] translate-x-[50%] sm:translate-x-0 sm:right-[8%] lg:right-0'
+                      : 'left-[5%] lg:right-auto lg:left-[0%] xl:left-auto xl:right-[35%]'
+                  } `}
+                >
+                  <Line className='h-[20px] w-auto lg:h-[32px] lg:w-[312px]' />
                 </div>
               </div>
               <StrokeButton
@@ -134,10 +158,10 @@ const About = ({ aboutAPI, seoAPI }) => {
               </StrokeButton>
             </div>
             <Parallax
-              translateY={['0px', '-100px']}
-              className='absolute top-[4%] lg:top-[13%] right-[-40px] md:right-[-80px] lg:right-[-120px] '
+              translateY={['0px', '-150px']}
+              className='absolute top-[15%] lg:top-[10%] right-[-40px] md:right-[-80px] lg:right-[-120px] '
             >
-              <div className='relative aspect-[1/1] w-[129px] md:w-[258px] lg:w-[382px] rotate-12'>
+              <div className='relative aspect-[1/1] w-[200px] md:w-[258px] lg:w-[382px] rotate-12'>
                 <Image
                   src={urlFor(about.backgrounds.imageLeft)
                     .auto('format')
@@ -154,10 +178,10 @@ const About = ({ aboutAPI, seoAPI }) => {
               </div>
             </Parallax>
             <Parallax
-              translateY={['0px', '-75px']}
-              className='absolute bottom-[7%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]'
+              translateY={['0px', '-100px']}
+              className='absolute bottom-[0%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]'
             >
-              <div className='relative aspect-[1/1] w-[129px] md:w-[258px] lg:w-[382px] -rotate-12'>
+              <div className='relative aspect-[1/1] w-[200px] md:w-[258px] lg:w-[382px] -rotate-12'>
                 <Image
                   src={urlFor(about.backgrounds.imageRight)
                     .auto('format')
@@ -189,8 +213,15 @@ const About = ({ aboutAPI, seoAPI }) => {
                       ? about.our_process.titleCover_id
                       : about.our_process.titleCover_en
                   }
-                  imgSrc={urlFor(about.our_process.thumbnail).auto("format").width(800).url()}
-                  imgPlaceholder={urlFor(about.our_process.thumbnail).auto("format").width(400).blur(25).url()}
+                  imgSrc={urlFor(about.our_process.thumbnail)
+                    .auto('format')
+                    .width(800)
+                    .url()}
+                  imgPlaceholder={urlFor(about.our_process.thumbnail)
+                    .auto('format')
+                    .width(400)
+                    .blur(25)
+                    .url()}
                   imgAlt={about.our_process.thumbnail.alt}
                   onClick={() => openModal('OUR PROCESS')}
                   lang={ctx.language}
@@ -204,8 +235,15 @@ const About = ({ aboutAPI, seoAPI }) => {
                       ? about.visi_misi.titleCover_id
                       : about.visi_misi.titleCover_en
                   }
-                  imgSrc={urlFor(about.visi_misi.thumbnail).auto("format").width(800).url()}
-                  imgPlaceholder={urlFor(about.visi_misi.thumbnail).auto("format").width(400).blur(25).url()}
+                  imgSrc={urlFor(about.visi_misi.thumbnail)
+                    .auto('format')
+                    .width(800)
+                    .url()}
+                  imgPlaceholder={urlFor(about.visi_misi.thumbnail)
+                    .auto('format')
+                    .width(400)
+                    .blur(25)
+                    .url()}
                   imgAlt={about.visi_misi.thumbnail.alt}
                   onClick={() => openModal('VISI & MISI')}
                   lang={ctx.language}
