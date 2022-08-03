@@ -283,7 +283,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             </div>
             {/* Product */}
             <div className='flex flex-wrap justify-center items-end w-full px-12 relative z-2 bottom-0'>
-              <div className='w-[80vw] lg:w-[40vw] min-w-[250px] max-w-[400px] lg:max-w-none aspect-[1/1] h-auto max-h-[500px] z-2 relative'>
+              <div className='w-[80vw] lg:w-[40vw] min-w-[250px] max-w-[400px] lg:max-w-none aspect-[1/1] h-auto max-h-[400px] z-2 relative'>
                 {product.listWeight.map((data, id) => (
                   <div
                     className={`${
@@ -293,7 +293,6 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                     }  z-2 w-full h-full`}
                     key={id}
                   >
-                    {console.log(productCurrent, data.title)}
                     <Image
                       src={urlFor(data.image).auto('format').width(800).url()}
                       blurDataURL={urlFor(data.image)
@@ -392,7 +391,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
             {product.linkStore && (
               <FancyLink
                 blank
-                destination={product.linkStore}
+                destination={`${process.env.NEXT_PUBLIC_STORE_URL}${product.linkStore.shopifyProduct.handle}`}
                 className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8'
               >
                 <span className='block pt-1'>
@@ -626,7 +625,8 @@ export async function getStaticProps({ params }) {
         similar {
           ...,
           manual[]->
-        }
+        },
+        linkStore->
       }
     `
   );
