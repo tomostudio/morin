@@ -562,39 +562,45 @@ const Recipe = ({
             />
           </div>
 
-          <div className="max-w-screen-2xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-              {dataRecipe.map((item, index) => (
-                <div className="w-full" key={`${item.title_en}[${index}]`}>
-                  <RecipeCard
-                    imgSrc={urlFor(item.thumbnail)
-                      .auto('format')
-                      .width(500)
-                      .url()}
-                    imgPlaceholder={urlFor(item.thumbnail)
-                      .auto('format')
-                      .width(300)
-                      .blur(50)
-                      .url()}
-                    imgAlt={item.thumbnail.alt}
-                    title={
-                      ctx.language === 'id' ? item.title_id : item.title_en
-                    }
-                    link={`/recipes/${item.slug.current}`}
-                    duration={
-                      ctx.language === 'id'
-                        ? item.cookingTime.title_id
-                        : item.cookingTime.title_en
-                    }
-                    difficulty={
-                      ctx.language === 'id'
-                        ? item.difficulty.title_id
-                        : item.difficulty.title_en
-                    }
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="max-w-screen-2xl min-h-[60vh] mx-auto">
+            {dataRecipe.length > 0 ? (
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
+                {dataRecipe.map((item, index) => (
+                  <div className="w-full" key={`${item.title_en}[${index}]`}>
+                    <RecipeCard
+                      imgSrc={urlFor(item.thumbnail)
+                        .auto('format')
+                        .width(500)
+                        .url()}
+                      imgPlaceholder={urlFor(item.thumbnail)
+                        .auto('format')
+                        .width(300)
+                        .blur(50)
+                        .url()}
+                      imgAlt={item.thumbnail.alt}
+                      title={
+                        ctx.language === 'id' ? item.title_id : item.title_en
+                      }
+                      link={`/recipes/${item.slug.current}`}
+                      duration={
+                        ctx.language === 'id'
+                          ? item.cookingTime.title_id
+                          : item.cookingTime.title_en
+                      }
+                      difficulty={
+                        ctx.language === 'id'
+                          ? item.difficulty.title_id
+                          : item.difficulty.title_en
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="w-full h-full min-h-[60vh] flex justify-center items-center">
+                <span className='text-mtitleBig text-morin-red'>No Result Found</span>
+              </div>
+            )}
             {dataRecipe.length > 6 && (
               <div className="w-full flex justify-center mt-5 xl:mt-7">
                 <StrokeButton
