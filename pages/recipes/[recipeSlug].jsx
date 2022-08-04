@@ -32,18 +32,9 @@ const RecipeCheckbox = ({
 }) => {
   return (
     <div className="font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-5">
-      <input
-        type="checkbox"
-        id={name}
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        className="hidden"
-      />
       <label
         htmlFor={name}
-        className="flex flex-wrap items-center w-full font-semibold cursor-pointer select-none overflow-hidden lg:"
+        className="flex flex-wrap items-center w-full font-semibold select-none overflow-hidden"
       >
         <span
           className={`flex flex-wrap items-center justify-center w-5 h-5 rounded-full border-2 border-solid border-morin-red p-1 transition-all md:w-6 md:h-6 lg:w-8 lg:h-8 lg:p-2 ${
@@ -195,8 +186,8 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         nextEl: swiperNext.current,
       }}
       onBeforeInit={(swiper) => {
-           swiper.params.navigation.prevEl = swiperPrev.current;
-           swiper.params.navigation.nextEl = swiperNext.current;
+        swiper.params.navigation.prevEl = swiperPrev.current
+        swiper.params.navigation.nextEl = swiperNext.current
       }}
       slidesPerView={1}
       initialSlide={initialSlide}
@@ -423,41 +414,23 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                   </h2>
                   <div className="">
                     {ctx.language === 'id'
-                      ? recipe.ingredients_id?.map((item) => (
-                          <>
-                            <span className="block mb-3 font-bold">
-                              {item.title}
-                            </span>
-                            {item.description.map((data) => (
-                              <RecipeCheckbox
-                                key={data}
-                                name={data}
-                                label={data}
-                                value={data}
-                                className="m"
-                                checked={ingredientsChecked.includes(data)}
-                                onChange={() => handleCheckIngredients(data)}
-                              />
-                            ))}
-                          </>
+                      ? recipe.ingredients_id?.map((data) => (
+                          <RecipeCheckbox
+                            key={data.description}
+                            name={data.description}
+                            label={data.description}
+                            value={data.description}
+                            checked={data.title}
+                          />
                         ))
-                      : recipe.ingredients_en?.map((item) => (
-                          <>
-                            <span className="block mb-3 font-bold">
-                              {item.title}
-                            </span>
-                            {item.description.map((data) => (
-                              <RecipeCheckbox
-                                key={data}
-                                name={data}
-                                label={data}
-                                value={data}
-                                className="m"
-                                checked={ingredientsChecked.includes(data)}
-                                onChange={() => handleCheckIngredients(data)}
-                              />
-                            ))}
-                          </>
+                      : recipe.ingredients_en?.map((data) => (
+                          <RecipeCheckbox
+                            key={data.description}
+                            name={data.description}
+                            label={data.description}
+                            value={data.description}
+                            checked={data.title}
+                          />
                         ))}
                   </div>
                 </div>
