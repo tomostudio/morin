@@ -405,14 +405,14 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               </div>
             </div>
 
-            <div className="lg:flex lg:-mx-2 lg:mb-5">
+            <div className="lg:flex lg:-mx-2 lg:mb-5 md:max-h-[29rem]">
               {/* ingredients */}
               <div className="lg:w-1/2 lg:px-2">
                 <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
                   <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
                     {ctx.language === 'id' ? 'Bahan - bahan' : 'Ingredients'}
                   </h2>
-                  <div className="">
+                  <div className="h-full md:max-h-[20.5rem] md:overflow-auto">
                     {ctx.language === 'id'
                       ? recipe.ingredients_id?.map((data) => (
                           <RecipeCheckbox
