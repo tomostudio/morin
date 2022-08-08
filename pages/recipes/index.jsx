@@ -549,7 +549,7 @@ const Recipe = ({
               arrow={false}
               color={colors.morinRed}
               onClick={() => setFilterOpen(!filterOpen)}
-              className={`transition-all pl-2 pr-2 ml-0 mr-0 md:px-4 md:py-2 ${buttonActive}`}
+              className={`transition-all pl-2 pr-2 ml-0 outline-none shadow-none hover:shadow-none mr-0 md:px-4 md:py-2 ${buttonActive}`}
             >
               <div className="w-4 md:w-6 lg:w-8">
                 <Filter
