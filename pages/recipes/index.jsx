@@ -31,7 +31,19 @@ const Recipe = ({
   const [recipe] = recipeAPI
   const router = useRouter()
 
-  const [dataRecipe, setDataRecipe] = useState(recipeListAPI)
+  let displayData = 6;
+  const dataIncrease = 6;
+  const [showButton, setShowButton] = useState(recipeListAPI.length <= displayData ? false : true);
+  const [dataRecipe, setDataRecipe] = useState(recipeListAPI.slice(0, displayData))
+
+  const loadMore = () => {
+    displayData += dataIncrease;
+    console.log(displayData);
+    setDataRecipe(dataRecipe.slice(0, displayData));
+
+    if (recipeListAPI.length <= displayData) setShowButton(false);
+  };
+
 
   const handleFilter = (val) => {
     setFilterValue((prev) => {
@@ -601,12 +613,12 @@ const Recipe = ({
                 <span className='text-mtitleBig text-morin-red'>No Result Found</span>
               </div>
             )}
-            {dataRecipe.length > 6 && (
+            {showButton && (
               <div className="w-full flex justify-center mt-5 xl:mt-7">
                 <StrokeButton
                   arrow={false}
                   color={colors.morinRed}
-                  onClick={() => console.log('load more')}
+                  onClick={loadMore}
                 >
                   {ctx.language === 'id'
                     ? 'Menampilkan lebih banyak'
