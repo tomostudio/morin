@@ -56,7 +56,7 @@ const Footer = ({ className, lang }) => {
               {lang === 'id' ? 'Tentang Kami' : 'About Us'}
             </FancyLink>
             <FancyLink
-              destination='/product'
+              destination='/products'
               className={`footer-link ${defaultHover}`}
             >
               {lang === 'id' ? 'Produk' : 'Products'}
