@@ -19,9 +19,10 @@ import { Parallax } from 'react-scroll-parallax';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
+const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton }) => {
   const [seo] = seoAPI;
   const [product] = productAPI;
+  const [productBtn] = productButton;
   const router = useRouter();
   const [productCurrent, setProductCurrent] = useState(
     product.listWeight.find((data) => data.defaultWeight === true).title
@@ -34,7 +35,6 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
 
   return (
     <Layout className='overflow-hidden'>
-      {/* <Header hamburgerColor='bg-black' /> */}
       <SEO
         title={ctx.language === 'id' ? product.title_id : product.title_en}
         pagelink={router.pathname}
@@ -396,8 +396,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               >
                 <span className='block pt-1'>
                   {ctx.language === 'id'
-                    ? 'Dapatkan Produk Ini'
-                    : 'Get This Product'}
+                    ? productBtn.language.linkStore.id
+                    : productBtn.language.linkStore.en}
                 </span>
               </FancyLink>
             )}
@@ -408,8 +408,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
               <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 lg:rounded-[40px] lg:pt-11 lg:pb-14 lg:px-4 2xl:px-6'>
                 <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8'>
                   {ctx.language === 'id'
-                    ? 'Hal-hal yang dapat Anda buat'
-                    : 'Things you can make'}
+                    ? productBtn.language.recipe.title.id
+                    : productBtn.language.recipe.title.en}
                 </h2>
                 <div className='w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0'>
                   <RecipeSlider
@@ -420,8 +420,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                 <div className='hidden w-fit mt-7 mx-auto md:block lg:mt-8'>
                   <StrokeButton destination='/recipes' color={colors.morinRed}>
                     {ctx.language === 'id'
-                      ? 'Lihat Semua Resep'
-                      : 'See All Recipes'}
+                      ? productBtn.language.recipe.btn.id
+                      : productBtn.language.recipe.btn.en}
                   </StrokeButton>
                 </div>
               </div>
@@ -434,8 +434,8 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI }) => {
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>
                     <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8'>
                       {ctx.language === 'id'
-                        ? 'Produk Sejenis'
-                        : 'Similar Products'}
+                        ? productBtn.language.recipe.similar.id
+                        : productBtn.language.recipe.similar.en}
                     </h2>
 
                     <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
@@ -639,6 +639,9 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const productButton = await client.fetch(`
+  *[_type == "productDetail"]
+  `);
 
   return {
     props: {
@@ -646,6 +649,7 @@ export async function getStaticProps({ params }) {
       productListAPI,
       seoAPI,
       footerAPI,
+      productButton
     },
   };
 }
