@@ -239,11 +239,12 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
 }
 
 // CONTROLLER
-const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
+const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton }) => {
   const [ingredientsChecked, setIngredientsChecked] = useState([])
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
   const [gallerySlide, setGallerySlide] = useState(0)
+  const [recipeBtn] = recipeButton
   const [seo] = seoAPI
   const [recipe] = recipeAPI
   const router = useRouter()
@@ -294,7 +295,6 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
 
   return (
     <Layout style={{ backgroundColor: recipe.backgroundColor.hex }}>
-      {/* <Header /> */}
       <SEO
         title={ctx.language === 'id' ? recipe.title_id : recipe.title_en}
         pagelink={router.pathname}
@@ -410,7 +410,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="lg:w-1/2 lg:px-2">
                 <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
                   <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
-                    {ctx.language === 'id' ? 'Bahan - bahan' : 'Ingredients'}
+                    {ctx.language === 'id'
+                      ? recipeBtn.language.ingredients.id
+                      : recipeBtn.language.ingredients.en}
                   </h2>
                   <div className="h-full md:max-h-[20.5rem] md:overflow-auto">
                     {ctx.language === 'id'
@@ -440,7 +442,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
               <div className="lg:w-1/2 lg:px-2">
                 <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
                   <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
-                    {ctx.language === 'id' ? 'Dibuat dengan' : 'Made With'}
+                    {ctx.language === 'id' ? recipeBtn.language.made_with.id : recipeBtn.language.made_with.en}
                   </h2>
                   <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
                     {recipe.made?.map((item, index) => (
@@ -481,7 +483,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
             <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10">
               <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
                 <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                  {ctx.language === 'id' ? 'Instruksi' : 'Instructions'}
+                  {ctx.language === 'id' ? recipeBtn.language.instructions.id : recipeBtn.language.instructions.en}
                 </h2>
 
                 <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
@@ -563,8 +565,8 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                     </span>
                     <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
                       {ctx.language === 'id'
-                        ? 'Anda mungkin juga menyukai...'
-                        : 'You may also like...'}
+                        ? recipeBtn.language.related.title.id
+                        : recipeBtn.language.related.title.en}
                     </span>
 
                     <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
@@ -574,8 +576,8 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI }) => {
                         className="ml-auto"
                       >
                         {ctx.language === 'id'
-                          ? 'Lihat Semua Resep'
-                          : 'See All Recipes'}
+                          ? recipeBtn.language.related.btn.id
+                          : recipeBtn.language.related.btn.en}
                       </StrokeButton>
                     </div>
                   </div>
@@ -657,6 +659,9 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const recipeButton = await client.fetch(`
+  *[_type == "recipeDetail"]
+  `)
 
   return {
     props: {
@@ -664,6 +669,7 @@ export async function getStaticProps({ params }) {
       recipeListAPI,
       seoAPI,
       footerAPI,
+      recipeButton,
     },
   }
 }

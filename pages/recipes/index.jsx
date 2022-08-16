@@ -31,19 +31,21 @@ const Recipe = ({
   const [recipe] = recipeAPI
   const router = useRouter()
 
-  let displayData = 6;
-  const dataIncrease = 6;
-  const [showButton, setShowButton] = useState(recipeListAPI.length <= displayData ? false : true);
-  const [dataRecipe, setDataRecipe] = useState(recipeListAPI.slice(0, displayData))
+  let displayData = 6
+  const dataIncrease = 6
+  const [showButton, setShowButton] = useState(
+    recipeListAPI.length <= displayData ? false : true,
+  )
+  const [dataRecipe, setDataRecipe] = useState(
+    recipeListAPI.slice(0, displayData),
+  )
 
   const loadMore = () => {
-    displayData += dataIncrease;
-    console.log(displayData);
-    setDataRecipe(dataRecipe.slice(0, displayData));
+    displayData += dataIncrease
+    setDataRecipe(dataRecipe.slice(0, displayData))
 
-    if (recipeListAPI.length <= displayData) setShowButton(false);
-  };
-
+    if (recipeListAPI.length <= displayData) setShowButton(false)
+  }
 
   const handleFilter = (val) => {
     setFilterValue((prev) => {
@@ -514,13 +516,9 @@ const Recipe = ({
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
               {ctx.language === 'id' ? (
-                <>
-                  Resep <br /> dari Hati
-                </>
+                <>{recipe.title_id}</>
               ) : (
-                <>
-                  Recipes <br /> from Love
-                </>
+                <>{recipe.title_en}</>
               )}
             </h1>
           </div>
@@ -610,7 +608,9 @@ const Recipe = ({
               </div>
             ) : (
               <div className="w-full h-full min-h-[60vh] flex justify-center items-center">
-                <span className='text-mtitleBig text-morin-red'>No Result Found</span>
+                <span className="text-mtitleBig text-morin-red">
+                  No Result Found
+                </span>
               </div>
             )}
             {showButton && (
