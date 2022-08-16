@@ -12,6 +12,7 @@ const HighlightCard = ({
   title,
   link,
   lang,
+  button
 }) => {
   return (
       <FancyLink
@@ -35,7 +36,7 @@ const HighlightCard = ({
           </span>
           <span className="flex w-fit items-center text-[14px] font-semibold mt-auto">
             <span className="pt-px md:pt-0.5 lg:pt-px">
-              {lang === 'id' ? 'Lihat Acara' : 'See Events'}
+              {lang === 'id' ? button.id : button.en}
             </span>
             <div className="w-4 ml-2 xl:w-6">
               <Arrow color={colors.morinBlue} />

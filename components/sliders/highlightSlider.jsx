@@ -4,7 +4,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import dateParse from '../utils/dateParse'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-const HighlightSlider = ({ data, lang }) => {
+const HighlightSlider = ({ data, lang, button }) => {
   return (
     <>
       <ScrollContainer
@@ -29,6 +29,7 @@ const HighlightSlider = ({ data, lang }) => {
                 title={item.title_id}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
+                button={button}
               />
             </div>
           ) : (
@@ -48,6 +49,7 @@ const HighlightSlider = ({ data, lang }) => {
                 title={item.title_en}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
+                button={button}
               />
             </div>
           ),

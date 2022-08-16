@@ -33,7 +33,9 @@ const HeroSlider = ({ data, className, lang }) => {
                         <div className="relative w-full h-64 mx-auto md:hidden">
                           <Image
                             src={urlFor(item.textImage.imageMobile).url()}
-                            blurDataURL={urlFor(item.textImage.imageMobile).url()}
+                            blurDataURL={urlFor(
+                              item.textImage.imageMobile,
+                            ).url()}
                             placeholder="blur"
                             alt={item.textImage.imageDesktop.alt}
                             layout="fill"
@@ -62,8 +64,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           className="mt-5 md:mt-0"
                         >
                           {lang === 'en'
-                            ? 'Find Out More'
-                            : 'Temukan Lebih Banyak Lagi'}
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -100,8 +102,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           className="mt-5"
                         >
                           {lang === 'en'
-                            ? 'Find Out More'
-                            : 'Temukan Lebih Banyak Lagi'}
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -134,7 +136,9 @@ const HeroSlider = ({ data, className, lang }) => {
                         <div className="relative w-full h-64 mx-auto md:hidden">
                           <Image
                             src={urlFor(item.textImage.imageMobile).url()}
-                            blurDataURL={urlFor(item.textImage.imageMobile).url()}
+                            blurDataURL={urlFor(
+                              item.textImage.imageMobile,
+                            ).url()}
                             placeholder="blur"
                             alt={item.textImage.imageDesktop.alt}
                             layout="fill"
@@ -163,8 +167,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           className="mt-5 md:mt-0"
                         >
                           {lang === 'en'
-                            ? 'Find Out More'
-                            : 'Temukan Lebih Banyak Lagi'}
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -201,8 +205,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           className="mt-5"
                         >
                           {lang === 'en'
-                            ? 'Find Out More'
-                            : 'Temukan Lebih Banyak Lagi'}
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
                         </StrokeButton>
                       </div>
                     </Container>
