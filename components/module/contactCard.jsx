@@ -51,6 +51,7 @@ const ContactCard = ({
   description,
   maps,
   lang,
+  button
 }) => {
   return (
     <div className='flex flex-col rounded-2xl overflow-hidden lg:flex-row'>
@@ -80,7 +81,7 @@ const ContactCard = ({
           destination={maps}
           targetBlank
         >
-          {lang === 'id' ? 'Lihat di Peta' : 'View in Maps'}
+          {lang === 'id' ? button.id : button.en}
         </StrokeButton>
       </div>
     </div>

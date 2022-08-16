@@ -39,7 +39,7 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
           classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-16'
         >
           <h1 className='text-morin-blue text-ctitle font-nutmeg font-bold mx-auto mb-8 md:text-ctitleBig lg:text-h2 xl:text-h1 xl:mb-16'>
-            {ctx.language === 'id' ? 'Kontak' : 'Contact'}
+            {ctx.language === 'id' ? contact.title_id : contact.title_en}
           </h1>
 
           {contactListAPI?.map((item, index) => (
@@ -47,6 +47,7 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
               <ContactCard
                 imageData={item.images}
                 label={ctx.language === 'id' ? item.title_id : item.title_en}
+                button={contact.btn_lang}
                 companyName={item.name}
                 description={
                   ctx.language === 'id'
