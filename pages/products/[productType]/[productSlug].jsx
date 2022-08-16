@@ -19,10 +19,11 @@ import { Parallax } from 'react-scroll-parallax';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton }) => {
+const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton, footerAPI }) => {
   const [seo] = seoAPI;
   const [product] = productAPI;
   const [productBtn] = productButton;
+  const [footer] = footerAPI
   const router = useRouter();
   const [productCurrent, setProductCurrent] = useState(
     product.listWeight.find((data) => data.defaultWeight === true).title
@@ -579,7 +580,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton }) =>
               )}
         </div>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   );

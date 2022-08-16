@@ -15,9 +15,10 @@ import colors from '@/helpers/colors'
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const ProductList = ({ productTypeAPI, seoAPI }) => {
+const ProductList = ({ productTypeAPI, seoAPI, footerAPI }) => {
   const [seo] = seoAPI
   const [productType] = productTypeAPI
+  const [footer] = footerAPI
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
@@ -176,7 +177,7 @@ const ProductList = ({ productTypeAPI, seoAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </Layout>
     </motion.div>
   )

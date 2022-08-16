@@ -239,7 +239,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
 }
 
 // CONTROLLER
-const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton }) => {
+const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAPI }) => {
   const [ingredientsChecked, setIngredientsChecked] = useState([])
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
@@ -247,6 +247,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton }) => {
   const [recipeBtn] = recipeButton
   const [seo] = seoAPI
   const [recipe] = recipeAPI
+  const [footer] = footerAPI
   const router = useRouter()
 
   const handleCheckIngredients = (val) => {
@@ -609,7 +610,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton }) => {
           </div>
         </div>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   )

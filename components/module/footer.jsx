@@ -3,7 +3,7 @@ import FancyLink from '../utils/fancyLink';
 import { InstagramSolid, TwitterSolid, FacebookSolid } from '../utils/svg';
 import { defaultHover } from '../utils/tailwind-preset';
 
-const Footer = ({ className, lang }) => {
+const Footer = ({ className, lang, button, footer }) => {
   return (
     <footer className='px-8 text-defaultSmall lg:text-default'>
       <Container
@@ -14,14 +14,13 @@ const Footer = ({ className, lang }) => {
           <div className='px-2 lg:px-0'>
             <h2 className='text-ctitleSmall font-bold font-nutmeg lg:text-mtitleBig'>
               {lang === 'id'
-                ? 'Mari Tetap Berhubungan!'
-                : `Let's Stay In Touch!`}
+                ? footer.sub_language.title.id
+                : footer.sub_language.title.en}
             </h2>
             <span className='text-defaultSmall lg:text-default'>
               {lang === 'id'
-                ? 'Daftar untuk buletin mingguan kami, produk baru, promosi eksklusif, lowongan pekerjaan, dan banyak lagi.'
-                : `Sign up for our weekly newsletter, new products, exclusive
-              promotions, job openings, and more.`}
+                ? footer.sub_language.sub_title.id
+                : footer.sub_language.sub_title.en}
             </span>
           </div>
           <form className='flex w-full mt-5  overflow-hidden lg:mt-6'>
@@ -53,31 +52,31 @@ const Footer = ({ className, lang }) => {
               destination='/about'
               className={`footer-link ${defaultHover}`}
             >
-              {lang === 'id' ? 'Tentang Kami' : 'About Us'}
+              {lang === 'id' ? button.about.id : button.about.en}
             </FancyLink>
             <FancyLink
               destination='/products'
               className={`footer-link ${defaultHover}`}
             >
-              {lang === 'id' ? 'Produk' : 'Products'}
+              {lang === 'id' ? button.products.id : button.products.en}
             </FancyLink>
             <FancyLink
               destination='/recipes'
               className={`footer-link ${defaultHover}`}
             >
-              {lang === 'id' ? 'Resep' : 'Recipes'}
+              {lang === 'id' ? button.recipes.id : button.recipes.en}
             </FancyLink>
             <FancyLink
               destination='/events'
               className={`footer-link ${defaultHover}`}
             >
-              {lang === 'id' ? 'Acara' : 'Events'}
+              {lang === 'id' ? button.events.id : button.events.en}
             </FancyLink>
             <FancyLink
               destination='/get-morin'
               className={`footer-link ${defaultHover}`}
             >
-              {lang === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+              {lang === 'id' ? button.get_morin.id : button.get_morin.en}
             </FancyLink>
           </div>
           <div className='flex flex-wrap flex-col justify-between w-1/2 lg:w-auto lg:ml-14 xl:mx-24'>
@@ -86,13 +85,13 @@ const Footer = ({ className, lang }) => {
                 destination='/faq'
                 className={`footer-link ${defaultHover}`}
               >
-                {lang === 'id' ? 'Tanya Jawab' : 'FAQ'}
+                {lang === 'id' ? button.faq.id : button.faq.en}
               </FancyLink>
               <FancyLink
                 destination='/contact'
                 className={`footer-link ${defaultHover}`}
               >
-                {lang === 'id' ? 'Kontak Kami' : 'Contact Us'}
+                {lang === 'id' ? button.contact.id : button.contact.en}
               </FancyLink>
             </div>
             <div className='w-full flex flex-col justify-end mt-auto'>
@@ -119,7 +118,7 @@ const Footer = ({ className, lang }) => {
                   <FacebookSolid className='w-9 h-9' />
                 </FancyLink>
               </div>
-              <span className=''>© Morin Food 2021</span>
+              <span className=''>{footer.creditText}</span>
             </div>
           </div>
         </div>

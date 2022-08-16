@@ -17,9 +17,10 @@ import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 import { Parallax } from 'react-scroll-parallax';
 
-const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
+const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const [seo] = seoAPI;
   const [event] = eventAPI;
+  const [footer] = footerAPI
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
@@ -136,7 +137,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
           </div>
         </div>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   );

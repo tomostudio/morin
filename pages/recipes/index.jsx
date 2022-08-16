@@ -24,11 +24,13 @@ const Recipe = ({
   cookingTimeListAPI,
   recipeCategoryAPI,
   seoAPI,
+  footerAPI
 }) => {
   const [filterOpen, setFilterOpen] = useState(true)
   const [filterValue, setFilterValue] = useState([])
   const [seo] = seoAPI
   const [recipe] = recipeAPI
+  const [footer] = footerAPI
   const router = useRouter()
 
   let displayData = 6
@@ -628,7 +630,7 @@ const Recipe = ({
           </div>
         </div>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   )

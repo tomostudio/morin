@@ -13,9 +13,10 @@ import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 import { Parallax } from 'react-scroll-parallax';
 
-const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
+const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
   const [product] = productAPI;
   const [seo] = seoAPI;
+  const [footer] = footerAPI
   const ctx = useAppContext();
   const router = useRouter();
 
@@ -106,7 +107,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
           </div>
         </div>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   );

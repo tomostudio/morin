@@ -15,9 +15,10 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 
-const GetMorin = ({ getMorinAPI, seoAPI }) => {
+const GetMorin = ({ getMorinAPI, seoAPI, footerAPI }) => {
   const [seo] = seoAPI
   const [getMorin] = getMorinAPI
+  const [footer] = footerAPI
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
@@ -170,7 +171,7 @@ const GetMorin = ({ getMorinAPI, seoAPI }) => {
             </div>
           </div>
         </Container>
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   )

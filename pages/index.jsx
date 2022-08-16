@@ -29,11 +29,13 @@ export default function Home({
   productAPI,
   productTypeAPI,
   seoAPI,
+  footerAPI,
 }) {
   const [home] = homeAPI
   const [seo] = seoAPI
   const [product] = productAPI
   const [recipe] = recipeAPI
+  const [footer] = footerAPI
   const router = useRouter()
 
   const ctx = useAppContext()
@@ -275,7 +277,7 @@ export default function Home({
               <div className="elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae" />
             </div>
           </section>
-          <Footer lang={ctx.language} />
+          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
         </Layout>
       </motion.div>
     </>

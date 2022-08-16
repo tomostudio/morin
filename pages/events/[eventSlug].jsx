@@ -26,10 +26,11 @@ const EventTag = ({ label }) => {
   )
 }
 
-const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton }) => {
+const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI }) => {
   const [seo] = seoAPI
   const [event] = eventAPI
   const [eventBtn] = eventButton
+  const [footer] = footerAPI
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
@@ -172,7 +173,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton }) => {
               </div>
             </div>
           </div>
-          <Footer lang={ctx.language} />
+          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
         </div>
       </motion.div>
     </Layout>

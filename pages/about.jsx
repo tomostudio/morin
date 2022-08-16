@@ -26,12 +26,13 @@ import { Parallax } from 'react-scroll-parallax'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 
-const About = ({ aboutAPI, seoAPI }) => {
+const About = ({ aboutAPI, seoAPI, footerAPI }) => {
   const [modalOne, setModalOne] = useState(false)
   const [modalTwo, setModalTwo] = useState(false)
   const [modalZero, setModalZero] = useState(false)
   const [about] = aboutAPI
   const [seo] = seoAPI
+  const [footer] = footerAPI
   const router = useRouter()
 
   const openModal = (type) => {
@@ -256,7 +257,7 @@ const About = ({ aboutAPI, seoAPI }) => {
             </div>
           </Container>
 
-          <Footer lang={ctx.language} />
+          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
         </div>
       </Layout>
 

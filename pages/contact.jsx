@@ -12,9 +12,10 @@ import SEO from '@/components/utils/seo';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
+const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI }) => {
   const [seo] = seoAPI;
   const [contact] = contactAPI;
+  const [footer] = footerAPI
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
@@ -61,7 +62,7 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI }) => {
           ))}
         </Container>
 
-        <Footer lang={ctx.language} />
+        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
       </motion.div>
     </Layout>
   );
