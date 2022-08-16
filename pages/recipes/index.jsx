@@ -559,7 +559,6 @@ const Recipe = ({
           </div>
 
           <div suppressHydrationWarning>
-            {/* {console.log(filterValue)} */}
             <RecipeFilter
               isOpen={filterOpen}
               difficulty={difficultyListAPI}

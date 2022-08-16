@@ -26,9 +26,10 @@ const EventTag = ({ label }) => {
   )
 }
 
-const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
+const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton }) => {
   const [seo] = seoAPI
   const [event] = eventAPI
+  const [eventBtn] = eventButton
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
@@ -78,7 +79,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
             )}
           </div>
 
-          <div className=" w-full px-4 md:px-0 mb-7 md:mb-10 md:w-content max-w-screen-md max-h-max mx-auto">
+          <div className=" w-full px-4 md:px-0 mb-7 md:mb-10 md:w-content max-w-screen-md max-h-max mx-auto flex justify-center">
             <Image
               className="rounded-2xl overflow-hidden"
               {...useNextSanityImage(client, event.cover_image)}
@@ -139,7 +140,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
           <div className="mx-auto w-full flex flex-col px-8 max-w-screen-2xl ">
             <div className="mb-7 md:mb-8 lg:mb-10">
               <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-                {ctx.language === 'id' ? 'Acara Lainnya' : 'Other Events'}
+                {ctx.language === 'id' ? eventBtn.language.event.title.id : eventBtn.language.event.title.en}
               </h2>
 
               <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
@@ -163,6 +164,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI }) => {
                       title={
                         ctx.language === 'id' ? item.title_id : item.title_en
                       }
+                      button={eventBtn.language.event.btn}
                       link={`/events/${item.slug.current}`}
                     />
                   </div>
@@ -213,6 +215,9 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const eventButton = await client.fetch(`
+  *[_type == "eventDetail"]
+  `);
 
   return {
     props: {
@@ -220,6 +225,7 @@ export async function getStaticProps({ params }) {
       eventListAPI,
       seoAPI,
       footerAPI,
+      eventButton,
     },
   }
 }

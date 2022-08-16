@@ -37,7 +37,6 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   const loadMore = () => {
     displayData += dataIncrease;
-    console.log(displayData);
     setDataEvent(eventListAPI.slice(0, displayData));
 
     if (eventListAPI.length <= displayData) setShowButton(false);
@@ -45,6 +44,9 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   return (
     <Layout>
+      {
+        console.log(event)
+      }
       <SEO
         title={ctx.language === 'id' ? 'Acara' : 'Events'}
         pagelink={router.pathname}
@@ -84,7 +86,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
           <div className='w-full absolute-center text-center pt-12 px-8'>
             <h1 className='font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1'>
-              {ctx.language === 'id' ? 'Acara terakhir' : 'Latest Events'}
+              {ctx.language === 'id' ? event.title_id : event.title_en}
             </h1>
           </div>
         </div>
