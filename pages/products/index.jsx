@@ -64,7 +64,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
 
           <div className='w-full absolute-center text-center px-8'>
             <h1 className='font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1'>
-              {ctx.language === 'id' ? 'Produk Kami' : 'Our Products'}
+              {ctx.language === 'id' ? product.title_en : product.title_id}
             </h1>
             <p className='hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block'>
               {ctx.language === 'id'
@@ -93,6 +93,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI }) => {
                 categoryData={item}
                 imgAlt={ctx.language === 'id' ? item.title_id : item.title_en}
                 title={ctx.language === 'id' ? item.title_id : item.title_en}
+                button={product.btn_lang}
                 description={
                   ctx.language === 'id'
                     ? item.description_id

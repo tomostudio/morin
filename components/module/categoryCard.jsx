@@ -28,6 +28,7 @@ const CategoryCard = ({
   imgAlt,
   lang,
   categoryData,
+  button
 }) => {
   const { image1, image2, image3, animation } = categoryData;
   return (
@@ -172,7 +173,7 @@ const CategoryCard = ({
           className={`bg-white text-morin-blue border-morin-blue group-hover:text-white group-hover:bg-morin-blue flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 group-hover:shadow-softer duration-300 transition-all`}
         >
           <div className='pt-[2px]'>
-            {lang === 'id' ? `Lihat Semua ${title}` : `See All ${title}`}
+            {lang === 'id' ? `${button.id} ${title}` : `${button.en} ${title}`}
           </div>
         </div>
       </div>
