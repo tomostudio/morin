@@ -16,32 +16,32 @@ import {
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset';
 import { motion } from 'framer-motion';
 
-export default function Header({ waLink }) {
+export default function Header({ button }) {
   const [opened, setOpened] = useState(false);
   const ctx = useAppContext();
 
   const navData = [
     {
       id: 'nav-1',
-      title: ctx.language === 'id' ? 'Tentang Kami' : 'About',
+      title: ctx.language === 'id' ? button.menu_lang.about.id : button.menu_lang.about.en,
       dest: 'about',
       ariaText: 'Navigate to the About page',
     },
     {
       id: 'nav-2',
-      title: ctx.language === 'id' ? 'Produk' : 'Products',
+      title: ctx.language === 'id' ? button.menu_lang.products.id : button.menu_lang.products.en,
       dest: 'products',
       ariaText: 'Navigate to the Products page',
     },
     {
       id: 'nav-3',
-      title: ctx.language === 'id' ? 'Resep' : 'Recipes',
+      title: ctx.language === 'id' ? button.menu_lang.recipes.id : button.menu_lang.recipes.en,
       dest: 'recipes',
       ariaText: 'Navigate to the Recipes page',
     },
     {
       id: 'nav-4',
-      title: ctx.language === 'id' ? 'Acara' : 'Events',
+      title: ctx.language === 'id' ? button.menu_lang.events.id : button.menu_lang.events.en,
       dest: 'events',
       ariaText: 'Navigate to the Events page',
     },
@@ -254,12 +254,12 @@ export default function Header({ waLink }) {
               <FancyLink
                 className='default-nav focus'
                 onMouseEnter={navMouseOver}
-                a11yText={'Navigate to the Get Morin page'}
+                a11yText={`Navigate to the ${button.menu_lang.get_morin.en} page`}
                 destination={`/get-morin`}
                 data-id={-1}
                 ref={defaultNavRef}
               >
-                {ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+                {ctx.language === 'id' ? button.menu_lang.get_morin.id : button.menu_lang.get_morin.en}
               </FancyLink>
               <div
                 id='marker'
@@ -310,7 +310,7 @@ export default function Header({ waLink }) {
                       Math.random() >= 0.5 ? rotate3 : rotate_3
                     }`}
                   >
-                    {ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
+                    {ctx.language === 'id' ? button.menu_lang.get_morin.id : button.menu_lang.get_morin.en}
                   </FancyLink>
                 </nav>
                 <div className='absolute bottom-40 left-1/2 mx-auto w-fit -translate-x-1/2 flex justify-end items-center text-defaultSmall text-white'>

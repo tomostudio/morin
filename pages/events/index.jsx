@@ -44,9 +44,6 @@ const Events = ({ eventAPI, eventListAPI, seoAPI }) => {
 
   return (
     <Layout>
-      {
-        console.log(event)
-      }
       <SEO
         title={ctx.language === 'id' ? 'Acara' : 'Events'}
         pagelink={router.pathname}
