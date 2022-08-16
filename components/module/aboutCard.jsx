@@ -9,6 +9,7 @@ const AboutCard = ({
   imgAlt,
   link = false,
   lang,
+  button,
   onClick = () => {},
 }) => {
   return (
@@ -37,7 +38,7 @@ const AboutCard = ({
           </span>
           <span className='flex items-center min-h-[25px] font-semibold leading-none border-white border-2 border-solid rounded-full px-4 mx-auto md:min-h-[30px] group-hover:text-black group-hover:bg-white transition-all duration-300'>
             <span className='md:pt-0.5'>
-              {lang === 'id' ? 'Pelajari Lebih Lanjut' : 'Learn More'}
+              {lang === 'id' ? button.id : button.en}
             </span>
           </span>
         </div>
