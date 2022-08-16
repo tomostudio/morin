@@ -62,8 +62,8 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI }) => {
           <div className='mb-16'>
             <div className=' w-full md:w-3/4 text-morin-blue mx-auto text-center font-nutmeg text-h2 lg:text-h1 leading-none  font-bold'>
               {ctx.language === 'id'
-                ? 'Pertanyaan yang Sering Diajukan'
-                : 'Frequently Asked Questions'}
+                ? faq.title_id
+                : faq.title_en}
             </div>
           </div>
 
