@@ -48,13 +48,15 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI }) => {
                   : getMorin.language.shop_online.en}
               </h2>
               <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
-                <FancyLink
-                  blank
-                  destination="#"
-                  className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
-                >
-                  <span className="block pt-1">shop.morinfood.id</span>
-                </FancyLink>
+                {!getMorin.shop.hide_shop && (
+                  <FancyLink
+                    blank
+                    destination={getMorin.shop.link}
+                    className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
+                  >
+                    <span className="block pt-1">{getMorin.shop.title}</span>
+                  </FancyLink>
+                )}
                 <div className="flex flex-col w-full justify-start">
                   <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
                     {ctx.language === 'id'

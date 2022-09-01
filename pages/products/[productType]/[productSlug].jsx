@@ -389,10 +389,10 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton, foot
                 ? product.description_id
                 : product.description_en}
             </h2>
-            {product.linkStore && (
+            {!product.getProduct.hide_get && (
               <FancyLink
                 blank
-                destination={`${process.env.NEXT_PUBLIC_STORE_URL}${product.linkStore.shopifyProduct.handle}`}
+                destination={`${process.env.NEXT_PUBLIC_STORE_URL}${product.getProduct.linkStore ? product.getProduct.linkStore.shopifyProduct.handle : ''}`}
                 className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8'
               >
                 <span className='block pt-1'>
@@ -627,7 +627,10 @@ export async function getStaticProps({ params }) {
           ...,
           manual[]->
         },
-        linkStore->
+        getProduct {
+          ...,
+          linkStore->
+        }
       }
     `
   );
