@@ -33,6 +33,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI }) => {
 
   const ctx = useAppContext()
   useEffect(() => {
+    ctx.setLangColor(faq.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 

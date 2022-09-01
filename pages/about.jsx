@@ -59,6 +59,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
 
   const ctx = useAppContext()
   useEffect(() => {
+    ctx.setLangColor(about.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 

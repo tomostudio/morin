@@ -5,8 +5,10 @@ import Container from '../module/container'
 import StrokeButton from '../micro-module/strokeButton'
 import colors from '@/helpers/colors'
 import urlFor from '@/helpers/sanity/urlFor'
+import { useAppContext } from 'context/state'
 
 const HeroSlider = ({ data, className, lang }) => {
+  const ctx = useAppContext()
   return (
     <div className="hero-slider">
       <Swiper
@@ -22,6 +24,13 @@ const HeroSlider = ({ data, className, lang }) => {
         effect="fade"
         speed={1000}
         className={`${className}`}
+        onTransitionEnd={(e) =>
+          ctx.setLangColor(
+            lang === 'id'
+              ? data.component_id[e.activeIndex].langColor.hex
+              : data.component_en[e.activeIndex].langColor.hex,
+          )
+        }
       >
         {lang === 'id'
           ? data.component_id.map((item, index) =>
