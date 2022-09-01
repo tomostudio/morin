@@ -50,6 +50,8 @@ const Recipe = ({
   }
 
   const handleFilter = (val) => {
+    console.log("filter")
+    console.log(val)
     setFilterValue((prev) => {
       const tempArr = [...prev]
 
@@ -100,6 +102,8 @@ const Recipe = ({
                     tempArr.find((data) => data.category)?.category,
                 ),
               )
+            }else {
+              setDataRecipe(recipeListAPI.slice(0, displayData))
             }
 
             const index = tempArr
@@ -235,6 +239,8 @@ const Recipe = ({
                     tempArr.find((data) => data.category)?.category,
                 ),
               )
+            }else {
+              setDataRecipe(recipeListAPI.slice(0, displayData))
             }
 
             const index = tempArr
@@ -366,6 +372,8 @@ const Recipe = ({
                     tempArr.find((data) => data.cooking_time)?.cooking_time,
                 ),
               )
+            }else {
+              setDataRecipe(recipeListAPI.slice(0, displayData))
             }
 
             const index = tempArr
