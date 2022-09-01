@@ -40,7 +40,20 @@ export default function Home({
 
   const ctx = useAppContext()
 
-  const [headerBlack, setHeaderBlack] = useState(false)
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 250) {
+        ctx.setLangColor(home.langColor.hex)
+      }
+    }
+
+    setTimeout(() => {
+      document.addEventListener('scroll', scrollListener, false)
+    }, 50) // load delay
+    return () => {
+      document.removeEventListener('scroll', scrollListener, false)
+    }
+  }, [])
 
   useEffect(() => {
     useEffectInit({ context: ctx, mobileDark: false })
@@ -229,7 +242,11 @@ export default function Home({
                 </div>
               </Container>
               <div className="relative overflow-hidden bg-morin-skyBlue px-0 pb-10 md:px-0 xl:pb-14">
-                <HighlightSlider data={eventAPI} lang={ctx.language} button={home.language.event.btn_card} />
+                <HighlightSlider
+                  data={eventAPI}
+                  lang={ctx.language}
+                  button={home.language.event.btn_card}
+                />
                 <div className="mx-auto mt-7 w-fit md:hidden">
                   <StrokeButton destination="/events" color={colors.morinBlue}>
                     {ctx.language === 'id'

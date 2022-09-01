@@ -477,6 +477,7 @@ const Recipe = ({
 
   const ctx = useAppContext()
   useEffect(() => {
+    ctx.setLangColor(recipe.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: false })
     setFilterOpen(false)
   }, [])

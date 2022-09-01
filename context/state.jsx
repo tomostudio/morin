@@ -6,6 +6,7 @@ export function AppWrapper({ children }) {
   const [scrollState, setScrollState] = useState(null)
   const mobileDark = true
   const [language, setLanguage] = useState('en')
+  const [langColor, setLangColor] = useState("#000")
   // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuOpen = false
 
@@ -14,6 +15,8 @@ export function AppWrapper({ children }) {
       value={{
         language,
         setLanguage,
+        langColor,
+        setLangColor,
         scrollState,
         setScrollState,
         mobileDark,
