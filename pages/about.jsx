@@ -38,10 +38,10 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
   const openModal = (type) => {
     switch (type) {
       case 'OUR PROCESS':
-        setModalOne(true)
+        setModalTwo(true)
         break
       case 'VISI & MISI':
-        setModalTwo(true)
+        setModalOne(true)
         break
       case 'MAIN MODAL':
         setModalZero(true)
@@ -145,7 +145,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
                   className={`absolute lg:top-auto bottom-[-5%] lg:bottom-[-5%] xl:bottom-[-8%] ${
                     ctx.language === 'id'
                       ? 'right-[50%] translate-x-[50%] sm:translate-x-0 sm:right-[8%] lg:right-0'
-                      : 'left-[5%] lg:right-auto lg:left-[0%] xl:left-auto xl:right-[35%]'
+                      : 'left-[50%] translate-x-[-50%] xs:translate-x-0 xs:left-[5%] lg:right-auto lg:left-[0%] xl:left-auto xl:right-[35%]'
                   } `}
                 >
                   <Line className="h-[20px] w-auto lg:h-[32px] lg:w-[312px]" />
@@ -163,9 +163,9 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
             </div>
             <Parallax
               translateY={['0px', '-150px']}
-              className="absolute top-[15%] lg:top-[10%] right-[-40px] md:right-[-80px] lg:right-[-120px] "
+              className="absolute top-[15%] sm:top-[10%] lg:top-[10%] right-[-40px] md:right-[-80px] lg:right-[-120px] "
             >
-              <div className="relative aspect-[1/1] w-[200px] md:w-[258px] lg:w-[382px] rotate-12">
+              <div className="relative aspect-[1/1] w-[175px] sm:w-[200px] md:w-[258px] lg:w-[382px] rotate-12">
                 <Image
                   src={urlFor(about.backgrounds.imageLeft)
                     .auto('format')
@@ -183,9 +183,9 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
             </Parallax>
             <Parallax
               translateY={['0px', '-100px']}
-              className="absolute bottom-[-7%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]"
+              className="absolute bottom-[-5%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]"
             >
-              <div className="relative aspect-[1/1] w-[200px] md:w-[258px] lg:w-[382px] -rotate-12">
+              <div className="relative aspect-[1/1] w-[175px] sm:w-[200px] md:w-[258px] lg:w-[382px] -rotate-12">
                 <Image
                   src={urlFor(about.backgrounds.imageRight)
                     .auto('format')

@@ -40,6 +40,7 @@ module.exports = {
     },
     // custom screens
     screens: {
+      'xs': { min: '450px' },
       'max-sm': { max: '550px' },
       'max-md': { max: '768px' },
       'max-lg': { max: '1150px' },

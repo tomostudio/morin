@@ -4,7 +4,6 @@ import { InstagramSolid, TwitterSolid, FacebookSolid } from '../utils/svg';
 import { defaultHover } from '../utils/tailwind-preset';
 
 const Footer = ({ className, lang, button, footer }) => {
-  console.log(footer);
   return (
     <footer className='px-8 text-defaultSmall lg:text-default'>
       <Container

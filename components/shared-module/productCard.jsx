@@ -20,7 +20,7 @@ const ProductCard = ({
       className='group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300'
     >
       <div
-        className={`relative w-full ${small ? `px-14 pt-14` : `px-20 pt-20`}`}
+        className={`relative w-full ${small ? `px-5 pt-10 md:px-10 lg:px-14 md:pt-14` : `px-5 pt-10 md:px-10 md:pt-14 lg:px-20 lg:pt-20`}`}
         style={{ background: bgColor }}
       >
         <div className='relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5'>
@@ -97,9 +97,9 @@ const ProductCard = ({
         </div>
       </div>
 
-      <div className='relative text-morin-blue text-center px-3 pt-6 pb-8 z-[10] md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
+      <div className='relative text-morin-blue text-center px-3 pt-10 pb-8 z-[10] md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
         <div
-          className={`font-nutmeg text-default leading-none md:text-[18px] ${
+          className={`font-nutmeg text-ctitleSmall  leading-none  ${
             small ? 'lg:text-ctitleSmall' : 'lg:text-mtitle'
           } xl:text-mtitlebig`}
         >
