@@ -73,10 +73,10 @@ $transition-all: all 300ms;
 
   @media (min-width: 768px) {
     @apply bg-white rounded-2xl;
+    padding: 40px 60px;
   }
 
   @media (min-width: 1024px) {
-    padding: 40px;
   }
 }
 

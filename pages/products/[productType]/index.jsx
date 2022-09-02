@@ -1,6 +1,5 @@
 import Container from '@/components/module/container'
 import Footer from '@/components/module/footer'
-import Header from '@/components/module/header'
 import Layout from '@/components/module/layout'
 import ProductCard from '@/components/shared-module/productCard'
 import { useEffectInit } from '@/components/utils/preset'
@@ -22,7 +21,8 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(productType.langColor.hex)
+    console.log(productType.langColor);
+    // ctx.setLangColor(productType.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 

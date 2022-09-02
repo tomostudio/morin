@@ -1,7 +1,5 @@
-import colors from '@/helpers/colors';
+
 import React from 'react';
-import StrokeButton from '../micro-module/strokeButton';
-import { SunRay } from '../utils/svg';
 import Image from 'next/image';
 import FancyLink from '../utils/fancyLink';
 import urlFor from '@/helpers/sanity/urlFor';
@@ -24,7 +22,6 @@ const CategoryCard = ({
   title,
   description,
   link,
-  imgSrc,
   imgAlt,
   lang,
   categoryData,
@@ -34,7 +31,7 @@ const CategoryCard = ({
   return (
     <FancyLink
       destination={link}
-      className='group relative flex flex-wrap w-full rounded-2xl overflow-hidden mb-4 last:mb-0 lg:mb-5 lg:odd:flex-row-reverse lg:min-h-[400px] xl:min-h-[500px] 2xl:min-h-[600px] hover:shadow-softer transition-shadow duration-300 '
+      className='group relative flex flex-wrap w-full rounded-2xl overflow-hidden mb-4 last:mb-0 lg:mb-5 lg:odd:flex-row-reverse lg:min-h-[400px] xl:min-h-[500px] 2xl:min-h-[600px] hover:shadow-md transition-shadow duration-300 '
     >
       {/* IMAGE */}
       <div
@@ -170,7 +167,7 @@ const CategoryCard = ({
           {description}
         </span>
         <div
-          className={`bg-white text-morin-blue border-morin-blue group-hover:text-white group-hover:bg-morin-blue flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 group-hover:shadow-softer duration-300 transition-all`}
+          className={`bg-white text-morin-blue border-morin-blue group-hover:text-white group-hover:bg-morin-blue flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 duration-300 transition-all`}
         >
           <div className='pt-[2px]'>
             {lang === 'id' ? `${button.id} ${title}` : `${button.en} ${title}`}

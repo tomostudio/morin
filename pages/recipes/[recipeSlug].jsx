@@ -291,7 +291,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
 
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(recipe.langColor.hex)
+    // ctx.setLangColor(recipe.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 

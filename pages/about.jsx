@@ -95,7 +95,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
         </div>
 
         <div className="relative w-full min-h-screen flex flex-col justify-between z-2">
-          <div className="relative pt-28 pb-32 px-8 xl:pb-36">
+          <div className="relative pt-28 pb-32 px-8 xl:pb-36 z-2">
             <div className="relative max-w-md text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
               <div className="relative">
                 <h1 className="font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
@@ -183,7 +183,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
             </Parallax>
             <Parallax
               translateY={['0px', '-100px']}
-              className="absolute bottom-[0%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]"
+              className="absolute bottom-[-7%] lg:bottom-[5%] left-[-40px] md:left-[-80px] lg:left-[-120px]"
             >
               <div className="relative aspect-[1/1] w-[200px] md:w-[258px] lg:w-[382px] -rotate-12">
                 <Image
@@ -310,7 +310,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
       <PageModal
         isOpen={modalOne}
         onRequestClose={closeModal}
-        className="text-morin-blue"
+        className="text-morin-blue "
       >
         <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
           {ctx.language === 'id'

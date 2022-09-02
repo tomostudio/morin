@@ -4,6 +4,7 @@ import { InstagramSolid, TwitterSolid, FacebookSolid } from '../utils/svg';
 import { defaultHover } from '../utils/tailwind-preset';
 
 const Footer = ({ className, lang, button, footer }) => {
+  console.log(footer);
   return (
     <footer className='px-8 text-defaultSmall lg:text-default'>
       <Container
@@ -96,27 +97,33 @@ const Footer = ({ className, lang, button, footer }) => {
             </div>
             <div className='w-full flex flex-col justify-end mt-auto'>
               <div className='flex justify-start w-full space-x-1.5 lg:space-x-3 mb-4 lg:mb-4'>
-                <FancyLink
-                  destination='/'
-                  blank={true}
-                  className={`relative  ${defaultHover}`}
-                >
-                  <InstagramSolid className='w-9 h-9' />
-                </FancyLink>
-                <FancyLink
-                  destination='/'
-                  blank={true}
-                  className={`relative  ${defaultHover}`}
-                >
+                {footer.footerLink.instagram && (
+                  <FancyLink
+                    destination={`${footer.footerLink.instagram}`}
+                    blank={true}
+                    className={`relative  ${defaultHover}`}
+                  >
+                    <InstagramSolid className='w-9 h-9' />
+                  </FancyLink>
+                )}
+                {footer.footerLink.twitter && (
+                  <FancyLink
+                    destination={`${footer.footerLink.twitter}`}
+                    blank={true}
+                    className={`relative  ${defaultHover}`}
+                  >
                   <TwitterSolid className='w-9 h-9' />
-                </FancyLink>
-                <FancyLink
-                  destination='/'
-                  blank={true}
-                  className={`relative  ${defaultHover}`}
-                >
+                  </FancyLink>
+                )}
+                {footer.footerLink.facebook && (
+                  <FancyLink
+                    destination={`${footer.footerLink.facebook}`}
+                    blank={true}
+                    className={`relative  ${defaultHover}`}
+                  >
                   <FacebookSolid className='w-9 h-9' />
-                </FancyLink>
+                  </FancyLink>
+                )}
               </div>
               <span className=''>{footer.creditText}</span>
             </div>

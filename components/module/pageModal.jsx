@@ -17,15 +17,15 @@ const PageModal = ({
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       closeTimeoutMS={closeTimeoutMS || 200}
-      className="PageModal__Content"
+      className="PageModal__Content "
       overlayClassName="PageModal__Overlay"
     >
-      <div className={`PageModal__Content--Outer ${classNameOuter ? classNameOuter : ""}`}>
+      <div className={`PageModal__Content--Outer ${classNameOuter ? classNameOuter : ""}  min-h-screen md:min-h-0 flex justify-center flex-col`}>
         <button onClick={onRequestClose} className="Modal__Close">
           <Close />
         </button>
 
-        <div className={`PageModal__Content--Inner ${className ? className : ""}`}>{children}</div>
+        <div className={`PageModal__Content--Inner ${className ? className : ""} `}>{children}</div>
       </div>
     </Modal>
   );
