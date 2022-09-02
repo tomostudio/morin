@@ -363,7 +363,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
                 <h1 className="font-nutmeg font-bold text-ctitle leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left">
                   {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
                 </h1>
-                <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[200px] lg:pt-5 lg:ml-auto">
+                <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-5 lg:ml-auto">
                   <RecipeTag
                     label={
                       ctx.language === 'id'
@@ -407,7 +407,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
               </div>
             </div>
 
-            <div className="lg:flex lg:-mx-2 lg:mb-5 md:max-h-[29rem]">
+            <div className="lg:flex lg:-mx-2 lg:mb-5">
               {/* ingredients */}
               <div className="lg:w-1/2 lg:px-2">
                 <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
@@ -416,7 +416,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
                       ? recipeBtn.language.ingredients.id
                       : recipeBtn.language.ingredients.en}
                   </h2>
-                  <div className="h-full md:max-h-[20.5rem] md:overflow-auto">
+                  <div className="h-full ">
                     {ctx.language === 'id'
                       ? recipe.ingredients_id?.map((data) => (
                           <RecipeCheckbox
@@ -482,7 +482,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
             </div>
 
             {/* instructions */}
-            <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10">
+            <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
               <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
                 <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
                   {ctx.language === 'id' ? recipeBtn.language.instructions.id : recipeBtn.language.instructions.en}

@@ -20,6 +20,8 @@ $transition-all: all 300ms;
 
   @media (min-width: 768px) {
     .PageModal__Content {
+      padding-top: 100px;
+      padding-bottom: 100px;
       bottom: -100%;
       transition: $transition-all;
     }
@@ -183,10 +185,6 @@ $transition-all: all 300ms;
   overflow: auto;
   @apply flex justify-center;
   padding: 0px;
-  @media (min-width: 768px) {
-    padding-top: 140px;
-    padding-bottom: 40px;
-  }
 }
 
 .Modal__Close,
