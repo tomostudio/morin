@@ -51,6 +51,9 @@ module.exports = {
       height: {
         '30rem': '30rem'
       },
+      minHeight: {
+        '20rem': '20rem',
+      },
       transitionTimingFunction: {
         'in-out-expo': 'cubic-bezier(0.65, 0, 0.35, 1)',
       },

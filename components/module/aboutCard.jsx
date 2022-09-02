@@ -13,7 +13,7 @@ const AboutCard = ({
 }) => {
   return (
     <div
-      className='group relative w-full h-full  rounded-2xl overflow-hidden cursor-pointer group hover:shadow-softer transition-all duration-300 hover:rotate-1'
+      className='group relative w-full min-h-20rem h-full  rounded-2xl overflow-hidden cursor-pointer group hover:shadow-softer transition-all duration-300 hover:rotate-1'
       onClick={onClick}
     >
       <div className='absolute w-full h-full z-2 bg-black opacity-5 transition-opacity duration-500 group-hover:opacity-0' />
