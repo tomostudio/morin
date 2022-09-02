@@ -151,6 +151,13 @@ export default function Header({ button }) {
   const [blackButton, setBlackButton] = useState(ctx.blackButton)
 
   useEffect(() => {
+    const language = localStorage.getItem('morin_language');
+    if(language) {
+      ctx.setLanguage(language)
+      setTimeout(() => {
+        resetNav()
+      }, 1)
+    }
     const scrollListener = () => {
       if (window.scrollY > 250) {
         setBlackButton(true)
@@ -206,6 +213,7 @@ export default function Header({ button }) {
             >
               <FancyLink
                 onClick={() => {
+                  localStorage.setItem('morin_language', "en");
                   ctx.setLanguage('en')
                   setTimeout(() => {
                     resetNav()
@@ -224,6 +232,7 @@ export default function Header({ button }) {
               <FancyLink
                 onClick={() => {
                   ctx.setLanguage('id')
+                  localStorage.setItem('morin_language', "id");
                   setTimeout(() => {
                     resetNav()
                   }, 1)
