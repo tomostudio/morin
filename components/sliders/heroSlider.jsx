@@ -27,8 +27,8 @@ const HeroSlider = ({ data, className, lang }) => {
         onTransitionEnd={(e) =>
           ctx.setLangColor(
             lang === 'id'
-              ? data.component_id[e.activeIndex].langColor.hex
-              : data.component_en[e.activeIndex].langColor.hex,
+              ? data.component_id[e.activeIndex].langColor
+              : data.component_en[e.activeIndex].langColor,
           )
         }
       >

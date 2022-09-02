@@ -22,7 +22,7 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(product.langColor.hex)
+    ctx.setLangColor(product.langColor)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 

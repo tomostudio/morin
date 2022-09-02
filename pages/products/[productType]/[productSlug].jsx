@@ -31,7 +31,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton, foot
 
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(productBtn.langColor.hex)
+    ctx.setLangColor(product.langColor)
     useEffectInit({ context: ctx, mobileDark: true });
   }, []);
 
