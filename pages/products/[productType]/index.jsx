@@ -14,15 +14,15 @@ import colors from '@/helpers/colors'
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const ProductList = ({ productTypeAPI, seoAPI, footerAPI }) => {
+const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
   const [seo] = seoAPI
   const [productType] = productTypeAPI
   const [footer] = footerAPI
+  const [product] = productAPI
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    console.log(productType.langColor);
-    // ctx.setLangColor(productType.langColor.hex)
+    ctx.setLangColor(product.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 
@@ -225,12 +225,16 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const productAPI = await client.fetch(`
+  *[_type == "product"]
+  `)
 
   return {
     props: {
       productTypeAPI,
       seoAPI,
       footerAPI,
+      productAPI
     },
   }
 }

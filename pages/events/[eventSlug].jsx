@@ -34,7 +34,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI })
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    // ctx.setLangColor(event.langColor.hex)
+    ctx.setLangColor(eventBtn.langColor.hex)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 
