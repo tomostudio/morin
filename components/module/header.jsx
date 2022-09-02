@@ -151,8 +151,8 @@ export default function Header({ button }) {
   const [blackButton, setBlackButton] = useState(ctx.blackButton)
 
   useEffect(() => {
-    const language = localStorage.getItem('morin_language');
-    if(language) {
+    const language = localStorage.getItem('morin_language')
+    if (language) {
       ctx.setLanguage(language)
       setTimeout(() => {
         resetNav()
@@ -208,12 +208,13 @@ export default function Header({ button }) {
           <Container className="mt-6 hidden lg:flex">
             {/* Language Selector */}
             <div
-              className={`w-full flex justify-end items-center text-defaultSmall`}
-              style={{ color: ctx.langColor }}
+              className={`w-full flex justify-end items-center text-defaultSmall ${
+                ctx.langColor ? 'text-white' : 'text-black'
+              }`}
             >
               <FancyLink
                 onClick={() => {
-                  localStorage.setItem('morin_language', "en");
+                  localStorage.setItem('morin_language', 'en')
                   ctx.setLanguage('en')
                   setTimeout(() => {
                     resetNav()
@@ -226,13 +227,14 @@ export default function Header({ button }) {
                 EN
               </FancyLink>
               <hr
-                className={`w-[2px] h-[90%] opacity-50`}
-                style={{ backgroundColor: ctx.langColor }}
+                className={`w-[2px] h-[90%] opacity-50 ${
+                  ctx.langColor ? 'bg-white' : 'bg-black'
+                }`}
               />
               <FancyLink
                 onClick={() => {
                   ctx.setLanguage('id')
-                  localStorage.setItem('morin_language', "id");
+                  localStorage.setItem('morin_language', 'id')
                   setTimeout(() => {
                     resetNav()
                   }, 1)

@@ -43,7 +43,7 @@ export default function Home({
   useEffect(() => {
     const scrollListener = () => {
       if (window.scrollY > 250) {
-        ctx.setLangColor(home.langColor.hex)
+        ctx.setLangColor(home.langColor)
       }
     }
 

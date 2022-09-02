@@ -21,7 +21,7 @@ const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
   const router = useRouter();
 
   useEffect(() => {
-    ctx.setLangColor(product.langColor.hex)
+    ctx.setLangColor(product.langColor)
     useEffectInit({ context: ctx, mobileDark: false });
   }, []);
   return (

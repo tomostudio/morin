@@ -22,7 +22,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(getMorin.langColor.hex)
+    ctx.setLangColor(getMorin.langColor)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
   return (
