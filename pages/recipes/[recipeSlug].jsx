@@ -247,7 +247,6 @@ const RecipeDetail = ({
   footerAPI,
   translation,
 }) => {
-  const [ingredientsChecked, setIngredientsChecked] = useState([])
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
   const [gallerySlide, setGallerySlide] = useState(0)
@@ -256,23 +255,6 @@ const RecipeDetail = ({
   const [recipe] = recipeAPI
   const [footer] = footerAPI
   const router = useRouter()
-
-  const handleCheckIngredients = (val) => {
-    setIngredientsChecked((prev) => {
-      const tempArr = [...prev]
-
-      if (tempArr.includes(val)) {
-        const index = tempArr.indexOf(val)
-        tempArr.splice(index, 1)
-        return tempArr
-      }
-
-      if (!tempArr.includes(val)) {
-        tempArr.push(val)
-        return tempArr
-      }
-    })
-  }
 
   const handleCheckInstructions = (val) => {
     setInstructionsChecked((prev) => {
@@ -397,166 +379,223 @@ const RecipeDetail = ({
             </div>
 
             {/* description */}
-            <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
-              <div className="lg:max-w-3xl lg:mx-auto">
-                <PortableText
-                  value={
-                    ctx.language === 'id'
-                      ? recipe.description_id
-                      : recipe.description_en
-                  }
-                  components={{
-                    block: {
-                      normal: ({ children }) => <p>{children}</p>,
-                    },
-                  }}
-                />
-              </div>
-            </div>
+            {ctx.language === 'id'
+              ? recipe.description_id && (
+                  <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
+                    <div className="lg:max-w-3xl lg:mx-auto">
+                      <PortableText
+                        value={recipe.description_id}
+                        components={{
+                          block: {
+                            normal: ({ children }) => <p>{children}</p>,
+                          },
+                        }}
+                      />
+                    </div>
+                  </div>
+                )
+              : recipe.description_en && (
+                  <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
+                    <div className="lg:max-w-3xl lg:mx-auto">
+                      <PortableText
+                        value={recipe.description_en}
+                        components={{
+                          block: {
+                            normal: ({ children }) => <p>{children}</p>,
+                          },
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
 
             <div className="lg:flex lg:-mx-2 lg:mb-5">
               {/* ingredients */}
-              <div className="lg:w-1/2 lg:px-2">
-                <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
-                  <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
-                    {ctx.language === 'id'
-                      ? recipeBtn.language.ingredients.id
-                      : recipeBtn.language.ingredients.en}
-                  </h2>
-                  <div className="h-full ">
-                    {ctx.language === 'id'
-                      ? recipe.ingredients_id?.map((data) => (
-                          <RecipeCheckbox
-                            key={data.description}
-                            name={data.description}
-                            label={data.description}
-                            value={data.description}
-                            checked={data.title}
-                          />
-                        ))
-                      : recipe.ingredients_en?.map((data) => (
-                          <RecipeCheckbox
-                            key={data.description}
-                            name={data.description}
-                            label={data.description}
-                            value={data.description}
-                            checked={data.title}
-                          />
-                        ))}
-                  </div>
-                </div>
-              </div>
+              {ctx.language === 'id'
+                ? recipe.ingredients_id?.length > 0 && (
+                    <div className="lg:w-1/2 lg:px-2">
+                      <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
+                        <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
+                          {recipeBtn.language.ingredients.id}
+                        </h2>
+                        <div className="h-full ">
+                          {recipe.ingredients_id?.map((data) => (
+                            <RecipeCheckbox
+                              key={data.description}
+                              name={data.description}
+                              label={data.description}
+                              value={data.description}
+                              checked={data.title}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                : recipe.ingredients_en?.length > 0 && (
+                    <div className="lg:w-1/2 lg:px-2">
+                      <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
+                        <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
+                          {recipeBtn.language.ingredients.en}
+                        </h2>
+                        <div className="h-full ">
+                          {recipe.ingredients_en?.map((data) => (
+                            <RecipeCheckbox
+                              key={data.description}
+                              name={data.description}
+                              label={data.description}
+                              value={data.description}
+                              checked={data.title}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
               {/* made with */}
-              <div className="lg:w-1/2 lg:px-2">
-                <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
-                  <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
-                    {ctx.language === 'id'
-                      ? recipeBtn.language.made_with.id
-                      : recipeBtn.language.made_with.en}
-                  </h2>
-                  <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
-                    {recipe.made?.map((item, index) => (
-                      <div
-                        className="w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5"
-                        key={`${item.title_en}${index}`}
-                      >
-                        <ProductCard
-                          title={
-                            ctx.language === 'id'
-                              ? item.title_id
-                              : item.title_en
-                          }
-                          bgColor={
-                            item.backgroundColor
-                              ? item.backgroundColor.hex
-                              : colors.morinLightBlue
-                          }
-                          imgSrc={urlFor(item.thumbnail)
-                            .auto('format')
-                            .width(800)
-                            .url()}
-                          thumbnailFruit={item.thumbnailFruit}
-                          imgBg={'/product/strawberry-bg.png'}
-                          imgPlaceholder={urlFor(item.thumbnail)
-                            .width(500)
-                            .auto('format')
-                            .blur(10)
-                            .url()}
-                          imgAlt={item.thumbnail.alt}
-                          link={`${item.type.slug.current}/${item.slug.current}`}
-                          small
-                        />
-                      </div>
-                    ))}
+              {recipe.made?.length > 0 && (
+                <div className="lg:w-1/2 lg:px-2">
+                  <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
+                    <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
+                      {ctx.language === 'id'
+                        ? recipeBtn.language.made_with.id
+                        : recipeBtn.language.made_with.en}
+                    </h2>
+                    <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
+                      {recipe.made?.map((item, index) => (
+                        <div
+                          className="w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5"
+                          key={`${item.title_en}${index}`}
+                        >
+                          <ProductCard
+                            title={
+                              ctx.language === 'id'
+                                ? item.title_id
+                                : item.title_en
+                            }
+                            bgColor={
+                              item.backgroundColor
+                                ? item.backgroundColor.hex
+                                : colors.morinLightBlue
+                            }
+                            imgSrc={urlFor(item.thumbnail)
+                              .auto('format')
+                              .width(800)
+                              .url()}
+                            thumbnailFruit={item.thumbnailFruit}
+                            imgBg={'/product/strawberry-bg.png'}
+                            imgPlaceholder={urlFor(item.thumbnail)
+                              .width(500)
+                              .auto('format')
+                              .blur(10)
+                              .url()}
+                            imgAlt={item.thumbnail.alt}
+                            link={`${item.type.slug.current}/${item.slug.current}`}
+                            small
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* instructions */}
-            <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
-              <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
-                <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                  {ctx.language === 'id'
-                    ? recipeBtn.language.instructions.id
-                    : recipeBtn.language.instructions.en}
-                </h2>
+            {ctx.language === 'id'
+              ? recipe.steps_id?.length > 0 && (
+                  <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
+                    <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
+                      <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
+                        {recipeBtn.language.instructions.id}
+                      </h2>
 
-                <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
-                  <StrokeButton
-                    arrow={false}
-                    color={colors.morinRed}
-                    className="mx-0 mr-3"
-                    onClick={() => console.log('Print')}
-                  >
-                    {ctx.language === 'id' ? 'Cetak' : 'Print'}
-                  </StrokeButton>
-                  <StrokeButton
-                    arrow={false}
-                    color={colors.morinRed}
-                    className="mx-0"
-                    onClick={() => console.log('Share')}
-                  >
-                    {ctx.language === 'id' ? 'Bagikan' : 'Share'}
-                  </StrokeButton>
-                </div>
-              </div>
+                      <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
+                        <StrokeButton
+                          arrow={false}
+                          color={colors.morinRed}
+                          className="mx-0 mr-3"
+                          onClick={() => console.log('Print')}
+                        >
+                          Cetak
+                        </StrokeButton>
+                        <StrokeButton
+                          arrow={false}
+                          color={colors.morinRed}
+                          className="mx-0"
+                          onClick={() => console.log('Share')}
+                        >
+                          Bagikan
+                        </StrokeButton>
+                      </div>
+                    </div>
 
-              <div className="lg:max-w-3xl lg:mx-auto">
-                {ctx.language === 'id'
-                  ? recipe.steps_id?.map((item, index) => (
-                      <InstructionCard
-                        key={index}
-                        step={index + 1}
-                        value={`step-${index + 1}`}
-                        instruction={item.description}
-                        images={item.images}
-                        checked={instructionsChecked.includes(
-                          `step-${index + 1}`,
-                        )}
-                        onChange={() =>
-                          handleCheckInstructions(`step-${index + 1}`)
-                        }
-                      />
-                    ))
-                  : recipe.steps_en?.map((item, index) => (
-                      <InstructionCard
-                        key={index}
-                        step={index + 1}
-                        value={`step-${index + 1}`}
-                        instruction={item.description}
-                        images={item.images}
-                        checked={instructionsChecked.includes(
-                          `step-${index + 1}`,
-                        )}
-                        onChange={() =>
-                          handleCheckInstructions(`step-${index + 1}`)
-                        }
-                      />
-                    ))}
-              </div>
-            </div>
+                    <div className="lg:max-w-3xl lg:mx-auto">
+                      {recipe.steps_id?.map((item, index) => (
+                        <InstructionCard
+                          key={index}
+                          step={index + 1}
+                          value={`step-${index + 1}`}
+                          instruction={item.description}
+                          images={item.images}
+                          checked={instructionsChecked.includes(
+                            `step-${index + 1}`,
+                          )}
+                          onChange={() =>
+                            handleCheckInstructions(`step-${index + 1}`)
+                          }
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )
+              : recipe.steps_en?.length > 0 && (
+                  <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
+                    <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
+                      <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
+                        {recipeBtn.language.instructions.en}
+                      </h2>
+
+                      <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
+                        <StrokeButton
+                          arrow={false}
+                          color={colors.morinRed}
+                          className="mx-0 mr-3"
+                          onClick={() => console.log('Print')}
+                        >
+                          Print
+                        </StrokeButton>
+                        <StrokeButton
+                          arrow={false}
+                          color={colors.morinRed}
+                          className="mx-0"
+                          onClick={() => console.log('Share')}
+                        >
+                          Share
+                        </StrokeButton>
+                      </div>
+                    </div>
+
+                    <div className="lg:max-w-3xl lg:mx-auto">
+                      {recipe.steps_en?.map((item, index) => (
+                        <InstructionCard
+                          key={index}
+                          step={index + 1}
+                          value={`step-${index + 1}`}
+                          instruction={item.description}
+                          images={item.images}
+                          checked={instructionsChecked.includes(
+                            `step-${index + 1}`,
+                          )}
+                          onChange={() =>
+                            handleCheckInstructions(`step-${index + 1}`)
+                          }
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
             {/* gallery */}
             {recipe.gallery?.length > 0 && (
@@ -573,45 +612,133 @@ const RecipeDetail = ({
             )}
 
             {/* more recipes */}
-            {recipeListAPI?.length > 0 && (
-              <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
-                <div className="flex flex-wrap w-full">
-                  <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
-                    <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
-                      {ctx.language === 'id' ? 'Resep Lainnya' : 'More Recipes'}
-                    </span>
-                    <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
-                      {ctx.language === 'id'
-                        ? recipeBtn.language.related.title.id
-                        : recipeBtn.language.related.title.en}
-                    </span>
+            {ctx.language === 'id'
+              ? recipe.related.option
+                ? recipeListAPI?.length > 0 && (
+                    <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
+                      <div className="flex flex-wrap w-full">
+                        <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
+                          <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                            Resep Lainnya
+                          </span>
+                          <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                            {recipeBtn.language.related.title.id}
+                          </span>
 
-                    <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
-                      <StrokeButton
-                        destination="/recipes"
-                        color={colors.morinRed}
-                        className="ml-auto"
-                      >
-                        {ctx.language === 'id'
-                          ? recipeBtn.language.related.btn.id
-                          : recipeBtn.language.related.btn.en}
-                      </StrokeButton>
+                          <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                            <StrokeButton
+                              destination="/recipes"
+                              color={colors.morinRed}
+                              className="ml-auto"
+                            >
+                              {recipeBtn.language.related.btn.id}
+                            </StrokeButton>
+                          </div>
+                        </div>
+
+                        <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                          <RecipeSlider
+                            data={recipeListAPI}
+                            lang={ctx.language}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )
+                : recipe.related?.manual?.length > 0 && (
+                    <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
+                      <div className="flex flex-wrap w-full">
+                        <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
+                          <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                            Resep Lainnya
+                          </span>
+                          <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                            {recipeBtn.language.related.title.id}
+                          </span>
+
+                          <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                            <StrokeButton
+                              destination="/recipes"
+                              color={colors.morinRed}
+                              className="ml-auto"
+                            >
+                              {recipeBtn.language.related.btn.id}
+                            </StrokeButton>
+                          </div>
+                        </div>
+
+                        <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                          <RecipeSlider
+                            data={recipe.related.manual}
+                            lang={ctx.language}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )
+              : recipe.related.option
+              ? recipeListAPI?.length > 0 && (
+                  <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
+                    <div className="flex flex-wrap w-full">
+                      <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
+                        <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                          More Recipes
+                        </span>
+                        <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                          {recipeBtn.language.related.title.en}
+                        </span>
+
+                        <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                          <StrokeButton
+                            destination="/recipes"
+                            color={colors.morinRed}
+                            className="ml-auto"
+                          >
+                            {recipeBtn.language.related.btn.en}
+                          </StrokeButton>
+                        </div>
+                      </div>
+
+                      <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                        <RecipeSlider
+                          data={recipeListAPI}
+                          lang={ctx.language}
+                        />
+                      </div>
                     </div>
                   </div>
+                )
+              : recipe.related?.manual?.length > 0 && (
+                  <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
+                    <div className="flex flex-wrap w-full">
+                      <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
+                        <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                          More Recipes
+                        </span>
+                        <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                          {recipeBtn.language.related.title.en}
+                        </span>
 
-                  <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
-                    {recipe.related.option ? (
-                      <RecipeSlider data={recipeListAPI} lang={ctx.language} />
-                    ) : (
-                      <RecipeSlider
-                        data={recipe.related.manual}
-                        lang={ctx.language}
-                      />
-                    )}
+                        <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                          <StrokeButton
+                            destination="/recipes"
+                            color={colors.morinRed}
+                            className="ml-auto"
+                          >
+                            {recipeBtn.language.related.btn.en}
+                          </StrokeButton>
+                        </div>
+                      </div>
+
+                      <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                        <RecipeSlider
+                          data={recipe.related.manual}
+                          lang={ctx.language}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            )}
+                )}
 
             {/* gallery pop up */}
             <GalleryModal
