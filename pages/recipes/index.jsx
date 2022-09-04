@@ -50,8 +50,6 @@ const Recipe = ({
   }
 
   const handleFilter = (val) => {
-    console.log("filter")
-    console.log(val)
     setFilterValue((prev) => {
       const tempArr = [...prev]
 

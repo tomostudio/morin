@@ -65,35 +65,35 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
                 <div className="w-full h-96 absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor_id.decor1.image)
+                      src={urlFor(productType.decor.decor1.image_id)
                         .auto('format')
                         .width(400)
                         .url()}
-                      blurDataURL={urlFor(productType.decor_id.decor1.image)
+                      blurDataURL={urlFor(productType.decor.decor1.image_id)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor_id.decor1.image.alt}
+                      alt={productType.decor.decor1.image_id.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor_en.decor1.image)
+                      src={urlFor(productType.decor.decor1.image_en)
                         .auto('format')
                         .width(400)
                         .height(385)
                         .url()}
-                      blurDataURL={urlFor(productType.decor_en.decor1.image)
+                      blurDataURL={urlFor(productType.decor.decor1.image_en)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor_en.decor1.image.alt}
+                      alt={productType.decor.decor1.image_en.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
@@ -103,34 +103,34 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
                 <div className="w-full h-96 absolute top-0 left-0 translate-x-full -translate-y-1/3 select-none">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor_id.decor2.image)
+                      src={urlFor(productType.decor.decor2.image_id)
                         .auto('format')
                         .width(500)
                         .url()}
-                      blurDataURL={urlFor(productType.decor_id.decor2.image)
+                      blurDataURL={urlFor(productType.decor.decor2.image_id)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor_id.decor2.image.alt}
+                      alt={productType.decor.decor2.image_id.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor_en.decor2.image)
+                      src={urlFor(productType.decor.decor2.image_en)
                         .auto('format')
                         .width(500)
                         .url()}
-                      blurDataURL={urlFor(productType.decor_en.decor2.image)
+                      blurDataURL={urlFor(productType.decor.decor2.image_en)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor_en.decor2.image.alt}
+                      alt={productType.decor.decor2.image_en.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
@@ -207,11 +207,7 @@ export async function getStaticProps({ params }) {
     `
       *[_type == "productType" && slug.current == "${params.productType}"] {
         ...,
-        decor_en {
-          decor1->,
-          decor2->
-        },
-        decor_id {
+        decor {
           decor1->,
           decor2->
         },
