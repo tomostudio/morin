@@ -47,7 +47,6 @@ const ImageGallery = ({ name, images }) => {
 const ContactCard = ({
   imageData,
   label,
-  companyName,
   description,
   maps,
   lang,
@@ -64,8 +63,6 @@ const ContactCard = ({
         </span>
 
         <div className='flex flex-col xl:max-w-xs'>
-          <span className='font-semibold mb-4 xl:mb-8'>{companyName}</span>
-
           <PortableText
             value={description}
             components={{

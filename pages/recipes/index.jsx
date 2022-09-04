@@ -539,14 +539,14 @@ const Recipe = ({
           <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
               {ctx.language === 'id'
-                ? `Diurutkan Secara:${
+                ? `Diurutkan Secara ${
                     filterValue.length < 1
                       ? ' Bawaan'
                       : filterValue.map((obj) =>
                           Object.values(obj).map((data) => ` ${data}`),
                         )
                   }`
-                : `Sorted by:${
+                : `Sorted by ${
                     filterValue.length < 1
                       ? ' Default'
                       : filterValue.map((obj) =>

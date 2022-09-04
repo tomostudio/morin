@@ -611,7 +611,7 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
           </div>
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
       </motion.div>
     </Layout>
   )

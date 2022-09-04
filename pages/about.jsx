@@ -258,7 +258,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
             </div>
           </Container>
 
-          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
         </div>
       </Layout>
 

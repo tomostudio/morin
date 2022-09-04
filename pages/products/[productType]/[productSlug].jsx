@@ -581,7 +581,7 @@ const ProductDetail = ({ productAPI, productListAPI, seoAPI, productButton, foot
               )}
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
       </motion.div>
     </Layout>
   );

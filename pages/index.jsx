@@ -276,12 +276,12 @@ export default function Home({
                 </h2>
                 <div>
                   <SolidButton
-                    destination="https://www.instagram.com/morin_jam/"
+                    destination={home.instagram.url}
                     arrow={false}
                     targetBlank={true}
                     color={colors.morinBlue}
                   >
-                    @morin_jam
+                    {home.instagram.title}
                   </SolidButton>
                 </div>
               </div>
@@ -294,7 +294,7 @@ export default function Home({
               <div className="elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae" />
             </div>
           </section>
-          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
         </Layout>
       </motion.div>
     </>

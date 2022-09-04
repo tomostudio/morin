@@ -102,7 +102,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
       </Layout>
 
       <BasicModal
@@ -149,16 +149,23 @@ export async function getStaticProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
+  const [seo] = seoAPI
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
-  return {
-    props: {
-      faqAPI,
-      faqListAPI,
-      seoAPI,
-      footerAPI,
-    },
+  if(!seo.hide_faq) {
+    return {
+      props: {
+        faqAPI,
+        faqListAPI,
+        seoAPI,
+        footerAPI,
+      },
+    }
+  }else {
+    return {
+      notFound: true,
+    }
   }
 }
 

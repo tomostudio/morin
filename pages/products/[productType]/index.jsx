@@ -178,7 +178,7 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
       </Layout>
     </motion.div>
   )

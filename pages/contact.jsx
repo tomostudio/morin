@@ -50,7 +50,6 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI }) => {
                 imageData={item.images}
                 label={ctx.language === 'id' ? item.title_id : item.title_en}
                 button={contact.btn_lang}
-                companyName={item.name}
                 description={
                   ctx.language === 'id'
                     ? item.description_id
@@ -63,7 +62,7 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI }) => {
           ))}
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
       </motion.div>
     </Layout>
   );

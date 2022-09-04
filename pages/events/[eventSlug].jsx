@@ -174,7 +174,7 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI })
               </div>
             </div>
           </div>
-          <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
         </div>
       </motion.div>
     </Layout>
