@@ -30,6 +30,7 @@ export default function Home({
   productTypeAPI,
   seoAPI,
   footerAPI,
+  translation,
 }) {
   const [home] = homeAPI
   const [seo] = seoAPI
@@ -294,7 +295,13 @@ export default function Home({
               <div className="elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae" />
             </div>
           </section>
-          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+          <Footer
+            lang={ctx.language}
+            button={translation.menu_lang}
+            faq={seo.hide_faq}
+            footer={footer}
+            translation={translation}
+          />
         </Layout>
       </motion.div>
     </>
@@ -326,6 +333,10 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const translationAPI = await client.fetch(`
+  *[_type == "translation"]
+  `)
+  const [translation] = translationAPI
   return {
     props: {
       homeAPI,
@@ -336,6 +347,7 @@ export async function getStaticProps() {
       productTypeAPI,
       seoAPI,
       footerAPI,
+      translation,
     },
   }
 }

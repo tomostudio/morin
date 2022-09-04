@@ -12,7 +12,7 @@ import SEO from '@/components/utils/seo';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 
-const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI }) => {
+const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI, translation }) => {
   const [seo] = seoAPI;
   const [contact] = contactAPI;
   const [footer] = footerAPI
@@ -62,7 +62,13 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI }) => {
           ))}
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </motion.div>
     </Layout>
   );
@@ -81,12 +87,17 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const translationAPI = await client.fetch(`
+  *[_type == "translation"]
+  `)
+  const [translation] = translationAPI
   return {
     props: {
       contactAPI,
       contactListAPI,
       seoAPI,
       footerAPI,
+      translation
     },
   };
 }

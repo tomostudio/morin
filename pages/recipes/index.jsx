@@ -24,7 +24,8 @@ const Recipe = ({
   cookingTimeListAPI,
   recipeCategoryAPI,
   seoAPI,
-  footerAPI
+  footerAPI,
+  translation
 }) => {
   const [filterOpen, setFilterOpen] = useState(true)
   const [filterValue, setFilterValue] = useState([])
@@ -637,7 +638,13 @@ const Recipe = ({
           </div>
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </motion.div>
     </Layout>
   )
@@ -670,6 +677,10 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
   return {
     props: {
       recipeAPI,
@@ -679,6 +690,7 @@ export async function getStaticProps() {
       recipeCategoryAPI,
       seoAPI,
       footerAPI,
+      translation
     },
   }
 }

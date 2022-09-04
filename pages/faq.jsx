@@ -15,7 +15,7 @@ import { fade } from '@/helpers/transitions'
 import FancyLink from '@/components/utils/fancyLink'
 import { SunRaySmaller } from '@/components/utils/svg'
 
-const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI }) => {
+const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
   const [seo] = seoAPI
   const [faq] = faqAPI
   const [footer] = footerAPI
@@ -102,7 +102,13 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </Layout>
 
       <BasicModal
@@ -153,16 +159,21 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
-  if(!seo.hide_faq) {
+  const translationAPI = await client.fetch(`
+  *[_type == "translation"]
+  `)
+  const [translation] = translationAPI
+  if (!seo.hide_faq) {
     return {
       props: {
         faqAPI,
         faqListAPI,
         seoAPI,
         footerAPI,
+        translation,
       },
     }
-  }else {
+  } else {
     return {
       notFound: true,
     }

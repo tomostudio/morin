@@ -3,7 +3,7 @@ import FancyLink from '../utils/fancyLink'
 import { InstagramSolid, TwitterSolid, FacebookSolid } from '../utils/svg'
 import { defaultHover } from '../utils/tailwind-preset'
 
-const Footer = ({ className, lang, button, faq, footer }) => {
+const Footer = ({ className, lang, button, faq, footer, translation }) => {
   return (
     <footer className="px-4 lg:px-8 text-defaultSmall lg:text-default">
       <Container
@@ -14,13 +14,13 @@ const Footer = ({ className, lang, button, faq, footer }) => {
           <div className="px-2 lg:px-0">
             <h2 className="text-ctitleSmall font-bold font-nutmeg lg:text-mtitleBig">
               {lang === 'id'
-                ? footer.sub_language.title.id
-                : footer.sub_language.title.en}
+                ? translation.sub_language.title.id
+                : translation.sub_language.title.en}
             </h2>
             <span className="text-defaultSmall lg:text-default">
               {lang === 'id'
-                ? footer.sub_language.sub_title.id
-                : footer.sub_language.sub_title.en}
+                ? translation.sub_language.sub_title.id
+                : translation.sub_language.sub_title.en}
             </span>
           </div>
           <form className="flex w-full mt-5  overflow-hidden lg:mt-6">

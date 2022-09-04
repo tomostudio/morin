@@ -239,7 +239,14 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
 }
 
 // CONTROLLER
-const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAPI }) => {
+const RecipeDetail = ({
+  recipeAPI,
+  recipeListAPI,
+  seoAPI,
+  recipeButton,
+  footerAPI,
+  translation,
+}) => {
   const [ingredientsChecked, setIngredientsChecked] = useState([])
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
@@ -444,7 +451,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
               <div className="lg:w-1/2 lg:px-2">
                 <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
                   <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
-                    {ctx.language === 'id' ? recipeBtn.language.made_with.id : recipeBtn.language.made_with.en}
+                    {ctx.language === 'id'
+                      ? recipeBtn.language.made_with.id
+                      : recipeBtn.language.made_with.en}
                   </h2>
                   <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
                     {recipe.made?.map((item, index) => (
@@ -458,7 +467,11 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
                               ? item.title_id
                               : item.title_en
                           }
-                          bgColor={item.backgroundColor.hex}
+                          bgColor={
+                            item.backgroundColor
+                              ? item.backgroundColor.hex
+                              : colors.morinLightBlue
+                          }
                           imgSrc={urlFor(item.thumbnail)
                             .auto('format')
                             .width(800)
@@ -485,7 +498,9 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
             <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
               <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
                 <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                  {ctx.language === 'id' ? recipeBtn.language.instructions.id : recipeBtn.language.instructions.en}
+                  {ctx.language === 'id'
+                    ? recipeBtn.language.instructions.id
+                    : recipeBtn.language.instructions.en}
                 </h2>
 
                 <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
@@ -611,7 +626,13 @@ const RecipeDetail = ({ recipeAPI, recipeListAPI, seoAPI, recipeButton, footerAP
           </div>
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </motion.div>
     </Layout>
   )
@@ -664,6 +685,10 @@ export async function getStaticProps({ params }) {
   const recipeButton = await client.fetch(`
   *[_type == "recipeDetail"]
   `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
 
   return {
     props: {
@@ -672,6 +697,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
       recipeButton,
+      translation,
     },
   }
 }

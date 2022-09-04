@@ -24,6 +24,7 @@ const ProductDetail = ({
   seoAPI,
   productButton,
   footerAPI,
+  translation
 }) => {
   const [seo] = seoAPI
   const [product] = productAPI
@@ -595,9 +596,10 @@ const ProductDetail = ({
 
         <Footer
           lang={ctx.language}
-          button={seo.menu_lang}
+          button={translation.menu_lang}
           faq={seo.hide_faq}
           footer={footer}
+          translation={translation}
         />
       </motion.div>
     </Layout>
@@ -660,6 +662,10 @@ export async function getStaticProps({ params }) {
   const productButton = await client.fetch(`
   *[_type == "productDetail"]
   `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
 
   return {
     props: {
@@ -668,6 +674,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
       productButton,
+      translation
     },
   }
 }

@@ -17,7 +17,7 @@ import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 import { Parallax } from 'react-scroll-parallax';
 
-const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
+const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
   const [seo] = seoAPI;
   const [event] = eventAPI;
   const [footer] = footerAPI
@@ -138,7 +138,13 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
           </div>
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </motion.div>
     </Layout>
   );
@@ -160,12 +166,17 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
   return {
     props: {
       eventAPI,
       eventListAPI,
       seoAPI,
       footerAPI,
+      translation
     },
   };
 }

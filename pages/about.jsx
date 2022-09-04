@@ -26,7 +26,7 @@ import { Parallax } from 'react-scroll-parallax'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 
-const About = ({ aboutAPI, seoAPI, footerAPI }) => {
+const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
   const [modalOne, setModalOne] = useState(false)
   const [modalTwo, setModalTwo] = useState(false)
   const [modalZero, setModalZero] = useState(false)
@@ -258,7 +258,13 @@ const About = ({ aboutAPI, seoAPI, footerAPI }) => {
             </div>
           </Container>
 
-          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+          <Footer
+            lang={ctx.language}
+            button={translation.menu_lang}
+            faq={seo.hide_faq}
+            footer={footer}
+            translation={translation}
+          />
         </div>
       </Layout>
 
@@ -412,11 +418,16 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
+  const translationAPI = await client.fetch(`
+  *[_type == "translation"]
+  `)
+  const [translation] = translationAPI
   return {
     props: {
       aboutAPI,
       seoAPI,
       footerAPI,
+      translation,
     },
   }
 }

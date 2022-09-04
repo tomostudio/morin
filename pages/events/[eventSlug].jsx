@@ -26,7 +26,14 @@ const EventTag = ({ label }) => {
   )
 }
 
-const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI }) => {
+const EventDetail = ({
+  eventAPI,
+  eventListAPI,
+  seoAPI,
+  eventButton,
+  footerAPI,
+  translation,
+}) => {
   const [seo] = seoAPI
   const [event] = eventAPI
   const [eventBtn] = eventButton
@@ -142,7 +149,9 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI })
           <div className="mx-auto w-full flex flex-col px-8 max-w-screen-2xl ">
             <div className="mb-7 md:mb-8 lg:mb-10">
               <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-                {ctx.language === 'id' ? eventBtn.language.event.title.id : eventBtn.language.event.title.en}
+                {ctx.language === 'id'
+                  ? eventBtn.language.event.title.id
+                  : eventBtn.language.event.title.en}
               </h2>
 
               <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
@@ -174,7 +183,13 @@ const EventDetail = ({ eventAPI, eventListAPI, seoAPI, eventButton, footerAPI })
               </div>
             </div>
           </div>
-          <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+          <Footer
+            lang={ctx.language}
+            button={translation.menu_lang}
+            faq={seo.hide_faq}
+            footer={footer}
+            translation={translation}
+          />
         </div>
       </motion.div>
     </Layout>
@@ -219,7 +234,11 @@ export async function getStaticProps({ params }) {
   `)
   const eventButton = await client.fetch(`
   *[_type == "eventDetail"]
-  `);
+  `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
 
   return {
     props: {
@@ -228,6 +247,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
       eventButton,
+      translation,
     },
   }
 }

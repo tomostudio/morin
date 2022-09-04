@@ -1,29 +1,35 @@
-import { useEffect } from 'react';
-import CategoryCard from '@/components/module/categoryCard';
-import Footer from '@/components/module/footer';
-import Layout from '@/components/module/layout';
-import Image from 'next/image';
-import { useEffectInit } from '@/components/utils/preset';
-import { useAppContext } from 'context/state';
-import urlFor from '@/helpers/sanity/urlFor';
-import client from '@/helpers/sanity/client';
-import { useRouter } from 'next/router';
-import SEO from '@/components/utils/seo';
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/transitions';
-import { Parallax } from 'react-scroll-parallax';
+import { useEffect } from 'react'
+import CategoryCard from '@/components/module/categoryCard'
+import Footer from '@/components/module/footer'
+import Layout from '@/components/module/layout'
+import Image from 'next/image'
+import { useEffectInit } from '@/components/utils/preset'
+import { useAppContext } from 'context/state'
+import urlFor from '@/helpers/sanity/urlFor'
+import client from '@/helpers/sanity/client'
+import { useRouter } from 'next/router'
+import SEO from '@/components/utils/seo'
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/transitions'
+import { Parallax } from 'react-scroll-parallax'
 
-const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
-  const [product] = productAPI;
-  const [seo] = seoAPI;
+const Category = ({
+  productAPI,
+  productTypeAPI,
+  seoAPI,
+  footerAPI,
+  translation,
+}) => {
+  const [product] = productAPI
+  const [seo] = seoAPI
   const [footer] = footerAPI
-  const ctx = useAppContext();
-  const router = useRouter();
+  const ctx = useAppContext()
+  const router = useRouter()
 
   useEffect(() => {
     ctx.setLangColor(product.langColor)
-    useEffectInit({ context: ctx, mobileDark: false });
-  }, []);
+    useEffectInit({ context: ctx, mobileDark: false })
+  }, [])
   return (
     <Layout>
       <SEO
@@ -39,16 +45,16 @@ const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
       />
 
       <motion.div
-        className='w-full bg-morin-skyBlue'
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        className="w-full bg-morin-skyBlue"
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={fade}
       >
-        <div className=' relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]'>
+        <div className=" relative w-full max-w-screen-2xl mx-auto h-48 rounded-b-2xl overflow-hidden sm:h-60 md:h-80 lg:h-[470px]">
           <Parallax
             translateY={['-100px', '0px']}
-            className='relative w-full h-[110%]'
+            className="relative w-full h-[110%]"
           >
             <Image
               src={urlFor(product.background).auto('format').width(1600).url()}
@@ -57,18 +63,18 @@ const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
                 .width(1400)
                 .blur(25)
                 .url()}
-              placeholder='blur'
+              placeholder="blur"
               alt={product.background.alt}
-              layout='fill'
-              objectFit='cover'
+              layout="fill"
+              objectFit="cover"
             />
           </Parallax>
 
-          <div className='w-full absolute-center text-center px-8'>
-            <h1 className='font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1'>
+          <div className="w-full absolute-center text-center px-8">
+            <h1 className="font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1">
               {ctx.language === 'id' ? product.title_en : product.title_id}
             </h1>
-            <p className='hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block'>
+            <p className="hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block">
               {ctx.language === 'id'
                 ? product.description_id
                 : product.description_en}
@@ -76,8 +82,8 @@ const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
           </div>
         </div>
 
-        <div className='p-4 lg:p-8'>
-          <div className='max-w-screen-2xl mx-auto mb-7 lg:mb-10'>
+        <div className="p-4 lg:p-8">
+          <div className="max-w-screen-2xl mx-auto mb-7 lg:mb-10">
             {productTypeAPI?.map((item) => (
               <CategoryCard
                 key={item.title_en}
@@ -108,33 +114,44 @@ const Category = ({ productAPI, productTypeAPI, seoAPI, footerAPI }) => {
           </div>
         </div>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </motion.div>
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
   const productAPI = await client.fetch(`
   *[_type == "product"]
-  `);
+  `)
   const productTypeAPI = await client.fetch(`
   *[_type == "productType"]
-  `);
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
   return {
     props: {
       productAPI,
       productTypeAPI,
       seoAPI,
       footerAPI,
+      translation,
     },
-  };
+  }
 }
 
-export default Category;
+export default Category

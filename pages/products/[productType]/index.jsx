@@ -11,10 +11,16 @@ import urlFor from '@/helpers/sanity/urlFor'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 import colors from '@/helpers/colors'
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/transitions';
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/transitions'
 
-const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
+const ProductList = ({
+  productTypeAPI,
+  seoAPI,
+  footerAPI,
+  productAPI,
+  translation,
+}) => {
   const [seo] = seoAPI
   const [productType] = productTypeAPI
   const [footer] = footerAPI
@@ -28,10 +34,10 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
 
   return (
     <motion.div
-      className='w-full bg-morin-skyBlue'
-      initial='initial'
-      animate='enter'
-      exit='exit'
+      className="w-full bg-morin-skyBlue"
+      initial="initial"
+      animate="enter"
+      exit="exit"
       variants={fade}
     >
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">
@@ -178,7 +184,13 @@ const ProductList = ({ productTypeAPI, seoAPI, footerAPI, productAPI }) => {
           </div>
         </Container>
 
-        <Footer lang={ctx.language} button={seo.menu_lang} faq={seo.hide_faq} footer={footer} />
+        <Footer
+          lang={ctx.language}
+          button={translation.menu_lang}
+          faq={seo.hide_faq}
+          footer={footer}
+          translation={translation}
+        />
       </Layout>
     </motion.div>
   )
@@ -224,13 +236,18 @@ export async function getStaticProps({ params }) {
   const productAPI = await client.fetch(`
   *[_type == "product"]
   `)
+  const translationAPI = await client.fetch(`
+          *[_type == "translation"]
+          `)
+  const [translation] = translationAPI
 
   return {
     props: {
       productTypeAPI,
       seoAPI,
       footerAPI,
-      productAPI
+      productAPI,
+      translation,
     },
   }
 }
