@@ -292,7 +292,7 @@ export default function Home({
                 src="https://apps.elfsight.com/p/platform.js"
                 strategy="afterInteractive"
               />
-              <div className="elfsight-app-401f1315-3937-4774-a0c6-f84f38d62aae" />
+              <div className={seo.elfsightID} />
             </div>
           </section>
           <Footer
