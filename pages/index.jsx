@@ -300,6 +300,7 @@ export default function Home({
             button={translation.menu_lang}
             faq={seo.hide_faq}
             footer={footer}
+            mailchimp={seo.mailchimpID}
             translation={translation}
           />
         </Layout>

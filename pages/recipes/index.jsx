@@ -642,6 +642,7 @@ const Recipe = ({
           lang={ctx.language}
           button={translation.menu_lang}
           faq={seo.hide_faq}
+          mailchimp={seo.mailchimpID}
           footer={footer}
           translation={translation}
         />

@@ -2,8 +2,10 @@ import Container from './container'
 import FancyLink from '../utils/fancyLink'
 import { InstagramSolid, TwitterSolid, FacebookSolid } from '../utils/svg'
 import { defaultHover } from '../utils/tailwind-preset'
+import SubscribeForm from './subscribe'
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
-const Footer = ({ className, lang, button, faq, footer, translation }) => {
+const Footer = ({ className, lang, button, faq, footer, translation, mailchimp }) => {
   return (
     <footer className="px-4 lg:px-8 text-defaultSmall lg:text-default">
       <Container
@@ -23,21 +25,18 @@ const Footer = ({ className, lang, button, faq, footer, translation }) => {
                 : translation.sub_language.sub_title.en}
             </span>
           </div>
-          <form className="flex w-full mt-5  overflow-hidden lg:mt-6">
-            <div className="relative flex flex-nowrap w-full h-10 lg:h-11">
-              <input
-                className="w-full h-full px-5 pt-1 border-2 rounded-l-2xl border-white first-letter:default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:pt-[2px] lg:text-default"
-                type="email"
-                placeholder="Your Email"
+          {/* Subscription Form  */}
+          <MailchimpSubscribe
+            url={mailchimp}
+            render={({ subscribe, status, message }) => (
+              <SubscribeForm
+                lang={lang}
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
               />
-              <FancyLink
-                destination=""
-                className="h-full flex-grow-0 border-2 rounded-r-2xl border-l-0 border-white  pl-4 pr-6 pt-1 text-center default-type text-defaultSmall leading-none hover:bg-white hover:text-morin-blue transition-all duration-300 lg:w-24 lg:pt-[2px] lg:text-default"
-              >
-                {lang === 'id' ? 'Kirim' : 'Submit'}
-              </FancyLink>
-            </div>
-          </form>
+            )}
+          />
         </div>
         {/* RIGHT */}
         <div className="flex w-full lg:w-2/5 lg:justify-start lg:ml-auto lg:mt-auto h-full px-2 lg:px-0">
