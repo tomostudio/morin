@@ -24,7 +24,7 @@ const ProductDetail = ({
   seoAPI,
   productButton,
   footerAPI,
-  translation
+  translation,
 }) => {
   const [seo] = seoAPI
   const [product] = productAPI
@@ -352,9 +352,7 @@ const ProductDetail = ({
                       ? product.decor && (
                           <Image
                             src={urlFor(product.decor.decor2.image_id).url()}
-                            blurDataURL={urlFor(
-                              product.decor.decor2.image_id,
-                            )
+                            blurDataURL={urlFor(product.decor.decor2.image_id)
                               .auto('format')
                               .url()}
                             placeholder="blur"
@@ -398,23 +396,38 @@ const ProductDetail = ({
                 ? product.description_id
                 : product.description_en}
             </h2>
-            {!product.getProduct.hide_get && (
-              <FancyLink
-                blank
-                destination={`${process.env.NEXT_PUBLIC_STORE_URL}${
-                  product.getProduct.linkStore
-                    ? product.getProduct.linkStore.shopifyProduct.handle
-                    : ''
-                }`}
-                className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8"
-              >
-                <span className="block pt-1">
-                  {ctx.language === 'id'
-                    ? productBtn.language.linkStore.id
-                    : productBtn.language.linkStore.en}
-                </span>
-              </FancyLink>
-            )}
+            {!product.getProduct.hide_get &&
+              (product.getProduct.custom_link ? (
+                product.getProduct.linkProduct && (
+                  <FancyLink
+                    blank
+                    destination={product.getProduct.linkProduct}
+                    className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8"
+                  >
+                    <span className="block pt-1">
+                      {ctx.language === 'id'
+                        ? productBtn.language.linkStore.id
+                        : productBtn.language.linkStore.en}
+                    </span>
+                  </FancyLink>
+                )
+              ) : (
+                <FancyLink
+                  blank
+                  destination={`${process.env.NEXT_PUBLIC_STORE_URL}${
+                    product.getProduct.linkStore
+                      ? product.getProduct.linkStore.shopifyProduct.handle
+                      : ''
+                  }`}
+                  className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8"
+                >
+                  <span className="block pt-1">
+                    {ctx.language === 'id'
+                      ? productBtn.language.linkStore.id
+                      : productBtn.language.linkStore.en}
+                  </span>
+                </FancyLink>
+              ))}
           </div>
 
           {product.recipes?.length > 0 && (
@@ -674,7 +687,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
       productButton,
-      translation
+      translation,
     },
   }
 }
