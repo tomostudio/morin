@@ -16,7 +16,7 @@ import {
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 import { motion } from 'framer-motion'
 
-export default function Header({ button, turn_language }) {
+export default function Header({ button, turn_language, whatsapp }) {
   const [opened, setOpened] = useState(false)
   const ctx = useAppContext()
 
@@ -394,9 +394,17 @@ export default function Header({ button, turn_language }) {
       </motion.header>
       <motion.div initial="initial" animate="enter" exit="exit" variants={fade}>
         <Container className="fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none">
-          <FancyLink className="w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity">
-            <WaButton />
-          </FancyLink>
+          {whatsapp && whatsapp.number && whatsapp.message ? (
+            <FancyLink
+              destination={`https://wa.me/${whatsapp.number}?text=${whatsapp.message}`}
+              blank
+              className="w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity"
+            >
+              <WaButton />
+            </FancyLink>
+          ) : (
+            <></>
+          )}
         </Container>
       </motion.div>
     </>
