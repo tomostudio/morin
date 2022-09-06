@@ -225,13 +225,18 @@
     & .graphicFrame {
       //upper right
       & .graphic1 > svg {
-        @apply translate-y-[-80%] sm:translate-y-[-50%] md:translate-y-[-60%]  translate-x-[60%] sm:translate-x-[85%] md:translate-x-[80%]  scale-100 w-[175px];
-        @apply group-hover:translate-y-[-55%]  group-hover:translate-x-[70%]  group-hover:scale-90 group-hover:rotate-[-5deg];
+        @apply translate-y-[-80%] sm:translate-y-[-50%] md:translate-y-[-40%] lg:translate-y-[-60%]  translate-x-[60%] sm:translate-x-[85%] md:translate-x-[120%] lg:translate-x-[80%]   scale-100 w-[175px];
+        @apply group-hover:translate-y-[-75%] md:group-hover:translate-y-[-45%] lg:group-hover:translate-y-[-55%]  group-hover:translate-x-[70%] md:group-hover:translate-x-[110%] lg:group-hover:translate-x-[70%]  group-hover:scale-90 group-hover:rotate-[-5deg];
       }
-      // lower left
+      // middle left
       & .graphic2 > svg {
         @apply translate-y-[60%] sm:translate-y-[30%] md:translate-y-[10%]  translate-x-[-90%]  scale-100 w-[225px];
-        @apply group-hover:translate-y-[20%]  md:group-hover:translate-y-[5%]  group-hover:translate-x-[-80%]  group-hover:scale-90 group-hover:rotate-[5deg];
+        @apply group-hover:translate-y-[50%]  md:group-hover:translate-y-[5%]  group-hover:translate-x-[-80%]  group-hover:scale-90 group-hover:rotate-[5deg];
+      }
+      // bottom left
+      & .graphic3 > svg {
+        @apply translate-y-[100%] sm:translate-y-[60%] lg:translate-y-[105%]  translate-x-[-60%] lg:translate-x-[-90%]  scale-100 w-[45px] md:w-[60px];
+        @apply group-hover:translate-y-[100%] sm:group-hover:translate-y-[55%]  lg:group-hover:translate-y-[100%]  group-hover:translate-x-[-50%] lg:group-hover:translate-x-[-80%] group-hover:scale-90 group-hover:rotate-[5deg];
       }
     }
   }
@@ -247,32 +252,36 @@
       & > div {
         @apply rotate-[-25deg] scale-[75%] translate-x-[-35%] translate-y-[10%];
         @apply group-hover:translate-x-[-45%] group-hover:translate-y-[5%];
-        @apply group-hover:rotate-[-30deg] group-hover:scale-[80%] md:group-hover:translate-x-[-55%] md:group-hover:translate-y-[15%];
+        @apply group-hover:rotate-[-30deg] group-hover:scale-[80%] ;
+        @apply md:group-hover:translate-x-[-40%] md:group-hover:translate-y-[12.5%];
+        @apply lg:group-hover:translate-x-[-55%] lg:group-hover:translate-y-[15%];
       }
     }
     & .image3 {
       & > div {
         @apply rotate-[20deg] scale-[75%] translate-x-[35%] translate-y-[10%];
-        @apply group-hover:rotate-[30deg] group-hover:scale-[90%] md:group-hover:scale-[80%] group-hover:translate-x-[45%] md:group-hover:translate-x-[55%]  group-hover:translate-y-[20%] md:group-hover:translate-y-[30%];
+        @apply group-hover:rotate-[30deg] group-hover:scale-[90%] md:group-hover:scale-[80%] group-hover:translate-x-[45%] group-hover:translate-y-[20%];
+        @apply md:group-hover:translate-x-[40%] md:group-hover:translate-y-[15%];
+        @apply lg:group-hover:translate-x-[55%] lg:group-hover:translate-y-[30%];
       }
     }
     & .graphicFrame {
       // upper right
       & .graphic1 > svg {
-        @apply translate-y-[-100%]  md:translate-y-[-90%] -rotate-12 translate-x-[70%] md:translate-x-[80%] scale-90 w-[150px];
-        @apply group-hover:translate-y-[-90%] group-hover:rotate-0 group-hover:translate-x-[110%] md:group-hover:translate-x-[130%] group-hover:scale-100;
+        @apply translate-y-[-90%]  md:translate-y-[-60%] lg:translate-y-[-90%] -rotate-12 translate-x-[80%] md:translate-x-[120%]  lg:translate-x-[80%] scale-90 w-[150px];
+        @apply group-hover:translate-y-[-80%] md:group-hover:translate-y-[-50%] lg:group-hover:translate-y-[-80%] group-hover:rotate-0 group-hover:translate-x-[75%] md:group-hover:translate-x-[110%] lg:group-hover:translate-x-[100%] group-hover:scale-100;
       }
       // lower left
       & .graphic2 > svg {
-        @apply translate-y-[110%] sm:translate-y-[90%] md:translate-y-[150%]  translate-x-[-90%] sm:translate-x-[-60%] scale-90 w-[125px];
-        @apply group-hover:translate-y-[100%] md:group-hover:translate-y-[175%]  group-hover:translate-x-[-80%] group-hover:scale-100;
+        @apply translate-y-[110%] sm:translate-y-[90%] md:translate-y-[60%]  lg:translate-y-[150%]  translate-x-[-90%] sm:translate-x-[-60%] md:translate-x-[-50%] lg:translate-x-[-60%] scale-90 w-[125px];
+        @apply group-hover:translate-y-[100%] md:group-hover:translate-y-[50%] lg:group-hover:translate-y-[175%]  group-hover:translate-x-[-80%] md:group-hover:translate-x-[-50%] lg:group-hover:translate-x-[-80%] group-hover:scale-100;
       }
       //top left
       & .graphic3 > svg {
-        @apply translate-y-[-110%]  translate-x-[-150%]  rotate-[10deg] scale-100 w-[75px];
-        @apply sm:translate-y-[-85%]  sm:translate-x-[-125%]  rotate-[10deg] ;
+        @apply translate-y-[-100%]  translate-x-[-150%]  rotate-[10deg] scale-100 w-[90px];
+        @apply sm:translate-y-[-85%]  sm:translate-x-[-125%] md:translate-x-[-95%] md:translate-y-[-60%] rotate-[10deg];
         @apply lg:translate-y-[-125%]  lg:translate-x-[-125%]  lg:rotate-[10deg] lg:scale-90;
-        @apply group-hover:translate-y-[-90%]  group-hover:translate-x-[-150%]  group-hover:rotate-[15deg] group-hover:scale-100;
+        @apply group-hover:translate-y-[-90%]  md:group-hover:translate-y-[-50%]  group-hover:translate-x-[-80%] md:group-hover:rotate-[15deg] group-hover:scale-100;
         @apply lg:group-hover:translate-y-[-150%]  lg:group-hover:translate-x-[-150%]  lg:group-hover:rotate-[15deg] lg:group-hover:scale-100;
       }
     }
@@ -302,20 +311,20 @@
       // right
       @apply opacity-100;
       & .graphic1 > svg {
-        @apply translate-y-[0%] translate-x-[125%] ;
+        @apply translate-y-[0%] translate-x-[125%];
         @apply md:translate-y-[0%] md:translate-x-[200%] scale-100 w-[125px];
         @apply group-hover:translate-y-[20%]  group-hover:translate-x-[225%]  group-hover:scale-90;
       }
       //  left
       & .graphic2 > svg {
         @apply translate-y-[50%] translate-x-[-125%] scale-100 w-[125px];
-        @apply sm:translate-y-[50%] sm:translate-x-[-150%] ;
-        @apply md:translate-y-[50%] md:translate-x-[-175%] ;
+        @apply sm:translate-y-[50%] sm:translate-x-[-150%];
+        @apply md:translate-y-[50%] md:translate-x-[-175%];
         @apply group-hover:translate-y-[20%]  group-hover:translate-x-[-225%]  group-hover:scale-90;
       }
       //top
       & .graphic3 > svg {
-        @apply translate-y-[-100%] translate-x-[200%]  ;
+        @apply translate-y-[-100%] translate-x-[200%];
         @apply md:translate-y-[-150%] md:translate-x-[300%]  scale-100 w-10;
         @apply group-hover:translate-y-[-175%]  group-hover:translate-x-[350%]   group-hover:scale-90;
       }

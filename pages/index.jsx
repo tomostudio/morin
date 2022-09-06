@@ -269,7 +269,7 @@ export default function Home({
               background={colors.white}
               classNameOuter="pb-0"
             >
-              <div className="mb-8 flex w-full flex-nowrap flex-col lg:flex-row">
+              <div className="mb-8 flex w-full flex-nowrap flex-col md:flex-row">
                 <h2 className="mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig">
                   {ctx.language === 'id'
                     ? home.language.instagram.title.id
