@@ -14,12 +14,14 @@ import { useEffectInit } from '@/components/utils/preset'
 import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
-import { PortableText } from '@portabletext/react'
+import { PortableText, toPlainText } from '@portabletext/react'
 import SEO from '@/components/utils/seo'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 import getYoutube from '@/components/utils/getYoutube'
+import { Tooltip } from '@mui/material'
+import FancyLink from '@/components/utils/fancyLink'
 
 // COMPONENTS
 const RecipeCheckbox = ({
@@ -249,7 +251,9 @@ const RecipeDetail = ({
 }) => {
   const [instructionsChecked, setInstructionsChecked] = useState([])
   const [galleryPopup, setGalleryPopup] = useState(false)
+  const [showShare, setShare] = useState(false)
   const [gallerySlide, setGallerySlide] = useState(0)
+  const [baseUrl, setBaseUrl] = useState()
   const [recipeBtn] = recipeButton
   const [seo] = seoAPI
   const [recipe] = recipeAPI
@@ -279,10 +283,39 @@ const RecipeDetail = ({
   }
 
   const ctx = useAppContext()
+
+  const resize = () => {
+    if (navigator.share && window.innerWidth < 850) {
+      setShare(true)
+    } else {
+      setShare(false)
+    }
+  }
+
   useEffect(() => {
     ctx.setLangColor(recipe.langColor)
     useEffectInit({ context: ctx, mobileDark: true })
+    setBaseUrl(window.location.href)
+    window.addEventListener('resize', resize, true)
+    return () => {
+      window.removeEventListener('resize', resize, true)
+    }
   }, [])
+
+  const handleShareButton = () => {
+    const shareData = {
+      title: `${recipe.title} at ${seo.webTitle}`,
+      text:
+        ctx.language === 'id'
+          ? toPlainText(recipe.description_id)
+          : toPlainText(recipe.description_en),
+      url: baseUrl,
+    }
+
+    if (navigator.share) {
+      navigator.share(shareData)
+    }
+  }
 
   return (
     <Layout
@@ -518,14 +551,72 @@ const RecipeDetail = ({
                       </h2>
 
                       <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
-                        <StrokeButton
-                          arrow={false}
-                          color={colors.morinRed}
-                          className="mx-0"
-                          onClick={() => console.log('Share')}
-                        >
-                          Bagikan
-                        </StrokeButton>
+                        {showShare ? (
+                          <StrokeButton
+                            arrow={false}
+                            color={colors.morinRed}
+                            className="mx-0"
+                            onClick={handleShareButton}
+                          >
+                            Bagikan
+                          </StrokeButton>
+                        ) : (
+                          <>
+                            <Tooltip
+                              title="Facebook"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                blank
+                                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                              >
+                                Facebook
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Twitter"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                blank
+                                destination={`https://twitter.com/share?url=${baseUrl}`}
+                              >
+                                Twitter
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Email"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                destination={`mailto:?subject=${
+                                  recipe.title_id
+                                }&body=${toPlainText(
+                                  recipe.description_id,
+                                )} %0D%0A${baseUrl}`}
+                              >
+                                Email
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Copy Link"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                onClick={() => {
+                                  const el = document.createElement('input')
+                                  el.value = baseUrl
+                                  document.body.appendChild(el)
+                                  el.select()
+                                  document.execCommand('copy')
+                                  document.body.removeChild(el)
+                                }}
+                              >
+                                Copy Link
+                              </FancyLink>
+                            </Tooltip>
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -555,15 +646,73 @@ const RecipeDetail = ({
                         {recipeBtn.language.instructions.en}
                       </h2>
 
-                      <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
-                        <StrokeButton
-                          arrow={false}
-                          color={colors.morinRed}
-                          className="mx-0"
-                          onClick={() => console.log('Share')}
-                        >
-                          Share
-                        </StrokeButton>
+                      <div className="flex flex-wrap justify-center space-x-4 lg:justify-end lg:pt-2.5">
+                        {showShare ? (
+                          <StrokeButton
+                            arrow={false}
+                            color={colors.morinRed}
+                            className="mx-0"
+                            onClick={handleShareButton}
+                          >
+                            Share
+                          </StrokeButton>
+                        ) : (
+                          <>
+                            <Tooltip
+                              title="Facebook"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                blank
+                                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                              >
+                                Facebook
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Twitter"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                blank
+                                destination={`https://twitter.com/share?url=${baseUrl}`}
+                              >
+                                Twitter
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Email"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                destination={`mailto:?subject=${
+                                  recipe.title_en
+                                }&body=${toPlainText(
+                                  recipe.description_en,
+                                )} %0D%0A${baseUrl}`}
+                              >
+                                Email
+                              </FancyLink>
+                            </Tooltip>
+                            <Tooltip
+                              title="Copy Link"
+                              classes={{ tooltip: 'tooltip' }}
+                            >
+                              <FancyLink
+                                onClick={() => {
+                                  const el = document.createElement('input')
+                                  el.value = baseUrl
+                                  document.body.appendChild(el)
+                                  el.select()
+                                  document.execCommand('copy')
+                                  document.body.removeChild(el)
+                                }}
+                              >
+                                Copy Link
+                              </FancyLink>
+                            </Tooltip>
+                          </>
+                        )}
                       </div>
                     </div>
 

@@ -25,7 +25,7 @@ const Recipe = ({
   recipeCategoryAPI,
   seoAPI,
   footerAPI,
-  translation
+  translation,
 }) => {
   const [filterOpen, setFilterOpen] = useState(true)
   const [filterValue, setFilterValue] = useState([])
@@ -45,7 +45,7 @@ const Recipe = ({
 
   const loadMore = () => {
     displayData += dataIncrease
-    setDataRecipe(dataRecipe.slice(0, displayData))
+    setDataRecipe(recipeListAPI.slice(0, displayData))
 
     if (recipeListAPI.length <= displayData) setShowButton(false)
   }
@@ -55,14 +55,20 @@ const Recipe = ({
       const tempArr = [...prev]
 
       if (tempArr.length === 0) {
+        displayData = 6
         setDataRecipe(
-          recipeListAPI.filter(
-            (object) =>
-              object.difficulty.title_en === val.difficulty ||
-              object.cookingTime.title_en === val.cooking_time ||
-              object.recipeCategory.title_en === val.category,
-          ),
+          recipeListAPI
+            .filter(
+              (object) =>
+                object.difficulty.title_en === val.difficulty ||
+                object.cookingTime.title_en === val.cooking_time ||
+                object.recipeCategory.title_en === val.category,
+            )
+            .slice(0, displayData),
         )
+
+        if (recipeListAPI.length <= displayData) setShowButton(false)
+
         tempArr.push(val)
         return tempArr
       }
@@ -72,37 +78,57 @@ const Recipe = ({
           if (
             tempArr.map((object) => object.difficulty).includes(val.difficulty)
           ) {
+            displayData = 6
             if (
               tempArr.find((data) => data.cooking_time) &&
               tempArr.find((data) => data.category)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time)?.cooking_time &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
-              )
-            } else if (tempArr.find((data) => data.cooking_time)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en ===
-                    tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
-              )
-            } else if (tempArr.find((data) => data.category)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.recipeCategory.title_en ===
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en ===
+                    tempArr.find((data) => data.cooking_time)
+                      ?.cooking_time &&
+                  object.recipeCategory.title_en ===
                     tempArr.find((data) => data.category)?.category,
-                ),
+              );
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
               )
-            }else {
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+
+            } else if (tempArr.find((data) => data.cooking_time)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time)?.cooking_time,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else if (tempArr.find((data) => data.category)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else {
               setDataRecipe(recipeListAPI.slice(0, displayData))
+
+              if (recipeListAPI.length <= displayData) setShowButton(false)
             }
 
             const index = tempArr
@@ -111,45 +137,68 @@ const Recipe = ({
             tempArr.splice(index, 1)
             return tempArr
           } else {
+            displayData = 6
             if (
               tempArr.find((data) => data.cooking_time) &&
               tempArr.find((data) => data.category)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en === val.difficulty &&
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time).cooking_time &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en === val.difficulty &&
+                  object.cookingTime.title_en ===
+                    tempArr.find((data) => data.cooking_time)
+                      .cooking_time &&
+                  object.recipeCategory.title_en ===
+                    tempArr.find((data) => data.category)?.category,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.cooking_time)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en === val.difficulty &&
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en === val.difficulty &&
+                  object.cookingTime.title_en ===
+                    tempArr.find((data) => data.cooking_time)?.cooking_time,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.category)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en === val.difficulty &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en === val.difficulty &&
+                  object.recipeCategory.title_en ===
+                    tempArr.find((data) => data.category)?.category,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) => object.difficulty.title_en === val.difficulty,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) => object.difficulty.title_en === val.difficulty,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             }
+
             const index = tempArr
               .map((object) => object.difficulty)
               .indexOf(tempArr.find((o) => o.difficulty).difficulty)
@@ -158,45 +207,67 @@ const Recipe = ({
             return tempArr
           }
         } else {
+          displayData = 6
           if (
             tempArr.find((data) => data.cooking_time) &&
             tempArr.find((data) => data.category)
           ) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.difficulty.title_en === val.difficulty &&
-                  object.cookingTime.title_en ===
-                    tempArr.find((data) => data.cooking_time).cooking_time &&
-                  object.recipeCategory.title_en ===
-                    tempArr.find((data) => data.category)?.category,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.difficulty.title_en === val.difficulty &&
+                object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time).cooking_time &&
+                object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.cooking_time)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.difficulty.title_en === val.difficulty &&
-                  object.cookingTime.title_en ===
-                    tempArr.find((data) => data.cooking_time)?.cooking_time,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.difficulty.title_en === val.difficulty &&
+                object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time)?.cooking_time,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.category)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.difficulty.title_en === val.difficulty &&
-                  object.recipeCategory.title_en ===
-                    tempArr.find((data) => data.category)?.category,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.difficulty.title_en === val.difficulty &&
+                object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) => object.difficulty.title_en === val.difficulty,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) => object.difficulty.title_en === val.difficulty,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           }
+
           tempArr.push(val)
           return tempArr
         }
@@ -209,37 +280,55 @@ const Recipe = ({
               .map((object) => object.cooking_time)
               .includes(val.cooking_time)
           ) {
+            displayData = 6
             if (
               tempArr.find((data) => data.difficulty) &&
               tempArr.find((data) => data.category)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty)?.difficulty &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
-              )
-            } else if (tempArr.find((data) => data.difficulty)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty)?.difficulty,
-                ),
-              )
-            } else if (tempArr.find((data) => data.category)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.recipeCategory.title_en ===
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty)?.difficulty &&
+                  object.recipeCategory.title_en ===
                     tempArr.find((data) => data.category)?.category,
-                ),
               )
-            }else {
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else if (tempArr.find((data) => data.difficulty)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty)?.difficulty,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else if (tempArr.find((data) => data.category)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else {
               setDataRecipe(recipeListAPI.slice(0, displayData))
+
+              if (recipeListAPI.length <= displayData) setShowButton(false)
             }
 
             const index = tempArr
@@ -248,45 +337,68 @@ const Recipe = ({
             tempArr.splice(index, 1)
             return tempArr
           } else {
+            displayData = 6
             if (
               tempArr.find((data) => data.difficulty) &&
               tempArr.find((data) => data.category)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en === val.cooking_time &&
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty).difficulty &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en === val.cooking_time &&
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty).difficulty &&
+                  object.recipeCategory.title_en ===
+                    tempArr.find((data) => data.category)?.category,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.difficulty)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en === val.cooking_time &&
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty)?.difficulty,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en === val.cooking_time &&
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty)?.difficulty,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.category)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en === val.cooking_time &&
-                    object.recipeCategory.title_en ===
-                      tempArr.find((data) => data.category)?.category,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en === val.cooking_time &&
+                  object.recipeCategory.title_en ===
+                    tempArr.find((data) => data.category)?.category,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) => object.cookingTime.title_en === val.cooking_time,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en === val.cooking_time,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             }
+
             const index = tempArr
               .map((object) => object.cooking_time)
               .indexOf(tempArr.find((o) => o.cooking_time).cooking_time)
@@ -295,45 +407,67 @@ const Recipe = ({
             return tempArr
           }
         } else {
+          displayData = 6
           if (
             tempArr.find((data) => data.difficulty) &&
             tempArr.find((data) => data.category)
           ) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.cookingTime.title_en === val.cooking_time &&
-                  object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty).difficulty &&
-                  object.recipeCategory.title_en ===
-                    tempArr.find((data) => data.category)?.category,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.cookingTime.title_en === val.cooking_time &&
+                object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty).difficulty &&
+                object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.difficulty)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.cookingTime.title_en === val.cooking_time &&
-                  object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty)?.difficulty,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.cookingTime.title_en === val.cooking_time &&
+                object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty)?.difficulty,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.category)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.cookingTime.title_en === val.cooking_time &&
-                  object.recipeCategory.title_en ===
-                    tempArr.find((data) => data.category)?.category,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.cookingTime.title_en === val.cooking_time &&
+                object.recipeCategory.title_en ===
+                  tempArr.find((data) => data.category)?.category,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) => object.cookingTime.title_en === val.cooking_time,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) => object.cookingTime.title_en === val.cooking_time,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           }
+
           tempArr.push(val)
           return tempArr
         }
@@ -342,37 +476,55 @@ const Recipe = ({
       if (val.category) {
         if (tempArr.some((o) => o.hasOwnProperty('category'))) {
           if (tempArr.map((object) => object.category).includes(val.category)) {
+            displayData = 6
             if (
               tempArr.find((data) => data.difficulty) &&
               tempArr.find((data) => data.cooking_time)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty)?.difficulty &&
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
-              )
-            } else if (tempArr.find((data) => data.difficulty)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty)?.difficulty,
-                ),
-              )
-            } else if (tempArr.find((data) => data.cooking_time)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.cookingTime.title_en ===
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty)?.difficulty &&
+                  object.cookingTime.title_en ===
                     tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
               )
-            }else {
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else if (tempArr.find((data) => data.difficulty)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty)?.difficulty,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else if (tempArr.find((data) => data.cooking_time)) {
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time)?.cooking_time,
+              )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
+            } else {
               setDataRecipe(recipeListAPI.slice(0, displayData))
+
+              if (recipeListAPI.length <= displayData) setShowButton(false)
             }
 
             const index = tempArr
@@ -381,45 +533,67 @@ const Recipe = ({
             tempArr.splice(index, 1)
             return tempArr
           } else {
+            displayData = 6
             if (
               tempArr.find((data) => data.difficulty) &&
               tempArr.find((data) => data.cooking_time)
             ) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.recipeCategory.title_en === val.category &&
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty).difficulty &&
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.recipeCategory.title_en === val.category &&
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty).difficulty &&
+                  object.cookingTime.title_en ===
+                    tempArr.find((data) => data.cooking_time)?.cooking_time,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.difficulty)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.recipeCategory.title_en === val.category &&
-                    object.difficulty.title_en ===
-                      tempArr.find((data) => data.difficulty)?.difficulty,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.recipeCategory.title_en === val.category &&
+                  object.difficulty.title_en ===
+                    tempArr.find((data) => data.difficulty)?.difficulty,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else if (tempArr.find((data) => data.cooking_time)) {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) =>
-                    object.recipeCategory.title_en === val.category &&
-                    object.cookingTime.title_en ===
-                      tempArr.find((data) => data.cooking_time)?.cooking_time,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) =>
+                  object.recipeCategory.title_en === val.category &&
+                  object.cookingTime.title_en ===
+                    tempArr.find((data) => data.cooking_time)?.cooking_time,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             } else {
-              setDataRecipe(
-                recipeListAPI.filter(
-                  (object) => object.recipeCategory.title_en === val.category,
-                ),
+              let dataFilter = recipeListAPI
+              .filter(
+                (object) => object.recipeCategory.title_en === val.category,
               )
+              setDataRecipe(
+                dataFilter
+                  .slice(0, displayData),
+              )
+
+              if (dataFilter.length <= displayData) setShowButton(false)
             }
+
             const index = tempArr
               .map((object) => object.category)
               .indexOf(tempArr.find((o) => o.category).category)
@@ -428,45 +602,67 @@ const Recipe = ({
             return tempArr
           }
         } else {
+          displayData = 6
           if (
             tempArr.find((data) => data.difficulty) &&
             tempArr.find((data) => data.cooking_time)
           ) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.recipeCategory.title_en === val.category &&
-                  object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty).difficulty &&
-                  object.cookingTime.title_en ===
-                    tempArr.find((data) => data.cooking_time)?.cooking_time,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.recipeCategory.title_en === val.category &&
+                object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty).difficulty &&
+                object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time)?.cooking_time,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.difficulty)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.recipeCategory.title_en === val.category &&
-                  object.difficulty.title_en ===
-                    tempArr.find((data) => data.difficulty)?.difficulty,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.recipeCategory.title_en === val.category &&
+                object.difficulty.title_en ===
+                  tempArr.find((data) => data.difficulty)?.difficulty,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else if (tempArr.find((data) => data.cooking_time)) {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) =>
-                  object.recipeCategory.title_en === val.category &&
-                  object.cookingTime.title_en ===
-                    tempArr.find((data) => data.cooking_time)?.cooking_time,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) =>
+                object.recipeCategory.title_en === val.category &&
+                object.cookingTime.title_en ===
+                  tempArr.find((data) => data.cooking_time)?.cooking_time,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           } else {
-            setDataRecipe(
-              recipeListAPI.filter(
-                (object) => object.recipeCategory.title_en === val.category,
-              ),
+            let dataFilter = recipeListAPI
+            .filter(
+              (object) => object.recipeCategory.title_en === val.category,
             )
+            setDataRecipe(
+              dataFilter
+                .slice(0, displayData),
+            )
+
+            if (dataFilter.length <= displayData) setShowButton(false)
           }
+
           tempArr.push(val)
           return tempArr
         }
@@ -691,7 +887,7 @@ export async function getStaticProps() {
       recipeCategoryAPI,
       seoAPI,
       footerAPI,
-      translation
+      translation,
     },
   }
 }
