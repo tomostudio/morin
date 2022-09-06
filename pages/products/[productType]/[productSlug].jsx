@@ -396,7 +396,7 @@ const ProductDetail = ({
                 ? product.description_id
                 : product.description_en}
             </h2>
-            {!product.getProduct.hide_get &&
+            {!seo.hide_shop &&
               (product.getProduct.custom_link ? (
                 product.getProduct.linkProduct && (
                   <FancyLink
