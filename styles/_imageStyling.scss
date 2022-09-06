@@ -58,15 +58,18 @@
       //upper right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[-50%]  group-hover:translate-x-[125%]  group-hover:scale-100 min-w-[100px];
+        @apply group-hover:translate-y-[-100%]  group-hover:translate-x-[140%]  group-hover:scale-100 min-w-[100px];
+        @apply md:group-hover:translate-y-[-50%] md:group-hover:translate-x-[125%];
       }
       // lower left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-125%]  group-hover:scale-100 min-w-[100px];
+        @apply group-hover:translate-y-[80%]  group-hover:translate-x-[-125%]  group-hover:scale-100 min-w-[100px];
+        @apply md:group-hover:translate-y-[10%];
       }
       //top
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-120%]  group-hover:translate-x-[50%]  group-hover:scale-[40%];
+        @apply group-hover:translate-y-[-150%]  group-hover:translate-x-[50%]  group-hover:scale-[40%];
+        @apply md:group-hover:translate-y-[-120%]  md:group-hover:translate-x-[50%]  md:group-hover:scale-[40%];
       }
     }
   }
@@ -92,14 +95,17 @@
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
         @apply group-hover:translate-y-[-60%]  group-hover:translate-x-[120%] group-hover:scale-[90%];
+        @apply md:group-hover:translate-y-[-60%]  md:group-hover:translate-x-[120%];
       }
       // lower left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[100%]  group-hover:translate-x-[-50%] group-hover:scale-[90%];
+        @apply group-hover:translate-y-[175%]  group-hover:translate-x-[-50%] group-hover:scale-[90%];
+        @apply md:group-hover:translate-y-[100%];
       }
       //top left
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-75%]  group-hover:translate-x-[-120%]  group-hover:rotate-[10deg] group-hover:scale-[90%];
+        @apply group-hover:translate-y-[-100%]  group-hover:translate-x-[-120%]  group-hover:rotate-[10deg] group-hover:scale-[90%];
+        @apply md:group-hover:translate-y-[-75%];
       }
     }
   }
@@ -125,15 +131,18 @@
       // right
       @apply group-hover:opacity-100;
       & .graphic1 > svg {
-        @apply group-hover:translate-y-[75%]   group-hover:translate-x-[140%]  group-hover:scale-100 rotate-[30deg];
+        @apply group-hover:translate-x-[160%] group-hover:translate-y-[120%];
+        @apply md:group-hover:translate-y-[100%] md:group-hover:translate-x-[140%]  group-hover:scale-100 rotate-[30deg];
       }
       //  left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[90%]  group-hover:translate-x-[-150%]  group-hover:scale-100 -rotate-[15deg];
+        @apply group-hover:translate-y-[140%] group-hover:translate-x-[-150%];
+        @apply md:group-hover:translate-y-[100%]  md:group-hover:translate-x-[-150%]  group-hover:scale-100 -rotate-[30deg];
       }
       //top
       & .graphic3 > svg {
-        @apply group-hover:translate-y-[-110%]   group-hover:translate-x-[150%]  group-hover:scale-[75%] w-1/6;
+        @apply group-hover:translate-y-[-110%] group-hover:translate-x-[100%]  group-hover:scale-[50%];
+        @apply md:group-hover:translate-y-[-110%] md:group-hover:translate-x-[125%];
       }
     }
   }
@@ -163,7 +172,7 @@
       }
       //  left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-200%]   group-hover:scale-100 w-1/6;
+        @apply group-hover:translate-y-[10%]  group-hover:translate-x-[-150%]   group-hover:scale-50 ;
       }
       // left
       & .graphic3 > svg {
