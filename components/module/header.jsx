@@ -16,7 +16,7 @@ import {
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 import { motion } from 'framer-motion'
 
-export default function Header({ button }) {
+export default function Header({ button, turn_language }) {
   const [opened, setOpened] = useState(false)
   const ctx = useAppContext()
 
@@ -204,7 +204,7 @@ export default function Header({ button }) {
         variants={fade}
         className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full"
       >
-        {!button.turn_language && (
+        {!turn_language && (
           <Container className="mt-6 hidden lg:flex">
             {/* Language Selector */}
             <div
