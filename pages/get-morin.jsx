@@ -49,7 +49,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                   : getMorin.language.shop_online.en}
               </h2>
               <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
-                {!getMorin.shop.hide_shop && (
+                {!seo.hide_shop && (
                   <FancyLink
                     blank
                     destination={getMorin.shop.link}
