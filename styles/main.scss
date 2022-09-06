@@ -64,3 +64,7 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.tooltip{
+  @apply bg-white text-morin-red uppercase rounded-xl font-default px-8 py-2 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] #{!important};
+}
