@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
         {/* FAVICON  */}
       </Head>
       <AppWrapper>
-        <Header button={pageProps.translation} />
+        <Header button={pageProps.translation} turn_language={pageProps.seoAPI[0].turn_language}/>
         <ParallaxProvider>
           <AnimatePresence mode='wait'>
             <Component {...pageProps} key={router.asPath} />
