@@ -285,7 +285,13 @@ const RecipeDetail = ({
   }, [])
 
   return (
-    <Layout style={{ backgroundColor: recipe.backgroundColor.hex }}>
+    <Layout
+      style={{
+        backgroundColor: recipe.backgroundColor
+          ? recipe.backgroundColor.hex
+          : colors.morinPeach,
+      }}
+    >
       <SEO
         title={ctx.language === 'id' ? recipe.title_id : recipe.title_en}
         pagelink={router.pathname}
