@@ -521,14 +521,6 @@ const RecipeDetail = ({
                         <StrokeButton
                           arrow={false}
                           color={colors.morinRed}
-                          className="mx-0 mr-3"
-                          onClick={() => console.log('Print')}
-                        >
-                          Cetak
-                        </StrokeButton>
-                        <StrokeButton
-                          arrow={false}
-                          color={colors.morinRed}
                           className="mx-0"
                           onClick={() => console.log('Share')}
                         >
@@ -564,14 +556,6 @@ const RecipeDetail = ({
                       </h2>
 
                       <div className="flex flex-wrap justify-center lg:justify-end lg:pt-2.5">
-                        <StrokeButton
-                          arrow={false}
-                          color={colors.morinRed}
-                          className="mx-0 mr-3"
-                          onClick={() => console.log('Print')}
-                        >
-                          Print
-                        </StrokeButton>
                         <StrokeButton
                           arrow={false}
                           color={colors.morinRed}
