@@ -95,8 +95,8 @@ export default function Home({
             >
               <div className="flex w-full flex-col lg:flex-row flex-nowrap lg:items-start">
                 {/* Sticky */}
-                <div className="home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[86px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0">
-                  <div className="mt-24 mb-20 lg:mt-7 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start just">
+                <div className="home-sticky w-full shrink-0 px-8 lg:sticky lg:top-[100px] lg:min-w-fit lg:flex lg:min-h-[calc(100vh-86px)] lg:w-3/12 lg:flex-col lg:justify-between 2xl:px-0">
+                  <div className="mt-24 mb-20 lg:mt-7 ml-0 lg:max-w-sm lg:pr-8 max-w-lg mx-auto flex flex-col items-center justify-center lg:items-start">
                     <h2 className=" mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] ">
                       {ctx.language === 'id'
                         ? product.description_id

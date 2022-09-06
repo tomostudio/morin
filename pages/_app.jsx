@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
       <AppWrapper>
         <Header button={pageProps.translation} turn_language={pageProps.seoAPI[0].turn_language}/>
         <ParallaxProvider>
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence mode='wait'>
             <Component {...pageProps} key={router.asPath} />
           </AnimatePresence>
         </ParallaxProvider>
