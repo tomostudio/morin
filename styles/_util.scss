@@ -1,7 +1,7 @@
 .home-sticky {
   @media (min-width: 1536px) {
     width: calc(((100vw - 1536px) / 2) + 2rem + 400px) !important;
-    padding-left: calc(((100vw - 1536px) / 2) + 2rem) !important;
+    padding-left: calc((((100vw - (100vw - 100%)) - 1536px) / 2) + 2rem) !important;
   }
 }
 main {
