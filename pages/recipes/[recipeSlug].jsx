@@ -8,6 +8,7 @@ import ProductCard from '@/components/shared-module/productCard';
 import GalleryModal from '@/components/shared-module/galleryModal';
 import RecipeSlider from '@/components/sliders/recipeSlider';
 import StrokeButton from '@/components/micro-module/strokeButton';
+import { useNextSanityImage } from 'next-sanity-image';
 import {
   ArrowLarge,
   Check,
@@ -36,13 +37,23 @@ import FancyLink from '@/components/utils/fancyLink';
 // COMPONENTS
 const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   return (
-    <div className='font-semibold leading-tight mb-3 last:mb-0 md:mb-3 lg:mb-5'>
+    <div className='font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-5'>
       <label className='recipeCheckbox cursor-pointer flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'>
         <input type='checkbox' />
-        <span className='checkmark'></span>
-        <span
-          className={`leading-none pt-1 ml-7 md:ml-8 lg:ml-12 ${labelClassName}`}
-        >
+        <span className='checkmark'>
+          <svg
+            viewBox='0 0 12 10'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='m1 5 3.333 3.334L11 1.667'
+              stroke='#E82128'
+              strokeWidth='1.5'
+            />
+          </svg>
+        </span>
+        <span className={`leading-none pt-1 ml-3 md:ml-4  ${labelClassName}`}>
           {label}
         </span>
       </label>
@@ -77,7 +88,7 @@ const InstructionCard = ({
             value={value}
             checked={checked}
             onChange={onChange}
-            labelClassName='font-bold text-mtitleSmall'
+            labelClassName='font-bold text-mtitle'
           />
         </div>
       </div>
@@ -118,8 +129,6 @@ const ImageGallery = ({ data, onClick }) => {
       freeMode
       modules={[FreeMode]}
       slidesPerView='auto'
-      centeredSlidesBounds={true}
-      centeredSlides={true}
       breakpoints={{
         0: { spaceBetween: 10 },
         1024: { spaceBetween: 20 },
@@ -175,7 +184,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
   // const imageWrapper = `relative bg-transparent border-0 rounded-3xl cursor-pointer overflow-hidden`;
   const navLeft = `left-0 rotate-180`;
   const navRight = `right-0`;
-  const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-1 px-2 xl:block`;
+  const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-10 px-2 xl:block`;
 
   return (
     <Swiper
@@ -188,51 +197,55 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         swiper.params.navigation.prevEl = swiperPrev.current;
         swiper.params.navigation.nextEl = swiperNext.current;
       }}
-      centeredSlidesBounds={true}
-      centeredSlides={true}
+      loop={true}
       slidesPerView={1}
       initialSlide={initialSlide}
+      className='h-full pointer-events-none'
     >
-      {data?.map((item, index) => (
-        <>
-          {item._type === 'image' ? (
-            <SwiperSlide key={index}>
-              <div className='relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem'>
-                <Image
-                  src={urlFor(item).auto('format').width(1928).url()}
-                  blurDataURL={urlFor(item)
-                    .auto('format')
-                    .width(1500)
-                    .blur(25)
-                    .url()}
-                  placeholder='blur'
-                  alt={item.alt}
-                  layout='fill'
-                  objectFit='cover'
-                  objectPosition='center'
-                />
-              </div>
-            </SwiperSlide>
-          ) : (
-            <SwiperSlide key={index}>
-              <div
-                className={`relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem aspect-[16/9] max-md:aspect-w-1 max-md:aspect-h-1`}
+      {data?.map((item, index) => {
+        const imageProps = useNextSanityImage(client, item);
+        return (
+          <>
+            {item._type === 'image' ? (
+              <SwiperSlide
+                key={index}
+                className='relative flex items-center justify-center content-center h-full pointer-events-none'
               >
-                <iframe
-                  src={'https://www.youtube.com/embed/' + getYoutube(item.link)}
-                  id='videos'
-                  width='100%'
-                  height='100%'
-                />
-              </div>
-            </SwiperSlide>
-          )}
-        </>
-      ))}
-      <button ref={swiperPrev} className={`${sliderNav} ${navLeft}`}>
+                <div className='relative w-[calc(100%-10rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden pointer-events-auto'>
+                  <Image
+                    {...imageProps}
+                    layout='responsive'
+                    objectFit='contain'
+                    objectPosition={'center center'}
+                  />
+                </div>
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide
+                key={index}
+                className='relative flex items-center justify-center content-center h-full pointer-events-none'
+              >
+                <div
+                  className={` w-[calc(100%-10rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden aspect-[16/9] pointer-events-auto `}
+                >
+                  <iframe
+                    src={
+                      'https://www.youtube.com/embed/' + getYoutube(item.link)
+                    }
+                    id='videos'
+                    width='100%'
+                    height='100%'
+                  />
+                </div>
+              </SwiperSlide>
+            )}
+          </>
+        );
+      })}
+      <button ref={swiperPrev} className={`${sliderNav} ${navLeft} pointer-events-auto ml-4`}>
         <ArrowLarge color={colors.morinRed} />
       </button>
-      <button ref={swiperNext} className={`${sliderNav} ${navRight}`}>
+      <button ref={swiperNext} className={`${sliderNav} ${navRight} pointer-events-auto mr-4`}>
         <ArrowLarge color={colors.morinRed} />
       </button>
     </Swiper>
@@ -271,7 +284,7 @@ const RecipeDetail = ({
     setBaseUrl(window.location.href);
     const checkShare = () => {
       if (navigator.share) {
-        setShare(false);
+        setShare(true);
       } else {
         setShare(false);
       }
@@ -326,7 +339,7 @@ const RecipeDetail = ({
         exit='exit'
         variants={fade}
       >
-        <div className='relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden'>
+        <div className='relative w-full md:px-4 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden'>
           <div className='max-w-screen-2xl 2xl:px-8 mx-auto '>
             {/* head title */}
             <div className='relative  rounded-b-2xl md:rounded-3xl overflow-hidden mb-5'>
@@ -382,7 +395,7 @@ const RecipeDetail = ({
             {/* description */}
             {((ctx.language === 'id' && recipe.description_id) ||
               (ctx.language === 'en' && recipe.description_en)) && (
-              <div className='bg-white rounded-2xl my-8 p-10 lg:mt-0 lg:mb-5'>
+              <div className='bg-white rounded-2xl my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-5'>
                 <div className='lg:max-w-3xl lg:mx-auto content'>
                   <PortableText
                     value={
@@ -401,19 +414,19 @@ const RecipeDetail = ({
               </div>
             )}
 
-            <div className='lg:flex lg:-mx-2 lg:mb-5'>
+            <div className='flex flex-col xl:flex-row xl:-mx-2 xl:mb-5'>
               {/* ingredients */}
               {((ctx.language === 'id' && recipe.ingredients_id?.length > 0) ||
                 (ctx.language === 'en' &&
                   recipe.ingredients_en?.length > 0)) && (
-                <div className='lg:w-1/2 lg:px-2'>
-                  <div className='bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0'>
-                    <h2 className='block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7'>
+                <div className='w-full xl:px-2'>
+                  <div className='bg-white rounded-2xl mb-8 py-8 px-11 xl:h-full xl:py-6 xl:mb-0'>
+                    <h2 className='block font-nutmeg font-normal text-morin-red text-mtitle leading-none mb-6 lg:text-ctitleBig lg:mb-7 md:text-center xl:text-left'>
                       {ctx.language === 'id'
                         ? recipeBtn.language.ingredients.id
                         : recipeBtn.language.ingredients.en}
                     </h2>
-                    <div className='h-full '>
+                    <div className='h-full lg:max-w-3xl lg:mx-auto md:px-14 lg:px-14 xl:px-0'>
                       {ctx.language === 'id'
                         ? recipe.ingredients_id?.map((data, index) => (
                             <RecipeCheckbox
@@ -438,17 +451,17 @@ const RecipeDetail = ({
 
               {/* made with */}
               {recipe.made?.length > 0 && (
-                <div className='lg:w-1/2 lg:px-2'>
-                  <div className='px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0'>
-                    <h2 className='text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left'>
+                <div className='w-full xl:px-2'>
+                  <div className='px-4 mb-8 xl:h-full bg-white rounded-2xl xl:rounded-2xl xl:px-11 py-6 xl:mb-0'>
+                    <h2 className='text-center text-morin-red text-mtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
                       {ctx.language === 'id'
                         ? recipeBtn.language.made_with.id
                         : recipeBtn.language.made_with.en}
                     </h2>
-                    <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
+                    <div className='flex flex-wrap -mx-1.5 xl:-mx-2.5 justify-center xl:justify-start'>
                       {recipe.made?.map((item, index) => (
                         <div
-                          className='w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5'
+                          className='w-1/2 px-1.5 mb-3 xl:px-2.5 xl:mb-5 max-w-sm'
                           key={`${item.title_en}${index}`}
                         >
                           <ProductCard
@@ -489,7 +502,7 @@ const RecipeDetail = ({
               (ctx.language === 'en' && recipe.steps_en?.length > 0)) && (
               <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
                 <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
-                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
+                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-mtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
                       ? recipeBtn.language.instructions.id
                       : recipeBtn.language.instructions.en}
@@ -633,7 +646,7 @@ const RecipeDetail = ({
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
                         <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                          <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                          <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
                           <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
@@ -664,7 +677,7 @@ const RecipeDetail = ({
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
                         <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                          <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                          <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
                           <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
@@ -696,7 +709,7 @@ const RecipeDetail = ({
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
                       <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                        <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                        <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
                         <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
@@ -727,7 +740,7 @@ const RecipeDetail = ({
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
                       <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                        <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                        <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
                         <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>

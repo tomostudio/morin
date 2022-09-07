@@ -32,7 +32,7 @@ module.exports = {
       h1: '72px',
       h2: '52px',
       mtitle: '28px',
-      mtitleSmall: '24px',
+      mtitleSmall: '22pt',
       mtitleBig: '36px',
       ctitle: '32px',
       ctitleSmall: '24px',

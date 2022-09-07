@@ -1,33 +1,33 @@
 /* Webfonts */
-@import '_fonts.scss';
+@import "_fonts.scss";
 
 /* Tailwind base/components */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* Custom Style Imports */
-@import '_typography.scss';
-@import '_desktopHeader.scss';
-@import '_morinTab.scss';
-@import '_util.scss';
-@import '_imageStyling.scss';
+@import "_typography.scss";
+@import "_desktopHeader.scss";
+@import "_morinTab.scss";
+@import "_util.scss";
+@import "_imageStyling.scss";
 
 /* Tailwind Utilities */
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
 /* SwiperJs Styling */
-@import 'swiper/scss';
-@import 'swiper/scss/pagination';
-@import 'swiper/scss/navigation';
-@import 'swiper/scss/free-mode';
-@import 'swiper/scss/effect-fade';
-@import '_slider.scss';
+@import "swiper/scss";
+@import "swiper/scss/pagination";
+@import "swiper/scss/navigation";
+@import "swiper/scss/free-mode";
+@import "swiper/scss/effect-fade";
+@import "_slider.scss";
 
 /* React Modal Styling */
-@import '_modal.scss';
+@import "_modal.scss";
 
 /* Simple defaults */
-html{
+html {
   overscroll-behavior: none;
 }
 body {
@@ -73,7 +73,7 @@ body {
 }
 
 .recipeCheckbox {
-  @apply relative flex flex-wrap items-center min-h-[2rem] w-full font-semibold select-none overflow-hidden;
+  @apply relative flex flex-wrap items-center w-full font-semibold select-none overflow-hidden;
 }
 
 /* Hide the browser's default checkbox */
@@ -87,38 +87,17 @@ body {
 
 /* Create a custom checkbox */
 .checkmark {
-  @apply absolute left-0 top-0 flex flex-wrap items-center justify-center w-5 h-5 rounded-full border-2 border-solid border-morin-red p-1 transition-all duration-300 md:w-6 md:h-6 lg:w-8 lg:h-8 lg:p-2;
+  @apply left-0 top-0 flex flex-wrap items-center justify-center w-7 h-7 p-[4px] lg:p-[6px] lg:w-8 lg:h-8 rounded-full border-2 border-solid border-morin-red transition-all;
+
+  & > svg * {
+    @apply transition-all;
+  }
 }
 
 /* When the checkbox is checked, add a blue background */
 .recipeCheckbox input:checked ~ .checkmark {
   @apply bg-morin-red;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-/* Style the checkmark/indicator */
-.recipeCheckbox .checkmark:after {
-  display: block;
-  background-image: url('/recipe/check-red.svg');
-  width: 16px;
-  height: 14px;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
-
-/* Style the checkmark/indicator */
-.recipeCheckbox input:checked ~ .checkmark:after {
-  background-image: url('/recipe/check-white.svg');
-  width: 16px;
-  height: 14px;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  & > svg * {
+    stroke: white;
+  }
 }
