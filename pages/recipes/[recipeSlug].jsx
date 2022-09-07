@@ -135,6 +135,7 @@ const ImageGallery = ({ data, onClick }) => {
             onClick={() => onClick(index)}
             className={`${imageWrapper} relative w-80 h-52`}
           >
+            {console.log(item)}
             {item._type === 'image' ? (
               <Image
                 src={urlFor(item).auto('format').width(400).url()}
@@ -591,9 +592,9 @@ const RecipeDetail = ({
                               <FancyLink
                                 destination={`mailto:?subject=${
                                   recipe.title_id
-                                }&body=${toPlainText(
+                                }&body=${ recipe.description_id && toPlainText(
                                   recipe.description_id,
-                                )} %0D%0A${baseUrl}`}
+                                ) } %0D%0A${baseUrl}`}
                               >
                                 Email
                               </FancyLink>

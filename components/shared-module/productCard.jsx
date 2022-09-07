@@ -20,10 +20,16 @@ const ProductCard = ({
       className='group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300'
     >
       <div
-        className={`relative w-full ${small ? `px-5 pt-10 md:px-10 lg:px-14 md:pt-14` : `px-5 pt-10 md:px-10 md:pt-14 lg:px-20 lg:pt-20`}`}
+        className={`relative w-full ${
+          small
+            ? `px-5 pt-10 md:pt-14`
+            : `px-5 pt-10 md:px-10 md:pt-14 lg:px-20 lg:pt-20`
+        }`}
         style={{ background: bgColor }}
       >
-        <div className='relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5'>
+        <div
+          className={`${small ? 'w-[75%] max-w-md mx-auto' : ''} relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5`}
+        >
           <Image
             src={imgSrc}
             blurDataURL={imgPlaceholder}
