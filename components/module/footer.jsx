@@ -14,7 +14,7 @@ const Footer = ({ className, lang, button, faq, footer, translation, mailchimp }
         {/* LEFT */}
         <div className="flex flex-col w-full mb-8 lg:w-3/5 lg:mb-0 lg:max-w-lg">
           <div className="px-2 lg:px-0">
-            <h2 className="text-ctitleSmall font-bold font-nutmeg lg:text-mtitleBig">
+            <h2 className="text-subtitle2 font-bold font-nutmeg lg:text-4">
               {lang === 'id'
                 ? translation.sub_language.title.id
                 : translation.sub_language.title.en}

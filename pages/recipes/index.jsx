@@ -720,7 +720,7 @@ const Recipe = ({
           </Parallax>
 
           <div className="w-full absolute-center text-center pt-12 px-8">
-            <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
+            <h1 className="font-nutmeg font-bold text-h5 text-white leading-tight lg:text-h2 xl:text-h1">
               {ctx.language === 'id' ? recipe.title_id:recipe.title_en}
             </h1>
           </div>
@@ -809,7 +809,7 @@ const Recipe = ({
               </div>
             ) : (
               <div className="w-full h-full min-h-[60vh] flex justify-center items-center">
-                <span className="text-mtitleBig text-morin-red">
+                <span className="text-h4 text-morin-red">
                   No Result Found
                 </span>
               </div>

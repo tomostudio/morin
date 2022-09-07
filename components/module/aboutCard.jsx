@@ -33,7 +33,7 @@ const AboutCard = ({
           <span className='font-semibold max-w-[150px] tracking-widest mx-auto md:text-default'>
             {type}
           </span>
-          <span className='font-nutmeg text-mtitleSmall sm:text-mtitle mx-auto leading-none lg:text-ctitle xl:text-h2'>
+          <span className='font-nutmeg text-[22px] sm:text-subtitle mx-auto leading-none lg:text-h5 xl:text-h2'>
             {title}
           </span>
           <span className='flex items-center min-h-[25px] font-semibold leading-none border-white border-2 border-solid rounded-full px-4 mx-auto md:min-h-[30px] group-hover:text-black group-hover:bg-white transition-all duration-300'>

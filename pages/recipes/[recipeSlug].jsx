@@ -88,7 +88,7 @@ const InstructionCard = ({
             value={value}
             checked={checked}
             onChange={onChange}
-            labelClassName='font-bold text-mtitle'
+            labelClassName='font-bold text-subtitle2'
           />
         </div>
       </div>
@@ -242,10 +242,16 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
           </>
         );
       })}
-      <button ref={swiperPrev} className={`${sliderNav} ${navLeft} pointer-events-auto ml-4`}>
+      <button
+        ref={swiperPrev}
+        className={`${sliderNav} ${navLeft} pointer-events-auto ml-4`}
+      >
         <ArrowLarge color={colors.morinRed} />
       </button>
-      <button ref={swiperNext} className={`${sliderNav} ${navRight} pointer-events-auto mr-4`}>
+      <button
+        ref={swiperNext}
+        className={`${sliderNav} ${navRight} pointer-events-auto mr-4`}
+      >
         <ArrowLarge color={colors.morinRed} />
       </button>
     </Swiper>
@@ -363,7 +369,7 @@ const RecipeDetail = ({
               </div>
 
               <div className='w-full text-white text-center absolute top-24 left-1/2 -translate-x-1/2 z-1 lg:flex lg:top-0 lg:px-8 lg:py-10'>
-                <h1 className='font-nutmeg font-bold text-ctitle leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
+                <h1 className='font-nutmeg font-bold text-h5leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
                   {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
                 </h1>
                 <div className='flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-5 lg:ml-auto'>
@@ -421,7 +427,7 @@ const RecipeDetail = ({
                   recipe.ingredients_en?.length > 0)) && (
                 <div className='w-full xl:px-2'>
                   <div className='bg-white rounded-2xl mb-8 py-8 px-11 xl:h-full xl:py-6 xl:mb-0'>
-                    <h2 className='block font-nutmeg font-normal text-morin-red text-mtitle leading-none mb-6 lg:text-ctitleBig lg:mb-7 md:text-center xl:text-left'>
+                    <h2 className='block font-nutmeg font-normal text-morin-red text-subtitle leading-none mb-6 lg:text-h3 lg:mb-7 md:text-center xl:text-left'>
                       {ctx.language === 'id'
                         ? recipeBtn.language.ingredients.id
                         : recipeBtn.language.ingredients.en}
@@ -453,7 +459,7 @@ const RecipeDetail = ({
               {recipe.made?.length > 0 && (
                 <div className='w-full xl:px-2'>
                   <div className='px-4 mb-8 xl:h-full bg-white rounded-2xl xl:rounded-2xl xl:px-11 py-6 xl:mb-0'>
-                    <h2 className='text-center text-morin-red text-mtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
+                    <h2 className='text-center text-morin-red text-subtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
                       {ctx.language === 'id'
                         ? recipeBtn.language.made_with.id
                         : recipeBtn.language.made_with.en}
@@ -464,6 +470,7 @@ const RecipeDetail = ({
                           className='w-1/2 px-1.5 mb-3 xl:px-2.5 xl:mb-5 max-w-sm'
                           key={`${item.title_en}${index}`}
                         >
+                          {console.log(item.type.slug, item.type, item)}
                           <ProductCard
                             title={
                               ctx.language === 'id'
@@ -487,7 +494,7 @@ const RecipeDetail = ({
                               .blur(10)
                               .url()}
                             imgAlt={item.thumbnail.alt}
-                            link={`${item.type.slug.current}/${item.slug.current}`}
+                            link={`/products/${item.type.slug.current}/${item.slug.current}`}
                             small
                           />
                         </div>
@@ -502,7 +509,7 @@ const RecipeDetail = ({
               (ctx.language === 'en' && recipe.steps_en?.length > 0)) && (
               <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
                 <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
-                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-mtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
+                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
                       ? recipeBtn.language.instructions.id
                       : recipeBtn.language.instructions.en}
@@ -646,10 +653,10 @@ const RecipeDetail = ({
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
                         <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                          <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                          <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
-                          <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
+                          <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
                             {recipeBtn.language.related.title.id}
                           </span>
 
@@ -677,10 +684,10 @@ const RecipeDetail = ({
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
                         <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                          <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                          <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
-                          <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
+                          <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
                             {recipeBtn.language.related.title.id}
                           </span>
 
@@ -709,10 +716,10 @@ const RecipeDetail = ({
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
                       <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                        <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                        <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
-                        <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
+                        <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
                           {recipeBtn.language.related.title.en}
                         </span>
 
@@ -740,10 +747,10 @@ const RecipeDetail = ({
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
                       <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
-                        <span className='block font-nutmeg font-normal text-mtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
+                        <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
-                        <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
+                        <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
                           {recipeBtn.language.related.title.en}
                         </span>
 
