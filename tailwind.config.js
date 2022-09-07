@@ -34,12 +34,12 @@ module.exports = {
       h5: '32px',
       subtitle: '28px',
       subtitle2: '24px',
-      ctitleBig: '42px',
-      mtitleBig: '36px',
-      ctitle: '32px',
-      mtitle: '28px',
-      ctitleSmall: '24px',
-      mtitleSmall: '22pt',
+      ctitleBig: '42px',/*h3*/
+      mtitleBig: '36px',/*h4*/
+      ctitle: '32px',/*h5*/
+      mtitle: '28px',/*subtitle*/
+      ctitleSmall: '24px', /*subtitle2*/
+      mtitleSmall: '22pt', /*Custom*/
       default: '16px',
       defaultSmall: '14px',
     },
