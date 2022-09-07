@@ -8,7 +8,13 @@ import ProductCard from '@/components/shared-module/productCard';
 import GalleryModal from '@/components/shared-module/galleryModal';
 import RecipeSlider from '@/components/sliders/recipeSlider';
 import StrokeButton from '@/components/micro-module/strokeButton';
-import { ArrowLarge, Check } from '@/components/utils/svg';
+import {
+  ArrowLarge,
+  Check,
+  FacebookSolid,
+  Twitter,
+  TwitterSolid,
+} from '@/components/utils/svg';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
 import { useAppContext } from 'context/state';
@@ -301,7 +307,7 @@ const RecipeDetail = ({
     setBaseUrl(window.location.href);
     const checkShare = () => {
       if (navigator.share) {
-        setShare(true);
+        setShare(false);
       } else {
         setShare(false);
       }
@@ -556,7 +562,7 @@ const RecipeDetail = ({
                         {recipeBtn.language.instructions.id}
                       </h2>
 
-                      <div className='flex flex-wrap justify-center lg:justify-end lg:pt-2.5'>
+                      <div className='flex flex-wrap justify-center lg:justify-end'>
                         {showShare ? (
                           <StrokeButton
                             arrow={false}
@@ -567,17 +573,23 @@ const RecipeDetail = ({
                             Bagikan
                           </StrokeButton>
                         ) : (
-                          <>
-                            <div className='mr-2'>Bagikan</div>
+                          <div className='flex items-center space-x-2'>
+                            <div className='pt-1 text-defaultSmall uppercase mr-2'>
+                              Bagikan
+                            </div>
                             <Tooltip
                               title='Facebook'
                               classes={{ tooltip: 'tooltip' }}
                             >
                               <FancyLink
-                                blank
                                 destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                                blank
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Facebook
+                                <FacebookSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -587,8 +599,12 @@ const RecipeDetail = ({
                               <FancyLink
                                 blank
                                 destination={`https://twitter.com/share?url=${baseUrl}`}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Twitter
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -603,8 +619,12 @@ const RecipeDetail = ({
                                     ? toPlainText(recipe.description_id)
                                     : ''
                                 } %0D%0A${baseUrl}`}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Email
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -620,11 +640,15 @@ const RecipeDetail = ({
                                   document.execCommand('copy');
                                   document.body.removeChild(el);
                                 }}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Copy Link
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
-                          </>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -655,7 +679,7 @@ const RecipeDetail = ({
                         {recipeBtn.language.instructions.en}
                       </h2>
 
-                      <div className='flex flex-wrap justify-center space-x-4 lg:justify-end lg:pt-2.5'>
+                      <div className='flex flex-wrap justify-center space-x-4 lg:justify-end '>
                         {showShare ? (
                           <StrokeButton
                             arrow={false}
@@ -666,16 +690,23 @@ const RecipeDetail = ({
                             Share
                           </StrokeButton>
                         ) : (
-                          <>
+                          <div className='flex items-center space-x-2'>
+                            <div className='pt-1 text-defaultSmall uppercase mr-2'>
+                              Bagikan
+                            </div>
                             <Tooltip
                               title='Facebook'
                               classes={{ tooltip: 'tooltip' }}
                             >
                               <FancyLink
-                                blank
                                 destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                                blank
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Facebook
+                                <FacebookSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -685,8 +716,12 @@ const RecipeDetail = ({
                               <FancyLink
                                 blank
                                 destination={`https://twitter.com/share?url=${baseUrl}`}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Twitter
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -695,14 +730,18 @@ const RecipeDetail = ({
                             >
                               <FancyLink
                                 destination={`mailto:?subject=${
-                                  recipe.title_en
+                                  recipe.title_id
                                 }&body=${
-                                  recipe.description_en
-                                    ? toPlainText(recipe.description_en)
+                                  recipe.description_id
+                                    ? toPlainText(recipe.description_id)
                                     : ''
                                 } %0D%0A${baseUrl}`}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Email
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
                             <Tooltip
@@ -718,11 +757,15 @@ const RecipeDetail = ({
                                   document.execCommand('copy');
                                   document.body.removeChild(el);
                                 }}
+                                className={` aspect-1 w-8 relative`}
                               >
-                                Copy Link
+                                <TwitterSolid
+                                  color={colors.morinRed}
+                                  className='w-full h-full'
+                                />
                               </FancyLink>
                             </Tooltip>
-                          </>
+                          </div>
                         )}
                       </div>
                     </div>

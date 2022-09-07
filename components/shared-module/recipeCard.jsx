@@ -27,7 +27,7 @@ const RecipeCard = ({
       >
         <div className="">
           <span
-            className={`block font-nutmeg font-bold leading-tight max-w-[180px] xl:max-w-[280px] ${titleFontSize}`}
+            className={`block font-nutmeg font-bold leading-tight mx-auto w-full px-0 md:px-5 ${titleFontSize}`}
           >
             {title}
           </span>
