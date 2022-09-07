@@ -27,10 +27,13 @@
 @import '_modal.scss';
 
 /* Simple defaults */
+html{
+  overscroll-behavior: none;
+}
 body {
   @apply font-default text-defaultSmall md:text-default antialiased text-black bg-white;
   @include default-type;
-
+  overscroll-behavior: none;
   &.ReactModal__Body--open {
     overflow: hidden;
   }
@@ -102,7 +105,7 @@ body {
 /* Style the checkmark/indicator */
 .recipeCheckbox .checkmark:after {
   display: block;
-  background-image: url("/recipe/check-red.svg");
+  background-image: url('/recipe/check-red.svg');
   width: 16px;
   height: 14px;
   background-position: center; /* Center the image */
@@ -112,7 +115,7 @@ body {
 
 /* Style the checkmark/indicator */
 .recipeCheckbox input:checked ~ .checkmark:after {
-  background-image: url("/recipe/check-white.svg");
+  background-image: url('/recipe/check-white.svg');
   width: 16px;
   height: 14px;
   background-position: center; /* Center the image */
