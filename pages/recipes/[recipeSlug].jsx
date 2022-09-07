@@ -24,29 +24,22 @@ import { Tooltip } from '@mui/material';
 import FancyLink from '@/components/utils/fancyLink';
 
 // COMPONENTS
-const RecipeCheckbox = ({
-  name,
-  label,
-  value,
-  onChange,
-  checked,
-  labelClassName = '',
-}) => {
+const RecipeCheckbox = ({ name, label, checked, labelClassName = '' }) => {
   return (
-    <div className='font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-5'>
+    <div className='font-semibold leading-tight mb-3 last:mb-0 md:mb-3 lg:mb-5'>
       <label
         htmlFor={name}
         className='flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'
       >
         <span
-          className={`flex flex-wrap items-center justify-center w-5 h-5 rounded-full border-2 border-solid border-morin-red p-1 transition-all md:w-6 md:h-6 lg:w-8 lg:h-8 lg:p-2 ${
+          className={`flex flex-wrap items-center justify-center w-6 h-6 rounded-full border-2 border-solid border-morin-red p-1 transition-all  lg:w-8 lg:h-8 lg:p-2 ${
             checked ? 'bg-morin-red' : ''
           }`}
         >
           <Check color={checked ? colors.white : colors.morinRed} />
         </span>
         <span
-          className={`leading-none pt-1 pl-2 md:pt-1.5 md:pl-4 lg:pl-5 ${labelClassName}`}
+          className={`leading-none pt-1 ml-3 md:ml-4 lg:ml-5 ${labelClassName}`}
         >
           {label}
         </span>
@@ -285,19 +278,21 @@ const RecipeDetail = ({
 
   const ctx = useAppContext();
 
-  const resize = () => {
-    if (navigator.share && window.innerWidth < 850) {
-      setShare(true);
-    } else {
-      setShare(false);
-    }
-  };
-
   useEffect(() => {
     ctx.setLangColor(recipe.langColor);
     useEffectInit({ context: ctx, mobileDark: true });
     setBaseUrl(window.location.href);
+
+    const resize = () => {
+      if (navigator.share) {
+        setShare(false);
+      } else {
+        setShare(false);
+      }
+    };
+
     window.addEventListener('resize', resize, true);
+    resize();
     return () => {
       window.removeEventListener('resize', resize, true);
     };
@@ -348,43 +343,23 @@ const RecipeDetail = ({
         <div className='relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden'>
           <div className='max-w-screen-2xl mx-auto'>
             {/* head title */}
-            <div className='relative md:rounded-3xl md:overflow-hidden lg:mb-5'>
-              <div className='lg:hidden'>
+            <div className='relative  rounded-b-2xl md:rounded-3xl overflow-hidden mb-5'>
+              <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
                 <Image
                   priority
                   src={urlFor(recipe.thumbnail)
                     .auto('format')
-                    .width(1200)
-                    .height(690)
+                    .width(1920)
                     .url()}
                   blurDataURL={urlFor(recipe.thumbnail)
                     .auto('format')
-                    .width(1200)
-                    .height(690)
+                    .width(500)
                     .blur(25)
                     .url()}
                   placeholder='blur'
                   alt={recipe.thumbnail.alt}
-                  width={375}
-                  height={500}
-                  layout='responsive'
-                  objectFit='contain'
-                />
-              </div>
-              <div className='hidden lg:block'>
-                <Image
-                  src={urlFor(recipe.thumbnail).width(1200).height(690).url()}
-                  blurDataURL={urlFor(recipe.thumbnail)
-                    .auto('format')
-                    .width(1200)
-                    .height(690)
-                    .blur(25)
-                    .url()}
-                  placeholder='blur'
-                  alt={recipe.thumbnail.alt}
-                  width={1200}
-                  height={690}
-                  layout='responsive'
+                  layout='fill'
+                  objectFit='cover'
                 />
               </div>
 
@@ -458,7 +433,7 @@ const RecipeDetail = ({
                         <h2 className='block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7'>
                           {recipeBtn.language.ingredients.id}
                         </h2>
-                        <div className='h-full '>
+                        <div className=''>
                           {recipe.ingredients_id?.map((data) => (
                             <RecipeCheckbox
                               key={data.description}
@@ -504,37 +479,70 @@ const RecipeDetail = ({
                     </h2>
                     <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
                       {recipe.made?.map((item, index) => (
-                        <div
-                          className='w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5'
-                          key={`${item.title_en}${index}`}
-                        >
-                          <ProductCard
-                            title={
-                              ctx.language === 'id'
-                                ? item.title_id
-                                : item.title_en
-                            }
-                            bgColor={
-                              item.backgroundColor
-                                ? item.backgroundColor.hex
-                                : colors.morinLightBlue
-                            }
-                            imgSrc={urlFor(item.thumbnail)
-                              .auto('format')
-                              .width(800)
-                              .url()}
-                            thumbnailFruit={item.thumbnailFruit}
-                            imgBg={'/product/strawberry-bg.png'}
-                            imgPlaceholder={urlFor(item.thumbnail)
-                              .width(500)
-                              .auto('format')
-                              .blur(10)
-                              .url()}
-                            imgAlt={item.thumbnail.alt}
-                            link={`${item.type.slug.current}/${item.slug.current}`}
-                            small
-                          />
-                        </div>
+                        <>
+                          <div
+                            className='w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5'
+                            key={`${item.title_en}${index}`}
+                          >
+                            <ProductCard
+                              title={
+                                ctx.language === 'id'
+                                  ? item.title_id
+                                  : item.title_en
+                              }
+                              bgColor={
+                                item.backgroundColor
+                                  ? item.backgroundColor.hex
+                                  : colors.morinLightBlue
+                              }
+                              imgSrc={urlFor(item.thumbnail)
+                                .auto('format')
+                                .width(800)
+                                .url()}
+                              thumbnailFruit={item.thumbnailFruit}
+                              imgBg={'/product/strawberry-bg.png'}
+                              imgPlaceholder={urlFor(item.thumbnail)
+                                .width(500)
+                                .auto('format')
+                                .blur(10)
+                                .url()}
+                              imgAlt={item.thumbnail.alt}
+                              link={`${item.type.slug.current}/${item.slug.current}`}
+                              small
+                            />
+                          </div>
+                          <div
+                            className='w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5'
+                            key={`${item.title_en}${index}`}
+                          >
+                            <ProductCard
+                              title={
+                                ctx.language === 'id'
+                                  ? item.title_id
+                                  : item.title_en
+                              }
+                              bgColor={
+                                item.backgroundColor
+                                  ? item.backgroundColor.hex
+                                  : colors.morinLightBlue
+                              }
+                              imgSrc={urlFor(item.thumbnail)
+                                .auto('format')
+                                .width(800)
+                                .url()}
+                              thumbnailFruit={item.thumbnailFruit}
+                              imgBg={'/product/strawberry-bg.png'}
+                              imgPlaceholder={urlFor(item.thumbnail)
+                                .width(500)
+                                .auto('format')
+                                .blur(10)
+                                .url()}
+                              imgAlt={item.thumbnail.alt}
+                              link={`${item.type.slug.current}/${item.slug.current}`}
+                              small
+                            />
+                          </div>
+                        </>
                       ))}
                     </div>
                   </div>
@@ -563,6 +571,7 @@ const RecipeDetail = ({
                           </StrokeButton>
                         ) : (
                           <>
+                            <div className='mr-2'>Bagikan</div>
                             <Tooltip
                               title='Facebook'
                               classes={{ tooltip: 'tooltip' }}
@@ -593,8 +602,9 @@ const RecipeDetail = ({
                                 destination={`mailto:?subject=${
                                   recipe.title_id
                                 }&body=${
-                                  recipe.description_id ?
-                                  toPlainText(recipe.description_id) : ''
+                                  recipe.description_id
+                                    ? toPlainText(recipe.description_id)
+                                    : ''
                                 } %0D%0A${baseUrl}`}
                               >
                                 Email
