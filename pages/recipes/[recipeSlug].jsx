@@ -1,41 +1,41 @@
-import { useState, useRef, useEffect } from 'react'
-import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode, Navigation } from 'swiper'
-import Footer from '@/components/module/footer'
-import Layout from '@/components/module/layout'
-import ProductCard from '@/components/shared-module/productCard'
-import GalleryModal from '@/components/shared-module/galleryModal'
-import RecipeSlider from '@/components/sliders/recipeSlider'
-import StrokeButton from '@/components/micro-module/strokeButton'
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Navigation } from 'swiper';
+import Footer from '@/components/module/footer';
+import Layout from '@/components/module/layout';
+import ProductCard from '@/components/shared-module/productCard';
+import GalleryModal from '@/components/shared-module/galleryModal';
+import RecipeSlider from '@/components/sliders/recipeSlider';
+import StrokeButton from '@/components/micro-module/strokeButton';
 import {
   ArrowLarge,
   Check,
   FacebookSolid,
   Twitter,
   TwitterSolid,
-} from '@/components/utils/svg'
-import colors from '@/helpers/colors'
-import { useEffectInit } from '@/components/utils/preset'
-import { useAppContext } from 'context/state'
-import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
-import { PortableText, toPlainText } from '@portabletext/react'
-import SEO from '@/components/utils/seo'
-import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
-import { fade } from '@/helpers/transitions'
-import getYoutube from '@/components/utils/getYoutube'
-import { Tooltip } from '@mui/material'
-import FancyLink from '@/components/utils/fancyLink'
+} from '@/components/utils/svg';
+import colors from '@/helpers/colors';
+import { useEffectInit } from '@/components/utils/preset';
+import { useAppContext } from 'context/state';
+import client from '@/helpers/sanity/client';
+import urlFor from '@/helpers/sanity/urlFor';
+import { PortableText, toPlainText } from '@portabletext/react';
+import SEO from '@/components/utils/seo';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/transitions';
+import getYoutube from '@/components/utils/getYoutube';
+import { Tooltip } from '@mui/material';
+import FancyLink from '@/components/utils/fancyLink';
 
 // COMPONENTS
-const RecipeCheckbox = ({ label, labelClassName = '' }) => {
+const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   return (
-    <div className="font-semibold leading-tight mb-3 last:mb-0 md:mb-3 lg:mb-5">
-      <label className="recipeCheckbox cursor-pointer flex flex-wrap items-center w-full font-semibold select-none overflow-hidden">
-        <input type="checkbox" />
-        <span className="checkmark"></span>
+    <div className='font-semibold leading-tight mb-3 last:mb-0 md:mb-3 lg:mb-5'>
+      <label className='recipeCheckbox cursor-pointer flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'>
+        <input type='checkbox' />
+        <span className='checkmark'></span>
         <span
           className={`leading-none pt-1 ml-7 md:ml-8 lg:ml-12 ${labelClassName}`}
         >
@@ -43,14 +43,14 @@ const RecipeCheckbox = ({ label, labelClassName = '' }) => {
         </span>
       </label>
     </div>
-  )
-}
+  );
+};
 
 const RecipeTag = ({ label }) => (
-  <div className="flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid border-white px-3 mr-2 last:mr-0 lg:mr-0 lg:ml-2 lg:mb-2">
-    <span className="pt-0.5 md:pt-1">{label}</span>
+  <div className='flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid border-white px-3 mr-2 last:mr-0 lg:mr-0 lg:ml-2 lg:mb-2'>
+    <span className='pt-0.5 md:pt-1'>{label}</span>
   </div>
-)
+);
 
 const InstructionCard = ({
   step,
@@ -61,59 +61,59 @@ const InstructionCard = ({
   images,
 }) => {
   return (
-    <div className="mb-6 last:mb-0">
-      <div className="mb-1 lg:mb-2">
-        <span className="text-morin-red font-semibold lg:hidden">
+    <div className='mb-6 last:mb-0'>
+      <div className='mb-1 lg:mb-2'>
+        <span className='text-morin-red font-semibold lg:hidden'>
           Step {step}
         </span>
-        <div className="hidden lg:block">
+        <div className='hidden lg:block'>
           <RecipeCheckbox
             name={value}
             label={`Step ${step}`}
             value={value}
             checked={checked}
             onChange={onChange}
-            labelClassName="font-bold text-mtitleSmall"
+            labelClassName='font-bold text-mtitleSmall'
           />
         </div>
       </div>
 
-      <p className="text-morin-red mb-6 last:mb-0 lg:text-black lg:pl-[52px]">
+      <p className='text-morin-red mb-6 last:mb-0 lg:text-black lg:pl-[52px]'>
         {instruction}
       </p>
 
       {images?.length && (
-        <div className="flex flex-wrap -mx-1 sm:mx-0 lg:pl-[52px]">
+        <div className='flex flex-wrap -mx-1 sm:mx-0 lg:pl-[52px]'>
           {images?.map((i, index) => (
             <div
-              className="relative w-1/2 h-60 rounded-xl overflow-hidden px-1 sm:w-80 sm:px-0 sm:mr-4 lg:mr-5"
+              className='relative w-1/2 h-60 rounded-xl overflow-hidden px-1 sm:w-80 sm:px-0 sm:mr-4 lg:mr-5'
               key={index}
             >
               <Image
                 src={urlFor(i).auto('format').width(600).url()}
                 blurDataURL={urlFor(i).auto('format').width(300).blur(25).url()}
-                placeholder="blur"
+                placeholder='blur'
                 alt={i.alt}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
               />
             </div>
           ))}
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 const ImageGallery = ({ data, onClick }) => {
-  const imageWrapper = `relative bg-transparent border-0 rounded-3xl cursor-pointer overflow-hidden`
+  const imageWrapper = `relative bg-transparent border-0 rounded-3xl cursor-pointer overflow-hidden`;
 
   return (
     <Swiper
       freeMode
       modules={[FreeMode]}
-      slidesPerView="auto"
+      slidesPerView='auto'
       breakpoints={{
         0: { spaceBetween: 10 },
         1024: { spaceBetween: 20 },
@@ -122,7 +122,7 @@ const ImageGallery = ({ data, onClick }) => {
       {data?.map((item, index) => (
         <SwiperSlide key={index}>
           <button
-            type="button"
+            type='button'
             onClick={() => onClick(index)}
             className={`${imageWrapper} relative w-80 h-52`}
           >
@@ -134,11 +134,11 @@ const ImageGallery = ({ data, onClick }) => {
                   .width(200)
                   .blur(50)
                   .url()}
-                placeholder="blur"
+                placeholder='blur'
                 alt={item.alt}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
               />
             ) : (
               <Image
@@ -148,28 +148,28 @@ const ImageGallery = ({ data, onClick }) => {
                   .width(200)
                   .blur(50)
                   .url()}
-                placeholder="blur"
+                placeholder='blur'
                 alt={item.thumbnail.alt}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
               />
             )}
           </button>
         </SwiperSlide>
       ))}
     </Swiper>
-  )
-}
+  );
+};
 
 const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
-  const swiperPrev = useRef(null)
-  const swiperNext = useRef(null)
+  const swiperPrev = useRef(null);
+  const swiperNext = useRef(null);
 
   // const imageWrapper = `relative bg-transparent border-0 rounded-3xl cursor-pointer overflow-hidden`;
-  const navLeft = `left-0 rotate-180`
-  const navRight = `right-0`
-  const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-1 px-2 xl:block`
+  const navLeft = `left-0 rotate-180`;
+  const navRight = `right-0`;
+  const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-1 px-2 xl:block`;
 
   return (
     <Swiper
@@ -179,8 +179,8 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         nextEl: swiperNext.current,
       }}
       onBeforeInit={(swiper) => {
-        swiper.params.navigation.prevEl = swiperPrev.current
-        swiper.params.navigation.nextEl = swiperNext.current
+        swiper.params.navigation.prevEl = swiperPrev.current;
+        swiper.params.navigation.nextEl = swiperNext.current;
       }}
       slidesPerView={1}
       initialSlide={initialSlide}
@@ -189,7 +189,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         <>
           {item._type === 'image' ? (
             <SwiperSlide key={index}>
-              <div className="relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem">
+              <div className='relative w-[calc(100%-8rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden h-30rem'>
                 <Image
                   src={urlFor(item).auto('format').width(1928).url()}
                   blurDataURL={urlFor(item)
@@ -197,11 +197,11 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
                     .width(1500)
                     .blur(25)
                     .url()}
-                  placeholder="blur"
+                  placeholder='blur'
                   alt={item.alt}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
+                  layout='fill'
+                  objectFit='cover'
+                  objectPosition='center'
                 />
               </div>
             </SwiperSlide>
@@ -212,9 +212,9 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
               >
                 <iframe
                   src={'https://www.youtube.com/embed/' + getYoutube(item.link)}
-                  id="videos"
-                  width="100%"
-                  height="100%"
+                  id='videos'
+                  width='100%'
+                  height='100%'
                 />
               </div>
             </SwiperSlide>
@@ -228,8 +228,8 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
         <ArrowLarge color={colors.morinRed} />
       </button>
     </Swiper>
-  )
-}
+  );
+};
 
 // CONTROLLER
 const RecipeDetail = ({
@@ -240,41 +240,41 @@ const RecipeDetail = ({
   footerAPI,
   translation,
 }) => {
-  const [galleryPopup, setGalleryPopup] = useState(false)
-  const [showShare, setShare] = useState(false)
-  const [gallerySlide, setGallerySlide] = useState(0)
-  const [baseUrl, setBaseUrl] = useState()
-  const [recipeBtn] = recipeButton
-  const [seo] = seoAPI
-  const [recipe] = recipeAPI
-  const [footer] = footerAPI
-  const router = useRouter()
+  const [galleryPopup, setGalleryPopup] = useState(false);
+  const [showShare, setShare] = useState(false);
+  const [gallerySlide, setGallerySlide] = useState(0);
+  const [baseUrl, setBaseUrl] = useState();
+  const [recipeBtn] = recipeButton;
+  const [seo] = seoAPI;
+  const [recipe] = recipeAPI;
+  const [footer] = footerAPI;
+  const router = useRouter();
 
   const handleImageGallery = (index) => {
-    setGalleryPopup(true)
-    setGallerySlide(index)
-  }
+    setGalleryPopup(true);
+    setGallerySlide(index);
+  };
 
-  const ctx = useAppContext()
+  const ctx = useAppContext();
 
   useEffect(() => {
-    ctx.setLangColor(recipe.langColor)
-    useEffectInit({ context: ctx, mobileDark: true })
-    setBaseUrl(window.location.href)
+    ctx.setLangColor(recipe.langColor);
+    useEffectInit({ context: ctx, mobileDark: true });
+    setBaseUrl(window.location.href);
     const checkShare = () => {
       if (navigator.share) {
-        setShare(false)
+        setShare(false);
       } else {
-        setShare(false)
+        setShare(false);
       }
-    }
+    };
 
-    checkShare()
-    window.addEventListener('resize', checkShare, true)
+    checkShare();
+    window.addEventListener('resize', checkShare, true);
     return () => {
-      window.removeEventListener('resize', checkShare, true)
-    }
-  }, [])
+      window.removeEventListener('resize', checkShare, true);
+    };
+  }, []);
 
   const handleShareButton = () => {
     const shareData = {
@@ -284,12 +284,12 @@ const RecipeDetail = ({
           ? recipe.description_id && toPlainText(recipe.description_id)
           : recipe.description_en && toPlainText(recipe.description_en),
       url: baseUrl,
-    }
+    };
 
     if (navigator.share) {
-      navigator.share(shareData)
+      navigator.share(shareData);
     }
-  }
+  };
 
   return (
     <Layout
@@ -312,17 +312,17 @@ const RecipeDetail = ({
       />
 
       <motion.div
-        className="w-full"
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        className='w-full'
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
       >
-        <div className="relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden">
-          <div className="max-w-screen-2xl mx-auto">
+        <div className='relative w-full md:px-8 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden'>
+          <div className='max-w-screen-2xl mx-auto'>
             {/* head title */}
-            <div className="relative  rounded-b-2xl md:rounded-3xl overflow-hidden mb-5">
-              <div className="w-full aspect-[4/3] md:aspect-[2/1]">
+            <div className='relative  rounded-b-2xl md:rounded-3xl overflow-hidden mb-5'>
+              <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
                 <Image
                   priority
                   src={urlFor(recipe.thumbnail)
@@ -334,18 +334,18 @@ const RecipeDetail = ({
                     .width(500)
                     .blur(25)
                     .url()}
-                  placeholder="blur"
+                  placeholder='blur'
                   alt={recipe.thumbnail.alt}
-                  layout="fill"
-                  objectFit="cover"
+                  layout='fill'
+                  objectFit='cover'
                 />
               </div>
 
-              <div className="w-full text-white text-center absolute top-24 left-1/2 -translate-x-1/2 z-1 lg:flex lg:top-0 lg:px-8 lg:py-10">
-                <h1 className="font-nutmeg font-bold text-ctitle leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left">
+              <div className='w-full text-white text-center absolute top-24 left-1/2 -translate-x-1/2 z-1 lg:flex lg:top-0 lg:px-8 lg:py-10'>
+                <h1 className='font-nutmeg font-bold text-ctitle leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
                   {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
                 </h1>
-                <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-5 lg:ml-auto">
+                <div className='flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-5 lg:ml-auto'>
                   <RecipeTag
                     label={
                       ctx.language === 'id'
@@ -374,8 +374,8 @@ const RecipeDetail = ({
             {/* description */}
             {ctx.language === 'id'
               ? recipe.description_id && (
-                  <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
-                    <div className="lg:max-w-3xl lg:mx-auto">
+                  <div className='bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5'>
+                    <div className='lg:max-w-3xl lg:mx-auto'>
                       <PortableText
                         value={recipe.description_id}
                         components={{
@@ -388,8 +388,8 @@ const RecipeDetail = ({
                   </div>
                 )
               : recipe.description_en && (
-                  <div className="bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5">
-                    <div className="lg:max-w-3xl lg:mx-auto">
+                  <div className='bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5'>
+                    <div className='lg:max-w-3xl lg:mx-auto'>
                       <PortableText
                         value={recipe.description_en}
                         components={{
@@ -402,20 +402,22 @@ const RecipeDetail = ({
                   </div>
                 )}
 
-            <div className="lg:flex lg:-mx-2 lg:mb-5">
+            <div className='lg:flex lg:-mx-2 lg:mb-5'>
               {/* ingredients */}
               {ctx.language === 'id'
                 ? recipe.ingredients_id?.length > 0 && (
-                    <div className="lg:w-1/2 lg:px-2">
-                      <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
-                        <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
+                    <div className='lg:w-1/2 lg:px-2'>
+                      <div className='bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0'>
+                        <h2 className='block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7'>
                           {recipeBtn.language.ingredients.id}
                         </h2>
-                        <div className="h-full ">
+                        <div className='h-full '>
                           {recipe.ingredients_id?.map((data, index) => (
                             <RecipeCheckbox
                               key={index}
-                              label={`ingredients_id-${index + 1}`}
+                              name={`ingredients_id-${index + 1}`}
+                              label={data.description}
+                              value={`ingredients_id-${index + 1}`}
                             />
                           ))}
                         </div>
@@ -423,15 +425,17 @@ const RecipeDetail = ({
                     </div>
                   )
                 : recipe.ingredients_en?.length > 0 && (
-                    <div className="lg:w-1/2 lg:px-2">
-                      <div className="bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0">
-                        <h2 className="block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7">
+                    <div className='lg:w-1/2 lg:px-2'>
+                      <div className='bg-white rounded-2xl mb-8 py-8 px-11 lg:h-full lg:py-6 lg:mb-0'>
+                        <h2 className='block font-nutmeg font-normal text-morin-red text-mtitleSmall leading-none mb-4 lg:text-ctitleBig lg:mb-7'>
                           {recipeBtn.language.ingredients.en}
                         </h2>
-                        <div className="h-full ">
+                        <div className='h-full '>
                           {recipe.ingredients_en?.map((data, index) =>
                             data.title ? (
-                              <span className='block font-semibold md:mb-3 lg:mb-5'>{data.description}</span>
+                              <span className='block font-semibold md:mb-3 lg:mb-5'>
+                                {data.description}
+                              </span>
                             ) : (
                               <RecipeCheckbox
                                 key={index}
@@ -439,7 +443,7 @@ const RecipeDetail = ({
                                 label={data.description}
                                 value={`ingredients_en-${index + 1}`}
                               />
-                            ),
+                            )
                           )}
                         </div>
                       </div>
@@ -448,17 +452,17 @@ const RecipeDetail = ({
 
               {/* made with */}
               {recipe.made?.length > 0 && (
-                <div className="lg:w-1/2 lg:px-2">
-                  <div className="px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0">
-                    <h2 className="text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left">
+                <div className='lg:w-1/2 lg:px-2'>
+                  <div className='px-4 mb-6 lg:h-full lg:bg-white lg:rounded-2xl lg:px-11 lg:py-6 lg:mb-0'>
+                    <h2 className='text-center text-morin-red text-mtitleSmall font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig lg:text-left'>
                       {ctx.language === 'id'
                         ? recipeBtn.language.made_with.id
                         : recipeBtn.language.made_with.en}
                     </h2>
-                    <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
+                    <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
                       {recipe.made?.map((item, index) => (
                         <div
-                          className="w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5"
+                          className='w-1/2 px-1.5 mb-3 lg:px-2.5 lg:mb-5'
                           key={`${item.title_en}${index}`}
                         >
                           <ProductCard
@@ -495,237 +499,123 @@ const RecipeDetail = ({
               )}
             </div>
 
-            {/* instructions */}
-            {ctx.language === 'id'
-              ? recipe.steps_id?.length > 0 && (
-                  <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
-                    <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
-                      <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                        {recipeBtn.language.instructions.id}
-                      </h2>
-
-                      <div className="flex flex-wrap justify-center lg:justify-end">
-                        {showShare ? (
-                          <StrokeButton
-                            arrow={false}
-                            color={colors.morinRed}
-                            className="mx-0"
-                            onClick={handleShareButton}
+            {((ctx.language === 'id' && recipe.steps_id?.length > 0 )  ||
+              (ctx.language === 'en' && recipe.steps_en?.length > 0 )) && (
+              <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
+                <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
+                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
+                    {ctx.language === 'id'
+                      ? recipeBtn.language.instructions.id
+                      : recipeBtn.language.instructions.en}
+                  </h2>
+                  <div className='flex flex-wrap justify-center lg:justify-end'>
+                    {showShare ? (
+                      <StrokeButton
+                        arrow={false}
+                        color={colors.morinRed}
+                        className='mx-0'
+                        onClick={handleShareButton}
+                      >
+                        {ctx.language === 'id' ? 'Bagikan' : ''}
+                      </StrokeButton>
+                    ) : (
+                      <div className='flex items-center space-x-2'>
+                        <div className='pt-1 text-defaultSmall uppercase mr-2'>
+                          {ctx.language === 'id' ? 'Bagikan' : ''}
+                        </div>
+                        <Tooltip
+                          title='Facebook'
+                          classes={{ tooltip: 'tooltip' }}
+                        >
+                          <FancyLink
+                            destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                            blank
+                            className={` aspect-1 w-8 relative`}
                           >
-                            Bagikan
-                          </StrokeButton>
-                        ) : (
-                          <div className="flex items-center space-x-2">
-                            <div className="pt-1 text-defaultSmall uppercase mr-2">
-                              Bagikan
-                            </div>
-                            <Tooltip
-                              title="Facebook"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                                blank
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <FacebookSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Twitter"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                blank
-                                destination={`https://twitter.com/share?url=${baseUrl}`}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Email"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                destination={`mailto:?subject=${
-                                  recipe.title_id
-                                }&body=${
-                                  recipe.description_id
-                                    ? toPlainText(recipe.description_id)
-                                    : ''
-                                } %0D%0A${baseUrl}`}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Copy Link"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                onClick={() => {
-                                  const el = document.createElement('input')
-                                  el.value = baseUrl
-                                  document.body.appendChild(el)
-                                  el.select()
-                                  document.execCommand('copy')
-                                  document.body.removeChild(el)
-                                }}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="lg:max-w-3xl lg:mx-auto">
-                      {recipe.steps_id?.map((item, index) => (
-                        <InstructionCard
-                          key={index}
-                          step={index + 1}
-                          value={`step-${index + 1}`}
-                          instruction={item.description}
-                          images={item.images}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )
-              : recipe.steps_en?.length > 0 && (
-                  <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
-                    <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
-                      <h2 className="block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
-                        {recipeBtn.language.instructions.en}
-                      </h2>
-
-                      <div className="flex flex-wrap justify-center space-x-4 lg:justify-end ">
-                        {showShare ? (
-                          <StrokeButton
-                            arrow={false}
-                            color={colors.morinRed}
-                            className="mx-0"
-                            onClick={handleShareButton}
+                            <FacebookSolid
+                              color={colors.morinRed}
+                              className='w-full h-full'
+                            />
+                          </FancyLink>
+                        </Tooltip>
+                        <Tooltip
+                          title='Twitter'
+                          classes={{ tooltip: 'tooltip' }}
+                        >
+                          <FancyLink
+                            blank
+                            destination={`https://twitter.com/share?url=${baseUrl}`}
+                            className={` aspect-1 w-8 relative`}
                           >
-                            Share
-                          </StrokeButton>
-                        ) : (
-                          <div className="flex items-center space-x-2">
-                            <div className="pt-1 text-defaultSmall uppercase mr-2">
-                              Bagikan
-                            </div>
-                            <Tooltip
-                              title="Facebook"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                                blank
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <FacebookSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Twitter"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                blank
-                                destination={`https://twitter.com/share?url=${baseUrl}`}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Email"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                destination={`mailto:?subject=${
-                                  recipe.title_id
-                                }&body=${
-                                  recipe.description_id
-                                    ? toPlainText(recipe.description_id)
-                                    : ''
-                                } %0D%0A${baseUrl}`}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                            <Tooltip
-                              title="Copy Link"
-                              classes={{ tooltip: 'tooltip' }}
-                            >
-                              <FancyLink
-                                onClick={() => {
-                                  const el = document.createElement('input')
-                                  el.value = baseUrl
-                                  document.body.appendChild(el)
-                                  el.select()
-                                  document.execCommand('copy')
-                                  document.body.removeChild(el)
-                                }}
-                                className={` aspect-1 w-8 relative`}
-                              >
-                                <TwitterSolid
-                                  color={colors.morinRed}
-                                  className="w-full h-full"
-                                />
-                              </FancyLink>
-                            </Tooltip>
-                          </div>
-                        )}
+                            <TwitterSolid
+                              color={colors.morinRed}
+                              className='w-full h-full'
+                            />
+                          </FancyLink>
+                        </Tooltip>
+                        <Tooltip title='Email' classes={{ tooltip: 'tooltip' }}>
+                          <FancyLink
+                            destination={`mailto:?subject=${
+                              ctx.language === 'id' ? recipe.title_id : recipe.title_en
+                            }&body=${
+                              recipe.description_id
+                                ? toPlainText(ctx.language === 'id' ? recipe.description_id : recipe.description_en)
+                                : ''
+                            } %0D%0A${baseUrl}`}
+                            className={` aspect-1 w-8 relative`}
+                          >
+                            <TwitterSolid
+                              color={colors.morinRed}
+                              className='w-full h-full'
+                            />
+                          </FancyLink>
+                        </Tooltip>
+                        <Tooltip
+                          title='Copy Link'
+                          classes={{ tooltip: 'tooltip' }}
+                        >
+                          <FancyLink
+                            onClick={() => {
+                              const el = document.createElement('input');
+                              el.value = baseUrl;
+                              document.body.appendChild(el);
+                              el.select();
+                              document.execCommand('copy');
+                              document.body.removeChild(el);
+                            }}
+                            className={` aspect-1 w-8 relative`}
+                          >
+                            <TwitterSolid
+                              color={colors.morinRed}
+                              className='w-full h-full'
+                            />
+                          </FancyLink>
+                        </Tooltip>
                       </div>
-                    </div>
-
-                    <div className="lg:max-w-3xl lg:mx-auto">
-                      {recipe.steps_en?.map((item, index) => (
-                        <InstructionCard
-                          key={index}
-                          step={index + 1}
-                          value={`step-${index + 1}`}
-                          instruction={item.description}
-                          images={item.images}
-                        />
-                      ))}
-                    </div>
+                    )}
                   </div>
-                )}
+                </div>
+
+                <div className='lg:max-w-3xl lg:mx-auto'>
+                  {recipe.steps_id?.map((item, index) => (
+                    <InstructionCard
+                      key={index}
+                      step={index + 1}
+                      value={`step-${index + 1}`}
+                      instruction={item.description}
+                      images={item.images}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* gallery */}
             {recipe.gallery?.length > 0 && (
-              <div className="relative bg-white rounded-2xl mb-8 p-8 overflow-hidden lg:py-12 lg:px-10 lg:mb-14">
-                <div className="w-8 h-full bg-gradient-to-r from-white to-transparent absolute top-1/2 left-0 -translate-y-1/2 z-2 lg:w-10" />
-                <div className="w-8 h-full bg-gradient-to-r from-transparent to-white absolute top-1/2 right-0 -translate-y-1/2 z-2 lg:w-10" />
-                <div className="recipe-gallery-slider relative overflow-hidden -mx-8 z-1 lg:-mx-10">
+              <div className='relative bg-white rounded-2xl mb-8 p-8 overflow-hidden lg:py-12 lg:px-10 lg:mb-14'>
+                <div className='w-8 h-full bg-gradient-to-r from-white to-transparent absolute top-1/2 left-0 -translate-y-1/2 z-2 lg:w-10' />
+                <div className='w-8 h-full bg-gradient-to-r from-transparent to-white absolute top-1/2 right-0 -translate-y-1/2 z-2 lg:w-10' />
+                <div className='recipe-gallery-slider relative overflow-hidden -mx-8 z-1 lg:-mx-10'>
                   <ImageGallery
                     data={recipe.gallery}
                     onClick={(index) => handleImageGallery(index)}
@@ -738,28 +628,28 @@ const RecipeDetail = ({
             {ctx.language === 'id'
               ? recipe.related.option
                 ? recipeListAPI?.length > 0 && (
-                    <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
-                      <div className="flex flex-wrap w-full">
-                        <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
-                          <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                    <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
+                      <div className='flex flex-wrap w-full'>
+                        <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                          <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
-                          <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                          <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
                             {recipeBtn.language.related.title.id}
                           </span>
 
-                          <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                          <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
                             <StrokeButton
-                              destination="/recipes"
+                              destination='/recipes'
                               color={colors.morinRed}
-                              className="ml-auto"
+                              className='ml-auto'
                             >
                               {recipeBtn.language.related.btn.id}
                             </StrokeButton>
                           </div>
                         </div>
 
-                        <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                        <div className='w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4'>
                           <RecipeSlider
                             data={recipeListAPI}
                             lang={ctx.language}
@@ -769,28 +659,28 @@ const RecipeDetail = ({
                     </div>
                   )
                 : recipe.related?.manual?.length > 0 && (
-                    <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
-                      <div className="flex flex-wrap w-full">
-                        <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
-                          <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                    <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
+                      <div className='flex flex-wrap w-full'>
+                        <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                          <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
-                          <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                          <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
                             {recipeBtn.language.related.title.id}
                           </span>
 
-                          <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                          <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
                             <StrokeButton
-                              destination="/recipes"
+                              destination='/recipes'
                               color={colors.morinRed}
-                              className="ml-auto"
+                              className='ml-auto'
                             >
                               {recipeBtn.language.related.btn.id}
                             </StrokeButton>
                           </div>
                         </div>
 
-                        <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                        <div className='w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4'>
                           <RecipeSlider
                             data={recipe.related.manual}
                             lang={ctx.language}
@@ -801,28 +691,28 @@ const RecipeDetail = ({
                   )
               : recipe.related.option
               ? recipeListAPI?.length > 0 && (
-                  <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
-                    <div className="flex flex-wrap w-full">
-                      <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
-                        <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                  <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
+                    <div className='flex flex-wrap w-full'>
+                      <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                        <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
-                        <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                        <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
                           {recipeBtn.language.related.title.en}
                         </span>
 
-                        <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                        <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
                           <StrokeButton
-                            destination="/recipes"
+                            destination='/recipes'
                             color={colors.morinRed}
-                            className="ml-auto"
+                            className='ml-auto'
                           >
                             {recipeBtn.language.related.btn.en}
                           </StrokeButton>
                         </div>
                       </div>
 
-                      <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                      <div className='w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4'>
                         <RecipeSlider
                           data={recipeListAPI}
                           lang={ctx.language}
@@ -832,28 +722,28 @@ const RecipeDetail = ({
                   </div>
                 )
               : recipe.related?.manual?.length > 0 && (
-                  <div className="px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20">
-                    <div className="flex flex-wrap w-full">
-                      <div className="w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10">
-                        <span className="block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden">
+                  <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
+                    <div className='flex flex-wrap w-full'>
+                      <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                        <span className='block font-nutmeg font-normal text-mtitleSmall text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
-                        <span className="hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2">
+                        <span className='hidden font-nutmeg font-normal text-mtitle text-morin-red leading-tight mb-0 md:block lg:text-mtitleBig xl:text-h2'>
                           {recipeBtn.language.related.title.en}
                         </span>
 
-                        <div className="hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4">
+                        <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
                           <StrokeButton
-                            destination="/recipes"
+                            destination='/recipes'
                             color={colors.morinRed}
-                            className="ml-auto"
+                            className='ml-auto'
                           >
                             {recipeBtn.language.related.btn.en}
                           </StrokeButton>
                         </div>
                       </div>
 
-                      <div className="w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4">
+                      <div className='w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4'>
                         <RecipeSlider
                           data={recipe.related.manual}
                           lang={ctx.language}
@@ -886,23 +776,23 @@ const RecipeDetail = ({
         />
       </motion.div>
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "recipeList"]
-      `)
+      `);
 
-  const paths = []
+  const paths = [];
 
   res.map((data) => {
     return paths.push({
       params: { recipeSlug: `${data.slug.current}` },
-    })
-  })
+    });
+  });
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -922,24 +812,24 @@ export async function getStaticProps({ params }) {
           manual[]->
         }
       }
-    `,
-  )
+    `
+  );
   const recipeListAPI = await client.fetch(`
   *[_type == "recipeList"]
-  `)
+  `);
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   const recipeButton = await client.fetch(`
   *[_type == "recipeDetail"]
-  `)
+  `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
-          `)
-  const [translation] = translationAPI
+          `);
+  const [translation] = translationAPI;
 
   return {
     props: {
@@ -950,7 +840,7 @@ export async function getStaticProps({ params }) {
       recipeButton,
       translation,
     },
-  }
+  };
 }
 
-export default RecipeDetail
+export default RecipeDetail;

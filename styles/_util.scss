@@ -1,7 +1,9 @@
 .home-sticky {
   @media (min-width: 1536px) {
     width: calc(((100vw - 1536px) / 2) + 2rem + 400px) !important;
-    padding-left: calc((((100vw - (100vw - 100%)) - 1536px) / 2) + 2rem) !important;
+    padding-left: calc(
+      (((100vw - (100vw - 100%)) - 1536px) / 2) + 2rem
+    ) !important;
   }
 }
 main {
@@ -112,4 +114,14 @@ main {
 
 img {
   background-repeat: no-repeat;
+}
+
+.gradient-black-recipe {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }

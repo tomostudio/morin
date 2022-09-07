@@ -84,7 +84,7 @@ body {
 
 /* Create a custom checkbox */
 .checkmark {
-  @apply absolute left-0 top-0 flex flex-wrap items-center justify-center w-5 h-5 rounded-full border-2 border-solid border-morin-red p-1 transition-all md:w-6 md:h-6 lg:w-8 lg:h-8 lg:p-2;
+  @apply absolute left-0 top-0 flex flex-wrap items-center justify-center w-5 h-5 rounded-full border-2 border-solid border-morin-red p-1 transition-all duration-300 md:w-6 md:h-6 lg:w-8 lg:h-8 lg:p-2;
 }
 
 /* When the checkbox is checked, add a blue background */
