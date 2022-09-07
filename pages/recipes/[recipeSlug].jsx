@@ -1,41 +1,41 @@
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation } from 'swiper';
-import Footer from '@/components/module/footer';
-import Layout from '@/components/module/layout';
-import ProductCard from '@/components/shared-module/productCard';
-import GalleryModal from '@/components/shared-module/galleryModal';
-import RecipeSlider from '@/components/sliders/recipeSlider';
-import StrokeButton from '@/components/micro-module/strokeButton';
+import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode, Navigation } from 'swiper'
+import Footer from '@/components/module/footer'
+import Layout from '@/components/module/layout'
+import ProductCard from '@/components/shared-module/productCard'
+import GalleryModal from '@/components/shared-module/galleryModal'
+import RecipeSlider from '@/components/sliders/recipeSlider'
+import StrokeButton from '@/components/micro-module/strokeButton'
 import {
   ArrowLarge,
   Check,
   FacebookSolid,
   Twitter,
   TwitterSolid,
-} from '@/components/utils/svg';
-import colors from '@/helpers/colors';
-import { useEffectInit } from '@/components/utils/preset';
-import { useAppContext } from 'context/state';
-import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import { PortableText, toPlainText } from '@portabletext/react';
-import SEO from '@/components/utils/seo';
-import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/transitions';
-import getYoutube from '@/components/utils/getYoutube';
-import { Tooltip } from '@mui/material';
-import FancyLink from '@/components/utils/fancyLink';
+} from '@/components/utils/svg'
+import colors from '@/helpers/colors'
+import { useEffectInit } from '@/components/utils/preset'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import { PortableText, toPlainText } from '@portabletext/react'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/transitions'
+import getYoutube from '@/components/utils/getYoutube'
+import { Tooltip } from '@mui/material'
+import FancyLink from '@/components/utils/fancyLink'
 
 // COMPONENTS
-const RecipeCheckbox = ({ name, label, checked, labelClassName = '' }) => {
+const RecipeCheckbox = ({ label, labelClassName = '' }) => {
   return (
     <div className="font-semibold leading-tight mb-3 last:mb-0 md:mb-3 lg:mb-5">
       <label className="recipeCheckbox cursor-pointer flex flex-wrap items-center w-full font-semibold select-none overflow-hidden">
         <input type="checkbox" />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
         <span
           className={`leading-none pt-1 ml-7 md:ml-8 lg:ml-12 ${labelClassName}`}
         >
@@ -263,7 +263,7 @@ const RecipeDetail = ({
     setBaseUrl(window.location.href)
     const checkShare = () => {
       if (navigator.share) {
-        setShare(false);
+        setShare(false)
       } else {
         setShare(false)
       }
@@ -429,14 +429,18 @@ const RecipeDetail = ({
                           {recipeBtn.language.ingredients.en}
                         </h2>
                         <div className="h-full ">
-                          {recipe.ingredients_en?.map((data, index) => (
-                            <RecipeCheckbox
-                              key={index}
-                              name={`ingredients_en-${index + 1}`}
-                              label={data.description}
-                              value={`ingredients_en-${index + 1}`}
-                            />
-                          ))}
+                          {recipe.ingredients_en?.map((data, index) =>
+                            data.title ? (
+                              <span className='block font-semibold md:mb-3 lg:mb-5'>{data.description}</span>
+                            ) : (
+                              <RecipeCheckbox
+                                key={index}
+                                name={`ingredients_en-${index + 1}`}
+                                label={data.description}
+                                value={`ingredients_en-${index + 1}`}
+                              />
+                            ),
+                          )}
                         </div>
                       </div>
                     </div>
@@ -500,7 +504,7 @@ const RecipeDetail = ({
                         {recipeBtn.language.instructions.id}
                       </h2>
 
-                      <div className='flex flex-wrap justify-center lg:justify-end'>
+                      <div className="flex flex-wrap justify-center lg:justify-end">
                         {showShare ? (
                           <StrokeButton
                             arrow={false}
@@ -511,8 +515,8 @@ const RecipeDetail = ({
                             Bagikan
                           </StrokeButton>
                         ) : (
-                          <div className='flex items-center space-x-2'>
-                            <div className='pt-1 text-defaultSmall uppercase mr-2'>
+                          <div className="flex items-center space-x-2">
+                            <div className="pt-1 text-defaultSmall uppercase mr-2">
                               Bagikan
                             </div>
                             <Tooltip
@@ -526,7 +530,7 @@ const RecipeDetail = ({
                               >
                                 <FacebookSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -541,7 +545,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -561,7 +565,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -582,7 +586,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -611,7 +615,7 @@ const RecipeDetail = ({
                         {recipeBtn.language.instructions.en}
                       </h2>
 
-                      <div className='flex flex-wrap justify-center space-x-4 lg:justify-end '>
+                      <div className="flex flex-wrap justify-center space-x-4 lg:justify-end ">
                         {showShare ? (
                           <StrokeButton
                             arrow={false}
@@ -622,8 +626,8 @@ const RecipeDetail = ({
                             Share
                           </StrokeButton>
                         ) : (
-                          <div className='flex items-center space-x-2'>
-                            <div className='pt-1 text-defaultSmall uppercase mr-2'>
+                          <div className="flex items-center space-x-2">
+                            <div className="pt-1 text-defaultSmall uppercase mr-2">
                               Bagikan
                             </div>
                             <Tooltip
@@ -637,7 +641,7 @@ const RecipeDetail = ({
                               >
                                 <FacebookSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -652,7 +656,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -672,7 +676,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
@@ -693,7 +697,7 @@ const RecipeDetail = ({
                               >
                                 <TwitterSolid
                                   color={colors.morinRed}
-                                  className='w-full h-full'
+                                  className="w-full h-full"
                                 />
                               </FancyLink>
                             </Tooltip>
