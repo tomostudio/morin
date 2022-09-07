@@ -485,13 +485,20 @@ const RecipeDetail = ({
                           {recipeBtn.language.ingredients.id}
                         </h2>
                         <div className="h-full ">
-                          {recipe.ingredients_id?.map((data) => (
+                          {recipe.ingredients_id?.map((data, index) => (
                             <RecipeCheckbox
-                              key={data.description}
-                              name={data.description}
+                              key={index}
+                              name={`ingredients_id-${index + 1}`}
                               label={data.description}
-                              value={data.description}
-                              checked={data.title}
+                              value={`ingredients_id-${index + 1}`}
+                              checked={ingredientsChecked.includes(
+                                `ingredients_id-${index + 1}`,
+                              )}
+                              onChange={() =>
+                                handleCheckIngredients(
+                                  `ingredients_id-${index + 1}`,
+                                )
+                              }
                             />
                           ))}
                         </div>
@@ -508,12 +515,17 @@ const RecipeDetail = ({
                           {recipe.ingredients_en?.map((data, index) => (
                             <RecipeCheckbox
                               key={index}
-                              name={`ingredients_en-${index+1}`}
+                              name={`ingredients_en-${index + 1}`}
                               label={data.description}
-                              value={`ingredients_en-${index+1}`}
-                              
-                          checked={ingredientsChecked.includes(`ingredients_en-${index+1}`)}
-                          onChange={() => handleCheckIngredients(`ingredients_en-${index+1}`)}
+                              value={`ingredients_en-${index + 1}`}
+                              checked={ingredientsChecked.includes(
+                                `ingredients_en-${index + 1}`,
+                              )}
+                              onChange={() =>
+                                handleCheckIngredients(
+                                  `ingredients_en-${index + 1}`,
+                                )
+                              }
                             />
                           ))}
                         </div>
