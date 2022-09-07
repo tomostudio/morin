@@ -2,7 +2,7 @@
 .content {
   @apply px-4 md:px-10;
   & > * {
-    @apply max-w-screen-md mb-6 md:mb-8 last:mb-0 mx-auto leading-tight px-6;
+    @apply max-w-screen-md mb-4 md:mb-4 last:mb-0 mx-auto leading-tight px-6;
     & > a {
       @apply underline hover:text-opacity-25 focus:text-opacity-25;
     }

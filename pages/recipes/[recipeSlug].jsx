@@ -14,6 +14,10 @@ import {
   FacebookSolid,
   Twitter,
   TwitterSolid,
+  TwitterSolidShare,
+  FacebookSolidShare,
+  MailSolidShare,
+  LinkSolidShare,
 } from '@/components/utils/svg';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
@@ -124,7 +128,7 @@ const ImageGallery = ({ data, onClick }) => {
           <button
             type='button'
             onClick={() => onClick(index)}
-            className={`${imageWrapper} relative w-80 h-52`}
+            className={`${imageWrapper} relative w-80 h-52 hover:opacity-60 transition-all `}
           >
             {item._type === 'image' ? (
               <Image
@@ -372,35 +376,26 @@ const RecipeDetail = ({
             </div>
 
             {/* description */}
-            {ctx.language === 'id'
-              ? recipe.description_id && (
-                  <div className='bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5'>
-                    <div className='lg:max-w-3xl lg:mx-auto'>
-                      <PortableText
-                        value={recipe.description_id}
-                        components={{
-                          block: {
-                            normal: ({ children }) => <p>{children}</p>,
-                          },
-                        }}
-                      />
-                    </div>
-                  </div>
-                )
-              : recipe.description_en && (
-                  <div className='bg-white rounded-2xl my-8 p-8 lg:mt-0 lg:mb-5'>
-                    <div className='lg:max-w-3xl lg:mx-auto'>
-                      <PortableText
-                        value={recipe.description_en}
-                        components={{
-                          block: {
-                            normal: ({ children }) => <p>{children}</p>,
-                          },
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
+            {((ctx.language === 'id' && recipe.description_id) ||
+              (ctx.language === 'en' && recipe.description_en)) && (
+              <div className='bg-white rounded-2xl my-8 p-10 lg:mt-0 lg:mb-5'>
+                <div className='lg:max-w-3xl lg:mx-auto content'>
+                  <PortableText
+                    value={
+                      ctx.language === 'id'
+                        ? recipe.description_id
+                        : recipe.description_en
+                    }
+                    components={{
+                      block: {
+                        normal: ({ children }) =>
+                          children[0] === '' ? <br /> : <p>{children}</p>,
+                      },
+                    }}
+                  />
+                </div>
+              </div>
+            )}
 
             <div className='lg:flex lg:-mx-2 lg:mb-5'>
               {/* ingredients */}
@@ -499,8 +494,8 @@ const RecipeDetail = ({
               )}
             </div>
 
-            {((ctx.language === 'id' && recipe.steps_id?.length > 0 )  ||
-              (ctx.language === 'en' && recipe.steps_en?.length > 0 )) && (
+            {((ctx.language === 'id' && recipe.steps_id?.length > 0) ||
+              (ctx.language === 'en' && recipe.steps_en?.length > 0)) && (
               <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
                 <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
                   <h2 className='block font-nutmeg font-normal text-center text-morin-red text-mtitleSmall leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
@@ -530,9 +525,9 @@ const RecipeDetail = ({
                           <FancyLink
                             destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
                             blank
-                            className={` aspect-1 w-8 relative`}
+                            className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
                           >
-                            <FacebookSolid
+                            <FacebookSolidShare
                               color={colors.morinRed}
                               className='w-full h-full'
                             />
@@ -545,9 +540,9 @@ const RecipeDetail = ({
                           <FancyLink
                             blank
                             destination={`https://twitter.com/share?url=${baseUrl}`}
-                            className={` aspect-1 w-8 relative`}
+                            className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
                           >
-                            <TwitterSolid
+                            <TwitterSolidShare
                               color={colors.morinRed}
                               className='w-full h-full'
                             />
@@ -556,15 +551,21 @@ const RecipeDetail = ({
                         <Tooltip title='Email' classes={{ tooltip: 'tooltip' }}>
                           <FancyLink
                             destination={`mailto:?subject=${
-                              ctx.language === 'id' ? recipe.title_id : recipe.title_en
+                              ctx.language === 'id'
+                                ? recipe.title_id
+                                : recipe.title_en
                             }&body=${
                               recipe.description_id
-                                ? toPlainText(ctx.language === 'id' ? recipe.description_id : recipe.description_en)
+                                ? toPlainText(
+                                    ctx.language === 'id'
+                                      ? recipe.description_id
+                                      : recipe.description_en
+                                  )
                                 : ''
                             } %0D%0A${baseUrl}`}
-                            className={` aspect-1 w-8 relative`}
+                            className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
                           >
-                            <TwitterSolid
+                            <MailSolidShare
                               color={colors.morinRed}
                               className='w-full h-full'
                             />
@@ -583,9 +584,9 @@ const RecipeDetail = ({
                               document.execCommand('copy');
                               document.body.removeChild(el);
                             }}
-                            className={` aspect-1 w-8 relative`}
+                            className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
                           >
-                            <TwitterSolid
+                            <LinkSolidShare
                               color={colors.morinRed}
                               className='w-full h-full'
                             />
