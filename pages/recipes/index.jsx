@@ -721,11 +721,7 @@ const Recipe = ({
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1">
-              {ctx.language === 'id' ? (
-                <>{recipe.title_id}</>
-              ) : (
-                <>{recipe.title_en}</>
-              )}
+              {ctx.language === 'id' ? recipe.title_id:recipe.title_en}
             </h1>
           </div>
         </div>
