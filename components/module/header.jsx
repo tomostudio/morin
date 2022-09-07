@@ -144,7 +144,6 @@ export default function Header({ button, turn_language, whatsapp }) {
         moveX = moveX + w
       })
       setMarkerPos(moveX)
-      console.log('reset nav')
     }
   }
 
@@ -177,7 +176,6 @@ export default function Header({ button, turn_language, whatsapp }) {
   }, [])
 
   useEffect(() => {
-    console.log('change state')
     setBlackButton(ctx.mobileDark)
   }, [ctx.mobileDark])
 

@@ -306,10 +306,10 @@ const RecipeDetail = ({
   const handleShareButton = () => {
     const shareData = {
       title: `${recipe.title} at ${seo.webTitle}`,
-      text:
+      text: 
         ctx.language === 'id'
-          ? toPlainText(recipe.description_id)
-          : toPlainText(recipe.description_en),
+          ? recipe.description_id ? toPlainText(recipe.description_id) : ''
+          : recipe.description_en ? toPlainText(recipe.description_en) : '',
       url: baseUrl,
     }
 
@@ -592,9 +592,9 @@ const RecipeDetail = ({
                               <FancyLink
                                 destination={`mailto:?subject=${
                                   recipe.title_id
-                                }&body=${ recipe.description_id && toPlainText(
+                                }&body=${recipe.description_id && toPlainText(
                                   recipe.description_id,
-                                ) } %0D%0A${baseUrl}`}
+                                )} %0D%0A${baseUrl}`}
                               >
                                 Email
                               </FancyLink>
@@ -688,9 +688,9 @@ const RecipeDetail = ({
                               <FancyLink
                                 destination={`mailto:?subject=${
                                   recipe.title_en
-                                }&body=${toPlainText(
+                                }&body=${recipe.description_en ?toPlainText(
                                   recipe.description_en,
-                                )} %0D%0A${baseUrl}`}
+                                ) : ''} %0D%0A${baseUrl}`}
                               >
                                 Email
                               </FancyLink>
