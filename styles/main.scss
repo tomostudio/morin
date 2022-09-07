@@ -66,7 +66,7 @@ body {
 }
 
 .tooltip {
-  @apply bg-white text-morin-red uppercase rounded-xl font-default px-8 py-2 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] #{!important};
+  @apply bg-white border-morin-red border-2 text-morin-red uppercase rounded-xl font-default font-semibold text-defaultSmall px-4 pt-1 pb-0.5 #{!important};
 }
 
 .recipeCheckbox {
