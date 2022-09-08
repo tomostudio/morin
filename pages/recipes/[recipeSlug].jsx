@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation } from 'swiper';
+import { FreeMode, Navigation,EffectFade } from 'swiper';
 import Footer from '@/components/module/footer';
 import Layout from '@/components/module/layout';
 import ProductCard from '@/components/shared-module/productCard';
@@ -32,7 +32,6 @@ import getYoutube from '@/components/utils/getYoutube';
 import { Tooltip } from '@mui/material';
 import FancyLink from '@/components/utils/fancyLink';
 
-import { EffectFade } from 'swiper';
 import 'swiper/css/effect-fade';
 
 // COMPONENTS
