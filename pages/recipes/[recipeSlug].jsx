@@ -11,15 +11,13 @@ import StrokeButton from '@/components/micro-module/strokeButton';
 import { useNextSanityImage } from 'next-sanity-image';
 import {
   ArrowLarge,
-  Check,
-  FacebookSolid,
-  Twitter,
-  TwitterSolid,
   TwitterSolidShare,
   FacebookSolidShare,
   MailSolidShare,
   LinkSolidShare,
 } from '@/components/utils/svg';
+
+import { useDraggable } from 'react-use-draggable-scroll';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
 import { useAppContext } from 'context/state';
@@ -34,11 +32,14 @@ import getYoutube from '@/components/utils/getYoutube';
 import { Tooltip } from '@mui/material';
 import FancyLink from '@/components/utils/fancyLink';
 
+import { EffectFade } from 'swiper';
+import 'swiper/css/effect-fade';
+
 // COMPONENTS
 const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   return (
-    <div className='font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-5'>
-      <label className='recipeCheckbox cursor-pointer flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'>
+    <div className='font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-4 inline-block'>
+      <label className='recipeCheckbox cursor-pointer inline-flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'>
         <input type='checkbox' />
         <span className='checkmark'>
           <svg
@@ -101,7 +102,7 @@ const InstructionCard = ({
         <div className='flex flex-wrap -mx-1 sm:mx-0 lg:pl-[52px]'>
           {images?.map((i, index) => (
             <div
-              className='relative w-1/2 h-60 rounded-xl overflow-hidden px-1 sm:w-80 sm:px-0 sm:mr-4 lg:mr-5'
+              className='relative w-1/2 h-60 rounded-xl overflow-hidden px-1 sm:w-80 sm:px-0 sm:mr-4 lg:mr-4'
               key={index}
             >
               <Image
@@ -188,7 +189,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
 
   return (
     <Swiper
-      modules={[Navigation]}
+    modules={[EffectFade, Navigation]}
       navigation={{
         prevEl: swiperPrev.current,
         nextEl: swiperNext.current,
@@ -199,6 +200,8 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
       }}
       loop={true}
       slidesPerView={1}
+      speed={500}
+      effect={"fade"}
       initialSlide={initialSlide}
       className='h-full pointer-events-none'
     >
@@ -211,7 +214,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
                 key={index}
                 className='relative flex items-center justify-center content-center h-full pointer-events-none'
               >
-                <div className='relative w-[calc(100%-10rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden pointer-events-auto'>
+                <div className='relative w-[calc(100%-10rem)] max-h-[calc(100vh-4rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden pointer-events-auto'>
                   <Image
                     {...imageProps}
                     layout='responsive'
@@ -226,7 +229,7 @@ const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
                 className='relative flex items-center justify-center content-center h-full pointer-events-none'
               >
                 <div
-                  className={` w-[calc(100%-10rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden aspect-[16/9] pointer-events-auto `}
+                  className={` w-[calc(100%-10rem)] lg:max-w-5xl max-h-[calc(100vh-4rem)] mx-auto rounded-xl overflow-hidden aspect-[16/9] pointer-events-auto `}
                 >
                   <iframe
                     src={
@@ -318,6 +321,9 @@ const RecipeDetail = ({
     }
   };
 
+  const ingredientsRef = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const { events } = useDraggable(ingredientsRef); // Now we pass the reference to the useDraggable hook:
+
   return (
     <Layout
       style={{
@@ -345,10 +351,10 @@ const RecipeDetail = ({
         exit='exit'
         variants={fade}
       >
-        <div className='relative w-full md:px-4 md:pt-20 lg:px-8 lg:pt-28 xl:px-10 overflow-hidden'>
-          <div className='max-w-screen-2xl 2xl:px-8 mx-auto '>
+        <div className='relative w-full md:pt-20 lg:pt-28  overflow-hidden'>
+          <div className='max-w-screen-2xl md:px-4 lg:px-8 mx-auto '>
             {/* head title */}
-            <div className='relative  rounded-b-2xl md:rounded-3xl overflow-hidden mb-5'>
+            <div className='relative rounded-b-2xl md:rounded-3xl overflow-hidden mb-4'>
               <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
                 <Image
                   priority
@@ -369,10 +375,10 @@ const RecipeDetail = ({
               </div>
 
               <div className='w-full text-white text-center absolute top-24 left-1/2 -translate-x-1/2 z-1 lg:flex lg:top-0 lg:px-8 lg:py-10'>
-                <h1 className='font-nutmeg font-bold text-h5leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
+                <h1 className='font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
                   {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
                 </h1>
-                <div className='flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-5 lg:ml-auto'>
+                <div className='flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-4 lg:ml-auto'>
                   <RecipeTag
                     label={
                       ctx.language === 'id'
@@ -401,7 +407,7 @@ const RecipeDetail = ({
             {/* description */}
             {((ctx.language === 'id' && recipe.description_id) ||
               (ctx.language === 'en' && recipe.description_en)) && (
-              <div className='bg-white rounded-2xl my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-5'>
+              <div className='bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-4'>
                 <div className='lg:max-w-3xl lg:mx-auto content'>
                   <PortableText
                     value={
@@ -420,90 +426,97 @@ const RecipeDetail = ({
               </div>
             )}
 
-            <div className='flex flex-col xl:flex-row xl:-mx-2 xl:mb-5'>
+            <div className='grid grid-cols-1 gap-4 xl:grid-cols-2 xl:mb-4'>
               {/* ingredients */}
               {((ctx.language === 'id' && recipe.ingredients_id?.length > 0) ||
                 (ctx.language === 'en' &&
                   recipe.ingredients_en?.length > 0)) && (
-                <div className='w-full xl:px-2'>
-                  <div className='bg-white rounded-2xl mb-8 py-8 px-11 xl:h-full xl:py-6 xl:mb-0'>
-                    <h2 className='block font-nutmeg font-normal text-morin-red text-subtitle leading-none mb-6 lg:text-h3 lg:mb-7 md:text-center xl:text-left'>
-                      {ctx.language === 'id'
-                        ? recipeBtn.language.ingredients.id
-                        : recipeBtn.language.ingredients.en}
-                    </h2>
-                    <div className='h-full lg:max-w-3xl lg:mx-auto md:px-14 lg:px-14 xl:px-0'>
-                      {
-                        console.log(recipe.ingredients_en)
-                      }
-                      {ctx.language === 'id'
-                        ? recipe.ingredients_id?.map((data, index) => (
-                          !data.title ? 
+                <div
+                  className=' bg-white rounded-2xl mb-8 py-8 px-11 w-full xl:py-6 xl:mb-0 h-full xl:overflow-y-auto xl:aspect-[6/5] hidescrollbar'
+                  {...events}
+                  ref={ingredientsRef}
+                >
+                  <h2 className='block font-nutmeg font-normal text-morin-red text-subtitle leading-none mb-6 lg:text-h3 lg:mb-7 md:text-center xl:text-left'>
+                    {ctx.language === 'id'
+                      ? recipeBtn.language.ingredients.id
+                      : recipeBtn.language.ingredients.en}
+                  </h2>
+                  <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start'>
+                    {ctx.language === 'id'
+                      ? recipe.ingredients_id?.map((data, index) =>
+                          !data.title ? (
                             <RecipeCheckbox
                               key={index}
                               name={`ingredients_id-${index + 1}`}
                               label={data.description}
                               value={`ingredients_id-${index + 1}`}
-                            /> : <span className="block font-bold mb-2 md:mb-3 lg:mb-5">{data.description}</span>
-                          ))
-                        : recipe.ingredients_en?.map((data, index) => (
-                          !data.title ?
+                            />
+                          ) : (
+                            <span className='block font-bold mb-2 md:mb-3 lg:mb-4'>
+                              {data.description}
+                            </span>
+                          )
+                        )
+                      : recipe.ingredients_en?.map((data, index) =>
+                          !data.title ? (
                             <RecipeCheckbox
                               key={index}
                               name={`ingredients_id-${index + 1}`}
                               label={data.description}
                               value={`ingredients_id-${index + 1}`}
-                            /> : <span className="block font-bold mb-2 md:mb-3 lg:mb-5">{data.description}</span>
-                          ))}
-                    </div>
+                            />
+                          ) : (
+                            <span className='block font-bold mb-2 md:mb-3 lg:mb-4'>
+                              {data.description}
+                            </span>
+                          )
+                        )}
                   </div>
                 </div>
               )}
 
               {/* made with */}
               {recipe.made?.length > 0 && (
-                <div className='w-full xl:px-2'>
-                  <div className='px-4 mb-8 xl:h-full bg-white rounded-2xl xl:rounded-2xl xl:px-11 py-6 xl:mb-0'>
-                    <h2 className='text-center text-morin-red text-subtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
-                      {ctx.language === 'id'
-                        ? recipeBtn.language.made_with.id
-                        : recipeBtn.language.made_with.en}
-                    </h2>
-                    <div className='flex flex-wrap -mx-1.5 xl:-mx-2.5 justify-center xl:justify-start'>
-                      {recipe.made?.map((item, index) => (
-                        <div
-                          className='w-1/2 px-1.5 mb-3 xl:px-2.5 xl:mb-5 max-w-sm'
-                          key={`${item.title_en}${index}`}
-                        >
-                          <ProductCard
-                            title={
-                              ctx.language === 'id'
-                                ? item.title_id
-                                : item.title_en
-                            }
-                            bgColor={
-                              item.backgroundColor
-                                ? item.backgroundColor.hex
-                                : colors.morinLightBlue
-                            }
-                            imgSrc={urlFor(item.thumbnail)
-                              .auto('format')
-                              .width(800)
-                              .url()}
-                            thumbnailFruit={item.thumbnailFruit}
-                            imgBg={'/product/strawberry-bg.png'}
-                            imgPlaceholder={urlFor(item.thumbnail)
-                              .width(500)
-                              .auto('format')
-                              .blur(10)
-                              .url()}
-                            imgAlt={item.thumbnail.alt}
-                            link={`/products/${item.type.slug.current}/${item.slug.current}`}
-                            small
-                          />
-                        </div>
-                      ))}
-                    </div>
+                <div className='px-4 md:px-11 mb-8 w-full bg-white rounded-2xl xl:rounded-2xl xl:px-11 py-6 xl:mb-0 '>
+                  <h2 className='text-center text-morin-red text-subtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
+                    {ctx.language === 'id'
+                      ? recipeBtn.language.made_with.id
+                      : recipeBtn.language.made_with.en}
+                  </h2>
+                  <div className='grid grid-cols-2 gap-4 mx-auto md:px-[6.5rem] xl:px-0'>
+                    {recipe.made?.map((item, index) => (
+                      <div
+                        className='mb-3 xl:mb-4'
+                        key={`${item.title_en}${index}`}
+                      >
+                        <ProductCard
+                          title={
+                            ctx.language === 'id'
+                              ? item.title_id
+                              : item.title_en
+                          }
+                          bgColor={
+                            item.backgroundColor
+                              ? item.backgroundColor.hex
+                              : colors.morinLightBlue
+                          }
+                          imgSrc={urlFor(item.thumbnail)
+                            .auto('format')
+                            .width(800)
+                            .url()}
+                          thumbnailFruit={item.thumbnailFruit}
+                          imgBg={'/product/strawberry-bg.png'}
+                          imgPlaceholder={urlFor(item.thumbnail)
+                            .width(500)
+                            .auto('format')
+                            .blur(10)
+                            .url()}
+                          imgAlt={item.thumbnail.alt}
+                          link={`/products/${item.type.slug.current}/${item.slug.current}`}
+                          small
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
@@ -656,7 +669,7 @@ const RecipeDetail = ({
                 ? recipeListAPI?.length > 0 && (
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
-                        <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                        <div className='w-full text-center mb-4 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
                           <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
@@ -687,7 +700,7 @@ const RecipeDetail = ({
                 : recipe.related?.manual?.length > 0 && (
                     <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                       <div className='flex flex-wrap w-full'>
-                        <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                        <div className='w-full text-center mb-4 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
                           <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                             Resep Lainnya
                           </span>
@@ -719,7 +732,7 @@ const RecipeDetail = ({
               ? recipeListAPI?.length > 0 && (
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
-                      <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                      <div className='w-full text-center mb-4 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
                         <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
@@ -750,7 +763,7 @@ const RecipeDetail = ({
               : recipe.related?.manual?.length > 0 && (
                   <div className='px-8 mb-8 md:px-0 md:mb-10 lg:mb-12 xl:mb-20'>
                     <div className='flex flex-wrap w-full'>
-                      <div className='w-full text-center mb-5 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
+                      <div className='w-full text-center mb-4 md:flex md:flex-wrap md:justify-between md:items-center md:text-left lg:mb-10'>
                         <span className='block font-nutmeg font-normal text-subtitle text-morin-red leading-tight mx-auto mb-0 md:hidden'>
                           More Recipes
                         </span>
