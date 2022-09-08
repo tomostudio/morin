@@ -7,12 +7,12 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 const Footer = ({ className, lang, button, faq, footer, translation, mailchimp }) => {
   return (
-    <footer className="max-w-screen-2xl px-4 lg:px-8 mx-auto text-defaultSmall lg:text-default">
+    <footer className="mx-auto text-defaultSmall lg:text-default w-full px-4 lg:px-8 max-w-screen-2xl">
       <Container
         className={`relative w-full h-auto flex bg-morin-blue text-white rounded-t-3xl !px-6 md:!px-8 pb-8 pt-10 lg:flex-row lg:justify-between lg:px-10 md:pt-10 md:pb-10 lg:pt-16 lg:pb-20 ${className}`}
       >
         {/* LEFT */}
-        <div className="flex flex-col w-full mb-8 lg:w-3/5 lg:mb-0 lg:max-w-lg">
+        <div className="flex flex-col w-full mb-8 lg:w-3/5 lg:mb-0 lg:max-w-lg  pr-0 md:pr-4">
           <div className="px-2 lg:px-0">
             <h2 className="text-subtitle2 font-bold font-nutmeg lg:text-4">
               {lang === 'id'

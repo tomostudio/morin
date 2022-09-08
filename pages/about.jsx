@@ -206,9 +206,9 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
 
           <Container
             className="pl-0 pr-0"
-            classNameOuter="px-4 mb-8 lg:px-8 lg:mb-12 xl:mb-14"
+            classNameOuter="px-4 mb-8 lg:px-0 lg:mb-12 xl:mb-14"
           >
-            <div className="flex flex-wrap md:-mx-2 xl:-mx-4">
+            <div className="flex flex-wrap md:-mx-2 xl:-mx-4 ">
               <div className="w-full mb-3 last:mb-0 md:w-1/2 md:mb-0 md:px-2 xl:px-4">
                 <AboutCard
                   type="OUR PROCESS"
