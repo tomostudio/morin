@@ -110,14 +110,14 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                 <p className='font-nutmeg text-mtitleBig leading-tight lg:text-h2  '>
                   {/* This is Manual Adjustment dont Change */}
                   {
-                    /*ctx.language === 'id' */ false
+                    ctx.language === 'id'
                       ? 'Selama lebih dari 40 tahun, Morin telah hadir menemani momen sarapan keluarga Indonesia.'
                       : 'For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.'
                   }
                 </p>
                 <div
                   className={`absolute left-0 lg:left-auto  rotate-[-20deg] lg:rotate-[20deg] scale-x-[-100%]  translate-y-[-60%] ${
-                    /*ctx.language === 'id' */ false
+                    ctx.language === 'id'
                       ? 'left-[0%] sm:left-0 lg:left-auto translate-x-[0%] lg:translate-x-[50%] lg:right-[0%] xl:right-[25%] top-0 lg:translate-y-[-65%]'
                       : 'translate-x-[-30%] lg:translate-x-0 left-[10%] lg:left-auto  lg:right-[0%] xl:right-[22.5%] top-0 lg:translate-y-[-60%]'
                   } `}
@@ -128,7 +128,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                 </div>
                 <div
                   className={`absolute hidden lg:block  left-0 scale-125  ${
-                    /*ctx.language === 'id' */ false
+                    ctx.language === 'id'
                       ? 'lg:translate-x-[-50%] xl:translate-x-[-125%] lg:top-[20%] xl:top-[25%]'
                       : 'lg:translate-x-[0%] xl:translate-x-[-50%] lg:top-[17%] xl:top-[25%]'
                   } `}
@@ -137,7 +137,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                 </div>
                 <div
                   className={`absolute hidden lg:block right-0 ${
-                    /*ctx.language === 'id' */ false
+                    ctx.language === 'id'
                       ? 'right-0 lg:scale-150 xl:scale-150 lg:translate-x-[50%] xl:translate-x-[100%] lg:bottom-[25%] xl:bottom-[30%]'
                       : 'right-0 lg:scale-125 xl:scale-125 lg:translate-x-[75%] xl:translate-x-[50%] lg:bottom-[20%] xl:bottom-[30%] '
                   } `}
@@ -146,7 +146,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                 </div>
                 <div
                   className={`absolute lg:top-auto bottom-[-5%] lg:bottom-[-5%] xl:bottom-[-8%] ${
-                    /*ctx.language === 'id' */ false
+                    ctx.language === 'id'
                       ? 'right-[50%] translate-x-[50%] sm:translate-x-0 sm:right-[8%] lg:right-0 xl:right-[50%] xl:translate-x-[50%]'
                       : 'left-[50%] translate-x-[-50%] xs:translate-x-0 xs:left-[7%] lg:right-auto lg:left-[0%] xl:left-auto xl:right-[35%]'
                   } `}
