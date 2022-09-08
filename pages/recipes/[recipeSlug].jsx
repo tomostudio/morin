@@ -433,22 +433,27 @@ const RecipeDetail = ({
                         : recipeBtn.language.ingredients.en}
                     </h2>
                     <div className='h-full lg:max-w-3xl lg:mx-auto md:px-14 lg:px-14 xl:px-0'>
+                      {
+                        console.log(recipe.ingredients_en)
+                      }
                       {ctx.language === 'id'
                         ? recipe.ingredients_id?.map((data, index) => (
+                          !data.title ? 
                             <RecipeCheckbox
                               key={index}
                               name={`ingredients_id-${index + 1}`}
                               label={data.description}
                               value={`ingredients_id-${index + 1}`}
-                            />
+                            /> : <span className="block font-bold mb-2 md:mb-3 lg:mb-5">{data.description}</span>
                           ))
                         : recipe.ingredients_en?.map((data, index) => (
+                          !data.title ?
                             <RecipeCheckbox
                               key={index}
                               name={`ingredients_id-${index + 1}`}
                               label={data.description}
                               value={`ingredients_id-${index + 1}`}
-                            />
+                            /> : <span className="block font-bold mb-2 md:mb-3 lg:mb-5">{data.description}</span>
                           ))}
                     </div>
                   </div>
@@ -470,7 +475,6 @@ const RecipeDetail = ({
                           className='w-1/2 px-1.5 mb-3 xl:px-2.5 xl:mb-5 max-w-sm'
                           key={`${item.title_en}${index}`}
                         >
-                          {console.log(item.type.slug, item.type, item)}
                           <ProductCard
                             title={
                               ctx.language === 'id'
