@@ -83,6 +83,7 @@ const ProductDetail = ({
                       src={`/RAY.svg`}
                       objectFit='contain'
                       layout='fill'
+                      priority
                       className='animate-spin-slow '
                     />
                   </div>
@@ -281,9 +282,9 @@ const ProductDetail = ({
             >
               <span className='font-semibold tracking-widest mb-1.5 md:mb-2.5 lg:mb-4 uppercase text-inherit'>
                 MORIN{' '}
-                {ctx.language === 'id'
+                {/* {ctx.language === 'id'
                   ? product.type.title_id
-                  : product.type.title_en}
+                  : product.type.title_en} */}
               </span>
               <h1 className='font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 lg:text-h1 text-inherit'>
                 {ctx.language === 'id' ? product.title_id : product.title_en}
@@ -389,7 +390,7 @@ const ProductDetail = ({
           </div>
           <div className='relative pt-5 pb-5 md:pb-14 lg:pb-16'>
             <h2
-              className='max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-mtitleBig lg:text-h2 md:px-8 lg:mb-10'
+              className='max-w-screen-lg font-nutmeg text-mtitle text-center font-medium leading-tight mb-8 px-4 mx-auto md:text-h4 lg:text-h2 md:px-8 lg:mb-10'
               style={{
                 color: product.textColor ? product.textColor.hex : '#175BA7',
               }}
@@ -431,11 +432,10 @@ const ProductDetail = ({
                 </FancyLink>
               ))}
           </div>
-
           {product.recipes?.length > 0 && (
             <div className='max-w-screen-2xl mx-auto'>
               <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 lg:rounded-[40px] lg:pt-11 lg:pb-14 lg:px-4 2xl:px-6'>
-                <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-6 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8'>
+                <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-6 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                   {ctx.language === 'id'
                     ? productBtn.language.recipe.title.id
                     : productBtn.language.recipe.title.en}
@@ -456,85 +456,89 @@ const ProductDetail = ({
               </div>
             </div>
           )}
-
-          {product.similar.option
+          {/* {product.similar.option */}
+          {true
             ? productListAPI.length > 0 && (
                 <div className='max-w-screen-2xl mx-auto'>
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>
-                    <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8'>
+                    <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-7 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                       {ctx.language === 'id'
                         ? productBtn.language.similar.id
                         : productBtn.language.similar.en}
                     </h2>
 
                     <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
-                      {product.similar.option
-                        ? productListAPI?.slice(0, 3).map((item, index) => (
-                            <div
-                              className='w-1/2 px-1.5 mb-3 lg:w-1/4 lg:px-2.5 lg:mb-5'
-                              key={`${item.title_en}${index}`}
-                            >
-                              <ProductCard
-                                title={
-                                  ctx.language === 'id'
-                                    ? item.title_id
-                                    : item.title_en
-                                }
-                                bgColor={
-                                  item.backgroundColor
-                                    ? item.backgroundColor.hex
-                                    : colors.morinLightBlue
-                                }
-                                imgSrc={urlFor(item.thumbnail)
-                                  .auto('format')
-                                  .width(800)
-                                  .url()}
-                                imgPlaceholder={urlFor(item.thumbnail)
-                                  .width(500)
-                                  .auto('format')
-                                  .blur(20)
-                                  .url()}
-                                thumbnailFruit={item.thumbnailFruit}
-                                imgAlt={item.thumbnail.alt}
-                                link={`${product.type.slug.current}/${item.slug.current}`}
-                                small
-                              />
-                            </div>
-                          ))
+                      {true
+                        ? productListAPI?.slice(0, 3).map((item, index) => {
+                            return (
+                              <div
+                                className='w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5'
+                                key={`${item.title_en}${index}`}
+                              >
+                                <ProductCard
+                                  title={
+                                    ctx.language === 'id'
+                                      ? item.title_id
+                                      : item.title_en
+                                  }
+                                  bgColor={
+                                    item.backgroundColor
+                                      ? item.backgroundColor.hex
+                                      : colors.morinLightBlue
+                                  }
+                                  imgSrc={urlFor(item.thumbnail)
+                                    .auto('format')
+                                    .width(800)
+                                    .url()}
+                                  imgPlaceholder={urlFor(item.thumbnail)
+                                    .width(500)
+                                    .auto('format')
+                                    .blur(20)
+                                    .url()}
+                                  thumbnailFruit={item.thumbnailFruit}
+                                  imgAlt={item.thumbnail.alt}
+                                  link={`/${item.type.slug.current}/${item.slug.current}`}
+                                  small
+                                />
+                              </div>
+                            );
+                          })
                         : product.similar.manual &&
-                          product.similar.manual?.map((item, index) => (
-                            <div
-                              className='w-1/2 px-1.5 mb-3 lg:w-1/4 lg:px-2.5 lg:mb-5'
-                              key={`${item.title_en}${index}`}
-                            >
-                              <ProductCard
-                                title={
-                                  ctx.language === 'id'
-                                    ? item.title_id
-                                    : item.title_en
-                                }
-                                bgColor={
-                                  item.backgroundColor
-                                    ? item.backgroundColor.hex
-                                    : colors.morinLightBlue
-                                }
-                                imgSrc={urlFor(item.thumbnail)
-                                  .auto('format')
-                                  .width(800)
-                                  .url()}
-                                imgBg={'/product/strawberry-bg.png'}
-                                thumbnailFruit={item.thumbnailFruit}
-                                imgPlaceholder={urlFor(item.thumbnail)
-                                  .width(500)
-                                  .auto('format')
-                                  .blur(20)
-                                  .url()}
-                                imgAlt={item.thumbnail.alt}
-                                link={`${product.type.slug.current}/${item.slug.current}`}
-                                small
-                              />
-                            </div>
-                          ))}
+                          product.similar.manual?.map((item, index) => {
+                            return (
+                              <div
+                                className='w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5'
+                                key={`${item.title_en}${index}`}
+                              >
+                                <ProductCard
+                                  title={
+                                    ctx.language === 'id'
+                                      ? item.title_id
+                                      : item.title_en
+                                  }
+                                  bgColor={
+                                    item.backgroundColor
+                                      ? item.backgroundColor.hex
+                                      : colors.morinLightBlue
+                                  }
+                                  imgSrc={urlFor(item.thumbnail)
+                                    .auto('format')
+                                    .width(800)
+                                    .url()}
+                                  imgBg={'/product/strawberry-bg.png'}
+                                  thumbnailFruit={item.thumbnailFruit}
+                                  imgPlaceholder={urlFor(item.thumbnail)
+                                    .width(500)
+                                    .auto('format')
+                                    .blur(20)
+                                    .url()}
+                                  imgAlt={item.thumbnail.alt}
+                                  link={`/products/${item.type.slug.current}/${item.slug.current}`}
+                                  small
+                                />
+                              </div>
+                            );
+                          })}
                     </div>
 
                     <StrokeButton
@@ -553,10 +557,10 @@ const ProductDetail = ({
               product.similar.manual.length > 0 && (
                 <div className='max-w-screen-2xl mx-auto'>
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>
-                    <h2 className='font-nutmeg font-normal text-mtitleSmall text-morin-red text-center leading-tight mb-7 mx-auto md:text-mtitleBig lg:text-h2 lg:mb-8'>
+                    <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-7 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                       {ctx.language === 'id'
-                        ? 'Produk Sejenis'
-                        : 'Similar Products'}
+                        ? productBtn.language.similar.id
+                        : productBtn.language.similar.en}
                     </h2>
 
                     <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
@@ -588,7 +592,7 @@ const ProductDetail = ({
                               .blur(20)
                               .url()}
                             imgAlt={item.thumbnail.alt}
-                            link={`${product.type.slug.current}/${item.slug.current}`}
+                            link={`/products/${item.type.slug.current}/${item.slug.current}`}
                             small
                           />
                         </div>
@@ -657,7 +661,10 @@ export async function getStaticProps({ params }) {
         recipes[]->,
         similar {
           ...,
-          manual[]->
+          manual[]-> {
+            ...,
+            type->
+          }
         },
         getProduct {
           ...,
@@ -667,7 +674,10 @@ export async function getStaticProps({ params }) {
     `
   );
   const productListAPI = await client.fetch(`
-  *[_type == "productList"]
+    *[_type == "productList"] {
+      ...,
+      type->
+    }
   `);
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
