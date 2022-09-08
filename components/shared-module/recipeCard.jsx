@@ -10,6 +10,7 @@ const RecipeCard = ({
   link,
   duration,
   difficulty,
+  className
 }) => {
   const titleFontSize =
     duration && difficulty
@@ -19,7 +20,7 @@ const RecipeCard = ({
   const recipeTag = "flex items-center h-[25px] rounded-full border-white border-solid border-2 px-2 mr-2 last:mr-0 lg:h-[30px] lg:px-4";
 
   return (
-    <div className="relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5]">
+    <div className={`relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] ${className}`}>
       <FancyLink
         destination={link}
         a11yText={`Navigate to ${title ? title : "recipe"}`}

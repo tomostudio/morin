@@ -68,10 +68,31 @@
 
 .recipe-gallery-slider {
   .swiper {
-    @apply px-8
+    @apply px-8;
   }
 
   .swiper-slide {
     width: auto !important;
+  }
+}
+
+.swiper-fade {
+  &.swiper-free-mode {
+    .swiper-slide {
+      transition-timing-function: ease-out;
+    }
+  }
+  .swiper-slide {
+    pointer-events: none;
+    transition-property: opacity;
+    .swiper-slide {
+      pointer-events: none;
+    }
+  }
+  .swiper-slide-active {
+    &,
+    & .swiper-slide-active {
+      pointer-events: auto;
+    }
   }
 }

@@ -199,7 +199,7 @@ export default function Home({
                       : home.language.recipe.btn.en}
                   </StrokeButton>
                 </div>
-                <div className="-mx-3 mb-8 w-[calc(100%+24px)] md:-mx-4 md:mb-0 md:w-[calc(100%+32px)]">
+                <div className="mb-4 md:mb-0 -mx-4 w-[calc(100%+32px)] lg:-mx-8 lg:w-[calc(100%+64px)]">
                   <RecipeSlider data={recipeListAPI} lang={ctx.language} />
                 </div>
               </div>
@@ -243,6 +243,7 @@ export default function Home({
                 </div>
               </Container>
               <div className="relative overflow-hidden bg-morin-skyBlue px-0 pb-10 md:px-0 xl:pb-14">
+                {/* Events  */}
                 <HighlightSlider
                   data={eventAPI}
                   lang={ctx.language}

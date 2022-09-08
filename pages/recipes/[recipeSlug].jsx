@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation,EffectFade } from 'swiper';
+import { FreeMode, Keyboard, EffectFade } from 'swiper';
 import Footer from '@/components/module/footer';
 import Layout from '@/components/module/layout';
 import ProductCard from '@/components/shared-module/productCard';
@@ -17,6 +17,7 @@ import {
   LinkSolidShare,
 } from '@/components/utils/svg';
 
+import { useSwiper } from 'swiper/react';
 import { useDraggable } from 'react-use-draggable-scroll';
 import colors from '@/helpers/colors';
 import { useEffectInit } from '@/components/utils/preset';
@@ -29,10 +30,8 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 import getYoutube from '@/components/utils/getYoutube';
-import { Tooltip } from '@mui/material';
+import { Pagination, Tooltip } from '@mui/material';
 import FancyLink from '@/components/utils/fancyLink';
-
-import 'swiper/css/effect-fade';
 
 // COMPONENTS
 const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
@@ -178,85 +177,93 @@ const ImageGallery = ({ data, onClick }) => {
 };
 
 const ImageGalleryHiRes = ({ data, initialSlide = 0 }) => {
-  const swiperPrev = useRef(null);
-  const swiperNext = useRef(null);
+  const GalleryNavigation = () => {
+    const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-10 px-2 xl:block`;
+    return (
+      <>
+        <button
+          className={`${sliderNav} left-0 rotate-180 pointer-events-auto ml-4`}
+          onClick={() => {
+            const prevSlide =
+              currentSlide - 1 >= 0
+                ? currentSlide - 1
+                : slidesRef.current.querySelectorAll('.gallery-slide').length -
+                  1;
 
-  // const imageWrapper = `relative bg-transparent border-0 rounded-3xl cursor-pointer overflow-hidden`;
-  const navLeft = `left-0 rotate-180`;
-  const navRight = `right-0`;
-  const sliderNav = `w-10 h-8 rounded-full border-2 border-solid border-morin-red absolute top-1/2 -translate-y-1/2 z-10 px-2 xl:block`;
+            changeSlideTo(prevSlide);
+          }}
+        >
+          <ArrowLarge color={colors.morinRed} />
+        </button>
+        <button
+          className={`${sliderNav} right-0 pointer-events-auto mr-4`}
+          onClick={() => {
+            const nextSlide =
+              currentSlide + 1 <
+              slidesRef.current.querySelectorAll('.gallery-slide').length
+                ? currentSlide + 1
+                : 0;
+            changeSlideTo(nextSlide);
+          }}
+        >
+          <ArrowLarge color={colors.morinRed} />
+        </button>
+      </>
+    );
+  };
 
+  const slidesRef = useRef();
+
+  // Current Slide Counter
+  let currentSlide = 0;
+  //Function to Change Slide
+  const changeSlideTo = (slideNumber) => {
+    //Loop and Toggle Active Dependign on the Set Number
+    slidesRef.current
+      .querySelectorAll('.gallery-slide')
+      .forEach((slide, index) =>
+        index === slideNumber
+          ? slide.classList.add('active')
+          : slide.classList.remove('active')
+      );
+    currentSlide = slideNumber;
+  };
+  useEffect(() => {
+    changeSlideTo(initialSlide);
+  }, []);
   return (
-    <Swiper
-    modules={[EffectFade, Navigation]}
-      navigation={{
-        prevEl: swiperPrev.current,
-        nextEl: swiperNext.current,
-      }}
-      onBeforeInit={(swiper) => {
-        swiper.params.navigation.prevEl = swiperPrev.current;
-        swiper.params.navigation.nextEl = swiperNext.current;
-      }}
-      loop={true}
-      slidesPerView={1}
-      speed={500}
-      effect={"fade"}
-      initialSlide={initialSlide}
-      className='h-full pointer-events-none'
-    >
+    <div className='h-full pointer-events-none popup-gallery' ref={slidesRef}>
       {data?.map((item, index) => {
         const imageProps = useNextSanityImage(client, item);
         return (
-          <>
+          <div
+            key={index}
+            className={`gallery-slide w-[calc(100%-10rem)] lg:max-w-5xl max-h-[calc(100vh-4rem)]  mx-auto rounded-xl overflow-hidden ${
+              item._type === 'image' ? ' ' : 'aspect-[16/9]'
+            }`}
+          >
             {item._type === 'image' ? (
-              <SwiperSlide
-                key={index}
-                className='relative flex items-center justify-center content-center h-full pointer-events-none'
-              >
-                <div className='relative w-[calc(100%-10rem)] max-h-[calc(100vh-4rem)] lg:max-w-5xl mx-auto rounded-xl overflow-hidden pointer-events-auto'>
-                  <Image
-                    {...imageProps}
-                    layout='responsive'
-                    objectFit='contain'
-                    objectPosition={'center center'}
-                  />
-                </div>
-              </SwiperSlide>
+              <Image
+                {...imageProps}
+                placeholder='blur'
+                layout='responsive'
+                objectFit='contain'
+                objectPosition={'center center'}
+                className='pointer-events-auto'
+              />
             ) : (
-              <SwiperSlide
-                key={index}
-                className='relative flex items-center justify-center content-center h-full pointer-events-none'
-              >
-                <div
-                  className={` w-[calc(100%-10rem)] lg:max-w-5xl max-h-[calc(100vh-4rem)] mx-auto rounded-xl overflow-hidden aspect-[16/9] pointer-events-auto `}
-                >
-                  <iframe
-                    src={
-                      'https://www.youtube.com/embed/' + getYoutube(item.link)
-                    }
-                    id='videos'
-                    width='100%'
-                    height='100%'
-                  />
-                </div>
-              </SwiperSlide>
+              <iframe
+                src={'https://www.youtube.com/embed/' + getYoutube(item.link)}
+                id='videos'
+                width='100%'
+                height='100%'
+              />
             )}
-          </>
+          </div>
         );
       })}
-      <button
-        ref={swiperPrev}
-        className={`${sliderNav} ${navLeft} pointer-events-auto ml-4`}
-      >
-        <ArrowLarge color={colors.morinRed} />
-      </button>
-      <button
-        ref={swiperNext}
-        className={`${sliderNav} ${navRight} pointer-events-auto mr-4`}
-      >
-        <ArrowLarge color={colors.morinRed} />
-      </button>
-    </Swiper>
+      <GalleryNavigation />
+    </div>
   );
 };
 
@@ -379,25 +386,28 @@ const RecipeDetail = ({
                 </h1>
                 <div className='flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-4 lg:ml-auto'>
                   <RecipeTag
-                    label={
-                      ctx.language === 'id'
-                        ? recipe.difficulty.title_id
-                        : recipe.difficulty.title_en
-                    }
+                    // label={
+                    //   ctx.language === 'id'
+                    //     ? recipe.difficulty.title_id
+                    //     : recipe.difficulty.title_en
+                    // }
+                    label={'placeholder'}
                   />
                   <RecipeTag
-                    label={
-                      ctx.language === 'id'
-                        ? recipe.recipeCategory.title_id
-                        : recipe.recipeCategory.title_en
-                    }
+                    // label={
+                    //   ctx.language === 'id'
+                    //     ? recipe.recipeCategory.title_id
+                    //     : recipe.recipeCategory.title_en
+                    // }
+                    label={'placeholder'}
                   />
                   <RecipeTag
-                    label={
-                      ctx.language === 'id'
-                        ? recipe.cookingTime.title_id
-                        : recipe.cookingTime.title_en
-                    }
+                    // label={
+                    //   ctx.language === 'id'
+                    //     ? recipe.cookingTime.title_id
+                    //     : recipe.cookingTime.title_en
+                    // }
+                    label={'placeholder'}
                   />
                 </div>
               </div>
@@ -451,7 +461,10 @@ const RecipeDetail = ({
                               value={`ingredients_id-${index + 1}`}
                             />
                           ) : (
-                            <span className='block font-bold mb-2 md:mb-3 lg:mb-4'>
+                            <span
+                              className='block font-bold mb-2 md:mb-3 lg:mb-4'
+                              key={index}
+                            >
                               {data.description}
                             </span>
                           )

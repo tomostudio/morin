@@ -1,40 +1,46 @@
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper'
-import RecipeCard from '../shared-module/recipeCard'
-import urlFor from '@/helpers/sanity/urlFor'
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode } from 'swiper';
+import RecipeCard from '../shared-module/recipeCard';
+import urlFor from '@/helpers/sanity/urlFor';
+import { useDraggable } from 'react-use-draggable-scroll';
 
 const RecipeSlider = ({ data, lang }) => {
+  const sliderRef = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const { events } = useDraggable(sliderRef); // Now we pass the reference to the useDraggable hook:
   return (
-    <Swiper
-      breakpoints={{
-        0: { slidesPerView: 1.5, spaceBetween: 15 },
-        600: { slidesPerView: 2.5, spaceBetween: 15 },
-        800: { slidesPerView: 3, spaceBetween: 20 },
-      }}
-      freeMode={true}
-      modules={[FreeMode]}
-      style={{ padding: '20px 16px' }}
-    >
-      {data?.slice(0, 3).map((item) => (
-        <SwiperSlide key={item.title_id}>
-          {item.thumbnail.asset && (
-            <RecipeCard
-              imgSrc={urlFor(item.thumbnail).width(600).auto('format').url()}
-              imgPlaceholder={urlFor(item.thumbnail)
-                .width(300)
-                .blur(50)
-                .auto('format')
-                .url()}
-              imgAlt={item.thumbnail.alt}
-              title={lang === 'id' ? item.title_id : item.title_en}
-              link={`/recipes/${item.slug.current}`}
-            />
+    <>
+      <div
+        {...events}
+        ref={sliderRef}
+        className='flex px-4 space-x-4 lg:px-8 py-6 overflow-x-auto hidescrollbar'
+      >
+        {data
+          ?.slice(0, 3)
+          .map(
+            (item, index) =>
+              item.thumbnail.asset && (
+                <RecipeCard
+                  imgSrc={urlFor(item.thumbnail)
+                    .width(600)
+                    .auto('format')
+                    .url()}
+                  imgPlaceholder={urlFor(item.thumbnail)
+                    .width(300)
+                    .blur(50)
+                    .auto('format')
+                    .url()}
+                  key={index}
+                  imgAlt={item.thumbnail.alt}
+                  title={lang === 'id' ? item.title_id : item.title_en}
+                  link={`/recipes/${item.slug.current}`}
+                  className={`w-1/3 min-w-[240px] md:min-w-[360px]`}
+                />
+              )
           )}
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  )
-}
+      </div>
+    </>
+  );
+};
 
-export default RecipeSlider
+export default RecipeSlider;
