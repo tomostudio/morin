@@ -67,8 +67,9 @@ const ProductList = ({
               {ctx.language === 'id'
                 ? productType.title_id
                 : productType.title_en}
-              <div className="w-full h-full absolute-center hidden lg:block">
-                <div className="w-full h-96 absolute top-0 left-0 -translate-x-full -translate-y-1/3 select-none">
+              <div className="w-full h-full absolute-center hidden lg:block border-2 border-black">
+                {/* Decor Left */}
+                <div className="w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]">
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor1.image_id)
@@ -106,7 +107,8 @@ const ProductList = ({
                     />
                   )}
                 </div>
-                <div className="w-full h-96 absolute top-0 left-0 translate-x-full -translate-y-1/3 select-none">
+                {/* Decor Right */}
+                <div className="w-full h-96 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]">
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor2.image_id)
