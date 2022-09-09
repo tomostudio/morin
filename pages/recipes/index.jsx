@@ -20,8 +20,6 @@ import { Parallax } from 'react-scroll-parallax'
 const Recipe = ({
   recipeAPI,
   recipeListAPI,
-  difficultyListAPI,
-  cookingTimeListAPI,
   recipeCategoryAPI,
   seoAPI,
   footerAPI,
@@ -50,8 +48,7 @@ const Recipe = ({
     if (recipeListAPI.length <= displayData) setShowButton(false)
   }
 
-  const handleFilter = () => {
-  }
+  const handleFilter = () => {}
 
   const ctx = useAppContext()
   useEffect(() => {
@@ -104,7 +101,7 @@ const Recipe = ({
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-h5 text-white leading-tight lg:text-h2 xl:text-h1">
-              {ctx.language === 'id' ? recipe.title_id:recipe.title_en}
+              {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
             </h1>
           </div>
         </div>
@@ -144,16 +141,14 @@ const Recipe = ({
           </div>
 
           <div suppressHydrationWarning>
-            {/* <RecipeFilter
+            <RecipeFilter
               isOpen={filterOpen}
-              difficulty={difficultyListAPI}
-              cookingTime={cookingTimeListAPI}
-              recipeCategory={recipeCategoryAPI}
+              category={recipeCategoryAPI}
               lang={ctx.language}
               value={filterValue}
               filterFunc={handleFilter}
               triggerTagName={'btnFilter'}
-            /> */}
+            />
           </div>
 
           <div className="max-w-screen-2xl min-h-[60vh] mx-auto">
@@ -176,25 +171,15 @@ const Recipe = ({
                         ctx.language === 'id' ? item.title_id : item.title_en
                       }
                       link={`/recipes/${item.slug.current}`}
-                      // duration={
-                      //   ctx.language === 'id'
-                      //     ? item.cookingTime.title_id
-                      //     : item.cookingTime.title_en 
-                      // }
-                      // difficulty={
-                      //   ctx.language === 'id'
-                      //     ? item.difficulty.title_id
-                      //     : item.difficulty.title_en
-                      // }
+                      category={item.recipeCategory}
+                      lang={ctx.language}
                     />
                   </div>
                 ))}
               </div>
             ) : (
               <div className="w-full h-full min-h-[60vh] flex justify-center items-center">
-                <span className="text-h4 text-morin-red">
-                  No Result Found
-                </span>
+                <span className="text-h4 text-morin-red">No Result Found</span>
               </div>
             )}
             {showButton && (
@@ -232,18 +217,16 @@ export async function getStaticProps() {
   `)
   const recipeListAPI = await client.fetch(`
   *[_type == "recipeList"] {
-    ...
+    ...,
+    recipeCategory[]->
   }
   `)
-  // const difficultyListAPI = await client.fetch(`
-  // *[_type == "difficultyList"] 
-  // `)
-  // const cookingTimeListAPI = await client.fetch(`
-  // *[_type == "cookingTimeList"] 
-  // `)
-  // const recipeCategoryAPI = await client.fetch(`
-  // *[_type == "recipeCategory"] 
-  // `)
+  const recipeCategoryAPI = await client.fetch(`
+  *[_type == "recipeTitle"] | order(order asc) {
+    ...,
+    data[]->
+  }
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -258,6 +241,7 @@ export async function getStaticProps() {
     props: {
       recipeAPI,
       recipeListAPI,
+      recipeCategoryAPI,
       seoAPI,
       footerAPI,
       translation,

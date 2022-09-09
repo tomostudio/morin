@@ -2,9 +2,7 @@ import Collapsible from 'react-collapsible'
 import CheckboxTag from '@/components/utils/checkboxTag'
 
 const RecipeFilter = ({
-  difficulty,
-  cookingTime,
-  recipeCategory,
+  category,
   lang,
   value,
   filterFunc,
@@ -24,7 +22,33 @@ const RecipeFilter = ({
       <div
         className={`max-w-screen-2xl mx-auto bg-white rounded-2xl overflow-hidden p-4 pb-5 mb-5 transition-all md:p-7 md:mb-7 lg:flex lg:flex-wrap lg:justify-center lg:mb-10 ${fadeInFadeOut}`}
       >
-        <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
+        {category.map((item, id) => (
+          <div key={id} className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
+            <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
+              {lang === 'id' ? item.title_id : item.title_en}:
+            </span>
+            <div className="flex flex-wrap">
+              {item.data?.map((data, index) => (
+                <div className="mr-2 last:mr-0" key={index}>
+                  <CheckboxTag
+                    name={data.title_en}
+                    label={lang === 'id' ? data.title_id : data.title_en}
+                    value={data.title_en}
+                    checked={value
+                      .map((object) => object.id)
+                      .includes(data._id)}
+                    onChange={() =>
+                      filterFunc({
+                        id: data._id,
+                      })
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {/* <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
           <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
             {lang.locale === 'id' ? 'Kesulitan' : 'Difficulty'}:
           </span>
@@ -83,7 +107,7 @@ const RecipeFilter = ({
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </Collapsible>
   )
