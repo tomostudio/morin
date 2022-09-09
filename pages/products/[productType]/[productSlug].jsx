@@ -281,10 +281,9 @@ const ProductDetail = ({
               }}
             >
               <span className='font-semibold tracking-widest mb-1.5 md:mb-2.5 lg:mb-4 uppercase text-inherit'>
-                MORIN{' '}
-                {/* {ctx.language === 'id'
-                  ? product.type.title_id
-                  : product.type.title_en} */}
+                {ctx.language === 'id'
+                  ? `MORIN ${product.type.title_id}`
+                  : `MORIN ${product.type.title_en}`}
               </span>
               <h1 className='font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 lg:text-h1 text-inherit'>
                 {ctx.language === 'id' ? product.title_id : product.title_en}
@@ -351,31 +350,26 @@ const ProductDetail = ({
                   </div>
                   {/* Decor 2 */}
                   <div className='absolute bottom-[10%] left-[50%] translate-x-[45%] xl:translate-x-[35%] w-[30%] h-[80%] rotate-[-8deg]'>
-                    {ctx.language === 'id'
-                      ? product.decor && (
-                          <Image
-                            src={urlFor(product.decor.decor2.image_id).url()}
-                            blurDataURL={urlFor(product.decor.decor2.image_id)
-                              .auto('format')
-                              .url()}
-                            placeholder='blur'
-                            alt={product.decor.decor2.image_id.alt}
-                            layout={'fill'}
-                            objectFit={'contain'}
-                          />
+                    {product.decor && (
+                      <Image
+                        src={urlFor(
+                          ctx.language === 'id'
+                            ? product.decor.decor2.image_id
+                            : product.decor.decor2.image_en
+                        ).url()}
+                        blurDataURL={urlFor(
+                          ctx.language === 'id'
+                            ? product.decor.decor2.image_id
+                            : product.decor.decor2.image_en
                         )
-                      : product.decor && (
-                          <Image
-                            src={urlFor(product.decor.decor2.image_en).url()}
-                            blurDataURL={urlFor(product.decor.decor2.image_en)
-                              .auto('format')
-                              .url()}
-                            placeholder='blur'
-                            alt={product.decor.decor2.image_en.alt}
-                            layout={'fill'}
-                            objectFit={'contain'}
-                          />
-                        )}
+                          .auto('format')
+                          .url()}
+                        placeholder='blur'
+                        alt={product.decor.decor2.image_id.alt}
+                        layout={'fill'}
+                        objectFit={'contain'}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -399,38 +393,28 @@ const ProductDetail = ({
                 ? product.description_id
                 : product.description_en}
             </h2>
-            {!seo.hide_shop &&
-              (product.getProduct.custom_link ? (
-                product.getProduct.linkProduct && (
-                  <FancyLink
-                    blank
-                    destination={product.getProduct.linkProduct}
-                    className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8'
-                  >
-                    <span className='block pt-1'>
-                      {ctx.language === 'id'
-                        ? productBtn.language.linkStore.id
-                        : productBtn.language.linkStore.en}
-                    </span>
-                  </FancyLink>
-                )
-              ) : (
-                <FancyLink
-                  blank
-                  destination={`${process.env.NEXT_PUBLIC_STORE_URL}${
-                    product.getProduct.linkStore
-                      ? product.getProduct.linkStore.shopifyProduct.handle
-                      : ''
-                  }`}
-                  className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8'
-                >
-                  <span className='block pt-1'>
-                    {ctx.language === 'id'
-                      ? productBtn.language.linkStore.id
-                      : productBtn.language.linkStore.en}
-                  </span>
-                </FancyLink>
-              ))}
+            {!seo.hide_shop && (
+              <FancyLink
+                blank
+                destination={
+                  product.getProduct.custom_link
+                    ? product.getProduct.linkProduct &&
+                      `${product.getProduct.linkProduct}`
+                    : `${process.env.NEXT_PUBLIC_STORE_URL}${
+                        product.getProduct.linkStore
+                          ? product.getProduct.linkStore.shopifyProduct.handle
+                          : ''
+                      }`
+                }
+                className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal mx-auto px-4 lg:h-14 lg:text-mtitle lg:rounded-full lg:px-8'
+              >
+                <span className='block pt-1'>
+                  {ctx.language === 'id'
+                    ? productBtn.language.linkStore.id
+                    : productBtn.language.linkStore.en}
+                </span>
+              </FancyLink>
+            )}
           </div>
           {product.recipes?.length > 0 && (
             <div className='max-w-screen-2xl mx-auto'>
@@ -456,8 +440,8 @@ const ProductDetail = ({
               </div>
             </div>
           )}
-          {/* {product.similar.option */}
-          {true
+          {/* Improve Loop */}
+          {product.similar.option
             ? productListAPI.length > 0 && (
                 <div className='max-w-screen-2xl mx-auto'>
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>

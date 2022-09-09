@@ -94,7 +94,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
           </Parallax>
         </div>
 
-        <div className='relative w-full min-h-screen flex flex-col justify-between z-2'>
+        <div className='relative w-full min-h-screen max-w-screen-2xl  flex flex-col justify-between z-2'>
           <div className='relative pt-28 pb-32 px-8 xl:pb-36 z-2'>
             <div className='relative max-w-md text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl'>
               <div className='relative'>

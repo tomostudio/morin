@@ -67,7 +67,7 @@ const ProductList = ({
               {ctx.language === 'id'
                 ? productType.title_id
                 : productType.title_en}
-              <div className="w-full h-full absolute-center hidden lg:block border-2 border-black">
+              <div className="w-full h-full absolute-center hidden lg:block ">
                 {/* Decor Left */}
                 <div className="w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]">
                   {ctx.language === 'id' ? (
