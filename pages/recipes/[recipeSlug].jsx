@@ -44,6 +44,7 @@ const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
             viewBox='0 0 12 10'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
+            className='w-full h-full'
           >
             <path
               d='m1 5 3.333 3.334L11 1.667'
