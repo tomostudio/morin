@@ -82,8 +82,8 @@ const Category = ({
           </div>
         </div>
 
-        <div className="p-4 lg:p-8">
-          <div className="max-w-screen-2xl mx-auto mb-7 lg:mb-10">
+        <div className="max-w-screen-2xl mx-auto p-4 lg:p-8">
+          <div className="mb-7 lg:mb-10">
             {productTypeAPI?.map((item) => (
               <CategoryCard
                 key={item.title_en}

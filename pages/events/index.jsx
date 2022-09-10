@@ -20,11 +20,11 @@ import { Parallax } from 'react-scroll-parallax';
 const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
   const [seo] = seoAPI;
   const [event] = eventAPI;
-  const [footer] = footerAPI
+  const [footer] = footerAPI;
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(event.langColor)
+    ctx.setLangColor(event.langColor);
     useEffectInit({ context: ctx, mobileDark: false });
 
     return () => {};
@@ -32,7 +32,9 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
 
   let displayData = 6;
   const dataIncrease = 6;
-  const [showButton, setShowButton] = useState(eventListAPI.length <= displayData ? false : true);
+  const [showButton, setShowButton] = useState(
+    eventListAPI.length <= displayData ? false : true
+  );
   const [dataEvent, setDataEvent] = useState(
     eventListAPI.slice(0, displayData)
   );
@@ -90,52 +92,46 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
           </div>
         </div>
 
-        <div className='px-4 my-5 md:my-10 md:px-8'>
-          <div className='max-w-screen-2xl mx-auto'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
-              {dataEvent?.map((item, index) => (
-                <div className='w-full' key={`${item.title_en}[${index}]`}>
-                  <EventCard
-                    imgSrc={urlFor(item.thumbnail)
-                      .auto('format')
-                      .width(1000)
-                      .url()}
-                    blur={urlFor(item.thumbnail)
-                      .auto('format')
-                      .width(600)
-                      .blur(25)
-                      .url()}
-                    imgAlt={
-                      ctx.language === 'id' ? item.title_id : item.title_en
-                    }
-                    type={
-                      ctx.language === 'id'
-                        ? item.eventCategory[0].title_id
-                        : item.eventCategory[0].title_en
-                    }
-                    date={dateParse(item.date, ctx.language)}
-                    title={
-                      ctx.language === 'id' ? item.title_id : item.title_en
-                    }
-                    link={`/events/${item.slug.current}`}
-                  />
-                </div>
-              ))}
-            </div>
-            {showButton && (
-              <div className='w-full mt-5 md:mt-10'>
-                <StrokeButton
-                  arrow={false}
-                  color={colors.morinBlue}
-                  onClick={loadMore}
-                >
-                  {ctx.language === 'id'
-                    ? 'Menampilkan lebih banyak'
-                    : 'Show More'}
-                </StrokeButton>
+        <div className='max-w-screen-2xl mx-auto px-4 my-5 md:my-10 md:px-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
+            {dataEvent?.map((item, index) => (
+              <div className='w-full' key={`${item.title_en}[${index}]`}>
+                <EventCard
+                  imgSrc={urlFor(item.thumbnail)
+                    .auto('format')
+                    .width(1000)
+                    .url()}
+                  blur={urlFor(item.thumbnail)
+                    .auto('format')
+                    .width(600)
+                    .blur(25)
+                    .url()}
+                  imgAlt={ctx.language === 'id' ? item.title_id : item.title_en}
+                  type={
+                    ctx.language === 'id'
+                      ? item.eventCategory[0].title_id
+                      : item.eventCategory[0].title_en
+                  }
+                  date={dateParse(item.date, ctx.language)}
+                  title={ctx.language === 'id' ? item.title_id : item.title_en}
+                  link={`/events/${item.slug.current}`}
+                />
               </div>
-            )}
+            ))}
           </div>
+          {showButton && (
+            <div className='w-full mt-5 md:mt-10'>
+              <StrokeButton
+                arrow={false}
+                color={colors.morinBlue}
+                onClick={loadMore}
+              >
+                {ctx.language === 'id'
+                  ? 'Menampilkan lebih banyak'
+                  : 'Show More'}
+              </StrokeButton>
+            </div>
+          )}
         </div>
 
         <Footer
@@ -169,15 +165,15 @@ export async function getStaticProps() {
   `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
-          `)
-  const [translation] = translationAPI
+          `);
+  const [translation] = translationAPI;
   return {
     props: {
       eventAPI,
       eventListAPI,
       seoAPI,
       footerAPI,
-      translation
+      translation,
     },
   };
 }
