@@ -253,7 +253,7 @@ export default function Header({ button, turn_language, whatsapp }) {
               a11yText="Navigate to the home page"
               className="group pointer-events-auto relative h-9 lg:h-14 max-md:p-0"
             >
-              <MorinLogo className="relative z-2 h-full w-full" />
+              <MorinLogo className="relative z-2 h-full w-auto" />
               <div className="pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                 <SunRaySmaller className="h-96 w-96 animate-spin-slow" />
               </div>

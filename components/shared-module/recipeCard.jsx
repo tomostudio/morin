@@ -50,7 +50,7 @@ const RecipeCard = ({
         </div>
       </FancyLink>
 
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full rounded-3xl overflow-hidden">
         <div className='absolute w-full h-full top-0 left-0 bg-gradient-black z-2 opacity-20 group-hover:opacity-0 transition-opacity duration-300' />
         <Image
           src={imgSrc}

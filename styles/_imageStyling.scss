@@ -112,7 +112,6 @@
 
   // LAYOUT 3
   &.layout-3 {
-    background: black;
     & .image1 {
       & > div {
         @apply group-hover:rotate-[-3deg] group-hover:scale-110;

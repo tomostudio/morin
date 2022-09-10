@@ -13,31 +13,33 @@ const RecipeSlider = ({ data, lang }) => {
       <div
         {...events}
         ref={sliderRef}
-        className='flex px-4 space-x-4 lg:px-8 py-6 overflow-x-auto hidescrollbar'
+        className=' py-6 overflow-x-auto hidescrollbar'
       >
-        {data
-          ?.slice(0, 3)
-          .map(
-            (item, index) =>
-              item.thumbnail.asset && (
-                <RecipeCard
-                  imgSrc={urlFor(item.thumbnail)
-                    .width(600)
-                    .auto('format')
-                    .url()}
-                  imgPlaceholder={urlFor(item.thumbnail)
-                    .width(300)
-                    .blur(50)
-                    .auto('format')
-                    .url()}
-                  key={index}
-                  imgAlt={item.thumbnail.alt}
-                  title={lang === 'id' ? item.title_id : item.title_en}
-                  link={`/recipes/${item.slug.current}`}
-                  className={`w-1/3 min-w-[240px] md:min-w-[360px]`}
-                />
-              )
-          )}
+        <div className='px-4 lg:px-8 space-x-4 flex '>
+          {data
+            ?.slice(0, 3)
+            .map(
+              (item, index) =>
+                item.thumbnail.asset && (
+                  <RecipeCard
+                    imgSrc={urlFor(item.thumbnail)
+                      .width(600)
+                      .auto('format')
+                      .url()}
+                    imgPlaceholder={urlFor(item.thumbnail)
+                      .width(300)
+                      .blur(50)
+                      .auto('format')
+                      .url()}
+                    key={index}
+                    imgAlt={item.thumbnail.alt}
+                    title={lang === 'id' ? item.title_id : item.title_en}
+                    link={`/recipes/${item.slug.current}`}
+                    className={`w-1/3 min-w-[240px] md:min-w-[360px]`}
+                  />
+                )
+            )}
+        </div>
       </div>
     </>
   );
