@@ -28,7 +28,7 @@ const RecipeSlider = ({ data, lang }) => {
                       .auto('format')
                       .url()}
                     imgPlaceholder={urlFor(item.thumbnail)
-                      .width(300)
+                      .width(200)
                       .blur(50)
                       .auto('format')
                       .url()}

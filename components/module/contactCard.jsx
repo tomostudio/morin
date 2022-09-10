@@ -25,10 +25,10 @@ const ImageGallery = ({ name, images }) => {
             <SwiperSlide key={index}>
               <div className='relative w-full h-auto md:h-30rem aspect-[16/9] md:aspect-none'>
                 <Image
-                  src={urlFor(item).auto('format').width(1000).url()}
+                  src={urlFor(item).auto('format').width(1200).url()}
                   blurDataURL={urlFor(item)
                     .auto('format')
-                    .width(700)
+                    .width(500)
                     .blur(25)
                     .url()}
                   placeholder='blur'
@@ -67,7 +67,7 @@ const ContactCard = ({
             value={description}
             components={{
               block: {
-                normal: ({ children }) => <p>{children}</p>,
+                normal: ({ children }) => <p className='my-2'>{children}</p>,
               },
             }}
           />
