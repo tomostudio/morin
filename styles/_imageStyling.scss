@@ -99,8 +99,8 @@
       }
       // lower left
       & .graphic2 > svg {
-        @apply group-hover:translate-y-[175%]  group-hover:translate-x-[-50%] group-hover:scale-[90%];
-        @apply md:group-hover:translate-y-[100%];
+        @apply group-hover:translate-y-[175%]  group-hover:translate-x-[-50%] lg:group-hover:translate-x-[50%] group-hover:scale-[90%];
+        @apply md:group-hover:translate-y-[125%];
       }
       //top left
       & .graphic3 > svg {
@@ -112,6 +112,7 @@
 
   // LAYOUT 3
   &.layout-3 {
+    background: black;
     & .image1 {
       & > div {
         @apply group-hover:rotate-[-3deg] group-hover:scale-110;
@@ -137,7 +138,7 @@
       //  left
       & .graphic2 > svg {
         @apply group-hover:translate-y-[140%] group-hover:translate-x-[-150%];
-        @apply md:group-hover:translate-y-[100%]  md:group-hover:translate-x-[-150%]  group-hover:scale-100 -rotate-[30deg];
+        @apply md:group-hover:translate-y-[80%]  md:group-hover:translate-x-[-150%]  group-hover:scale-100 -rotate-[30deg];
       }
       //top
       & .graphic3 > svg {

@@ -17,20 +17,20 @@ const RecipeCard = ({
 
   return (
     <div
-      className={`relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] ${className}`}
+      className={`group relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] ${className}`}
     >
       <FancyLink
         destination={link}
         a11yText={`Navigate to ${title ? title : 'recipe'}`}
-        className="flex flex-wrap flex-col items-center justify-between w-full h-full text-white text-center py-5 px-4 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 z-1 xl:py-8 xl:px-5"
+        className="z-3 flex flex-wrap flex-col items-center justify-between w-full h-full text-white text-center py-5 px-4 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 z-1 xl:py-8 xl:px-5"
       >
         <div className="">
           <span
-            className={`block font-nutmeg font-bold leading-tight mx-auto w-full px-0 md:px-5 text-mtitleSmall lg:text-mtitleSmall xl:text-ctitle mb-2 lg:mb-4`}
+            className={`block font-nutmeg font-bold leading-tight mx-auto w-full px-0 md:px-5 text-subtitle2 md:text-h5 xl:text-h4 mb-2 lg:mb-4`}
           >
             {title}
           </span>
-          <div className="flex flex-wrap justify-center px-7 gap-2">
+          <div className="hidden md:flex flex-wrap justify-center px-7 gap-2">
             {category?.map((data, id) => (
               <div key={id} className={recipeTag}>
                 <span className="pt-0.5 lg:pt-1 font-default">
@@ -51,6 +51,7 @@ const RecipeCard = ({
       </FancyLink>
 
       <div className="relative w-full h-full">
+        <div className='absolute w-full h-full top-0 left-0 bg-gradient-black z-2 opacity-20 group-hover:opacity-0 transition-opacity duration-300' />
         <Image
           src={imgSrc}
           blurDataURL={imgPlaceholder}

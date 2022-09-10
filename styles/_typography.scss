@@ -21,19 +21,41 @@
     @apply font-default leading-normal text-default;
   }
   & > h1 {
-    @apply font-nutmeg font-bold text-[48px] md:text-h1 mb-4;
+    @apply font-nutmeg font-bold text-[48px] md:text-h1;
   }
   & > h2 {
-    @apply font-nutmeg  font-medium text-[36px] md:text-[40px] mb-6;
+    @apply font-nutmeg  font-medium text-[36px] md:text-[40px];
   }
   & > h3 {
-    @apply font-default text-[32px] md:text-[36px] font-light mb-6;
+    @apply font-default text-[32px] md:text-[36px] font-normal;
   }
   & > h4 {
     @apply font-nutmeg text-[28px] md:text-[32px] font-normal;
   }
   & > h5 {
     @apply font-default text-[22px] font-bold;
+  }
+
+  &.about {
+    @apply px-0;
+    & > * {
+      @apply px-0 max-w-none;
+    }
+    & > h1 {
+      @apply font-nutmeg text-[36px] font-normal;
+    }
+    & > h2 {
+      @apply font-nutmeg text-[28px];
+    }
+    & > h3 {
+      @apply font-default text-[24px] font-normal;
+    }
+    & > h4 {
+      @apply font-nutmeg text-[22px] font-normal;
+    }
+    & > h5 {
+      @apply font-default text-[20px] font-normal;
+    }
   }
 }
 

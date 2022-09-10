@@ -25,6 +25,7 @@ import { PortableText } from '@portabletext/react';
 import { Parallax } from 'react-scroll-parallax';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
+import { AboutModalComponents } from '@/components/utils/editorModal';
 
 const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
   const [modalOne, setModalOne] = useState(false);
@@ -109,11 +110,9 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
               <div className='relative mb-8 lg:mb-16 xl:mb-28'>
                 <p className='font-nutmeg text-mtitleBig leading-tight lg:text-h2  '>
                   {/* This is Manual Adjustment dont Change */}
-                  {
-                    ctx.language === 'id'
-                      ? 'Selama lebih dari 40 tahun, Morin telah hadir menemani momen sarapan keluarga Indonesia.'
-                      : 'For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.'
-                  }
+                  {ctx.language === 'id'
+                    ? 'Selama lebih dari 40 tahun, Morin telah hadir menemani momen sarapan keluarga Indonesia.'
+                    : 'For more than 40 years, Morin has been present to accompany Indonesian family breakfast moments.'}
                 </p>
                 <div
                   className={`absolute left-0 lg:left-auto  rotate-[-20deg] lg:rotate-[20deg] scale-x-[-100%]  translate-y-[-60%] ${
@@ -282,40 +281,16 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
             ? about.first_more.title_id
             : about.first_more.title_en}
         </span>
-
-        <PortableText
-          value={
-            ctx.language === 'id'
-              ? about.first_more.description_id
-              : about.first_more.description_en
-          }
-          components={{
-            block: {
-              normal: ({ children }) => (
-                <p className='font-medium mb-5'>{children}</p>
-              ),
-            },
-            types: {
-              image: (props) => (
-                <div className='relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden'>
-                  <Image
-                    src={urlFor(props.value).auto('format').width(850).url()}
-                    blurDataURL={urlFor(props.value)
-                      .auto('format')
-                      .width(500)
-                      .blur(25)
-                      .url()}
-                    placeholder='blur'
-                    alt={props.value.alt}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                  />
-                </div>
-              ),
-            },
-          }}
-        />
+        <div className='content about'>
+          <PortableText
+            value={
+              ctx.language === 'id'
+                ? about.first_more.description_id
+                : about.first_more.description_en
+            }
+            components={AboutModalComponents}
+          />
+        </div>
       </PageModal>
       <PageModal
         isOpen={modalOne}
@@ -328,39 +303,16 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
             : about.visi_misi.titleDescription_en}
         </span>
 
-        <PortableText
-          value={
-            ctx.language === 'id'
-              ? about.visi_misi.description_id
-              : about.visi_misi.description_en
-          }
-          components={{
-            block: {
-              normal: ({ children }) => (
-                <p className='font-medium mb-5'>{children}</p>
-              ),
-            },
-            types: {
-              image: (props) => (
-                <div className='relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden'>
-                  <Image
-                    src={urlFor(props.value).auto('format').width(850).url()}
-                    blurDataURL={urlFor(props.value)
-                      .auto('format')
-                      .width(500)
-                      .blur(25)
-                      .url()}
-                    placeholder='blur'
-                    alt={props.value.alt}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                  />
-                </div>
-              ),
-            },
-          }}
-        />
+        <div className='content about'>
+          <PortableText
+            value={
+              ctx.language === 'id'
+                ? about.visi_misi.description_id
+                : about.visi_misi.description_en
+            }
+            components={AboutModalComponents}
+          />
+        </div>
       </PageModal>
 
       <PageModal
@@ -374,39 +326,16 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
             : about.our_process.titleDescription_en}
         </span>
 
-        <PortableText
-          value={
-            ctx.language === 'id'
-              ? about.our_process.description_id
-              : about.our_process.description_en
-          }
-          components={{
-            block: {
-              normal: ({ children }) => (
-                <p className='font-medium mb-5'>{children}</p>
-              ),
-            },
-            types: {
-              image: (props) => (
-                <div className='relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden'>
-                  <Image
-                    src={urlFor(props.value).auto('format').width(850).url()}
-                    blurDataURL={urlFor(props.value)
-                      .auto('format')
-                      .width(500)
-                      .blur(25)
-                      .url()}
-                    placeholder='blur'
-                    alt={props.value.alt}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                  />
-                </div>
-              ),
-            },
-          }}
-        />
+        <div className='content about'>
+          <PortableText
+            value={
+              ctx.language === 'id'
+                ? about.our_process.description_id
+                : about.our_process.description_en
+            }
+            components={AboutModalComponents}
+          />
+        </div>
       </PageModal>
     </motion.div>
   );

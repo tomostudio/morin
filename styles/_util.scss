@@ -16,6 +16,12 @@ main {
 .bg-gradient-blue {
   background: linear-gradient(96.16deg, #175ba7 3.15%, #66c1ea 79.37%);
 }
+.bg-gradient-white {
+  background: linear-gradient(0deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, .8) 50%, rgba(255,255,255,0) 100%);
+}
+.bg-gradient-black {
+  background: linear-gradient(180deg, rgba(0,0,0, .5) 0%,  rgba(0,0,0,0) 100%);
+}
 
 .product-detail-curve {
   $curve-height: 40px;

@@ -132,10 +132,10 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
           </FancyLink>
         </div>
         <div className="flex flex-col justify-center w-full h-full bg-white absolute-center px-8 md:bg-transparent md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 text-morin-blue md:text-inherit">
-          <span className="block font-semibold text-mtitleSmall leading-tight mb-6 lg:font-bold lg:mb-8">
+          <span className="block font-nutmeg text-[22pt] md:text-h4 leading-tight mb-6 lg:font-bold lg:mb-8">
             {ctx.language === 'id' ? modalData?.title_id : modalData?.title_en}
           </span>
-          <p className="text-default lg:text-mtitleSmall ">
+          <p className="text-default ">
             {ctx.language === 'id'
               ? modalData?.description_id
               : modalData?.description_en}

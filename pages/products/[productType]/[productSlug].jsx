@@ -89,7 +89,7 @@ const ProductDetail = ({
                   </div>
                 </Parallax>
                 <div
-                  className={`w-full h-full  absolute-center lg:max-w-screen-2xl z-2 product-elements layout layout-4 ${product.thumbnailFruit.layout}`}
+                  className={`w-full h-full  absolute-center lg:max-w-screen-2xl z-2 product-elements layout layout-${product.thumbnailFruit.layout}`}
                 >
                   <Parallax
                     translateY={['-100px', '100px']}
