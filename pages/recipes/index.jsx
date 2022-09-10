@@ -106,7 +106,7 @@ const Recipe = ({
           </div>
         </div>
 
-        <div className="p-4 lg:p-8 flex-grow">
+        <div className="max-w-screen-2xl p-4 lg:p-8 flex-grow mx-auto">
           <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
               {ctx.language === 'id'
@@ -151,7 +151,7 @@ const Recipe = ({
             />
           </div>
 
-          <div className="max-w-screen-2xl min-h-[60vh] mx-auto">
+          <div className=" min-h-[60vh] mx-auto">
             {dataRecipe.length > 0 ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
                 {dataRecipe.map((item, index) => (
