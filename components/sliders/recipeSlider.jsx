@@ -13,9 +13,10 @@ const RecipeSlider = ({ data, lang }) => {
       <div
         {...events}
         ref={sliderRef}
-        className=' py-6 overflow-x-auto hidescrollbar'
+        className=' flex py-6 overflow-x-auto hidescrollbar'
       >
-        <div className='px-4 lg:px-8 space-x-4 flex '>
+        <div className='w-4 lg:w-8 flex-shrink-0' />
+        <div className='space-x-4 flex flex-shrink-0 flex-grow'>
           {data
             ?.slice(0, 3)
             .map(
@@ -40,6 +41,7 @@ const RecipeSlider = ({ data, lang }) => {
                 )
             )}
         </div>
+        <div className='w-4 lg:w-8 h-auto flex-shrink-0' />
       </div>
     </>
   );

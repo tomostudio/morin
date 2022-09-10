@@ -12,12 +12,17 @@ const HighlightSlider = ({ data, lang, button }) => {
       <div
         {...events}
         ref={sliderRef}
-        className=' w-full lg:mb-4 xl:mb-9 overflow-scroll hidescrollbar flex flex-col md:flex-row justify-center items-center md:justify-start max-w-screen-2xl px-4 lg:px-8 py-4 mx-auto space-y-5 space-x-0 md:space-y-0 md:space-x-5'
+        className=' w-full lg:mb-4 xl:mb-9 overflow-scroll hidescrollbar flex max-w-screen-2xl py-4 mx-auto '
       >
-        {data?.slice(0, 3).map((item, index) =>
-          lang === 'id' ? (
+        <div className='hidden md:block w-4 lg:w-8 flex-shrink-0' />
+        <div className='flex flex-col justify-center items-center md:justify-start md:flex-row space-x-0 space-y-5 md:space-y-0 md:space-x-5 flex-shrink-0 flex-grow'>
+          {data?.slice(0, 3).map((item, index) => (
             <div
-              key={`${item.title_id}(${index})`}
+              key={
+                lang === 'id'
+                  ? `${item.title_id}(${index})`
+                  : `${item.title_en}(${index})`
+              }
               className='w-full md:w-1/3 min-w-[350px] max-w-xl md:max-w-none'
             >
               <HighlightCard
@@ -29,34 +34,15 @@ const HighlightSlider = ({ data, lang, button }) => {
                   .url()}
                 imgAlt={item.thumbnail.alt}
                 date={dateParse(item.date, lang)}
-                title={item.title_id}
+                title={lang === 'id' ? item.title_id : item.title_en}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
                 button={button}
               />
             </div>
-          ) : (
-            <div
-              key={`${item.title_en}(${index})`}
-              className='w-full md:w-1/3 min-w-[350px] max-w-xl md:max-w-none'
-            >
-              <HighlightCard
-                imgSrc={urlFor(item.thumbnail).auto('format').width(400).url()}
-                imgPlaceholder={urlFor(item.thumbnail)
-                  .auto('format')
-                  .width(200)
-                  .blur(25)
-                  .url()}
-                imgAlt={item.thumbnail.alt}
-                date={dateParse(item.date, lang)}
-                title={item.title_en}
-                link={`/events/${item.slug.current}`}
-                lang={lang}
-                button={button}
-              />
-            </div>
-          )
-        )}
+          ))}
+        </div>
+        <div className='hidden md:block  w-4 lg:w-8 flex-shrink-0' />
       </div>
     </>
   );

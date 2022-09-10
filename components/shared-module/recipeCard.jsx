@@ -17,7 +17,7 @@ const RecipeCard = ({
 
   return (
     <div
-      className={`group relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] ${className}`}
+      className={`group relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] height-auto ${className} isolate`}
     >
       <FancyLink
         destination={link}
@@ -50,7 +50,7 @@ const RecipeCard = ({
         </div>
       </FancyLink>
 
-      <div className="relative w-full h-full rounded-3xl overflow-hidden">
+      <div className="relative w-full h-full rounded-3xl overflow-hidden isolate">
         <div className='absolute w-full h-full top-0 left-0 bg-gradient-black z-2 opacity-20 group-hover:opacity-0 transition-opacity duration-300' />
         <Image
           src={imgSrc}
