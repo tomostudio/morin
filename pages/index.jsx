@@ -288,12 +288,12 @@ export default function Home({
                 </div>
               </div>
             </Container>
-            <div className="pb-10 xl:pb-14">
+            <div className="pb-10 xl:pb-14 px-4 lg:px-8">
               <Script
                 src="https://apps.elfsight.com/p/platform.js"
                 strategy="afterInteractive"
               />
-              <div className={seo.elfsightID} />
+              <div className={`${seo.elfsightID} w-full`} />
             </div>
           </section>
           <Footer
