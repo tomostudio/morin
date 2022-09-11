@@ -314,7 +314,7 @@ const RecipeDetail = ({
 
   const handleShareButton = () => {
     const shareData = {
-      title: `${recipe.title} at ${seo.webTitle}`,
+      title: `${ctx.language === 'id' ? recipe.title_id : recipe.title_en} at ${seo.webTitle}`,
       text:
         ctx.language === 'id'
           ? recipe.description_id && toPlainText(recipe.description_id)
@@ -540,12 +540,12 @@ const RecipeDetail = ({
                         className='mx-0'
                         onClick={handleShareButton}
                       >
-                        {ctx.language === 'id' ? 'Bagikan' : ''}
+                        {ctx.language === 'id' ? 'Bagikan' : 'Share'}
                       </StrokeButton>
                     ) : (
                       <div className='flex items-center space-x-2'>
                         <div className='pt-1 text-defaultSmall uppercase mr-2'>
-                          {ctx.language === 'id' ? 'Bagikan' : ''}
+                          {ctx.language === 'id' ? 'Bagikan' : 'Share'}
                         </div>
                         <Tooltip
                           title='Facebook'

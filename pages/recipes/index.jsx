@@ -48,7 +48,58 @@ const Recipe = ({
     if (recipeListAPI.length <= displayData) setShowButton(false)
   }
 
-  const handleFilter = () => {}
+  const handleFilter = (recipeData, titleId, categoryId) => {
+    displayData = 6
+    setFilterValue((prev) => {
+      const tempArr = [...prev]
+      if (tempArr.length === 0) {
+        let data = recipeData.data.find((item) => item._id === categoryId)
+        tempArr.push({
+          ...recipeData,
+          data: data,
+        })
+        let dataFilter = recipeListAPI.filter((item) =>
+          item.recipeCategory.find((item) => item._id === categoryId),
+        )
+        setDataRecipe(dataFilter.slice(0, displayData))
+        if (dataFilter.length <= displayData) setShowButton(false)
+        return tempArr
+      } else {
+        if (tempArr.find((item) => item.data._id === categoryId)) {
+          const index = tempArr
+            .map((object) => object.data._id)
+            .indexOf(categoryId)
+          tempArr.splice(index, 1)
+
+          // setDataRecipe(
+          //   recipeListAPI.filter((item) =>
+          //     item.recipeCategory.some((e) =>
+          //       tempArr.map((a) => a.data._id).includes(e._id),
+          //     ),
+          //   ),
+          // )
+
+          // console.log(tempArr.map((a) => a.data._id))
+
+          return tempArr
+        } else if (tempArr.find((item) => item._id === titleId)) {
+          const index = tempArr.map((object) => object._id).indexOf(titleId)
+          tempArr.splice(index, 1)
+          tempArr.push({
+            ...recipeData,
+            data: recipeData.data.find((item) => item._id === categoryId),
+          })
+          return tempArr
+        } else {
+          tempArr.push({
+            ...recipeData,
+            data: recipeData.data.find((item) => item._id === categoryId),
+          })
+          return tempArr
+        }
+      }
+    })
+  }
 
   const ctx = useAppContext()
   useEffect(() => {
@@ -109,7 +160,7 @@ const Recipe = ({
         <div className="max-w-screen-2xl p-4 lg:p-8 flex-grow mx-auto">
           <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
-              {ctx.language === 'id'
+              {/* {ctx.language === 'id'
                 ? `Diurutkan Secara ${
                     filterValue.length < 1
                       ? ' Bawaan'
@@ -123,7 +174,7 @@ const Recipe = ({
                       : filterValue.map((obj) =>
                           Object.values(obj).map((data) => ` ${data}`),
                         )
-                  }`}
+                  }`} */}
             </span>
             <StrokeButton
               arrow={false}
