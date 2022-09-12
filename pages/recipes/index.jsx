@@ -44,6 +44,7 @@ const Recipe = ({
   const loadMore = () => {
     displayData += dataIncrease
     setDataRecipe(recipeListAPI.slice(0, displayData))
+    console.log(filterValue)
 
     if (recipeListAPI.length <= displayData) setShowButton(false)
   }
@@ -232,21 +233,17 @@ const Recipe = ({
         <div className="max-w-screen-2xl p-4 lg:p-8 flex-grow mx-auto">
           <div className="flex w-full max-w-screen-2xl mx-auto items-center justify-between mb-5 md:mb-7 lg:mb-8 xl:mb-10">
             <span className="font-semibold text-morin-red pt-1">
-              {/* {ctx.language === 'id'
+              {ctx.language === 'id'
                 ? `Diurutkan Secara ${
                     filterValue.length < 1
                       ? ' Bawaan'
-                      : filterValue.map((obj) =>
-                          Object.values(obj).map((data) => ` ${data}`),
-                        )
+                      : filterValue.map((obj) => obj.data.title_id)
                   }`
                 : `Sorted by ${
                     filterValue.length < 1
                       ? ' Default'
-                      : filterValue.map((obj) =>
-                          Object.values(obj).map((data) => ` ${data}`),
-                        )
-                  }`} */}
+                      : filterValue.map((obj) => obj.data.title_en)
+                  }`}
             </span>
             <StrokeButton
               arrow={false}
