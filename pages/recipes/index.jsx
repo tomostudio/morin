@@ -43,10 +43,24 @@ const Recipe = ({
 
   const loadMore = () => {
     displayData += dataIncrease
-    setDataRecipe(recipeListAPI.slice(0, displayData))
-    console.log(filterValue)
+    if (filterValue.length > 1) {
+      let dataFilter = recipeListAPI
+        .map((item) => {
+          return {
+            ...item,
+            filter: item.recipeCategory
+              .map((e) => tempArr.map((a) => a.data._id).includes(e._id))
+              .filter((e) => e === true).length,
+          }
+        })
+        .sort((a, b) => b.filter - a.filter)
+        .filter((e) => e.filter > 0)
+      setDataRecipe(dataFilter.slice(0, displayData))
+    } else {
+      setDataRecipe(recipeListAPI.slice(0, displayData))
 
-    if (recipeListAPI.length <= displayData) setShowButton(false)
+      if (recipeListAPI.length <= displayData) setShowButton(false)
+    }
   }
 
   const handleFilter = (recipeData, titleId, categoryId) => {
