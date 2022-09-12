@@ -10,7 +10,6 @@ export const DefaultH4 = ({ children }) => (
 
 export const DefaultImage = ({ imageSrc = '', blurDataURL = '', alt = '' }) => (
   <div className='relative w-full h-30rem max-md:h-56 rounded-xl overflow-hidden my-10 '>
-    {console.log(imageSrc)}
     <Image
       src={imageSrc}
       blurDataURL={blurDataURL !== '' ? blurDataURL : ''}

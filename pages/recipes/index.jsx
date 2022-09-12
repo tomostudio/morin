@@ -52,49 +52,121 @@ const Recipe = ({
     displayData = 6
     setFilterValue((prev) => {
       const tempArr = [...prev]
+      // jika data filter kosong
       if (tempArr.length === 0) {
+        // cari category id
         let data = recipeData.data.find((item) => item._id === categoryId)
+        // push data category
         tempArr.push({
           ...recipeData,
           data: data,
         })
+
+        // filter data recipe
         let dataFilter = recipeListAPI.filter((item) =>
           item.recipeCategory.find((item) => item._id === categoryId),
         )
+        // set data filter recipe
         setDataRecipe(dataFilter.slice(0, displayData))
+
+        // cek length data filter recipe
         if (dataFilter.length <= displayData) setShowButton(false)
         return tempArr
       } else {
+        // cek apakah user meng-klik category yang sama
         if (tempArr.find((item) => item.data._id === categoryId)) {
+          // delete category
           const index = tempArr
             .map((object) => object.data._id)
             .indexOf(categoryId)
           tempArr.splice(index, 1)
 
-          // setDataRecipe(
-          //   recipeListAPI.filter((item) =>
-          //     item.recipeCategory.some((e) =>
-          //       tempArr.map((a) => a.data._id).includes(e._id),
-          //     ),
-          //   ),
-          // )
+          if (tempArr.length > 1) {
+            // filter data recipe
+            let dataFilter = recipeListAPI
+              .map((item) => {
+                return {
+                  ...item,
+                  filter: item.recipeCategory
+                    .map((e) => tempArr.map((a) => a.data._id).includes(e._id))
+                    .filter((e) => e === true).length,
+                }
+              })
+              .sort((a, b) => b.filter - a.filter)
+              .filter((e) => e.filter > 0)
 
-          // console.log(tempArr.map((a) => a.data._id))
+            // set data filter recipe
+            setDataRecipe(dataFilter.slice(0, displayData))
+
+            // cek length data filter recipe
+            if (dataFilter.length <= displayData) setShowButton(false)
+          } else {
+            setDataRecipe(recipeListAPI.slice(0, displayData))
+
+            // cek length data filter recipe
+            if (recipeListAPI.length <= displayData) setShowButton(false)
+          }
 
           return tempArr
         } else if (tempArr.find((item) => item._id === titleId)) {
+          // cek apakah recipe title dari data category nya sama
+
+          // get index recipe title
           const index = tempArr.map((object) => object._id).indexOf(titleId)
+          // remove recipe category
           tempArr.splice(index, 1)
+          // push data category baru
           tempArr.push({
             ...recipeData,
             data: recipeData.data.find((item) => item._id === categoryId),
           })
+
+          // filter data recipe
+          let dataFilter = recipeListAPI
+            .map((item) => {
+              return {
+                ...item,
+                filter: item.recipeCategory
+                  .map((e) => tempArr.map((a) => a.data._id).includes(e._id))
+                  .filter((e) => e === true).length,
+              }
+            })
+            .sort((a, b) => b.filter - a.filter)
+            .filter((e) => e.filter > 0)
+
+          // set data filter recipe
+          setDataRecipe(dataFilter.slice(0, displayData))
+
+          // cek length data filter recipe
+          if (dataFilter.length <= displayData) setShowButton(false)
+
           return tempArr
         } else {
+          // push data category baru
           tempArr.push({
             ...recipeData,
             data: recipeData.data.find((item) => item._id === categoryId),
           })
+
+          // filter data recipe
+          let dataFilter = recipeListAPI
+            .map((item) => {
+              return {
+                ...item,
+                filter: item.recipeCategory
+                  .map((e) => tempArr.map((a) => a.data._id).includes(e._id))
+                  .filter((e) => e === true).length,
+              }
+            })
+            .sort((a, b) => b.filter - a.filter)
+            .filter((e) => e.filter > 0)
+
+          // set data filter recipe
+          setDataRecipe(dataFilter.slice(0, displayData))
+
+          // cek length data filter recipe
+          if (dataFilter.length <= displayData) setShowButton(false)
+
           return tempArr
         }
       }
