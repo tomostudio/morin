@@ -1,15 +1,16 @@
-import { useState, useEffect, useRef } from 'react'
-import client from '@/helpers/sanity/client'
-import SEO from '@/components/utils/seo'
-import Error from 'next/error'
-import { useEffectInit } from '@/components/utils/preset'
-import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
-import { fade } from '@/helpers/transitions'
+import { useState, useEffect, useRef } from 'react';
+import client from '@/helpers/sanity/client';
+import SEO from '@/components/utils/seo';
+import Error from 'next/error';
+import { useEffectInit } from '@/components/utils/preset';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/transitions';
 
 const Error500 = ({ seoAPI }) => {
-  const [seo] = seoAPI
-  const router = useRouter()
+  const [seo] = seoAPI;
+  const router = useRouter();
   return (
     <>
       <SEO
@@ -20,37 +21,49 @@ const Error500 = ({ seoAPI }) => {
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div
-        className="w-full bg-morin-skyBlue  min-h-screen flex justify-center flex-col items-center"
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        className='w-full bg-morin-skyBlue min-h-screen'
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
       >
-        <h1>Error 500</h1>
-        <h2>Internal Server Error</h2>
+        <div className='w-full relative z-2 flex justify-center flex-col items-center  min-h-screen content'>
+          <h1 className='text-morin-blue'>Error 500</h1>
+          <p className='-mt-5'>Page Not Found</p>
+        </div>
+        <div className='w-screen h-screen absolute top-0 left-0 z-1 overflow-hidden'>
+          <div className='w-screen aspect-1 absolute inset-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  '>
+            <Image
+              src='/RAY.svg'
+              layout='fill'
+              objectFit='contain'
+              className='animate-spin-slow'
+            />
+          </div>
+        </div>
       </motion.div>
     </>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
-    `)
+    `);
   const footerAPI = await client.fetch(`
       *[_type == "footer"]
-      `)
+      `);
   const translationAPI = await client.fetch(`
       *[_type == "translation"]
-      `)
-  const [translation] = translationAPI
+      `);
+  const [translation] = translationAPI;
   return {
     props: {
       seoAPI,
       footerAPI,
       translation,
     },
-  }
+  };
 }
 
-export default Error500
+export default Error500;
