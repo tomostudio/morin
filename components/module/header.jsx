@@ -155,7 +155,6 @@ export default function Header({ button, turn_language, whatsapp }) {
     colorPlaceholder = ctx.langColor;
   }, [ctx.langColor]);
 
-
   useEffect(() => {
     const language = localStorage.getItem('morin_language');
     if (language) {
@@ -205,7 +204,6 @@ export default function Header({ button, turn_language, whatsapp }) {
         variants={fade}
         className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full'
       >
-        {`${buttonColor} ${ctx.langColor}`}
         {!turn_language && (
           <Container className='mt-4 hidden lg:flex'>
             {/* Language Selector */}
@@ -308,7 +306,7 @@ export default function Header({ button, turn_language, whatsapp }) {
               className='block lg:hidden outline-none'
               opened={opened}
               onClick={() => toggleHamburgermenu()}
-              dark={buttonColor}
+              color={buttonColor}
             />
             <div
               className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} -z-1 lg:hidden ${

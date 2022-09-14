@@ -57,6 +57,7 @@ const CategoryCard = ({
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
+              objectPosition={`center center`}
               layout='fill'
             />
           </div>
@@ -74,6 +75,7 @@ const CategoryCard = ({
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
+              objectPosition={`center center`}
               layout='fill'
             />
           </div>
@@ -91,6 +93,7 @@ const CategoryCard = ({
               placeholder='blur'
               alt={imgAlt}
               objectFit='contain'
+              objectPosition={`center center`}
               layout='fill'
             />
           </div>

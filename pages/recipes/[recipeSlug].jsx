@@ -60,8 +60,12 @@ const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   );
 };
 
-const RecipeTag = ({ label, borderColor }) => (
-  <div className={`flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid ${borderColor === "white" ? "border-white" : "border-black"} px-3 mx-1 mb-2 lg:mr-0 lg:ml-2 lg:mb-2`}>
+const RecipeTag = ({ label, color }) => (
+  <div
+    className={`flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid px-3 mx-1 mb-2 lg:mr-0 lg:ml-2 lg:mb-2 ${
+      color === 'white' ? 'border-white' : 'border-black '
+    }`}
+  >
     <span className='pt-0.5 md:pt-1'>{label}</span>
   </div>
 );
@@ -314,8 +318,6 @@ const RecipeDetail = ({
 
     checkShare();
 
-    ctx.setLangColor('black');
-
     checkHeaderColor();
     window.addEventListener('resize', checkHeaderColor, true);
     window.addEventListener('resize', checkShare, true);
@@ -384,7 +386,7 @@ const RecipeDetail = ({
             {/* head title */}
             <div className='relative rounded-b-2xl md:rounded-3xl overflow-hidden mb-4'>
               <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
-                <div className='absolute w-full h-full top-0 left-0 bg-gradient-black z-2 opacity-20' />
+                <div className={`absolute w-full h-full top-0 left-0  z-2 opacity-40 ${recipe.titleColor === 'white' ? 'bg-gradient-black-cover' : 'bg-gradient-white-cover'}`} />
                 {recipe.cover?.asset && (
                   <Image
                     priority
@@ -402,18 +404,22 @@ const RecipeDetail = ({
                 )}
               </div>
 
-              <div className={`${recipe.titleColor === "white" ? "text-white" : "text-black"} w-full text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10`}>
-                <h1 className={`font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left`}>
+              <div
+                className={`${
+                  recipe.titleColor === 'white' ? 'text-white' : 'text-black'
+                } w-full text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10`}
+              >
+                <h1 className='font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
                   {ctx.language === 'id' ? recipe.title.id : recipe.title.en}
                 </h1>
                 <div className='flex justify-center flex-wrap lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-4 lg:ml-auto'>
                   {recipe.recipeCategory?.map((data, index) => (
                     <RecipeTag
                       key={index}
+                      color={recipe.titleColor}
                       label={
                         ctx.language === 'id' ? data.title.id : data.title.en
                       }
-                      borderColor={recipe.titleColor}
                     />
                   ))}
                 </div>
@@ -458,7 +464,7 @@ const RecipeDetail = ({
                         ? recipeBtn.language.ingredients.id
                         : recipeBtn.language.ingredients.en}
                     </h2>
-                    <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start'>
+                    <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
                       {ctx.language === 'id'
                         ? recipe.ingredient?.id.map((data, index) =>
                             !data.title ? (
