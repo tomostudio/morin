@@ -284,7 +284,7 @@ export default function Home({
                 src="https://apps.elfsight.com/p/platform.js"
                 strategy="afterInteractive"
               />
-              <div className={`${seo.elfsightID} w-full`} />
+              <div className={`${home.elfsightID} w-full`} />
             </div>
           </section>
           <Footer
