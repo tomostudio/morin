@@ -42,9 +42,9 @@ const StrokeButton = ({
     <Link href={destination}>
       <a
         aria-label={ariaLabel}
-        className={`${defaultClass} bg-[${color.toLowerCase()}]   ${
+        className={`${defaultClass} bg-[${color.toLowerCase()}] select-none ${
           className ? className : ''
-        } ${hover === "black" && 'hover-black'}`}
+        } ${hover === "white" ? 'hover-black' : 'hover-white'}`}
         style={{ color: color, borderColor: color }}
         onClick={onClick}
         {...others}
