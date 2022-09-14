@@ -60,7 +60,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
 
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(about.langColor);
+    ctx.setLangColor(about.langColor === "white" ? true : false);
     useEffectInit({ context: ctx, mobileDark: true });
   }, []);
 

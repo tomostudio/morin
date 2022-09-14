@@ -27,7 +27,7 @@ const Category = ({
   const router = useRouter()
 
   useEffect(() => {
-    ctx.setLangColor(product.langColor)
+    ctx.setLangColor(product.langColor === "white" ? true : false)
     useEffectInit({ context: ctx, mobileDark: false })
   }, [])
   return (

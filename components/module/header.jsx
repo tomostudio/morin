@@ -147,7 +147,7 @@ export default function Header({ button, turn_language, whatsapp }) {
     }
   };
 
-  const [blackButton, setBlackButton] = useState(ctx.langColor);
+  const [blackButton, setBlackButton] = useState(ctx.langColor === "white" ? true : false);
 
   useEffect(() => {
     const language = localStorage.getItem('morin_language');
@@ -162,7 +162,7 @@ export default function Header({ button, turn_language, whatsapp }) {
         setBlackButton(true);
       } else {
         console.log('Set Color', ctx.langColor);
-        setBlackButton(ctx.langColor);
+        setBlackButton(ctx.langColor === "white" ? true : false);
       }
     };
 
@@ -178,7 +178,7 @@ export default function Header({ button, turn_language, whatsapp }) {
 
   useEffect(() => {
     console.log('update lang color', ctx.langColor)
-    setBlackButton(ctx.langColor);
+    setBlackButton(ctx.langColor === "white" ? true : false);
   }, [ctx.langColor]);
 
   const FIFODuration = 300;
@@ -210,7 +210,7 @@ export default function Header({ button, turn_language, whatsapp }) {
             {/* Language Selector */}
             <div
               className={`w-full flex justify-end items-center text-defaultSmall ${
-                ctx.langColor ? 'text-white' : 'text-black'
+                ctx.langColor === "white" ? 'text-white' : 'text-black'
               }`}
             >
               <FancyLink
@@ -229,7 +229,7 @@ export default function Header({ button, turn_language, whatsapp }) {
               </FancyLink>
               <hr
                 className={`w-[2px] h-[90%] opacity-50 ${
-                  ctx.langColor ? 'bg-white' : 'bg-black'
+                  ctx.langColor === "white" ? 'bg-white' : 'bg-black'
                 }`}
               />
               <FancyLink

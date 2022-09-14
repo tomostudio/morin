@@ -306,12 +306,10 @@ const RecipeDetail = ({
     const checkHeaderColor = () => {
       const width = window.innerWidth;
       if (width < 764) {
-        ctx.setLangColor(recipe.titleColor);
+        ctx.setLangColor(recipe.titleColor === "white" ? false : true);
       } else {
         ctx.setLangColor(false); // set to black
       }
-
-      console.log(recipe.titleColor);
     };
 
     checkShare();
@@ -398,8 +396,8 @@ const RecipeDetail = ({
                 )}
               </div>
 
-              <div className='w-full text-white text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10'>
-                <h1 className='font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left'>
+              <div className={`${recipe.titleColor === "white" ? "text-white" : "text-black"} w-full text-white text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10`}>
+                <h1 className={`font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left`}>
                   {ctx.language === 'id' ? recipe.title.id : recipe.title.en}
                 </h1>
                 <div className='flex justify-center flex-wrap lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-4 lg:ml-auto'>
