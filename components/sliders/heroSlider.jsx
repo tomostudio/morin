@@ -44,11 +44,11 @@ const HeroSlider = ({ data, className, lang }) => {
           // Broken Array ID
           ctx.setLangColor(
             lang === 'id'
-              ? data.component.id[currentSlide()].langColor === "white" ? true : false
-                ? data.component.id[currentSlide()].langColor === "white" ? true : false
+              ? data.component.id[currentSlide()].langColor
+                ? data.component.id[currentSlide()].langColor
                 : true
-              : data.component.en[currentSlide()].langColor === "white" ? true : false
-              ? data.component.en[currentSlide()].langColor === "white" ? true : false
+              : data.component.en[currentSlide()].langColor
+              ? data.component.en[currentSlide()].langColor
               : true
           );
         }}

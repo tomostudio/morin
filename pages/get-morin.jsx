@@ -22,7 +22,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(getMorin.langColor === "white" ? true : false);
+    ctx.setLangColor(getMorin.langColor);
     useEffectInit({ context: ctx, mobileDark: true });
   }, []);
   return (
