@@ -299,9 +299,9 @@ export default function Home({
           <Footer
             lang={ctx.language}
             button={translation.menu_lang}
-            faq={seo.hide_faq}
+            faq={seo.advance_setting.hide_faq}
             footer={footer}
-            mailchimp={seo.mailchimpID}
+            mailchimp={footer.mailchimpID}
             translation={translation}
           />
         </Layout>

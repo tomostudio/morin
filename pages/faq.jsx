@@ -105,8 +105,8 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
         <Footer
           lang={ctx.language}
           button={translation.menu_lang}
-          faq={seo.hide_faq}
-          mailchimp={seo.mailchimpID}
+          faq={seo.advance_setting.hide_faq}
+          mailchimp={footer.mailchimpID}
           footer={footer}
           translation={translation}
         />
@@ -164,7 +164,7 @@ export async function getStaticProps() {
   *[_type == "translation"]
   `)
   const [translation] = translationAPI
-  if (!seo.hide_faq) {
+  if (!seo.advance_setting.hide_faq) {
     return {
       props: {
         faqAPI,

@@ -15,10 +15,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
+      {pageProps.seoAPI && pageProps.seoAPI[0].analytics.googleID && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${pageProps.seoAPI[0].googleID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${pageProps.seoAPI[0].analytics.googleID}`}
             strategy="afterInteractive"
           />
           <Script id="google-analytics" strategy="afterInteractive">
@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
     function gtag(){window.dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '${pageProps.seoAPI[0].googleID}');
+    gtag('config', '${pageProps.seoAPI[0].analytics.googleID}');
   `}
           </Script>
         </>
@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
       <AppWrapper>
         <Header
           button={pageProps.translation}
-          turn_language={pageProps.seoAPI[0].turn_language}
+          turn_language={pageProps.seoAPI[0].advance_setting.turn_language}
           whatsapp={pageProps.seoAPI[0]}
         />
         <ParallaxProvider>
