@@ -36,6 +36,7 @@ const RecipeSlider = ({ data, lang }) => {
                     imgAlt={item.thumbnail.alt}
                     title={lang === 'id' ? item.title?.id : item.title?.en}
                     link={`/recipes/${item.slug.current}`}
+                    color={item.titleColor}
                     className={`w-1/3 min-w-[240px] md:min-w-[360px]`}
                   />
                 )
