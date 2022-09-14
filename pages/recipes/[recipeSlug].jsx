@@ -273,7 +273,6 @@ const RecipeDetail = ({
   recipeAPI,
   recipeListAPI,
   seoAPI,
-  recipeButton,
   footerAPI,
   translation,
 }) => {
@@ -281,7 +280,6 @@ const RecipeDetail = ({
   const [showShare, setShare] = useState(false);
   const [gallerySlide, setGallerySlide] = useState(0);
   const [baseUrl, setBaseUrl] = useState();
-  const [recipeBtn] = recipeButton;
   const [seo] = seoAPI;
   const [recipe] = recipeAPI;
   const [footer] = footerAPI;
@@ -386,7 +384,7 @@ const RecipeDetail = ({
             {/* head title */}
             <div className='relative rounded-b-2xl md:rounded-3xl overflow-hidden mb-4'>
               <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
-                <div className={`absolute w-full h-full top-0 left-0  z-2 opacity-50 ${recipe.titleColor === 'white' ? 'bg-gradient-black-cover' : 'bg-gradient-white-cover'}`} />
+                <div className={`absolute w-full h-full top-0 left-0  z-2 opacity-40 ${recipe.titleColor === 'white' ? 'bg-gradient-black-cover' : 'bg-gradient-white-cover'}`} />
                 {recipe.cover?.asset && (
                   <Image
                     priority
@@ -461,8 +459,8 @@ const RecipeDetail = ({
                   >
                     <h2 className='block font-nutmeg font-normal text-morin-red text-subtitle leading-none mb-6 lg:text-h3 lg:mb-7 md:text-center xl:text-left'>
                       {ctx.language === 'id'
-                        ? recipeBtn.language.ingredients.id
-                        : recipeBtn.language.ingredients.en}
+                        ? translation.recipeLanguage.ingredients.id
+                        : translation.recipeLanguage.ingredients.en}
                     </h2>
                     <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
                       {ctx.language === 'id'
@@ -508,8 +506,8 @@ const RecipeDetail = ({
                 <div className='px-4 md:px-11 mb-8 w-full bg-white rounded-2xl xl:rounded-2xl xl:px-11 py-6 xl:mb-0 '>
                   <h2 className='text-center text-morin-red text-subtitle font-nutmeg font-normal leading-none mb-6 lg:text-ctitleBig xl:text-left'>
                     {ctx.language === 'id'
-                      ? recipeBtn.language.made_with.id
-                      : recipeBtn.language.made_with.en}
+                      ? translation.recipeLanguage.made_with.id
+                      : translation.recipeLanguage.made_with.en}
                   </h2>
                   <div className='grid grid-cols-2 gap-4 mx-auto md:px-[6.5rem] xl:px-0'>
                     {recipe.made?.map((item, index) => (
@@ -553,8 +551,8 @@ const RecipeDetail = ({
                 <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
                   <h2 className='block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
-                      ? recipeBtn.language.instructions.id
-                      : recipeBtn.language.instructions.en}
+                      ? translation.recipeLanguage.instructions.id
+                      : translation.recipeLanguage.instructions.en}
                   </h2>
                   <div className='flex flex-wrap justify-center lg:justify-end'>
                     {showShare ? (
@@ -699,7 +697,7 @@ const RecipeDetail = ({
                             Resep Lainnya
                           </span>
                           <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
-                            {recipeBtn.language.related.title.id}
+                            {translation.recipeLanguage.related.title.id}
                           </span>
 
                           <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
@@ -708,7 +706,7 @@ const RecipeDetail = ({
                               color={colors.morinRed}
                               className='ml-auto'
                             >
-                              {recipeBtn.language.related.btn.id}
+                              {translation.recipeLanguage.related.btn.id}
                             </StrokeButton>
                           </div>
                         </div>
@@ -730,7 +728,7 @@ const RecipeDetail = ({
                             Resep Lainnya
                           </span>
                           <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
-                            {recipeBtn.language.related.title.id}
+                            {translation.recipeLanguage.related.title.id}
                           </span>
 
                           <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
@@ -739,7 +737,7 @@ const RecipeDetail = ({
                               color={colors.morinRed}
                               className='ml-auto'
                             >
-                              {recipeBtn.language.related.btn.id}
+                              {translation.recipeLanguage.related.btn.id}
                             </StrokeButton>
                           </div>
                         </div>
@@ -762,7 +760,7 @@ const RecipeDetail = ({
                           More Recipes
                         </span>
                         <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
-                          {recipeBtn.language.related.title.en}
+                          {translation.recipeLanguage.related.title.en}
                         </span>
 
                         <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
@@ -771,7 +769,7 @@ const RecipeDetail = ({
                             color={colors.morinRed}
                             className='ml-auto'
                           >
-                            {recipeBtn.language.related.btn.en}
+                            {translation.recipeLanguage.related.btn.en}
                           </StrokeButton>
                         </div>
                       </div>
@@ -793,7 +791,7 @@ const RecipeDetail = ({
                           More Recipes
                         </span>
                         <span className='hidden font-nutmeg font-normal text-subtitle text-morin-red leading-tight mb-0 md:block lg:text-h4 xl:text-h2'>
-                          {recipeBtn.language.related.title.en}
+                          {translation.recipeLanguage.related.title.en}
                         </span>
 
                         <div className='hidden w-fit pt-1 pl-12 ml-auto md:block xl:pt-4'>
@@ -802,7 +800,7 @@ const RecipeDetail = ({
                             color={colors.morinRed}
                             className='ml-auto'
                           >
-                            {recipeBtn.language.related.btn.en}
+                            {translation.recipeLanguage.related.btn.en}
                           </StrokeButton>
                         </div>
                       </div>
@@ -885,9 +883,6 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
-  const recipeButton = await client.fetch(`
-  *[_type == "recipeDetail"]
-  `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
           `);
@@ -899,7 +894,6 @@ export async function getStaticProps({ params }) {
       recipeListAPI,
       seoAPI,
       footerAPI,
-      recipeButton,
       translation,
     },
   };

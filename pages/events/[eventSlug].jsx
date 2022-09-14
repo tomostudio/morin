@@ -30,18 +30,16 @@ const EventDetail = ({
   eventAPI,
   eventListAPI,
   seoAPI,
-  eventButton,
   footerAPI,
   translation,
 }) => {
   const [seo] = seoAPI
   const [event] = eventAPI
-  const [eventBtn] = eventButton
   const [footer] = footerAPI
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(eventBtn.langColor)
+    ctx.setLangColor(event.langColor)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 
@@ -150,8 +148,8 @@ const EventDetail = ({
             <div className="mb-7 md:mb-8 lg:mb-10">
               <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
                 {ctx.language === 'id'
-                  ? eventBtn.language.event.title.id
-                  : eventBtn.language.event.title.en}
+                  ? translation.eventLanguage.event.title.id
+                  : translation.eventLanguage.event.title.en}
               </h2>
 
               <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
@@ -175,7 +173,7 @@ const EventDetail = ({
                       title={
                         ctx.language === 'id' ? item.title.id : item.title.en
                       }
-                      button={eventBtn.language.event.btn}
+                      button={translation.eventLanguage.event.btn}
                       link={`/events/${item.slug.current}`}
                     />
                   </div>
@@ -233,9 +231,6 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
-  const eventButton = await client.fetch(`
-  *[_type == "eventDetail"]
-  `)
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
           `)
@@ -247,7 +242,6 @@ export async function getStaticProps({ params }) {
       eventListAPI,
       seoAPI,
       footerAPI,
-      eventButton,
       translation,
     },
   }
