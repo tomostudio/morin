@@ -22,13 +22,11 @@ const ProductDetail = ({
   productAPI,
   productListAPI,
   seoAPI,
-  productButton,
   footerAPI,
   translation,
 }) => {
   const [seo] = seoAPI;
   const [product] = productAPI;
-  const [productBtn] = productButton;
   const [footer] = footerAPI;
   const router = useRouter();
   const [productCurrent, setProductCurrent] = useState(
@@ -410,8 +408,8 @@ const ProductDetail = ({
               >
                 <span className='block pt-1'>
                   {ctx.language === 'id'
-                    ? productBtn.language.linkStore.id
-                    : productBtn.language.linkStore.en}
+                    ? translation.productLanguage.linkStore.id
+                    : translation.productLanguage.linkStore.en}
                 </span>
               </FancyLink>
             )}
@@ -421,8 +419,8 @@ const ProductDetail = ({
               <div className='relative bg-morin-peach rounded-2xl overflow-hidden py-8 px-8 md:px-0 lg:rounded-[40px] lg:pt-11 lg:pb-14 lg:px-4 2xl:px-6'>
                 <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-6 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                   {ctx.language === 'id'
-                    ? productBtn.language.recipe.title.id
-                    : productBtn.language.recipe.title.en}
+                    ? translation.productLanguage.recipe.title.id
+                    : translation.productLanguage.recipe.title.en}
                 </h2>
                 <div className='w-[calc(100%+64px)] -mx-8 md:w-full md:mx-0'>
                   <RecipeSlider
@@ -433,8 +431,8 @@ const ProductDetail = ({
                 <div className='hidden w-fit mt-7 mx-auto md:block lg:mt-8'>
                   <StrokeButton destination='/recipes' color={colors.morinRed}>
                     {ctx.language === 'id'
-                      ? productBtn.language.recipe.btn.id
-                      : productBtn.language.recipe.btn.en}
+                      ? translation.productLanguage.recipe.btn.id
+                      : translation.productLanguage.recipe.btn.en}
                   </StrokeButton>
                 </div>
               </div>
@@ -447,8 +445,8 @@ const ProductDetail = ({
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>
                     <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-7 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                       {ctx.language === 'id'
-                        ? productBtn.language.similar.id
-                        : productBtn.language.similar.en}
+                        ? translation.productLanguage.similar.id
+                        : translation.productLanguage.similar.en}
                     </h2>
 
                     <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
@@ -543,8 +541,8 @@ const ProductDetail = ({
                   <div className='py-8 px-4 lg:px-8 lg:pt-11 lg:pb-14 2xl:px-0'>
                     <h2 className='font-nutmeg font-normal text-[22pt] text-morin-red text-center leading-tight mb-7 mx-auto md:text-h4 lg:text-h2 lg:mb-8'>
                       {ctx.language === 'id'
-                        ? productBtn.language.similar.id
-                        : productBtn.language.similar.en}
+                        ? translation.productLanguage.similar.id
+                        : translation.productLanguage.similar.en}
                     </h2>
 
                     <div className='flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center'>
@@ -669,9 +667,6 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
-  const productButton = await client.fetch(`
-  *[_type == "productDetail"]
-  `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
           `);
@@ -683,7 +678,6 @@ export async function getStaticProps({ params }) {
       productListAPI,
       seoAPI,
       footerAPI,
-      productButton,
       translation,
     },
   };
