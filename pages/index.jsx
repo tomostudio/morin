@@ -66,11 +66,11 @@ export default function Home({
     <>
       <SEO
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? home.seo_id : home.seo_en}
+        inputSEO={ctx.language === 'id' ? home.seo?.id : home.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -99,8 +99,8 @@ export default function Home({
                   <div className="mt-24 mb-20 lg:mt-7 ml-0 lg:max-w-sm pr-0 max-w-none mx-auto flex flex-col items-center justify-center lg:items-start">
                     <h2 className=" mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] ">
                       {ctx.language === 'id'
-                        ? product.description_id
-                        : product.description_en}
+                        ? product.description.id
+                        : product.description.en}
                     </h2>
                     <StrokeButton
                       destination="/products"
@@ -141,7 +141,7 @@ export default function Home({
                 </div>
                 <div className="shrink w-full">
                   {productTypeAPI?.map((i, id) => (
-                    <div className="relative h-screen" key={i.title_id}>
+                    <div className="relative h-screen" key={i.title.id}>
                       <HeroCategory
                         imgSrc={urlFor(i.background)
                           .width(1920)
@@ -154,7 +154,7 @@ export default function Home({
                           .blur(50)
                           .url()}
                         imgAlt={i.background}
-                        title={ctx.language === 'id' ? i.title_id : i.title_en}
+                        title={ctx.language === 'id' ? i.title.id : i.title.en}
                         link={`/products/${i.slug.current}`}
                         end={id >= productTypeAPI.length - 1 && true}
                       />
@@ -188,8 +188,8 @@ export default function Home({
                   </h2>
                   <p className="mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
                     {ctx.language === 'id'
-                      ? recipe.description_id
-                      : recipe.description_en}
+                      ? recipe.description.id
+                      : recipe.description.en}
                   </p>
                 </div>
                 <div className="order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12">

@@ -35,11 +35,11 @@ const Category = ({
       <SEO
         title={ctx.language === 'id' ? 'Produk' : 'Products'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? product.seo_id : product.seo_en}
+        inputSEO={ctx.language === 'id' ? product.seo?.id : product.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -72,12 +72,12 @@ const Category = ({
 
           <div className="w-full absolute-center text-center px-8">
             <h1 className="font-nutmeg font-bold text-ctitle text-white leading-none lg:text-h2 xl:text-h1">
-              {ctx.language === 'id' ? product.title_en : product.title_id}
+              {ctx.language === 'id' ? product.title.en : product.title.id}
             </h1>
             <p className="hidden max-w-md text-white font-semibold mt-2 mx-auto lg:block">
               {ctx.language === 'id'
-                ? product.description_id
-                : product.description_en}
+                ? product.description.id
+                : product.description.en}
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Category = ({
           <div className="mb-7 lg:mb-10">
             {productTypeAPI?.map((item) => (
               <CategoryCard
-                key={item.title_en}
+                key={item.title.en}
                 imgSrc={
                   item.animation === '1'
                     ? '/category/hover-1.png'
@@ -99,13 +99,13 @@ const Category = ({
                     : ''
                 }
                 categoryData={item}
-                imgAlt={ctx.language === 'id' ? item.title_id : item.title_en}
-                title={ctx.language === 'id' ? item.title_id : item.title_en}
+                imgAlt={ctx.language === 'id' ? item.title.id : item.title.en}
+                title={ctx.language === 'id' ? item.title.id : item.title.en}
                 button={product.btn_lang}
                 description={
                   ctx.language === 'id'
-                    ? item.description_id
-                    : item.description_en
+                    ? item.description.id
+                    : item.description.en
                 }
                 link={`/products/${item.slug.current}`}
                 lang={ctx.language}

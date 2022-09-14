@@ -203,11 +203,11 @@ const Recipe = ({
       <SEO
         title={ctx.language === 'id' ? 'Resep' : 'Recipes'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? recipe.seo_id : recipe.seo_en}
+        inputSEO={ctx.language === 'id' ? recipe.seo?.id : recipe.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -239,7 +239,7 @@ const Recipe = ({
 
           <div className="w-full absolute-center text-center pt-12 px-8">
             <h1 className="font-nutmeg font-bold text-h5 text-white leading-tight lg:text-h2 xl:text-h1">
-              {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
+              {ctx.language === 'id' ? recipe.title.id : recipe.title.en}
             </h1>
           </div>
         </div>
@@ -251,12 +251,12 @@ const Recipe = ({
                 ? `Diurutkan Secara ${
                     filterValue.length < 1
                       ? ' Bawaan'
-                      : filterValue.map((obj) => obj.data.title_id)
+                      : filterValue.map((obj) => obj.data.title.id)
                   }`
                 : `Sorted by ${
                     filterValue.length < 1
                       ? ' Default'
-                      : filterValue.map((obj) => obj.data.title_en)
+                      : filterValue.map((obj) => obj.data.title.en)
                   }`}
             </span>
             <StrokeButton
@@ -289,7 +289,7 @@ const Recipe = ({
             {dataRecipe.length > 0 ? (
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
                 {dataRecipe.map((item, index) => (
-                  <div className="w-full" key={`${item.title_en}[${index}]`}>
+                  <div className="w-full" key={index}>
                     <RecipeCard
                       imgSrc={urlFor(item.thumbnail)
                         .auto('format')
@@ -302,7 +302,7 @@ const Recipe = ({
                         .url()}
                       imgAlt={item.thumbnail.alt}
                       title={
-                        ctx.language === 'id' ? item.title_id : item.title_en
+                        ctx.language === 'id' ? item.title.id : item.title.en
                       }
                       link={`/recipes/${item.slug.current}`}
                       category={item.recipeCategory}

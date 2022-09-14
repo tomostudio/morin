@@ -51,11 +51,11 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Acara' : 'Events'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? event.seo_id : event.seo_en}
+        inputSEO={ctx.language === 'id' ? event.seo?.id : event.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -87,7 +87,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
 
           <div className='w-full absolute-center text-center pt-12 px-8'>
             <h1 className='font-nutmeg font-bold text-ctitle text-white leading-tight lg:text-h2 xl:text-h1'>
-              {ctx.language === 'id' ? event.title_id : event.title_en}
+              {ctx.language === 'id' ? event.title.id : event.title.en}
             </h1>
           </div>
         </div>
@@ -95,7 +95,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
         <div className='max-w-screen-2xl mx-auto px-4 my-5 md:my-10 md:px-8'>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
             {dataEvent?.map((item, index) => (
-              <div className='w-full' key={`${item.title_en}[${index}]`}>
+              <div className='w-full' key={`${item.title.en}[${index}]`}>
                 <EventCard
                   imgSrc={urlFor(item.thumbnail)
                     .auto('format')
@@ -106,14 +106,14 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
                     .width(600)
                     .blur(25)
                     .url()}
-                  imgAlt={ctx.language === 'id' ? item.title_id : item.title_en}
+                  imgAlt={ctx.language === 'id' ? item.title.id : item.title.en}
                   type={
                     ctx.language === 'id'
-                      ? item.eventCategory[0].title_id
-                      : item.eventCategory[0].title_en
+                      ? item.eventCategory[0].title.id
+                      : item.eventCategory[0].title.en
                   }
                   date={dateParse(item.date, ctx.language)}
-                  title={ctx.language === 'id' ? item.title_id : item.title_en}
+                  title={ctx.language === 'id' ? item.title.id : item.title.en}
                   link={`/events/${item.slug.current}`}
                 />
               </div>

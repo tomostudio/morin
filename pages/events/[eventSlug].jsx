@@ -48,13 +48,13 @@ const EventDetail = ({
   return (
     <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <SEO
-        title={ctx.language == 'id' ? event.title_id : event.title_en}
+        title={ctx.language == 'id' ? event.title.id : event.title.en}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? event.seo_id : event.seo_en}
+        inputSEO={ctx.language === 'id' ? event.seo?.id : event.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -72,14 +72,14 @@ const EventDetail = ({
               {dateParse(event.date, ctx.language, true)}
             </span>
             <h1 className="font-nutmeg text-[48px] mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold">
-              {ctx.language === 'id' ? event.title_id : event.title_en}
+              {ctx.language === 'id' ? event.title.id : event.title.en}
             </h1>
             {event.eventCategory?.length > 0 && (
               <div className="flex flex-wrap items-center justify-center">
                 {event.eventCategory?.map((item, id) => (
                   <EventTag
                     label={
-                      ctx.language === 'id' ? item.title_id : item.title_en
+                      ctx.language === 'id' ? item.title.id : item.title.en
                     }
                     key={id}
                   />
@@ -99,8 +99,8 @@ const EventDetail = ({
             <PortableText
               value={
                 ctx.language === 'id'
-                  ? event.description_id
-                  : event.description_en
+                  ? event.description?.id
+                  : event.description?.en
               }
               components={{
                 block: {
@@ -158,7 +158,7 @@ const EventDetail = ({
                 {eventListAPI?.slice(0, 2).map((item, index) => (
                   <div
                     className="w-full mb-4 md:w-1/2 md:mb-0"
-                    key={`${item.title_en}[${index}]`}
+                    key={`${item.title.en}[${index}]`}
                   >
                     <HighlightCard
                       imgSrc={urlFor(item.thumbnail)
@@ -173,7 +173,7 @@ const EventDetail = ({
                       imgAlt={item.thumbnail.alt}
                       date={dateParse(item.date, ctx.language)}
                       title={
-                        ctx.language === 'id' ? item.title_id : item.title_en
+                        ctx.language === 'id' ? item.title.id : item.title.en
                       }
                       button={eventBtn.language.event.btn}
                       link={`/events/${item.slug.current}`}

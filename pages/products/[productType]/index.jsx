@@ -44,16 +44,16 @@ const ProductList = ({
         {/* <Header /> */}
         <SEO
           title={
-            ctx.language === 'id' ? productType.title_id : productType.title_en
+            ctx.language === 'id' ? productType.title.id : productType.title.en
           }
           pagelink={router.pathname}
           inputSEO={
-            ctx.language === 'id' ? productType.seo_id : productType.seo_en
+            ctx.language === 'id' ? productType.seo?.id : productType.seo?.en
           }
           defaultSEO={
             typeof seo !== 'undefined' && ctx.language === 'id'
-              ? seo.seo_id
-              : seo.seo_en
+              ? seo.seo?.id
+              : seo.seo?.en
           }
           webTitle={typeof seo !== 'undefined' && seo.webTitle}
         />
@@ -65,42 +65,42 @@ const ProductList = ({
           <div className=" max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
             <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
               {ctx.language === 'id'
-                ? productType.title_id
-                : productType.title_en}
+                ? productType.title.id
+                : productType.title.en}
               <div className="w-full h-full absolute-center hidden lg:block ">
                 {/* Decor Left */}
                 <div className="w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor.decor1.image_id)
+                      src={urlFor(productType.decor.decor1.image.id)
                         .auto('format')
                         .width(400)
                         .url()}
-                      blurDataURL={urlFor(productType.decor.decor1.image_id)
+                      blurDataURL={urlFor(productType.decor.decor1.image.id)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor.decor1.image_id.alt}
+                      alt={productType.decor.decor1.image.id.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor.decor1.image_en)
+                      src={urlFor(productType.decor.decor1.image.en)
                         .auto('format')
                         .width(400)
                         .height(385)
                         .url()}
-                      blurDataURL={urlFor(productType.decor.decor1.image_en)
+                      blurDataURL={urlFor(productType.decor.decor1.image.en)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor.decor1.image_en.alt}
+                      alt={productType.decor.decor1.image.en.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
@@ -111,34 +111,34 @@ const ProductList = ({
                 <div className="w-full h-96 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]">
                   {ctx.language === 'id' ? (
                     <Image
-                      src={urlFor(productType.decor.decor2.image_id)
+                      src={urlFor(productType.decor.decor2.image.id)
                         .auto('format')
                         .width(500)
                         .url()}
-                      blurDataURL={urlFor(productType.decor.decor2.image_id)
+                      blurDataURL={urlFor(productType.decor.decor2.image.id)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor.decor2.image_id.alt}
+                      alt={productType.decor.decor2.image.id.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
                     />
                   ) : (
                     <Image
-                      src={urlFor(productType.decor.decor2.image_en)
+                      src={urlFor(productType.decor.decor2.image.en)
                         .auto('format')
                         .width(500)
                         .url()}
-                      blurDataURL={urlFor(productType.decor.decor2.image_en)
+                      blurDataURL={urlFor(productType.decor.decor2.image.en)
                         .auto('format')
                         .width(300)
                         .blur(25)
                         .url()}
                       placeholder="blur"
-                      alt={productType.decor.decor2.image_en.alt}
+                      alt={productType.decor.decor2.image.en.alt}
                       layout="fill"
                       objectFit="contain"
                       objectPosition="center"
@@ -150,8 +150,8 @@ const ProductList = ({
 
             <p className="font-semibold max-w-[400px] mx-auto">
               {ctx.language === 'id'
-                ? productType.description_id
-                : productType.description_en}
+                ? productType.description.id
+                : productType.description.en}
             </p>
           </div>
 
@@ -159,10 +159,10 @@ const ProductList = ({
             {productType.product?.map((item, index) => (
               <div
                 className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
-                key={`${item.title_en}${index}`}
+                key={`${item.title.en}${index}`}
               >
                 <ProductCard
-                  title={ctx.language === 'id' ? item.title_id : item.title_en}
+                  title={ctx.language === 'id' ? item.title.id : item.title.en}
                   bgColor={
                     item.backgroundColor
                       ? item.backgroundColor.hex

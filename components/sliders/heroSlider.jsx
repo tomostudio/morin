@@ -27,13 +27,13 @@ const HeroSlider = ({ data, className, lang }) => {
         onTransitionEnd={(e) =>
           ctx.setLangColor(
             lang === 'id'
-              ? data.component_id[e.activeIndex].langColor
-              : data.component_en[e.activeIndex].langColor,
+              ? data.component.id[e.activeIndex].langColor
+              : data.component.en[e.activeIndex].langColor,
           )
         }
       >
         {lang === 'id'
-          ? data.component_id.map((item, index) =>
+          ? data.component.id.map((item, index) =>
               item.option ? (
                 <SwiperSlide key={index}>
                   <div className="relative w-screen h-screen">
@@ -136,7 +136,7 @@ const HeroSlider = ({ data, className, lang }) => {
                 </SwiperSlide>
               ),
             )
-          : data.component_en.map((item, index) =>
+          : data.component.en.map((item, index) =>
               item.option ? (
                 <SwiperSlide key={index}>
                   <div className="relative w-screen h-screen">

@@ -48,11 +48,11 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Tanya Jawab' : 'FAQ'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? faq.seo_id : faq.seo_en}
+        inputSEO={ctx.language === 'id' ? faq.seo?.id : faq.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -63,7 +63,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
         >
           <div className="mb-16">
             <div className=" w-full md:w-3/4 text-morin-blue mx-auto text-center font-nutmeg text-h2 lg:text-h1 leading-none  font-bold">
-              {ctx.language === 'id' ? faq.title_id : faq.title_en}
+              {ctx.language === 'id' ? faq.title.id : faq.title.en}
             </div>
           </div>
 
@@ -75,7 +75,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
                   key={index}
                 >
                   <FAQCard
-                    title={item.title_id}
+                    title={item.title.id}
                     onClick={() => {
                       setModalState(true)
                       document.querySelector('body').classList.add('faq')
@@ -89,7 +89,7 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
                   key={index}
                 >
                   <FAQCard
-                    title={item.title_en}
+                    title={item.title.en}
                     onClick={() => {
                       setModalState(true)
                       document.querySelector('body').classList.add('faq')
@@ -133,12 +133,12 @@ const FAQ = ({ faqAPI, faqListAPI, seoAPI, footerAPI, translation }) => {
         </div>
         <div className="flex flex-col justify-center w-full h-full bg-white absolute-center px-8 md:bg-transparent md:justify-start md:relative md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 text-morin-blue md:text-inherit">
           <span className="block font-nutmeg text-[22pt] md:text-h4 leading-tight mb-6 lg:font-bold lg:mb-8">
-            {ctx.language === 'id' ? modalData?.title_id : modalData?.title_en}
+            {ctx.language === 'id' ? modalData?.title.id : modalData?.title.en}
           </span>
           <p className="text-default ">
             {ctx.language === 'id'
-              ? modalData?.description_id
-              : modalData?.description_en}
+              ? modalData?.description.id
+              : modalData?.description.en}
           </p>
         </div>
       </BasicModal>

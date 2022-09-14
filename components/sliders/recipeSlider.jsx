@@ -34,7 +34,7 @@ const RecipeSlider = ({ data, lang }) => {
                       .url()}
                     key={index}
                     imgAlt={item.thumbnail.alt}
-                    title={lang === 'id' ? item.title_id : item.title_en}
+                    title={lang === 'id' ? item.title?.id : item.title?.en}
                     link={`/recipes/${item.slug.current}`}
                     className={`w-1/3 min-w-[240px] md:min-w-[360px]`}
                   />

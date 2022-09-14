@@ -20,8 +20,8 @@ const HighlightSlider = ({ data, lang, button }) => {
             <div
               key={
                 lang === 'id'
-                  ? `${item.title_id}(${index})`
-                  : `${item.title_en}(${index})`
+                  ? `${item.title.id}(${index})`
+                  : `${item.title.en}(${index})`
               }
               className='w-full md:w-1/3 min-w-[350px] max-w-xl md:max-w-none'
             >
@@ -34,7 +34,7 @@ const HighlightSlider = ({ data, lang, button }) => {
                   .url()}
                 imgAlt={item.thumbnail.alt}
                 date={dateParse(item.date, lang)}
-                title={lang === 'id' ? item.title_id : item.title_en}
+                title={lang === 'id' ? item.title.id : item.title.en}
                 link={`/events/${item.slug.current}`}
                 lang={lang}
                 button={button}

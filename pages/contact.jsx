@@ -27,11 +27,11 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI, translation })
       <SEO
         title={ctx.language === 'id' ? 'Kontak' : 'Contact'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? contact.seo_id : contact.seo_en}
+        inputSEO={ctx.language === 'id' ? contact.seo?.id : contact.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -41,19 +41,19 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI, translation })
           classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-16'
         >
           <h1 className='text-morin-blue text-ctitle font-nutmeg font-bold mx-auto mb-8 md:text-ctitleBig lg:text-h2 xl:text-h1 xl:mb-16'>
-            {ctx.language === 'id' ? contact.title_id : contact.title_en}
+            {ctx.language === 'id' ? contact.title.id : contact.title.en}
           </h1>
 
           {contactListAPI?.map((item, index) => (
             <div className='mb-4 last:mb-0' key={index}>
               <ContactCard
                 imageData={item.images}
-                label={ctx.language === 'id' ? item.title_id : item.title_en}
+                label={ctx.language === 'id' ? item.title.id : item.title.en}
                 button={contact.btn_lang}
                 description={
                   ctx.language === 'id'
-                    ? item.description_id
-                    : item.description_en
+                    ? item.description.id
+                    : item.description.en
                 }
                 maps={item.maps}
                 lang={ctx.language}

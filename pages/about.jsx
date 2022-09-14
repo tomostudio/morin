@@ -75,11 +75,11 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Tentang Kami' : 'About'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? about.seo_id : about.seo_en}
+        inputSEO={ctx.language === 'id' ? about.seo?.id : about.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -100,7 +100,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
             <div className='relative max-w-md text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl'>
               <div className='relative'>
                 <h1 className='font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20'>
-                  {ctx.language === 'id' ? about.title_id : about.title_en}
+                  {ctx.language === 'id' ? about.title.id : about.title.en}
                 </h1>
                 <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
                   <Highlight className='hidden lg:block' />
@@ -216,8 +216,8 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                   type='OUR PROCESS'
                   title={
                     ctx.language === 'id'
-                      ? about.our_process.titleCover_id
-                      : about.our_process.titleCover_en
+                      ? about.our_process.titleCover.id
+                      : about.our_process.titleCover.en
                   }
                   button={about.our_process.btn}
                   imgSrc={urlFor(about.our_process.thumbnail)
@@ -239,8 +239,8 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                   type='VISI & MISI'
                   title={
                     ctx.language === 'id'
-                      ? about.visi_misi.titleCover_id
-                      : about.visi_misi.titleCover_en
+                      ? about.visi_misi.titleCover.id
+                      : about.visi_misi.titleCover.en
                   }
                   button={about.visi_misi.btn}
                   imgSrc={urlFor(about.visi_misi.thumbnail)
@@ -278,15 +278,15 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
       >
         <span className='block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig'>
           {ctx.language === 'id'
-            ? about.first_more.title_id
-            : about.first_more.title_en}
+            ? about.first_more.title.id
+            : about.first_more.title.en}
         </span>
         <div className='content about'>
           <PortableText
             value={
               ctx.language === 'id'
-                ? about.first_more.description_id
-                : about.first_more.description_en
+                ? about.first_more.description.id
+                : about.first_more.description.en
             }
             components={AboutModalComponents}
           />
@@ -299,16 +299,16 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
       >
         <span className='block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig'>
           {ctx.language === 'id'
-            ? about.visi_misi.titleDescription_id
-            : about.visi_misi.titleDescription_en}
+            ? about.visi_misi.titleDesc.id
+            : about.visi_misi.titleDesc.en}
         </span>
 
         <div className='content about'>
           <PortableText
             value={
               ctx.language === 'id'
-                ? about.visi_misi.description_id
-                : about.visi_misi.description_en
+                ? about.visi_misi.description.id
+                : about.visi_misi.description.en
             }
             components={AboutModalComponents}
           />
@@ -322,16 +322,16 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
       >
         <span className='block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig'>
           {ctx.language === 'id'
-            ? about.our_process.titleDescription_id
-            : about.our_process.titleDescription_en}
+            ? about.our_process.titleDesc?.id
+            : about.our_process.titleDesc?.en}
         </span>
 
         <div className='content about'>
           <PortableText
             value={
               ctx.language === 'id'
-                ? about.our_process.description_id
-                : about.our_process.description_en
+                ? about.our_process.description.id
+                : about.our_process.description.en
             }
             components={AboutModalComponents}
           />

@@ -34,7 +34,7 @@ const RecipeCard = ({
             {category?.map((data, id) => (
               <div key={id} className={recipeTag}>
                 <span className="pt-0.5 lg:pt-1 font-default">
-                  {lang === 'id' ? data.title_id : data.title_en}
+                  {lang === 'id' ? data.title.id : data.title.en}
                 </span>
               </div>
             ))}

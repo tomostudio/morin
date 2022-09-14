@@ -30,11 +30,11 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? getMorin.seo_id : getMorin.seo_en}
+        inputSEO={ctx.language === 'id' ? getMorin.seo?.id : getMorin.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />

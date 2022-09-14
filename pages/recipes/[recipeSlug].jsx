@@ -314,13 +314,13 @@ const RecipeDetail = ({
 
   const handleShareButton = () => {
     const shareData = {
-      title: `${ctx.language === 'id' ? recipe.title_id : recipe.title_en} at ${
+      title: `${ctx.language === 'id' ? recipe.title.id : recipe.title.en} at ${
         seo.webTitle
       }`,
       text:
         ctx.language === 'id'
-          ? recipe.description_id && toPlainText(recipe.description_id)
-          : recipe.description_en && toPlainText(recipe.description_en),
+          ? recipe.description.id && toPlainText(recipe.description.id)
+          : recipe.description.en && toPlainText(recipe.description.en),
       url: baseUrl,
     }
 
@@ -341,13 +341,13 @@ const RecipeDetail = ({
       }}
     >
       <SEO
-        title={ctx.language === 'id' ? recipe.title_id : recipe.title_en}
+        title={ctx.language === 'id' ? recipe.title.id : recipe.title.en}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? recipe.seo_id : recipe.seo_en}
+        inputSEO={ctx.language === 'id' ? recipe.seo?.id : recipe.seo?.en}
         defaultSEO={
           typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo_id
-            : seo.seo_en
+            ? seo.seo?.id
+            : seo.seo?.en
         }
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -387,14 +387,14 @@ const RecipeDetail = ({
 
               <div className="w-full text-white text-center absolute top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10">
                 <h1 className="font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left">
-                  {ctx.language === 'id' ? recipe.title_id : recipe.title_en}
+                  {ctx.language === 'id' ? recipe.title.id : recipe.title.en}
                 </h1>
                 <div className="flex justify-center lg:w-1/2 lg:h-fit lg:flex-wrap lg:items-start lg:justify-end lg:max-w-[30%] lg:pt-4 lg:ml-auto">
                   {recipe.recipeCategory?.map((data, index) => (
                     <RecipeTag
                       key={index}
                       label={
-                        ctx.language === 'id' ? data.title_id : data.title_en
+                        ctx.language === 'id' ? data.title.id : data.title.en
                       }
                     />
                   ))}
@@ -403,15 +403,15 @@ const RecipeDetail = ({
             </div>
 
             {/* description */}
-            {((ctx.language === 'id' && recipe.description_id) ||
-              (ctx.language === 'en' && recipe.description_en)) && (
+            {((ctx.language === 'id' && recipe.description.id) ||
+              (ctx.language === 'en' && recipe.description.en)) && (
               <div className="bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-4">
                 <div className="lg:max-w-3xl lg:mx-auto content">
                   <PortableText
                     value={
                       ctx.language === 'id'
-                        ? recipe.description_id
-                        : recipe.description_en
+                        ? recipe.description.id
+                        : recipe.description.en
                     }
                     components={{
                       block: {
@@ -426,9 +426,9 @@ const RecipeDetail = ({
 
             <div className="grid grid-cols-1 gap-4 xl:grid-cols-2 xl:mb-4">
               {/* ingredients */}
-              {((ctx.language === 'id' && recipe.ingredients_id?.length > 0) ||
+              {((ctx.language === 'id' && recipe.ingredients?.id?.length > 0) ||
                 (ctx.language === 'en' &&
-                  recipe.ingredients_en?.length > 0)) && (
+                  recipe.ingredients?.en?.length > 0)) && (
                 <div className="relative rounded-2xl overflow-hidden">
                   <div
                     className="relative bg-white mb-8 py-8 px-11 w-full xl:py-6 xl:mb-0 h-full xl:overflow-y-auto xl:aspect-[6/5] hidescrollbar"
@@ -442,13 +442,13 @@ const RecipeDetail = ({
                     </h2>
                     <div className="lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start">
                       {ctx.language === 'id'
-                        ? recipe.ingredients_id?.map((data, index) =>
+                        ? recipe.ingredients?.id?.map((data, index) =>
                             !data.title ? (
                               <RecipeCheckbox
                                 key={index}
-                                name={`ingredients_id-${index + 1}`}
+                                name={`ingredients.id-${index + 1}`}
                                 label={data.description}
-                                value={`ingredients_id-${index + 1}`}
+                                value={`ingredients.id-${index + 1}`}
                               />
                             ) : (
                               <span
@@ -459,13 +459,13 @@ const RecipeDetail = ({
                               </span>
                             ),
                           )
-                        : recipe.ingredients_en?.map((data, index) =>
+                        : recipe.ingredients.en?.map((data, index) =>
                             !data.title ? (
                               <RecipeCheckbox
                                 key={index}
-                                name={`ingredients_id-${index + 1}`}
+                                name={`ingredients.id-${index + 1}`}
                                 label={data.description}
-                                value={`ingredients_id-${index + 1}`}
+                                value={`ingredients.id-${index + 1}`}
                               />
                             ) : (
                               <span className="block font-bold mb-2 md:mb-3 lg:mb-4">
@@ -491,13 +491,13 @@ const RecipeDetail = ({
                     {recipe.made?.map((item, index) => (
                       <div
                         className="mb-3 xl:mb-4"
-                        key={`${item.title_en}${index}`}
+                        key={`${item.title.en}${index}`}
                       >
                         <ProductCard
                           title={
                             ctx.language === 'id'
-                              ? item.title_id
-                              : item.title_en
+                              ? item.title.id
+                              : item.title.en
                           }
                           bgColor={
                             item.backgroundColor
@@ -526,8 +526,8 @@ const RecipeDetail = ({
               )}
             </div>
 
-            {((ctx.language === 'id' && recipe.steps_id?.length > 0) ||
-              (ctx.language === 'en' && recipe.steps_en?.length > 0)) && (
+            {((ctx.language === 'id' && recipe.steps.id?.length > 0) ||
+              (ctx.language === 'en' && recipe.steps.en?.length > 0)) && (
               <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
                 <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
                   <h2 className="block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
@@ -584,15 +584,15 @@ const RecipeDetail = ({
                           <FancyLink
                             destination={`mailto:?subject=${
                               ctx.language === 'id'
-                                ? recipe.title_id
-                                : recipe.title_en
+                                ? recipe.title.id
+                                : recipe.title.en
                             }&body=${
                               ctx.language === 'id'
-                                ? recipe.description_id
-                                  ? toPlainText(recipe.description_id)
+                                ? recipe.description.id
+                                  ? toPlainText(recipe.description.id)
                                   : ''
-                                : recipe.description_en
-                                ? toPlainText(recipe.description_en)
+                                : recipe.description.en
+                                ? toPlainText(recipe.description.en)
                                 : ''
                             } %0D%0A${baseUrl}`}
                             className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
@@ -631,7 +631,7 @@ const RecipeDetail = ({
 
                 <div className="lg:max-w-3xl lg:mx-auto">
                   {ctx.language === 'id'
-                    ? recipe.steps_id?.map((item, index) => (
+                    ? recipe.steps.id?.map((item, index) => (
                         <InstructionCard
                           key={index}
                           step={index + 1}
@@ -640,7 +640,7 @@ const RecipeDetail = ({
                           images={item.images}
                         />
                       ))
-                    : recipe.steps_en?.map((item, index) => (
+                    : recipe.steps.en?.map((item, index) => (
                         <InstructionCard
                           key={index}
                           step={index + 1}

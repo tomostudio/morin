@@ -28,14 +28,14 @@ const RecipeFilter = ({
             className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0"
           >
             <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
-              {lang === 'id' ? item.title_id : item.title_en}:
+              {lang === 'id' ? item.title.id : item.title.en}:
             </span>
             <div className="flex flex-wrap">
               {item.data?.map((data, index) => (
                 <div className="mr-2 last:mr-0" key={index}>
                   <CheckboxTag
                     name={data._id}
-                    label={lang === 'id' ? data.title_id : data.title_en}
+                    label={lang === 'id' ? data.title.id : data.title.en}
                     value={data._id}
                     checked={value
                       .find((object) => object._id === item._id)?.data._id === data._id}
@@ -46,66 +46,6 @@ const RecipeFilter = ({
             </div>
           </div>
         ))}
-        {/* <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
-          <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
-            {lang.locale === 'id' ? 'Kesulitan' : 'Difficulty'}:
-          </span>
-          <div className="flex flex-wrap">
-            {difficulty?.map((y) => (
-              <div className="mr-2 last:mr-0" key={y?.title_en}>
-                <CheckboxTag
-                  name={y.title_en}
-                  label={lang.locale === "id" ? y.title_id : y.title_en}
-                  value={y.title_en}
-                  checked={value.map(object => object.difficulty).includes(y.title_en)}
-                  onChange={() => filterFunc({
-                    difficulty: y.title_en
-                  })}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
-          <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
-            {lang.locale === 'id' ? 'Waktu memasak' : 'Cooking Time'}:
-          </span>
-          <div className="flex flex-wrap">
-            {cookingTime?.map((y) => (
-              <div className="mr-2 last:mr-0" key={y?.title_en}>
-                <CheckboxTag
-                  name={y.title_en}
-                  label={lang.locale === "id" ? y.title_id : y.title_en}
-                  value={y.title_en}
-                  checked={value.map(object => object.cooking_time).includes(y.title_en)}
-                  onChange={() => filterFunc({
-                    cooking_time: y.title_en
-                  })}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="mb-4 last:mb-0 lg:flex lg:items-center lg:mr-10 lg:last:mr-0">
-          <span className="block font-nutmeg text-default text-morin-red leading-tight mb-2 lg:text-subtitle2 lg:mr-5">
-            {lang.locale === 'id' ? 'Kategori Resep' : 'Recipe Category'}:
-          </span>
-          <div className="flex flex-wrap">
-            {recipeCategory?.map((y) => (
-              <div className="mr-2 last:mr-0" key={y?.title_en}>
-                <CheckboxTag
-                  name={y.title_en}
-                  label={lang.locale === "id" ? y.title_id : y.title_en}
-                  value={y.title_en}
-                  checked={value.map(object => object.category).includes(y.title_en)}
-                  onChange={() => filterFunc({
-                    category: y.title_en
-                  })}
-                />
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </Collapsible>
   )
