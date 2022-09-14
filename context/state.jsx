@@ -4,10 +4,8 @@ const AppContext = createContext()
 
 export function AppWrapper({ children }) {
   const [scrollState, setScrollState] = useState(null)
-  const mobileDark = true
   const [language, setLanguage] = useState('id')
   const [langColor, setLangColor] = useState(true)
-  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuOpen = false
 
   return (
@@ -19,7 +17,6 @@ export function AppWrapper({ children }) {
         setLangColor,
         scrollState,
         setScrollState,
-        mobileDark,
         mobileMenuOpen,
       }}
     >
