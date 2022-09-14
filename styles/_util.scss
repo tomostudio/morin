@@ -95,6 +95,20 @@ main {
   }
 }
 
+.hover-white {
+  &:hover {
+    & * {
+      color: white !important;
+    }
+    & svg:not(.fill-hover) * {
+      stroke: white !important;
+    }
+    & svg.fill-hover * {
+      fill: white !important;
+    }
+  }
+}
+
 .solid-button {
   & * {
     @apply transition-colors duration-300;

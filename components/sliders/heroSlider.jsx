@@ -90,8 +90,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           destination='/products'
                           color={
                             item.langColor === 'white'
-                              ? colors.white
-                              : colors.black
+                              ? '#FFFFFF'
+                              : '#000000'
                           }
                           hover={`${
                             item.langColor === 'white' ? 'white' : 'black'
@@ -120,8 +120,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           destination='/products'
                           color={
                             item.langColor === 'white'
-                              ? colors.white
-                              : colors.black
+                              ? '#FFFFFF'
+                              : '#000000'
                           }
                           hover={`${
                             item.langColor === 'white' ? 'white' : 'black'
@@ -190,8 +190,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           destination='/products'
                           color={
                             item.langColor === 'white'
-                              ? colors.white
-                              : colors.black
+                              ? '#FFFFFF'
+                              : '#000000'
                           }
                           hover={`${
                             item.langColor === 'white' ? 'white' : 'black'
@@ -220,8 +220,8 @@ const HeroSlider = ({ data, className, lang }) => {
                           destination='/products'
                           color={
                             item.langColor === 'white'
-                              ? colors.white
-                              : colors.black
+                              ? '#FFFFFF'
+                              : '#000000'
                           }
                           hover={`${
                             item.langColor === 'white' ? 'white' : 'black'
