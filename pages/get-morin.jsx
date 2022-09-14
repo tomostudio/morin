@@ -49,7 +49,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                   : getMorin.language.shop_online.en}
               </h2>
               <div className='w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start'>
-                {!seo.hide_shop && (
+                {!seo.advance_setting.hide_shop && (
                   <FancyLink
                     blank
                     destination={getMorin.shop.link}
@@ -177,8 +177,8 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
         <Footer
           lang={ctx.language}
           button={translation.menu_lang}
-          faq={seo.hide_faq}
-          mailchimp={seo.mailchimpID}
+          faq={seo.advance_setting.hide_faq}
+          mailchimp={footer.mailchimpID}
           footer={footer}
           translation={translation}
         />

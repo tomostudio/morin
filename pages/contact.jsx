@@ -65,8 +65,8 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI, translation })
         <Footer
           lang={ctx.language}
           button={translation.menu_lang}
-          faq={seo.hide_faq}
-          mailchimp={seo.mailchimpID}
+          faq={seo.advance_setting.hide_faq}
+          mailchimp={footer.mailchimpID}
           footer={footer}
           translation={translation}
         />

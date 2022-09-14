@@ -393,7 +393,7 @@ const ProductDetail = ({
                 ? product.description?.id
                 : product.description?.en}
             </h2>
-            {!seo.hide_shop && (
+            {!seo.advance_setting.hide_shop && (
               <FancyLink
                 blank
                 destination={
@@ -600,8 +600,8 @@ const ProductDetail = ({
         <Footer
           lang={ctx.language}
           button={translation.menu_lang}
-          faq={seo.hide_faq}
-          mailchimp={seo.mailchimpID}
+          faq={seo.advance_setting.hide_faq}
+          mailchimp={footer.mailchimpID}
           footer={footer}
           translation={translation}
         />
