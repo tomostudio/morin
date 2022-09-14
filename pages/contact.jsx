@@ -19,7 +19,7 @@ const Contact = ({ contactAPI, contactListAPI, seoAPI, footerAPI, translation })
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(contact.langColor)
+    ctx.setLangColor('black')
     useEffectInit({ context: ctx, mobileDark: true });
   }, []);
   return (

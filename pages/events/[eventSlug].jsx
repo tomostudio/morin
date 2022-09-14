@@ -1,30 +1,30 @@
-import Container from '@/components/module/container'
-import Layout from '@/components/module/layout'
-import Header from '@/components/module/header'
-import Footer from '@/components/module/footer'
-import Image from 'next/image'
-import colors from '@/helpers/colors'
-import HighlightCard from '@/components/shared-module/highlightCard'
-import { useEffectInit } from '@/components/utils/preset'
-import { useEffect } from 'react'
-import { useAppContext } from 'context/state'
-import client from '@/helpers/sanity/client'
-import { PortableText } from '@portabletext/react'
-import urlFor from '@/helpers/sanity/urlFor'
-import SEO from '@/components/utils/seo'
-import { useRouter } from 'next/router'
-import dateParse from '@/components/utils/dateParse'
-import { motion } from 'framer-motion'
-import { fade } from '@/helpers/transitions'
-import { useNextSanityImage } from 'next-sanity-image'
+import Container from '@/components/module/container';
+import Layout from '@/components/module/layout';
+import Header from '@/components/module/header';
+import Footer from '@/components/module/footer';
+import Image from 'next/image';
+import colors from '@/helpers/colors';
+import HighlightCard from '@/components/shared-module/highlightCard';
+import { useEffectInit } from '@/components/utils/preset';
+import { useEffect } from 'react';
+import { useAppContext } from 'context/state';
+import client from '@/helpers/sanity/client';
+import { PortableText } from '@portabletext/react';
+import urlFor from '@/helpers/sanity/urlFor';
+import SEO from '@/components/utils/seo';
+import { useRouter } from 'next/router';
+import dateParse from '@/components/utils/dateParse';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/transitions';
+import { useNextSanityImage } from 'next-sanity-image';
 
 const EventTag = ({ label }) => {
   return (
-    <div className="flex items-center h-6 font-semibold leading-none border-2 border-solid border-morin-blue rounded-full px-4 mr-2 last:mr-0 md:h-8 md:mr-5">
-      <span className="pt-0.5 md:pt-1">{label}</span>
+    <div className='flex items-center h-6 font-semibold leading-none border-2 border-solid border-morin-blue rounded-full px-4 mr-2 last:mr-0 md:h-8 md:mr-5'>
+      <span className='pt-0.5 md:pt-1'>{label}</span>
     </div>
-  )
-}
+  );
+};
 
 const EventDetail = ({
   eventAPI,
@@ -44,7 +44,7 @@ const EventDetail = ({
   }, [])
 
   return (
-    <Layout className="overflow-hidden pt-[86px] lg:pt-32">
+    <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
       <SEO
         title={ctx.language == 'id' ? event.title.id : event.title.en}
         pagelink={router.pathname}
@@ -58,22 +58,22 @@ const EventDetail = ({
       />
 
       <motion.div
-        className="w-full "
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        className='w-full '
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
       >
-        <div className="text-morin-blue leading-tight">
-          <div className="text-center mb-7 md:mb-10  ">
-            <span className="block font-semibold mb-2.5">
+        <div className='text-morin-blue leading-tight'>
+          <div className='text-center mb-7 md:mb-10  '>
+            <span className='block font-semibold mb-2.5'>
               {dateParse(event.date, ctx.language, true)}
             </span>
-            <h1 className="font-nutmeg text-[48px] mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold">
+            <h1 className='font-nutmeg text-[48px] mx-auto mb-3 md:text-h1 md:mb-4 max-w-screen-xl font-bold'>
               {ctx.language === 'id' ? event.title.id : event.title.en}
             </h1>
             {event.eventCategory?.length > 0 && (
-              <div className="flex flex-wrap items-center justify-center">
+              <div className='flex flex-wrap items-center justify-center'>
                 {event.eventCategory?.map((item, id) => (
                   <EventTag
                     label={
@@ -86,14 +86,14 @@ const EventDetail = ({
             )}
           </div>
 
-          <div className=" w-full px-4 md:px-0 mb-7 md:mb-10 md:w-content max-w-screen-md max-h-max mx-auto flex justify-center">
+          <div className=' w-full px-4 md:px-0 mb-7 md:mb-10 md:w-content max-w-screen-md max-h-max mx-auto flex justify-center'>
             <Image
-              className="rounded-2xl overflow-hidden"
+              className='rounded-2xl overflow-hidden'
               {...useNextSanityImage(client, event.cover_image)}
-              layout="intrinsic"
+              layout='intrinsic'
             />
           </div>
-          <div className="lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14 mx-auto content">
+          <div className='lg:max-w-screen-2xl lg:px-8 mb-8 lg:mb-14 mx-auto content'>
             <PortableText
               value={
                 ctx.language === 'id'
@@ -114,27 +114,27 @@ const EventDetail = ({
                   imageComponent: (props) => {
                     const imageProps = useNextSanityImage(
                       client,
-                      props.value.image,
-                    )
+                      props.value.image
+                    );
                     if (props.value.option) {
                       return (
-                        <div className="image ">
+                        <div className='image '>
                           <Image
                             {...imageProps}
-                            layout="intrinsic"
-                            objectFit="cover"
+                            layout='intrinsic'
+                            objectFit='cover'
                             objectPosition={'center center'}
                           />
                         </div>
-                      )
+                      );
                     } else {
                       return (
-                        <div className="image fit ">
+                        <div className='image fit '>
                           <div>
-                            <Image {...imageProps} layout="intrinsic" />
+                            <Image {...imageProps} layout='intrinsic' />
                           </div>
                         </div>
-                      )
+                      );
                     }
                   },
                 },
@@ -143,19 +143,19 @@ const EventDetail = ({
           </div>
         </div>
 
-        <div className="w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10">
-          <div className="mx-auto w-full flex flex-col px-8 max-w-screen-2xl ">
-            <div className="mb-7 md:mb-8 lg:mb-10">
-              <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
+        <div className='w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10'>
+          <div className='mx-auto w-full flex flex-col px-8 max-w-screen-2xl '>
+            <div className='mb-7 md:mb-8 lg:mb-10'>
+              <h2 className='font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12'>
                 {ctx.language === 'id'
                   ? translation.eventLanguage.event.title.id
                   : translation.eventLanguage.event.title.en}
               </h2>
 
-              <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
+              <div className='flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3'>
                 {eventListAPI?.slice(0, 2).map((item, index) => (
                   <div
-                    className="w-full mb-4 md:w-1/2 md:mb-0"
+                    className='w-full mb-4 md:w-1/2 md:mb-0'
                     key={`${item.title.en}[${index}]`}
                   >
                     <HighlightCard
@@ -192,25 +192,25 @@ const EventDetail = ({
         </div>
       </motion.div>
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "eventList"]
-      `)
+      `);
 
-  const paths = []
+  const paths = [];
 
   res.map((data) => {
     return paths.push({
       params: {
         eventSlug: data.slug.current,
       },
-    })
-  })
+    });
+  });
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -220,21 +220,21 @@ export async function getStaticProps({ params }) {
         ...,
         eventCategory[]->,
       } 
-    `,
-  )
+    `
+  );
   const eventListAPI = await client.fetch(`
   *[_type == "eventList"]
-  `)
+  `);
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
-          `)
-  const [translation] = translationAPI
+          `);
+  const [translation] = translationAPI;
 
   return {
     props: {
@@ -244,7 +244,7 @@ export async function getStaticProps({ params }) {
       footerAPI,
       translation,
     },
-  }
+  };
 }
 
-export default EventDetail
+export default EventDetail;

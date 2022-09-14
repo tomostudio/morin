@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import client from '@/helpers/sanity/client';
+import { useAppContext } from 'context/state';
 import SEO from '@/components/utils/seo';
-import Error from 'next/error';
 import { useEffectInit } from '@/components/utils/preset';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -11,6 +11,13 @@ import { fade } from '@/helpers/transitions';
 const Error500 = ({ seoAPI }) => {
   const [seo] = seoAPI;
   const router = useRouter();
+
+  const ctx = useAppContext();
+  useEffect(() => {
+    ctx.setLangColor('black');
+    useEffectInit({ context: ctx });
+  }, []);
+
   return (
     <>
       <SEO
