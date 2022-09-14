@@ -1,18 +1,18 @@
-import Container from '@/components/module/container'
-import Footer from '@/components/module/footer'
-import Layout from '@/components/module/layout'
-import ProductCard from '@/components/shared-module/productCard'
-import { useEffectInit } from '@/components/utils/preset'
-import Image from 'next/image'
-import { useEffect } from 'react'
-import { useAppContext } from 'context/state'
-import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
-import SEO from '@/components/utils/seo'
-import { useRouter } from 'next/router'
-import colors from '@/helpers/colors'
-import { motion } from 'framer-motion'
-import { fade } from '@/helpers/transitions'
+import Container from '@/components/module/container';
+import Footer from '@/components/module/footer';
+import Layout from '@/components/module/layout';
+import ProductCard from '@/components/shared-module/productCard';
+import { useEffectInit } from '@/components/utils/preset';
+import Image from 'next/image';
+import { useEffect } from 'react';
+import { useAppContext } from 'context/state';
+import client from '@/helpers/sanity/client';
+import urlFor from '@/helpers/sanity/urlFor';
+import SEO from '@/components/utils/seo';
+import { useRouter } from 'next/router';
+import colors from '@/helpers/colors';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/transitions';
 
 const ProductList = ({
   productTypeAPI,
@@ -21,26 +21,26 @@ const ProductList = ({
   productAPI,
   translation,
 }) => {
-  const [seo] = seoAPI
-  const [productType] = productTypeAPI
-  const [footer] = footerAPI
-  const [product] = productAPI
-  const router = useRouter()
-  const ctx = useAppContext()
+  const [seo] = seoAPI;
+  const [productType] = productTypeAPI;
+  const [footer] = footerAPI;
+  const [product] = productAPI;
+  const router = useRouter();
+  const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(product.langColor)
-    useEffectInit({ context: ctx, mobileDark: true })
-  }, [])
+    ctx.setLangColor('black');
+    useEffectInit({ context: ctx });
+  }, []);
 
   return (
     <motion.div
-      className="w-full bg-morin-skyBlue"
-      initial="initial"
-      animate="enter"
-      exit="exit"
+      className='w-full bg-morin-skyBlue'
+      initial='initial'
+      animate='enter'
+      exit='exit'
       variants={fade}
     >
-      <Layout className="overflow-hidden pt-[86px] lg:pt-32">
+      <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
         {/* <Header /> */}
         <SEO
           title={
@@ -59,17 +59,17 @@ const ProductList = ({
         />
 
         <Container
-          className="pl-0 pr-0"
-          classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11"
+          className='pl-0 pr-0'
+          classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11'
         >
-          <div className=" max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md">
-            <h1 className="relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1">
+          <div className=' max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md'>
+            <h1 className='relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1'>
               {ctx.language === 'id'
                 ? productType.title.id
                 : productType.title.en}
-              <div className="w-full h-full absolute-center hidden lg:block ">
+              <div className='w-full h-full absolute-center hidden lg:block '>
                 {/* Decor Left */}
-                <div className="w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]">
+                <div className='w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor1.image.id)
@@ -81,11 +81,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder="blur"
+                      placeholder='blur'
                       alt={productType.decor.decor1.image.id.alt}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
+                      layout='fill'
+                      objectFit='contain'
+                      objectPosition='center'
                     />
                   ) : (
                     <Image
@@ -99,16 +99,16 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder="blur"
+                      placeholder='blur'
                       alt={productType.decor.decor1.image.en.alt}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
+                      layout='fill'
+                      objectFit='contain'
+                      objectPosition='center'
                     />
                   )}
                 </div>
                 {/* Decor Right */}
-                <div className="w-full h-96 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]">
+                <div className='w-full h-96 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor2.image.id)
@@ -120,11 +120,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder="blur"
+                      placeholder='blur'
                       alt={productType.decor.decor2.image.id.alt}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
+                      layout='fill'
+                      objectFit='contain'
+                      objectPosition='center'
                     />
                   ) : (
                     <Image
@@ -137,28 +137,28 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder="blur"
+                      placeholder='blur'
                       alt={productType.decor.decor2.image.en.alt}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
+                      layout='fill'
+                      objectFit='contain'
+                      objectPosition='center'
                     />
                   )}
                 </div>
               </div>
             </h1>
 
-            <p className="font-semibold max-w-[400px] mx-auto">
+            <p className='font-semibold max-w-[400px] mx-auto'>
               {ctx.language === 'id'
                 ? productType.description.id
                 : productType.description.en}
             </p>
           </div>
 
-          <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
+          <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
             {productType.product?.map((item, index) => (
               <div
-                className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
+                className='w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5'
                 key={`${item.title.en}${index}`}
               >
                 <ProductCard
@@ -196,25 +196,25 @@ const ProductList = ({
         />
       </Layout>
     </motion.div>
-  )
-}
+  );
+};
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "productType"]
-      `)
+      `);
 
-  const paths = []
+  const paths = [];
 
   res.map((data) => {
     return paths.push({
       params: {
         productType: data.slug.current,
       },
-    })
-  })
+    });
+  });
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -228,21 +228,21 @@ export async function getStaticProps({ params }) {
         },
         "product": *[_type=='productList' && references(^._id)]
       } 
-    `,
-  )
+    `
+  );
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   const productAPI = await client.fetch(`
   *[_type == "product"]
-  `)
+  `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
-          `)
-  const [translation] = translationAPI
+          `);
+  const [translation] = translationAPI;
 
   return {
     props: {
@@ -252,7 +252,7 @@ export async function getStaticProps({ params }) {
       productAPI,
       translation,
     },
-  }
+  };
 }
 
-export default ProductList
+export default ProductList;

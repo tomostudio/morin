@@ -42,22 +42,13 @@ export default function Home({
   const ctx = useAppContext()
 
   useEffect(() => {
-    const scrollListener = () => {
-      if (window.scrollY > 250) {
-        ctx.setLangColor(home.langColor)
-      }
-    }
 
-    setTimeout(() => {
-      document.addEventListener('scroll', scrollListener, false)
-    }, 50) // load delay
     return () => {
-      document.removeEventListener('scroll', scrollListener, false)
     }
   }, [])
 
   useEffect(() => {
-    useEffectInit({ context: ctx, mobileDark: false })
+    useEffectInit({ context: ctx})
 
     return () => {}
   }, [])

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
+import { useAppContext } from 'context/state';
+import { useEffectInit } from '@/components/utils/preset';
 import client from '@/helpers/sanity/client';
 import SEO from '@/components/utils/seo';
-import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
@@ -9,6 +11,13 @@ import Image from 'next/image';
 const Error404 = ({ seoAPI }) => {
   const [seo] = seoAPI;
   const router = useRouter();
+
+  const ctx = useAppContext();
+  useEffect(() => {
+    ctx.setLangColor('black');
+    useEffectInit({ context: ctx });
+  }, []);
+
   return (
     <>
       <SEO

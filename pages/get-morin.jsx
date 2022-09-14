@@ -22,8 +22,8 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
   const router = useRouter();
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(getMorin.langColor);
-    useEffectInit({ context: ctx, mobileDark: true });
+    ctx.setLangColor('black');
+    useEffectInit({ context: ctx });
   }, []);
   return (
     <Layout className='overflow-hidden pt-[86px] lg:pt-32'>

@@ -25,7 +25,6 @@ const HeroSlider = ({ data, className, lang }) => {
         speed={1000}
         className={`${className}`}
         onTransitionEnd={(e) => {
-
           const currentSlide = () => {
             const idLength = data.component.id.length;
             const enLength = data.component.en.length;
@@ -89,8 +88,14 @@ const HeroSlider = ({ data, className, lang }) => {
 
                         <StrokeButton
                           destination='/products'
-                          color={colors.white}
-                          hover='black'
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
                           className='mt-5 md:mt-0'
                         >
                           {lang === 'en'
@@ -102,13 +107,25 @@ const HeroSlider = ({ data, className, lang }) => {
                   ) : (
                     <Container className='h-screen z-1'>
                       <div className='w-full h-full flex flex-col justify-center'>
-                        <span className='max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight'>
+                        <span
+                          className={`${
+                            item.langColor === 'white'
+                              ? 'text-white'
+                              : 'text-black'
+                          } max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
+                        >
                           {item.title}
                         </span>
                         <StrokeButton
                           destination='/products'
-                          hover='black'
-                          color={colors.white}
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
                           className='mt-5'
                         >
                           {lang === 'en'
@@ -171,8 +188,14 @@ const HeroSlider = ({ data, className, lang }) => {
 
                         <StrokeButton
                           destination='/products'
-                          hover='black'
-                          color={colors.white}
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
                           className='mt-5 md:mt-0'
                         >
                           {lang === 'en'
@@ -184,13 +207,25 @@ const HeroSlider = ({ data, className, lang }) => {
                   ) : (
                     <Container className='h-screen z-1'>
                       <div className='w-full h-full flex flex-col justify-center'>
-                        <span className='max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none text-white text-center lg:text-h1 lg:leading-tight'>
+                        <span
+                          className={`${
+                            item.langColor === 'white'
+                              ? 'text-white'
+                              : 'text-black'
+                          } max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
+                        >
                           {item.title}
                         </span>
                         <StrokeButton
                           destination='/products'
-                          hover='black'
-                          color={colors.white}
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
                           className='mt-5'
                         >
                           {lang === 'en'

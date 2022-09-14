@@ -38,7 +38,7 @@ const ProductDetail = ({
   const ctx = useAppContext();
   useEffect(() => {
     ctx.setLangColor(product.langColor);
-    useEffectInit({ context: ctx, mobileDark: true });
+    useEffectInit({ context: ctx });
   }, []);
 
   return (
