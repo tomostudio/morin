@@ -348,8 +348,8 @@ const RecipeDetail = ({
 
   const ingredientsRef = useRef();
   const { events } =
-    ((ctx.language === 'id' && recipe.ingredients?.id?.length > 0) ||
-      (ctx.language === 'en' && recipe.ingredients?.en?.length > 0)) &&
+    ((ctx.language === 'id' && recipe.ingredient?.id?.length > 0) ||
+      (ctx.language === 'en' && recipe.ingredient?.en?.length > 0)) &&
     useDraggable(ingredientsRef);
 
   return (
@@ -454,9 +454,9 @@ const RecipeDetail = ({
 
             <div className='grid grid-cols-1 gap-4 xl:grid-cols-2 xl:mb-4'>
               {/* ingredients */}
-              {((ctx.language === 'id' && recipe.ingredients?.id?.length > 0) ||
+              {((ctx.language === 'id' && recipe.ingredient?.id?.length > 0) ||
                 (ctx.language === 'en' &&
-                  recipe.ingredients?.en?.length > 0)) && (
+                  recipe.ingredient?.en?.length > 0)) && (
                 <div className='relative rounded-2xl overflow-hidden'>
                   <div
                     className='relative bg-white mb-8 py-8 px-11 w-full xl:py-6 xl:mb-0 h-full xl:overflow-y-auto xl:aspect-[6/5] hidescrollbar'
