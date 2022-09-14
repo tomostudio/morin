@@ -190,11 +190,10 @@ const Recipe = ({
 
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(recipe.langColor);
-
-    useEffectInit({ context: ctx });
-    setFilterOpen(false);
-  }, []);
+    ctx.setLangColor(recipe.langColor === "white" ? true : false)
+    useEffectInit({ context: ctx, mobileDark: false })
+    setFilterOpen(false)
+  }, [])
 
   const buttonActive = filterOpen ? 'bg-morin-red' : '';
 

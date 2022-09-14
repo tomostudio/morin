@@ -310,7 +310,7 @@ const RecipeDetail = ({
     const checkHeaderColor = () => {
       const width = window.innerWidth;
       if (width < 764) {
-        ctx.setLangColor(recipe.titleColor);
+        ctx.setLangColor(recipe.titleColor === "white" ? false : true);
       } else {
         ctx.setLangColor('black'); // set to black
       }

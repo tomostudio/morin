@@ -41,8 +41,8 @@ const EventDetail = ({
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(eventBtn.langColor)
-    useEffectInit({ context: ctx})
+    ctx.setLangColor(eventBtn.langColor === "white" ? true : false)
+    useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 
   return (
