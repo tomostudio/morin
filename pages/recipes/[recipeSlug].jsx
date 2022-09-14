@@ -60,8 +60,8 @@ const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   );
 };
 
-const RecipeTag = ({ label }) => (
-  <div className='flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid border-white px-3 mx-1 mb-2 lg:mr-0 lg:ml-2 lg:mb-2'>
+const RecipeTag = ({ label, borderColor }) => (
+  <div className={`flex flex-wrap items-center min-h-[25px] rounded-full border-2 border-solid ${borderColor === "white" ? "border-white" : "border-black"} px-3 mx-1 mb-2 lg:mr-0 lg:ml-2 lg:mb-2`}>
     <span className='pt-0.5 md:pt-1'>{label}</span>
   </div>
 );
@@ -402,7 +402,7 @@ const RecipeDetail = ({
                 )}
               </div>
 
-              <div className={`${recipe.titleColor === "white" ? "text-white" : "text-black"} w-full text-white text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10`}>
+              <div className={`${recipe.titleColor === "white" ? "text-white" : "text-black"} w-full text-center absolute top-16 md:top-12 left-1/2 -translate-x-1/2 z-3 lg:flex lg:top-0 lg:px-8 lg:py-10`}>
                 <h1 className={`font-nutmeg font-bold text-h5 leading-tight mb-4 lg:text-h2 lg:w-1/2 lg:text-left`}>
                   {ctx.language === 'id' ? recipe.title.id : recipe.title.en}
                 </h1>
@@ -413,6 +413,7 @@ const RecipeDetail = ({
                       label={
                         ctx.language === 'id' ? data.title.id : data.title.en
                       }
+                      borderColor={recipe.titleColor}
                     />
                   ))}
                 </div>

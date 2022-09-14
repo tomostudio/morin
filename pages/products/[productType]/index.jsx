@@ -28,7 +28,7 @@ const ProductList = ({
   const router = useRouter()
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(product.langColor === "white" ? true : false)
+    ctx.setLangColor(product.langColor)
     useEffectInit({ context: ctx, mobileDark: true })
   }, [])
 
