@@ -308,14 +308,16 @@ const RecipeDetail = ({
       if (width < 764) {
         ctx.setLangColor(recipe.titleColor);
       } else {
-        ctx.setLangColor(false); // set to black
+        ctx.setLangColor('black'); // set to black
       }
 
       console.log(recipe.titleColor);
     };
 
     checkShare();
-    ctx.setLangColor(false);
+
+    ctx.setLangColor('black');
+
     checkHeaderColor();
     window.addEventListener('resize', checkHeaderColor, true);
     window.addEventListener('resize', checkShare, true);
@@ -332,8 +334,12 @@ const RecipeDetail = ({
       }`,
       text:
         ctx.language === 'id'
-          ? recipe.description?.id ? toPlainText(recipe.description.id) : ''
-          : recipe.description?.en ? toPlainText(recipe.description.en) : '',
+          ? recipe.description?.id
+            ? toPlainText(recipe.description.id)
+            : ''
+          : recipe.description?.en
+          ? toPlainText(recipe.description.en)
+          : '',
       url: baseUrl,
     };
 
@@ -418,8 +424,8 @@ const RecipeDetail = ({
             {/* description */}
             {((ctx.language === 'id' && recipe.description?.id) ||
               (ctx.language === 'en' && recipe.description?.en)) && (
-              <div className="bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-4">
-                <div className="lg:max-w-3xl lg:mx-auto content">
+              <div className='bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-4'>
+                <div className='lg:max-w-3xl lg:mx-auto content'>
                   <PortableText
                     value={
                       ctx.language === 'id'
@@ -502,10 +508,7 @@ const RecipeDetail = ({
                   </h2>
                   <div className='grid grid-cols-2 gap-4 mx-auto md:px-[6.5rem] xl:px-0'>
                     {recipe.made?.map((item, index) => (
-                      <div
-                        className="mb-3 xl:mb-4"
-                        key={`${index}`}
-                      >
+                      <div className='mb-3 xl:mb-4' key={`${index}`}>
                         <ProductCard
                           title={
                             ctx.language === 'id'
@@ -541,9 +544,9 @@ const RecipeDetail = ({
 
             {((ctx.language === 'id' && recipe.steps?.id.length > 0) ||
               (ctx.language === 'en' && recipe.steps?.en.length > 0)) && (
-              <div className="bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12">
-                <div className="flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12">
-                  <h2 className="block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0">
+              <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
+                <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
+                  <h2 className='block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
                       ? recipeBtn.language.instructions.id
                       : recipeBtn.language.instructions.en}

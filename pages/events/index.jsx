@@ -25,6 +25,7 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
   const ctx = useAppContext();
   useEffect(() => {
     ctx.setLangColor(event.langColor);
+
     useEffectInit({ context: ctx, mobileDark: false });
 
     return () => {};

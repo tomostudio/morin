@@ -14,10 +14,10 @@ const HeroSlider = ({ data, className, lang }) => {
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         loop={true}
-        // autoplay={{
-        //   delay: 3000,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         pagination={{ clickable: true }}
         spaceBetween={0}
         slidesPerView={1}
@@ -46,10 +46,10 @@ const HeroSlider = ({ data, className, lang }) => {
             lang === 'id'
               ? data.component.id[currentSlide()].langColor
                 ? data.component.id[currentSlide()].langColor
-                : true
+                : 'white'
               : data.component.en[currentSlide()].langColor
               ? data.component.en[currentSlide()].langColor
-              : true
+              : 'white'
           );
         }}
       >

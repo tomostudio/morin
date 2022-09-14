@@ -147,7 +147,14 @@ export default function Header({ button, turn_language, whatsapp }) {
     }
   };
 
-  const [blackButton, setBlackButton] = useState(ctx.langColor);
+  const [buttonColor, setButtonColor] = useState(ctx.langColor);
+  let colorPlaceholder = ctx.langColor; // contain holder color, to be updated by useEffect, because state doesn't update.
+
+  useEffect(() => {
+    setButtonColor(ctx.langColor);
+    colorPlaceholder = ctx.langColor;
+  }, [ctx.langColor]);
+
 
   useEffect(() => {
     const language = localStorage.getItem('morin_language');
@@ -159,14 +166,13 @@ export default function Header({ button, turn_language, whatsapp }) {
     }
     const scrollListener = () => {
       if (window.scrollY > 250) {
-        setBlackButton(true);
+        setButtonColor('black');
       } else {
-        console.log('Set Color', ctx.langColor);
-        setBlackButton(ctx.langColor);
+        setButtonColor(colorPlaceholder);
       }
     };
-
     setTimeout(() => {
+      scrollListener();
       document.addEventListener('resize', resetNav, false);
       document.addEventListener('scroll', scrollListener, false);
     }, 50); // load delay
@@ -175,11 +181,6 @@ export default function Header({ button, turn_language, whatsapp }) {
       document.removeEventListener('scroll', scrollListener, false);
     };
   }, []);
-
-  useEffect(() => {
-    console.log('update lang color', ctx.langColor)
-    setBlackButton(ctx.langColor);
-  }, [ctx.langColor]);
 
   const FIFODuration = 300;
 
@@ -204,13 +205,13 @@ export default function Header({ button, turn_language, whatsapp }) {
         variants={fade}
         className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full'
       >
-      {/* {`${blackButton } ${ctx.langColor}`} */}
+        {`${buttonColor} ${ctx.langColor}`}
         {!turn_language && (
           <Container className='mt-4 hidden lg:flex'>
             {/* Language Selector */}
             <div
               className={`w-full flex justify-end items-center text-defaultSmall ${
-                ctx.langColor ? 'text-white' : 'text-black'
+                buttonColor === 'white' ? 'text-white' : 'text-black'
               }`}
             >
               <FancyLink
@@ -229,7 +230,7 @@ export default function Header({ button, turn_language, whatsapp }) {
               </FancyLink>
               <hr
                 className={`w-[2px] h-[90%] opacity-50 ${
-                  ctx.langColor ? 'bg-white' : 'bg-black'
+                  buttonColor === 'white' ? 'bg-white' : 'bg-black'
                 }`}
               />
               <FancyLink
@@ -307,7 +308,7 @@ export default function Header({ button, turn_language, whatsapp }) {
               className='block lg:hidden outline-none'
               opened={opened}
               onClick={() => toggleHamburgermenu()}
-              dark={blackButton}
+              dark={buttonColor}
             />
             <div
               className={`mobileMenu fixed top-0 left-0 h-screen w-full bg-morin-blue transition ease-in-out duration-${FIFODuration} -z-1 lg:hidden ${
@@ -327,7 +328,7 @@ export default function Header({ button, turn_language, whatsapp }) {
                       destination={`/${item.dest}`}
                       a11yText={item.ariaText}
                       className={`font-nutmeg font-bold text-white text-mtitleBig leading-none ${
-                        Math.random() >= 0.5 ? rotate3 : rotate_3
+                        id % 2 === 0 ? rotate3 : rotate_3
                       } `}
                     >
                       {item.title}
@@ -337,7 +338,7 @@ export default function Header({ button, turn_language, whatsapp }) {
                     destination={'/get-morin'}
                     a11yText='Navigate to the about page'
                     className={`font-nutmeg font-bold text-white text-mtitleBig leading-none  p-2  ${
-                      Math.random() >= 0.5 ? rotate3 : rotate_3
+                      navData.length % 2 === 0 ? rotate3 : rotate_3
                     }`}
                   >
                     {ctx.language === 'id'

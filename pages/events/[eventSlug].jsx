@@ -42,7 +42,7 @@ const EventDetail = ({
   const ctx = useAppContext()
   useEffect(() => {
     ctx.setLangColor(eventBtn.langColor)
-    useEffectInit({ context: ctx, mobileDark: true })
+    useEffectInit({ context: ctx})
   }, [])
 
   return (
