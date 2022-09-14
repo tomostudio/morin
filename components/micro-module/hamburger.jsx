@@ -1,8 +1,8 @@
 import FancyLink from '../utils/fancyLink';
 
-const Hamburger = ({ className, onClick, opened, duration = 150, dark }) => {
+const Hamburger = ({ className, onClick, opened, duration = 150, color }) => {
   const isOpen = `${opened ? 'w-8' : 'w-6'} ${
-    opened || !dark ? 'bg-white' : `bg-black`
+    opened || color === 'black' ? 'bg-white' : `bg-black`
   }`;
   const line = `${isOpen} h-[2px] rounded-full  shadow transition ease transform duration-${duration}`;
 
