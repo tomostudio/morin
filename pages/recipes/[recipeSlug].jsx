@@ -386,7 +386,7 @@ const RecipeDetail = ({
             {/* head title */}
             <div className='relative rounded-b-2xl md:rounded-3xl overflow-hidden mb-4'>
               <div className='w-full aspect-[4/3] md:aspect-[2/1]'>
-                <div className={`absolute w-full h-full top-0 left-0  z-2 opacity-40 ${recipe.titleColor === 'white' ? 'bg-gradient-black-cover' : 'bg-gradient-white-cover'}`} />
+                <div className={`absolute w-full h-full top-0 left-0  z-2 opacity-50 ${recipe.titleColor === 'white' ? 'bg-gradient-black-cover' : 'bg-gradient-white-cover'}`} />
                 {recipe.cover?.asset && (
                   <Image
                     priority
