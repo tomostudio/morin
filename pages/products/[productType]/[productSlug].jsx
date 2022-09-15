@@ -24,6 +24,7 @@ const ProductDetail = ({
   seoAPI,
   footerAPI,
   translation,
+  productType
 }) => {
   const [seo] = seoAPI;
   const [product] = productAPI;
@@ -280,8 +281,8 @@ const ProductDetail = ({
             >
               <span className='font-semibold tracking-widest mb-1.5 md:mb-2.5 lg:mb-4 uppercase text-inherit'>
                 {ctx.language === 'id'
-                  ? `MORIN ${product.type.title.id}`
-                  : `MORIN ${product.type.title.en}`}
+                  ? `MORIN ${productType.title.id}`
+                  : `MORIN ${productType.title.en}`}
               </span>
               <h1 className='font-nutmeg text-ctitle leading-none px-4 mb-0 md:text-h2 lg:text-h1 text-inherit'>
                 {ctx.language === 'id' ? product.title.id : product.title.en}
@@ -479,7 +480,7 @@ const ProductDetail = ({
                                     .url()}
                                   thumbnailFruit={item.thumbnailFruit}
                                   imgAlt={item.thumbnail.alt}
-                                  link={`/${item.type.slug.current}/${item.slug.current}`}
+                                  link={`/${productType.slug.current}/${item.slug.current}`}
                                   small
                                 />
                               </div>
@@ -515,7 +516,7 @@ const ProductDetail = ({
                                     .blur(20)
                                     .url()}
                                   imgAlt={item.thumbnail.alt}
-                                  link={`/products/${item.type.slug.current}/${item.slug.current}`}
+                                  link={`/products/${productType.slug.current}/${item.slug.current}`}
                                   small
                                 />
                               </div>
@@ -574,7 +575,7 @@ const ProductDetail = ({
                               .blur(20)
                               .url()}
                             imgAlt={item.thumbnail.alt}
-                            link={`/products/${item.type.slug.current}/${item.slug.current}`}
+                            link={`/products/${productType.slug.current}/${item.slug.current}`}
                             small
                           />
                         </div>
@@ -610,32 +611,41 @@ const ProductDetail = ({
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
-        *[_type == "productList"] {
-          ...,
-          type->,
+        *[_type == "productType"] {
+          slug,
+          products[]->
         }
       `);
 
   const paths = [];
 
   res.map((data) => {
-    return paths.push({
-      params: {
-        productSlug: data.slug.current,
-        productType: data.type.slug.current,
-      },
-    });
+    data.products.map((item) => {
+      return paths.push({
+        params: {
+          productType: data.slug.current,
+          productSlug: item.slug.current,
+        },
+      });
+    })
   });
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
+  const productTypeAPI = await client.fetch(
+    `
+      *[_type == "productType" && slug.current == "${params.productType}"] {
+        title,
+        slug
+      }
+    `
+  );
   const productAPI = await client.fetch(
     `
       *[_type == "productList" && slug.current == "${params.productSlug}"] {
         ...,
-        type->,
         decor {
           decor1->,
           decor2->
@@ -671,6 +681,7 @@ export async function getStaticProps({ params }) {
           *[_type == "translation"]
           `);
   const [translation] = translationAPI;
+  const [productType] = productTypeAPI;
 
   return {
     props: {
@@ -679,6 +690,7 @@ export async function getStaticProps({ params }) {
       seoAPI,
       footerAPI,
       translation,
+      productType
     },
   };
 }

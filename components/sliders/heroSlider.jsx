@@ -6,6 +6,7 @@ import StrokeButton from '../micro-module/strokeButton'
 import colors from '@/helpers/colors'
 import urlFor from '@/helpers/sanity/urlFor'
 import { useAppContext } from 'context/state'
+import { FormControlUnstyledContext } from '@mui/base'
 
 const HeroSlider = ({ data, className, lang }) => {
   const ctx = useAppContext()
