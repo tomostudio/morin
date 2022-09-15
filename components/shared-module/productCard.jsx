@@ -103,7 +103,7 @@ const ProductCard = ({
         </div>
       </div>
 
-      <div className='relative text-morin-blue text-center px-3 pt-10 pb-8 z-[10] md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
+      <div className='relative text-morin-blue text-center px-3 pt-10 pb-8 z-2 md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
         <div
           className={`font-nutmeg text-ctitleSmall  leading-none  ${
             small ? 'lg:text-ctitleSmall' : 'lg:text-mtitle'

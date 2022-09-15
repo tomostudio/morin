@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, EffectFade } from 'swiper'
-import Container from '../module/container'
-import StrokeButton from '../micro-module/strokeButton'
-import colors from '@/helpers/colors'
-import urlFor from '@/helpers/sanity/urlFor'
-import { useAppContext } from 'context/state'
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectFade } from 'swiper';
+import Container from '../module/container';
+import StrokeButton from '../micro-module/strokeButton';
+import colors from '@/helpers/colors';
+import urlFor from '@/helpers/sanity/urlFor';
+import { useAppContext } from 'context/state';
 
 const HeroSlider = ({ data, className, lang }) => {
-  const ctx = useAppContext()
+  const ctx = useAppContext();
   return (
-    <div className="hero-slider">
+    <div className='hero-slider'>
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         loop={true}
@@ -21,24 +21,24 @@ const HeroSlider = ({ data, className, lang }) => {
         pagination={{ clickable: true }}
         spaceBetween={0}
         slidesPerView={1}
-        effect="fade"
+        effect='fade'
         speed={1000}
         className={`${className}`}
         onTransitionEnd={(e) => {
           const currentSlide = () => {
-            const idLength = data.component.id.length
-            const enLength = data.component.en.length
+            const idLength = data.component.id.length;
+            const enLength = data.component.en.length;
 
             if (e.activeIndex <= 0) {
-              return lang === 'id' ? idLength - 1 : enLength - 1
+              return lang === 'id' ? idLength - 1 : enLength - 1;
             } else if (lang === 'id' && e.activeIndex >= idLength) {
-              return 0
+              return 0;
             } else if (lang === 'en' && e.activeIndex >= enLength) {
-              return 0
+              return 0;
             } else {
-              return e.activeIndex - 1
+              return e.activeIndex - 1;
             }
-          }
+          };
 
           // Broken Array ID
           ctx.setLangColor(
@@ -48,89 +48,76 @@ const HeroSlider = ({ data, className, lang }) => {
                 : true
               : data.component.en[currentSlide()].langColor
               ? data.component.en[currentSlide()].langColor
-              : true,
-          )
+              : true
+          );
         }}
       >
         {lang === 'id'
           ? data.component.id.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="relative w-screen h-screen">
+                <div className='relative w-screen h-screen'>
                   {item.option ? (
-                    <Container className="h-screen z-1">
-                      <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="relative w-full h-64 mx-auto md:hidden">
+                    <Container className='h-screen z-1'>
+                      <div className='w-full h-full flex flex-col justify-center items-center'>
+                        <div className='relative w-full h-64 mx-auto md:hidden'>
                           {item.textImage?.imageMobile.asset && (
                             <Image
                               src={urlFor(item.textImage.imageMobile).url()}
                               blurDataURL={urlFor(
-                                item.textImage.imageMobile,
+                                item.textImage.imageMobile
                               ).url()}
-                              placeholder="blur"
+                              placeholder='blur'
                               alt={item.textImage.imageDesktop.alt}
-                              layout="fill"
-                              objectFit="contain"
-                              objectPosition="center"
+                              layout='fill'
+                              objectFit='contain'
+                              objectPosition='center'
                             />
                           )}
                         </div>
-                        <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
+                        <div className='relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center'>
                           {item.textImage?.imageDesktop.asset && (
                             <Image
                               src={urlFor(item.textImage.imageDesktop).url()}
                               blurDataURL={urlFor(
-                                item.textImage.imageDesktop,
+                                item.textImage.imageDesktop
                               ).url()}
-                              placeholder="blur"
+                              placeholder='blur'
                               alt={item.textImage.imageDesktop.alt}
-                              layout="fill"
-                              objectFit="contain"
-                              objectPosition="center"
+                              layout='fill'
+                              objectFit='contain'
+                              objectPosition='center'
                             />
                           )}
                         </div>
 
-                        {item.customOption ? (
-                          <StrokeButton
-                            targetBlank={true}
-                            destination={item.custom.link}
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
+                        <StrokeButton
+                          targetBlank={true}
+                          destination={
+                            item.customOption ? item.custom.link : '/products'
+                          }
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
+                          className='mt-5 md:mt-0'
+                        >
+                          {item.customOption
+                            ? lang === 'en'
                               ? item.custom.title.en
-                              : item.custom.title.id}
-                          </StrokeButton>
-                        ) : (
-                          <StrokeButton
-                            destination="/products"
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
-                          </StrokeButton>
-                        )}
+                              : item.custom.title.id
+                            : lang === 'en'
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
+                        </StrokeButton>
                       </div>
                     </Container>
                   ) : (
-                    <Container className="h-screen z-1">
-                      <div className="w-full h-full flex flex-col justify-center">
+                    <Container className='h-screen z-1'>
+                      <div className='w-full h-full flex flex-col justify-center'>
                         <span
                           className={`${
                             item.langColor === 'white'
@@ -140,42 +127,29 @@ const HeroSlider = ({ data, className, lang }) => {
                         >
                           {item.title}
                         </span>
-                        {item.customOption ? (
-                          <StrokeButton
-                            targetBlank={true}
-                            destination={item.custom.link}
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
+                        <StrokeButton
+                          targetBlank={true}
+                          destination={
+                            item.customOption ? item.custom.link : '/products'
+                          }
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
+                          className='mt-5 md:mt-0'
+                        >
+                          {item.customOption
+                            ? lang === 'en'
                               ? item.custom.title.en
-                              : item.custom.title.id}
-                          </StrokeButton>
-                        ) : (
-                          <StrokeButton
-                            destination="/products"
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5"
-                          >
-                            {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
-                          </StrokeButton>
-                        )}
+                              : item.custom.title.id
+                            : lang === 'en'
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
+                        </StrokeButton>
                       </div>
                     </Container>
                   )}
@@ -189,92 +163,78 @@ const HeroSlider = ({ data, className, lang }) => {
                       .width(800)
                       .blur(50)
                       .url()}
-                    placeholder="blur"
+                    placeholder='blur'
                     alt={item.background.alt}
-                    layout="fill"
-                    objectFit="cover"
+                    layout='fill'
+                    objectFit='cover'
                   />
                 </div>
               </SwiperSlide>
             ))
           : data.component.en.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="relative w-screen h-screen">
+                <div className='relative w-screen h-screen'>
                   {item.option ? (
-                    <Container className="h-screen z-1">
-                      <div className="w-full h-full flex flex-col justify-center items-center">
-                        <div className="relative w-full h-64 mx-auto md:hidden">
+                    <Container className='h-screen z-1'>
+                      <div className='w-full h-full flex flex-col justify-center items-center'>
+                        <div className='relative w-full h-64 mx-auto md:hidden'>
                           {item.textImage?.imageMobile.asset && (
                             <Image
                               src={urlFor(item.textImage.imageMobile).url()}
                               blurDataURL={urlFor(
-                                item.textImage.imageMobile,
+                                item.textImage.imageMobile
                               ).url()}
-                              placeholder="blur"
+                              placeholder='blur'
                               alt={item.textImage.imageDesktop.alt}
-                              layout="fill"
-                              objectFit="contain"
-                              objectPosition="center"
+                              layout='fill'
+                              objectFit='contain'
+                              objectPosition='center'
                             />
                           )}
                         </div>
-                        <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
+                        <div className='relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center'>
                           {item.textImage?.imageDesktop.asset && (
                             <Image
                               src={urlFor(item.textImage.imageDesktop).url()}
                               blurDataURL={urlFor(
-                                item.textImage.imageDesktop,
+                                item.textImage.imageDesktop
                               ).url()}
-                              placeholder="blur"
+                              placeholder='blur'
                               alt={item.textImage.imageDesktop.alt}
-                              layout="fill"
-                              objectFit="contain"
-                              objectPosition="center"
+                              layout='fill'
+                              objectFit='contain'
+                              objectPosition='center'
                             />
                           )}
                         </div>
-
-                        {item.customOption ? (
-                          <StrokeButton
-                            targetBlank={true}
-                            destination={item.custom.link}
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
+                        <StrokeButton
+                          targetBlank={true}
+                          destination={
+                            item.customOption ? item.custom.link : '/products'
+                          }
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
+                          className='mt-5 md:mt-0'
+                        >
+                          {item.customOption
+                            ? lang === 'en'
                               ? item.custom.title.en
-                              : item.custom.title.id}
-                          </StrokeButton>
-                        ) : (
-                          <StrokeButton
-                            destination="/products"
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
-                          </StrokeButton>
-                        )}
+                              : item.custom.title.id
+                            : lang === 'en'
+                            ? data.language.btn_slider.en
+                            : data.language.btn_slider.id}
+                        </StrokeButton>
                       </div>
                     </Container>
                   ) : (
-                    <Container className="h-screen z-1">
-                      <div className="w-full h-full flex flex-col justify-center">
+                    <Container className='h-screen z-1'>
+                      <div className='w-full h-full flex flex-col justify-center'>
                         <span
                           className={`${
                             item.langColor === 'white'
@@ -296,7 +256,7 @@ const HeroSlider = ({ data, className, lang }) => {
                             hover={`${
                               item.langColor === 'white' ? 'white' : 'black'
                             }`}
-                            className="mt-5 md:mt-0"
+                            className='mt-5 md:mt-0'
                           >
                             {lang === 'en'
                               ? item.custom.title.en
@@ -304,7 +264,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           </StrokeButton>
                         ) : (
                           <StrokeButton
-                            destination="/products"
+                            destination='/products'
                             color={
                               item.langColor === 'white'
                                 ? colors.white
@@ -313,7 +273,7 @@ const HeroSlider = ({ data, className, lang }) => {
                             hover={`${
                               item.langColor === 'white' ? 'white' : 'black'
                             }`}
-                            className="mt-5 md:mt-0"
+                            className='mt-5 md:mt-0'
                           >
                             {lang === 'en'
                               ? data.language.btn_slider.en
@@ -334,17 +294,17 @@ const HeroSlider = ({ data, className, lang }) => {
                       .width(800)
                       .blur(50)
                       .url()}
-                    placeholder="blur"
+                    placeholder='blur'
                     alt={item.background.alt}
-                    layout="fill"
-                    objectFit="cover"
+                    layout='fill'
+                    objectFit='cover'
                   />
                 </div>
               </SwiperSlide>
             ))}
       </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSlider
+export default HeroSlider;
