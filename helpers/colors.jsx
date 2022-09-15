@@ -5,5 +5,6 @@ export default {
   morinRed: "#E82128",
   morinPeach: "#FFECD8",
   white: "#FFFFFF",
+  black: "#000000",
   offWhite: "#FFFEF9",
 };
