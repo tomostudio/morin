@@ -90,10 +90,10 @@ const HeroSlider = ({ data, className, lang }) => {
                           )}
                         </div>
 
-                        {item.customLink ? (
+                        {item.customOption ? (
                           <StrokeButton
                             targetBlank={true}
-                            destination={item.link}
+                            destination={item.custom.link}
                             color={
                               item.langColor === 'white'
                                 ? colors.white
@@ -105,8 +105,8 @@ const HeroSlider = ({ data, className, lang }) => {
                             className="mt-5 md:mt-0"
                           >
                             {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
+                              ? item.custom.title.en
+                              : item.custom.title.id}
                           </StrokeButton>
                         ) : (
                           <StrokeButton
@@ -140,10 +140,10 @@ const HeroSlider = ({ data, className, lang }) => {
                         >
                           {item.title}
                         </span>
-                        {item.customLink ? (
+                        {item.customOption ? (
                           <StrokeButton
                             targetBlank={true}
-                            destination={item.link}
+                            destination={item.custom.link}
                             color={
                               item.langColor === 'white'
                                 ? colors.white
@@ -152,11 +152,11 @@ const HeroSlider = ({ data, className, lang }) => {
                             hover={`${
                               item.langColor === 'white' ? 'white' : 'black'
                             }`}
-                            className="mt-5"
+                            className="mt-5 md:mt-0"
                           >
                             {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
+                              ? item.custom.title.en
+                              : item.custom.title.id}
                           </StrokeButton>
                         ) : (
                           <StrokeButton
@@ -234,10 +234,10 @@ const HeroSlider = ({ data, className, lang }) => {
                           )}
                         </div>
 
-                        {item.customLink ? (
+                        {item.customOption ? (
                           <StrokeButton
                             targetBlank={true}
-                            destination={item.link}
+                            destination={item.custom.link}
                             color={
                               item.langColor === 'white'
                                 ? colors.white
@@ -249,8 +249,8 @@ const HeroSlider = ({ data, className, lang }) => {
                             className="mt-5 md:mt-0"
                           >
                             {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
+                              ? item.custom.title.en
+                              : item.custom.title.id}
                           </StrokeButton>
                         ) : (
                           <StrokeButton
@@ -284,10 +284,10 @@ const HeroSlider = ({ data, className, lang }) => {
                         >
                           {item.title}
                         </span>
-                        {item.customLink ? (
+                        {item.customOption ? (
                           <StrokeButton
                             targetBlank={true}
-                            destination={item.link}
+                            destination={item.custom.link}
                             color={
                               item.langColor === 'white'
                                 ? colors.white
@@ -299,8 +299,8 @@ const HeroSlider = ({ data, className, lang }) => {
                             className="mt-5 md:mt-0"
                           >
                             {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
+                              ? item.custom.title.en
+                              : item.custom.title.id}
                           </StrokeButton>
                         ) : (
                           <StrokeButton
