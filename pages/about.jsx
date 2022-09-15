@@ -222,7 +222,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                   button={about.our_process.btn}
                   imgSrc={urlFor(about.our_process.thumbnail)
                     .auto('format')
-                    .width(800)
+                    .width(1200)
                     .url()}
                   imgPlaceholder={urlFor(about.our_process.thumbnail)
                     .auto('format')
@@ -245,7 +245,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                   button={about.visi_misi.btn}
                   imgSrc={urlFor(about.visi_misi.thumbnail)
                     .auto('format')
-                    .width(800)
+                    .width(1200)
                     .url()}
                   imgPlaceholder={urlFor(about.visi_misi.thumbnail)
                     .auto('format')
