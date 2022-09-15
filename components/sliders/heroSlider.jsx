@@ -61,10 +61,10 @@ const HeroSlider = ({ data, className, lang }) => {
                       <div className="w-full h-full flex flex-col justify-center items-center">
                         <div className="relative w-full h-64 mx-auto md:hidden">
                           <Image
-                            src={urlFor(item.textImage.imageMobile).url()}
+                            src={urlFor(item.textImage.imageMobile).auto('format').width(1200).url()}
                             blurDataURL={urlFor(
                               item.textImage.imageMobile,
-                            ).url()}
+                            ).auto('format').width(500).url()}
                             placeholder="blur"
                             alt={item.textImage.imageDesktop.alt}
                             layout="fill"
@@ -178,7 +178,7 @@ const HeroSlider = ({ data, className, lang }) => {
                   <Image
                     src={urlFor(item.background)
                       .auto('format')
-                      .width(1920)
+                      .width(2500)
                       .url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')
@@ -319,7 +319,7 @@ const HeroSlider = ({ data, className, lang }) => {
                   <Image
                     src={urlFor(item.background)
                       .auto('format')
-                      .width(1920)
+                      .width(2400)
                       .url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')

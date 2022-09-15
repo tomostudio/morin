@@ -57,10 +57,10 @@ const Category = ({
             className='relative w-full h-[110%]'
           >
             <Image
-              src={urlFor(product.background).auto('format').width(1600).url()}
+              src={urlFor(product.background).auto('format').url()}
               blurDataURL={urlFor(product.background)
                 .auto('format')
-                .width(1400)
+                .width(600)
                 .blur(25)
                 .url()}
               placeholder='blur'
@@ -87,17 +87,6 @@ const Category = ({
             {productTypeAPI?.map((item) => (
               <CategoryCard
                 key={item.title.en}
-                imgSrc={
-                  item.animation === '1'
-                    ? '/category/hover-1.png'
-                    : item.animation === '2'
-                    ? '/category/hover-2.png'
-                    : item.animation === '3'
-                    ? '/category/hover-3.png'
-                    : item.animation === '4'
-                    ? '/category/hover-4.png'
-                    : ''
-                }
                 categoryData={item}
                 imgAlt={ctx.language === 'id' ? item.title.id : item.title.en}
                 title={ctx.language === 'id' ? item.title.id : item.title.en}
