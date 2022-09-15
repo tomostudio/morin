@@ -60,30 +60,34 @@ const HeroSlider = ({ data, className, lang }) => {
                     <Container className="h-screen z-1">
                       <div className="w-full h-full flex flex-col justify-center items-center">
                         <div className="relative w-full h-64 mx-auto md:hidden">
-                          <Image
-                            src={urlFor(item.textImage.imageMobile).url()}
-                            blurDataURL={urlFor(
-                              item.textImage.imageMobile,
-                            ).url()}
-                            placeholder="blur"
-                            alt={item.textImage.imageDesktop.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                          />
+                          {item.textImage?.imageMobile.asset && (
+                            <Image
+                              src={urlFor(item.textImage.imageMobile).url()}
+                              blurDataURL={urlFor(
+                                item.textImage.imageMobile,
+                              ).url()}
+                              placeholder="blur"
+                              alt={item.textImage.imageDesktop.alt}
+                              layout="fill"
+                              objectFit="contain"
+                              objectPosition="center"
+                            />
+                          )}
                         </div>
                         <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
-                          <Image
-                            src={urlFor(item.textImage.imageDesktop).url()}
-                            blurDataURL={urlFor(
-                              item.textImage.imageDesktop,
-                            ).url()}
-                            placeholder="blur"
-                            alt={item.textImage.imageDesktop.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                          />
+                          {item.textImage?.imageDesktop.asset && (
+                            <Image
+                              src={urlFor(item.textImage.imageDesktop).url()}
+                              blurDataURL={urlFor(
+                                item.textImage.imageDesktop,
+                              ).url()}
+                              placeholder="blur"
+                              alt={item.textImage.imageDesktop.alt}
+                              layout="fill"
+                              objectFit="contain"
+                              objectPosition="center"
+                            />
+                          )}
                         </div>
 
                         {item.customLink ? (
@@ -132,7 +136,7 @@ const HeroSlider = ({ data, className, lang }) => {
                             item.langColor === 'white'
                               ? 'text-white'
                               : 'text-black'
-                          } max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
+                          } max-w-4xl mb-6 mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
                         >
                           {item.title}
                         </span>
@@ -200,30 +204,34 @@ const HeroSlider = ({ data, className, lang }) => {
                     <Container className="h-screen z-1">
                       <div className="w-full h-full flex flex-col justify-center items-center">
                         <div className="relative w-full h-64 mx-auto md:hidden">
-                          <Image
-                            src={urlFor(item.textImage.imageMobile).url()}
-                            blurDataURL={urlFor(
-                              item.textImage.imageMobile,
-                            ).url()}
-                            placeholder="blur"
-                            alt={item.textImage.imageDesktop.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                          />
+                          {item.textImage?.imageMobile.asset && (
+                            <Image
+                              src={urlFor(item.textImage.imageMobile).url()}
+                              blurDataURL={urlFor(
+                                item.textImage.imageMobile,
+                              ).url()}
+                              placeholder="blur"
+                              alt={item.textImage.imageDesktop.alt}
+                              layout="fill"
+                              objectFit="contain"
+                              objectPosition="center"
+                            />
+                          )}
                         </div>
                         <div className="relative w-full max-w-[950px] h-80 mx-auto hidden md:flex md:justify-center">
-                          <Image
-                            src={urlFor(item.textImage.imageDesktop).url()}
-                            blurDataURL={urlFor(
-                              item.textImage.imageDesktop,
-                            ).url()}
-                            placeholder="blur"
-                            alt={item.textImage.imageDesktop.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            objectPosition="center"
-                          />
+                          {item.textImage?.imageDesktop.asset && (
+                            <Image
+                              src={urlFor(item.textImage.imageDesktop).url()}
+                              blurDataURL={urlFor(
+                                item.textImage.imageDesktop,
+                              ).url()}
+                              placeholder="blur"
+                              alt={item.textImage.imageDesktop.alt}
+                              layout="fill"
+                              objectFit="contain"
+                              objectPosition="center"
+                            />
+                          )}
                         </div>
 
                         {item.customLink ? (
@@ -272,7 +280,7 @@ const HeroSlider = ({ data, className, lang }) => {
                             item.langColor === 'white'
                               ? 'text-white'
                               : 'text-black'
-                          } max-w-4xl mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
+                          } max-w-4xl mb-6 mx-auto text-ctitleBig font-nutmeg leading-none  text-center lg:text-h1 lg:leading-tight`}
                         >
                           {item.title}
                         </span>
