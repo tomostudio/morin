@@ -156,7 +156,7 @@ const ProductList = ({
           </div>
 
           <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
-            {productType.product?.map((item, index) => (
+            {productType.products?.map((item, index) => (
               <div
                 className='w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5'
                 key={`${item.title.en}${index}`}
@@ -220,12 +220,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const productTypeAPI = await client.fetch(
     `
-      *[_type == "productType" && slug.current == "${params.productType}"] {
+      *[_type == "productType" && slug.current == "${params.productType}" ] {
         ...,
         decor {
           decor1->,
           decor2->
         },
+        products[]->,
         "product": *[_type=='productList' && references(^._id)]
       } 
     `
