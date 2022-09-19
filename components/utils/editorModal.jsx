@@ -34,7 +34,7 @@ export const AboutModalComponents = {
   types: {
     image: (props) => (
       <DefaultImage
-        imageSrc={urlFor(props.value).auto('format').width(850).url()}
+        imageSrc={urlFor(props.value).auto('format').url()}
         blurDataURL={urlFor(props.value)
           .auto('format')
           .width(500)
