@@ -69,7 +69,7 @@ const ProductList = ({
                 : productType.title.en}
               <div className='w-full h-full absolute-center hidden lg:block '>
                 {/* Decor Left */}
-                <div className='w-full h-96 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]'>
+                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor1.image.id)
@@ -105,7 +105,7 @@ const ProductList = ({
                   )}
                 </div>
                 {/* Decor Right */}
-                <div className='w-full h-96 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]'>
+                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor2.image.id)
@@ -163,9 +163,7 @@ const ProductList = ({
                       ? item.backgroundColor.hex
                       : colors.morinLightBlue
                   }
-                  imgSrc={urlFor(item.thumbnail)
-                    .auto('format')
-                    .url()}
+                  imgSrc={urlFor(item.thumbnail).auto('format').url()}
                   thumbnailFruit={item.thumbnailFruit}
                   imgPlaceholder={urlFor(item.thumbnail)
                     .width(500)
