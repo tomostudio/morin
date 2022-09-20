@@ -15,7 +15,13 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 
-const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
+const GetMorin = ({
+  getMorinAPI,
+  eventAPI,
+  seoAPI,
+  footerAPI,
+  translation,
+}) => {
   const [seo] = seoAPI
   const [getMorin] = getMorinAPI
   const [footer] = footerAPI
@@ -135,6 +141,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
           </div>
         </Container>
         <Footer
+          event={eventAPI.length > 0 ? true : false}
           lang={ctx.language}
           button={translation.menu_lang}
           faq={seo.advance_setting.hide_faq}
@@ -151,6 +158,9 @@ export async function getStaticProps() {
   const getMorinAPI = await client.fetch(`
   *[_type == "getMorin"]
   `)
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -164,6 +174,7 @@ export async function getStaticProps() {
   return {
     props: {
       getMorinAPI,
+      eventAPI,
       seoAPI,
       footerAPI,
       translation,

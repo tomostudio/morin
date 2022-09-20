@@ -27,7 +27,7 @@ import { motion } from 'framer-motion'
 import { fade } from '@/helpers/transitions'
 import { AboutModalComponents } from '@/components/utils/editorModal'
 
-const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
+const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
   const [modal, setModal] = useState(null)
   const [about] = aboutAPI
   const [seo] = seoAPI
@@ -155,9 +155,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
             >
               <div className="relative aspect-[1/1] w-[175px] sm:w-[200px] md:w-[258px] lg:w-[382px] rotate-12">
                 <Image
-                  src={urlFor(about.backgrounds.imageLeft)
-                    .auto('format')
-                    .url()}
+                  src={urlFor(about.backgrounds.imageLeft).auto('format').url()}
                   blurDataURL={urlFor(about.backgrounds.imageLeft)
                     .auto('format')
                     .width(350)
@@ -227,6 +225,7 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
           </Container>
 
           <Footer
+            event={eventAPI.length > 0 ? true : false}
             lang={ctx.language}
             button={translation.menu_lang}
             faq={seo.advance_setting.hide_faq}
@@ -268,6 +267,9 @@ export async function getStaticProps() {
   const aboutAPI = await client.fetch(`
   *[_type == "about"]
   `)
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -281,6 +283,7 @@ export async function getStaticProps() {
   return {
     props: {
       aboutAPI,
+      eventAPI,
       seoAPI,
       footerAPI,
       translation,

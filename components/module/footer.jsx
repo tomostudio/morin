@@ -5,7 +5,16 @@ import { defaultHover } from '../utils/tailwind-preset'
 import SubscribeForm from './subscribe'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
-const Footer = ({ className, lang, button, faq, footer, translation, mailchimp }) => {
+const Footer = ({
+  className,
+  event,
+  lang,
+  button,
+  faq,
+  footer,
+  translation,
+  mailchimp,
+}) => {
   return (
     <footer className="mx-auto text-defaultSmall lg:text-default w-full px-4 lg:px-8 max-w-screen-2xl">
       <Container
@@ -65,12 +74,14 @@ const Footer = ({ className, lang, button, faq, footer, translation, mailchimp }
             >
               {lang === 'id' ? button.recipes.id : button.recipes.en}
             </FancyLink>
-            <FancyLink
-              destination="/events"
-              className={`footer-link ${defaultHover}`}
-            >
-              {lang === 'id' ? button.events.id : button.events.en}
-            </FancyLink>
+            {event && (
+              <FancyLink
+                destination="/events"
+                className={`footer-link ${defaultHover}`}
+              >
+                {lang === 'id' ? button.events.id : button.events.en}
+              </FancyLink>
+            )}
             <FancyLink
               destination="/get-morin"
               className={`footer-link ${defaultHover}`}

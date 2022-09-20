@@ -277,6 +277,7 @@ export default function Home({
             </div>
           </section>
           <Footer
+            event={eventAPI.length > 0 ? true : false}
             lang={ctx.language}
             button={translation.menu_lang}
             faq={seo.advance_setting.hide_faq}

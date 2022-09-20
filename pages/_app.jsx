@@ -64,6 +64,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <AppWrapper>
         <Header
+          event={pageProps.eventAPI.length > 0 ? true : false}
           button={pageProps.translation}
           turn_language={pageProps.seoAPI[0].advance_setting.turn_language}
           whatsapp={pageProps.seoAPI[0]}
