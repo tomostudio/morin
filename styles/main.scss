@@ -1,30 +1,30 @@
 /* Webfonts */
-@import "_fonts.scss";
+@import '_fonts.scss';
 
 /* Tailwind base/components */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
 /* Custom Style Imports */
-@import "_typography.scss";
-@import "_desktopHeader.scss";
-@import "_morinTab.scss";
-@import "_util.scss";
-@import "_imageStyling.scss";
+@import '_typography.scss';
+@import '_desktopHeader.scss';
+@import '_morinTab.scss';
+@import '_util.scss';
+@import '_imageStyling.scss';
 
 /* Tailwind Utilities */
-@import "tailwindcss/utilities";
+@import 'tailwindcss/utilities';
 
 /* SwiperJs Styling */
-@import "swiper/scss";
-@import "swiper/scss/pagination";
-@import "swiper/scss/navigation";
-@import "swiper/scss/free-mode";
-@import "swiper/scss/effect-fade";
-@import "_slider.scss";
+@import 'swiper/scss';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/free-mode';
+@import 'swiper/scss/effect-fade';
+@import '_slider.scss';
 
 /* React Modal Styling */
-@import "_modal.scss";
+@import '_modal.scss';
 
 /* Simple defaults */
 html {
@@ -103,7 +103,9 @@ body {
 }
 
 .popup-gallery {
+  outline: none;
   .gallery-slide {
+    outline: none;
     position: absolute;
     top: 50%;
     left: 50%;

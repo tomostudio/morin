@@ -171,7 +171,6 @@ const About = ({ aboutAPI, seoAPI, footerAPI, translation }) => {
                 <Image
                   src={urlFor(about.backgrounds.imageLeft)
                     .auto('format')
-                    .width(500)
                     .url()}
                   blurDataURL={urlFor(about.backgrounds.imageLeft)
                     .auto('format')
