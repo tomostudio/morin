@@ -57,10 +57,18 @@ const Recipe = ({
         .sort((a, b) => b.filter - a.filter)
         .filter((e) => e.filter > 0)
       setDataRecipe(dataFilter.slice(0, displayData))
+
+      dataFilter.length <= displayData
+        ? setShowButton(false)
+        : setShowButton(true)
     } else {
       setDataRecipe(recipeListAPI.slice(0, displayData))
 
       if (recipeListAPI.length <= displayData) setShowButton(false)
+
+      recipeListAPI.length <= displayData
+        ? setShowButton(false)
+        : setShowButton(true)
     }
   }
 
@@ -86,7 +94,9 @@ const Recipe = ({
         setDataRecipe(dataFilter.slice(0, displayData))
 
         // cek length data filter recipe
-        if (dataFilter.length <= displayData) setShowButton(false)
+        dataFilter.length <= displayData
+          ? setShowButton(false)
+          : setShowButton(true)
         return tempArr
       } else {
         // cek apakah user meng-klik category yang sama
@@ -115,12 +125,16 @@ const Recipe = ({
             setDataRecipe(dataFilter.slice(0, displayData))
 
             // cek length data filter recipe
-            if (dataFilter.length <= displayData) setShowButton(false)
+            dataFilter.length <= displayData
+              ? setShowButton(false)
+              : setShowButton(true)
           } else {
             setDataRecipe(recipeListAPI.slice(0, displayData))
 
             // cek length data filter recipe
-            if (recipeListAPI.length <= displayData) setShowButton(false)
+            recipeListAPI.length <= displayData
+              ? setShowButton(false)
+              : setShowButton(true)
           }
 
           return tempArr
@@ -154,7 +168,9 @@ const Recipe = ({
           setDataRecipe(dataFilter.slice(0, displayData))
 
           // cek length data filter recipe
-          if (dataFilter.length <= displayData) setShowButton(false)
+          dataFilter.length <= displayData
+            ? setShowButton(false)
+            : setShowButton(true)
 
           return tempArr
         } else {
@@ -181,7 +197,9 @@ const Recipe = ({
           setDataRecipe(dataFilter.slice(0, displayData))
 
           // cek length data filter recipe
-          if (dataFilter.length <= displayData) setShowButton(false)
+          dataFilter.length <= displayData
+            ? setShowButton(false)
+            : setShowButton(true)
 
           return tempArr
         }
