@@ -25,7 +25,7 @@ const StrokeButton = ({
       onClick={onClick}
       className={`${defaultClass} bg-[${color.toLowerCase()}]  ${
         className ? className : ''
-      }`}
+      } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
       style={{ color: color, borderColor: color }}
       {...others}
     >
@@ -44,7 +44,7 @@ const StrokeButton = ({
         aria-label={ariaLabel}
         className={`${defaultClass} bg-[${color.toLowerCase()}] select-none ${
           className ? className : ''
-        } ${hover === "white" ? 'hover-black' : 'hover-white'}`}
+        } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
         style={{ color: color, borderColor: color }}
         onClick={onClick}
         {...others}
@@ -65,7 +65,7 @@ const StrokeButton = ({
       aria-label={ariaLabel}
       className={`${defaultClass} bg-[${color.toLowerCase()}]  ${
         className ? className : ''
-      }`}
+      } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
       style={{ color: color, borderColor: color }}
       target='_blank'
       {...others}
