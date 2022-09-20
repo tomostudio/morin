@@ -54,6 +54,9 @@ const Error500 = ({ seoAPI }) => {
 };
 
 export async function getStaticProps() {
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `);
@@ -66,6 +69,7 @@ export async function getStaticProps() {
   const [translation] = translationAPI;
   return {
     props: {
+      eventAPI,
       seoAPI,
       footerAPI,
       translation,

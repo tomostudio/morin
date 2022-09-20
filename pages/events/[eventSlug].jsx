@@ -27,17 +27,17 @@ const EventTag = ({ label }) => {
 };
 
 const EventDetail = ({
-  eventAPI,
+  eventDetailAPI,
   eventListAPI,
   seoAPI,
   footerAPI,
   translation,
 }) => {
-  const [seo] = seoAPI;
-  const [event] = eventAPI;
-  const [footer] = footerAPI;
-  const router = useRouter();
-  const ctx = useAppContext();
+  const [seo] = seoAPI
+  const [event] = eventDetailAPI
+  const [footer] = footerAPI
+  const router = useRouter()
+  const ctx = useAppContext()
   useEffect(() => {
     ctx.setLangColor('black');
     useEffectInit({ context: ctx, mobileDark: true });
@@ -179,6 +179,7 @@ const EventDetail = ({
             </div>
           </div>
           <Footer
+            event={eventAPI.length > 0 ? true : false}
             lang={ctx.language}
             button={translation.menu_lang}
             faq={seo.advance_setting.hide_faq}
@@ -211,7 +212,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const eventAPI = await client.fetch(
+  const eventDetailAPI = await client.fetch(
     `
       *[_type == "eventList" && slug.current == "${params.eventSlug}"] {
         ...,
@@ -219,7 +220,7 @@ export async function getStaticProps({ params }) {
       } 
     `
   );
-  const eventListAPI = await client.fetch(`
+  const eventAPI = await client.fetch(`
   *[_type == "eventList"]
   `);
   const seoAPI = await client.fetch(`
@@ -235,8 +236,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
+      eventDetailAPI,
       eventAPI,
-      eventListAPI,
       seoAPI,
       footerAPI,
       translation,

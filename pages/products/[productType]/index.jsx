@@ -1,46 +1,47 @@
-import Container from '@/components/module/container';
-import Footer from '@/components/module/footer';
-import Layout from '@/components/module/layout';
-import ProductCard from '@/components/shared-module/productCard';
-import { useEffectInit } from '@/components/utils/preset';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { useAppContext } from 'context/state';
-import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import SEO from '@/components/utils/seo';
-import { useRouter } from 'next/router';
-import colors from '@/helpers/colors';
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/transitions';
+import Container from '@/components/module/container'
+import Footer from '@/components/module/footer'
+import Layout from '@/components/module/layout'
+import ProductCard from '@/components/shared-module/productCard'
+import { useEffectInit } from '@/components/utils/preset'
+import Image from 'next/image'
+import { useEffect } from 'react'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
+import colors from '@/helpers/colors'
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/transitions'
 
 const ProductList = ({
   productTypeAPI,
+  eventAPI,
   seoAPI,
   footerAPI,
   productAPI,
   translation,
 }) => {
-  const [seo] = seoAPI;
-  const [productType] = productTypeAPI;
-  const [footer] = footerAPI;
-  const [product] = productAPI;
-  const router = useRouter();
-  const ctx = useAppContext();
+  const [seo] = seoAPI
+  const [productType] = productTypeAPI
+  const [footer] = footerAPI
+  const [product] = productAPI
+  const router = useRouter()
+  const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor('black');
-    useEffectInit({ context: ctx });
-  }, []);
+    ctx.setLangColor('black')
+    useEffectInit({ context: ctx })
+  }, [])
 
   return (
     <motion.div
-      className='w-full bg-morin-skyBlue'
-      initial='initial'
-      animate='enter'
-      exit='exit'
+      className="w-full bg-morin-skyBlue"
+      initial="initial"
+      animate="enter"
+      exit="exit"
       variants={fade}
     >
-      <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
+      <Layout className="overflow-hidden pt-[86px] lg:pt-32">
         {/* <Header /> */}
         <SEO
           title={
@@ -59,8 +60,8 @@ const ProductList = ({
         />
 
         <Container
-          className='pl-0 pr-0'
-          classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11'
+          className="pl-0 pr-0"
+          classNameOuter="px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11"
         >
           <div className=' max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md relative'>
             <div className='relative'>
@@ -88,11 +89,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={productType.decor.decor1.image.id.alt}
-                      layout='fill'
-                      objectFit='contain'
-                      objectPosition='center'
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   ) : (
                     <Image
@@ -104,11 +105,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={productType.decor.decor1.image.en.alt}
-                      layout='fill'
-                      objectFit='contain'
-                      objectPosition='center'
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   )}
                 </div>
@@ -124,11 +125,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={productType.decor.decor2.image.id.alt}
-                      layout='fill'
-                      objectFit='contain'
-                      objectPosition='center'
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   ) : (
                     <Image
@@ -140,11 +141,11 @@ const ProductList = ({
                         .width(300)
                         .blur(25)
                         .url()}
-                      placeholder='blur'
+                      placeholder="blur"
                       alt={productType.decor.decor2.image.en.alt}
-                      layout='fill'
-                      objectFit='contain'
-                      objectPosition='center'
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
                     />
                   )}
                 </div>
@@ -152,10 +153,10 @@ const ProductList = ({
             </div>
           </div>
 
-          <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>
+          <div className="flex flex-wrap -mx-1.5 lg:-mx-2.5">
             {productType.products?.map((item, index) => (
               <div
-                className='w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5'
+                className="w-1/2 px-1.5 mb-3 md:w-1/3 lg:px-2.5 lg:mb-5"
                 key={`${item.title.en}${index}`}
               >
                 <ProductCard
@@ -181,6 +182,7 @@ const ProductList = ({
         </Container>
 
         <Footer
+          event={eventAPI.length > 0 ? true : false}
           lang={ctx.language}
           button={translation.menu_lang}
           faq={seo.advance_setting.hide_faq}
@@ -190,25 +192,25 @@ const ProductList = ({
         />
       </Layout>
     </motion.div>
-  );
-};
+  )
+}
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "productType"]
-      `);
+      `)
 
-  const paths = [];
+  const paths = []
 
   res.map((data) => {
     return paths.push({
       params: {
         productType: data.slug.current,
       },
-    });
-  });
+    })
+  })
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
@@ -223,31 +225,35 @@ export async function getStaticProps({ params }) {
         products[]->,
         "product": *[_type=='productList' && references(^._id)]
       } 
-    `
-  );
+    `,
+  )
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
   const productAPI = await client.fetch(`
   *[_type == "product"]
-  `);
+  `)
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
-          `);
-  const [translation] = translationAPI;
+          `)
+  const [translation] = translationAPI
 
   return {
     props: {
       productTypeAPI,
+      eventAPI,
       seoAPI,
       footerAPI,
       productAPI,
       translation,
     },
-  };
+  }
 }
 
-export default ProductList;
+export default ProductList
