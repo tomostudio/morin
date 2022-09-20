@@ -162,14 +162,20 @@ export async function getStaticProps() {
           *[_type == "translation"]
           `)
   const [translation] = translationAPI
-  return {
-    props: {
-      eventPageAPI,
-      eventAPI,
-      seoAPI,
-      footerAPI,
-      translation,
-    },
+  if(eventAPI.length > 0) {
+    return {
+      props: {
+        eventPageAPI,
+        eventAPI,
+        seoAPI,
+        footerAPI,
+        translation,
+      },
+    }
+  }else {
+    return {
+      notFound: true,
+    }
   }
 }
 
