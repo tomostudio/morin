@@ -40,16 +40,18 @@ const HeroSlider = ({ data, className, lang }) => {
             }
           };
 
-          // Broken Array ID
-          ctx.setLangColor(
+          const getColor =
             lang === 'id'
               ? data.component.id[currentSlide()].langColor
                 ? data.component.id[currentSlide()].langColor
                 : 'white'
               : data.component.en[currentSlide()].langColor
               ? data.component.en[currentSlide()].langColor
-              : 'white'
-          );
+              : 'white';
+          // Broken Array ID
+          ctx.setLangColor(getColor);
+
+          console.log('INIT set Color', getColor);
         }}
       >
         {lang === 'id'
@@ -154,9 +156,7 @@ const HeroSlider = ({ data, className, lang }) => {
                     </Container>
                   )}
                   <Image
-                    src={urlFor(item.background)
-                      .auto('format')
-                      .url()}
+                    src={urlFor(item.background).auto('format').url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')
                       .width(800)
@@ -284,9 +284,7 @@ const HeroSlider = ({ data, className, lang }) => {
                   )}
 
                   <Image
-                    src={urlFor(item.background)
-                      .auto('format')
-                      .url()}
+                    src={urlFor(item.background).auto('format').url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')
                       .width(800)

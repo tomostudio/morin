@@ -28,7 +28,9 @@ const ProductCard = ({
         style={{ background: bgColor }}
       >
         <div
-          className={`${small ? 'w-[75%] max-w-md mx-auto' : ''} relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5`}
+          className={`${
+            small ? 'w-[75%] max-w-md mx-auto' : ''
+          } relative transition-all aspect-[4/5] group-hover:rotate-6 duration-300 z-2 flex justify-center translate-y-5 md:translate-y-7 lg:translate-y-5`}
         >
           <Image
             src={imgSrc}
@@ -40,14 +42,12 @@ const ProductCard = ({
           />
         </div>
         <div
-          className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-5deg] transition-all duration-300 layout-${thumbnailFruit.layout}`}
+          className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-10deg] transition-all duration-300 layout-${thumbnailFruit.layout}`}
         >
           {thumbnailFruit.fruit1.asset && (
-            <div className='fruit1 fruits'>
+            <div className='fruit1 fruits '>
               <Image
-                src={urlFor(thumbnailFruit.fruit1)
-                  .auto('format')
-                  .url()}
+                src={urlFor(thumbnailFruit.fruit1).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit1)
                   .width(100)
                   .auto('format')
@@ -62,9 +62,7 @@ const ProductCard = ({
           {thumbnailFruit.fruit2.asset && (
             <div className='fruit2 fruits'>
               <Image
-                src={urlFor(thumbnailFruit.fruit2)
-                  .auto('format')
-                  .url()}
+                src={urlFor(thumbnailFruit.fruit2).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit2)
                   .width(100)
                   .auto('format')
@@ -77,11 +75,9 @@ const ProductCard = ({
             </div>
           )}
           {thumbnailFruit.fruit3.asset && (
-            <div className='fruit3 fruits'>
+            <div className='fruit3 fruits  '>
               <Image
-                src={urlFor(thumbnailFruit.fruit3)
-                  .auto('format')
-                  .url()}
+                src={urlFor(thumbnailFruit.fruit3).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit3)
                   .width(100)
                   .auto('format')

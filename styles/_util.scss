@@ -131,7 +131,7 @@ main {
 .getmorin-list {
   @apply grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 align-middle;
   & > a {
-    @apply p-4 h-32 md:h-40 lg:h-32;
+    @apply h-32 md:h-40 lg:h-32;
   }
 }
 
