@@ -156,7 +156,6 @@ const HeroSlider = ({ data, className, lang }) => {
                   <Image
                     src={urlFor(item.background)
                       .auto('format')
-                      .width(2500)
                       .url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')
@@ -287,7 +286,6 @@ const HeroSlider = ({ data, className, lang }) => {
                   <Image
                     src={urlFor(item.background)
                       .auto('format')
-                      .width(2400)
                       .url()}
                     blurDataURL={urlFor(item.background)
                       .auto('format')

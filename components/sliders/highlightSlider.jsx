@@ -26,7 +26,7 @@ const HighlightSlider = ({ data, lang, button }) => {
               className='w-full md:w-1/3 min-w-[350px] max-w-xl md:max-w-none'
             >
               <HighlightCard
-                imgSrc={urlFor(item.thumbnail).auto('format').width(400).url()}
+                imgSrc={urlFor(item.thumbnail).auto('format').url()}
                 imgPlaceholder={urlFor(item.thumbnail)
                   .auto('format')
                   .width(200)

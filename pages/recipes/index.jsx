@@ -224,7 +224,7 @@ const Recipe = ({
           >
             <Image
               priority
-              src={urlFor(recipe.background).auto('format').width(1928).url()}
+              src={urlFor(recipe.background).auto('format').url()}
               placeholder={urlFor(recipe.background)
                 .auto('format')
                 .width(1600)
@@ -292,7 +292,6 @@ const Recipe = ({
                     <RecipeCard
                       imgSrc={urlFor(item.thumbnail)
                         .auto('format')
-                        .width(500)
                         .url()}
                       imgPlaceholder={urlFor(item.thumbnail)
                         .auto('format')

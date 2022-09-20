@@ -75,7 +75,6 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
               src={urlFor(event.background).auto('format').width(1600).url()}
               blurDataURL={urlFor(event.background)
                 .auto('format')
-                .width(1400)
                 .blur(25)
                 .url()}
               placeholder='blur'
@@ -99,7 +98,6 @@ const Events = ({ eventAPI, eventListAPI, seoAPI, footerAPI, translation }) => {
                 <EventCard
                   imgSrc={urlFor(item.thumbnail)
                     .auto('format')
-                    .width(1000)
                     .url()}
                   blur={urlFor(item.thumbnail)
                     .auto('format')

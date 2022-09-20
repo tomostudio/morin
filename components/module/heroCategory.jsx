@@ -48,7 +48,7 @@ const HeroCategory = ({
           <div className={`imageFrame image1`}>
             <div className='image'>
               <Image
-                src={urlFor(image1).auto('format').width(1000).url()}
+                src={urlFor(image1).auto('format').url()}
                 blurDataURL={urlFor(image1)
                   .auto('format')
                   .width(400)
@@ -66,7 +66,7 @@ const HeroCategory = ({
           <div className={`imageFrame image2`}>
             <div className='image'>
               <Image
-                src={urlFor(image2).auto('format').width(1000).url()}
+                src={urlFor(image2).auto('format').url()}
                 blurDataURL={urlFor(image2)
                   .auto('format')
                   .width(400)
@@ -84,7 +84,7 @@ const HeroCategory = ({
           <div className={`imageFrame image3`}>
             <div className='image'>
               <Image
-                src={urlFor(image3).auto('format').width(1000).url()}
+                src={urlFor(image3).auto('format').url()}
                 blurDataURL={urlFor(image3)
                   .auto('format')
                   .width(400)

@@ -74,7 +74,6 @@ const ProductList = ({
                     <Image
                       src={urlFor(productType.decor.decor1.image.id)
                         .auto('format')
-                        .width(400)
                         .url()}
                       blurDataURL={urlFor(productType.decor.decor1.image.id)
                         .auto('format')
@@ -91,8 +90,6 @@ const ProductList = ({
                     <Image
                       src={urlFor(productType.decor.decor1.image.en)
                         .auto('format')
-                        .width(400)
-                        .height(385)
                         .url()}
                       blurDataURL={urlFor(productType.decor.decor1.image.en)
                         .auto('format')
@@ -113,7 +110,6 @@ const ProductList = ({
                     <Image
                       src={urlFor(productType.decor.decor2.image.id)
                         .auto('format')
-                        .width(500)
                         .url()}
                       blurDataURL={urlFor(productType.decor.decor2.image.id)
                         .auto('format')
@@ -130,7 +126,6 @@ const ProductList = ({
                     <Image
                       src={urlFor(productType.decor.decor2.image.en)
                         .auto('format')
-                        .width(500)
                         .url()}
                       blurDataURL={urlFor(productType.decor.decor2.image.en)
                         .auto('format')
@@ -170,7 +165,6 @@ const ProductList = ({
                   }
                   imgSrc={urlFor(item.thumbnail)
                     .auto('format')
-                    .width(800)
                     .url()}
                   thumbnailFruit={item.thumbnailFruit}
                   imgPlaceholder={urlFor(item.thumbnail)

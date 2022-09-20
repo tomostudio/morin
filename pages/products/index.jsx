@@ -60,7 +60,6 @@ const Category = ({
               src={urlFor(product.background).auto('format').url()}
               blurDataURL={urlFor(product.background)
                 .auto('format')
-                .width(600)
                 .blur(25)
                 .url()}
               placeholder='blur'

@@ -100,7 +100,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit1)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit1)
                             .width(200)
@@ -120,7 +119,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
@@ -140,7 +138,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit3)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit3)
                             .auto('format')
@@ -165,7 +162,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit1)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit1)
                             .auto('format')
@@ -185,7 +181,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
@@ -205,7 +200,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit3)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit3)
                             .auto('format')
@@ -230,7 +224,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit1)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit1)
                             .auto('format')
@@ -250,7 +243,6 @@ const ProductDetail = ({
                         <Image
                           src={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
-                            .width(500)
                             .url()}
                           blurDataURL={urlFor(product.thumbnailFruit.fruit2)
                             .auto('format')
@@ -301,7 +293,7 @@ const ProductDetail = ({
                     key={id}
                   >
                     <Image
-                      src={urlFor(data.image).auto('format').width(800).url()}
+                      src={urlFor(data.image).auto('format').url()}
                       blurDataURL={urlFor(data.image)
                         .auto('format')
                         .width(600)
@@ -471,7 +463,6 @@ const ProductDetail = ({
                                   }
                                   imgSrc={urlFor(item.thumbnail)
                                     .auto('format')
-                                    .width(800)
                                     .url()}
                                   imgPlaceholder={urlFor(item.thumbnail)
                                     .width(500)
@@ -506,7 +497,6 @@ const ProductDetail = ({
                                   }
                                   imgSrc={urlFor(item.thumbnail)
                                     .auto('format')
-                                    .width(800)
                                     .url()}
                                   imgBg={'/product/strawberry-bg.png'}
                                   thumbnailFruit={item.thumbnailFruit}
@@ -565,7 +555,6 @@ const ProductDetail = ({
                             }
                             imgSrc={urlFor(item.thumbnail)
                               .auto('format')
-                              .width(800)
                               .url()}
                             imgBg={'/product/strawberry-bg.png'}
                             thumbnailFruit={item.thumbnailFruit}

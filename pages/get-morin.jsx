@@ -83,7 +83,6 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                                   <Image
                                     src={urlFor(dataLink.image)
                                       .auto('format')
-                                      .width(175)
                                       .url()}
                                     blurDataURL={urlFor(dataLink.image)
                                       .auto('format')
