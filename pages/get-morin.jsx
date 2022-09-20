@@ -76,7 +76,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                             <FancyLink
                               key={idLink}
                               destination={dataLink.url ? dataLink.url : '#'}
-                              className=" flex justify-center items-center rounded-2xl shadow-softer"
+                              className=" flex justify-center items-center rounded-2xl shadow-softer hover:shadow-normal hover:-translate-y-1 transition-all duration-300"
                             >
                               <div className="relative w-full h-full">
                                 {dataLink.image?.asset && (
