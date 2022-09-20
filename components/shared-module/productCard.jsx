@@ -46,7 +46,6 @@ const ProductCard = ({
             <div className='fruit1 fruits'>
               <Image
                 src={urlFor(thumbnailFruit.fruit1)
-                  .width(400)
                   .auto('format')
                   .url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit1)
@@ -64,7 +63,6 @@ const ProductCard = ({
             <div className='fruit2 fruits'>
               <Image
                 src={urlFor(thumbnailFruit.fruit2)
-                  .width(400)
                   .auto('format')
                   .url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit2)
@@ -82,7 +80,6 @@ const ProductCard = ({
             <div className='fruit3 fruits'>
               <Image
                 src={urlFor(thumbnailFruit.fruit3)
-                  .width(400)
                   .auto('format')
                   .url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit3)

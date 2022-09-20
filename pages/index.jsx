@@ -135,7 +135,6 @@ export default function Home({
                     <div className="relative h-screen" key={i.title.id}>
                       <HeroCategory
                         imgSrc={urlFor(i.background)
-                          .width(1920)
                           .auto('format')
                           .url()}
                         categoryData={i}

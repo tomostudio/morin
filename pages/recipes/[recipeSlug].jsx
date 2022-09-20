@@ -105,7 +105,7 @@ const InstructionCard = ({
               key={index}
             >
               <Image
-                src={urlFor(i).auto('format').width(600).url()}
+                src={urlFor(i).auto('format').url()}
                 blurDataURL={urlFor(i).auto('format').width(300).blur(25).url()}
                 placeholder="blur"
                 alt={i.alt}
@@ -143,7 +143,7 @@ const ImageGallery = ({ data, onClick }) => {
           >
             {item._type === 'image' ? (
               <Image
-                src={urlFor(item).auto('format').width(400).url()}
+                src={urlFor(item).auto('format').url()}
                 blurDataURL={urlFor(item)
                   .auto('format')
                   .width(200)
@@ -157,7 +157,7 @@ const ImageGallery = ({ data, onClick }) => {
               />
             ) : (
               <Image
-                src={urlFor(item.thumbnail).auto('format').width(400).url()}
+                src={urlFor(item.thumbnail).auto('format').url()}
                 blurDataURL={urlFor(item.thumbnail)
                   .auto('format')
                   .width(200)
@@ -395,7 +395,7 @@ const RecipeDetail = ({
                 {recipe.cover?.asset && (
                   <Image
                     priority
-                    src={urlFor(recipe.cover).auto('format').width(1920).url()}
+                    src={urlFor(recipe.cover).auto('format').url()}
                     blurDataURL={urlFor(recipe.cover)
                       .auto('format')
                       .width(500)
@@ -532,7 +532,6 @@ const RecipeDetail = ({
                           }
                           imgSrc={urlFor(item.thumbnail)
                             .auto('format')
-                            .width(800)
                             .url()}
                           thumbnailFruit={item.thumbnailFruit}
                           imgBg={'/product/strawberry-bg.png'}

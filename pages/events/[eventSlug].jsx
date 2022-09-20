@@ -161,7 +161,6 @@ const EventDetail = ({
                     <HighlightCard
                       imgSrc={urlFor(item.thumbnail)
                         .auto('format')
-                        .width(400)
                         .url()}
                       imgPlaceholder={urlFor(item.thumbnail)
                         .auto('format')

@@ -24,7 +24,6 @@ const RecipeSlider = ({ data, lang }) => {
                 item.thumbnail.asset && (
                   <RecipeCard
                     imgSrc={urlFor(item.thumbnail)
-                      .width(600)
                       .auto('format')
                       .url()}
                     imgPlaceholder={urlFor(item.thumbnail)

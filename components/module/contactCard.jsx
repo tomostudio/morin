@@ -25,7 +25,7 @@ const ImageGallery = ({ name, images }) => {
             <SwiperSlide key={index}>
               <div className='relative w-full h-auto md:h-30rem aspect-[16/9] md:aspect-none'>
                 <Image
-                  src={urlFor(item).auto('format').width(1200).url()}
+                  src={urlFor(item).auto('format').url()}
                   blurDataURL={urlFor(item)
                     .auto('format')
                     .width(500)
