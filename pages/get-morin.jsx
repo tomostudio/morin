@@ -47,7 +47,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                 key={id}
                 className="flex flex-col lg:flex-row lg:space-x-48 w-full"
               >
-                <h2 className="text-ctitle md:text-mtitleBig m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue w-full lg:w-1/5 flex-shrink-0">
+                <h2 className="text-h5 md:text-h4 m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue font-bold w-full lg:w-1/5 flex-shrink-0">
                   {ctx.language === 'id' ? item.title.id : item.title.en}
                 </h2>
                 <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
@@ -67,16 +67,16 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                       key={idContent}
                       className="flex flex-col w-full justify-start"
                     >
-                      <span className="md:text-mtitle lg:text-mtitleBig text-center lg:text-left font-nutmeg text-morin-blue">
-                        {ctx.language === 'id' ? data.title.id : data.title.en}
+                      <span className="text-subtitle2 lg:text-h4 text-center lg:text-left font-nutmeg text-morin-blue">
+                        {ctx.language === 'id' ? data.title.id : data.title.en} 
                       </span>
                       {data.option === 'link' ? (
-                        <div className="mt-4 lg:mt-10 md:mt-6 getmorin-list">
+                        <div className="mt-6 lg:mt-10 getmorin-list max-w-2xl mx-auto lg:mx-0 lg:max-w-none w-full">
                           {data.links?.map((dataLink, idLink) => (
                             <FancyLink
                               key={idLink}
                               destination={dataLink.url ? dataLink.url : '#'}
-                              className=" flex justify-center items-center rounded-2xl shadow-softer hover:shadow-normal hover:-translate-y-1 transition-all duration-300"
+                              className=" max-w-xs mx-auto w-full flex justify-center items-center rounded-2xl shadow-softer hover:shadow-normal hover:-translate-y-1 transition-all duration-300"
                             >
                               <div className="relative w-full h-full">
                                 {dataLink.image?.asset && (
@@ -100,7 +100,7 @@ const GetMorin = ({ getMorinAPI, seoAPI, footerAPI, translation }) => {
                           ))}
                         </div>
                       ) : (
-                        <div className="mt-5 lg:mt-10 md:mt-6 grid grid-cols-2 gap-6">
+                        <div className="mt-6 lg:mt-10 grid grid-cols-2 gap-6">
                           {data.texts.map((dataText, idText) => (
                             <div
                               key={idText}

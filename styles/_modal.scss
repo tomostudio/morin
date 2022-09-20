@@ -17,6 +17,8 @@ $transition-all: all 300ms;
 .ReactModal__Overlay {
   opacity: 0;
   transition: $transition-all;
+  user-select: none;
+  outline: none;
 
   @media (min-width: 768px) {
     .PageModal__Content {
@@ -83,6 +85,8 @@ $transition-all: all 300ms;
 }
 
 .PageModal__Content--Inner {
+  user-select: none;
+  outline: none;
   @media (min-width: 768px) {
     height: 100%;
     // overflow-y: auto;

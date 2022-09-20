@@ -148,7 +148,7 @@ export default function Home({
             >
               <div className="flex w-full flex-wrap">
                 <div className="mb-8 w-full text-center md:w-7/12 md:text-left lg:mb-5 xl:mb-11 xl:w-8/12">
-                  <h2 className="relative mx-auto mb-4 max-w-[175px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1">
+                  <h2 className="relative mx-auto mb-4 max-w-[250px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1">
                     {ctx.language === 'id' ? (
                       <>{home.recipe.title.id}</>
                     ) : (

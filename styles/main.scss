@@ -73,7 +73,7 @@ body {
 }
 
 .recipeCheckbox {
-  @apply relative flex flex-wrap items-center w-full font-semibold select-none overflow-hidden;
+  @apply relative flex flex-nowrap items-center w-full font-semibold select-none overflow-hidden;
 }
 
 /* Hide the browser's default checkbox */

@@ -7,6 +7,9 @@
       @apply underline hover:text-opacity-25 focus:text-opacity-25;
     }
   }
+  &.no-max > * {
+    @apply max-w-none;
+  }
   & > .image {
     @apply relative flex max-w-screen-2xl max-h-[700px] my-8 md:my-14 rounded-2xl overflow-hidden w-full h-auto px-0;
     @apply flex justify-center items-center;
@@ -60,7 +63,7 @@
 }
 
 @mixin default-type {
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: 'Poppins', Helvetica, sans-serif;
   font-weight: 500;
 }
 
@@ -85,7 +88,7 @@ h3,
 }
 
 h1 {
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: 'Poppins', Helvetica, sans-serif;
   @apply font-nutmeg text-mtitleBig leading-tight lg:text-h2 xl:text-h2;
 }
 h2 {

@@ -33,15 +33,15 @@ const EventDetail = ({
   footerAPI,
   translation,
 }) => {
-  const [seo] = seoAPI
-  const [event] = eventAPI
-  const [footer] = footerAPI
-  const router = useRouter()
-  const ctx = useAppContext()
+  const [seo] = seoAPI;
+  const [event] = eventAPI;
+  const [footer] = footerAPI;
+  const router = useRouter();
+  const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor("black")
-    useEffectInit({ context: ctx, mobileDark: true })
-  }, [])
+    ctx.setLangColor('black');
+    useEffectInit({ context: ctx, mobileDark: true });
+  }, []);
 
   return (
     <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
@@ -159,9 +159,7 @@ const EventDetail = ({
                     key={`${item.title.en}[${index}]`}
                   >
                     <HighlightCard
-                      imgSrc={urlFor(item.thumbnail)
-                        .auto('format')
-                        .url()}
+                      imgSrc={urlFor(item.thumbnail).auto('format').url()}
                       imgPlaceholder={urlFor(item.thumbnail)
                         .auto('format')
                         .width(200)
@@ -229,7 +227,7 @@ export async function getStaticProps({ params }) {
   `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   const translationAPI = await client.fetch(`
           *[_type == "translation"]
           `);

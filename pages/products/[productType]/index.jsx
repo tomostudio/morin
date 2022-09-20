@@ -62,14 +62,22 @@ const ProductList = ({
           className='pl-0 pr-0'
           classNameOuter='px-4 mb-5 md:px-8 md:mb-7 lg:mb-10 xl:px-10 xl:mb-11'
         >
-          <div className=' max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md'>
-            <h1 className='relative w-fit text-ctitle font-nutmeg mt-0 mb-1 mx-auto md:text-mtitleBig lg:text-h2 lg:px-8 lg:mb-3 xl:text-h1'>
-              {ctx.language === 'id'
-                ? productType.title.id
-                : productType.title.en}
+          <div className=' max-w-xs text-morin-blue text-center mb-12 mx-auto md:max-w-md relative'>
+            <div className='relative'>
+              <h1 className='relative w-fit text-h2 font-nutmeg mt-0 mb-1 mx-auto lg:px-8 lg:mb-3 xl:text-h1'>
+                {ctx.language === 'id'
+                  ? productType.title.id
+                  : productType.title.en}
+              </h1>
+
+              <p className='font-semibold max-w-[400px] mx-auto'>
+                {ctx.language === 'id'
+                  ? productType.description.id
+                  : productType.description.en}
+              </p>
               <div className='w-full h-full absolute-center hidden lg:block '>
                 {/* Decor Left */}
-                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 -left-10 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]'>
+                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 right-auto left-0 -translate-x-full -translate-y-1/3 select-none rotate-[8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor1.image.id)
@@ -105,7 +113,7 @@ const ProductList = ({
                   )}
                 </div>
                 {/* Decor Right */}
-                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 left-auto -right-10 translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]'>
+                <div className='w-[25vw] max-w-md aspect-1 absolute top-0 right-0 left-auto translate-x-full -translate-y-1/3 select-none  rotate-[-8deg]'>
                   {ctx.language === 'id' ? (
                     <Image
                       src={urlFor(productType.decor.decor2.image.id)
@@ -141,13 +149,7 @@ const ProductList = ({
                   )}
                 </div>
               </div>
-            </h1>
-
-            <p className='font-semibold max-w-[400px] mx-auto'>
-              {ctx.language === 'id'
-                ? productType.description.id
-                : productType.description.en}
-            </p>
+            </div>
           </div>
 
           <div className='flex flex-wrap -mx-1.5 lg:-mx-2.5'>

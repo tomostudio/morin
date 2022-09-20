@@ -45,10 +45,10 @@ const HeroSlider = ({ data, className, lang }) => {
             lang === 'id'
               ? data.component.id[currentSlide()].langColor
                 ? data.component.id[currentSlide()].langColor
-                : true
+                : 'white'
               : data.component.en[currentSlide()].langColor
               ? data.component.en[currentSlide()].langColor
-              : true
+              : 'white'
           );
         }}
       >

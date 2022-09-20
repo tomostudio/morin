@@ -190,10 +190,10 @@ const Recipe = ({
 
   const ctx = useAppContext();
   useEffect(() => {
-    ctx.setLangColor(recipe.langColor)
-    useEffectInit({ context: ctx})
-    setFilterOpen(false)
-  }, [])
+    ctx.setLangColor(recipe.langColor);
+    useEffectInit({ context: ctx });
+    setFilterOpen(false);
+  }, []);
 
   const buttonActive = filterOpen ? 'bg-morin-red' : '';
 
@@ -225,11 +225,12 @@ const Recipe = ({
             <Image
               priority
               src={urlFor(recipe.background).auto('format').url()}
-              placeholder={urlFor(recipe.background)
+              blurDataURL={urlFor(recipe.background)
                 .auto('format')
-                .width(1600)
+                .width(1200)
                 .blur(25)
                 .url()}
+              placeholder='blur'
               alt={recipe.background.alt}
               layout='fill'
               objectFit='cover'
@@ -290,9 +291,7 @@ const Recipe = ({
                 {dataRecipe.map((item, index) => (
                   <div className='w-full' key={index}>
                     <RecipeCard
-                      imgSrc={urlFor(item.thumbnail)
-                        .auto('format')
-                        .url()}
+                      imgSrc={urlFor(item.thumbnail).auto('format').url()}
                       imgPlaceholder={urlFor(item.thumbnail)
                         .auto('format')
                         .width(300)

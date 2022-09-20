@@ -1,5 +1,6 @@
 .categoryImage {
   & .imageFrame {
+    pointer-events: none;
     @apply w-1/2 lg:w-2/5 h-auto aspect-[5/6] absolute-center origin-center;
     @apply flex;
 
@@ -9,24 +10,28 @@
     }
   }
   & .image1 {
+    pointer-events: none;
     z-index: 3;
     & > div {
       @apply opacity-0 group-hover:opacity-100;
     }
   }
   & .image2 {
+    pointer-events: none;
     z-index: 2;
     & > div {
       @apply opacity-0 group-hover:opacity-100;
     }
   }
   & .image3 {
+    pointer-events: none;
     z-index: 1;
     & > div {
       @apply opacity-0 group-hover:opacity-100;
     }
   }
   & .graphicFrame {
+    pointer-events: none;
     @apply w-full h-full absolute-center origin-center opacity-0;
     @apply transition-all duration-300 group-hover:delay-75 group-hover:duration-500;
     & > div {
@@ -185,6 +190,7 @@
 //Category Images
 .categoryImageCard {
   & .imageFrame {
+    pointer-events: none;
     @apply w-2/3 h-2/3 aspect-[1/1] absolute-center origin-center;
     & > div {
       @apply w-full h-full;
@@ -192,15 +198,19 @@
     }
   }
   & .image1 {
+    pointer-events: none;
     z-index: 4;
   }
   & .image2 {
+    pointer-events: none;
     z-index: 3;
   }
   & .image3 {
+    pointer-events: none;
     z-index: 2;
   }
   & .graphicFrame {
+    pointer-events: none;
     @apply w-full h-full absolute-center origin-center;
     @apply transition-all duration-300 group-hover:duration-500;
     & > div {
@@ -426,6 +436,7 @@
 // Product Card
 .product-card {
   & .imageFrame {
+    pointer-events: none;
     & .fruits {
       @apply absolute w-[60%] h-[60%];
     }
@@ -513,6 +524,7 @@
 
 .product-elements {
   & .fruits {
+    pointer-events: none;
     @apply absolute h-[50%] w-auto aspect-[1/1] min-h-[100px];
   }
   // & .fruit1 {

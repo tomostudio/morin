@@ -36,7 +36,7 @@ import FancyLink from '@/components/utils/fancyLink';
 const RecipeCheckbox = ({ label = '', labelClassName = '' }) => {
   return (
     <div className='font-semibold leading-tight mb-2 last:mb-0 md:mb-3 lg:mb-4 inline-block'>
-      <label className='recipeCheckbox cursor-pointer inline-flex flex-wrap items-center w-full font-semibold select-none overflow-hidden'>
+      <label className='recipeCheckbox cursor-pointer inline-flex flex-nowrap! items-center w-full font-semibold select-none overflow-hidden'>
         <input type='checkbox' />
         <span className='checkmark'>
           <svg
@@ -81,7 +81,7 @@ const InstructionCard = ({
   return (
     <div className='mb-6 last:mb-0'>
       <div className='mb-1 lg:mb-2'>
-        <span className='text-morin-red font-semibold lg:hidden'>
+        <span className='text-black font-semibold lg:hidden'>
           Step {step}
         </span>
         <div className='hidden lg:block'>
@@ -440,8 +440,8 @@ const RecipeDetail = ({
             {/* description */}
             {((ctx.language === 'id' && recipe.description?.id) ||
               (ctx.language === 'en' && recipe.description?.en)) && (
-              <div className='bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:p-10 lg:mt-0 lg:mb-4'>
-                <div className='lg:max-w-3xl lg:mx-auto content'>
+              <div className='bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:py-10 md:px-9 lg:mt-0 lg:mb-4'>
+                <div className='lg:max-w-3xl lg:mx-auto content no-max'>
                   <PortableText
                     value={
                       ctx.language === 'id'
@@ -466,7 +466,7 @@ const RecipeDetail = ({
                   recipe.ingredient?.en?.length > 0)) && (
                 <div className='relative rounded-2xl overflow-hidden'>
                   <div
-                    className='relative bg-white mb-8 py-8 px-11 w-full xl:py-6 xl:mb-0 h-full xl:overflow-y-auto xl:aspect-[6/5] hidescrollbar'
+                    className='relative bg-white mb-8 py-8 pb-10 px-11 w-full xl:py-6 xl:pb-10 xl:mb-0 h-full xl:overflow-y-auto xl:aspect-[6/5] hidescrollbar'
                     {...events}
                     ref={ingredientsRef}
                   >
@@ -475,7 +475,7 @@ const RecipeDetail = ({
                         ? translation.recipeLanguage.ingredients.id
                         : translation.recipeLanguage.ingredients.en}
                     </h2>
-                    <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-2 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
+                    <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-4 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
                       {ctx.language === 'id'
                         ? recipe.ingredient?.id.map((data, index) =>
                             !data.title ? (
@@ -487,7 +487,7 @@ const RecipeDetail = ({
                               />
                             ) : (
                               <span
-                                className='block font-bold mb-2 md:mb-3 lg:mb-4'
+                                className='block font-bold my-3 lg:my-5 '
                                 key={index}
                               >
                                 {data.description}
@@ -570,7 +570,7 @@ const RecipeDetail = ({
 
             {((ctx.language === 'id' && recipe.steps?.id.length > 0) ||
               (ctx.language === 'en' && recipe.steps?.en.length > 0)) && (
-              <div className='bg-white rounded-2xl mb-8 p-8 lg:px-10 pb-12'>
+              <div className='bg-white rounded-2xl mb-8 p-8 md:px-11 lg:px-10 pb-12'>
                 <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
                   <h2 className='block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
@@ -671,7 +671,7 @@ const RecipeDetail = ({
                   </div>
                 </div>
 
-                <div className='lg:max-w-3xl lg:mx-auto'>
+                <div className='lg:max-w-3xl lg:mx-auto px-0 md:px-14 lg:px-0'>
                   {ctx.language === 'id'
                     ? recipe.steps?.id.map((item, index) => (
                         <InstructionCard
@@ -697,7 +697,7 @@ const RecipeDetail = ({
 
             {/* gallery */}
             {recipe.gallery?.length > 0 && (
-              <div className='relative bg-white rounded-2xl mb-8 p-8 overflow-hidden lg:py-12 lg:px-10 lg:mb-14'>
+              <div className='relative bg-white rounded-2xl mb-8 p-8  overflow-hidden lg:py-12 lg:px-10 lg:mb-14'>
                 <div className='w-8 h-full bg-gradient-to-r from-white to-transparent absolute top-1/2 left-0 -translate-y-1/2 z-2 lg:w-10' />
                 <div className='w-8 h-full bg-gradient-to-r from-transparent to-white absolute top-1/2 right-0 -translate-y-1/2 z-2 lg:w-10' />
                 <div className='recipe-gallery-slider relative overflow-hidden -mx-8 z-1 lg:-mx-10'>
