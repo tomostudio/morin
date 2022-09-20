@@ -42,13 +42,11 @@ export default function Home({
   const ctx = useAppContext()
 
   useEffect(() => {
-
-    return () => {
-    }
+    return () => {}
   }, [])
 
   useEffect(() => {
-    useEffectInit({ context: ctx})
+    useEffectInit({ context: ctx })
 
     return () => {}
   }, [])
@@ -90,8 +88,8 @@ export default function Home({
                   <div className="mt-24 mb-20 lg:mt-7 ml-0 lg:max-w-sm pr-0 max-w-none mx-auto flex flex-col items-center justify-center lg:items-start">
                     <h2 className=" mb-5 text-center font-nutmeg text-mtitle font-normal leading-tight text-morin-blue lg:mb-[30px] lg:text-left lg:text-ctitleSmall xl:leading-[32px] ">
                       {ctx.language === 'id'
-                        ? product.description.id
-                        : product.description.en}
+                        ? home.product.description.id
+                        : home.product.description.en}
                     </h2>
                     <StrokeButton
                       destination="/products"
@@ -99,44 +97,31 @@ export default function Home({
                       className="lg:mx-0"
                     >
                       {ctx.language === 'id'
-                        ? home.language.btn_product_type.id
-                        : home.language.btn_product_type.en}
+                        ? home.product.button.id
+                        : home.product.button.en}
                     </StrokeButton>
                   </div>
                   <div className="mx-auto mb-5 flex flex-wrap justify-center lg:mx-0 lg:mb-10 space-x-4 lg:space-x-6 lg:justify-start">
-                    <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                      <Image
-                        src={`/halal.svg`}
-                        alt={'Halal'}
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
-                    <div className="relative h-8 w-8 lg:h-12 lg:w-12">
-                      <Image
-                        src={`/pom.svg`}
-                        alt={'Badan POM'}
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
-                    <div className="relative  -8 w-8 lg:h-12 lg:w-12">
-                      <Image
-                        src={`/topbrand.svg`}
-                        alt={'Top Brand'}
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
+                    {home.product.icons.map((data, id) => (
+                      <div
+                        key={id}
+                        className="relative h-8 w-8 lg:h-12 lg:w-12"
+                      >
+                        <Image
+                          src={urlFor(data.icon).url()}
+                          alt={data.icon.alt}
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="shrink w-full">
                   {productTypeAPI?.map((i, id) => (
                     <div className="relative h-screen" key={i.title.id}>
                       <HeroCategory
-                        imgSrc={urlFor(i.background)
-                          .auto('format')
-                          .url()}
+                        imgSrc={urlFor(i.background).auto('format').url()}
                         categoryData={i}
                         imgPlaceholder={urlFor(i.background)
                           .width(1000)
@@ -165,9 +150,9 @@ export default function Home({
                 <div className="mb-8 w-full text-center md:w-7/12 md:text-left lg:mb-5 xl:mb-11 xl:w-8/12">
                   <h2 className="relative mx-auto mb-4 max-w-[175px] font-nutmeg text-ctitle font-bold leading-tight text-morin-red md:mx-0 md:mb-2 md:max-w-fit lg:text-h2 lg:leading-tight xl:text-h1">
                     {ctx.language === 'id' ? (
-                      <>{home.language.recipe.title.id}</>
+                      <>{home.recipe.title.id}</>
                     ) : (
-                      <>{home.language.recipe.title.en}</>
+                      <>{home.recipe.title.en}</>
                     )}
                     <div className="absolute -top-0.5 left-[calc(100%-15px)] w-8 md:hidden">
                       <HeartSmall className="md:hidden" />
@@ -178,15 +163,15 @@ export default function Home({
                   </h2>
                   <p className="mx-auto max-w-[300px]  text-morin-red text-defaultSmall md:mx-0 lg:max-w-[500px] lg:text-default xl:max-w-[600px]">
                     {ctx.language === 'id'
-                      ? recipe.description.id
-                      : recipe.description.en}
+                      ? home.recipe.description.id
+                      : home.recipe.description.en}
                   </p>
                 </div>
                 <div className="order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12">
                   <StrokeButton destination="/recipes" color={colors.morinRed}>
                     {ctx.language === 'id'
-                      ? home.language.recipe.btn.id
-                      : home.language.recipe.btn.en}
+                      ? home.recipe.button.id
+                      : home.recipe.button.en}
                   </StrokeButton>
                 </div>
                 <div className="mb-4 md:mb-0 -mx-4 w-[calc(100%+32px)] lg:-mx-8 lg:w-[calc(100%+64px)]">
@@ -195,63 +180,68 @@ export default function Home({
               </div>
             </Container>
           </section>
-          <section>
-            <Container
-              border={true}
-              background={colors.morinSkyBlue}
-              bgTail={true}
-              safeWidth={false}
-              classNameOuter="pb-0"
-            >
+          {eventAPI.length > 0 && (
+            <section>
               <Container
-                border={false}
-                background={'transparent'}
-                bgTail={false}
-                safeWidth={true}
+                border={true}
+                background={colors.morinSkyBlue}
+                bgTail={true}
+                safeWidth={false}
+                classNameOuter="pb-0"
               >
-                <div className="flex w-full flex-wrap">
-                  <div className="mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12">
-                    <h2 className="relative mx-auto mb-0 max-w-[160px] pb-5 font-nutmeg text-ctitle font-bold leading-none text-morin-blue md:mx-0 md:mb-2 md:w-fit md:max-w-none md:pb-0 lg:text-h2">
-                      {ctx.language === 'id'
-                        ? home.language.event.title.id
-                        : home.language.event.title.en}
-                      <div className="absolute left-1/2 bottom-0 h-3.5 w-full -translate-x-1/2 md:left-auto md:right-0 md:-bottom-4 md:w-40 md:translate-x-0 lg:-bottom-5 lg:h-5 lg:w-60">
-                        <Scribble />
-                      </div>
-                    </h2>
+                <Container
+                  border={false}
+                  background={'transparent'}
+                  bgTail={false}
+                  safeWidth={true}
+                >
+                  <div className="flex w-full flex-wrap">
+                    <div className="mb-6 w-full text-center md:w-7/12 md:text-left lg:mb-10 xl:mb-14 xl:w-8/12">
+                      <h2 className="relative mx-auto mb-0 max-w-[160px] pb-5 font-nutmeg text-ctitle font-bold leading-none text-morin-blue md:mx-0 md:mb-2 md:w-fit md:max-w-none md:pb-0 lg:text-h2">
+                        {ctx.language === 'id'
+                          ? home.event.title.id
+                          : home.event.title.en}
+                        <div className="absolute left-1/2 bottom-0 h-3.5 w-full -translate-x-1/2 md:left-auto md:right-0 md:-bottom-4 md:w-40 md:translate-x-0 lg:-bottom-5 lg:h-5 lg:w-60">
+                          <Scribble />
+                        </div>
+                      </h2>
+                    </div>
+                    <div className="ml-auto hidden w-fit pl-12 md:block">
+                      <StrokeButton
+                        destination="/events"
+                        color={colors.morinBlue}
+                      >
+                        {ctx.language === 'id'
+                          ? home.event.btn_all.id
+                          : home.event.btn_all.en}
+                      </StrokeButton>
+                    </div>
                   </div>
-                  <div className="ml-auto hidden w-fit pl-12 md:block">
+                </Container>
+                <div className="relative overflow-hidden bg-morin-skyBlue px-0 pb-10 md:px-0 xl:pb-14">
+                  {/* Events  */}
+                  <HighlightSlider
+                    data={eventAPI}
+                    lang={ctx.language}
+                    button={home.event.btn_card}
+                  />
+                  <div className="mx-auto mt-7 w-fit md:hidden">
                     <StrokeButton
                       destination="/events"
                       color={colors.morinBlue}
                     >
                       {ctx.language === 'id'
-                        ? home.language.event.btn_all.id
-                        : home.language.event.btn_all.en}
+                        ? home.event.btn_all.id
+                        : home.event.btn_all.en}
                     </StrokeButton>
                   </div>
+                  <div
+                    className={`absolute bottom-0 -z-1 h-10 w-full translate-y-full bg-morin-skyBlue`}
+                  />
                 </div>
               </Container>
-              <div className="relative overflow-hidden bg-morin-skyBlue px-0 pb-10 md:px-0 xl:pb-14">
-                {/* Events  */}
-                <HighlightSlider
-                  data={eventAPI}
-                  lang={ctx.language}
-                  button={home.language.event.btn_card}
-                />
-                <div className="mx-auto mt-7 w-fit md:hidden">
-                  <StrokeButton destination="/events" color={colors.morinBlue}>
-                    {ctx.language === 'id'
-                      ? home.language.event.btn_all.id
-                      : home.language.event.btn_all.en}
-                  </StrokeButton>
-                </div>
-                <div
-                  className={`absolute bottom-0 -z-1 h-10 w-full translate-y-full bg-morin-skyBlue`}
-                />
-              </div>
-            </Container>
-          </section>
+            </section>
+          )}
           <section>
             <Container
               border={true}
@@ -263,8 +253,8 @@ export default function Home({
               <div className="mb-8 flex w-full flex-nowrap flex-col md:flex-row">
                 <h2 className="mx-auto mt-0 mb-2 w-full max-w-[260px] text-center font-nutmeg text-mtitleSmall font-normal leading-tight text-morin-blue md:mx-0 md:mb-0 md:w-[calc(100%-135px)] md:max-w-none md:pr-4 md:text-left lg:text-ctitle xl:text-mtitleBig">
                   {ctx.language === 'id'
-                    ? home.language.instagram.title.id
-                    : home.language.instagram.title.en}
+                    ? home.instagram.title.id
+                    : home.instagram.title.en}
                 </h2>
                 <div>
                   <SolidButton
@@ -273,7 +263,7 @@ export default function Home({
                     targetBlank={true}
                     color={colors.morinBlue}
                   >
-                    {home.instagram.title}
+                    {home.instagram.button}
                   </SolidButton>
                 </div>
               </div>
@@ -283,7 +273,7 @@ export default function Home({
                 src="https://apps.elfsight.com/p/platform.js"
                 strategy="afterInteractive"
               />
-              <div className={`${home.elfsightID} w-full`} />
+              <div className={`${home.instagram.elfsightID} w-full`} />
             </div>
           </section>
           <Footer
