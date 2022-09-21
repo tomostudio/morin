@@ -15,6 +15,7 @@ import {
 } from '../utils/svg';
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset';
 import { motion } from 'framer-motion';
+import { width } from '@mui/system';
 
 export default function Header({
   event,
@@ -117,7 +118,7 @@ export default function Header({
 
   // Market Variable
   const [markerW, setMarkerW] = useState(ctx.language === 'id' ? 174 : 120); // width of marker
-  const [markerPos, setMarkerPos] = useState(ctx.language === 'id' ? 427 : 396); // position of marker
+  const [markerPos, setMarkerPos] = useState(ctx.language === 'id' ? 0 : 0); // position of marker
   let widthData = []; // always collect width data.
 
   const defaultNavRef = useRef();
@@ -143,21 +144,27 @@ export default function Header({
     let totalX = 0;
 
     // get width of all nav
-    navRef.current
-      .querySelectorAll('a:not(.default-nav)')
-      .forEach((item, id) => {
-        widthData[id] = item.clientWidth;
-      });
+    navRef.current.querySelectorAll('a').forEach((item, id) => {
+      widthData[id] = item.clientWidth;
+    });
+
+    // set target id
+    let targetid = -1;
+
+    if (Number(e.target.dataset.id) === -1) {
+      targetid = 0;
+    } else if (Number(e.target.dataset.id) >= 0) {
+      targetid = widthData.length - Number(e.target.dataset.id) - 1;
+    }
 
     // iterate nav to get position.
-    widthData.forEach((w, id) => {
-      if (e.target.dataset.id == -1 || id < e.target.dataset.id) {
+    widthData.reverse().forEach((w, id) => {
+      if (id < targetid) {
         moveX = moveX + w;
       }
     });
-
-    // set marker position.
-    setMarkerPos(moveX);
+    // set marker position. in reverse
+    setMarkerPos(-moveX);
   };
 
   // function when navigation on hover out
@@ -183,7 +190,7 @@ export default function Header({
       widthData.forEach((w) => {
         moveX = moveX + w;
       });
-      setMarkerPos(moveX);
+      setMarkerPos(0);
     }
   };
 
