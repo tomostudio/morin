@@ -26,6 +26,7 @@ const ProductDetail = ({
   footerAPI,
   translation,
   productType,
+  productTypeListAPI,
 }) => {
   const [seo] = seoAPI
   const [product] = productAPI
@@ -445,8 +446,11 @@ const ProductDetail = ({
 
                     <div className="flex flex-wrap mb-8 -mx-1.5 md:mb-0 lg:-mx-2.5 justify-center">
                       {true
-                        ? productListAPI?.slice(0, 3).map((item, index) => {
-                            return (
+                        ? productListAPI
+                            ?.filter((item) => item.type)
+                            .filter((item) => item._id !== product._id)
+                            .slice(0, 3)
+                            .map((item, index) => (
                               <div
                                 className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
                                 key={`${item.title.en}${index}`}
@@ -472,47 +476,66 @@ const ProductDetail = ({
                                     .url()}
                                   thumbnailFruit={item.thumbnailFruit}
                                   imgAlt={item.thumbnail.alt}
-                                  link={`/${productType.slug.current}/${item.slug.current}`}
+                                  link={`/products/${
+                                    productTypeListAPI
+                                      .map((data) => {
+                                        return {
+                                          ...data,
+                                          products: data.products.find(
+                                            (e) => e._id === item._id,
+                                          ),
+                                        }
+                                      })
+                                      .find((e) => e.products).slug.current
+                                  }/${item.slug.current}`}
                                   small
                                 />
                               </div>
-                            )
-                          })
+                            ))
                         : product.similar.manual &&
-                          product.similar.manual?.map((item, index) => {
-                            return (
-                              <div
-                                className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
-                                key={`${item.title.en}${index}`}
-                              >
-                                <ProductCard
-                                  title={
-                                    ctx.language === 'id'
-                                      ? item.title.id
-                                      : item.title.en
-                                  }
-                                  bgColor={
-                                    item.backgroundColor
-                                      ? item.backgroundColor.hex
-                                      : colors.morinLightBlue
-                                  }
-                                  imgSrc={urlFor(item.thumbnail)
-                                    .auto('format')
-                                    .url()}
-                                  imgBg={'/product/strawberry-bg.png'}
-                                  thumbnailFruit={item.thumbnailFruit}
-                                  imgPlaceholder={urlFor(item.thumbnail)
-                                    .width(500)
-                                    .auto('format')
-                                    .blur(20)
-                                    .url()}
-                                  imgAlt={item.thumbnail.alt}
-                                  link={`/products/${productType.slug.current}/${item.slug.current}`}
-                                  small
-                                />
-                              </div>
-                            )
-                          })}
+                          product.similar.manual?.map((item, index) => (
+                            <div
+                              className="w-1/2 px-1.5 mb-3 md:w-1/4 lg:px-2.5 lg:mb-5"
+                              key={`${item.title.en}${index}`}
+                            >
+                              <ProductCard
+                                title={
+                                  ctx.language === 'id'
+                                    ? item.title.id
+                                    : item.title.en
+                                }
+                                bgColor={
+                                  item.backgroundColor
+                                    ? item.backgroundColor.hex
+                                    : colors.morinLightBlue
+                                }
+                                imgSrc={urlFor(item.thumbnail)
+                                  .auto('format')
+                                  .url()}
+                                imgBg={'/product/strawberry-bg.png'}
+                                thumbnailFruit={item.thumbnailFruit}
+                                imgPlaceholder={urlFor(item.thumbnail)
+                                  .width(500)
+                                  .auto('format')
+                                  .blur(20)
+                                  .url()}
+                                imgAlt={item.thumbnail.alt}
+                                link={`/products/${
+                                  productTypeListAPI
+                                    .map((data) => {
+                                      return {
+                                        ...data,
+                                        products: data.products.find(
+                                          (e) => e._id === item._id,
+                                        ),
+                                      }
+                                    })
+                                    .find((e) => e.products).slug.current
+                                }/${item.slug.current}`}
+                                small
+                              />
+                            </div>
+                          ))}
                     </div>
 
                     <StrokeButton
@@ -563,7 +586,18 @@ const ProductDetail = ({
                               .blur(20)
                               .url()}
                             imgAlt={item.thumbnail.alt}
-                            link={`/products/${productType.slug.current}/${item.slug.current}`}
+                            link={`/products/${
+                              productTypeListAPI
+                                .map((data) => {
+                                  return {
+                                    ...data,
+                                    products: data.products.find(
+                                      (e) => e._id === item._id,
+                                    ),
+                                  }
+                                })
+                                .find((e) => e.products).slug.current
+                            }/${item.slug.current}`}
                             small
                           />
                         </div>
@@ -655,11 +689,16 @@ export async function getStaticProps({ params }) {
     `,
   )
   const productListAPI = await client.fetch(`
-    *[_type == "productList"] {
-      ...,
-      type->
-    }
+    *[_type == "productList"]
   `)
+  const productTypeListAPI = await client.fetch(
+    `
+      *[_type == "productType"] {
+        ...,
+        products[]->,
+      } 
+    `,
+  )
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
   `)
@@ -684,6 +723,7 @@ export async function getStaticProps({ params }) {
       footerAPI,
       translation,
       productType,
+      productTypeListAPI,
     },
   }
 }
