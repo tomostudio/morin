@@ -323,6 +323,7 @@ const Recipe = ({
                       link={`/recipes/${item.slug.current}`}
                       category={item.recipeCategory}
                       lang={ctx.language}
+                      color={item.titleColor}
                     />
                   </div>
                 ))}
