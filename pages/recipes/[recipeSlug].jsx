@@ -732,7 +732,7 @@ const RecipeDetail = ({
 
                         <div className='mb-4 md:mb-0 -mx-8 w-[calc(100%+64px)] md:-mx-4 md:w-[calc(100%+32px)] lg:-mx-8 lg:w-[calc(100%+64px)]'>
                           <RecipeSlider
-                            data={recipeListAPI}
+                            data={recipeListAPI.filter((item) => item._id !== recipe._id)}
                             lang={ctx.language}
                           />
                         </div>
@@ -795,7 +795,7 @@ const RecipeDetail = ({
 
                       <div className='w-[calc(100%+64px)] -mx-8 md:w-[calc(100%+32px)] md:-mx-4'>
                         <RecipeSlider
-                          data={recipeListAPI}
+                            data={recipeListAPI.filter((item) => item._id !== recipe._id)}
                           lang={ctx.language}
                         />
                       </div>
