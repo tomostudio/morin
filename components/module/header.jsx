@@ -192,6 +192,7 @@ export default function Header({
       });
       setMarkerPos(0);
     }
+    console.log('resetNav');
   };
 
   const [buttonColor, setButtonColor] = useState(ctx.langColor);
@@ -218,14 +219,12 @@ export default function Header({
     };
 
     setTimeout(() => {
-      resetNav();
-    }, 10);
-
-    setTimeout(() => {
       scrollListener();
+      resetNav();
       document.addEventListener('resize', resetNav, false);
       document.addEventListener('scroll', scrollListener, false);
     }, 50); // load delay
+
     return () => {
       document.removeEventListener('resize', resetNav, false);
       document.removeEventListener('scroll', scrollListener, false);
