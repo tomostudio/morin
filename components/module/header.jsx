@@ -139,6 +139,9 @@ export default function Header({
     // set position variable
     let moveX = 0;
 
+    // set totalwidth variable
+    let totalX = 0;
+
     // get width of all nav
     navRef.current
       .querySelectorAll('a:not(.default-nav)')
@@ -152,6 +155,7 @@ export default function Header({
         moveX = moveX + w;
       }
     });
+
     // set marker position.
     setMarkerPos(moveX);
   };
@@ -196,9 +200,6 @@ export default function Header({
     const language = localStorage.getItem('morin_language');
     if (language) {
       ctx.setLanguage(language);
-      setTimeout(() => {
-        resetNav();
-      }, 1);
     }
     const scrollListener = () => {
       if (window.scrollY > 250) {
@@ -208,6 +209,10 @@ export default function Header({
       }
       console.log(colorPlaceholder, buttonColor);
     };
+
+    setTimeout(() => {
+      resetNav();
+    }, 10);
 
     setTimeout(() => {
       scrollListener();
@@ -336,7 +341,7 @@ export default function Header({
                   width: markerW,
                   transform: `translateX(${markerPos}px)`,
                 }}
-                className='absolute left-[6px] z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo'
+                className='absolute right-[6px] left-auto z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo'
               />
             </nav>
 
