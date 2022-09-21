@@ -13,9 +13,6 @@ const RecipeCard = ({
   lang,
   color = 'white',
 }) => {
-  const recipeTag =
-    'flex items-center h-[25px] rounded-full border-white border-solid border-2 px-2 lg:h-[30px] lg:px-4';
-
   return (
     <div
       className={`group relative transition-all hover:rotate-3 hover:shadow-lg duration-300 rounded-3xl overflow-hidden aspect-[4/5] height-auto ${className} isolate`}
@@ -35,7 +32,12 @@ const RecipeCard = ({
           </span>
           <div className='hidden md:flex flex-wrap justify-center px-7 gap-2'>
             {category?.map((data, id) => (
-              <div key={id} className={recipeTag}>
+              <div
+                key={id}
+                className={`flex items-center h-[25px] rounded-full ${
+                  color === 'white' ? 'border-white' : 'border-black'
+                } border-solid border-2 px-2 lg:h-[30px] lg:px-4`}
+              >
                 <span className='pt-0.5 lg:pt-1 font-default'>
                   {lang === 'id' ? data.title.id : data.title.en}
                 </span>

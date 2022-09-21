@@ -81,7 +81,7 @@ const InstructionCard = ({
   return (
     <div className='mb-6 last:mb-0'>
       <div className='mb-1 lg:mb-2'>
-        <span className='text-black font-semibold lg:hidden'>Step {step}</span>
+        <span className='text-black font-bold lg:hidden'>Step {step}</span>
         <div className='hidden lg:block'>
           <RecipeCheckbox
             name={value}
@@ -440,7 +440,7 @@ const RecipeDetail = ({
             {((ctx.language === 'id' && recipe.description?.id) ||
               (ctx.language === 'en' && recipe.description?.en)) && (
               <div className='bg-white rounded-2xl my-4 lg:my-8 p-0 py-10 md:py-10 md:px-9 lg:mt-0 lg:mb-4'>
-                <div className='lg:max-w-3xl lg:mx-auto content no-max'>
+                <div className='lg:max-w-4xl lg:mx-auto content no-max'>
                   <PortableText
                     value={
                       ctx.language === 'id'
@@ -667,7 +667,7 @@ const RecipeDetail = ({
                   </div>
                 </div>
 
-                <div className='lg:max-w-3xl lg:mx-auto px-0 md:px-14 lg:px-0'>
+                <div className='lg:max-w-4xl lg:px-16 lg:mx-auto px-0 md:px-14'>
                   {ctx.language === 'id'
                     ? recipe.steps?.id.map((item, index) => (
                         <InstructionCard
