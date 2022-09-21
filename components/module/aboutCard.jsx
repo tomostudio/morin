@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import FancyLink from '../utils/fancyLink'
 
 const AboutCard = ({
   titleDescription,
@@ -35,7 +34,7 @@ const AboutCard = ({
           <span className="font-nutmeg text-[22px] sm:text-subtitle mx-auto leading-none lg:text-h5 xl:text-h2">
             {title}
           </span>
-          <span className="flex items-center min-h-[25px] font-semibold leading-none border-white border-2 border-solid rounded-full px-4 mx-auto md:min-h-[30px] group-hover:text-black group-hover:bg-white transition-all duration-300">
+          <span className="flex items-center min-h-[25px] font-semibold leading-none border-white border-2 border-solid rounded-full px-4 py-[0.35em] mx-auto md:min-h-[30px] group-hover:text-black group-hover:bg-white transition-all duration-300">
             <span className="md:pt-0.5">{button}</span>
           </span>
         </div>

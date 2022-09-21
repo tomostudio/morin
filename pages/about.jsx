@@ -83,7 +83,7 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
           <div className="relative pt-28 pb-32 px-8 xl:pb-36 z-2">
             <div className="relative max-w-md text-morin-blue text-center mx-auto lg:max-w-xl xl:max-w-3xl">
               <div className="relative">
-                <h1 className="font-poppins font-semibold text-defaultSmall leading-none tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
+                <h1 className="font-poppins font-semibold text-defaultSmall leading-none relative z-2 tracking-widest mt-0 mb-6 lg:text-default lg:mb-10 xl:mb-20">
                   {ctx.language === 'id' ? about.title.id : about.title.en}
                 </h1>
                 <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
