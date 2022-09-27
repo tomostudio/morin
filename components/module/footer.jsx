@@ -91,14 +91,12 @@ const Footer = ({
           </div>
           <div className="flex flex-wrap flex-col justify-between w-1/2 lg:w-auto lg:ml-14 xl:mx-24">
             <div className="flex flex-wrap flex-col space-y-3 lg:space-y-4">
-              {!faq && (
                 <FancyLink
                   destination="/faq"
                   className={`footer-link ${defaultHover}`}
                 >
                   {lang === 'id' ? button.faq.id : button.faq.en}
                 </FancyLink>
-              )}
               <FancyLink
                 destination="/contact"
                 className={`footer-link ${defaultHover}`}

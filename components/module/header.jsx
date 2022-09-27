@@ -248,7 +248,6 @@ export default function Header({
         variants={fade}
         className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full'
       >
-        {!turn_language && (
           <Container className='mt-4 hidden lg:flex'>
             {/* Language Selector */}
             <div
@@ -291,8 +290,7 @@ export default function Header({
               </FancyLink>
             </div>
           </Container>
-        )}
-        <Container className={`mt-3 ${turn_language ? 'lg:mt-3' : 'lg:mt-0'}`}>
+        <Container className={`mt-3 lg:mt-3`}>
           <div className='flex flex-row flex-wrap items-center justify-between'>
             <FancyLink
               destination='/'
@@ -388,7 +386,6 @@ export default function Header({
                       : button.menu_lang.get_morin.en}
                   </FancyLink>
                 </nav>
-                {!turn_language && (
                   <div className='absolute bottom-40 left-1/2 mx-auto w-fit -translate-x-1/2 flex justify-end items-center text-defaultSmall text-white'>
                     <FancyLink
                       onClick={() => ctx.setLanguage('en')}
@@ -408,7 +405,6 @@ export default function Header({
                       ID
                     </FancyLink>
                   </div>
-                )}
                 <div className='absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5'>
                   {socialMediaLink.instagram && (
                     <FancyLink
