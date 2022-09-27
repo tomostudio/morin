@@ -20,7 +20,6 @@ import { width } from '@mui/system';
 export default function Header({
   event,
   button,
-  turn_language,
   whatsapp,
   socialMediaLink,
 }) {

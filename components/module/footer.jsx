@@ -10,7 +10,6 @@ const Footer = ({
   event,
   lang,
   button,
-  faq,
   footer,
   translation,
   mailchimp,

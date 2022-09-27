@@ -67,7 +67,6 @@ export default function App({ Component, pageProps }) {
           event={pageProps.eventAPI?.length > 0 ? true : false}
           button={pageProps.translation}
           socialMediaLink={pageProps.footerAPI[0].footerLink}
-          turn_language={pageProps.seoAPI[0].advance_setting.turn_language}
           whatsapp={pageProps.seoAPI[0]}
         />
         <ParallaxProvider>
