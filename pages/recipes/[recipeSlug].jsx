@@ -474,7 +474,7 @@ const RecipeDetail = ({
                         ? translation.recipeLanguage.ingredients.id
                         : translation.recipeLanguage.ingredients.en}
                     </h2>
-                    <div className='lg:max-w-3xl lg:mx-auto md:px-14 pb-4 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
+                    <div className='lg:max-w-4xl lg:mx-auto md:px-14 pb-4 lg:px-14 xl:px-0 flex flex-col items-start justify-start cursor-default'>
                       {ctx.language === 'id'
                         ? recipe.ingredient?.id.map((data, index) =>
                             !data.title ? (
@@ -567,7 +567,7 @@ const RecipeDetail = ({
             {((ctx.language === 'id' && recipe.steps?.id.length > 0) ||
               (ctx.language === 'en' && recipe.steps?.en.length > 0)) && (
               <div className='bg-white rounded-2xl mb-8 p-8 md:px-11 lg:px-10 pb-12'>
-                <div className='flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
+                <div className='lg:max-w-4xl lg:px-16 lg:mx-auto px-0 md:px-14 mx-auto flex flex-wrap flex-col mb-6 lg:flex-row lg:items-center lg:justify-between lg:mb-10 xl:mb-12'>
                   <h2 className='block font-nutmeg font-normal text-center text-morin-red text-subtitle leading-none mb-4 lg:text-left lg:text-ctitleBig lg:mb-0'>
                     {ctx.language === 'id'
                       ? translation.recipeLanguage.instructions.id
