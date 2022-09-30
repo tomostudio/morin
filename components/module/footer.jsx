@@ -22,15 +22,15 @@ const Footer = ({
         {/* LEFT */}
         <div className="flex flex-col w-full mb-8 lg:w-3/5 lg:mb-0 lg:max-w-lg  pr-0 md:pr-4">
           <div className="px-2 lg:px-0">
-          <h2 className="text-subtitle2 font-bold font-nutmeg lg:text-4">
+            <h2 className="text-subtitle2 font-bold font-nutmeg lg:text-4">
               {lang === 'id'
-                ? footer.sub_language.title.id
-                : footer.sub_language.title.en}
+                ? translation.sub_language.title.id
+                : translation.sub_language.title.en}
             </h2>
             <span className="text-defaultSmall lg:text-default">
               {lang === 'id'
-                ? footer.sub_language.sub_title.id
-                : footer.sub_language.sub_title.en}
+                ? translation.sub_language.sub_title.id
+                : translation.sub_language.sub_title.en}
             </span>
           </div>
           {/* Subscription Form  */}
