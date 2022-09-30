@@ -32,6 +32,7 @@ const EventDetail = ({
   seoAPI,
   footerAPI,
   translation,
+  eventAPI,
 }) => {
   const [seo] = seoAPI
   const [event] = eventDetailAPI
