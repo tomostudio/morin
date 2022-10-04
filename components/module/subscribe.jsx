@@ -1,12 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import FancyLink from '../utils/fancyLink'
 
-const SubscribeForm = ({
-  lang,
-  status,
-  message,
-  onValidated
-}) => {
+const SubscribeForm = ({ lang, status, message, onValidated }) => {
   const [disable, setDisable] = useState(false)
   const [redError, setRedError] = useState(false)
   const [email, setEmail] = useState(null)
@@ -92,6 +87,7 @@ const SubscribeForm = ({
           ref={inputEl}
         />
         <FancyLink
+          a11yText="button_subscribe"
           onClick={handleFormSubmit}
           className="h-full flex-grow-0 border-2 rounded-r-2xl border-l-0 border-white  pl-4 pr-6 pt-1 text-center default-type text-defaultSmall leading-none hover:bg-white hover:text-morin-blue transition-all duration-300 lg:w-24 lg:pt-[2px] lg:text-default"
         >

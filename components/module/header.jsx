@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import FancyLink from '@/components/utils/fancyLink';
-import Container from '@/components/module/container';
-import Hamburger from '../micro-module/hamburger';
-import { useAppContext } from 'context/state';
+import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import FancyLink from '@/components/utils/fancyLink'
+import Container from '@/components/module/container'
+import Hamburger from '../micro-module/hamburger'
+import { useAppContext } from 'context/state'
 import {
   MorinLogo,
   SunRay,
@@ -12,10 +12,10 @@ import {
   Instagram,
   Facebook,
   WaButton,
-} from '../utils/svg';
-import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset';
-import { motion } from 'framer-motion';
-import { width } from '@mui/system';
+} from '../utils/svg'
+import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
+import { motion } from 'framer-motion'
+import { width } from '@mui/system'
 
 export default function Header({
   event,
@@ -24,8 +24,8 @@ export default function Header({
   whatsapp,
   socialMediaLink,
 }) {
-  const [opened, setOpened] = useState(false);
-  const ctx = useAppContext();
+  const [opened, setOpened] = useState(false)
+  const ctx = useAppContext()
 
   const navData = event
     ? [
@@ -94,144 +94,144 @@ export default function Header({
           dest: 'recipes',
           ariaText: 'Navigate to the Recipes page',
         },
-      ];
+      ]
 
   // Mobile Menu Toggle
   const toggleHamburgermenu = () => {
-    const body = document.querySelector('body');
+    const body = document.querySelector('body')
     if (ctx.mobileMenuOpen) {
       // change into closed state
-      body.classList.remove('overflow-hidden');
-      ctx.mobileMenuOpen = false;
+      body.classList.remove('overflow-hidden')
+      ctx.mobileMenuOpen = false
     } else {
       // change into opened state
-      body.classList.add('overflow-hidden');
+      body.classList.add('overflow-hidden')
 
-      ctx.mobileMenuOpen = true;
+      ctx.mobileMenuOpen = true
     }
-    setOpened(ctx.mobileMenuOpen);
-  };
+    setOpened(ctx.mobileMenuOpen)
+  }
 
   useEffect(() => {
-    setOpened(ctx.mobileMenuOpen);
-  }, [ctx.mobileMenuOpen]);
+    setOpened(ctx.mobileMenuOpen)
+  }, [ctx.mobileMenuOpen])
 
   // Market Variable
-  const [markerW, setMarkerW] = useState(ctx.language === 'id' ? 174 : 120); // width of marker
-  const [markerPos, setMarkerPos] = useState(ctx.language === 'id' ? 0 : 0); // position of marker
-  let widthData = []; // always collect width data.
+  const [markerW, setMarkerW] = useState(ctx.language === 'id' ? 174 : 120) // width of marker
+  const [markerPos, setMarkerPos] = useState(ctx.language === 'id' ? 0 : 0) // position of marker
+  let widthData = [] // always collect width data.
 
-  const defaultNavRef = useRef();
-  const navRef = useRef();
+  const defaultNavRef = useRef()
+  const navRef = useRef()
 
   // function when navigation on hover in
   const navMouseOver = (e) => {
     // set marker width according to button yand di hover
-    setMarkerW(e.target.clientWidth);
+    setMarkerW(e.target.clientWidth)
 
     // reset and set color of navigation
     navRef.current.querySelectorAll('a').forEach((item) => {
-      item.classList.remove('focus');
-    });
+      item.classList.remove('focus')
+    })
 
     // set target nav color to white (with class)
-    e.target.classList.add('focus');
+    e.target.classList.add('focus')
 
     // set position variable
-    let moveX = 0;
+    let moveX = 0
 
     // set totalwidth variable
-    let totalX = 0;
+    let totalX = 0
 
     // get width of all nav
     navRef.current.querySelectorAll('a').forEach((item, id) => {
-      widthData[id] = item.clientWidth;
-    });
+      widthData[id] = item.clientWidth
+    })
 
     // set target id
-    let targetid = -1;
+    let targetid = -1
 
     if (Number(e.target.dataset.id) === -1) {
-      targetid = 0;
+      targetid = 0
     } else if (Number(e.target.dataset.id) >= 0) {
-      targetid = widthData.length - Number(e.target.dataset.id) - 1;
+      targetid = widthData.length - Number(e.target.dataset.id) - 1
     }
 
     // iterate nav to get position.
     widthData.reverse().forEach((w, id) => {
       if (id < targetid) {
-        moveX = moveX + w;
+        moveX = moveX + w
       }
-    });
+    })
     // set marker position. in reverse
-    setMarkerPos(-moveX);
-  };
+    setMarkerPos(-moveX)
+  }
 
   // function when navigation on hover out
   const navLeave = () => {
-    resetNav();
-  };
+    resetNav()
+  }
 
   const resetNav = () => {
-    const width = window.innerWidth;
+    const width = window.innerWidth
     if (width > 1024) {
-      document.querySelector('body').classList.remove('overflow-hidden');
-      setMarkerW(defaultNavRef.current.clientWidth);
+      document.querySelector('body').classList.remove('overflow-hidden')
+      setMarkerW(defaultNavRef.current.clientWidth)
       //update all nav width data
       document
         .querySelectorAll('nav.header-nav a:not(.default-nav)')
         .forEach((item, id) => {
-          item.classList.remove('focus');
-          widthData[id] = item.clientWidth;
-        });
-      defaultNavRef.current.classList.add('focus');
+          item.classList.remove('focus')
+          widthData[id] = item.clientWidth
+        })
+      defaultNavRef.current.classList.add('focus')
 
-      let moveX = 0;
+      let moveX = 0
       widthData.forEach((w) => {
-        moveX = moveX + w;
-      });
-      setMarkerPos(0);
+        moveX = moveX + w
+      })
+      setMarkerPos(0)
     }
-    console.log('resetNav');
-  };
+    console.log('resetNav')
+  }
 
-  const [buttonColor, setButtonColor] = useState(ctx.langColor);
-  let colorPlaceholder = ''; // contain holder color, to be updated by useEffect, because state doesn't update.
-
-  useEffect(() => {
-    colorPlaceholder = ctx.langColor;
-    setButtonColor(ctx.langColor);
-    console.log('set color', ctx.langColor);
-  }, [ctx.langColor]);
+  const [buttonColor, setButtonColor] = useState(ctx.langColor)
+  let colorPlaceholder = '' // contain holder color, to be updated by useEffect, because state doesn't update.
 
   useEffect(() => {
-    const language = localStorage.getItem('morin_language');
+    colorPlaceholder = ctx.langColor
+    setButtonColor(ctx.langColor)
+    console.log('set color', ctx.langColor)
+  }, [ctx.langColor])
+
+  useEffect(() => {
+    const language = localStorage.getItem('morin_language')
     if (language) {
-      ctx.setLanguage(language);
+      ctx.setLanguage(language)
     }
     const scrollListener = () => {
       if (window.scrollY > 250) {
-        setButtonColor('black');
+        setButtonColor('black')
       } else {
-        setButtonColor(colorPlaceholder);
+        setButtonColor(colorPlaceholder)
       }
-      console.log(colorPlaceholder, buttonColor);
-    };
+      console.log(colorPlaceholder, buttonColor)
+    }
 
     setTimeout(() => {
-      scrollListener();
-      resetNav();
-      document.addEventListener('resize', resetNav, false);
-      document.addEventListener('scroll', scrollListener, false);
-    }, 50); // load delay
+      scrollListener()
+      resetNav()
+      document.addEventListener('resize', resetNav, false)
+      document.addEventListener('scroll', scrollListener, false)
+    }, 50) // load delay
 
     return () => {
-      document.removeEventListener('resize', resetNav, false);
-      document.removeEventListener('scroll', scrollListener, false);
-    };
-  }, []);
+      document.removeEventListener('resize', resetNav, false)
+      document.removeEventListener('scroll', scrollListener, false)
+    }
+  }, [])
 
-  const FIFODuration = 300;
+  const FIFODuration = 300
 
   const fade = {
     initial: { opacity: 0 },
@@ -243,19 +243,19 @@ export default function Header({
       opacity: 0,
       transition: { duration: 0.5, ease: [0.83, 0, 0.17, 1] },
     },
-  };
+  }
 
   return (
     <>
       <motion.header
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={fade}
-        className='default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full'
+        className="default-type header-custom pointer-events-none fixed top-0 left-0 right-0 z-10 w-full"
       >
         {!turn_language && (
-          <Container className='mt-4 hidden lg:flex'>
+          <Container className="mt-4 hidden lg:flex">
             {/* Language Selector */}
             <div
               className={`w-full flex justify-end items-center text-defaultSmall ${
@@ -263,12 +263,13 @@ export default function Header({
               }`}
             >
               <FancyLink
+                a11yText="lang_selectorEN"
                 onClick={() => {
-                  localStorage.setItem('morin_language', 'en');
-                  ctx.setLanguage('en');
+                  localStorage.setItem('morin_language', 'en')
+                  ctx.setLanguage('en')
                   setTimeout(() => {
-                    resetNav();
-                  }, 1);
+                    resetNav()
+                  }, 1)
                 }}
                 className={`mr-3 pt-1 leading-none ${
                   ctx.language !== 'en' && 'opacity-50'
@@ -282,12 +283,13 @@ export default function Header({
                 }`}
               />
               <FancyLink
+                a11yText="lang_selectorID"
                 onClick={() => {
-                  ctx.setLanguage('id');
-                  localStorage.setItem('morin_language', 'id');
+                  ctx.setLanguage('id')
+                  localStorage.setItem('morin_language', 'id')
                   setTimeout(() => {
-                    resetNav();
-                  }, 1);
+                    resetNav()
+                  }, 1)
                 }}
                 className={`mx-3 pt-1 leading-none ${
                   ctx.language !== 'id' && 'opacity-50'
@@ -299,19 +301,19 @@ export default function Header({
           </Container>
         )}
         <Container className={`mt-3 ${turn_language ? 'lg:mt-3' : 'lg:mt-0'}`}>
-          <div className='flex flex-row flex-wrap items-center justify-between'>
+          <div className="flex flex-row flex-wrap items-center justify-between">
             <FancyLink
-              destination='/'
-              a11yText='Navigate to the home page'
-              className='group pointer-events-auto relative h-9 lg:h-14 max-md:p-0'
+              destination="/"
+              a11yText="Navigate to the home page"
+              className="group pointer-events-auto relative h-9 lg:h-14 max-md:p-0"
             >
-              <MorinLogo className='relative z-2 h-full w-auto' />
-              <div className='pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>
-                <SunRaySmaller className='h-96 w-96 animate-spin-slow' />
+              <MorinLogo className="relative z-2 h-full w-auto" />
+              <div className="pointer-events-none absolute  top-[50%] left-[50%] -z-1 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+                <SunRaySmaller className="h-96 w-96 animate-spin-slow" />
               </div>
             </FancyLink>
             <nav
-              className='header-nav pointer-events-auto relative hidden rounded-full bg-white py-1.5 px-2 shadow-softer lg:flex'
+              className="header-nav pointer-events-auto relative hidden rounded-full bg-white py-1.5 px-2 shadow-softer lg:flex"
               onSubmit={(e) => e.preventDefault()}
               onMouseLeave={navLeave}
               ref={navRef}
@@ -321,7 +323,7 @@ export default function Header({
                   destination={`/${item.dest}`}
                   a11yText={item.ariaText}
                   key={item.id}
-                  className=''
+                  className=""
                   onMouseEnter={navMouseOver}
                   data-id={id}
                 >
@@ -329,7 +331,7 @@ export default function Header({
                 </FancyLink>
               ))}
               <FancyLink
-                className='default-nav focus'
+                className="default-nav focus"
                 onMouseEnter={navMouseOver}
                 a11yText={`Navigate to the ${button.menu_lang.get_morin.en} page`}
                 destination={`/get-morin`}
@@ -341,19 +343,19 @@ export default function Header({
                   : button.menu_lang.get_morin.en}
               </FancyLink>
               <div
-                id='marker'
-                aria-hidden='true'
+                id="marker"
+                aria-hidden="true"
                 style={{
                   width: markerW,
                   transform: `translateX(${markerPos}px)`,
                 }}
-                className='absolute right-[6px] left-auto z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo'
+                className="absolute right-[6px] left-auto z-1 h-8 rounded-full bg-morin-blue shadow-softer transition-all duration-300 ease-in-out-expo"
               />
             </nav>
 
             {/* MOBILE */}
             <Hamburger
-              className='block lg:hidden outline-none'
+              className="block lg:hidden outline-none"
               opened={opened}
               onClick={() => toggleHamburgermenu()}
               color={buttonColor}
@@ -365,11 +367,11 @@ export default function Header({
                   : 'opacity-0 pointer-events-none'
               }`}
             >
-              <div className='absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] '>
-                <SunRay className='block w-full animate-spin-slower h-full' />
+              <div className="absolute top-0 left-1/2 aspect-1 -z-1 translate-y-[-60%] -translate-x-1/2 w-screen min-w-[600px] ">
+                <SunRay className="block w-full animate-spin-slower h-full" />
               </div>
-              <div className='relative z-1 flex h-full w-full items-center justify-center pb-20'>
-                <nav className='flex w-full flex-col space-y-6 text-center items-center'>
+              <div className="relative z-1 flex h-full w-full items-center justify-center pb-20">
+                <nav className="flex w-full flex-col space-y-6 text-center items-center">
                   {navData?.map((item, id) => (
                     <FancyLink
                       key={id}
@@ -384,7 +386,7 @@ export default function Header({
                   ))}
                   <FancyLink
                     destination={'/get-morin'}
-                    a11yText='Navigate to the about page'
+                    a11yText="Navigate to the about page"
                     className={`font-nutmeg font-bold text-white text-mtitleBig leading-none  p-2  ${
                       navData.length % 2 === 0 ? rotate3 : rotate_3
                     }`}
@@ -395,8 +397,9 @@ export default function Header({
                   </FancyLink>
                 </nav>
                 {!turn_language && (
-                  <div className='absolute bottom-40 left-1/2 mx-auto w-fit -translate-x-1/2 flex justify-end items-center text-defaultSmall text-white'>
+                  <div className="absolute bottom-40 left-1/2 mx-auto w-fit -translate-x-1/2 flex justify-end items-center text-defaultSmall text-white">
                     <FancyLink
+                      a11yText="lang_selectorENMobile"
                       onClick={() => ctx.setLanguage('en')}
                       className={`mr-3 ${
                         ctx.language !== 'en' && 'opacity-50'
@@ -404,8 +407,9 @@ export default function Header({
                     >
                       EN
                     </FancyLink>
-                    <hr className='bg-white w-[2px] h-6 opacity-50' />
+                    <hr className="bg-white w-[2px] h-6 opacity-50" />
                     <FancyLink
+                a11yText="lang_selectorIDMobile"
                       onClick={() => ctx.setLanguage('id')}
                       className={`mx-3 ${
                         ctx.language !== 'id' && 'opacity-50'
@@ -415,7 +419,7 @@ export default function Header({
                     </FancyLink>
                   </div>
                 )}
-                <div className='absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5'>
+                <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
                   {socialMediaLink.instagram && (
                     <FancyLink
                       destination={socialMediaLink.instagram}
@@ -436,7 +440,7 @@ export default function Header({
                       blank={true}
                       className={`flex leading-none ${defaultHover}`}
                     >
-                      <Twitter className='w-9 h-9' />
+                      <Twitter className="w-9 h-9" />
                     </FancyLink>
                   )}
                   {socialMediaLink.facebook && (
@@ -445,7 +449,7 @@ export default function Header({
                       blank={true}
                       className={`flex leading-none ${defaultHover}`}
                     >
-                      <Facebook className='w-9 h-9' />
+                      <Facebook className="w-9 h-9" />
                     </FancyLink>
                   )}
                 </div>
@@ -454,13 +458,13 @@ export default function Header({
           </div>
         </Container>
       </motion.header>
-      <motion.div initial='initial' animate='enter' exit='exit' variants={fade}>
-        <Container className='fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none'>
+      <motion.div initial="initial" animate="enter" exit="exit" variants={fade}>
+        <Container className="fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none">
           {whatsapp && whatsapp.number && whatsapp.message ? (
             <FancyLink
               destination={`https://wa.me/${whatsapp.number}?text=${whatsapp.message}`}
               blank
-              className='w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity'
+              className="w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity"
             >
               <WaButton />
             </FancyLink>
@@ -470,5 +474,5 @@ export default function Header({
         </Container>
       </motion.div>
     </>
-  );
+  )
 }

@@ -1,12 +1,13 @@
-import colors from "@/helpers/colors";
-import React from "react";
-import FancyLink from "../utils/fancyLink";
-import { Arrow } from "../utils/svg";
+import colors from '@/helpers/colors'
+import React from 'react'
+import FancyLink from '../utils/fancyLink'
+import { Arrow } from '../utils/svg'
 
 const FAQCard = ({ title, onClick }) => {
   return (
     <div className="relative transition-all duration-300 hover:rotate-3 hover:shadow-lg flex flex-col justify-between w-full h-full min-h-[210px] bg-morin-skyBlue text-morin-blue rounded-2xl p-4 overflow-hidden md:min-h-[350px] md:p-5 lg:min-h-[400px] lg:p-7 xl:min-h-[490px] xl:p-10 2xl:min-h-[600px]">
       <FancyLink
+        a11yText="button_faq_card"
         onClick={onClick}
         className="w-full h-full absolute top-0 left-0"
       />
@@ -18,7 +19,7 @@ const FAQCard = ({ title, onClick }) => {
         <Arrow color={colors.morinBlue} />
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default FAQCard;
+export default FAQCard
