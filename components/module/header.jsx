@@ -204,8 +204,10 @@ export default function Header({
 
   useEffect(() => {
     const language = localStorage.getItem('morin_language')
-    if (language) {
-      ctx.setLanguage(language)
+    if (!turn_language) {
+      if (language) {
+        ctx.setLanguage(language)
+      }
     }
     const scrollListener = () => {
       if (window.scrollY > 250) {
