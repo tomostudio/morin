@@ -51,24 +51,28 @@ const Footer = ({
         <div className="flex w-full lg:w-2/5 lg:justify-start lg:ml-auto lg:mt-auto h-full px-2 lg:px-0">
           <div className="flex flex-wrap flex-col w-1/2 space-y-3 lg:w-auto lg:ml-auto lg:min-w-[100px] lg:space-y-4">
             <FancyLink
+              a11yText={`Navigate to Home`}
               destination="/"
               className={`footer-link ${defaultHover}`}
             >
               {lang === 'id' ? 'Beranda' : 'Home'}
             </FancyLink>
             <FancyLink
+              a11yText={`Navigate to About`}
               destination="/about"
               className={`footer-link ${defaultHover}`}
             >
               {lang === 'id' ? button.about.id : button.about.en}
             </FancyLink>
             <FancyLink
+              a11yText={`Navigate to Product`}
               destination="/products"
               className={`footer-link ${defaultHover}`}
             >
               {lang === 'id' ? button.products.id : button.products.en}
             </FancyLink>
             <FancyLink
+              a11yText={`Navigate to Recipe`}
               destination="/recipes"
               className={`footer-link ${defaultHover}`}
             >
@@ -76,6 +80,7 @@ const Footer = ({
             </FancyLink>
             {event && (
               <FancyLink
+                a11yText={`Navigate to Event`}
                 destination="/events"
                 className={`footer-link ${defaultHover}`}
               >
@@ -83,6 +88,7 @@ const Footer = ({
               </FancyLink>
             )}
             <FancyLink
+              a11yText={`Navigate to Get Morin`}
               destination="/get-morin"
               className={`footer-link ${defaultHover}`}
             >
@@ -93,6 +99,7 @@ const Footer = ({
             <div className="flex flex-wrap flex-col space-y-3 lg:space-y-4">
               {!faq && (
                 <FancyLink
+                  a11yText={`Navigate to FAQ`}
                   destination="/faq"
                   className={`footer-link ${defaultHover}`}
                 >
@@ -100,6 +107,7 @@ const Footer = ({
                 </FancyLink>
               )}
               <FancyLink
+                a11yText={`Navigate to Contact`}
                 destination="/contact"
                 className={`footer-link ${defaultHover}`}
               >
@@ -110,6 +118,7 @@ const Footer = ({
               <div className="flex justify-start w-full space-x-1.5 lg:space-x-3 mb-4 lg:mb-4">
                 {footer.footerLink.instagram && (
                   <FancyLink
+                    a11yText={`Navigate to Instagram`}
                     destination={`${footer.footerLink.instagram}`}
                     blank={true}
                     className={`relative  ${defaultHover}`}
@@ -119,6 +128,7 @@ const Footer = ({
                 )}
                 {footer.footerLink.twitter && (
                   <FancyLink
+                    a11yText={`Navigate to Twitter`}
                     destination={`${footer.footerLink.twitter}`}
                     blank={true}
                     className={`relative  ${defaultHover}`}
@@ -128,6 +138,7 @@ const Footer = ({
                 )}
                 {footer.footerLink.facebook && (
                   <FancyLink
+                    a11yText={`Navigate to Facebook`}
                     destination={`${footer.footerLink.facebook}`}
                     blank={true}
                     className={`relative  ${defaultHover}`}

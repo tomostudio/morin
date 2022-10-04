@@ -388,6 +388,7 @@ const ProductDetail = ({
             </h2>
             {!seo.advance_setting.hide_shop && (
               <FancyLink
+                a11yText={`Navigate to shop`}
                 blank
                 destination={
                   product.getProduct.custom_link

@@ -593,6 +593,7 @@ const RecipeDetail = ({
                           classes={{ tooltip: 'tooltip' }}
                         >
                           <FancyLink
+                            a11yText={`Navigate to facebook`}
                             destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
                             blank
                             className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
@@ -608,6 +609,7 @@ const RecipeDetail = ({
                           classes={{ tooltip: 'tooltip' }}
                         >
                           <FancyLink
+                            a11yText={`Navigate to twitter`}
                             blank
                             destination={`https://twitter.com/share?url=${baseUrl}`}
                             className={` aspect-1 w-8 relative hover:opacity-75 transition-opacity`}
@@ -620,6 +622,7 @@ const RecipeDetail = ({
                         </Tooltip>
                         <Tooltip title="Email" classes={{ tooltip: 'tooltip' }}>
                           <FancyLink
+                            a11yText={`Navigate to email`}
                             destination={`mailto:?subject=${
                               ctx.language === 'id'
                                 ? recipe.title.id

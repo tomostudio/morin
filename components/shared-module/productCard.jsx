@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import React from 'react';
-import FancyLink from '../utils/fancyLink';
-import { SunRaySmaller } from '../utils/svg';
-import urlFor from '@/helpers/sanity/urlFor';
+import Image from 'next/image'
+import React from 'react'
+import FancyLink from '../utils/fancyLink'
+import { SunRaySmaller } from '../utils/svg'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const ProductCard = ({
   title,
@@ -16,8 +16,9 @@ const ProductCard = ({
 }) => {
   return (
     <FancyLink
+      a11yText={`Navigate to ${title}`}
       destination={link}
-      className='group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300'
+      className="group block product-card w-full h-full bg-white rounded-2xl shadow-softer overflow-hidden transition-all hover:shadow-lg hover:-rotate-3 duration-300"
     >
       <div
         className={`relative w-full ${
@@ -35,7 +36,7 @@ const ProductCard = ({
           <Image
             src={imgSrc}
             blurDataURL={imgPlaceholder}
-            placeholder='empty'
+            placeholder="empty"
             alt={imgAlt}
             layout={'fill'}
             objectFit={'contain'}
@@ -45,7 +46,7 @@ const ProductCard = ({
           className={`absolute z-1 top-0 left-0 w-full h-full imageFrame group-hover:rotate-[-10deg] transition-all duration-300 layout-${thumbnailFruit.layout}`}
         >
           {thumbnailFruit.fruit1.asset && (
-            <div className='fruit1 fruits '>
+            <div className="fruit1 fruits ">
               <Image
                 src={urlFor(thumbnailFruit.fruit1).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit1)
@@ -53,14 +54,14 @@ const ProductCard = ({
                   .auto('format')
                   .blur(20)
                   .url()}
-                placeholder='blur'
-                layout='fill'
-                objectFit='contain'
+                placeholder="blur"
+                layout="fill"
+                objectFit="contain"
               />
             </div>
           )}
           {thumbnailFruit.fruit2.asset && (
-            <div className='fruit2 fruits'>
+            <div className="fruit2 fruits">
               <Image
                 src={urlFor(thumbnailFruit.fruit2).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit2)
@@ -68,14 +69,14 @@ const ProductCard = ({
                   .auto('format')
                   .blur(20)
                   .url()}
-                placeholder='blur'
-                layout='fill'
-                objectFit='contain'
+                placeholder="blur"
+                layout="fill"
+                objectFit="contain"
               />
             </div>
           )}
           {thumbnailFruit.fruit3.asset && (
-            <div className='fruit3 fruits  '>
+            <div className="fruit3 fruits  ">
               <Image
                 src={urlFor(thumbnailFruit.fruit3).auto('format').url()}
                 blurDataURL={urlFor(thumbnailFruit.fruit3)
@@ -83,20 +84,20 @@ const ProductCard = ({
                   .auto('format')
                   .blur(20)
                   .url()}
-                placeholder='blur'
-                layout='fill'
-                objectFit='contain'
+                placeholder="blur"
+                layout="fill"
+                objectFit="contain"
               />
             </div>
           )}
         </div>
 
-        <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[150%] aspect-[1/1] absolute top-0 left-1/2 translate-x-[-50%] overflow-hidden'>
-          <SunRaySmaller className='block animate-spin-slow w-full h-full' />
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-[150%] aspect-[1/1] absolute top-0 left-1/2 translate-x-[-50%] overflow-hidden">
+          <SunRaySmaller className="block animate-spin-slow w-full h-full" />
         </div>
       </div>
 
-      <div className='relative text-morin-blue text-center px-3 pt-10 pb-8 z-2 md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8'>
+      <div className="relative text-morin-blue text-center px-3 pt-10 pb-8 z-2 md:pt-10 lg:px-4 lg:pb-8 xl:px-5 xl:pb-8">
         <div
           className={`font-nutmeg text-ctitleSmall  leading-none  ${
             small ? 'lg:text-ctitleSmall' : 'lg:text-mtitle'
@@ -106,7 +107,7 @@ const ProductCard = ({
         </div>
       </div>
     </FancyLink>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard

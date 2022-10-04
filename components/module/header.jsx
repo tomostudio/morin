@@ -409,7 +409,7 @@ export default function Header({
                     </FancyLink>
                     <hr className="bg-white w-[2px] h-6 opacity-50" />
                     <FancyLink
-                a11yText="lang_selectorIDMobile"
+                      a11yText="lang_selectorIDMobile"
                       onClick={() => ctx.setLanguage('id')}
                       className={`mx-3 ${
                         ctx.language !== 'id' && 'opacity-50'
@@ -422,6 +422,7 @@ export default function Header({
                 <div className="absolute bottom-20 left-1/2 mx-auto flex w-fit -translate-x-1/2 items-center space-x-1.5 rounded-full bg-white p-1.5">
                   {socialMediaLink.instagram && (
                     <FancyLink
+                      a11yText={`Navigate to Instagram`}
                       destination={socialMediaLink.instagram}
                       blank={true}
                       className={`flex leading-none ${defaultHover}`}
@@ -436,6 +437,7 @@ export default function Header({
                   )}
                   {socialMediaLink.twitter && (
                     <FancyLink
+                      a11yText={`Navigate to Twitter`}
                       destination={socialMediaLink.twitter}
                       blank={true}
                       className={`flex leading-none ${defaultHover}`}
@@ -445,6 +447,7 @@ export default function Header({
                   )}
                   {socialMediaLink.facebook && (
                     <FancyLink
+                      a11yText={`Navigate to Facebook`}
                       destination={socialMediaLink.facebook}
                       blank={true}
                       className={`flex leading-none ${defaultHover}`}
@@ -462,6 +465,7 @@ export default function Header({
         <Container className="fixed z-10 bottom-0 right-0  flex items-end pb-8 pointer-events-none">
           {whatsapp && whatsapp.number && whatsapp.message ? (
             <FancyLink
+              a11yText={`Navigate to Whatsapp`}
               destination={`https://wa.me/${whatsapp.number}?text=${whatsapp.message}`}
               blank
               className="w-[66px] h-fit pointer-events-auto hover:opacity-75 transition-opacity"

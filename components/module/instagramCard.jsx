@@ -6,7 +6,7 @@ const InstagramCard = ({ imgSrc, imgPlaceholder, imgAlt, link }) => {
   return (
     <div className='p-2 lg:p-3'>
       <div className='rounded-xl overflow-hidden hover:shadow-softer hover:-translate-y-2 transition-all duration-300'>
-        <FancyLink blank destination={link} className='relative w-full h-full'>
+        <FancyLink a11yText={`Navigate to Instagram`} blank destination={link} className='relative w-full h-full'>
           <Image
             src={imgSrc}
             blurDataURL={imgPlaceholder}

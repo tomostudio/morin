@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
-import Container from '@/components/module/container';
-import Layout from '@/components/module/layout';
-import Header from '@/components/module/header';
-import Footer from '@/components/module/footer';
-import Image from 'next/image';
-import FancyLink from '@/components/utils/fancyLink';
-import { useEffectInit } from '@/components/utils/preset';
-import { useAppContext } from 'context/state';
-import urlFor from '@/helpers/sanity/urlFor';
-import client from '@/helpers/sanity/client';
-import { PortableText } from '@portabletext/react';
-import SEO from '@/components/utils/seo';
-import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/transitions';
+import { useEffect } from 'react'
+import Container from '@/components/module/container'
+import Layout from '@/components/module/layout'
+import Header from '@/components/module/header'
+import Footer from '@/components/module/footer'
+import Image from 'next/image'
+import FancyLink from '@/components/utils/fancyLink'
+import { useEffectInit } from '@/components/utils/preset'
+import { useAppContext } from 'context/state'
+import urlFor from '@/helpers/sanity/urlFor'
+import client from '@/helpers/sanity/client'
+import { PortableText } from '@portabletext/react'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/transitions'
 
 const GetMorin = ({
   getMorinAPI,
@@ -22,17 +22,17 @@ const GetMorin = ({
   footerAPI,
   translation,
 }) => {
-  const [seo] = seoAPI;
-  const [getMorin] = getMorinAPI;
-  const [footer] = footerAPI;
-  const router = useRouter();
-  const ctx = useAppContext();
+  const [seo] = seoAPI
+  const [getMorin] = getMorinAPI
+  const [footer] = footerAPI
+  const router = useRouter()
+  const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor('black');
-    useEffectInit({ context: ctx });
-  }, []);
+    ctx.setLangColor('black')
+    useEffectInit({ context: ctx })
+  }, [])
   return (
-    <Layout className='overflow-hidden pt-[86px] lg:pt-32'>
+    <Layout className="overflow-hidden pt-[86px] lg:pt-32">
       <SEO
         title={ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
         pagelink={router.pathname}
@@ -45,25 +45,26 @@ const GetMorin = ({
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 
-      <motion.div initial='initial' animate='enter' exit='exit' variants={fade}>
-        <Container className='mt-8 lg:mt-0'>
-          <div className='flex flex-col space-y-10 lg:space-y-20 mb-10 lg:mb-20 leading-tight'>
+      <motion.div initial="initial" animate="enter" exit="exit" variants={fade}>
+        <Container className="mt-8 lg:mt-0">
+          <div className="flex flex-col space-y-10 lg:space-y-20 mb-10 lg:mb-20 leading-tight">
             {getMorin.Shops?.map((item, id) => (
               <div
                 key={id}
-                className='flex flex-col lg:flex-row lg:space-x-48 w-full'
+                className="flex flex-col lg:flex-row lg:space-x-48 w-full"
               >
-                <h2 className='text-h5 md:text-h4 m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue font-bold w-full lg:w-1/5 flex-shrink-0'>
+                <h2 className="text-h5 md:text-h4 m-0 lg:text-h2 text-center lg:text-left font-nutmeg text-morin-blue font-bold w-full lg:w-1/5 flex-shrink-0">
                   {ctx.language === 'id' ? item.title.id : item.title.en}
                 </h2>
-                <div className='w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start'>
+                <div className="w-full flex flex-col items-center lg:items-start mt-5 lg:mt-0 md:mt-8 md:space-y-8 space-y-5 lg:space-y-12 justify-start">
                   {id === 0 && !seo.advance_setting.hide_shop ? (
                     <FancyLink
+                      a11yText={`Navigate to shop`}
                       blank
                       destination={getMorin.shop.link}
-                      className='flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8'
+                      className="flex items-center w-fit h-10 bg-gradient-blue font-semibold text-default text-white rounded-3xl shadow-normal px-4 xl:h-14 xl:text-mtitle xl:rounded-full xl:px-8"
                     >
-                      <span className='block pt-1'>{getMorin.shop.title}</span>
+                      <span className="block pt-1">{getMorin.shop.title}</span>
                     </FancyLink>
                   ) : (
                     <></>
@@ -71,21 +72,22 @@ const GetMorin = ({
                   {item.contents?.map((data, idContent) => (
                     <div
                       key={idContent}
-                      className='flex flex-col w-full justify-start'
+                      className="flex flex-col w-full justify-start"
                     >
-                      <span className='text-subtitle2 lg:text-h4 text-center lg:text-left font-nutmeg text-morin-blue'>
+                      <span className="text-subtitle2 lg:text-h4 text-center lg:text-left font-nutmeg text-morin-blue">
                         {ctx.language === 'id' ? data.title.id : data.title.en}
                       </span>
                       {data.option === 'link' ? (
-                        <div className='mt-6 lg:mt-10 getmorin-list max-w-2xl mx-auto lg:mx-0 lg:max-w-none w-full'>
+                        <div className="mt-6 lg:mt-10 getmorin-list max-w-2xl mx-auto lg:mx-0 lg:max-w-none w-full">
                           {data.links?.map((dataLink, idLink) =>
                             dataLink.url ? (
                               <FancyLink
+                                a11yText={`Navigate to content`}
                                 key={idLink}
                                 destination={dataLink.url}
-                                className=' max-w-xs mx-auto w-full flex justify-center items-center rounded-2xl p-4 md:p-6 shadow-softer hover:shadow-normal hover:-translate-y-1 transition-all duration-300'
+                                className=" max-w-xs mx-auto w-full flex justify-center items-center rounded-2xl p-4 md:p-6 shadow-softer hover:shadow-normal hover:-translate-y-1 transition-all duration-300"
                               >
-                                <div className='relative w-full h-full'>
+                                <div className="relative w-full h-full">
                                   {dataLink.image?.asset && (
                                     <Image
                                       src={urlFor(dataLink.image)
@@ -96,10 +98,10 @@ const GetMorin = ({
                                         .width(150)
                                         .blur(25)
                                         .url()}
-                                      placeholder='blur'
+                                      placeholder="blur"
                                       alt={dataLink.image.alt}
-                                      layout='fill'
-                                      objectFit='contain'
+                                      layout="fill"
+                                      objectFit="contain"
                                     />
                                   )}
                                 </div>
@@ -107,9 +109,9 @@ const GetMorin = ({
                             ) : (
                               <div
                                 key={idLink}
-                                className=' max-w-xs mx-auto w-full flex justify-center items-center p-4 md:p-6 rounded-2xl shadow-softer'
+                                className=" max-w-xs mx-auto w-full flex justify-center items-center p-4 md:p-6 rounded-2xl shadow-softer"
                               >
-                                <div className='relative w-full h-full'>
+                                <div className="relative w-full h-full">
                                   {dataLink.image?.asset && (
                                     <Image
                                       src={urlFor(dataLink.image)
@@ -120,25 +122,25 @@ const GetMorin = ({
                                         .width(150)
                                         .blur(25)
                                         .url()}
-                                      placeholder='blur'
+                                      placeholder="blur"
                                       alt={dataLink.image.alt}
-                                      layout='fill'
-                                      objectFit='contain'
+                                      layout="fill"
+                                      objectFit="contain"
                                     />
                                   )}
                                 </div>
                               </div>
-                            )
+                            ),
                           )}
                         </div>
                       ) : (
-                        <div className='mt-6 lg:mt-10 grid grid-cols-2 gap-6'>
+                        <div className="mt-6 lg:mt-10 grid grid-cols-2 gap-6">
                           {data.texts.map((dataText, idText) => (
                             <div
                               key={idText}
-                              className='w-full flex flex-col items-center lg:items-start font-medium text-morin-blue'
+                              className="w-full flex flex-col items-center lg:items-start font-medium text-morin-blue"
                             >
-                              <span className='font-bold'>
+                              <span className="font-bold">
                                 {ctx.language === 'id'
                                   ? dataText.title.id
                                   : dataText.title.en}
@@ -148,7 +150,7 @@ const GetMorin = ({
                                 components={{
                                   block: {
                                     normal: ({ children }) => (
-                                      <p className='leading-5 text-center lg:text-left'>
+                                      <p className="leading-5 text-center lg:text-left">
                                         {children}
                                       </p>
                                     ),
@@ -177,26 +179,26 @@ const GetMorin = ({
         />
       </motion.div>
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticProps() {
   const getMorinAPI = await client.fetch(`
   *[_type == "getMorin"]
-  `);
+  `)
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
-  `);
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
   const translationAPI = await client.fetch(`
   *[_type == "translation"]
-  `);
-  const [translation] = translationAPI;
+  `)
+  const [translation] = translationAPI
   return {
     props: {
       getMorinAPI,
@@ -205,7 +207,7 @@ export async function getStaticProps() {
       footerAPI,
       translation,
     },
-  };
+  }
 }
 
-export default GetMorin;
+export default GetMorin
