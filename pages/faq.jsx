@@ -55,12 +55,8 @@ const FAQ = ({
       <SEO
         title={ctx.language === 'id' ? 'Tanya Jawab' : 'FAQ'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? faq.seo?.id : faq.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={faq.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Layout className="overflow-hidden pt-[86px] lg:pt-32">

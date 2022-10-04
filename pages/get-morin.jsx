@@ -37,11 +37,7 @@ const GetMorin = ({
         title={ctx.language === 'id' ? 'Dapatkan Morin!' : 'Get Morin!'}
         pagelink={router.pathname}
         inputSEO={ctx.language === 'id' ? getMorin.seo?.id : getMorin.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
 

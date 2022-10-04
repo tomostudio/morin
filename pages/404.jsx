@@ -23,8 +23,8 @@ const Error404 = ({ seoAPI }) => {
       <SEO
         title={'404'}
         pagelink={router.pathname}
-        inputSEO={seo.seo}
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        inputSEO={seo.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div

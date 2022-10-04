@@ -47,12 +47,8 @@ const ProductDetail = ({
       <SEO
         title={ctx.language === 'id' ? product.title.id : product.title.en}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? product.seo?.id : product.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={product.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div

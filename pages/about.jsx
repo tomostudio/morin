@@ -59,12 +59,8 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Tentang Kami' : 'About'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? about.seo?.id : about.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={about.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <Layout className="relative pt-16 overflow-hidden">

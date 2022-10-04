@@ -221,12 +221,8 @@ const Recipe = ({
       <SEO
         title={ctx.language === 'id' ? 'Resep' : 'Recipes'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? recipe.seo?.id : recipe.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={recipe.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div

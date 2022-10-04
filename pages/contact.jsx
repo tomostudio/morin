@@ -34,12 +34,8 @@ const Contact = ({
       <SEO
         title={ctx.language === 'id' ? 'Kontak' : 'Contact'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? contact.seo?.id : contact.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={contact.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div initial="initial" animate="enter" exit="exit" variants={fade}>

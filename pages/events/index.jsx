@@ -49,12 +49,8 @@ const Events = ({ eventPageAPI, eventAPI, seoAPI, footerAPI, translation }) => {
       <SEO
         title={ctx.language === 'id' ? 'Acara' : 'Events'}
         pagelink={router.pathname}
-        inputSEO={ctx.language === 'id' ? event.seo?.id : event.seo?.en}
-        defaultSEO={
-          typeof seo !== 'undefined' && ctx.language === 'id'
-            ? seo.seo?.id
-            : seo.seo?.en
-        }
+        inputSEO={event.seo?.id}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo?.id}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.div
