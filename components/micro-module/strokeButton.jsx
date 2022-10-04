@@ -21,6 +21,7 @@ const StrokeButton = ({
 
   return !destination ? (
     <button
+    aria-label={ariaLabel}
       type='button'
       onClick={onClick}
       className={`${defaultClass} bg-[${color.toLowerCase()}]  ${

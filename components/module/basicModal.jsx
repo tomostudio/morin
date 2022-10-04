@@ -1,8 +1,8 @@
-import React from "react";
-import Modal from "react-modal";
-import { Close } from "../utils/svg";
+import React from 'react'
+import Modal from 'react-modal'
+import { Close } from '../utils/svg'
 
-Modal.setAppElement("#__next");
+Modal.setAppElement('#__next')
 
 const BasicModal = ({
   children,
@@ -10,9 +10,9 @@ const BasicModal = ({
   onRequestClose,
   closeTimeoutMS,
   className,
-  classNameOuter, 
+  classNameOuter,
   onAfterClose,
-  classNameModalContent
+  classNameModalContent,
 }) => {
   return (
     <Modal
@@ -23,15 +23,27 @@ const BasicModal = ({
       className={`BasicModal__Content ${classNameModalContent}`}
       overlayClassName="BasicModal__Overlay"
     >
-      <div className={`BasicModal__Content--Outer ${classNameOuter ? classNameOuter : ""}`}>
-        <button onClick={onRequestClose} className="BasicModal__Close">
+      <div
+        className={`BasicModal__Content--Outer ${
+          classNameOuter ? classNameOuter : ''
+        }`}
+      >
+        <button
+          aria-label="basic_modal"
+          onClick={onRequestClose}
+          className="BasicModal__Close"
+        >
           <Close />
         </button>
 
-        <div className={`BasicModal__Content--Inner ${className ? className : ""}`}>{children}</div>
+        <div
+          className={`BasicModal__Content--Inner ${className ? className : ''}`}
+        >
+          {children}
+        </div>
       </div>
     </Modal>
-  );
-};
+  )
+}
 
-export default BasicModal;
+export default BasicModal

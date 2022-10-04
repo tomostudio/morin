@@ -25,7 +25,7 @@ const GalleryModal = ({
           classNameOuter ? classNameOuter : ''
         }`}
       >
-        <button onClick={onRequestClose} className='GalleryModal__Close'>
+        <button aria-label="gallery_modal" onClick={onRequestClose} className='GalleryModal__Close'>
           <Close />
         </button>
 

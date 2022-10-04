@@ -21,7 +21,7 @@ const PageModal = ({
       overlayClassName="PageModal__Overlay"
     >
       <div className={`PageModal__Content--Outer ${classNameOuter ? classNameOuter : ""}  min-h-screen md:min-h-0 flex justify-center flex-col`}>
-        <button onClick={onRequestClose} className="Modal__Close">
+        <button aria-label="page_modal" onClick={onRequestClose} className="Modal__Close">
           <Close />
         </button>
 
