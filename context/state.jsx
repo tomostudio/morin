@@ -2,9 +2,9 @@ import { createContext, useContext, useState } from 'react'
 
 const AppContext = createContext()
 
-export function AppWrapper({ children }) {
+export function AppWrapper({ children, default_language }) {
   const [scrollState, setScrollState] = useState(null)
-  const [language, setLanguage] = useState('id')
+  const [language, setLanguage] = useState(default_language)
   const [langColor, setLangColor] = useState('black')
   const mobileMenuOpen = false
 

@@ -40,18 +40,17 @@ const HeroSlider = ({ data, className, lang }) => {
             }
           }
 
-          const getColor =
-            lang === 'id'
-              ? data.component.id[currentSlide()].langColor
-                ? data.component.id[currentSlide()].langColor
-                : 'white'
-              : data.component.en[currentSlide()].langColor
-              ? data.component.en[currentSlide()].langColor
-              : 'white'
+          // const getColor =
+          //   lang === 'id'
+          //     ? data.component.id[currentSlide()].langColor
+          //       ? data.component.id[currentSlide()].langColor
+          //       : 'white'
+          //     : data.component.en[currentSlide()].langColor
+          //     ? data.component.en[currentSlide()].langColor
+          //     : 'white'
           // Broken Array ID
-          ctx.setLangColor(getColor)
+          ctx.setLangColor("white")
 
-          console.log('INIT set Color', getColor)
         }}
       >
         {lang === 'id'

@@ -192,7 +192,6 @@ export default function Header({
       })
       setMarkerPos(0)
     }
-    console.log('resetNav')
   }
 
   const [buttonColor, setButtonColor] = useState(ctx.langColor)
@@ -201,7 +200,6 @@ export default function Header({
   useEffect(() => {
     colorPlaceholder = ctx.langColor
     setButtonColor(ctx.langColor)
-    console.log('set color', ctx.langColor)
   }, [ctx.langColor])
 
   useEffect(() => {
@@ -215,7 +213,6 @@ export default function Header({
       } else {
         setButtonColor(colorPlaceholder)
       }
-      console.log(colorPlaceholder, buttonColor)
     }
 
     setTimeout(() => {

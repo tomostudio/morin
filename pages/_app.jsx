@@ -62,7 +62,7 @@ export default function App({ Component, pageProps }) {
         />
         {/* FAVICON  */}
       </Head>
-      <AppWrapper>
+      <AppWrapper default_language={pageProps.seoAPI[0].advance_setting.default_language}>
         <Header
           event={pageProps.eventAPI?.length > 0 ? true : false}
           button={pageProps.translation}
