@@ -73,6 +73,7 @@ const ContactCard = ({
           />
         </div>
         <StrokeButton
+          ariaLabel="button_contactCard"
           className='mt-6 lg:ml-0 xl:mt-4'
           color={colors.morinBlue}
           destination={maps}

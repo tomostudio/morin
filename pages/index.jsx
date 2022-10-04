@@ -96,6 +96,7 @@ export default function Home({
                         : home.product.description.en}
                     </h2>
                     <StrokeButton
+                      ariaLabel="button_home_product"
                       destination='/products'
                       color={colors.morinBlue}
                       className='lg:mx-0'
@@ -172,7 +173,7 @@ export default function Home({
                   </p>
                 </div>
                 <div className='order-3 w-full md:order-none md:ml-auto md:w-fit md:pl-12'>
-                  <StrokeButton destination='/recipes' color={colors.morinRed}>
+                  <StrokeButton ariaLabel="button_home_recipe" destination='/recipes' color={colors.morinRed}>
                     {ctx.language === 'id'
                       ? home.recipe.button.id
                       : home.recipe.button.en}
@@ -212,6 +213,7 @@ export default function Home({
                     </div>
                     <div className='ml-auto hidden w-fit pl-12 md:block'>
                       <StrokeButton
+                      ariaLabel="button_home_event"
                         destination='/events'
                         color={colors.morinBlue}
                       >
@@ -231,6 +233,7 @@ export default function Home({
                   />
                   <div className='mx-auto mt-7 w-fit md:hidden'>
                     <StrokeButton
+                      ariaLabel="button_home_event2"
                       destination='/events'
                       color={colors.morinBlue}
                     >
@@ -262,6 +265,7 @@ export default function Home({
                 </h2>
                 <div>
                   <SolidButton
+                    ariaLabel="instagram_button"
                     destination={home.instagram.url}
                     arrow={false}
                     targetBlank={true}

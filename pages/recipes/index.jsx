@@ -209,10 +209,10 @@ const Recipe = ({
 
   const ctx = useAppContext()
   useEffect(() => {
-    ctx.setLangColor(recipe.langColor);
-    useEffectInit({ context: ctx });
-    setFilterOpen(false);
-  }, []);
+    ctx.setLangColor(recipe.langColor)
+    useEffectInit({ context: ctx })
+    setFilterOpen(false)
+  }, [])
 
   const buttonActive = filterOpen ? 'bg-morin-red' : ''
 
@@ -249,7 +249,7 @@ const Recipe = ({
                 .width(1200)
                 .blur(25)
                 .url()}
-              placeholder='blur'
+              placeholder="blur"
               alt={recipe.background.alt}
               layout="fill"
               objectFit="cover"
@@ -279,6 +279,7 @@ const Recipe = ({
                   }`}
             </span>
             <StrokeButton
+              ariaLabel="button_filter"
               arrow={false}
               color={colors.morinRed}
               onClick={() => setFilterOpen(!filterOpen)}
@@ -336,6 +337,7 @@ const Recipe = ({
             {showButton && (
               <div className="w-full flex justify-center mt-5 xl:mt-7">
                 <StrokeButton
+                  ariaLabel="button_show_recipe"
                   arrow={false}
                   color={colors.morinRed}
                   onClick={loadMore}

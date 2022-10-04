@@ -138,6 +138,7 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
                 </div>
               </div>
               <StrokeButton
+                ariaLabel="button_about"
                 color={colors.morinBlue}
                 arrow={false}
                 onClick={() =>

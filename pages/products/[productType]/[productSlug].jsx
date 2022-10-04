@@ -424,7 +424,11 @@ const ProductDetail = ({
                   />
                 </div>
                 <div className="hidden w-fit mt-7 mx-auto md:block lg:mt-8">
-                  <StrokeButton destination="/recipes" color={colors.morinRed}>
+                  <StrokeButton
+                    ariaLabel="button_recipe_product"
+                    destination="/recipes"
+                    color={colors.morinRed}
+                  >
                     {ctx.language === 'id'
                       ? translation.productLanguage.recipe.btn.id
                       : translation.productLanguage.recipe.btn.en}
@@ -539,6 +543,7 @@ const ProductDetail = ({
                     </div>
 
                     <StrokeButton
+                      ariaLabel="button_all_product"
                       color={colors.morinRed}
                       destination="/products"
                       className="md:hidden"
@@ -605,6 +610,7 @@ const ProductDetail = ({
                     </div>
 
                     <StrokeButton
+                      ariaLabel="button_all_product"
                       color={colors.morinRed}
                       destination="/products"
                       className="md:hidden"

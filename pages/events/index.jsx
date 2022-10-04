@@ -116,6 +116,7 @@ const Events = ({ eventPageAPI, eventAPI, seoAPI, footerAPI, translation }) => {
           {showButton && (
             <div className="w-full mt-5 md:mt-10">
               <StrokeButton
+                ariaLabel="button_event_show"
                 arrow={false}
                 color={colors.morinBlue}
                 onClick={loadMore}
@@ -162,7 +163,7 @@ export async function getStaticProps() {
           *[_type == "translation"]
           `)
   const [translation] = translationAPI
-  if(eventAPI.length > 0) {
+  if (eventAPI.length > 0) {
     return {
       props: {
         eventPageAPI,
@@ -172,7 +173,7 @@ export async function getStaticProps() {
         translation,
       },
     }
-  }else {
+  } else {
     return {
       notFound: true,
     }
