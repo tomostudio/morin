@@ -194,12 +194,14 @@ export default function Header({
     }
   }
 
-  const [buttonColor, setButtonColor] = useState(ctx.langColor)
+  const [buttonColor, setButtonColor] = useState("black")
   let colorPlaceholder = '' // contain holder color, to be updated by useEffect, because state doesn't update.
 
   useEffect(() => {
-    colorPlaceholder = ctx.langColor
-    setButtonColor(ctx.langColor)
+    setTimeout(() => {
+      colorPlaceholder = ctx.langColor
+      setButtonColor(ctx.langColor)
+    }, 50);
   }, [ctx.langColor])
 
   useEffect(() => {

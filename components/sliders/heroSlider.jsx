@@ -6,8 +6,15 @@ import StrokeButton from '../micro-module/strokeButton'
 import colors from '@/helpers/colors'
 import urlFor from '@/helpers/sanity/urlFor'
 import { useAppContext } from 'context/state'
+import { useEffect } from 'react'
 
 const HeroSlider = ({ data, className, lang }) => {
+  useEffect(() => {
+    lang === 'id'
+      ? ctx.setLangColor(data.component.id[0].langColor)
+      : ctx.setLangColor(data.component.en[0].langColor)
+  }, [])
+
   const ctx = useAppContext()
   return (
     <div className="hero-slider">
@@ -31,26 +38,21 @@ const HeroSlider = ({ data, className, lang }) => {
 
             if (e.activeIndex <= 0) {
               return lang === 'id' ? idLength - 1 : enLength - 1
-            } else if (lang === 'id' && e.activeIndex >= idLength) {
+            } else if (lang === 'id' && e.activeIndex > idLength) {
               return 0
-            } else if (lang === 'en' && e.activeIndex >= enLength) {
+            } else if (lang === 'en' && e.activeIndex > enLength) {
               return 0
             } else {
               return e.activeIndex - 1
             }
           }
 
-          // const getColor =
-          //   lang === 'id'
-          //     ? data.component.id[currentSlide()].langColor
-          //       ? data.component.id[currentSlide()].langColor
-          //       : 'white'
-          //     : data.component.en[currentSlide()].langColor
-          //     ? data.component.en[currentSlide()].langColor
-          //     : 'white'
-          // Broken Array ID
-          ctx.setLangColor("white")
+          const getColor =
+            lang === 'id'
+              ? data.component.id[currentSlide()].langColor
+              : data.component.en[currentSlide()].langColor
 
+          ctx.setLangColor(getColor)
         }}
       >
         {lang === 'id'
