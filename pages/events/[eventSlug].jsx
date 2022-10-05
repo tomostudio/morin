@@ -28,7 +28,6 @@ const EventTag = ({ label }) => {
 
 const EventDetail = ({
   eventDetailAPI,
-  eventListAPI,
   seoAPI,
   footerAPI,
   translation,
@@ -140,41 +139,58 @@ const EventDetail = ({
           </div>
         </div>
 
-        <div className="w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10">
-          <div className="mx-auto w-full flex flex-col px-8 max-w-screen-2xl ">
-            <div className="mb-7 md:mb-8 lg:mb-10">
-              <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
-                {ctx.language === 'id'
-                  ? translation.eventLanguage.event.title.id
-                  : translation.eventLanguage.event.title.en}
-              </h2>
+        {eventAPI.filter((data) => data._id !== event._id).length > 0 ? (
+          <div className="w-full flex flex-col bg-morin-skyBlue justify-center relative pb-0 rounded-t-[40px] py-10">
+            <div className="mx-auto w-full flex flex-col px-8 max-w-screen-2xl ">
+              <div className="mb-7 md:mb-8 lg:mb-10">
+                <h2 className="font-nutmeg font-normal text-mtitleSmall text-center text-morin-blue mb-7 lg:mb-12">
+                  {ctx.language === 'id'
+                    ? translation.eventLanguage.event.title.id
+                    : translation.eventLanguage.event.title.en}
+                </h2>
 
-              <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
-                {eventListAPI?.slice(0, 2).map((item, index) => (
-                  <div
-                    className="w-full mb-4 md:w-1/2 md:mb-0"
-                    key={`${item.title.en}[${index}]`}
-                  >
-                    <HighlightCard
-                      imgSrc={urlFor(item.thumbnail).auto('format').url()}
-                      imgPlaceholder={urlFor(item.thumbnail)
-                        .auto('format')
-                        .width(200)
-                        .blur(25)
-                        .url()}
-                      imgAlt={item.thumbnail.alt}
-                      date={dateParse(item.date, ctx.language)}
-                      title={
-                        ctx.language === 'id' ? item.title.id : item.title.en
-                      }
-                      button={translation.eventLanguage.event.btn}
-                      link={`/events/${item.slug.current}`}
-                    />
-                  </div>
-                ))}
+                <div className="flex flex-wrap md:flex-nowrap mx-auto md:max-w-4xl md:space-x-3">
+                  {eventAPI?.slice(0, 2).map(
+                    (item, index) =>
+                      event._id !== item._id && (
+                        <div
+                          className="w-full mb-4 md:w-1/2 md:mb-0"
+                          key={`${item.title.en}[${index}]`}
+                        >
+                          <HighlightCard
+                            imgSrc={urlFor(item.thumbnail).auto('format').url()}
+                            imgPlaceholder={urlFor(item.thumbnail)
+                              .auto('format')
+                              .width(200)
+                              .blur(25)
+                              .url()}
+                            imgAlt={item.thumbnail.alt}
+                            date={dateParse(item.date, ctx.language)}
+                            title={
+                              ctx.language === 'id'
+                                ? item.title.id
+                                : item.title.en
+                            }
+                            button={translation.eventLanguage.event.btn}
+                            link={`/events/${item.slug.current}`}
+                          />
+                        </div>
+                      ),
+                  )}
+                </div>
               </div>
             </div>
+            <Footer
+              event={eventAPI.length > 0 ? true : false}
+              lang={ctx.language}
+              button={translation.menu_lang}
+              faq={seo.advance_setting.hide_faq}
+              mailchimp={footer.mailchimpID}
+              footer={footer}
+              translation={translation}
+            />
           </div>
+        ) : (
           <Footer
             event={eventAPI.length > 0 ? true : false}
             lang={ctx.language}
@@ -184,7 +200,7 @@ const EventDetail = ({
             footer={footer}
             translation={translation}
           />
-        </div>
+        )}
       </motion.div>
     </Layout>
   )
