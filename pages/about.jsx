@@ -137,13 +137,11 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
                 ariaLabel="button_about"
                 color={colors.morinBlue}
                 arrow={false}
-                onClick={() =>
-                  openModal(about.contents?.find((data) => data.first)._key)
-                }
+                onClick={() => openModal('cover')}
               >
                 {ctx.language === 'en'
-                  ? about.contents?.find((data) => data.first).button.en
-                  : about.contents?.find((data) => data.first).button.id}
+                  ? about.cover.button.en
+                  : about.cover.button.id}
               </StrokeButton>
             </div>
             <Parallax
@@ -190,34 +188,32 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
             classNameOuter="px-4 mb-8 lg:px-0 lg:mb-12 xl:mb-14"
           >
             <div className="grid grid-cols-2 gap-7">
-              {about.contents.map(
-                (data, id) =>
-                  !data.first && (
-                    <AboutCard
-                      titleDescription={
-                        ctx.language === 'en'
-                          ? data.titleDescription.en
-                          : data.titleDescription.id
-                      }
-                      title={
-                        ctx.language === 'en'
-                          ? data.titleCover.en
-                          : data.titleCover.id
-                      }
-                      button={
-                        ctx.language === 'en' ? data.button.en : data.button.id
-                      }
-                      imgSrc={urlFor(data.thumbnail).auto('format').url()}
-                      imgPlaceholder={urlFor(data.thumbnail)
-                        .auto('format')
-                        .width(400)
-                        .blur(25)
-                        .url()}
-                      imgAlt={data.thumbnail.alt}
-                      onClick={() => openModal(data._key)}
-                    />
-                  ),
-              )}
+              {about.contents.map((data, id) => (
+                <AboutCard
+                  key={id}
+                  titleDescription={
+                    ctx.language === 'en'
+                      ? data.titleDescription.en
+                      : data.titleDescription.id
+                  }
+                  title={
+                    ctx.language === 'en'
+                      ? data.titleCover.en
+                      : data.titleCover.id
+                  }
+                  button={
+                    ctx.language === 'en' ? data.button.en : data.button.id
+                  }
+                  imgSrc={urlFor(data.thumbnail).auto('format').url()}
+                  imgPlaceholder={urlFor(data.thumbnail)
+                    .auto('format')
+                    .width(400)
+                    .blur(25)
+                    .url()}
+                  imgAlt={data.thumbnail.alt}
+                  onClick={() => openModal(data._key)}
+                />
+              ))}
             </div>
           </Container>
 
@@ -232,6 +228,27 @@ const About = ({ aboutAPI, eventAPI, seoAPI, footerAPI, translation }) => {
           />
         </div>
       </Layout>
+      <PageModal
+        isOpen={modal === 'cover' ? true : false}
+        onRequestClose={closeModal}
+        className="text-morin-blue"
+      >
+        <span className="block font-nutmeg text-mtitleSmall mb-5 md:text-mtitleBig">
+          {ctx.language === 'en'
+            ? about.cover.titleDescription.en
+            : about.cover.titleDescription.id}
+        </span>
+        <div className="content about">
+          <PortableText
+            value={
+              ctx.language === 'en'
+                ? about.cover.description.en
+                : about.cover.description.id
+            }
+            components={AboutModalComponents}
+          />
+        </div>
+      </PageModal>
       {about.contents.map((data, id) => (
         <PageModal
           key={id}
