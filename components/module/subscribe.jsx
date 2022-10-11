@@ -12,7 +12,7 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
   const handleFormSubmit = () => {
     inputEl.current.blur()
     setDisable(true)
-    return email && email.indexOf('@') > -1 && onValidated({ EMAIL: email })
+    onValidated({ EMAIL: email })
   }
 
   // FOR KEYBOARD ENTER
@@ -48,16 +48,8 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
       //Set Error Message
       inputEl.current.value = ''
 
-      //Customize the error messages accordingly
-      if (message.includes('cannot be added')) {
-        setRedError(true)
-        setPlaceholder("That's an invalid email.")
-      } else if (message.includes('is already subscribed')) {
-        setPlaceholder('You are already on the list!')
-      } else {
-        setRedError(true)
-        setPlaceholder(`Error ${message}`)
-      }
+      setRedError(true)
+      setPlaceholder('Something must have gone wrong')
       resetPlaceholderTimer()
     } else if (status === 'sending') {
       // Reset some status.
@@ -77,8 +69,10 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
         }`}
       >
         <input
-          className={`w-full h-full px-5 pt-1 border-2 rounded-l-2xl border-white first-letter:default-type text-defaultSmall leading-tight placeholder-white placeholder:opacity-60 outline-none bg-transparent lg:w-[calc(100%-100px)] lg:pt-[2px] lg:text-default ${
-            redError ? ' placeholder-red-500' : ''
+          className={`w-full h-full px-5 pt-1 border-2 rounded-l-2xl border-white first-letter:default-type text-defaultSmall leading-tight placeholder-white outline-none bg-transparent lg:w-[calc(100%-100px)] lg:pt-[2px] lg:text-default ${
+            redError
+              ? ' placeholder-red-500 placeholder:opacity-100'
+              : ' placeholder:opacity-60'
           }`}
           type="email"
           placeholder={placeholder}
