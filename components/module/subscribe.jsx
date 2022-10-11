@@ -36,7 +36,7 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
     pTimeout = setTimeout(() => {
       setDisable(false)
       setRedError(false)
-      setPlaceholder('EMAIL')
+      setPlaceholder('Your Email')
     }, time)
   }
   useEffect(() => {
@@ -44,11 +44,14 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
       // Set Success Message
       setRedError(false)
       inputEl.current.value = ''
+      setEmail(null)
       setPlaceholder('Got it!')
       resetPlaceholderTimer()
     } else if (status === 'error') {
+      console.log('\x1b[31m%s\x1b[0m',message)
       //Set Error Message
       inputEl.current.value = ''
+      setEmail(null)
 
       setRedError(true)
       setPlaceholder('Something must have gone wrong')
