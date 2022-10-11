@@ -11,8 +11,10 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
   // PROCESS
   const handleFormSubmit = () => {
     inputEl.current.blur()
-    setDisable(true)
-    onValidated({ EMAIL: email })
+    if(email) {
+      setDisable(true)
+      email && onValidated({ EMAIL: email })
+    }
   }
 
   // FOR KEYBOARD ENTER
