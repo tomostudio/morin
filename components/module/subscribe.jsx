@@ -76,8 +76,8 @@ const SubscribeForm = ({ lang, status, message, onValidated }) => {
         <input
           className={`w-full h-full px-5 pt-1 border-2 rounded-l-2xl border-white first-letter:default-type text-defaultSmall leading-tight placeholder-white outline-none bg-transparent lg:w-[calc(100%-100px)] lg:pt-[2px] lg:text-default ${
             redError
-              ? ' placeholder-red-500 placeholder:opacity-100'
-              : ' placeholder:opacity-60'
+              ? 'placeholder:opacity-100'
+              : 'placeholder:opacity-60'
           }`}
           type="email"
           placeholder={placeholder}
