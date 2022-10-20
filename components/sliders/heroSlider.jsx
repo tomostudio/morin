@@ -95,7 +95,7 @@ const HeroSlider = ({ data, className, lang }) => {
 
                         <StrokeButton
                           ariaLabel="button_heroSliderIDTRUE"
-                          targetBlank={true}
+                          targetBlank={item.button.customLink ? true : false}
                           destination={
                             item.button.customLink
                               ? item.button.link
@@ -111,9 +111,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {lang === 'en'
-                            ? item.button.title.en
-                            : item.button.title.id}
+                          {item.button.title.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -131,7 +129,7 @@ const HeroSlider = ({ data, className, lang }) => {
                         </span>
                         <StrokeButton
                           ariaLabel="button_heroSliderIDFALSE"
-                          targetBlank={true}
+                          targetBlank={item.button.customLink ? true : false}
                           destination={
                             item.button.customLink
                               ? item.button.link
@@ -147,9 +145,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {lang === 'en'
-                            ? item.button.title.en
-                            : item.button.title.id}
+                          {item.button.title.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -207,7 +203,7 @@ const HeroSlider = ({ data, className, lang }) => {
                         </div>
                         <StrokeButton
                           ariaLabel="button_heroSliderENTRUE"
-                          targetBlank={true}
+                          targetBlank={item.button.customLink ? true : false}
                           destination={
                             item.button.customLink
                               ? item.button.link
@@ -223,9 +219,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {lang === 'en'
-                            ? item.button.title.en
-                            : item.button.title.id}
+                          {item.button.title.en}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -259,9 +253,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {lang === 'en'
-                            ? item.button.title.en
-                            : item.button.title.id}
+                          {item.button.title.en}
                         </StrokeButton>
                       </div>
                     </Container>
