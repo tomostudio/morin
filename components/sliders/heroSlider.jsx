@@ -97,7 +97,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           ariaLabel="button_heroSliderIDTRUE"
                           targetBlank={true}
                           destination={
-                            item.customOption ? item.custom.link : '/products'
+                            item.button.customLink
+                              ? item.button.link
+                              : '/products'
                           }
                           color={
                             item.langColor === 'white'
@@ -109,13 +111,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.customOption
-                            ? lang === 'en'
-                              ? item.custom.title.en
-                              : item.custom.title.id
-                            : lang === 'en'
-                            ? data.language.btn_slider.en
-                            : data.language.btn_slider.id}
+                          {lang === 'en'
+                            ? item.button.title.en
+                            : item.button.title.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -135,7 +133,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           ariaLabel="button_heroSliderIDFALSE"
                           targetBlank={true}
                           destination={
-                            item.customOption ? item.custom.link : '/products'
+                            item.button.customLink
+                              ? item.button.link
+                              : '/products'
                           }
                           color={
                             item.langColor === 'white'
@@ -147,13 +147,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.customOption
-                            ? lang === 'en'
-                              ? item.custom.title.en
-                              : item.custom.title.id
-                            : lang === 'en'
-                            ? data.language.btn_slider.en
-                            : data.language.btn_slider.id}
+                          {lang === 'en'
+                            ? item.button.title.en
+                            : item.button.title.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -213,7 +209,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           ariaLabel="button_heroSliderENTRUE"
                           targetBlank={true}
                           destination={
-                            item.customOption ? item.custom.link : '/products'
+                            item.button.customLink
+                              ? item.button.link
+                              : '/products'
                           }
                           color={
                             item.langColor === 'white'
@@ -225,13 +223,9 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.customOption
-                            ? lang === 'en'
-                              ? item.custom.title.en
-                              : item.custom.title.id
-                            : lang === 'en'
-                            ? data.language.btn_slider.en
-                            : data.language.btn_slider.id}
+                          {lang === 'en'
+                            ? item.button.title.en
+                            : item.button.title.id}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -247,44 +241,28 @@ const HeroSlider = ({ data, className, lang }) => {
                         >
                           {item.title}
                         </span>
-                        {item.customOption ? (
-                          <StrokeButton
-                            ariaLabel="button_heroSliderEN_FALSE_OPTION_TRUE"
-                            targetBlank={true}
-                            destination={item.custom.link}
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
-                              ? item.custom.title.en
-                              : item.custom.title.id}
-                          </StrokeButton>
-                        ) : (
-                          <StrokeButton
-                            ariaLabel="button_heroSliderEN_FALSE_OPTION_FALSE"
-                            destination="/products"
-                            color={
-                              item.langColor === 'white'
-                                ? colors.white
-                                : colors.black
-                            }
-                            hover={`${
-                              item.langColor === 'white' ? 'white' : 'black'
-                            }`}
-                            className="mt-5 md:mt-0"
-                          >
-                            {lang === 'en'
-                              ? data.language.btn_slider.en
-                              : data.language.btn_slider.id}
-                          </StrokeButton>
-                        )}
+                        <StrokeButton
+                          ariaLabel="button_heroSlider"
+                          targetBlank={item.button.customLink ? true : false}
+                          destination={
+                            item.button.customLink
+                              ? item.button.link
+                              : '/products'
+                          }
+                          color={
+                            item.langColor === 'white'
+                              ? colors.white
+                              : colors.black
+                          }
+                          hover={`${
+                            item.langColor === 'white' ? 'white' : 'black'
+                          }`}
+                          className="mt-5 md:mt-0"
+                        >
+                          {lang === 'en'
+                            ? item.button.title.en
+                            : item.button.title.id}
+                        </StrokeButton>
                       </div>
                     </Container>
                   )}
