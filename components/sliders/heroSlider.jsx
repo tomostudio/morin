@@ -111,7 +111,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.button.title.id}
+                          {item.button.title}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -145,7 +145,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.button.title.id}
+                          {item.button.title}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -219,7 +219,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.button.title.en}
+                          {item.button.title}
                         </StrokeButton>
                       </div>
                     </Container>
@@ -253,7 +253,7 @@ const HeroSlider = ({ data, className, lang }) => {
                           }`}
                           className="mt-5 md:mt-0"
                         >
-                          {item.button.title.en}
+                          {item.button.title}
                         </StrokeButton>
                       </div>
                     </Container>
