@@ -23,10 +23,11 @@ const CategoryCard = ({
   link,
   imgAlt,
   lang,
-  categoryData,
+  imageHover,
+  animation,
   button,
 }) => {
-  const { image1, image2, image3, animation } = categoryData
+  const { image1, image2, image3 } = imageHover
   return (
     <FancyLink
       a11yText={`Navigate to ${title}`}

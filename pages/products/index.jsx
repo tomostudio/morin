@@ -83,7 +83,8 @@ const Category = ({
             {productTypeAPI?.map((item) => (
               <CategoryCard
                 key={item.title.en}
-                categoryData={item}
+                animation={item.animation}
+                imageHover={item.imageHover}
                 imgAlt={ctx.language === 'id' ? item.title.id : item.title.en}
                 title={ctx.language === 'id' ? item.title.id : item.title.en}
                 button={product.btn_lang}

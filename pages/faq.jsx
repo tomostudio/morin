@@ -120,7 +120,7 @@ const FAQ = ({
         isOpen={modalState}
         onRequestClose={requestCloseModal}
         onAfterClose={afterCloseModal}
-        classNameModalContent={`${modalData?.option ? 'odd' : 'even'}`}
+        classNameModalContent={`${modalData?.option}`}
         closeTimeoutMS={300}
       >
         <div className="fixed z-20 top-3 left-4 md:hidden">

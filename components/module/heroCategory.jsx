@@ -23,10 +23,11 @@ const HeroCategory = ({
   imgAlt,
   title,
   link,
-  categoryData,
+  imageHover,
+  animation,
   end,
 }) => {
-  const { image1, image2, image3, animation } = categoryData
+  const { image1, image2, image3 } = imageHover
 
   // const animation = 4;
   const HoverComponent = () => {

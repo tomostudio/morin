@@ -117,7 +117,7 @@ $transition-all: all 300ms;
     border-radius: 20px;
     overflow: hidden;
 
-    &.even {
+    &.dark_blue {
       color: $primary;
       background: $skyBlue;
 
@@ -127,7 +127,7 @@ $transition-all: all 300ms;
       }
     }
 
-    &.odd {
+    &.light_blue {
       color: $white;
       background: $primary;
 
