@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import { Arrow } from '../utils/svg';
+import React from 'react'
+import Link from 'next/link'
+import { Arrow } from '../utils/svg'
 
 const StrokeButton = ({
   children,
@@ -17,12 +17,12 @@ const StrokeButton = ({
 }) => {
   const defaultClass = `stroke-button flex flex-wrap items-center w-fit min-h-[30px] font-semibold leading-none rounded-full border-2 border-solid px-5 hover:shadow-softer hover:bg-current duration-300 transition-all ${
     center ? 'mx-auto' : ''
-  } `;
+  } `
 
   return !destination ? (
     <button
-    aria-label={ariaLabel}
-      type='button'
+      aria-label={ariaLabel}
+      type="button"
       onClick={onClick}
       className={`${defaultClass} bg-[${color.toLowerCase()}]  ${
         className ? className : ''
@@ -30,7 +30,7 @@ const StrokeButton = ({
       style={{ color: color, borderColor: color }}
       {...others}
     >
-      <div className='pt-[2px]'>{children}</div>
+      <div className="pt-[2px]">{children}</div>
       {arrow ? (
         <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
           <Arrow color={color} />
@@ -40,25 +40,23 @@ const StrokeButton = ({
       )}
     </button>
   ) : !targetBlank ? (
-    <Link href={destination}>
-      <a
-        aria-label={ariaLabel}
-        className={`${defaultClass} bg-[${color.toLowerCase()}] select-none ${
-          className ? className : ''
-        } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
-        style={{ color: color, borderColor: color }}
-        onClick={onClick}
-        {...others}
-      >
-        <div className='pt-[2px]'>{children}</div>
-        {arrow ? (
-          <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
-            <Arrow color={color} />
-          </div>
-        ) : (
-          ''
-        )}
-      </a>
+    <Link
+      href={destination}
+      aria-label={ariaLabel}
+      className={`${defaultClass} bg-[${color.toLowerCase()}] select-none ${
+        className ? className : ''
+      } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
+      style={{ color: color, borderColor: color }}
+      {...others}
+    >
+      <div className="pt-[2px]">{children}</div>
+      {arrow ? (
+        <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
+          <Arrow color={color} />
+        </div>
+      ) : (
+        ''
+      )}
     </Link>
   ) : (
     <a
@@ -68,10 +66,10 @@ const StrokeButton = ({
         className ? className : ''
       } ${hover === 'white' ? 'hover-black' : 'hover-white'}`}
       style={{ color: color, borderColor: color }}
-      target='_blank'
+      target="_blank"
       {...others}
     >
-      <div className='pt-[2px]'>{children}</div>
+      <div className="pt-[2px]">{children}</div>
       {arrow ? (
         <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
           <Arrow color={color} />
@@ -80,7 +78,7 @@ const StrokeButton = ({
         ''
       )}
     </a>
-  );
-};
+  )
+}
 
-export default StrokeButton;
+export default StrokeButton

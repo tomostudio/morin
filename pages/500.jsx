@@ -4,7 +4,7 @@ import { useAppContext } from 'context/state';
 import SEO from '@/components/utils/seo';
 import { useEffectInit } from '@/components/utils/preset';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
 

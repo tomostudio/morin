@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import FancyLink from '../utils/fancyLink'
 // import { SunRay, SunRaySmaller } from '../utils/svg';
 import { Arrow } from '../utils/svg'

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import FancyLink from '@/components/utils/fancyLink'
 import Container from '@/components/module/container'
 import Hamburger from '../micro-module/hamburger'

@@ -43,28 +43,26 @@ const SolidButton = ({
       />
     </button>
   ) : !targetBlank ? (
-    <Link href={destination}>
-      <a
-        aria-label={ariaLabel}
-        className={`${defaultClass}  ${className ? className : ''}`}
-        style={{ color: color, borderColor: color }}
-        onClick={onClick}
-        {...others}
-      >
-        <div className="pt-[2px] ">{children}</div>
-        {arrow ? (
-          <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
-            <Arrow color={color} />
-          </div>
-        ) : (
-          ''
-        )}
-        <div className="background" style={{ background: color }} />
-        <div
-          className="background absolute w-full h-full top-0 left-0 z-0 group-hover:opacity-0 transition-opacity duration-300"
-          style={{ background: color }}
-        />
-      </a>
+    <Link
+      href={destination}
+      aria-label={ariaLabel}
+      className={`${defaultClass}  ${className ? className : ''}`}
+      style={{ color: color, borderColor: color }}
+      {...others}
+    >
+      <div className="pt-[2px] ">{children}</div>
+      {arrow ? (
+        <div className={`w-5 ml-2 md:w-6 ${!children ? 'last:ml-0' : ''}`}>
+          <Arrow color={color} />
+        </div>
+      ) : (
+        ''
+      )}
+      <div className="background" style={{ background: color }} />
+      <div
+        className="background absolute w-full h-full top-0 left-0 z-0 group-hover:opacity-0 transition-opacity duration-300"
+        style={{ background: color }}
+      />
     </Link>
   ) : (
     <a

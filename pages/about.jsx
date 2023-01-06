@@ -16,7 +16,7 @@ import {
   Wrinkle,
   ThreeTopLine,
 } from '@/components/utils/svg'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import client from '@/helpers/sanity/client'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode, Keyboard, EffectFade } from 'swiper'
 import Footer from '@/components/module/footer'

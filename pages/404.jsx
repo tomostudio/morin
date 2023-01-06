@@ -6,7 +6,7 @@ import SEO from '@/components/utils/seo';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/transitions';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 const Error404 = ({ seoAPI }) => {
   const [seo] = seoAPI;

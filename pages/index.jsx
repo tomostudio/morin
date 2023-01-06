@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { LazyMotion, domAnimation, motion } from 'framer-motion'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Layout from '@/components/module/layout'
 import Footer from '@/components/module/footer'
 import Container from '@/components/module/container'

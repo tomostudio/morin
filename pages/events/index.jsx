@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Footer from '@/components/module/footer'
 import Header from '@/components/module/header'
 import Layout from '@/components/module/layout'

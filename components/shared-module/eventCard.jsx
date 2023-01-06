@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import StrokeButton from '../micro-module/strokeButton'
 import FancyLink from '../utils/fancyLink'
 
