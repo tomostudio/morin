@@ -16,6 +16,7 @@ import {
 import { rotate3, rotate_3, defaultHover } from '../utils/tailwind-preset'
 import { motion } from 'framer-motion'
 import { width } from '@mui/system'
+import { useRouter } from 'next/router'
 
 export default function Header({
   event,
@@ -23,6 +24,7 @@ export default function Header({
   turn_language,
   whatsapp,
   socialMediaLink,
+  color,
 }) {
   const [opened, setOpened] = useState(false)
   const ctx = useAppContext()
@@ -194,12 +196,13 @@ export default function Header({
     }
   }
 
+  const dynamicRoute = useRouter().asPath;
   const [buttonColor, setButtonColor] = useState("black")
-  let colorPlaceholder = '' // contain holder color, to be updated by useEffect, because state doesn't update.
+  const [colorPlaceholder, setColorPlaceholder] = useState("")
 
   useEffect(() => {
     setTimeout(() => {
-      colorPlaceholder = ctx.langColor
+      setColorPlaceholder(ctx.langColor)
       setButtonColor(ctx.langColor)
     }, 50);
   }, [ctx.langColor])
@@ -230,7 +233,7 @@ export default function Header({
       document.removeEventListener('resize', resetNav, false)
       document.removeEventListener('scroll', scrollListener, false)
     }
-  }, [])
+  }, [dynamicRoute, colorPlaceholder])
 
   const FIFODuration = 300
 
