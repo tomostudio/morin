@@ -148,6 +148,9 @@ const Footer = ({
                 )}
               </div>
               <span className="">{footer.creditText}</span>
+              <FancyLink destination="https://tomostudio.id" blank className="text-[10px] md:text-[12px]">
+                Website by TOMO Studio
+              </FancyLink>
             </div>
           </div>
         </div>
