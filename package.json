@@ -1,7 +1,7 @@
 {
   "name": "morin",
-  "description": "A simple Next.js starter kit with TailwindCSS (JIT) and Framer Motion preconfigured",
-  "author": "Hendhy Hutomo <hello@hendhyhutomo.com><hendhy@tomostudio.id>, Sam Goddard <hello@samgoddard.co.uk> (https://samgoddard.co.uk)",
+  "description": "Morin Website",
+  "author": "Hendhy Hutomo <hello@hendhyhutomo.com><hendhy@tomostudio.id>, Dimas Aditya Mukhsinin <dimasadityamukhsinin@gmail.com>",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "motion",
     "preact"
   ],
-  "homepage": "https://morin.vercel.app/",
+  "homepage": "https://morin.id",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
